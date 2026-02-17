@@ -39,5 +39,5 @@ public class DTOBeneficiarySimpleDetails {
     public int getCode() {
         return code;
     }
-    
+
 }

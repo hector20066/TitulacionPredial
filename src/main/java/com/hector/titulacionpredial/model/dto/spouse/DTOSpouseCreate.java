@@ -16,20 +16,20 @@ public class DTOSpouseCreate {
     private String expeditionLocation;
     private String address;
     private long phone;
-    private Beneficiary beneficiary;
+    private int beneficiaryCode;
 
     public DTOSpouseCreate() {
 
     }
 
-    public DTOSpouseCreate(long id, String name, String lastName, String expeditionLocation, String address, long phone, Beneficiary beneficiary) {
+    public DTOSpouseCreate(long id, String name, String lastName, String expeditionLocation, String address, long phone, int beneficiaryCode) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.expeditionLocation = expeditionLocation;
         this.address = address;
         this.phone = phone;
-        this.beneficiary = beneficiary;
+        this.beneficiaryCode = beneficiaryCode;
     }
 
     public void setId(long id) {
@@ -56,8 +56,8 @@ public class DTOSpouseCreate {
         this.phone = phone;
     }
 
-    public void setBeneficiary(Beneficiary beneficiary) {
-        this.beneficiary = beneficiary;
+    public void setBeneficiary(int beneficiaryCode) {
+        this.beneficiaryCode = beneficiaryCode;
     }
 
     public long getId() {
@@ -84,8 +84,8 @@ public class DTOSpouseCreate {
         return phone;
     }
 
-    public Beneficiary getBeneficiary() {
-        return beneficiary;
+    public int getBeneficiary() {
+        return beneficiaryCode;
     }
 
 }
