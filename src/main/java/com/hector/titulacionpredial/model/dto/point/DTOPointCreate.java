@@ -13,19 +13,19 @@ public class DTOPointCreate {
     private Double eastCoordinate;
     private Double distance;
     private String hillside;
-    private Property property;
+    private int propertyCode;
 
     public DTOPointCreate() {
 
     }
 
-    public DTOPointCreate(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, Property property) {
+    public DTOPointCreate(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) {
         this.numberPoint = numberPoint;
         this.northCoordinate = northCoordinate;
         this.eastCoordinate = eastCoordinate;
         this.distance = distance;
         this.hillside = hillside;
-        this.property = property;
+        this.propertyCode = propertyCode;
     }
 
     public void setNumberPoint(int numberPoint) {
@@ -48,8 +48,8 @@ public class DTOPointCreate {
         this.hillside = hillside;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public int getNumberPoint() {
@@ -72,8 +72,8 @@ public class DTOPointCreate {
         return hillside;
     }
 
-    public Property getProperty() {
-        return property;
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
 }

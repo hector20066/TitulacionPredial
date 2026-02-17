@@ -105,5 +105,5 @@ public class DTOBeneficiaryUpdate {
     public String getAffectation() {
         return affectation;
     }
-    
+
 }
