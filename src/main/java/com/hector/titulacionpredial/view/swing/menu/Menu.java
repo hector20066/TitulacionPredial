@@ -40,12 +40,14 @@ public class Menu extends JPanel {
 
     public void addComponents() {
         addTitle("PRINCIPAL");
-        addMenuItem(new ModelMenuItem("", "Registrar Información", "Beneficiarios", "Predios"));
-        addMenuItem(new ModelMenuItem("", "Ver registros", "Beneficiarios", "Reportes", "Resolución"));
+        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));
+        addTitle("INFORMACIÓN");
+        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Información", "Beneficiarios", "Predios"));
+        addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver registros", "Beneficiarios", "Reportes", "Resolución"));
         addTitle("CONFIGURACIÓN");
-        addMenuItem(new ModelMenuItem("", "Ajustes"));
+        addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));
         addTitle("SOBRE LA APP");
-        addMenuItem(new ModelMenuItem("", "Acerca De"));
+        addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));
     }
 
     private JScrollPane createScroll() {
