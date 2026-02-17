@@ -85,5 +85,5 @@ public class DTOResolutionDetails {
     public String getNotary() {
         return notary;
     }
-    
+
 }
