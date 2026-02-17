@@ -166,5 +166,5 @@ public class DTOBeneficiaryCreate {
     public Property getProperty() {
         return property;
     }
-    
+
 }
