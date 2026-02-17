@@ -34,6 +34,8 @@ public class Menu extends JPanel {
         scroll.getViewport().setOpaque(false);
         scroll.setViewportBorder(null);
         add(scroll);
+        
+        rebuildMenu();
     }
 
     public void addComponents() {
