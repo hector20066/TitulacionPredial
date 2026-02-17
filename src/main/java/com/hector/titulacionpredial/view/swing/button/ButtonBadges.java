@@ -101,11 +101,7 @@ public class ButtonBadges extends JButton {
 
         if (pressedPoint != null) {
             g2.setColor(effectColor);
-
-            g2.setComposite(AlphaComposite.getInstance(
-                    AlphaComposite.SRC_ATOP,
-                    clampAlpha(alpha)
-            ));
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, clampAlpha(alpha)));
 
             g2.fillOval(
                     (int) (pressedPoint.x - animatSize / 2),

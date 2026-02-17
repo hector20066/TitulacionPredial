@@ -10,7 +10,7 @@ import java.awt.geom.RoundRectangle2D;
  */
 public class RoundedPanel extends JPanel {
 
-    private int cornerRadius;
+    private final int cornerRadius;
     private boolean drawBorder = true;
     private Color borderColor = Color.BLACK;
 

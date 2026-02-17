@@ -66,15 +66,10 @@ public class WinButton extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void initEvent(JFrame frame, JPanel panel) {
-        btn_exit.addActionListener((ActionEvent evt) -> {
-            System.exit(0);
-        });
+        btn_exit.addActionListener((evt) -> System.exit(0));
+        btn_minimize.addActionListener((evt) -> frame.setState(JFrame.ICONIFIED));
 
-        btn_minimize.addActionListener((ActionEvent evt) -> {
-            frame.setState(JFrame.ICONIFIED);
-        });
-
-        btn_maximize.addActionListener((ActionEvent evt) -> {
+        btn_maximize.addActionListener((evt) -> {
             if (frame.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
                 frame.setExtendedState(JFrame.NORMAL);
             } else {

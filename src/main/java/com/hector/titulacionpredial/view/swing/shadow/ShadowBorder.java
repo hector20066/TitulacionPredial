@@ -119,7 +119,10 @@ public class ShadowBorder {
     }
 
     public static enum ShadowType {
-        IN_SHADOW, OUT_SHADOW
+
+        IN_SHADOW,
+        OUT_SHADOW;
+
     }
 
 }

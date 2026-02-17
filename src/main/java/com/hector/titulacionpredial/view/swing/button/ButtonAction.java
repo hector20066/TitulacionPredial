@@ -91,11 +91,7 @@ public class ButtonAction extends JButton {
         if (pressedPoint != null) {
             Area area = new Area(new RoundRectangle2D.Double(0, 0, width, height, 10, 10));
             g2.setColor(effectColor);
-
-            g2.setComposite(AlphaComposite.getInstance(
-                    AlphaComposite.SRC_ATOP,
-                    clampAlpha(alpha)
-            ));
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, clampAlpha(alpha)));
 
             area.intersect(new Area(new Ellipse2D.Double(
                     pressedPoint.x - animatSize / 2,
@@ -116,6 +112,7 @@ public class ButtonAction extends JButton {
         if (isSelected()) {
             int width = getWidth();
             int height = getHeight();
+
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2.setColor(new Color(25, 25, 25));
