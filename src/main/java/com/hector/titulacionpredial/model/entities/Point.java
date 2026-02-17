@@ -6,7 +6,7 @@ package com.hector.titulacionpredial.model.entities;
  */
 public class Point {
 
-    private long code;
+    private int code;
     private int numberPoint;
     private Double northCoordinate;
     private Double eastCoordinate;
@@ -17,7 +17,7 @@ public class Point {
 
     }
 
-    public Point(long code, int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside) {
+    public Point(int code, int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside) {
         this.code = code;
         this.numberPoint = numberPoint;
         this.northCoordinate = northCoordinate;
@@ -26,7 +26,7 @@ public class Point {
         this.hillside = hillside;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -50,7 +50,7 @@ public class Point {
         this.hillside = hillside;
     }
 
-    public long getCode() {
+    public int getCode() {
         return code;
     }
 

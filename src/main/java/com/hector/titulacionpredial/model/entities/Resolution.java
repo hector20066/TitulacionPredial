@@ -8,7 +8,7 @@ import java.time.LocalDate;
  */
 public class Resolution {
 
-    private long code;
+    private int code;
     private long resolutionNumber;
     private LocalDate notification;
     private LocalDate executory;
@@ -21,7 +21,7 @@ public class Resolution {
 
     }
 
-    public Resolution(long code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, Property property) {
+    public Resolution(int code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, Property property) {
         this.code = code;
         this.resolutionNumber = resolutionNumber;
         this.notification = notification;
@@ -32,7 +32,7 @@ public class Resolution {
         this.property = property;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -64,7 +64,7 @@ public class Resolution {
         this.property = property;
     }
 
-    public long getCode() {
+    public int getCode() {
         return code;
     }
 
