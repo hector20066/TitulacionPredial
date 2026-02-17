@@ -88,5 +88,5 @@ public class DTOResolutionCreate {
     public Property getProperty() {
         return property;
     }
-    
+
 }
