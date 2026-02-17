@@ -75,5 +75,5 @@ public class DTOPointCreate {
     public Property getProperty() {
         return property;
     }
-    
+
 }
