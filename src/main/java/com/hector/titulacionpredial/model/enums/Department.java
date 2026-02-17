@@ -4,7 +4,7 @@ package com.hector.titulacionpredial.model.enums;
  *
  * @author hectoracevedo
  */
-public enum Departament {
+public enum Department {
 
     AMAZONAS,
     ANTIOQUIA,
