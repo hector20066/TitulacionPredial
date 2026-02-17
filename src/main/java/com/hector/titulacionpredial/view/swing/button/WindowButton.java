@@ -29,5 +29,5 @@ public class WindowButton extends JButton {
         g2.fillOval(x, y, size, size);
         super.paint(g);
     }
-    
+
 }
