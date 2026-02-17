@@ -77,5 +77,5 @@ public class Property {
                 "\nBeneficiaries= " + beneficiaries +
                 "\nPoints= " + Arrays.toString(points);
     }
-    
+
 }
