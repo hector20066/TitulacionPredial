@@ -10,12 +10,12 @@ public class Content extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jpl_body = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        menu1 = new com.hector.titulacionpredial.view.swing.menu.Menu();
         jPanel2 = new javax.swing.JPanel();
         head1 = new com.hector.titulacionpredial.view.component.Head();
 
@@ -29,11 +29,11 @@ public class Content extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,5 +92,6 @@ public class Content extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jpl_body;
+    private com.hector.titulacionpredial.view.swing.menu.Menu menu1;
     // End of variables declaration//GEN-END:variables
 }
