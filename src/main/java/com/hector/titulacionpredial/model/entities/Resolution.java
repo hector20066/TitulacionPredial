@@ -15,13 +15,14 @@ public class Resolution {
     private String fmi;
     private String act;
     private String publicWriting;
-    private Property property;
+    private String notary;
+    private int propertyCode;
 
     public Resolution() {
 
     }
 
-    public Resolution(int code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, Property property) {
+    public Resolution(int code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode) {
         this.code = code;
         this.resolutionNumber = resolutionNumber;
         this.notification = notification;
@@ -29,7 +30,8 @@ public class Resolution {
         this.fmi = fmi;
         this.act = act;
         this.publicWriting = publicWriting;
-        this.property = property;
+        this.notary = notary;
+        this.propertyCode = propertyCode;
     }
 
     public void setCode(int code) {
@@ -60,8 +62,12 @@ public class Resolution {
         this.publicWriting = publicWriting;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setNotary(String notary) {
+        this.notary = notary;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public int getCode() {
@@ -92,8 +98,12 @@ public class Resolution {
         return publicWriting;
     }
 
-    public Property getProperty() {
-        return property;
+    public String getNotary() {
+        return notary;
+    }
+
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
     @Override
@@ -105,7 +115,8 @@ public class Resolution {
                 "\nFMI= " + fmi +
                 "\nAct= " + act +
                 "\nPublicWriting= " + publicWriting +
-                "\nProperty= " + property;
+                "\nNotary= " + notary +
+                "\nProperty= " + propertyCode;
     }
 
 }

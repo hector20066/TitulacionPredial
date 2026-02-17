@@ -60,5 +60,5 @@ public class DTOPropertyDetails {
     public List<DTOPointDetails> getPoints() {
         return points;
     }
-    
+
 }
