@@ -23,13 +23,13 @@ public class DTOBeneficiaryCreate {
     private String publication;
     private MaritalStatus maritalStatus;
     private String affectation;
-    private Property property;
+    private int propertyCode;
 
     public DTOBeneficiaryCreate() {
 
     }
 
-    public DTOBeneficiaryCreate(long id, String name, String lastName, String expeditionLocation, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation, Property property) {
+    public DTOBeneficiaryCreate(long id, String name, String lastName, String expeditionLocation, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation, int propertyCode) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -44,7 +44,7 @@ public class DTOBeneficiaryCreate {
         this.publication = publication;
         this.maritalStatus = maritalStatus;
         this.affectation = affectation;
-        this.property = property;
+        this.propertyCode = propertyCode;
     }
 
     public void setId(long id) {
@@ -103,8 +103,8 @@ public class DTOBeneficiaryCreate {
         this.affectation = affectation;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public long getId() {
@@ -163,8 +163,8 @@ public class DTOBeneficiaryCreate {
         return affectation;
     }
 
-    public Property getProperty() {
-        return property;
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
 }

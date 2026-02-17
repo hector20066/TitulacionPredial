@@ -155,5 +155,5 @@ public class DTOBeneficiaryDetails {
     public String getAffectation() {
         return affectation;
     }
-    
+
 }
