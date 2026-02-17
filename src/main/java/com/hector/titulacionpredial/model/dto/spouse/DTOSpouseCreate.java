@@ -87,5 +87,5 @@ public class DTOSpouseCreate {
     public Beneficiary getBeneficiary() {
         return beneficiary;
     }
-    
+
 }
