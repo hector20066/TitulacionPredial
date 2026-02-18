@@ -58,6 +58,7 @@ public class SeeProperties extends javax.swing.JPanel {
         roundedPanel3.setBorderColor(new java.awt.Color(102, 102, 102));
 
         txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setText("Buscar");
         txt_search.setBorder(null);
 
         btn_search.setBackground(new java.awt.Color(255, 255, 255));

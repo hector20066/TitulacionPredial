@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 import javax.swing.event.DocumentEvent;
@@ -50,17 +51,17 @@ public class ControllerSeeResolutions {
         seeResolutions.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
             }
         });
     }
@@ -69,14 +70,18 @@ public class ControllerSeeResolutions {
         seeResolutions.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                super.focusLost(e);
+                if (seeResolutions.getTxt_search().getText().isBlank()) {
+                    seeResolutions.getTxt_search().setText("Buscar");
+                }
             }
         });
 
         seeResolutions.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+                if (seeResolutions.getTxt_search().getText().equals("Buscar")) {
+                    seeResolutions.getTxt_search().setText("");
+                }
             }
         });
     }

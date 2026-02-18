@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 import javax.swing.event.DocumentEvent;
@@ -59,17 +60,17 @@ public class ControllerViewBeneficiaries {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
             }
         });
     }
@@ -78,14 +79,18 @@ public class ControllerViewBeneficiaries {
         viewBeneficiaries.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                super.focusLost(e);
+                if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
+                    viewBeneficiaries.getTxt_search().setText("Buscar");
+                }
             }
         });
 
         viewBeneficiaries.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+                if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
+                    viewBeneficiaries.getTxt_search().setText("Buscar");
+                }
             }
         });
     }
