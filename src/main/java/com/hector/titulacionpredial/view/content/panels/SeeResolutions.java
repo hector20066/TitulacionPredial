@@ -1,6 +1,17 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -16,6 +27,11 @@ public class SeeResolutions extends javax.swing.JPanel {
         String[] titles = {"Codigo", "Num. Resolucion", "Notificacion", "Ejecutoria", "Notaria", "FMI", "Acto", "Esc. Publica"};
         model.setColumnIdentifiers(titles);
         jtbl_resolutions.setModel(model);
+        
+        JTableHeader header = jtbl_resolutions.getTableHeader();
+        header.setBackground(new Color(187, 222, 251));
+        header.setForeground(new Color(0, 18, 25));
+        header.setFont(new Font("Segoe UI", Font.BOLD, 12));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -124,6 +140,50 @@ public class SeeResolutions extends javax.swing.JPanel {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setControllerModify(ActionListener action) {
+        btn_modify.addActionListener(action);
+    }
+    
+    public void setControllerSearch(ActionListener action) {
+        btn_search.addActionListener(action);
+    }
+    
+    public void setControllerTxt_searchDocument(DocumentListener listen) {
+        txt_search.getDocument().addDocumentListener(listen);
+    }
+    
+    public void setControllerTxt_searchMouseListener(MouseListener listen) {
+        txt_search.addMouseListener(listen);
+    }
+    
+    public void setControllerTxt_searchFocus(FocusListener listen) {
+        txt_search.addFocusListener(listen);
+    }
+    
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public ButtonAction getBtn_modify() {
+        return btn_modify;
+    }
+
+    public ButtonAction getBtn_search() {
+        return btn_search;
+    }
+
+    public JTable getJtbl_resolutions() {
+        return jtbl_resolutions;
+    }
+
+    public RoundedPanel getRoundedPanel3() {
+        return roundedPanel3;
+    }
+
+    public JTextField getTxt_search() {
+        return txt_search;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;

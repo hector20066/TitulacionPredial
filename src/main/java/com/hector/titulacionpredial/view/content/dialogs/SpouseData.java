@@ -61,37 +61,37 @@ public class SpouseData extends javax.swing.JDialog {
         jLabel2.setText("Nombre:");
 
         txt_name.setBackground(new java.awt.Color(255, 255, 255));
-        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
         jLabel3.setText("Apellido:");
 
         txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
-        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
         jLabel4.setText("Cedula:");
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
-        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
         jLabel5.setText("Lugar Expedicion:");
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
-        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
         jLabel6.setText("Direccion:");
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
-        txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
         jLabel7.setText("Telefono:");
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
-        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         btn_save.setText("Guardar");
         btn_save.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

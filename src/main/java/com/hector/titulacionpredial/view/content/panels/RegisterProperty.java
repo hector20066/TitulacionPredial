@@ -1,5 +1,11 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author hectoracevedo
@@ -8,6 +14,11 @@ public class RegisterProperty extends javax.swing.JPanel {
 
     public RegisterProperty() {
         initComponents();
+        
+        jpl_contentPoints.add(jpl_point1, "point1");
+        jpl_contentPoints.add(jpl_point2, "point2");
+        jpl_contentPoints.add(jpl_point3, "point3");
+        jpl_contentPoints.add(jpl_point4, "point4");
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -15,7 +26,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jpl_contentPoints = new javax.swing.JPanel();
         jpl_point1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         btn_goPoint2 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
@@ -78,8 +89,8 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
         jLabel7.setText("Registrar Predio");
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.CardLayout());
+        jpl_contentPoints.setBackground(new java.awt.Color(255, 255, 255));
+        jpl_contentPoints.setLayout(new java.awt.CardLayout());
 
         jpl_point1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -95,7 +106,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_nothCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_nothCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_nothCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(33, 37, 41));
@@ -103,7 +114,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_eastCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(33, 37, 41));
@@ -111,7 +122,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance1.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_distance1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(33, 37, 41));
@@ -119,7 +130,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_hillside1.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_hillside1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point1Layout = new javax.swing.GroupLayout(jpl_point1);
         jpl_point1.setLayout(jpl_point1Layout);
@@ -187,7 +198,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(jpl_point1, "card2");
+        jpl_contentPoints.add(jpl_point1, "card2");
 
         jpl_point2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -205,7 +216,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_nothCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_nothCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_nothCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(33, 37, 41));
@@ -213,7 +224,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance2.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_distance2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
@@ -221,7 +232,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_hillside2.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_hillside2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(33, 37, 41));
@@ -229,7 +240,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_eastCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point2Layout = new javax.swing.GroupLayout(jpl_point2);
         jpl_point2.setLayout(jpl_point2Layout);
@@ -302,7 +313,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(jpl_point2, "card3");
+        jpl_contentPoints.add(jpl_point2, "card3");
 
         jpl_point3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -320,7 +331,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_nothCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_nothCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_nothCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(33, 37, 41));
@@ -328,7 +339,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance3.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_distance3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(33, 37, 41));
@@ -336,7 +347,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_hillside3.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_hillside3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(33, 37, 41));
@@ -344,7 +355,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_eastCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point3Layout = new javax.swing.GroupLayout(jpl_point3);
         jpl_point3.setLayout(jpl_point3Layout);
@@ -417,7 +428,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(jpl_point3, "card4");
+        jpl_contentPoints.add(jpl_point3, "card4");
 
         jpl_point4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -433,7 +444,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_nothCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_nothCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_nothCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(33, 37, 41));
@@ -441,7 +452,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance4.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_distance4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(33, 37, 41));
@@ -449,7 +460,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_hillside4.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_hillside4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel26.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(33, 37, 41));
@@ -457,7 +468,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_eastCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point4Layout = new javax.swing.GroupLayout(jpl_point4);
         jpl_point4.setLayout(jpl_point4Layout);
@@ -524,7 +535,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(jpl_point4, "card5");
+        jpl_contentPoints.add(jpl_point4, "card5");
 
         btn_register.setText("REGISTRAR PREDIO");
         btn_register.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -540,7 +551,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_cadastralId.setBackground(new java.awt.Color(255, 255, 255));
         txt_cadastralId.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_cadastralId.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_cadastralId.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
@@ -548,7 +559,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_area.setBackground(new java.awt.Color(255, 255, 255));
         txt_area.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_area.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_area.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
@@ -560,7 +571,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_beneficiaryCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -594,7 +605,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(37, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(365, 365, 365)
                                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -620,7 +631,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -637,6 +648,158 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setControllerRegister(ActionListener action) {
+        btn_register.addActionListener(action);
+    }
+    
+    public void setControllerGoPoint2(ActionListener action) {
+        btn_goPoint2.addActionListener(action);
+    }
+    
+    public void setControllerGoPoint3(ActionListener action) {
+        btn_goPoint3.addActionListener(action);
+    }
+    
+    public void setControllerGoPoint4(ActionListener action) {
+        btn_goPoint4.addActionListener(action);
+    }
+    
+    public void setControllerReturnPoint1(ActionListener action) {
+        btn_returnPoint1.addActionListener(action);
+    }
+    
+    public void setControllerReturnPoint2(ActionListener action) {
+        btn_returnPoint2.addActionListener(action);
+    }
+    
+    public void setControllerReturnPoint3(ActionListener action) {
+        btn_returnPoint3.addActionListener(action);
+    }
+    
+    public ButtonBadges getBtn_goPoint2() {
+        return btn_goPoint2;
+    }
+
+    public ButtonBadges getBtn_goPoint3() {
+        return btn_goPoint3;
+    }
+
+    public ButtonBadges getBtn_goPoint4() {
+        return btn_goPoint4;
+    }
+
+    public ButtonAction getBtn_register() {
+        return btn_register;
+    }
+
+    public ButtonBadges getBtn_returnPoint1() {
+        return btn_returnPoint1;
+    }
+
+    public ButtonBadges getBtn_returnPoint2() {
+        return btn_returnPoint2;
+    }
+
+    public ButtonBadges getBtn_returnPoint3() {
+        return btn_returnPoint3;
+    }
+
+    public JPanel getJpl_contentPoints() {
+        return jpl_contentPoints;
+    }
+
+    public JPanel getJpl_point1() {
+        return jpl_point1;
+    }
+
+    public JPanel getJpl_point2() {
+        return jpl_point2;
+    }
+
+    public JPanel getJpl_point3() {
+        return jpl_point3;
+    }
+
+    public JPanel getJpl_point4() {
+        return jpl_point4;
+    }
+
+    public JTextField getTxt_area() {
+        return txt_area;
+    }
+
+    public JTextField getTxt_beneficiaryCode() {
+        return txt_beneficiaryCode;
+    }
+
+    public JTextField getTxt_cadastralId() {
+        return txt_cadastralId;
+    }
+
+    public JTextField getTxt_distance1() {
+        return txt_distance1;
+    }
+
+    public JTextField getTxt_distance2() {
+        return txt_distance2;
+    }
+
+    public JTextField getTxt_distance3() {
+        return txt_distance3;
+    }
+
+    public JTextField getTxt_distance4() {
+        return txt_distance4;
+    }
+
+    public JTextField getTxt_eastCoordinate1() {
+        return txt_eastCoordinate1;
+    }
+
+    public JTextField getTxt_eastCoordinate2() {
+        return txt_eastCoordinate2;
+    }
+
+    public JTextField getTxt_eastCoordinate3() {
+        return txt_eastCoordinate3;
+    }
+
+    public JTextField getTxt_eastCoordinate4() {
+        return txt_eastCoordinate4;
+    }
+
+    public JTextField getTxt_hillside1() {
+        return txt_hillside1;
+    }
+
+    public JTextField getTxt_hillside2() {
+        return txt_hillside2;
+    }
+
+    public JTextField getTxt_hillside3() {
+        return txt_hillside3;
+    }
+
+    public JTextField getTxt_hillside4() {
+        return txt_hillside4;
+    }
+
+    public JTextField getTxt_nothCoordinate1() {
+        return txt_nothCoordinate1;
+    }
+
+    public JTextField getTxt_nothCoordinate2() {
+        return txt_nothCoordinate2;
+    }
+
+    public JTextField getTxt_nothCoordinate3() {
+        return txt_nothCoordinate3;
+    }
+
+    public JTextField getTxt_nothCoordinate4() {
+        return txt_nothCoordinate4;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_goPoint2;
@@ -672,8 +835,8 @@ public class RegisterProperty extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jpl_contentPoints;
     private javax.swing.JPanel jpl_point1;
     private javax.swing.JPanel jpl_point2;
     private javax.swing.JPanel jpl_point3;

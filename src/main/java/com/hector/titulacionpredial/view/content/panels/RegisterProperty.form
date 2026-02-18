@@ -71,7 +71,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel2" min="-2" pref="988" max="-2" attributes="0"/>
+                              <Component id="jpl_contentPoints" min="-2" pref="988" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="365" max="-2" attributes="0"/>
                                   <Component id="btn_register" min="-2" pref="231" max="-2" attributes="0"/>
@@ -105,7 +105,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" pref="312" max="-2" attributes="0"/>
+                  <Component id="jpl_contentPoints" min="-2" pref="312" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_register" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -125,7 +125,7 @@
             <Property name="text" type="java.lang.String" value="Registrar Predio"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="jpl_contentPoints">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -275,7 +275,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -303,7 +303,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -331,7 +331,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -359,7 +359,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -521,7 +521,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -549,7 +549,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -577,7 +577,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -605,7 +605,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -767,7 +767,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -795,7 +795,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -823,7 +823,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -851,7 +851,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -999,7 +999,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -1027,7 +1027,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -1055,7 +1055,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -1083,7 +1083,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -1135,7 +1135,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -1163,7 +1163,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -1202,7 +1202,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>

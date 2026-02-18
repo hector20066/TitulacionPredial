@@ -1,6 +1,18 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -16,6 +28,11 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         String[] titles = {"Cedula", "Nombre", "Telefono", "Ref. Catastral", "Municipio", "Direccion"};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
+        
+        JTableHeader header = jtbl_beneficiaries.getTableHeader();
+        header.setBackground(new Color(187, 222, 251));
+        header.setForeground(new Color(0, 18, 25));
+        header.setFont(new Font("Segoe UI", Font.BOLD, 12));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -149,6 +166,70 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setControllerViewDetails(ActionListener action) {
+        btn_seeProfile.addActionListener(action);
+    }
+    
+    public void setControllerModify(ActionListener action) {
+        btn_modify.addActionListener(action);
+    }
+    
+    public void setControllerDelete(ActionListener action) {
+        btn_delete.addActionListener(action);
+    }
+    
+    public void setControllerSearch(ActionListener action) {
+        btn_search.addActionListener(action);
+    }
+    
+    public void setControllerTxt_searchDocument(DocumentListener listen) {
+        txt_search.getDocument().addDocumentListener(listen);
+    }
+    
+    public void setControllerTxt_searchMouseListener(MouseListener listen) {
+        txt_search.addMouseListener(listen);
+    }
+    
+    public void setControllerTxt_searchFocus(FocusListener listen) {
+        txt_search.addFocusListener(listen);
+    }
+
+    public DefaultTableModel getTableModel() {
+        return tableModel;
+    }
+
+    public ButtonAction getBtn_delete() {
+        return btn_delete;
+    }
+
+    public ButtonAction getBtn_modify() {
+        return btn_modify;
+    }
+
+    public ButtonAction getBtn_search() {
+        return btn_search;
+    }
+
+    public ButtonAction getBtn_seeProfile() {
+        return btn_seeProfile;
+    }
+
+    public JPanel getJpl_content() {
+        return jpl_content;
+    }
+
+    public JTable getJtbl_beneficiaries() {
+        return jtbl_beneficiaries;
+    }
+
+    public RoundedPanel getRoundedPanel1() {
+        return roundedPanel1;
+    }
+
+    public JTextField getTxt_search() {
+        return txt_search;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_delete;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;

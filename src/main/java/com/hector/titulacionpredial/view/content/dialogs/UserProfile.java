@@ -18,6 +18,11 @@ public class UserProfile extends javax.swing.JDialog {
     public UserProfile(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        txa_affectation.setLineWrap(true);
+        txa_affectation.setWrapStyleWord(true);
+        txa_crossing.setLineWrap(true);
+        txa_crossing.setWrapStyleWord(true);
     }
 
     /**

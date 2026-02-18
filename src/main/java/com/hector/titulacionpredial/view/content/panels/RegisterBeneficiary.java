@@ -1,5 +1,14 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author hectoracevedo
@@ -8,6 +17,13 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     public RegisterBeneficiary() {
         initComponents();
+        
+        jscp_info.getVerticalScrollBar().setUnitIncrement(15);
+        
+        txa_affectation.setLineWrap(true);
+        txa_affectation.setWrapStyleWord(true);
+        txa_crossing.setLineWrap(true);
+        txa_crossing.setWrapStyleWord(true);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,9 +46,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_maritalStatus = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cbo_departmen = new javax.swing.JComboBox<>();
+        cbo_department = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        txt_heighborhood = new javax.swing.JTextField();
+        txt_neighborhood = new javax.swing.JTextField();
         cbo_municipality = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -65,7 +81,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
         jLabel2.setText("Informacion de los beneficiarios del sistema");
 
@@ -75,7 +91,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_name.setBackground(new java.awt.Color(255, 255, 255));
         txt_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 37, 41));
@@ -83,7 +99,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
@@ -91,7 +107,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
         txt_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
@@ -99,14 +115,14 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
         txt_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 37, 41));
         jLabel10.setText("Estado Civil:");
 
         cbo_maritalStatus.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        cbo_maritalStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_maritalStatus.setModel(new javax.swing.DefaultComboBoxModel<>(MaritalStatus.values()));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
@@ -116,16 +132,16 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(33, 37, 41));
         jLabel8.setText("Departamento");
 
-        cbo_departmen.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        cbo_departmen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_department.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        cbo_department.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(33, 37, 41));
         jLabel12.setText("Barrio:");
 
-        txt_heighborhood.setBackground(new java.awt.Color(255, 255, 255));
-        txt_heighborhood.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_heighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_neighborhood.setBackground(new java.awt.Color(255, 255, 255));
+        txt_neighborhood.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_neighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         cbo_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
@@ -139,7 +155,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
         txt_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
@@ -153,7 +169,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_cadastralReference.setBackground(new java.awt.Color(255, 255, 255));
         txt_cadastralReference.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_cadastralReference.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_cadastralReference.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(33, 37, 41));
@@ -178,7 +194,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(33, 37, 41));
@@ -186,7 +202,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_publication.setBackground(new java.awt.Color(255, 255, 255));
         txt_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_publication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        txt_publication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -239,7 +255,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                             .addComponent(jLabel8)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(cbo_departmen, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(cbo_department, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(175, 175, 175)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -249,7 +265,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_heighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_neighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(96, 96, 96)
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -313,13 +329,13 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbo_departmen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbo_municipality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel9)
-                    .addComponent(txt_heighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_neighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,7 +353,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jscp_info.setViewportView(jPanel2);
@@ -404,10 +420,90 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setControllerRegister(ActionListener action) {
+        btn_register.addActionListener(action);
+    }
+    
+    public void setControllerCbo_department(ActionListener action) {
+        cbo_department.addActionListener(action);
+    }
+    
+    public void setControllerCbo_maritalStatus(ActionListener action) {
+        cbo_maritalStatus.addActionListener(action);
+    }
+    
+    public ButtonAction getBtn_register() {
+        return btn_register;
+    }
+
+    public JComboBox<Department> getCbo_department() {
+        return cbo_department;
+    }
+
+    public JComboBox<MaritalStatus> getCbo_maritalStatus() {
+        return cbo_maritalStatus;
+    }
+
+    public JComboBox<String> getCbo_municipality() {
+        return cbo_municipality;
+    }
+
+    public JScrollPane getJscp_info() {
+        return jscp_info;
+    }
+
+    public JTextArea getTxa_affectation() {
+        return txa_affectation;
+    }
+
+    public JTextArea getTxa_crossing() {
+        return txa_crossing;
+    }
+
+    public JTextField getTxt_address() {
+        return txt_address;
+    }
+
+    public JTextField getTxt_cadastralReference() {
+        return txt_cadastralReference;
+    }
+
+    public JTextField getTxt_expeditionLocation() {
+        return txt_expeditionLocation;
+    }
+
+    public JTextField getTxt_followingCode() {
+        return txt_followingCode;
+    }
+
+    public JTextField getTxt_neighborhood() {
+        return txt_neighborhood;
+    }
+
+    public JTextField getTxt_id() {
+        return txt_id;
+    }
+
+    public JTextField getTxt_lastName() {
+        return txt_lastName;
+    }
+
+    public JTextField getTxt_name() {
+        return txt_name;
+    }
+
+    public JTextField getTxt_phone() {
+        return txt_phone;
+    }
+
+    public JTextField getTxt_publication() {
+        return txt_publication;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_register;
-    private javax.swing.JComboBox<String> cbo_departmen;
-    private javax.swing.JComboBox<String> cbo_maritalStatus;
+    private javax.swing.JComboBox<Department> cbo_department;
+    private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
     private javax.swing.JComboBox<String> cbo_municipality;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -440,10 +536,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JTextField txt_cadastralReference;
     private javax.swing.JTextField txt_expeditionLocation;
     private javax.swing.JTextField txt_followingCode;
-    private javax.swing.JTextField txt_heighborhood;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_lastName;
     private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_neighborhood;
     private javax.swing.JTextField txt_phone;
     private javax.swing.JTextField txt_publication;
     // End of variables declaration//GEN-END:variables
