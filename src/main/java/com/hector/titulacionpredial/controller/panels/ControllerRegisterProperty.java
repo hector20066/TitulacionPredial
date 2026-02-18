@@ -2,6 +2,8 @@ package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 
+import java.awt.*;
+
 /**
  *
  * @author hectoracevedo
@@ -18,12 +20,12 @@ public class ControllerRegisterProperty {
 
     private void connectEvents() {
         registerProperty.setControllerRegister(e -> register());
-        registerProperty.setControllerGoPoint2(e -> goPoint2());
-        registerProperty.setControllerGoPoint3(e -> goPoint3());
-        registerProperty.setControllerGoPoint4(e -> goPoint4());
-        registerProperty.setControllerReturnPoint1(e -> returnPoint1());
-        registerProperty.setControllerReturnPoint2(e -> returnPoint2());
-        registerProperty.setControllerReturnPoint3(e -> returnPoint3());
+        registerProperty.setControllerGoPoint2(e -> actionAfter());
+        registerProperty.setControllerGoPoint3(e -> actionAfter());
+        registerProperty.setControllerGoPoint4(e -> actionAfter());
+        registerProperty.setControllerReturnPoint1(e -> actionPrevious());
+        registerProperty.setControllerReturnPoint2(e -> actionPrevious());
+        registerProperty.setControllerReturnPoint3(e -> actionPrevious());
     }
 
     private void register() {
@@ -34,28 +36,14 @@ public class ControllerRegisterProperty {
         }
     }
 
-    private void goPoint2() {
-
+    private void actionAfter() {
+        CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
+        card.next(registerProperty.getJpl_contentPoints());
     }
 
-    private void goPoint3() {
-
-    }
-
-    private void goPoint4() {
-
-    }
-
-    private void returnPoint1() {
-
-    }
-
-    private void returnPoint2() {
-
-    }
-
-    private void returnPoint3() {
-
+    private void actionPrevious() {
+        CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
+        card.previous(registerProperty.getJpl_contentPoints());
     }
 
 }

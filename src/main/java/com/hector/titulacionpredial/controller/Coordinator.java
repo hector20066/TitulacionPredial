@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.panels.*;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
@@ -14,6 +15,7 @@ public class Coordinator {
     // Views
     private Content content;
     private Dashboard dashboard;
+    private GenerateResolution generateResolution;
     private RegisterBeneficiary registerBeneficiary;
     private RegisterProperty registerProperty;
     private ViewBeneficiaries viewBeneficiaries;
@@ -24,6 +26,14 @@ public class Coordinator {
 
     // Drivers
     private ControllerContent controllerContent;
+    private ControllerDashboard controllerDashboard;
+    private ControllerGenerateResolution controllerGenerateResolution;
+    private ControllerRegisterBeneficiary controllerRegisterBeneficiary;
+    private ControllerRegisterProperty controllerRegisterProperty;
+    private ControllerSeeProperties controllerSeeProperties;
+    private ControllerSeeResolutions controllerSeeResolutions;
+    private ControllerSettings controllerSettings;
+    private ControllerViewBeneficiaries controllerViewBeneficiaries;
 
     public void startApp() {
         startView();
@@ -40,6 +50,7 @@ public class Coordinator {
     private void startView() {
         content = new Content();
         dashboard = new Dashboard();
+        generateResolution = new GenerateResolution();
         registerBeneficiary = new RegisterBeneficiary();
         registerProperty = new RegisterProperty();
         viewBeneficiaries = new ViewBeneficiaries();
@@ -61,6 +72,15 @@ public class Coordinator {
                 .withViewSettings(settings)
                 .withViewAbout(about)
                 .build();
+
+        controllerDashboard = new ControllerDashboard(dashboard);
+        controllerGenerateResolution = new ControllerGenerateResolution(generateResolution);
+        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary);
+        controllerRegisterProperty = new ControllerRegisterProperty(registerProperty);
+        controllerSeeProperties = new ControllerSeeProperties(seeProperties);
+        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions);
+        controllerSettings = new ControllerSettings(settings);
+        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries);
     }
 
 }
