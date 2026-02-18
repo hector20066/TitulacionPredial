@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.entities.Property;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 
@@ -7,22 +8,13 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
  *
  * @author hectoracevedo
  */
-public class DTOBeneficiaryCreate {
+public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     private long id;
     private String name;
     private String lastName;
     private String expeditionLocation;
-    private String department;
-    private String municipality;
-    private String neighborhood;
-    private String address;
-    private long phone;
     private long cadastralReference;
-    private String crossing;
-    private String publication;
-    private MaritalStatus maritalStatus;
-    private String affectation;
     private int propertyCode;
 
     public DTOBeneficiaryCreate() {
@@ -30,20 +22,12 @@ public class DTOBeneficiaryCreate {
     }
 
     public DTOBeneficiaryCreate(long id, String name, String lastName, String expeditionLocation, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation, int propertyCode) {
+        super(department, municipality, neighborhood, address, phone, crossing, publication, maritalStatus, affectation);
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.expeditionLocation = expeditionLocation;
-        this.department = department;
-        this.municipality = municipality;
-        this.neighborhood = neighborhood;
-        this.address = address;
-        this.phone = phone;
         this.cadastralReference = cadastralReference;
-        this.crossing = crossing;
-        this.publication = publication;
-        this.maritalStatus = maritalStatus;
-        this.affectation = affectation;
         this.propertyCode = propertyCode;
     }
 
@@ -63,44 +47,8 @@ public class DTOBeneficiaryCreate {
         this.expeditionLocation = expeditionLocation;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setMunicipality(String municipality) {
-        this.municipality = municipality;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
     public void setCadastralReference(long cadastralReference) {
         this.cadastralReference = cadastralReference;
-    }
-
-    public void setCrossing(String crossing) {
-        this.crossing = crossing;
-    }
-
-    public void setPublication(String publication) {
-        this.publication = publication;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public void setAffectation(String affectation) {
-        this.affectation = affectation;
     }
 
     public void setPropertyCode(int propertyCode) {
@@ -123,44 +71,8 @@ public class DTOBeneficiaryCreate {
         return expeditionLocation;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getMunicipality() {
-        return municipality;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public long getPhone() {
-        return phone;
-    }
-
     public long getCadastralReference() {
         return cadastralReference;
-    }
-
-    public String getCrossing() {
-        return crossing;
-    }
-
-    public String getPublication() {
-        return publication;
-    }
-
-    public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
-    }
-
-    public String getAffectation() {
-        return affectation;
     }
 
     public int getPropertyCode() {
