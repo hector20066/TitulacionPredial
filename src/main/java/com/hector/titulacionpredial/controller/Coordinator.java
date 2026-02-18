@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -32,6 +33,7 @@ public class Coordinator {
             content.setVisible(true);
             content.setLocationRelativeTo(null);
             content.setResizable(false);
+            NavigatorUtils.showForms(dashboard);
         });
     }
 
