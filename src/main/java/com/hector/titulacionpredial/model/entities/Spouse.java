@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.hector.titulacionpredial.model.entities;
 
 /**
@@ -10,28 +6,44 @@ package com.hector.titulacionpredial.model.entities;
  */
 public class Spouse extends Person {
 
-    private Beneficiary codeBeneficiary;
+    private Beneficiary beneficiary;
 
     public Spouse() {
 
     }
 
-    public Spouse(long id, String name, String lastName, String address, String expeditionLocation, long phone, Beneficiary codeBeneficiary) {
-        super(id, name, lastName, address, expeditionLocation, phone);
-        this.codeBeneficiary = codeBeneficiary;
+    public Spouse(Builder builder) {
+        super(builder);
+        this.beneficiary = builder.beneficiary;
     }
 
-    public void setCodeBeneficiary(Beneficiary codeBeneficiary) {
-        this.codeBeneficiary = codeBeneficiary;
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
     }
 
-    public Beneficiary getCodeBeneficiary() {
-        return codeBeneficiary;
+    public Beneficiary getBeneficiary() {
+        return beneficiary;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                "\nCode Beneficiary= " + codeBeneficiary;
+                "\nCode Beneficiary= " + beneficiary;
     }
+
+    public static class Builder extends Person.Builder {
+
+        private Beneficiary beneficiary;
+
+        public Builder beneficiary(Beneficiary beneficiary) {
+            this.beneficiary = beneficiary;
+            return this;
+        }
+
+        public Spouse build() {
+            return new Spouse(this);
+        }
+
+    }
+
 }

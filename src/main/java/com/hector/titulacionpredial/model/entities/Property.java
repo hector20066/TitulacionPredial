@@ -21,12 +21,12 @@ public class Property {
         this.points = new Point[4];
     }
 
-    public Property(long code, long cadastralId, Double area, List<Beneficiary> beneficiaries, Point[] points) {
-        this.code = code;
-        this.cadastralId = cadastralId;
-        this.area = area;
-        this.beneficiaries = beneficiaries;
-        this.points = points;
+    public Property(Builder builder) {
+        this.code = builder.code;
+        this.cadastralId = builder.cadastralId;
+        this.area = builder.area;
+        this.beneficiaries = builder.beneficiaries;
+        this.points = builder.points;
     }
 
     public void setCode(long code) {
@@ -76,6 +76,45 @@ public class Property {
                 "\nArea= " + area +
                 "\nBeneficiaries= " + beneficiaries +
                 "\nPoints= " + Arrays.toString(points);
+    }
+
+    public static class Builder {
+
+        private long code;
+        private long cadastralId;
+        private Double area;
+        private List<Beneficiary> beneficiaries;
+        private Point[] points;
+
+        public Builder code(long code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder cadastralId(long cadastralId) {
+            this.cadastralId = cadastralId;
+            return this;
+        }
+
+        public Builder area(Double area) {
+            this.area = area;
+            return this;
+        }
+
+        public Builder beneficiaries(List<Beneficiary> beneficiaries) {
+            this.beneficiaries = beneficiaries;
+            return this;
+        }
+
+        public Builder points(Point[] points) {
+            this.points = points;
+            return this;
+        }
+
+        public Property build() {
+            return new Property(this);
+        }
+
     }
 
 }

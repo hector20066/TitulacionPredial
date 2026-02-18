@@ -22,16 +22,16 @@ public class Resolution {
 
     }
 
-    public Resolution(int code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode) {
-        this.code = code;
-        this.resolutionNumber = resolutionNumber;
-        this.notification = notification;
-        this.executory = executory;
-        this.fmi = fmi;
-        this.act = act;
-        this.publicWriting = publicWriting;
-        this.notary = notary;
-        this.propertyCode = propertyCode;
+    public Resolution(Builder builder) {
+        this.code = builder.code;
+        this.resolutionNumber = builder.resolutionNumber;
+        this.notification = builder.notification;
+        this.executory = builder.executory;
+        this.fmi = builder.fmi;
+        this.act = builder.act;
+        this.publicWriting = builder.publicWriting;
+        this.notary = builder.notary;
+        this.propertyCode = builder.propertyCode;
     }
 
     public void setCode(int code) {
@@ -117,6 +117,68 @@ public class Resolution {
                 "\nPublicWriting= " + publicWriting +
                 "\nNotary= " + notary +
                 "\nProperty= " + propertyCode;
+    }
+
+    public static class Builder {
+
+        private int code;
+        private long resolutionNumber;
+        private LocalDate notification;
+        private LocalDate executory;
+        private String fmi;
+        private String act;
+        private String publicWriting;
+        private String notary;
+        private int propertyCode;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder resolutionNumber(long resolutionNumber) {
+            this.resolutionNumber = resolutionNumber;
+            return this;
+        }
+
+        public Builder notification(LocalDate notification) {
+            this.notification = notification;
+            return this;
+        }
+
+        public Builder executory(LocalDate executory) {
+            this.executory = executory;
+            return this;
+        }
+
+        public Builder fmi(String fmi) {
+            this.fmi = fmi;
+            return this;
+        }
+
+        public Builder act(String act) {
+            this.act = act;
+            return this;
+        }
+
+        public Builder publicWriting(String publicWriting) {
+            this.publicWriting = publicWriting;
+            return this;
+        }
+
+        public Builder notary(String notary) {
+            this.notary = notary;
+            return this;
+        }
+
+        public Builder propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public Resolution build() {
+            return new Resolution(this);
+        }
     }
 
 }

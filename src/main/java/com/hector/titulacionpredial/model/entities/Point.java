@@ -17,13 +17,13 @@ public class Point {
 
     }
 
-    public Point(int code, int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside) {
-        this.code = code;
-        this.numberPoint = numberPoint;
-        this.northCoordinate = northCoordinate;
-        this.eastCoordinate = eastCoordinate;
-        this.distance = distance;
-        this.hillside = hillside;
+    public Point(Builder builder) {
+        this.code = builder.code;
+        this.numberPoint = builder.numberPoint;
+        this.northCoordinate = builder.northCoordinate;
+        this.eastCoordinate = builder.eastCoordinate;
+        this.distance = builder.distance;
+        this.hillside = builder.hillside;
     }
 
     public void setCode(int code) {
@@ -82,6 +82,51 @@ public class Point {
                 "\nEast Coordinate= " + eastCoordinate +
                 "\nDistance= " + distance +
                 "\nHillside= " + hillside;
+    }
+
+    public static class Builder {
+
+        private int code;
+        private int numberPoint;
+        private Double northCoordinate;
+        private Double eastCoordinate;
+        private Double distance;
+        private String hillside;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder numberPoint(int numberPoint) {
+            this.numberPoint = numberPoint;
+            return this;
+        }
+
+        public Builder northCoordinate(Double northCoordinate) {
+            this.northCoordinate = northCoordinate;
+            return this;
+        }
+
+        public Builder eastCoordinate(Double eastCoordinate) {
+            this.eastCoordinate = eastCoordinate;
+            return this;
+        }
+
+        public Builder distance(Double distance) {
+            this.distance = distance;
+            return this;
+        }
+
+        public Builder hillside(String hillside) {
+            this.hillside = hillside;
+            return this;
+        }
+
+        public Point build() {
+            return new Point(this);
+        }
+
     }
 
 }
