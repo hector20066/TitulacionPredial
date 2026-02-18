@@ -123,7 +123,7 @@ public class Beneficiary extends Person {
                 "\nNeighborhood= " + neighborhood;
     }
 
-    public static class Builder extends Person.Builder {
+    public static class Builder extends Person.Builder<Builder> {
 
         private int code;
         private Department department;
@@ -180,6 +180,7 @@ public class Beneficiary extends Person {
             return this;
         }
 
+        @Override
         public Beneficiary build() {
             return new Beneficiary(this);
         }

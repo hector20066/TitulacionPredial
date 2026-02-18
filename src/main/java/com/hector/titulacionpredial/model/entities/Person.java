@@ -17,7 +17,7 @@ public class Person {
 
     }
 
-    public Person(Builder builder) {
+    public Person(Builder<?> builder) {
         this.id = builder.id;
         this.name = builder.name;
         this.lastName = builder.lastName;
@@ -84,7 +84,7 @@ public class Person {
                 "\nPhone=" + phone;
     }
 
-    public static class Builder {
+    public static class Builder<T extends Builder<T>> {
 
         private long id;
         private String name;
@@ -93,34 +93,39 @@ public class Person {
         private String expeditionLocation;
         private long phone;
 
-        public Builder id(long id) {
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
+
+        public T id(long id) {
             this.id = id;
-            return this;
+            return self();
         }
 
-        public Builder name(String name) {
+        public T name(String name) {
             this.name = name;
-            return this;
+            return self();
         }
 
-        public Builder lastName(String lastName) {
+        public T lastName(String lastName) {
             this.lastName = lastName;
-            return this;
+            return self();
         }
 
-        public Builder address(String address) {
+        public T address(String address) {
             this.address = address;
-            return this;
+            return self();
         }
 
-        public Builder expeditionLocation(String expeditionLocation) {
+        public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
-            return this;
+            return self();
         }
 
-        public Builder phone(long phone) {
+        public T phone(long phone) {
             this.phone = phone;
-            return this;
+            return self();
         }
 
         public Person build() {
