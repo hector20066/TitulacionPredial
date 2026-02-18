@@ -1,10 +1,13 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 /**
@@ -29,26 +32,59 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public void add(DTOResolutionCreate dto) throws Exception {
+        String sql = "";
 
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
     }
 
     @Override
     public DTOResolutionDetails findByCode(int code) throws Exception {
+        String sql = "";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
+
         return null;
     }
 
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
+        String sql = "";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
+
         return List.of();
     }
 
     @Override
     public boolean modify(DTOResolutionUpdate dto) throws Exception {
+        String sql = "";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
+
         return false;
     }
 
     @Override
     public int countRecords() throws Exception {
+        String sql = "";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
+
         return 0;
     }
 

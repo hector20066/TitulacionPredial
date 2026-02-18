@@ -33,11 +33,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, 2);
+            st.setInt(1, 3);
             st.setString(2, "valor");
             st.executeUpdate();
         }
@@ -57,7 +57,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiaryDetails findById(int id) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -69,7 +69,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiaryDetails findByName(String name) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -81,7 +81,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiaryDetails findByMunicipality(String municipality) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -93,7 +93,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public List<DTOBeneficiaryDetails> findByAll() throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -105,7 +105,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public boolean modify(DTOBeneficiaryUpdate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -117,7 +117,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -129,7 +129,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void delete(int code) throws Exception {
-        String sql = "INSERT INTO beneficiary () VALUES ();";
+        String sql = "";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -139,6 +139,13 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public int countRecords() throws Exception {
+        String sql = "";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+        }
+
         return 0;
     }
 
