@@ -51,6 +51,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
         buttonAction1 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jLabel16 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
@@ -180,6 +182,14 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jTextField9.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jTextField9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
+        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel18.setText("Publicacion:");
+
+        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jTextField10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -254,12 +264,16 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                 .addComponent(jLabel6))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel14)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(62, 62, 62)
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField10))
                                     .addComponent(jLabel15)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -314,7 +328,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -404,6 +420,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -422,6 +439,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

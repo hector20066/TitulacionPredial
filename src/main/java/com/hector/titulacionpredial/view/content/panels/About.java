@@ -24,26 +24,37 @@ public class About extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setText("Acerca De");
 
+        jLabel2.setForeground(new java.awt.Color(33, 37, 41));
         jLabel2.setText("Informacion de la aplicacion");
 
+        jLabel3.setForeground(new java.awt.Color(33, 37, 41));
         jLabel3.setText("Version: 1.0");
 
+        jLabel4.setForeground(new java.awt.Color(33, 37, 41));
         jLabel4.setText("Fecha Lanzamiento: Undefined");
 
+        jLabel5.setForeground(new java.awt.Color(33, 37, 41));
         jLabel5.setText("Los Creadores");
 
+        jLabel6.setForeground(new java.awt.Color(33, 37, 41));
         jLabel6.setText("Ing. Hector Acevedo ");
 
+        jLabel7.setForeground(new java.awt.Color(33, 37, 41));
         jLabel7.setText("Ing. Juan Bohorquez");
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(33, 37, 41));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Para mas informacion sobre los creadores visite:");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(33, 37, 41));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("https://www.hldevworks.com");
 

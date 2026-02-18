@@ -16,7 +16,10 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestionamos Urbano Rural S.A.S");
 
