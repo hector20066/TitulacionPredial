@@ -1,47 +1,31 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 
 /**
  *
  * @author hectoracevedo
  */
-public class DTOBeneficiaryDetails {
+public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
     private int code;
     private String name;
     private String lastName;
     private long id;
-    private String department;
-    private String municipality;
-    private String neighborhood;
-    private String address;
-    private long phone;
     private long cadastralReference;
-    private String crossing;
-    private String publication;
-    private MaritalStatus maritalStatus;
-    private String affectation;
 
     public DTOBeneficiaryDetails() {
 
     }
 
     public DTOBeneficiaryDetails(int code, String name, String lastName, long id, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation) {
+        super(department, municipality, neighborhood, address, phone, crossing, publication, maritalStatus, affectation);
         this.code = code;
         this.name = name;
         this.lastName = lastName;
         this.id = id;
-        this.department = department;
-        this.municipality = municipality;
-        this.neighborhood =neighborhood;
-        this.address = address;
-        this.phone = phone;
         this.cadastralReference = cadastralReference;
-        this.crossing = crossing;
-        this.publication = publication;
-        this.maritalStatus = maritalStatus;
-        this.affectation = affectation;
     }
 
     public void setCode(int code) {
@@ -60,44 +44,8 @@ public class DTOBeneficiaryDetails {
         this.id = id;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setMunicipality(String municipality) {
-        this.municipality = municipality;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
     public void setCadastralReference(long cadastralReference) {
         this.cadastralReference = cadastralReference;
-    }
-
-    public void setCrossing(String crossing) {
-        this.crossing = crossing;
-    }
-
-    public void setPublication(String publication) {
-        this.publication = publication;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public void setAffectation(String affectation) {
-        this.affectation = affectation;
     }
 
     public int getCode() {
@@ -116,44 +64,8 @@ public class DTOBeneficiaryDetails {
         return id;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getMunicipality() {
-        return municipality;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public long getPhone() {
-        return phone;
-    }
-
     public long getCadastralReference() {
         return cadastralReference;
-    }
-
-    public String getCrossing() {
-        return crossing;
-    }
-
-    public String getPublication() {
-        return publication;
-    }
-
-    public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
-    }
-
-    public String getAffectation() {
-        return affectation;
     }
 
 }
