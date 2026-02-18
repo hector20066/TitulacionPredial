@@ -45,5 +45,5 @@ public class DTOResolutionUpdate {
     public String getPublicWriting() {
         return publicWriting;
     }
-    
+
 }
