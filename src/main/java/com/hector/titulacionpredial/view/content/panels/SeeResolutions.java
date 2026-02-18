@@ -25,9 +25,9 @@ public class SeeResolutions extends javax.swing.JPanel {
         jtbl_resolutions = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         roundedPanel3 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
-        jTextField3 = new javax.swing.JTextField();
-        buttonAction3 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        buttonAction1 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        txt_search = new javax.swing.JTextField();
+        btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_modify = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -51,13 +51,13 @@ public class SeeResolutions extends javax.swing.JPanel {
         roundedPanel3.setBackground(new java.awt.Color(255, 255, 255));
         roundedPanel3.setBorderColor(new java.awt.Color(102, 102, 102));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
+        txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setBorder(null);
 
-        buttonAction3.setBackground(new java.awt.Color(255, 255, 255));
-        buttonAction3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        buttonAction3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buttonAction3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_search.setBackground(new java.awt.Color(255, 255, 255));
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout roundedPanel3Layout = new javax.swing.GroupLayout(roundedPanel3);
         roundedPanel3.setLayout(roundedPanel3Layout);
@@ -65,9 +65,9 @@ public class SeeResolutions extends javax.swing.JPanel {
             roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel3Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
-                .addComponent(buttonAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         roundedPanel3Layout.setVerticalGroup(
@@ -75,16 +75,16 @@ public class SeeResolutions extends javax.swing.JPanel {
             .addGroup(roundedPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
+                    .addComponent(txt_search)
                     .addGroup(roundedPanel3Layout.createSequentialGroup()
-                        .addComponent(buttonAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        buttonAction1.setText("Modificar");
-        buttonAction1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        buttonAction1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_modify.setText("Modificar");
+        btn_modify.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_modify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,7 +107,7 @@ public class SeeResolutions extends javax.swing.JPanel {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(buttonAction1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34))))))
         );
         layout.setVerticalGroup(
@@ -120,18 +120,18 @@ public class SeeResolutions extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction1;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction3;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable jtbl_resolutions;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;
+    private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
 }

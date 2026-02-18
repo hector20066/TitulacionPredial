@@ -16,17 +16,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jpl_content" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jpl_content" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jpl_content">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -51,11 +51,11 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonAction4" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="btn_delete" min="-2" pref="200" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buttonAction3" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="btn_modify" min="-2" pref="200" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buttonAction2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_seeProfile" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -71,9 +71,9 @@
                   <Component id="jScrollPane1" min="-2" pref="354" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="buttonAction2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonAction3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonAction4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_seeProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_modify" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
@@ -128,9 +128,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="jTextField1" pref="716" max="32767" attributes="0"/>
+                      <Component id="txt_search" pref="716" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="buttonAction1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_search" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -140,9 +140,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="txt_search" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="buttonAction1" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="btn_search" min="-2" pref="34" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -152,7 +152,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="txt_search">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -162,7 +162,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction1">
+            <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_search">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -176,7 +176,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction2">
+        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_seeProfile">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver Informacion Completa"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -185,7 +185,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction3">
+        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_modify">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -194,7 +194,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction4">
+        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_delete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

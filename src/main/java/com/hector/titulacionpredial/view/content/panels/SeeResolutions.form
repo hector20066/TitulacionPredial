@@ -41,7 +41,7 @@
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="buttonAction1" min="-2" pref="233" max="-2" attributes="0"/>
+                              <Component id="btn_modify" min="-2" pref="233" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -60,7 +60,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="370" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buttonAction1" min="-2" max="-2" attributes="0"/>
+              <Component id="btn_modify" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -114,9 +114,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Component id="jTextField3" pref="716" max="32767" attributes="0"/>
+                  <Component id="txt_search" pref="716" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                  <Component id="buttonAction3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btn_search" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -126,9 +126,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_search" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="buttonAction3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="btn_search" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -138,7 +138,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txt_search">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -148,7 +148,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction3">
+        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_search">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -162,7 +162,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="buttonAction1">
+    <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_modify">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

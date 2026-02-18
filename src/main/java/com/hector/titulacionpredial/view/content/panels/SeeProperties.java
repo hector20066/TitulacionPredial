@@ -23,28 +23,28 @@ public class SeeProperties extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         roundedPanel3 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
-        jTextField3 = new javax.swing.JTextField();
-        buttonAction3 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        txt_search = new javax.swing.JTextField();
+        btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jscp_scrollContent = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtbl_properties = new javax.swing.JTable();
-        buttonAction4 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        buttonAction5 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_generate = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_delete = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         roundedPanel3.setBackground(new java.awt.Color(255, 255, 255));
         roundedPanel3.setBorderColor(new java.awt.Color(102, 102, 102));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
+        txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setBorder(null);
 
-        buttonAction3.setBackground(new java.awt.Color(255, 255, 255));
-        buttonAction3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        buttonAction3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buttonAction3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_search.setBackground(new java.awt.Color(255, 255, 255));
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout roundedPanel3Layout = new javax.swing.GroupLayout(roundedPanel3);
         roundedPanel3.setLayout(roundedPanel3Layout);
@@ -52,9 +52,9 @@ public class SeeProperties extends javax.swing.JPanel {
             roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel3Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
-                .addComponent(buttonAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         roundedPanel3Layout.setVerticalGroup(
@@ -62,9 +62,9 @@ public class SeeProperties extends javax.swing.JPanel {
             .addGroup(roundedPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
+                    .addComponent(txt_search)
                     .addGroup(roundedPanel3Layout.createSequentialGroup()
-                        .addComponent(buttonAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -73,7 +73,7 @@ public class SeeProperties extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setText("Predios");
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jscp_scrollContent.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -107,15 +107,15 @@ public class SeeProperties extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel2);
+        jscp_scrollContent.setViewportView(jPanel2);
 
-        buttonAction4.setText("Generar Resolucion");
-        buttonAction4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        buttonAction4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_generate.setText("Generar Resolucion");
+        btn_generate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        buttonAction5.setText("Eliminar");
-        buttonAction5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        buttonAction5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_delete.setText("Eliminar");
+        btn_delete.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,7 +128,7 @@ public class SeeProperties extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jscp_scrollContent, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,9 +137,9 @@ public class SeeProperties extends javax.swing.JPanel {
                         .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonAction5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonAction4, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,11 +150,11 @@ public class SeeProperties extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jscp_scrollContent, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAction4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAction5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46))
         );
 
@@ -171,16 +171,16 @@ public class SeeProperties extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction3;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction4;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction5;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_delete;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_generate;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jscp_scrollContent;
     private javax.swing.JTable jtbl_properties;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;
+    private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
 }
