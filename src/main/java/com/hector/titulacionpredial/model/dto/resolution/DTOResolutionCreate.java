@@ -17,19 +17,21 @@ public class DTOResolutionCreate {
     private String fmi;
     private String act;
     private String publicWriting;
+    private String notary;
     private int propertyCode;
 
     public DTOResolutionCreate() {
 
     }
 
-    public DTOResolutionCreate(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, int propertyCode) {
+    public DTOResolutionCreate(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode) {
         this.resolutionNumber = resolutionNumber;
         this.notification = notification;
         this.executory = executory;
         this.fmi = fmi;
         this.act = act;
         this.publicWriting = publicWriting;
+        this.notary = notary;
         this.propertyCode = propertyCode;
     }
 
@@ -55,6 +57,10 @@ public class DTOResolutionCreate {
 
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
+    }
+
+    public void setNotary(String notary) {
+        this.notary = notary;
     }
 
     public void setPropertyCode(int property) {
@@ -83,6 +89,10 @@ public class DTOResolutionCreate {
 
     public String getPublicWriting() {
         return publicWriting;
+    }
+
+    public String getNotary() {
+        return notary;
     }
 
     public int getPropertyCode() {
