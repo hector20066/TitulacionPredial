@@ -6,10 +6,6 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  *
  * @author hectoracevedo
  */
-public interface DAOSpouse {
-
-    void add(DTOSpouse dto) throws Exception;
-    DTOSpouse findByBeneficiaryCode(int code) throws Exception;
-    void delete(int code) throws Exception;
+public interface DAOSpouse extends DAOBase<DTOSpouse, DTOSpouse>, DAORemovable {
 
 }

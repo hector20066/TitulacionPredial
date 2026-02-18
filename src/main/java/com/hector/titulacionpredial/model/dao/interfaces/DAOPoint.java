@@ -7,10 +7,8 @@ import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
  *
  * @author hectoracevedo
  */
-public interface DAOPoint {
+public interface DAOPoint extends DAOBase<DTOPointCreate, DTOPointDetails> {
 
-    void add(DTOPointCreate dto) throws Exception;
     DTOPointDetails findById(int id) throws Exception;
-    DTOPointDetails findByPropertyCode(int propertyCode) throws Exception;
 
 }
