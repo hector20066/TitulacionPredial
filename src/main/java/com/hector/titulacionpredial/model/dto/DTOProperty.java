@@ -33,5 +33,5 @@ public class DTOProperty {
     public Double getArea() {
         return area;
     }
-    
+
 }
