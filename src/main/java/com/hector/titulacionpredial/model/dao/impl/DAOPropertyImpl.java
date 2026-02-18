@@ -12,6 +12,20 @@ import java.util.List;
  */
 public class DAOPropertyImpl implements DAOProperty {
 
+    private static DAOPropertyImpl instance;
+
+    private DAOPropertyImpl() {
+
+    }
+
+    public static DAOPropertyImpl getInstance() {
+        if (instance == null) {
+            instance = new DAOPropertyImpl();
+        }
+
+        return instance;
+    }
+
     @Override
     public void add(DTOPropertyCreate dto) throws Exception {
 

@@ -13,6 +13,20 @@ import java.util.List;
  */
 public class DAOResolutionImpl implements DAOResolution {
 
+    private static DAOResolutionImpl instance;
+
+    private DAOResolutionImpl() {
+
+    }
+
+    public static DAOResolutionImpl getInstance() {
+        if (instance == null) {
+            instance = new DAOResolutionImpl();
+        }
+
+        return instance;
+    }
+
     @Override
     public void add(DTOResolutionCreate dto) throws Exception {
 

@@ -14,6 +14,20 @@ import java.util.List;
  */
 public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
+    private static DAOBeneficiaryImpl instance;
+
+    private DAOBeneficiaryImpl() {
+
+    }
+
+    public static DAOBeneficiaryImpl getInstance() {
+        if (instance == null) {
+            instance = new DAOBeneficiaryImpl();
+        }
+
+        return instance;
+    }
+
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
 

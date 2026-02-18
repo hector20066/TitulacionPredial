@@ -10,6 +10,20 @@ import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
  */
 public class DAOPointImpl implements DAOPoint {
 
+    private static DAOPointImpl instance;
+
+    private DAOPointImpl() {
+
+    }
+
+    public static DAOPointImpl getInstance() {
+        if (instance == null) {
+            instance = new DAOPointImpl();
+        }
+
+        return instance;
+    }
+
     @Override
     public void add(DTOPointCreate dto) throws Exception {
 
