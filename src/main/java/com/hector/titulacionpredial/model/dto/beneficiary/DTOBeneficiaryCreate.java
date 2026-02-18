@@ -18,7 +18,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     private int propertyCode;
 
     public DTOBeneficiaryCreate() {
-
+        super();
     }
 
     public DTOBeneficiaryCreate(Builder builder) {

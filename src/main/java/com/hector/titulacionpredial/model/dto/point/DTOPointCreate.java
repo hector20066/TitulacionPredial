@@ -1,7 +1,6 @@
 package com.hector.titulacionpredial.model.dto.point;
 
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.entities.Property;
 
 /**
  *
@@ -15,9 +14,9 @@ public class DTOPointCreate extends DTOPoint {
 
     }
 
-    public DTOPointCreate(Builder builder, int propertyCode) {
+    public DTOPointCreate(Builder builder) {
         super(builder);
-        this.propertyCode = propertyCode;
+        this.propertyCode = builder.propertyCode;
     }
 
     public void setPropertyCode(int propertyCode) {
@@ -26,6 +25,21 @@ public class DTOPointCreate extends DTOPoint {
 
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public static class Builder extends DTOPoint.Builder {
+
+        private int propertyCode;
+
+        public Builder propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public DTOPointCreate build() {
+            return new DTOPointCreate(this);
+        }
+
     }
 
 }

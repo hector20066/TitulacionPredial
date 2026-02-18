@@ -16,7 +16,7 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
     private long cadastralReference;
 
     public DTOBeneficiaryDetails() {
-
+        super();
     }
 
     public DTOBeneficiaryDetails(Builder builder) {

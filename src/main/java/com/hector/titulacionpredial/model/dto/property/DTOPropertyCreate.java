@@ -9,11 +9,11 @@ import com.hector.titulacionpredial.model.dto.DTOProperty;
 public class DTOPropertyCreate extends DTOProperty {
 
     public DTOPropertyCreate() {
-
+        super();
     }
 
     public DTOPropertyCreate(long cadastralId, Double area) {
-        super();
+        super(cadastralId, area);
     }
 
 }

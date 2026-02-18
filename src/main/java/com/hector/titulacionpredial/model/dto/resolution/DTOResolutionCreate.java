@@ -9,7 +9,7 @@ import java.time.LocalDate;
  *
  * @author hectoracevedo
  */
-public class DTOResolutionCreate {
+public class DTOResolutionCreate extends DTOResolution {
 
     private long resolutionNumber;
     private LocalDate notification;
@@ -18,11 +18,11 @@ public class DTOResolutionCreate {
     private int propertyCode;
 
     public DTOResolutionCreate() {
-
+        super();
     }
 
     public DTOResolutionCreate(Builder builder) {
-        super();
+        super(builder.executory, builder.act, builder.publicWriting);
         this.resolutionNumber = builder.resolutionNumber;
         this.notification = builder.notification;
         this.fmi = builder.fmi;
@@ -77,6 +77,9 @@ public class DTOResolutionCreate {
         private String fmi;
         private String notary;
         private int propertyCode;
+        private LocalDate executory;
+        private String act;
+        private String publicWriting;
 
         public Builder resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
@@ -100,6 +103,21 @@ public class DTOResolutionCreate {
 
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public Builder executory(LocalDate executory) {
+            this.executory = executory;
+            return this;
+        }
+
+        public Builder act(String act) {
+            this.act = act;
+            return this;
+        }
+
+        public Builder publicWriting(String publicWriting) {
+            this.publicWriting = publicWriting;
             return this;
         }
 

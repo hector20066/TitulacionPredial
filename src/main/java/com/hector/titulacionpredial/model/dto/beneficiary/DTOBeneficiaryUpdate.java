@@ -9,7 +9,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryUpdate extends DTOBeneficiary {
 
     public DTOBeneficiaryUpdate() {
-
+        super();
     }
 
     public DTOBeneficiaryUpdate(Builder builder) {

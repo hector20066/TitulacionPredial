@@ -16,12 +16,13 @@ public class DTOPropertyDetails extends DTOProperty {
     private List<DTOPointDetails> points;
 
     public DTOPropertyDetails() {
+        super();
         this.beneficiaries = new ArrayList<>();
         this.points = new ArrayList<>();
     }
 
-    public DTOPropertyDetails(List<String> beneficiaries, List<DTOPointDetails> points) {
-        super();
+    public DTOPropertyDetails(long cadastralId, Double area, List<String> beneficiaries, List<DTOPointDetails> points) {
+        super(cadastralId, area);
         this.beneficiaries = beneficiaries;
         this.points = points;
     }
