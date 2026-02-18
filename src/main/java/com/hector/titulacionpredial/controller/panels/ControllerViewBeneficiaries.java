@@ -88,8 +88,8 @@ public class ControllerViewBeneficiaries {
         viewBeneficiaries.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
-                    viewBeneficiaries.getTxt_search().setText("Buscar");
+                if (viewBeneficiaries.getTxt_search().getText().equals("Buscar")) {
+                    viewBeneficiaries.getTxt_search().setText("");
                 }
             }
         });
