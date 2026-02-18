@@ -73,6 +73,10 @@ public class SeeProperties extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setText("Predios");
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jtbl_properties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -106,9 +110,11 @@ public class SeeProperties extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jPanel2);
 
         buttonAction4.setText("Generar Resolucion");
+        buttonAction4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         buttonAction4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         buttonAction5.setText("Eliminar");
+        buttonAction5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         buttonAction5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -145,7 +151,7 @@ public class SeeProperties extends javax.swing.JPanel {
                 .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAction4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonAction5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,8 +171,6 @@ public class SeeProperties extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction1;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction2;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction3;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction4;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction5;
@@ -175,12 +179,8 @@ public class SeeProperties extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable jtbl_properties;
-    private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel1;
-    private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel2;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;
     // End of variables declaration//GEN-END:variables
 }
