@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.model.dto.property;
 
+import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author hectoracevedo
  */
-public class DTOPropertyDetails {
+public class DTOPropertyDetails extends DTOProperty {
 
     private List<String> beneficiaries;
     private List<DTOPointDetails> points;
@@ -19,7 +20,7 @@ public class DTOPropertyDetails {
         this.points = new ArrayList<>();
     }
 
-    public DTOPropertyDetails(long cadastralId, Double area, List<String> beneficiaries, List<DTOPointDetails> points) {
+    public DTOPropertyDetails(List<String> beneficiaries, List<DTOPointDetails> points) {
         super();
         this.beneficiaries = beneficiaries;
         this.points = points;
