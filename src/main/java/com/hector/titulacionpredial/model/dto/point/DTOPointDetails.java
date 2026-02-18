@@ -1,13 +1,15 @@
 package com.hector.titulacionpredial.model.dto.point;
 
-public class DTOPointDetails {
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+
+public class DTOPointDetails extends DTOPoint {
 
     public DTOPointDetails() {
 
     }
 
-    public DTOPointDetails(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside) {
-        super();
+    public DTOPointDetails(Builder builder) {
+        super(builder);
     }
 
 }

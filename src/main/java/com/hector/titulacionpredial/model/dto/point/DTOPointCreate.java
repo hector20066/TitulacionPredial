@@ -1,12 +1,13 @@
 package com.hector.titulacionpredial.model.dto.point;
 
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.entities.Property;
 
 /**
  *
  * @author hectoracevedo
  */
-public class DTOPointCreate {
+public class DTOPointCreate extends DTOPoint {
 
     private int propertyCode;
 
@@ -14,8 +15,8 @@ public class DTOPointCreate {
 
     }
 
-    public DTOPointCreate(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) {
-        super();
+    public DTOPointCreate(Builder builder, int propertyCode) {
+        super(builder);
         this.propertyCode = propertyCode;
     }
 

@@ -16,12 +16,4 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
         super(builder);
     }
 
-    public static class Builder extends DTOBeneficiary.Builder {
-
-        public DTOBeneficiaryUpdate build() {
-            return new DTOBeneficiaryUpdate(this);
-        }
-
-    }
-
 }
