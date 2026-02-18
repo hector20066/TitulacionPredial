@@ -22,7 +22,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     }
 
     public DTOBeneficiaryCreate(long id, String name, String lastName, String expeditionLocation, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation, int propertyCode) {
-        super(department, municipality, neighborhood, address, phone, crossing, publication, maritalStatus, affectation);
+        super();
         this.id = id;
         this.name = name;
         this.lastName = lastName;

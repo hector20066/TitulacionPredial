@@ -179,6 +179,7 @@ public class Resolution {
         public Resolution build() {
             return new Resolution(this);
         }
+
     }
 
 }

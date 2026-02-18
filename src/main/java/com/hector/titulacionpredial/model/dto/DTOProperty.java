@@ -13,9 +13,9 @@ public class DTOProperty {
 
     }
 
-    public DTOProperty(long cadastralId, Double area) {
-        this.cadastralId = cadastralId;
-        this.area = area;
+    public DTOProperty(Builder builder) {
+        this.cadastralId = builder.cadastralId;
+        this.area = builder.area;
     }
 
     public void setCadastralId(long cadastralId) {
@@ -32,6 +32,27 @@ public class DTOProperty {
 
     public Double getArea() {
         return area;
+    }
+
+    public static class Builder {
+
+        private long cadastralId;
+        private Double area;
+
+        public Builder cadastralId(long cadastralId) {
+            this.cadastralId = cadastralId;
+            return this;
+        }
+
+        public Builder area(Double area) {
+            this.area = area;
+            return this;
+        }
+
+        public DTOProperty build() {
+            return new DTOProperty(this);
+        }
+
     }
 
 }

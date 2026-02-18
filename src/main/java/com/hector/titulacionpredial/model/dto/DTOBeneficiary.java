@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.dto;
 
+import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  *
@@ -8,8 +10,8 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
  */
 public class DTOBeneficiary {
 
-    private String department;
-    private String municipality;
+    private Department department;
+    private Municipalities municipality;
     private String neighborhood;
     private String address;
     private long phone;
@@ -22,23 +24,23 @@ public class DTOBeneficiary {
 
     }
 
-    public DTOBeneficiary(String department, String municipality, String neighborhood, String address, long phone, String crossing, String publication, MaritalStatus maritalStatus, String affectation) {
-        this.department = department;
-        this.municipality = municipality;
-        this.neighborhood = neighborhood;
-        this.address = address;
-        this.phone = phone;
-        this.crossing = crossing;
-        this.publication = publication;
-        this.maritalStatus = maritalStatus;
-        this.affectation = affectation;
+    public DTOBeneficiary(Builder builder) {
+        this.department = builder.department;
+        this.municipality = builder.municipality;
+        this.neighborhood = builder.neighborhood;
+        this.address = builder.address;
+        this.phone = builder.phone;
+        this.crossing = builder.crossing;
+        this.publication = builder.publication;
+        this.maritalStatus = builder.maritalStatus;
+        this.affectation = builder.affectation;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
-    public void setMunicipality(String municipality) {
+    public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
@@ -70,11 +72,11 @@ public class DTOBeneficiary {
         this.affectation = affectation;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public String getMunicipality() {
+    public Municipalities getMunicipality() {
         return municipality;
     }
 
@@ -104,6 +106,69 @@ public class DTOBeneficiary {
 
     public String getAffectation() {
         return affectation;
+    }
+
+    public static class Builder {
+
+        private Department department;
+        private Municipalities municipality;
+        private String neighborhood;
+        private String address;
+        private long phone;
+        private String crossing;
+        private String publication;
+        private MaritalStatus maritalStatus;
+        private String affectation;
+
+        public Builder department(Department department) {
+            this.department = department;
+            return this;
+        }
+
+        public Builder municipality(Municipalities municipalities) {
+            this.municipality = municipalities;
+            return this;
+        }
+
+        public Builder neighborhood(String neighborhood) {
+            this.neighborhood = neighborhood;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder phone(long phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Builder crossing(String crossing) {
+            this.crossing = crossing;
+            return this;
+        }
+
+        public Builder publication(String publication) {
+            this.publication = publication;
+            return this;
+        }
+
+        public Builder maritalStatus(MaritalStatus maritalStatus) {
+            this.maritalStatus = maritalStatus;
+            return this;
+        }
+
+        public Builder affectation(String affectation) {
+            this.affectation = affectation;
+            return this;
+        }
+
+        public DTOBeneficiary build() {
+            return new DTOBeneficiary(this);
+        }
+
     }
 
 }

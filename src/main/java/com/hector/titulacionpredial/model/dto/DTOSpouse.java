@@ -18,14 +18,14 @@ public class DTOSpouse {
 
     }
 
-    public DTOSpouse(long id, String name, String lastName, String expeditionLocation, String address, long phone, int beneficiaryCode) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.expeditionLocation = expeditionLocation;
-        this.address = address;
-        this.phone = phone;
-        this.beneficiaryCode = beneficiaryCode;
+    public DTOSpouse(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.lastName = builder.lastName;
+        this.expeditionLocation = builder.expeditionLocation;
+        this.address = builder.address;
+        this.phone = builder.phone;
+        this.beneficiaryCode = builder.beneficiaryCode;
     }
 
     public void setId(long id) {
@@ -81,7 +81,58 @@ public class DTOSpouse {
         }
 
     public int getBeneficiaryCode() {
-            return beneficiaryCode;
+        return beneficiaryCode;
+    }
+
+    public static class Builder {
+
+        private long id;
+        private String name;
+        private String lastName;
+        private String expeditionLocation;
+        private String address;
+        private long phone;
+        private int beneficiaryCode;
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
         }
-        
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder expeditionLocation(String expeditionLocation) {
+            this.expeditionLocation = expeditionLocation;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder phone(long phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Builder beneficiaryCode(int beneficiaryCode) {
+            this.beneficiaryCode = beneficiaryCode;
+            return this;
+        }
+
+        public DTOSpouse build() {
+            return new DTOSpouse(this);
+        }
+
+    }
+
 }
