@@ -21,13 +21,13 @@ public class DTOResolutionCreate {
 
     }
 
-    public DTOResolutionCreate(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode) {
+    public DTOResolutionCreate(Builder builder) {
         super();
-        this.resolutionNumber = resolutionNumber;
-        this.notification = notification;
-        this.fmi = fmi;
-        this.notary = notary;
-        this.propertyCode = propertyCode;
+        this.resolutionNumber = builder.resolutionNumber;
+        this.notification = builder.notification;
+        this.fmi = builder.fmi;
+        this.notary = builder.notary;
+        this.propertyCode = builder.propertyCode;
     }
 
     public void setResolutionNumber(long resolutionNumber) {
@@ -68,6 +68,45 @@ public class DTOResolutionCreate {
 
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public static class Builder {
+
+        private long resolutionNumber;
+        private LocalDate notification;
+        private String fmi;
+        private String notary;
+        private int propertyCode;
+
+        public Builder resolutionNumber(long resolutionNumber) {
+            this.resolutionNumber = resolutionNumber;
+            return this;
+        }
+
+        public Builder notification(LocalDate notification) {
+            this.notification = notification;
+            return this;
+        }
+
+        public Builder fmi(String fmi) {
+            this.fmi = fmi;
+            return this;
+        }
+
+        public Builder notary(String notary) {
+            this.notary = notary;
+            return this;
+        }
+
+        public Builder propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public DTOResolutionCreate build() {
+            return new DTOResolutionCreate(this);
+        }
+
     }
 
 }
