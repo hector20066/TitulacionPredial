@@ -63,5 +63,5 @@ public class DTOPoint {
     public String getHillside() {
         return hillside;
     }
-    
+
 }
