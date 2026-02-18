@@ -1,15 +1,15 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-public class DTOBeneficiaryProperty {
+public class DTOBeneficiaryPropertyUpdate {
 
     private int beneficiaryCode;
     private int propertyCode;
 
-    public DTOBeneficiaryProperty() {
+    public DTOBeneficiaryPropertyUpdate() {
 
     }
 
-    public DTOBeneficiaryProperty(int beneficiaryCode, int propertyCode) {
+    public DTOBeneficiaryPropertyUpdate(int beneficiaryCode, int propertyCode) {
         this.beneficiaryCode = beneficiaryCode;
         this.propertyCode = propertyCode;
     }
@@ -29,5 +29,5 @@ public class DTOBeneficiaryProperty {
     public int getPropertyCode() {
         return propertyCode;
     }
-    
+
 }
