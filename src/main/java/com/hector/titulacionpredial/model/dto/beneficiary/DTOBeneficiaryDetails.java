@@ -9,8 +9,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
     private int code;
-    private String name;
-    private String lastName;
+    private String fullName;
     private long id;
     private long cadastralReference;
 
@@ -21,8 +20,7 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
     public DTOBeneficiaryDetails(Builder builder) {
         super(builder);
         this.code = builder.code;
-        this.name = builder.name;
-        this.lastName = builder.lastName;
+        this.fullName = builder.fullName;
         this.id = builder.id;
         this.cadastralReference = builder.cadastralReference;
     }
@@ -31,12 +29,8 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
         this.code = code;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setId(long id) {
@@ -51,12 +45,8 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
         return code;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
     public long getId() {
@@ -70,8 +60,7 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
     public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private int code;
-        private String name;
-        private String lastName;
+        private String fullName;
         private long id;
         private long cadastralReference;
 
@@ -80,13 +69,8 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 

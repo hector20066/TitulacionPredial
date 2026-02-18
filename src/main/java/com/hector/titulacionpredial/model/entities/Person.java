@@ -7,8 +7,7 @@ package com.hector.titulacionpredial.model.entities;
 public class Person {
 
     private long id;
-    private String name;
-    private String lastName;
+    private String fullName;
     private String address;
     private String expeditionLocation;
     private long phone;
@@ -19,8 +18,7 @@ public class Person {
 
     public Person(Builder<?> builder) {
         this.id = builder.id;
-        this.name = builder.name;
-        this.lastName = builder.lastName;
+        this.fullName = builder.fullName;
         this.address = builder.address;
         this.expeditionLocation = builder.expeditionLocation;
         this.phone = builder.phone;
@@ -30,12 +28,8 @@ public class Person {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setAddress(String address) {
@@ -54,12 +48,8 @@ public class Person {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getAddress() {
@@ -77,8 +67,7 @@ public class Person {
     @Override
     public String toString() {
         return  "Id= " + id +
-                "\nName= " + name +
-                "\nLast Name= " + lastName +
+                "\nName= " + fullName +
                 "\nAddress= " + address +
                 "\nExpedition Location= " + expeditionLocation +
                 "\nPhone=" + phone;
@@ -87,8 +76,7 @@ public class Person {
     public static class Builder<T extends Builder<T>> {
 
         private long id;
-        private String name;
-        private String lastName;
+        private String fullName;
         private String address;
         private String expeditionLocation;
         private long phone;
@@ -103,13 +91,8 @@ public class Person {
             return self();
         }
 
-        public T name(String name) {
-            this.name = name;
-            return self();
-        }
-
-        public T lastName(String lastName) {
-            this.lastName = lastName;
+        public T fullName(String fullName) {
+            this.fullName = fullName;
             return self();
         }
 

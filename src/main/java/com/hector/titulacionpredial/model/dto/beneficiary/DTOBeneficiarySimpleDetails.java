@@ -6,38 +6,28 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  */
 public class DTOBeneficiarySimpleDetails {
 
-    private String name;
-    private String lastName;
+    private String fullName;
     private int code;
 
     public DTOBeneficiarySimpleDetails() {
 
     }
 
-    public DTOBeneficiarySimpleDetails(String name, String lastName, int code) {
-        this.name = name;
-        this.lastName = lastName;
+    public DTOBeneficiarySimpleDetails(String fullName, int code) {
+        this.fullName = fullName;
         this.code = code;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setCode(int code) {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
     public int getCode() {

@@ -9,8 +9,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     private long id;
-    private String name;
-    private String lastName;
+    private String fullName;
     private String expeditionLocation;
     private long cadastralReference;
     private int propertyCode;
@@ -22,8 +21,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     public DTOBeneficiaryCreate(Builder builder) {
         super(builder);
         this.id = builder.id;
-        this.name = builder.name;
-        this.lastName = builder.lastName;
+        this.fullName = builder.fullName;
         this.expeditionLocation = builder.expeditionLocation;
         this.cadastralReference = builder.cadastralReference;
         this.propertyCode = builder.propertyCode;
@@ -33,12 +31,8 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setExpeditionLocation(String expeditionLocation) {
@@ -57,12 +51,8 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getExpeditionLocation() {
@@ -80,8 +70,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private long id;
-        private String name;
-        private String lastName;
+        private String fullName;
         private String expeditionLocation;
         private long cadastralReference;
         private int propertyCode;
@@ -91,13 +80,8 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 
