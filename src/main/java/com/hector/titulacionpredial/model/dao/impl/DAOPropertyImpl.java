@@ -46,4 +46,9 @@ public class DAOPropertyImpl implements DAOProperty {
 
     }
 
+    @Override
+    public int countRecords() throws Exception {
+        return 0;
+    }
+
 }

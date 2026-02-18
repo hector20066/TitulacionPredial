@@ -12,7 +12,8 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
 public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBeneficiaryDetails>,
         DAOListable<DTOBeneficiaryDetails>,
         DAOModifiable<DTOBeneficiaryUpdate>,
-        DAORemovable {
+        DAORemovable,
+        DAOCountable {
 
     DTOBeneficiaryDetails findById(int id) throws Exception;
     DTOBeneficiaryDetails findByName(String name) throws Exception;

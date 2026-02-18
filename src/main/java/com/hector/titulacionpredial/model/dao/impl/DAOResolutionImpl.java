@@ -47,4 +47,9 @@ public class DAOResolutionImpl implements DAOResolution {
         return false;
     }
 
+    @Override
+    public int countRecords() throws Exception {
+        return 0;
+    }
+
 }

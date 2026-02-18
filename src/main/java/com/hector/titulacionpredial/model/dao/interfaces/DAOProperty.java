@@ -9,6 +9,7 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
  */
 public interface DAOProperty extends DAOBase<DTOPropertyCreate, DTOPropertyDetails>,
         DAOListable<DTOPropertyDetails>,
-        DAORemovable {
+        DAORemovable,
+        DAOCountable {
 
 }
