@@ -35,7 +35,7 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    public DTOPointDetails findByPropertyCode(int propertyCode) throws Exception {
+    public DTOPointDetails findByCode(int propertyCode) throws Exception {
         return null;
     }
 

@@ -29,7 +29,7 @@ public class DAOSpouseImpl implements DAOSpouse {
     }
 
     @Override
-    public DTOSpouse findByBeneficiaryCode(int code) throws Exception {
+    public DTOSpouse findByCode(int code) throws Exception {
         return null;
     }
 
