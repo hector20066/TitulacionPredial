@@ -16,7 +16,7 @@ public class DTOResolutionDetails extends DTOResolution {
     private String notary;
 
     public DTOResolutionDetails() {
-
+        super();
     }
 
     public DTOResolutionDetails(Builder builder) {
