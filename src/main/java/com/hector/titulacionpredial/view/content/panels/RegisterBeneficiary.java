@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.model.enums.Departament;
-
 /**
  *
  * @author hectoracevedo
