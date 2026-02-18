@@ -19,13 +19,13 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
     }
 
-    public DTOBeneficiaryDetails(int code, String name, String lastName, long id, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation) {
-        super(department, municipality, neighborhood, address, phone, crossing, publication, maritalStatus, affectation);
-        this.code = code;
-        this.name = name;
-        this.lastName = lastName;
-        this.id = id;
-        this.cadastralReference = cadastralReference;
+    public DTOBeneficiaryDetails(Builder builder) {
+        super(builder);
+        this.code = builder.code;
+        this.name = builder.name;
+        this.lastName = builder.lastName;
+        this.id = builder.id;
+        this.cadastralReference = builder.cadastralReference;
     }
 
     public void setCode(int code) {
@@ -66,6 +66,45 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
     public long getCadastralReference() {
         return cadastralReference;
+    }
+
+    public static class Builder extends DTOBeneficiary.Builder {
+
+        private int code;
+        private String name;
+        private String lastName;
+        private long id;
+        private long cadastralReference;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder cadastralReference(long cadastralReference) {
+            this.cadastralReference = cadastralReference;
+            return this;
+        }
+
+        public DTOBeneficiaryDetails build() {
+            return new DTOBeneficiaryDetails(this);
+        }
+
     }
 
 }

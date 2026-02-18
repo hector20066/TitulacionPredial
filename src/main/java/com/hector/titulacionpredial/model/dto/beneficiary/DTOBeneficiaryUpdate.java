@@ -1,19 +1,27 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 
 /**
  *
  * @author hectoracevedo
  */
-public class DTOBeneficiaryUpdate {
+public class DTOBeneficiaryUpdate extends DTOBeneficiary {
 
     public DTOBeneficiaryUpdate() {
 
     }
 
-    public DTOBeneficiaryUpdate(String department, String municipality, String neighborhood, String address, long phone, String crossing, String publication, MaritalStatus maritalStatus, String affectation) {
-        super();
+    public DTOBeneficiaryUpdate(Builder builder) {
+        super(builder);
+    }
+
+    public static class Builder extends DTOBeneficiary.Builder {
+
+        public DTOBeneficiaryUpdate build() {
+            return new DTOBeneficiaryUpdate(this);
+        }
+
     }
 
 }

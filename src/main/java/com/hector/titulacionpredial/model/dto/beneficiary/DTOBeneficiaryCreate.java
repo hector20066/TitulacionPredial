@@ -21,14 +21,14 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     }
 
-    public DTOBeneficiaryCreate(long id, String name, String lastName, String expeditionLocation, String department, String municipality, String neighborhood, String address, long phone, long cadastralReference, String crossing, String publication, MaritalStatus maritalStatus, String affectation, int propertyCode) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.expeditionLocation = expeditionLocation;
-        this.cadastralReference = cadastralReference;
-        this.propertyCode = propertyCode;
+    public DTOBeneficiaryCreate(Builder builder) {
+        super(builder);
+        this.id = builder.id;
+        this.name = builder.name;
+        this.lastName = builder.lastName;
+        this.expeditionLocation = builder.expeditionLocation;
+        this.cadastralReference = builder.cadastralReference;
+        this.propertyCode = builder.propertyCode;
     }
 
     public void setId(long id) {
@@ -77,6 +77,51 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public static class Builder extends DTOBeneficiary.Builder {
+
+        private long id;
+        private String name;
+        private String lastName;
+        private String expeditionLocation;
+        private long cadastralReference;
+        private int propertyCode;
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder expeditionLocation(String expeditionLocation) {
+            this.expeditionLocation = expeditionLocation;
+            return this;
+        }
+
+        public Builder cadastralReference(long cadastralReference) {
+            this.cadastralReference = cadastralReference;
+            return this;
+        }
+
+        public Builder propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public DTOBeneficiaryCreate build() {
+            return new DTOBeneficiaryCreate(this);
+        }
+
     }
 
 }
