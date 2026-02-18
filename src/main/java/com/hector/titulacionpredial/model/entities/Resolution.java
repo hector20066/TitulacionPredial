@@ -8,31 +8,33 @@ import java.time.LocalDate;
  */
 public class Resolution {
 
-    private long code;
+    private int code;
     private long resolutionNumber;
     private LocalDate notification;
     private LocalDate executory;
     private String fmi;
     private String act;
     private String publicWriting;
-    private Property property;
+    private String notary;
+    private int propertyCode;
 
     public Resolution() {
 
     }
 
-    public Resolution(long code, long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, Property property) {
-        this.code = code;
-        this.resolutionNumber = resolutionNumber;
-        this.notification = notification;
-        this.executory = executory;
-        this.fmi = fmi;
-        this.act = act;
-        this.publicWriting = publicWriting;
-        this.property = property;
+    public Resolution(Builder builder) {
+        this.code = builder.code;
+        this.resolutionNumber = builder.resolutionNumber;
+        this.notification = builder.notification;
+        this.executory = builder.executory;
+        this.fmi = builder.fmi;
+        this.act = builder.act;
+        this.publicWriting = builder.publicWriting;
+        this.notary = builder.notary;
+        this.propertyCode = builder.propertyCode;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -60,11 +62,15 @@ public class Resolution {
         this.publicWriting = publicWriting;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setNotary(String notary) {
+        this.notary = notary;
     }
 
-    public long getCode() {
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
+    }
+
+    public int getCode() {
         return code;
     }
 
@@ -92,8 +98,12 @@ public class Resolution {
         return publicWriting;
     }
 
-    public Property getProperty() {
-        return property;
+    public String getNotary() {
+        return notary;
+    }
+
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
     @Override
@@ -105,7 +115,71 @@ public class Resolution {
                 "\nFMI= " + fmi +
                 "\nAct= " + act +
                 "\nPublicWriting= " + publicWriting +
-                "\nProperty= " + property;
+                "\nNotary= " + notary +
+                "\nProperty= " + propertyCode;
+    }
+
+    public static class Builder {
+
+        private int code;
+        private long resolutionNumber;
+        private LocalDate notification;
+        private LocalDate executory;
+        private String fmi;
+        private String act;
+        private String publicWriting;
+        private String notary;
+        private int propertyCode;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder resolutionNumber(long resolutionNumber) {
+            this.resolutionNumber = resolutionNumber;
+            return this;
+        }
+
+        public Builder notification(LocalDate notification) {
+            this.notification = notification;
+            return this;
+        }
+
+        public Builder executory(LocalDate executory) {
+            this.executory = executory;
+            return this;
+        }
+
+        public Builder fmi(String fmi) {
+            this.fmi = fmi;
+            return this;
+        }
+
+        public Builder act(String act) {
+            this.act = act;
+            return this;
+        }
+
+        public Builder publicWriting(String publicWriting) {
+            this.publicWriting = publicWriting;
+            return this;
+        }
+
+        public Builder notary(String notary) {
+            this.notary = notary;
+            return this;
+        }
+
+        public Builder propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return this;
+        }
+
+        public Resolution build() {
+            return new Resolution(this);
+        }
+
     }
 
 }

@@ -1,7 +1,8 @@
 package com.hector.titulacionpredial.model.entities;
 
-import com.hector.titulacionpredial.model.enums.Departament;
+import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  *
@@ -10,8 +11,8 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 public class Beneficiary extends Person {
 
     private int code;
-    private Departament departament;
-    private String municipality;
+    private Department department;
+    private Municipalities municipality;
     private long cadastralReference;
     private MaritalStatus maritalStatus;
     private String affectation;
@@ -23,28 +24,28 @@ public class Beneficiary extends Person {
 
     }
 
-    public Beneficiary(long id, String name, String lastName, String address, String expeditionLocation, long phone, int code, Departament departament, String municipality, long cadastralReference, MaritalStatus maritalStatus, String affectation, String crossing, String publication, String neighborhood) {
-        super(id, name, lastName, address, expeditionLocation, phone);
-        this.code = code;
-        this.departament = departament;
-        this.municipality = municipality;
-        this.cadastralReference = cadastralReference;
-        this.maritalStatus = maritalStatus;
-        this.affectation = affectation;
-        this.crossing = crossing;
-        this.publication = publication;
-        this.neighborhood = neighborhood;
+    public Beneficiary(Builder builder) {
+        super(builder);
+        this.code = builder.code;
+        this.department = builder.department;
+        this.municipality = builder.municipality;
+        this.cadastralReference = builder.cadastralReference;
+        this.maritalStatus = builder.maritalStatus;
+        this.affectation = builder.affectation;
+        this.crossing = builder.crossing;
+        this.publication = builder.publication;
+        this.neighborhood = builder.neighborhood;
     }
 
     public void setCode(int code) {
         this.code = code;
     }
 
-    public void setDepartament(Departament departament) {
-        this.departament = departament;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public void setMunicipality(String municipality) {
+    public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
@@ -76,11 +77,11 @@ public class Beneficiary extends Person {
         return code;
     }
 
-    public Departament getDepartament() {
-        return departament;
+    public Department getDepartment() {
+        return department;
     }
 
-    public String getMunicipality() {
+    public Municipalities getMunicipality() {
         return municipality;
     }
 
@@ -112,7 +113,7 @@ public class Beneficiary extends Person {
     public String toString() {
         return super.toString() +
                 "\nCode= " + code +
-                "\nDepartament= " + departament +
+                "\nDepartment= " + department +
                 "\nMunicipality= " + municipality +
                 "\nCadastralReference= " + cadastralReference +
                 "\nMaritalStatus= " + maritalStatus +
@@ -120,6 +121,69 @@ public class Beneficiary extends Person {
                 "\nCrossing= " + crossing +
                 "\nPublication= " + publication +
                 "\nNeighborhood= " + neighborhood;
+    }
+
+    public static class Builder extends Person.Builder {
+
+        private int code;
+        private Department department;
+        private Municipalities municipality;
+        private long cadastralReference;
+        private MaritalStatus maritalStatus;
+        private String affectation;
+        private String crossing;
+        private String publication;
+        private String neighborhood;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder department(Department department) {
+            this.department = department;
+            return this;
+        }
+
+        public Builder municipality(Municipalities municipality) {
+            this.municipality = municipality;
+            return this;
+        }
+
+        public Builder cadastralReference(long cadastralReference) {
+            this.cadastralReference = cadastralReference;
+            return this;
+        }
+
+        public Builder maritalStatus(MaritalStatus maritalStatus) {
+            this.maritalStatus = maritalStatus;
+            return this;
+        }
+
+        public Builder affectation(String affectation) {
+            this.affectation = affectation;
+            return this;
+        }
+
+        public Builder crossing(String crossing) {
+            this.crossing = crossing;
+            return this;
+        }
+
+        public Builder publication(String publication) {
+            this.publication = publication;
+            return this;
+        }
+
+        public Builder neighborhood(String neighborhood) {
+            this.neighborhood = neighborhood;
+            return this;
+        }
+
+        public Beneficiary build() {
+            return new Beneficiary(this);
+        }
+
     }
 
 }
