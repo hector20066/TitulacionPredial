@@ -16,10 +16,10 @@ public class DTOResolution {
 
     }
 
-    public DTOResolution(LocalDate executory, String act, String publicWriting) {
-        this.executory = executory;
-        this.act = act;
-        this.publicWriting = publicWriting;
+    public DTOResolution(Builder<?> builder) {
+        this.executory = builder.executory;
+        this.act = builder.act;
+        this.publicWriting = builder.publicWriting;
     }
 
     public void setExecutory(LocalDate executory) {
@@ -44,6 +44,38 @@ public class DTOResolution {
 
     public String getPublicWriting() {
         return publicWriting;
+    }
+
+    public static class Builder<T extends Builder<T>> {
+
+        private LocalDate executory;
+        private String act;
+        private String publicWriting;
+
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
+
+        public T executory(LocalDate executory) {
+            this.executory = executory;
+            return self();
+        }
+
+        public T act(String act) {
+            this.act = act;
+            return self();
+        }
+
+        public T publicWriting(String publicWriting) {
+            this.publicWriting = publicWriting;
+            return self();
+        }
+
+        public DTOResolution build() {
+            return new DTOResolution(this);
+        }
+
     }
 
 }

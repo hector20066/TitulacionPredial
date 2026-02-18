@@ -16,4 +16,13 @@ public class DTOPointDetails extends DTOPoint {
         super(builder);
     }
 
+    public static class Builder extends DTOPoint.Builder<Builder> {
+
+        @Override
+        public DTOPointDetails build() {
+            return new DTOPointDetails(this);
+        }
+
+    }
+
 }

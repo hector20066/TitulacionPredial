@@ -1,8 +1,8 @@
 package com.hector.titulacionpredial.model.dto.resolution;
 
-import com.hector.titulacionpredial.model.dto.DTOResolution;
-
 import java.time.LocalDate;
+
+import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
  *
@@ -20,7 +20,7 @@ public class DTOResolutionDetails extends DTOResolution {
     }
 
     public DTOResolutionDetails(Builder builder) {
-        super(builder.executory, builder.act, builder.publicWriting);
+        super(builder);
         this.resolutionNumber = builder.resolutionNumber;
         this.notification = builder.notification;
         this.fmi = builder.fmi;
@@ -59,15 +59,12 @@ public class DTOResolutionDetails extends DTOResolution {
         return notary;
     }
 
-    public static class Builder {
+    public static class Builder extends DTOResolution.Builder<Builder> {
 
         private long resolutionNumber;
         private LocalDate notification;
         private String fmi;
         private String notary;
-        private LocalDate executory;
-        private String act;
-        private String publicWriting;
 
         public Builder resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
@@ -89,21 +86,7 @@ public class DTOResolutionDetails extends DTOResolution {
             return this;
         }
 
-        public Builder executory(LocalDate executory) {
-            this.executory = executory;
-            return this;
-        }
-
-        public Builder act(String act) {
-            this.act = act;
-            return this;
-        }
-
-        public Builder publicWriting(String publicWriting) {
-            this.publicWriting = publicWriting;
-            return this;
-        }
-
+        @Override
         public DTOResolutionDetails build() {
             return new DTOResolutionDetails(this);
         }

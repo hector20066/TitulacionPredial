@@ -24,7 +24,7 @@ public class DTOBeneficiary {
 
     }
 
-    public DTOBeneficiary(Builder builder) {
+    public DTOBeneficiary(Builder<?> builder) {
         this.department = builder.department;
         this.municipality = builder.municipality;
         this.neighborhood = builder.neighborhood;
@@ -108,7 +108,7 @@ public class DTOBeneficiary {
         return affectation;
     }
 
-    public static class Builder {
+    public static class Builder<T extends Builder<T>> {
 
         private Department department;
         private Municipalities municipality;
@@ -120,49 +120,54 @@ public class DTOBeneficiary {
         private MaritalStatus maritalStatus;
         private String affectation;
 
-        public Builder department(Department department) {
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
+
+        public T department(Department department) {
             this.department = department;
-            return this;
+            return self();
         }
 
-        public Builder municipality(Municipalities municipalities) {
+        public T municipality(Municipalities municipalities) {
             this.municipality = municipalities;
-            return this;
+            return self();
         }
 
-        public Builder neighborhood(String neighborhood) {
+        public T neighborhood(String neighborhood) {
             this.neighborhood = neighborhood;
-            return this;
+            return self();
         }
 
-        public Builder address(String address) {
+        public T address(String address) {
             this.address = address;
-            return this;
+            return self();
         }
 
-        public Builder phone(long phone) {
+        public T phone(long phone) {
             this.phone = phone;
-            return this;
+            return self();
         }
 
-        public Builder crossing(String crossing) {
+        public T crossing(String crossing) {
             this.crossing = crossing;
-            return this;
+            return self();
         }
 
-        public Builder publication(String publication) {
+        public T publication(String publication) {
             this.publication = publication;
-            return this;
+            return self();
         }
 
-        public Builder maritalStatus(MaritalStatus maritalStatus) {
+        public T maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
-            return this;
+            return self();
         }
 
-        public Builder affectation(String affectation) {
+        public T affectation(String affectation) {
             this.affectation = affectation;
-            return this;
+            return self();
         }
 
         public DTOBeneficiary build() {

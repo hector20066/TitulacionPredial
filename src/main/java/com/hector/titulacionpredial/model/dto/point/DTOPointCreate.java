@@ -27,7 +27,7 @@ public class DTOPointCreate extends DTOPoint {
         return propertyCode;
     }
 
-    public static class Builder extends DTOPoint.Builder {
+    public static class Builder extends DTOPoint.Builder<Builder> {
 
         private int propertyCode;
 
@@ -36,6 +36,7 @@ public class DTOPointCreate extends DTOPoint {
             return this;
         }
 
+        @Override
         public DTOPointCreate build() {
             return new DTOPointCreate(this);
         }

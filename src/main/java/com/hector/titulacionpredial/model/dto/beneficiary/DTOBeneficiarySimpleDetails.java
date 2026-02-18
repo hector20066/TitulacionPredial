@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class DTOBeneficiarySimpleDetails {
 
     private String name;

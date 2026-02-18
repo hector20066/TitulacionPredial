@@ -1,9 +1,8 @@
 package com.hector.titulacionpredial.model.dto.resolution;
 
-import com.hector.titulacionpredial.model.dto.DTOResolution;
-import com.hector.titulacionpredial.model.entities.Property;
-
 import java.time.LocalDate;
+
+import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
  *
@@ -22,7 +21,7 @@ public class DTOResolutionCreate extends DTOResolution {
     }
 
     public DTOResolutionCreate(Builder builder) {
-        super(builder.executory, builder.act, builder.publicWriting);
+        super(builder);
         this.resolutionNumber = builder.resolutionNumber;
         this.notification = builder.notification;
         this.fmi = builder.fmi;
@@ -46,7 +45,7 @@ public class DTOResolutionCreate extends DTOResolution {
         this.notary = notary;
     }
 
-    public void setPropertyCode(int property) {
+    public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
@@ -70,16 +69,13 @@ public class DTOResolutionCreate extends DTOResolution {
         return propertyCode;
     }
 
-    public static class Builder {
+    public static class Builder extends DTOResolution.Builder<Builder> {
 
         private long resolutionNumber;
         private LocalDate notification;
         private String fmi;
         private String notary;
         private int propertyCode;
-        private LocalDate executory;
-        private String act;
-        private String publicWriting;
 
         public Builder resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
@@ -106,21 +102,7 @@ public class DTOResolutionCreate extends DTOResolution {
             return this;
         }
 
-        public Builder executory(LocalDate executory) {
-            this.executory = executory;
-            return this;
-        }
-
-        public Builder act(String act) {
-            this.act = act;
-            return this;
-        }
-
-        public Builder publicWriting(String publicWriting) {
-            this.publicWriting = publicWriting;
-            return this;
-        }
-
+        @Override
         public DTOResolutionCreate build() {
             return new DTOResolutionCreate(this);
         }

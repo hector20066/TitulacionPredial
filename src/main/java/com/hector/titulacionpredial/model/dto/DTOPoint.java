@@ -16,7 +16,7 @@ public class DTOPoint {
 
     }
 
-    public DTOPoint(Builder builder) {
+    public DTOPoint(Builder<?> builder) {
         this.numberPoint = builder.numberPoint;
         this.northCoordinate = builder.northCoordinate;
         this.eastCoordinate = builder.eastCoordinate;
@@ -64,7 +64,7 @@ public class DTOPoint {
         return hillside;
     }
 
-    public static class Builder {
+    public static class Builder<T extends Builder<T>> {
 
         private int numberPoint;
         private Double northCoordinate;
@@ -72,29 +72,34 @@ public class DTOPoint {
         private Double distance;
         private String hillside;
 
-        public Builder numberPoint(int numberPoint) {
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
+
+        public T numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
-            return this;
+            return self();
         }
 
-        public Builder northCoordinate(Double northCoordinate) {
+        public T northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
-            return this;
+            return self();
         }
 
-        public Builder eastCoordinate(Double eastCoordinate) {
+        public T eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
-            return this;
+            return self();
         }
 
-        public Builder distance(Double distance) {
+        public T distance(Double distance) {
             this.distance = distance;
-            return this;
+            return self();
         }
 
-        public Builder hillside(String hillside) {
+        public T hillside(String hillside) {
             this.hillside = hillside;
-            return this;
+            return self();
         }
 
         public DTOPoint build() {

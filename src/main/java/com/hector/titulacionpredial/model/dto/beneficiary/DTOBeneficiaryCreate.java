@@ -1,8 +1,6 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
-import com.hector.titulacionpredial.model.entities.Property;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
 
 /**
  *
@@ -79,7 +77,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         return propertyCode;
     }
 
-    public static class Builder extends DTOBeneficiary.Builder {
+    public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private long id;
         private String name;
@@ -118,6 +116,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
             return this;
         }
 
+        @Override
         public DTOBeneficiaryCreate build() {
             return new DTOBeneficiaryCreate(this);
         }
