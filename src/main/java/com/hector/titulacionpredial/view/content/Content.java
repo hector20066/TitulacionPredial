@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.view.content;
 
+import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
+
 import javax.swing.*;
 
 /**
@@ -10,6 +12,11 @@ public class Content extends javax.swing.JFrame {
     
     public Content() {
         initComponents();
+
+        head.initMoving(this);
+        head.getWinButton().initEvent(this, jpl_body);
+
+        menu.setSelectedIndex(0, 0);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -22,6 +29,7 @@ public class Content extends javax.swing.JFrame {
         head = new com.hector.titulacionpredial.view.component.Head();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jpl_body.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,6 +96,10 @@ public class Content extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setControllerMenu(EventMenuSelected evt) {
+        menu.addEvent(evt);
+    }
 
     public static JPanel getJpl_content() {
         return jpl_content;
