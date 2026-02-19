@@ -11,6 +11,7 @@ public class DTOPoint {
     private Double eastCoordinate;
     private Double distance;
     private String hillside;
+    private int propertyCode;
 
     public DTOPoint() {
 
@@ -22,6 +23,7 @@ public class DTOPoint {
         this.eastCoordinate = builder.eastCoordinate;
         this.distance = builder.distance;
         this.hillside = builder.hillside;
+        this.propertyCode = builder.propertyCode;
     }
 
     public void setNumberPoint(int numberPoint) {
@@ -44,6 +46,10 @@ public class DTOPoint {
         this.hillside = hillside;
     }
 
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
+    }
+
     public int getNumberPoint() {
         return numberPoint;
     }
@@ -64,6 +70,10 @@ public class DTOPoint {
         return hillside;
     }
 
+    public int getPropertyCode() {
+        return propertyCode;
+    }
+
     public static class Builder<T extends Builder<T>> {
 
         private int numberPoint;
@@ -71,6 +81,7 @@ public class DTOPoint {
         private Double eastCoordinate;
         private Double distance;
         private String hillside;
+        private int propertyCode;
 
         @SuppressWarnings("unchecked")
         protected T self() {
@@ -99,6 +110,11 @@ public class DTOPoint {
 
         public T hillside(String hillside) {
             this.hillside = hillside;
+            return self();
+        }
+
+        public T propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
             return self();
         }
 

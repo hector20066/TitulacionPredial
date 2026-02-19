@@ -11,30 +11,14 @@ public class DTOPointCreate extends DTOPoint {
     private int propertyCode;
 
     public DTOPointCreate() {
-
+        super();
     }
 
     public DTOPointCreate(Builder builder) {
         super(builder);
-        this.propertyCode = builder.propertyCode;
-    }
-
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
-    }
-
-    public int getPropertyCode() {
-        return propertyCode;
     }
 
     public static class Builder extends DTOPoint.Builder<Builder> {
-
-        private int propertyCode;
-
-        public Builder propertyCode(int propertyCode) {
-            this.propertyCode = propertyCode;
-            return this;
-        }
 
         @Override
         public DTOPointCreate build() {
