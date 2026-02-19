@@ -106,6 +106,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_expeditionLocation = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txt_publication = new javax.swing.JTextField();
+        cbx_affectation = new javax.swing.JCheckBox();
         btn_register = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jLabel16 = new javax.swing.JLabel();
         txt_followingCode = new javax.swing.JTextField();
@@ -216,16 +217,17 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txa_crossing.setColumns(20);
         txa_crossing.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txa_crossing.setRows(5);
+        txa_crossing.setRows(3);
         jScrollPane2.setViewportView(txa_crossing);
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(33, 37, 41));
         jLabel15.setText("Afectacion:");
 
+        txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
         txa_affectation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txa_affectation.setRows(5);
+        txa_affectation.setRows(4);
         jScrollPane3.setViewportView(txa_affectation);
 
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
@@ -242,6 +244,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_publication.setBackground(new java.awt.Color(255, 255, 255));
         txt_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_publication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+
+        cbx_affectation.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        cbx_affectation.setForeground(new java.awt.Color(33, 37, 41));
+        cbx_affectation.setText("Afectado");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -317,25 +323,29 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                 .addComponent(jLabel6))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel14)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_cadastralReference, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(62, 62, 62)
-                                        .addComponent(jLabel18)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_publication))
-                                    .addComponent(jLabel15)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel15)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel14)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel13)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_cadastralReference, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(62, 62, 62)
+                                            .addComponent(jLabel18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_publication))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(cbx_affectation)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,11 +398,13 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(cbx_affectation)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         jscp_info.setViewportView(jPanel2);
@@ -472,8 +484,16 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_maritalStatus.addActionListener(action);
     }
 
+    public void setControllerCbx_affectation(ActionListener action) {
+        cbx_affectation.addActionListener(action);
+    }
+    
     public ButtonAction getBtn_register() {
         return btn_register;
+    }
+
+    public JCheckBox getCbx_affectation() {
+        return cbx_affectation;
     }
 
     public JComboBox<Department> getCbo_department() {
@@ -545,6 +565,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JComboBox<Department> cbo_department;
     private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
     private javax.swing.JComboBox<Municipalities> cbo_municipality;
+    private javax.swing.JCheckBox cbx_affectation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
