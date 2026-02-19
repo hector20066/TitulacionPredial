@@ -66,7 +66,7 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="scroll1" min="-2" pref="479" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btn_generate" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_preview" min="-2" max="-2" attributes="0"/>
@@ -99,16 +99,11 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="scroll2" min="-2" pref="1000" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="scroll2" min="-2" pref="1000" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -159,7 +154,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scroll2" min="-2" pref="385" max="-2" attributes="0"/>
+                          <Component id="scroll2" min="-2" pref="391" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -189,7 +184,7 @@
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_note" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                          <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -501,6 +496,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_nameBeneficiary">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -529,6 +525,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_idBeneficiary">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -557,6 +554,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_addresBeneficiary">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -585,6 +583,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_cadastralReference">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -613,6 +612,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_neighborhood">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -663,6 +663,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_northCoordinate1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -691,6 +692,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_eastCoordinate1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -719,6 +721,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_distance1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -747,6 +750,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_hillside1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -786,6 +790,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_northCoordinate2">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -814,6 +819,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_eastCoordinate2">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -842,6 +848,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_distance2">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -870,6 +877,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_hillside2">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -909,6 +917,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_northCoordinate3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -937,6 +946,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_eastCoordinate3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -965,6 +975,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_distance3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -993,6 +1004,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_hillside3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -1032,6 +1044,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_northCoordinate4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -1060,6 +1073,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_eastCoordinate4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -1088,6 +1102,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_distance4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -1116,6 +1131,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txt_hillside4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>

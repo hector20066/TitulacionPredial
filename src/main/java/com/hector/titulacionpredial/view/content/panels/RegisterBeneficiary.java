@@ -366,6 +366,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jLabel16.setForeground(new java.awt.Color(33, 37, 41));
         jLabel16.setText("Codigo: F");
 
+        txt_followingCode.setEditable(false);
         txt_followingCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

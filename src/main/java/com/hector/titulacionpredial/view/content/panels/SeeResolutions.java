@@ -32,6 +32,7 @@ public class SeeResolutions extends javax.swing.JPanel {
         header.setBackground(new Color(187, 222, 251));
         header.setForeground(new Color(0, 18, 25));
         header.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        header.setReorderingAllowed(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

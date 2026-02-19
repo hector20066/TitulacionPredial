@@ -200,6 +200,7 @@ public class UserProfile extends javax.swing.JDialog {
         jLabel22.setForeground(new java.awt.Color(33, 37, 41));
         jLabel22.setText("Cruce");
 
+        txa_crossing.setEditable(false);
         txa_crossing.setColumns(20);
         txa_crossing.setRows(5);
         jScrollPane2.setViewportView(txa_crossing);
@@ -208,6 +209,7 @@ public class UserProfile extends javax.swing.JDialog {
         jLabel23.setForeground(new java.awt.Color(33, 37, 41));
         jLabel23.setText("Afectacion");
 
+        txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
         txa_affectation.setRows(5);
         jScrollPane3.setViewportView(txa_affectation);
