@@ -4,13 +4,21 @@
  */
 package com.hector.titulacionpredial.view.content.dialogs;
 
+import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import java.awt.Color;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
 /**
  *
  * @author hectoracevedo
  */
 public class SpouseData extends javax.swing.JDialog {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SpouseData.class.getName());
+
+    private boolean confirmed = false;
+    private final Animator animator;
+    private boolean show = true;
 
     /**
      * Creates new form SpouseData
@@ -18,6 +26,32 @@ public class SpouseData extends javax.swing.JDialog {
     public SpouseData(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        connectEvents();
+        getContentPane().setBackground(Color.WHITE);
+        
+        TimingTarget target = new TimingTargetAdapter() {
+            @Override
+            public void timingEvent(float fraction) {
+                if (show) {
+                    setOpacity(fraction);
+                } else {
+                    setOpacity(1f - fraction);
+                }
+            }
+
+            @Override
+            public void end() {
+                if (show == false) {
+                    setVisible(false);
+                }
+            }
+
+        };
+        
+        animator = new Animator(200, target);
+        animator.setResolution(0);
+        animator.setAcceleration(0.5f);
     }
 
     /**
@@ -47,6 +81,7 @@ public class SpouseData extends javax.swing.JDialog {
         btn_cancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow1.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,41 +227,46 @@ public class SpouseData extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                SpouseData dialog = new SpouseData(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+    private void connectEvents() {
+        btn_save.addActionListener(e -> {
+            confirmed = true;
+            closeMenu();
+            dispose();
         });
+
+        btn_cancel.addActionListener(e -> {
+            confirmed = false;
+            closeMenu();
+            dispose();
+        });
+    }
+
+    private void closeMenu() {
+        if (animator.isRunning()) {
+            animator.stop();
+        }
+        
+        show = false;
+        animator.start();
+    }
+    
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public DTOSpouse getSpouse() {
+        if (!confirmed) {
+            return null;
+        }
+
+        /*return new DTOSpouse.Builder()
+                .fullName(txt_name.getText().trim() + " " + txt_lastName.getText().trim())
+                .id(Long.parseLong(txt_id.getText().trim()))
+                .expeditionLocation(txt_expeditionLocation.getText().trim())
+                .address(txt_address.getText().trim())
+                .phone(Long.parseLong(txt_phone.getText().trim()))
+                .build();*/
+        return null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

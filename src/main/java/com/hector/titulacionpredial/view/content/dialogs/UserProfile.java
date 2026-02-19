@@ -4,25 +4,61 @@
  */
 package com.hector.titulacionpredial.view.content.dialogs;
 
+import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import java.awt.Color;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
 /**
  *
  * @author hectoracevedo
  */
 public class UserProfile extends javax.swing.JDialog {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UserProfile.class.getName());
 
+    private final Animator animator;
+    private boolean show = true;
+    
     /**
      * Creates new form UserProfile
      */
     public UserProfile(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        getContentPane().setBackground(Color.WHITE);
+        
+        scroll.getVerticalScrollBar().setUnitIncrement(15);
         
         txa_affectation.setLineWrap(true);
         txa_affectation.setWrapStyleWord(true);
         txa_crossing.setLineWrap(true);
         txa_crossing.setWrapStyleWord(true);
+        
+        connectEvents();
+        
+        TimingTarget target = new TimingTargetAdapter() {
+            @Override
+            public void timingEvent(float fraction) {
+                if (show) {
+                    setOpacity(fraction);
+                } else {
+                    setOpacity(1f - fraction);
+                }
+            }
+
+            @Override
+            public void end() {
+                if (show == false) {
+                    setVisible(false);
+                }
+            }
+
+        };
+        
+        animator = new Animator(200, target);
+        animator.setResolution(0);
+        animator.setAcceleration(0.5f);
     }
 
     /**
@@ -35,7 +71,7 @@ public class UserProfile extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jlb_id = new javax.swing.JLabel();
@@ -71,7 +107,7 @@ public class UserProfile extends javax.swing.JDialog {
         jLabel31 = new javax.swing.JLabel();
         jlb_spouseAddress = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        jlb_phoneSpouse = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jlb_neighborhood = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -83,6 +119,7 @@ public class UserProfile extends javax.swing.JDialog {
         btn_exit = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -215,9 +252,9 @@ public class UserProfile extends javax.swing.JDialog {
         jLabel33.setForeground(new java.awt.Color(33, 37, 41));
         jLabel33.setText("Telefono:");
 
-        jLabel34.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel34.setText("No aplica");
+        jlb_phoneSpouse.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_phoneSpouse.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_phoneSpouse.setText("No aplica");
 
         jLabel35.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(33, 37, 41));
@@ -342,7 +379,7 @@ public class UserProfile extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel33)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel34)))))
+                                .addComponent(jlb_phoneSpouse)))))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -381,7 +418,7 @@ public class UserProfile extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(jLabel34))
+                    .addComponent(jlb_phoneSpouse))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
@@ -419,7 +456,7 @@ public class UserProfile extends javax.swing.JDialog {
                 .addGap(105, 105, 105))
         );
 
-        jScrollPane1.setViewportView(jPanel2);
+        scroll.setViewportView(jPanel2);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
@@ -446,26 +483,26 @@ public class UserProfile extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(jlb_name)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlb_code)
-                            .addGap(181, 181, 181)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jlb_name)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlb_code)
+                        .addGap(181, 181, 181)))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,10 +515,10 @@ public class UserProfile extends javax.swing.JDialog {
                     .addComponent(jlb_code)
                     .addComponent(jlb_name))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -498,41 +535,52 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                UserProfile dialog = new UserProfile(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+    private void connectEvents() {
+        btn_exit.addActionListener(e -> {
+            dispose();
+            closeMenu();
         });
+    }
+    
+    private void closeMenu() {
+        if (animator.isRunning()) {
+            animator.stop();
+        }
+        
+        show = false;
+        animator.start();
+    }
+    
+    public void loadBeneficiary(DTOBeneficiaryDetails beneficiary) {
+        jlb_name.setText(beneficiary.getName() + " " + beneficiary.getLastName());
+        jlb_code.setText("F" + beneficiary.getCode());
+        jlb_id.setText(String.valueOf(beneficiary.getId()));
+        jlb_phone.setText(String.valueOf(beneficiary.getPhone()));
+        /*jlb_expeditionLocation.setText(beneficiary.getExpeditionLocation());*/;
+        jlb_maritalStatus.setText(beneficiary.getMaritalStatus().name());
+        jlb_address.setText(beneficiary.getAddress());
+        jlb_department.setText(beneficiary.getDepartment().name());
+        jlb_municipality.setText(beneficiary.getMunicipality().name());
+        jlb_neighborhood.setText(beneficiary.getNeighborhood());
+        jlb_cadastralRef.setText(String.valueOf(beneficiary.getCadastralReference()));
+        jlb_publication.setText(beneficiary.getPublication());
+        txa_crossing.setText(beneficiary.getCrossing());
+        txa_affectation.setText(beneficiary.getAffectation());
+    }
+
+    public void loadSpouse(DTOSpouse spouse) {
+        if (spouse != null) {
+            txt_spouseName.setText(spouse.getName() + " " + spouse.getLastName());
+            jlb_spouseId.setText(String.valueOf(spouse.getId()));
+            jlb_spouseExpeditionSite.setText(spouse.getExpeditionLocation());
+            jlb_spouseAddress.setText(spouse.getAddress());
+            jlb_phoneSpouse.setText(String.valueOf(spouse.getPhone()));
+        } else {
+            txt_spouseName.setText("No aplica");
+            jlb_spouseId.setText("No aplica");
+            jlb_spouseExpeditionSite.setText("No aplica");
+            jlb_spouseAddress.setText("No aplica");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -553,7 +601,6 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel5;
@@ -561,7 +608,6 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -576,10 +622,12 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel jlb_neighborhood;
     private javax.swing.JLabel jlb_phone;
+    private javax.swing.JLabel jlb_phoneSpouse;
     private javax.swing.JLabel jlb_publication;
     private javax.swing.JLabel jlb_spouseAddress;
     private javax.swing.JLabel jlb_spouseExpeditionSite;
     private javax.swing.JLabel jlb_spouseId;
+    private javax.swing.JScrollPane scroll;
     private javax.swing.JTextArea txa_affectation;
     private javax.swing.JTextArea txa_crossing;
     private javax.swing.JLabel txt_spouseName;

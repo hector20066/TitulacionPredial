@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 import javax.swing.event.DocumentEvent;
@@ -34,7 +35,23 @@ public class ControllerViewBeneficiaries {
 
     private void showDetails() {
         try {
+            int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
+            if (selectedRow == -1) {
+                // return;
+            }
 
+            // Beneficiary beneficiary = getBeneficiaryFromTable(selectedRow);
+
+            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities
+                    .getWindowAncestor(viewBeneficiaries);
+
+            UserProfile dialog = new UserProfile(parentFrame, true);
+
+            // Cargar los datos en el diálogo (necesitas agregar este método a UserProfile)
+            // dialog.loadBeneficiary(beneficiary);
+
+            dialog.setLocationRelativeTo(viewBeneficiaries);
+            dialog.setVisible(true);
         } catch (Exception e) {
 
         }

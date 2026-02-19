@@ -25,7 +25,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     public ViewBeneficiaries() {
         initComponents();
         
-        String[] titles = {"Cedula", "Nombre", "Telefono", "Ref. Catastral", "Municipio", "Direccion"};
+        String[] titles = {"Codigo", "Cedula", "Nombre", "Telefono", "Ref. Catastral", "Municipio", "Direccion"};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
         
