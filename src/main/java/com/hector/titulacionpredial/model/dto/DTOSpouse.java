@@ -7,8 +7,7 @@ package com.hector.titulacionpredial.model.dto;
 public class DTOSpouse {
 
     private long id;
-    private String name;
-    private String lastName;
+    private String fullName;
     private String expeditionLocation;
     private String address;
     private long phone;
@@ -20,8 +19,7 @@ public class DTOSpouse {
 
     public DTOSpouse(Builder builder) {
         this.id = builder.id;
-        this.name = builder.name;
-        this.lastName = builder.lastName;
+        this.fullName = builder.fullName;
         this.expeditionLocation = builder.expeditionLocation;
         this.address = builder.address;
         this.phone = builder.phone;
@@ -30,55 +28,47 @@ public class DTOSpouse {
 
     public void setId(long id) {
             this.id = id;
-        }
+    }
 
-    public void setName(String name) {
-            this.name = name;
-        }
-
-    public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
+    public void setFullName(String fullName) {
+            this.fullName = fullName;
+    }
 
     public void setExpeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
-        }
+    }
 
     public void setAddress(String address) {
             this.address = address;
-        }
+    }
 
     public void setPhone(long phone) {
             this.phone = phone;
-        }
+    }
 
     public void setBeneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
-        }
+    }
 
     public long getId() {
             return id;
         }
 
-    public String getName() {
-            return name;
-        }
-
-    public String getLastName() {
-            return lastName;
-        }
+    public String getFullName() {
+            return fullName;
+    }
 
     public String getExpeditionLocation() {
             return expeditionLocation;
-        }
+    }
 
     public String getAddress() {
             return address;
-        }
+    }
 
     public long getPhone() {
             return phone;
-        }
+    }
 
     public int getBeneficiaryCode() {
         return beneficiaryCode;
@@ -87,8 +77,7 @@ public class DTOSpouse {
     public static class Builder {
 
         private long id;
-        private String name;
-        private String lastName;
+        private String fullName;
         private String expeditionLocation;
         private String address;
         private long phone;
@@ -99,13 +88,8 @@ public class DTOSpouse {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 
