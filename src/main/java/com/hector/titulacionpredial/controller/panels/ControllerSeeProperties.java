@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 
 import javax.swing.*;
@@ -18,9 +20,11 @@ import java.awt.event.MouseEvent;
 public class ControllerSeeProperties {
 
     private final SeeProperties seeProperties;
+    private final GenerateResolution generateResolution;
 
-    public ControllerSeeProperties(SeeProperties seeProperties) {
+    public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution) {
         this.seeProperties = seeProperties;
+        this.generateResolution = generateResolution;
 
         connectEvents();
     }
@@ -35,7 +39,7 @@ public class ControllerSeeProperties {
 
     private void generateResolution() {
         try {
-
+            NavigatorUtils.showForms(generateResolution);
         } catch (Exception e) {
 
         }

@@ -77,7 +77,7 @@ public class Coordinator {
         controllerGenerateResolution = new ControllerGenerateResolution(generateResolution);
         controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary);
         controllerRegisterProperty = new ControllerRegisterProperty(registerProperty);
-        controllerSeeProperties = new ControllerSeeProperties(seeProperties);
+        controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution);
         controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions);
         controllerSettings = new ControllerSettings(settings);
         controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries);
