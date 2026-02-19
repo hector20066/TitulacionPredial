@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.model.dto.property;
 
 import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class DTOPropertyDetails extends DTOProperty {
 
-    private List<String> beneficiaries;
+    private List<DTOBeneficiaryPropertyDetails> beneficiaries;
     private List<DTOPointDetails> points;
 
     public DTOPropertyDetails() {
@@ -21,13 +22,13 @@ public class DTOPropertyDetails extends DTOProperty {
         this.points = new ArrayList<>();
     }
 
-    public DTOPropertyDetails(long cadastralId, Double area, List<String> beneficiaries, List<DTOPointDetails> points) {
+    public DTOPropertyDetails(long cadastralId, Double area, List<DTOBeneficiaryPropertyDetails> beneficiaries, List<DTOPointDetails> points) {
         super(cadastralId, area);
         this.beneficiaries = beneficiaries;
         this.points = points;
     }
 
-    public void setBeneficiaries(List<String> beneficiaries) {
+    public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
@@ -35,7 +36,7 @@ public class DTOPropertyDetails extends DTOProperty {
         this.points = points;
     }
 
-    public List<String> getBeneficiaries() {
+    public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
         return beneficiaries;
     }
 

@@ -12,7 +12,7 @@ public class DTOPropertyCreate extends DTOProperty {
         super();
     }
 
-    public DTOPropertyCreate(long cadastralId, Double area) {
+    public DTOPropertyCreate(String cadastralId, Double area) {
         super(cadastralId, area);
     }
 

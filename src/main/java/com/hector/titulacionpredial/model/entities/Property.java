@@ -11,7 +11,7 @@ import java.util.List;
 public class Property {
 
     private long code;
-    private long cadastralId;
+    private String cadastralId;
     private Double area;
     private List<Beneficiary> beneficiaries;
     private Point[] points;
@@ -33,7 +33,7 @@ public class Property {
         this.code = code;
     }
 
-    public void setCadastralId(long cadastralId) {
+    public void setCadastralId(String cadastralId) {
         this.cadastralId = cadastralId;
     }
 
@@ -53,7 +53,7 @@ public class Property {
         return code;
     }
 
-    public long getCadastralId() {
+    public String getCadastralId() {
         return cadastralId;
     }
 
@@ -81,7 +81,7 @@ public class Property {
     public static class Builder {
 
         private long code;
-        private long cadastralId;
+        private String cadastralId;
         private Double area;
         private List<Beneficiary> beneficiaries;
         private Point[] points;
@@ -91,7 +91,7 @@ public class Property {
             return this;
         }
 
-        public Builder cadastralId(long cadastralId) {
+        public Builder cadastralId(String cadastralId) {
             this.cadastralId = cadastralId;
             return this;
         }
