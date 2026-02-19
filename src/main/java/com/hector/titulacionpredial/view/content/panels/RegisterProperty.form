@@ -38,26 +38,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txt_beneficiaryCode" min="-2" pref="306" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="btn_selectBeneficiary" min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txt_cadastralId" min="-2" pref="305" max="-2" attributes="0"/>
@@ -67,10 +58,27 @@
                                   <Component id="txt_area" min="-2" pref="264" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Component id="jpl_contentPoints" min="-2" pref="988" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
@@ -100,8 +108,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_beneficiaryCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_selectBeneficiary" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jpl_contentPoints" min="-2" pref="312" max="-2" attributes="0"/>
@@ -185,7 +194,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt_nothCoordinate1" min="-2" pref="408" max="-2" attributes="0"/>
+                                                      <Component id="txt_northCoordinate1" min="-2" pref="408" max="-2" attributes="0"/>
                                                       <Component id="txt_distance1" min="-2" pref="248" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -220,7 +229,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_nothCoordinate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_northCoordinate1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_eastCoordinate1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -270,7 +279,7 @@
                     <Property name="text" type="java.lang.String" value="Coordenada Norte:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nothCoordinate1">
+                <Component class="javax.swing.JTextField" name="txt_northCoordinate1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -423,7 +432,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_nothCoordinate2" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
+                                              <Component id="txt_northCoordinate2" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
                                               <Component id="txt_distance2" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -456,7 +465,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_nothCoordinate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_northCoordinate2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_eastCoordinate2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -516,7 +525,7 @@
                     <Property name="text" type="java.lang.String" value="Coordenada Norte:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nothCoordinate2">
+                <Component class="javax.swing.JTextField" name="txt_northCoordinate2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -669,7 +678,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_nothCoordinate3" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
+                                              <Component id="txt_northCoordinate3" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
                                               <Component id="txt_distance3" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -702,7 +711,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_nothCoordinate3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_northCoordinate3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_eastCoordinate3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -762,7 +771,7 @@
                     <Property name="text" type="java.lang.String" value="Coordenada Norte:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nothCoordinate3">
+                <Component class="javax.swing.JTextField" name="txt_northCoordinate3">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -909,7 +918,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt_nothCoordinate4" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
+                                                      <Component id="txt_northCoordinate4" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
                                                       <Component id="txt_distance4" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -944,7 +953,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_nothCoordinate4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_northCoordinate4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_eastCoordinate4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -994,7 +1003,7 @@
                     <Property name="text" type="java.lang.String" value="Coordenada Norte:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nothCoordinate4">
+                <Component class="javax.swing.JTextField" name="txt_northCoordinate4">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1212,6 +1221,21 @@
                 </MatteColorBorder>
               </Border>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_selectBeneficiary">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="33" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="29" green="25" red="21" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Buscar Beneficiario"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="15" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
       </SubComponents>

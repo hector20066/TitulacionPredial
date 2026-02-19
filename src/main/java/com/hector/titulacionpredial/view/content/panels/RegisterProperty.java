@@ -31,7 +31,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btn_goPoint2 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         jLabel11 = new javax.swing.JLabel();
-        txt_nothCoordinate1 = new javax.swing.JTextField();
+        txt_northCoordinate1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_eastCoordinate1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -43,7 +43,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_goPoint3 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         btn_returnPoint1 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         jLabel15 = new javax.swing.JLabel();
-        txt_nothCoordinate2 = new javax.swing.JTextField();
+        txt_northCoordinate2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txt_distance2 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -55,7 +55,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_returnPoint2 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         btn_goPoint4 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         jLabel19 = new javax.swing.JLabel();
-        txt_nothCoordinate3 = new javax.swing.JTextField();
+        txt_northCoordinate3 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txt_distance3 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -66,7 +66,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         btn_returnPoint3 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
         jLabel23 = new javax.swing.JLabel();
-        txt_nothCoordinate4 = new javax.swing.JTextField();
+        txt_northCoordinate4 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         txt_distance4 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -82,6 +82,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txt_beneficiaryCode = new javax.swing.JTextField();
+        btn_selectBeneficiary = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,9 +106,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(33, 37, 41));
         jLabel11.setText("Coordenada Norte:");
 
-        txt_nothCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nothCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_northCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
+        txt_northCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_northCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(33, 37, 41));
@@ -162,7 +163,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_nothCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_northCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txt_distance1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
@@ -184,7 +185,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nothCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_northCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_eastCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -215,9 +216,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(33, 37, 41));
         jLabel15.setText("Coordenada Norte:");
 
-        txt_nothCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nothCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_northCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
+        txt_northCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_northCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(33, 37, 41));
@@ -275,7 +276,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                             .addGroup(jpl_point2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_nothCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_northCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_distance2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpl_point2Layout.createSequentialGroup()
@@ -297,7 +298,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nothCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_northCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_eastCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -330,9 +331,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel19.setForeground(new java.awt.Color(33, 37, 41));
         jLabel19.setText("Coordenada Norte:");
 
-        txt_nothCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nothCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_northCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
+        txt_northCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_northCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(33, 37, 41));
@@ -390,7 +391,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                             .addGroup(jpl_point3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_nothCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_northCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_distance3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpl_point3Layout.createSequentialGroup()
@@ -412,7 +413,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nothCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_northCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_eastCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -443,9 +444,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel23.setForeground(new java.awt.Color(33, 37, 41));
         jLabel23.setText("Coordenada Norte:");
 
-        txt_nothCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nothCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nothCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_northCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
+        txt_northCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_northCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(33, 37, 41));
@@ -499,7 +500,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                                     .addGroup(jpl_point4Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_nothCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpl_point4Layout.createSequentialGroup()
@@ -521,7 +522,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addComponent(jLabel26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nothCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_eastCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -574,6 +575,12 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        btn_selectBeneficiary.setBackground(new java.awt.Color(51, 204, 255));
+        btn_selectBeneficiary.setForeground(new java.awt.Color(33, 37, 41));
+        btn_selectBeneficiary.setText("Buscar Beneficiario");
+        btn_selectBeneficiary.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_selectBeneficiary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -581,20 +588,14 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -602,10 +603,22 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addGap(113, 113, 113)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(37, Short.MAX_VALUE)
-                        .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel1))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -628,8 +641,9 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,6 +666,10 @@ public class RegisterProperty extends javax.swing.JPanel {
 
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
+    }
+    
+    public void setControllerShowBeneficiaries(ActionListener action) {
+        btn_selectBeneficiary.addActionListener(action);
     }
     
     public void setControllerGoPoint2(ActionListener action) {
@@ -786,20 +804,20 @@ public class RegisterProperty extends javax.swing.JPanel {
         return txt_hillside4;
     }
 
-    public JTextField getTxt_nothCoordinate1() {
-        return txt_nothCoordinate1;
+    public JTextField getTxt_northCoordinate1() {
+        return txt_northCoordinate1;
     }
 
-    public JTextField getTxt_nothCoordinate2() {
-        return txt_nothCoordinate2;
+    public JTextField getTxt_northCoordinate2() {
+        return txt_northCoordinate2;
     }
 
-    public JTextField getTxt_nothCoordinate3() {
-        return txt_nothCoordinate3;
+    public JTextField getTxt_northCoordinate3() {
+        return txt_northCoordinate3;
     }
 
-    public JTextField getTxt_nothCoordinate4() {
-        return txt_nothCoordinate4;
+    public JTextField getTxt_northCoordinate4() {
+        return txt_northCoordinate4;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -810,6 +828,7 @@ public class RegisterProperty extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint1;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint2;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint3;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_selectBeneficiary;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -857,9 +876,9 @@ public class RegisterProperty extends javax.swing.JPanel {
     private javax.swing.JTextField txt_hillside2;
     private javax.swing.JTextField txt_hillside3;
     private javax.swing.JTextField txt_hillside4;
-    private javax.swing.JTextField txt_nothCoordinate1;
-    private javax.swing.JTextField txt_nothCoordinate2;
-    private javax.swing.JTextField txt_nothCoordinate3;
-    private javax.swing.JTextField txt_nothCoordinate4;
+    private javax.swing.JTextField txt_northCoordinate1;
+    private javax.swing.JTextField txt_northCoordinate2;
+    private javax.swing.JTextField txt_northCoordinate3;
+    private javax.swing.JTextField txt_northCoordinate4;
     // End of variables declaration//GEN-END:variables
 }
