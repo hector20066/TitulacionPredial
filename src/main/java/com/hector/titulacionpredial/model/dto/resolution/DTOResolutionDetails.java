@@ -10,7 +10,6 @@ import com.hector.titulacionpredial.model.dto.DTOResolution;
  */
 public class DTOResolutionDetails extends DTOResolution {
 
-    private long resolutionNumber;
     private LocalDate notification;
     private String fmi;
     private String notary;
@@ -21,14 +20,9 @@ public class DTOResolutionDetails extends DTOResolution {
 
     public DTOResolutionDetails(Builder builder) {
         super(builder);
-        this.resolutionNumber = builder.resolutionNumber;
         this.notification = builder.notification;
         this.fmi = builder.fmi;
         this.notary = builder.notary;
-    }
-
-    public void setResolutionNumber(long resolutionNumber) {
-        this.resolutionNumber = resolutionNumber;
     }
 
     public void setNotification(LocalDate notification) {
@@ -41,10 +35,6 @@ public class DTOResolutionDetails extends DTOResolution {
 
     public void setNotary(String notary) {
         this.notary = notary;
-    }
-
-    public long getResolutionNumber() {
-        return resolutionNumber;
     }
 
     public LocalDate getNotification() {
@@ -61,15 +51,9 @@ public class DTOResolutionDetails extends DTOResolution {
 
     public static class Builder extends DTOResolution.Builder<Builder> {
 
-        private long resolutionNumber;
         private LocalDate notification;
         private String fmi;
         private String notary;
-
-        public Builder resolutionNumber(long resolutionNumber) {
-            this.resolutionNumber = resolutionNumber;
-            return this;
-        }
 
         public Builder notification(LocalDate notification) {
             this.notification = notification;
