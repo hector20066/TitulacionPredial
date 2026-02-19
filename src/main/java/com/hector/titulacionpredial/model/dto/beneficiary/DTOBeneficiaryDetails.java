@@ -9,10 +9,16 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
     private int code;
-    private String name;
-    private String lastName;
+    private String fullName;
     private long id;
     private long cadastralReference;
+    private String expeditionLocation;
+    private long idSpouse;
+    private String fullNameSpouse;
+    private String expeditionLocationSpouse;
+    private String addressSpouse;
+    private long phoneSpouse;
+    private int spouseBeneficiaryCode;
 
     public DTOBeneficiaryDetails() {
         super();
@@ -21,22 +27,24 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
     public DTOBeneficiaryDetails(Builder builder) {
         super(builder);
         this.code = builder.code;
-        this.name = builder.name;
-        this.lastName = builder.lastName;
+        this.fullName = builder.fullName;
         this.id = builder.id;
         this.cadastralReference = builder.cadastralReference;
+        this.expeditionLocation = builder.expeditionLocation;
+        this.idSpouse = builder.idSpouse;
+        this.fullNameSpouse = builder.fullNameSpouse;
+        this.expeditionLocationSpouse = builder.expeditionLocationSpouse;
+        this.addressSpouse = builder.addressSpouse;
+        this.phoneSpouse = builder.phoneSpouse;
+        this.spouseBeneficiaryCode = builder.spouseBeneficiaryCode;
     }
 
     public void setCode(int code) {
         this.code = code;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setId(long id) {
@@ -47,16 +55,40 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
         this.cadastralReference = cadastralReference;
     }
 
+    public void setExpeditionLocation(String expeditionLocation) {
+        this.expeditionLocation = expeditionLocation;
+    }
+
+    public void setIdSpouse(long idSpouse) {
+        this.idSpouse = idSpouse;
+    }
+
+    public void setFullNameSpouse(String fullNameSpouse) {
+        this.fullNameSpouse = fullNameSpouse;
+    }
+
+    public void setExpeditionLocationSpouse(String expeditionLocationSpouse) {
+        this.expeditionLocationSpouse = expeditionLocationSpouse;
+    }
+
+    public void setAddressSpouse(String addressSpouse) {
+        this.addressSpouse = addressSpouse;
+    }
+
+    public void setPhoneSpouse(long phoneSpouse) {
+        this.phoneSpouse = phoneSpouse;
+    }
+
+    public void setSpouseBeneficiaryCode(int spouseBeneficiaryCode) {
+        this.spouseBeneficiaryCode = spouseBeneficiaryCode;
+    }
+
     public int getCode() {
         return code;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
     public long getId() {
@@ -67,26 +99,55 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
         return cadastralReference;
     }
 
+    public String getExpeditionLocation() {
+        return expeditionLocation;
+    }
+
+    public long getIdSpouse() {
+        return idSpouse;
+    }
+
+    public String getFullNameSpouse() {
+        return fullNameSpouse;
+    }
+
+    public String getExpeditionLocationSpouse() {
+        return expeditionLocationSpouse;
+    }
+
+    public String getAddressSpouse() {
+        return addressSpouse;
+    }
+
+    public long getPhoneSpouse() {
+        return phoneSpouse;
+    }
+
+    public int getSpouseBeneficiaryCode() {
+        return spouseBeneficiaryCode;
+    }
+
     public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private int code;
-        private String name;
-        private String lastName;
+        private String fullName;
         private long id;
         private long cadastralReference;
+        private String expeditionLocation;
+        private long idSpouse;
+        private String fullNameSpouse;
+        private String expeditionLocationSpouse;
+        private String addressSpouse;
+        private long phoneSpouse;
+        private int spouseBeneficiaryCode;
 
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 
@@ -97,6 +158,41 @@ public class DTOBeneficiaryDetails extends DTOBeneficiary {
 
         public Builder cadastralReference(long cadastralReference) {
             this.cadastralReference = cadastralReference;
+            return this;
+        }
+
+        public Builder expeditionLocation(String expeditionLocation) {
+            this.expeditionLocation = expeditionLocation;
+            return this;
+        }
+
+        public Builder idSpouse(long idSpouse) {
+            this.idSpouse = idSpouse;
+            return this;
+        }
+
+        public Builder fullNameSpouse(String fullNameSpouse) {
+            this.fullNameSpouse = fullNameSpouse;
+            return this;
+        }
+
+        public Builder expeditionLocationSpouse(String expeditionLocationSpouse) {
+            this.expeditionLocationSpouse = expeditionLocationSpouse;
+            return this;
+        }
+
+        public Builder addressSpouse(String addressSpouse) {
+            this.addressSpouse = addressSpouse;
+            return this;
+        }
+
+        public Builder phoneSpouse(long phoneSpouse) {
+            this.phoneSpouse = phoneSpouse;
+            return this;
+        }
+
+        public Builder spouseBeneficiaryCode(int spouseBeneficiaryCode) {
+            this.spouseBeneficiaryCode = spouseBeneficiaryCode;
             return this;
         }
 

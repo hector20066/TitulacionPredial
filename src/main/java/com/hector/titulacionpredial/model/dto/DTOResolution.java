@@ -8,6 +8,7 @@ import java.time.LocalDate;
  */
 public class DTOResolution {
 
+    private long resolutionNumber;
     private LocalDate executory;
     private String act;
     private String publicWriting;
@@ -17,9 +18,14 @@ public class DTOResolution {
     }
 
     public DTOResolution(Builder<?> builder) {
+        this.resolutionNumber = builder.resolutionNumber;
         this.executory = builder.executory;
         this.act = builder.act;
         this.publicWriting = builder.publicWriting;
+    }
+
+    public void setResolutionNumber(long resolutionNumber) {
+        this.resolutionNumber = resolutionNumber;
     }
 
     public void setExecutory(LocalDate executory) {
@@ -32,6 +38,10 @@ public class DTOResolution {
 
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
+    }
+
+    public long getResolutionNumber() {
+        return resolutionNumber;
     }
 
     public LocalDate getExecutory() {
@@ -48,6 +58,7 @@ public class DTOResolution {
 
     public static class Builder<T extends Builder<T>> {
 
+        private long resolutionNumber;
         private LocalDate executory;
         private String act;
         private String publicWriting;
@@ -55,6 +66,11 @@ public class DTOResolution {
         @SuppressWarnings("unchecked")
         protected T self() {
             return (T) this;
+        }
+
+        public T resolutionNumber(long resolutionNumber) {
+            this.resolutionNumber = resolutionNumber;
+            return self();
         }
 
         public T executory(LocalDate executory) {

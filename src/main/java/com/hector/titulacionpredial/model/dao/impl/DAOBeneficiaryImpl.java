@@ -2,13 +2,15 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.dto.beneficiary.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,120 +35,224 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "";
+        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location, property_code) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, 3);
-            st.setString(2, "valor");
-            st.executeUpdate();
+             st.setLong(1, dto.getId());
+             st.setString(2, dto.getFullName());
+             st.setString(4, String.valueOf(dto.getDepartment()));
+             st.setString(5, String.valueOf(dto.getMunicipality()));
+             st.setString(6, dto.getAddress());
+             st.setLong(7, dto.getCadastralReference());
+             st.setString(8, String.valueOf(dto.getMaritalStatus()));
+             st.setString(9, dto.getAffectation());
+             st.setLong(10, dto.getPhone());
+             st.setString(11, dto.getCrossing());
+             st.setString(12, dto.getPublication());
+             st.setString(13, dto.getNeighborhood());
+             st.setString(14, dto.getExpeditionLocation());
+             st.setInt(15, dto.getPropertyCode());
+             st.executeUpdate();
         }
     }
 
     @Override
-    public DTOBeneficiaryDetails findByCode(int code) throws Exception {
-        String sql = "";
+    public DTOBeneficiarySimpleDetails findByCode(int code) throws Exception {
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE code = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setInt(1, code);
 
+             return createDTO(st);
         }
-
-        return null;
     }
 
     @Override
-    public DTOBeneficiaryDetails findById(int id) throws Exception {
-        String sql = "";
+    public DTOBeneficiarySimpleDetails findById(long id) throws Exception {
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE id = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setLong(1, id);
 
+            return createDTO(st);
         }
-
-        return null;
     }
 
     @Override
-    public DTOBeneficiaryDetails findByName(String name) throws Exception {
-        String sql = "";
+    public DTOBeneficiarySimpleDetails findByName(String name) throws Exception {
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE name = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setString(1, name);
 
+            return createDTO(st);
         }
+    }
 
-        return null;
+    private DTOBeneficiarySimpleDetails createDTO(PreparedStatement st) throws Exception {
+        try (ResultSet rs = st.executeQuery()) {
+            if (!rs.next()) {
+                return null;
+            }
+
+            DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
+            executeQuery(dto, rs);
+            return dto;
+        }
     }
 
     @Override
-    public DTOBeneficiaryDetails findByMunicipality(String municipality) throws Exception {
-        String sql = "";
+    public List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws Exception {
+        List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE municipality = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setString(1, municipality);
 
+             ResultSet rs = st.executeQuery();
+
+             while(rs.next()) {
+                 DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
+                 executeQuery(dto, rs);
+                 list.add(dto);
+             }
         }
 
-        return null;
+        return list;
     }
 
     @Override
-    public List<DTOBeneficiaryDetails> findByAll() throws Exception {
-        String sql = "";
+    public List<DTOBeneficiarySimpleDetails> findByAll() throws Exception {
+        List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary;";
 
         try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
+             while(rs.next()) {
+                 DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
+                 executeQuery(dto, rs);
+                 list.add(dto);
+             }
         }
 
-        return List.of();
+        return list;
+    }
+
+    private void executeQuery(DTOBeneficiarySimpleDetails dto, ResultSet rs) throws Exception {
+        dto.setCode(rs.getInt("code"));
+        dto.setId(rs.getLong("id"));
+        dto.setFullName(rs.getString("full_name"));
+        dto.setPhone(rs.getLong("phone"));
+        dto.setCadastralReference(rs.getLong("cadastral_reference"));
+        dto.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
+        dto.setAddress(rs.getString("address"));
+    }
+
+    @Override
+    public DTOBeneficiaryDetails findAllData(int code) throws Exception {
+        String sql = "SELECT beneficiary.code, beneficiary.id, beneficiary.full_name, beneficiary.departament, beneficiary.municipality, beneficiary.address, beneficiary.cadastral_reference, beneficiary.marital_status, beneficiary.affectation, beneficiary.phone, beneficiary.crossing, beneficiary.publication, beneficiary.neighborhood, beneficiary.expedition_location, spouse.id AS spouse_id, spouse.full_name AS spouse_full_name, spouse.expedition_location AS spouse_expedition_location, spouse.addres AS spouse_address, spouse.phone AS spouse_phone FROM beneficiary INNER JOIN spouse ON beneficiary.code = spouse.beneficiary_code;";
+
+        try(Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            DTOBeneficiaryDetails dto;
+            ResultSet rs = st.executeQuery();
+
+            if (!rs.next()) {
+                return null;
+            }
+
+            dto = new DTOBeneficiaryDetails.Builder()
+                    .code(rs.getInt("code"))
+                    .id(rs.getLong("id"))
+                    .fullName(rs.getString("full_name"))
+                    .department(Department.valueOf(rs.getString("departament")))
+                    .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                    .address(rs.getString("address"))
+                    .cadastralReference(rs.getLong("cadastral_reference"))
+                    .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
+                    .affectation(rs.getString("affectation"))
+                    .phone(rs.getLong("phone"))
+                    .crossing(rs.getString("crossing"))
+                    .publication(rs.getString("publication"))
+                    .neighborhood(rs.getString("neighborhood"))
+                    .expeditionLocation(rs.getString("expedition_location"))
+                    .idSpouse(rs.getLong("spouse_id"))
+                    .fullNameSpouse(rs.getString("spuose_full_name"))
+                    .expeditionLocationSpouse(rs.getString("spuose_expedition_location"))
+                    .addressSpouse(rs.getString("spouse_address"))
+                    .phoneSpouse(rs.getLong("spouse_phone"))
+                    .build();
+
+            return dto;
+        }
     }
 
     @Override
     public boolean modify(DTOBeneficiaryUpdate dto) throws Exception {
-        String sql = "";
+        String sql = "UPDATE beneficiary SET department = ?, municipality = ?, address = ?, marital_status = ?, affectation = ?, phone = ?, crossing = ?, publication = ?, neighborhood = ? WHERE code = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setString(1, String.valueOf(dto.getDepartment()));
+             st.setString(2, String.valueOf(dto.getMunicipality()));
+             st.setString(3, dto.getAddress());
+             st.setString(4, String.valueOf(dto.getMaritalStatus()));
+             st.setString(5, dto.getAffectation());
+             st.setLong(6, dto.getPhone());
+             st.setString(7, dto.getCrossing());
+             st.setString(8, dto.getPublication());
+             st.setString(9, dto.getNeighborhood());
+             st.setInt(10, dto.getCode());
+             st.executeUpdate();
 
+             return true;
         }
-
-        return false;
     }
 
     @Override
     public boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws Exception {
-        String sql = "";
+        String sql = "UPDATE beneficiary SET property_code = ? WHERE code = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, dto.getPropertyCode());
+            st.setInt(2, dto.getBeneficiaryCode());
+            st.executeUpdate();
 
+            return true;
         }
-
-        return false;
     }
 
     @Override
     public void delete(int code) throws Exception {
-        String sql = "";
+        String sql = "DELETE FROM beneficiary WHERE code = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-
+             st.setInt(1, code);
         }
     }
 
     @Override
     public int countRecords() throws Exception {
-        String sql = "";
+        String sql = "SELECT COUNT(*) AS total_records FROM beneficiary;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             ResultSet rs = st.executeQuery();
 
+             if(!rs.next()) {
+                 return 0;
+             }
+             return rs.getInt("total_records");
         }
-
-        return 0;
     }
 
 }
