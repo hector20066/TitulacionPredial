@@ -2,6 +2,9 @@ package com.hector.titulacionpredial.facade.interfaces;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.util.List;
 
@@ -11,7 +14,7 @@ import java.util.List;
  */
 public interface BeneficiaryFacade {
 
-    void add(long id, String fullName, String department, String municipality, String address, long cadastralReference, String maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation, int propertyCode) throws Exception;
+    void add(long id, String fullName, Department department, Municipalities municipality, String address, long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation, int propertyCode) throws Exception;
     DTOBeneficiarySimpleDetails findByCode(int code) throws Exception;
     DTOBeneficiarySimpleDetails findById(long id) throws Exception;
     DTOBeneficiaryDetails findByName(String fullName) throws Exception;
