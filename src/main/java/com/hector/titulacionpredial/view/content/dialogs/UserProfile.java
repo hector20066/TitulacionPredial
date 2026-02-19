@@ -554,11 +554,11 @@ public class UserProfile extends javax.swing.JDialog {
     }
     
     public void loadBeneficiary(DTOBeneficiaryDetails beneficiary) {
-        jlb_name.setText(beneficiary.getName() + " " + beneficiary.getLastName());
+        jlb_name.setText(beneficiary.getFullName());
         jlb_code.setText("F" + beneficiary.getCode());
         jlb_id.setText(String.valueOf(beneficiary.getId()));
         jlb_phone.setText(String.valueOf(beneficiary.getPhone()));
-        /*jlb_expeditionLocation.setText(beneficiary.getExpeditionLocation());*/;
+        jlb_expeditionLocation.setText(beneficiary.getExpeditionLocation());
         jlb_maritalStatus.setText(beneficiary.getMaritalStatus().name());
         jlb_address.setText(beneficiary.getAddress());
         jlb_department.setText(beneficiary.getDepartment().name());
@@ -572,7 +572,7 @@ public class UserProfile extends javax.swing.JDialog {
 
     public void loadSpouse(DTOSpouse spouse) {
         if (spouse != null) {
-            txt_spouseName.setText(spouse.getName() + " " + spouse.getLastName());
+            txt_spouseName.setText(spouse.getFullName());
             jlb_spouseId.setText(String.valueOf(spouse.getId()));
             jlb_spouseExpeditionSite.setText(spouse.getExpeditionLocation());
             jlb_spouseAddress.setText(spouse.getAddress());
