@@ -1,12 +1,14 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
+import java.util.List;
+
 /**
  *
  * @author hectoracevedo
  */
 @FunctionalInterface
-public interface DAORemovable {
+public interface IListable<T> {
 
-    void delete(int code) throws Exception;
+    List<T> findByAll() throws Exception;
 
 }

@@ -5,8 +5,8 @@ package com.hector.titulacionpredial.model.dao.interfaces;
  * @author hectoracevedo
  */
 @FunctionalInterface
-public interface DAOModifiable<T> {
+public interface IRemovable {
 
-    boolean modify(T dto) throws Exception;
+    void delete(int code) throws Exception;
 
 }

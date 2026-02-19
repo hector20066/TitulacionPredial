@@ -5,7 +5,7 @@ package com.hector.titulacionpredial.model.dao.interfaces;
  * @author hectoracevedo
  */
 @FunctionalInterface
-public interface DAOCountable {
+public interface ICountable {
 
     int countRecords() throws Exception;
 

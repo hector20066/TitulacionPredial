@@ -9,8 +9,8 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
  * @author hectoracevedo
  */
 public interface DAOResolution extends DAOBase<DTOResolutionCreate, DTOResolutionDetails>,
-        DAOListable<DTOResolutionDetails>,
-        DAOModifiable<DTOResolutionUpdate>,
-        DAOCountable {
+        IListable<DTOResolutionDetails>,
+        IModifiable<DTOResolutionUpdate>,
+        ICountable {
 
 }
