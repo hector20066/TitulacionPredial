@@ -19,17 +19,26 @@ public class SpouseImplFacade implements SpouseFacade {
 
     @Override
     public void add(long id, String fullName, String expeditionLocation, String address, long phone, int beneficiaryCode) throws Exception {
+        DTOSpouse dto = new DTOSpouse.Builder()
+                .id(id)
+                .fullName(fullName)
+                .expeditionLocation(expeditionLocation)
+                .address(address)
+                .phone(phone)
+                .beneficiaryCode(beneficiaryCode)
+                .build();
 
+        daoSpouse.add(dto);
     }
 
     @Override
     public DTOSpouse findByCode(int id) throws Exception {
-        return null;
+        return daoSpouse.findByCode(id);
     }
 
     @Override
     public void delete(int id) throws Exception {
-
+        daoSpouse.delete(id);
     }
 
 }

@@ -3,9 +3,7 @@ package com.hector.titulacionpredial.facade.impl;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOBeneficiaryImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -46,55 +44,71 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
         daoBeneficiary.add(dto);
     }
 
-
     @Override
     public DTOBeneficiarySimpleDetails findByCode(int code) throws Exception {
-        return null;
+        return daoBeneficiary.findByCode(code);
     }
 
     @Override
     public DTOBeneficiarySimpleDetails findById(long id) throws Exception {
-        return null;
+        return daoBeneficiary.findById(id);
     }
 
     @Override
-    public DTOBeneficiaryDetails findByName(String fullName) throws Exception {
-        return null;
+    public DTOBeneficiarySimpleDetails findByName(String fullName) throws Exception {
+        return daoBeneficiary.findByName(fullName);
     }
 
     @Override
     public List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws Exception {
-        return List.of();
+        return daoBeneficiary.findAllByMunicipality(municipality);
     }
 
     @Override
     public List<DTOBeneficiarySimpleDetails> findByAll() throws Exception {
-        return List.of();
+        return daoBeneficiary.findByAll();
     }
 
     @Override
     public DTOBeneficiaryDetails findAllData(int code) throws Exception {
-        return null;
+        return daoBeneficiary.findAllData(code);
     }
 
     @Override
-    public boolean modify(String department, String municipality, String address, String maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws Exception {
-        return false;
+    public boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws Exception {
+        DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
+                .department(department)
+                .municipality(municipality)
+                .address(address)
+                .maritalStatus(maritalStatus)
+                .affectation(affectation)
+                .phone(phone)
+                .crossing(crossing)
+                .publication(publication)
+                .neighborhood(neighborhood)
+                .code(code)
+                .build();
+
+        return daoBeneficiary.modify(dto);
     }
 
     @Override
     public boolean modifyProperty(int code, int propertyCode) throws Exception {
-        return false;
+        DTOBeneficiaryPropertyUpdate dto = new DTOBeneficiaryPropertyUpdate();
+        dto.setBeneficiaryCode(code);
+        dto.setPropertyCode(propertyCode);
+
+        return daoBeneficiary.modifyProperty(dto);
     }
 
     @Override
     public void delete(int code) throws Exception {
-
+        daoBeneficiary.delete(code);
     }
 
     @Override
     public int countRecords() throws Exception {
-        return 0;
+        return daoBeneficiary.countRecords();
     }
 
 }

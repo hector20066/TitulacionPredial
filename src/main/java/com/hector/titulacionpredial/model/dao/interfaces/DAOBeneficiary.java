@@ -9,10 +9,10 @@ import java.util.List;
  * @author hectoracevedo
  */
 public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBeneficiarySimpleDetails>,
-        DAOListable<DTOBeneficiarySimpleDetails>,
-        DAOModifiable<DTOBeneficiaryUpdate>,
-        DAORemovable,
-        DAOCountable {
+        IListable<DTOBeneficiarySimpleDetails>,
+        IModifiable<DTOBeneficiaryUpdate>,
+        IRemovable,
+        ICountable {
 
     DTOBeneficiarySimpleDetails findById(long id) throws Exception;
     DTOBeneficiarySimpleDetails findByName(String name) throws Exception;

@@ -6,6 +6,6 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  *
  * @author hectoracevedo
  */
-public interface DAOSpouse extends DAOBase<DTOSpouse, DTOSpouse>, DAORemovable {
+public interface DAOSpouse extends DAOBase<DTOSpouse, DTOSpouse>, IRemovable {
 
 }

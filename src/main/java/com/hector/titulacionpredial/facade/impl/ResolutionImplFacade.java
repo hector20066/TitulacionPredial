@@ -3,7 +3,9 @@ package com.hector.titulacionpredial.facade.impl;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOResolutionImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,27 +24,45 @@ public class ResolutionImplFacade implements ResolutionFacade {
 
     @Override
     public void add(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode) throws Exception {
+        DTOResolutionCreate dto = new DTOResolutionCreate.Builder()
+                .resolutionNumber(resolutionNumber)
+                .notification(notification)
+                .executory(executory)
+                .act(act)
+                .publicWriting(publicWriting)
+                .fmi(fmi)
+                .notary(notary)
+                .propertyCode(propertyCode)
+                .build();
 
+        daoResolution.add(dto);
     }
 
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws Exception {
-        return null;
+        return daoResolution.findByCode(numResolution);
     }
 
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
-        return List.of();
+        return daoResolution.findByAll();
     }
 
     @Override
     public boolean modify(LocalDate executory, String act, String publicWriting, long numResolution) throws Exception {
-        return false;
+        DTOResolutionUpdate dto = new DTOResolutionUpdate.Builder()
+                .resolutionNumber(numResolution)
+                .executory(executory)
+                .act(act)
+                .publicWriting(publicWriting)
+                .build();
+
+        return daoResolution.modify(dto);
     }
 
     @Override
     public int countRecords() throws Exception {
-        return 0;
+        return daoResolution.countRecords();
     }
 
 }

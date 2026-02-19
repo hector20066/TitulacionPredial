@@ -8,8 +8,6 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  */
 public class DTOPointCreate extends DTOPoint {
 
-    private int propertyCode;
-
     public DTOPointCreate() {
         super();
     }

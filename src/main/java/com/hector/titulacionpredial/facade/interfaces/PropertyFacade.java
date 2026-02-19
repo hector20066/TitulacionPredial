@@ -1,18 +1,17 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
-
-import java.util.List;
+import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
+import com.hector.titulacionpredial.model.dao.interfaces.IListable;
+import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 
 /**
  *
  * @author hectoracevedo
  */
-public interface PropertyFacade {
+public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovable, ICountable {
 
     void add(String cadastralId, Double area) throws Exception;
-    DTOPointDetails findByCode(int code) throws Exception;
-    List<DTOPointDetails> findByAll() throws Exception;
-    void delete(int code) throws Exception;
-    int countRecords() throws Exception;
+    DTOPropertyDetails findByCode(int code) throws Exception;
+
 }
