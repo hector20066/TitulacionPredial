@@ -52,7 +52,15 @@ public class DAOSpouseImpl implements DAOSpouse {
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, id);
 
-             return createDTO(st);
+            try(ResultSet rs = st.executeQuery()) {
+                if(!rs.next()) {
+                    return null;
+                }
+
+                DTOSpouse dto = new DTOSpouse();
+                executeQuery(dto, rs);
+                return dto;
+            }
         }
     }
 
@@ -63,18 +71,7 @@ public class DAOSpouseImpl implements DAOSpouse {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, id);
-        }
-    }
-
-    private DTOSpouse createDTO(PreparedStatement st) throws Exception {
-        try(ResultSet rs = st.executeQuery()) {
-            if(!rs.next()) {
-                return null;
-            }
-
-            DTOSpouse dto = new DTOSpouse();
-            executeQuery(dto, rs);
-            return dto;
+             st.executeUpdate();
         }
     }
 

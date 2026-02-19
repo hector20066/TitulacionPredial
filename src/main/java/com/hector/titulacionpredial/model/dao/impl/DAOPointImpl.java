@@ -65,19 +65,15 @@ public class DAOPointImpl implements DAOPoint {
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, propertyCode);
 
-            return createDTO(st);
-        }
-    }
+            try(ResultSet rs = st.executeQuery()) {
+                if(!rs.next()) {
+                    return null;
+                }
 
-    private DTOPointDetails createDTO(PreparedStatement st) throws Exception {
-        try(ResultSet rs = st.executeQuery()) {
-            if(!rs.next()) {
-                return null;
+                DTOPointDetails dto = new DTOPointDetails();
+                executeQuery(dto, rs);
+                return dto;
             }
-
-            DTOPointDetails dto = new DTOPointDetails();
-            executeQuery(dto, rs);
-            return dto;
         }
     }
 

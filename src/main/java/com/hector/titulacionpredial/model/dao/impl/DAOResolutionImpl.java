@@ -60,19 +60,15 @@ public class DAOResolutionImpl implements DAOResolution {
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, numResolution);
 
-             return createDTO(st);
-        }
-    }
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    return null;
+                }
 
-    private DTOResolutionDetails createDTO(PreparedStatement st) throws Exception {
-        try (ResultSet rs = st.executeQuery()) {
-            if (!rs.next()) {
-                return null;
+                DTOResolutionDetails dto = new DTOResolutionDetails();
+                executeQuery(dto, rs);
+                return dto;
             }
-
-            DTOResolutionDetails dto = new DTOResolutionDetails();
-            executeQuery(dto, rs);
-            return dto;
         }
     }
 

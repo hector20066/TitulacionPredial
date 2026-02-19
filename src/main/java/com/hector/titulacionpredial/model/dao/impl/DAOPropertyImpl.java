@@ -2,12 +2,19 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
+import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -31,58 +38,180 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public void add(DTOPropertyCreate dto) throws Exception {
-        String sql = "";
+        String sql = "INSERT INTO property (cadastral_id, area) VALUES (?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-
+            st.setString(1, dto.getCadastralId());
+            st.setDouble(2, dto.getArea());
+            st.executeUpdate();
         }
     }
 
     @Override
     public DTOPropertyDetails findByCode(int code) throws Exception {
-        String sql = "";
+        String sql = """
+            SELECT 
+                p.code AS property_code, 
+                p.cadastral_id, 
+                p.area, 
+                b.code AS beneficiary_code,
+                b.full_name AS beneficiary_fullname,
+                pt.number,
+                pt.north_coordinate,
+                pt.east_coordinate,
+                pt.distance,
+                pt.hillside
+            FROM property p
+            JOIN point pt ON pt.property_code = p.code
+            JOIN beneficiary b ON b.property_code = p.code
+            WHERE p.code = ?
+            ORDER BY pt.number
+        """;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
+        DTOPropertyDetails property = null;
 
+        try (Connection conn = DataBasePool.getConnection();
+             PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setInt(1, code);
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    if (property == null) {
+                        property = createDTOPropertyDetails(rs);
+                    }
+
+                    int beneficiaryCode = rs.getInt("beneficiary_code");
+                    boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+
+                    if (!beneficiaryExists) {
+                        property.getBeneficiaries().add(new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode));
+                    }
+
+                    int numberPoint = rs.getInt("number");
+                    boolean pointExists = verifyPointExists(property, numberPoint);
+
+                    if (!pointExists) {
+                        property.getPoints().add(createDTOPoints(rs, numberPoint, code));
+                    }
+                }
+            }
         }
 
-        return null;
+        return property;
     }
 
     @Override
     public List<DTOPropertyDetails> findByAll() throws Exception {
-        String sql = "";
+        String sql = """
+            SELECT 
+                p.code AS property_code,
+                p.cadastral_id,
+                p.area,
+                b.code AS beneficiary_code,
+                b.full_name AS beneficiary_fullname,
+                pt.number,
+                pt.north_coordinate,
+                pt.east_coordinate,
+                pt.distance,
+                pt.hillside
+            FROM property p
+            JOIN point pt ON pt.property_code = p.code
+            JOIN beneficiary b ON b.property_code = p.code
+            ORDER BY p.code, pt.number
+        """;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
+        Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
+        try (Connection conn = DataBasePool.getConnection();
+             PreparedStatement st = conn.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+
+            while (rs.next()) {
+                int propertyCode = rs.getInt("property_code");
+                DTOPropertyDetails property = properties.get(propertyCode);
+
+                if (property == null) {
+                    property = createDTOPropertyDetails(rs);
+                    properties.put(propertyCode, property);
+                }
+
+                int beneficiaryCode = rs.getInt("beneficiary_code");
+                boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+
+                if (!beneficiaryExists) {
+                    DTOBeneficiaryPropertyDetails beneficiary = new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode);
+                    property.getBeneficiaries().add(beneficiary);
+                }
+
+                int numberPoint = rs.getInt("number");
+                boolean pointExists = verifyPointExists(property, numberPoint);
+
+                if (!pointExists) {
+                    DTOPointDetails point = createDTOPoints(rs, numberPoint, propertyCode);
+                    property.getPoints().add(point);
+                }
+            }
         }
 
-        return List.of();
+        return new ArrayList<>(properties.values());
+    }
+
+    private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
+        DTOPropertyDetails property = new DTOPropertyDetails();
+        property.setCadastralId(rs.getString("cadastral_id"));
+        property.setArea(rs.getDouble("area"));
+
+        return property;
+    }
+
+    private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
+        return property.getBeneficiaries()
+                .stream()
+                .anyMatch(b -> b.getCode() == beneficiaryCode);
+    }
+
+    private boolean verifyPointExists(DTOPropertyDetails property, int numberPoint) {
+        return property.getPoints()
+                .stream()
+                .anyMatch(p -> p.getNumberPoint() == numberPoint);
+    }
+
+    private DTOPointDetails createDTOPoints(ResultSet rs, int numberPoint, int propertyCode) throws SQLException {
+        return new DTOPointDetails.Builder()
+                .numberPoint(numberPoint)
+                .northCoordinate(rs.getDouble("north_coordinate"))
+                .eastCoordinate(rs.getDouble("east_coordinate"))
+                .distance(rs.getDouble("distance"))
+                .hillside(rs.getString("hillside"))
+                .propertyCode(propertyCode)
+                .build();
     }
 
     @Override
     public void delete(int code) throws Exception {
-        String sql = "";
+        String sql = "DELETE FROM property WHERE code = ?";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-
+            st.setInt(1, code);
+            st.executeUpdate();
         }
     }
 
     @Override
     public int countRecords() throws Exception {
-        String sql = "";
+        String sql = "SELECT COUNT(*) AS total_records FROM property;";
 
         try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+            if (!rs.next()) {
+                return 0;
+            }
 
+            return rs.getInt("total_records");
         }
-
-        return 0;
     }
 
 }
