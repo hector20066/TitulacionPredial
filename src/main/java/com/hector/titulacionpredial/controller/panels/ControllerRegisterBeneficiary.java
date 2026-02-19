@@ -1,9 +1,13 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
+
+import javax.swing.*;
 
 /**
  *
@@ -61,10 +65,17 @@ public class ControllerRegisterBeneficiary {
     }
 
     private void selectDepartment() {
-        try {
+        Department departmentSelected = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
 
-        } catch (Exception e) {
+        if (departmentSelected == null) {
+            return;
+        }
 
+        JComboBox<Municipalities> cboMunicipality = registerBeneficiary.getCbo_municipality();
+        cboMunicipality.removeAllItems();
+
+        for (Municipalities municipality : departmentSelected.getMunicipalities()) {
+            cboMunicipality.addItem(municipality);
         }
     }
 

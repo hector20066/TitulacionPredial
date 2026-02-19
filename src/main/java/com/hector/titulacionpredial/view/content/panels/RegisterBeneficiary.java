@@ -2,12 +2,12 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
@@ -24,6 +24,19 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txa_affectation.setWrapStyleWord(true);
         txa_crossing.setLineWrap(true);
         txa_crossing.setWrapStyleWord(true);
+
+        cmb_status.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+                if (value instanceof ReportStatus) {
+                    setText(((ReportStatus) value).getValue());
+                }
+
+                return this;
+            }
+        });
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -445,7 +458,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return cbo_maritalStatus;
     }
 
-    public JComboBox<String> getCbo_municipality() {
+    public JComboBox<Municipalities> getCbo_municipality() {
         return cbo_municipality;
     }
 
@@ -505,7 +518,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_register;
     private javax.swing.JComboBox<Department> cbo_department;
     private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
-    private javax.swing.JComboBox<String> cbo_municipality;
+    private javax.swing.JComboBox<Municipalities> cbo_municipality;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
