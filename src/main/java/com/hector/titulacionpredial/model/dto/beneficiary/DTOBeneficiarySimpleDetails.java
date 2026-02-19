@@ -130,7 +130,7 @@ public class DTOBeneficiarySimpleDetails {
         public DTOBeneficiarySimpleDetails build() {
             return new DTOBeneficiarySimpleDetails(this);
         }
-        
+
     }
 
 }
