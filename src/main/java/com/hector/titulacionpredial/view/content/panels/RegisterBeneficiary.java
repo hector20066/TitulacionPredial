@@ -17,21 +17,47 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     public RegisterBeneficiary() {
         initComponents();
-        
+
         jscp_info.getVerticalScrollBar().setUnitIncrement(15);
-        
+
         txa_affectation.setLineWrap(true);
         txa_affectation.setWrapStyleWord(true);
         txa_crossing.setLineWrap(true);
         txa_crossing.setWrapStyleWord(true);
 
-        cmb_status.setRenderer(new DefaultListCellRenderer() {
+        cbo_department.setRenderer(new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-                if (value instanceof ReportStatus) {
-                    setText(((ReportStatus) value).getValue());
+                if (value instanceof Department) {
+                    setText(((Department) value).getValue());
+                }
+
+                return this;
+            }
+        });
+
+        cbo_maritalStatus.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+                if (value instanceof MaritalStatus) {
+                    setText(((MaritalStatus) value).getValue());
+                }
+
+                return this;
+            }
+        });
+
+        cbo_municipality.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+                if (value instanceof Municipalities) {
+                    setText(((Municipalities) value).getValue());
                 }
 
                 return this;
@@ -437,15 +463,15 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
-    
+
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
-    
+
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
-    
+
     public ButtonAction getBtn_register() {
         return btn_register;
     }
