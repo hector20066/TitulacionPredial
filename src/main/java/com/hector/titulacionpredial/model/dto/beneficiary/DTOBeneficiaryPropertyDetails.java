@@ -4,16 +4,16 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  *
  * @author hectoracevedo
  */
-public class DTOBeneficiarySimpleDetails {
-
+public class DTOBeneficiaryPropertyDetails {
+    //DTO para consulta en Property utilizando JOIN
     private String fullName;
     private int code;
 
-    public DTOBeneficiarySimpleDetails() {
+    public DTOBeneficiaryPropertyDetails() {
 
     }
 
-    public DTOBeneficiarySimpleDetails(String fullName, int code) {
+    public DTOBeneficiaryPropertyDetails(String fullName, int code) {
         this.fullName = fullName;
         this.code = code;
     }
