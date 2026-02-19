@@ -4,6 +4,8 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 
@@ -13,14 +15,18 @@ import javax.swing.*;
  *
  * @author hectoracevedo
  */
-public class ControllerRegisterBeneficiary {
+public class ControllerRegisterBeneficiary implements Observer {
 
     private final RegisterBeneficiary registerBeneficiary;
+    private final Subject subject;
 
     private DTOSpouse dtoSpouse;
 
-    public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
+    public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary, Subject subject) {
         this.registerBeneficiary = registerBeneficiary;
+        this.subject = subject;
+
+        this.subject.register(this);
 
         connectEvents();
     }
@@ -29,6 +35,11 @@ public class ControllerRegisterBeneficiary {
         registerBeneficiary.setControllerRegister(e -> registerBeneficiary());
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
+    }
+
+    @Override
+    public void update() {
+
     }
 
     private void registerBeneficiary() {

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
@@ -15,12 +17,16 @@ import java.awt.event.MouseEvent;
  *
  * @author hectoracevedo
  */
-public class ControllerViewBeneficiaries {
+public class ControllerViewBeneficiaries implements Observer {
 
     private final ViewBeneficiaries viewBeneficiaries;
+    private final Subject subject;
 
-    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
+    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, Subject subject) {
         this.viewBeneficiaries = viewBeneficiaries;
+        this.subject = subject;
+
+        this.subject.register(this);
 
         connectEvents();
     }
@@ -31,6 +37,11 @@ public class ControllerViewBeneficiaries {
         viewBeneficiaries.setControllerDelete(e -> deleteBeneficiary());
         documentListeners();
         listenerSearch();
+    }
+
+    @Override
+    public void update() {
+
     }
 
     private void showDetails() {

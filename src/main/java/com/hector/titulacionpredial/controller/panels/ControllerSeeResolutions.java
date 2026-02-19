@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
@@ -14,12 +16,16 @@ import java.awt.event.MouseEvent;
  *
  * @author hectoracevedo
  */
-public class ControllerSeeResolutions {
+public class ControllerSeeResolutions implements Observer {
 
     private final SeeResolutions seeResolutions;
+    private final Subject subject;
 
-    public ControllerSeeResolutions(SeeResolutions seeResolutions) {
+    public ControllerSeeResolutions(SeeResolutions seeResolutions, Subject subject) {
         this.seeResolutions = seeResolutions;
+        this.subject = subject;
+
+        this.subject.register(this);
 
         connectEvents();
     }
@@ -29,6 +35,11 @@ public class ControllerSeeResolutions {
         seeResolutions.setControllerSearch(e -> searchResolution());
         documentListeners();
         listenerSearch();
+    }
+
+    @Override
+    public void update() {
+
     }
 
     private void modify() {

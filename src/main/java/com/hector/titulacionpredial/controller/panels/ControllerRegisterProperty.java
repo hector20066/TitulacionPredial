@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 
 import java.awt.*;
@@ -11,9 +12,11 @@ import java.awt.*;
 public class ControllerRegisterProperty {
 
     private final RegisterProperty registerProperty;
+    private final Subject subject;
 
-    public ControllerRegisterProperty(RegisterProperty registerProperty) {
+    public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject) {
         this.registerProperty = registerProperty;
+        this.subject = subject;
 
         connectEvents();
     }

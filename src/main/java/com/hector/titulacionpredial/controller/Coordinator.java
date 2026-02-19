@@ -2,6 +2,7 @@ package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
 import com.hector.titulacionpredial.controller.panels.*;
+import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
@@ -11,6 +12,9 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * @author hectoracevedo
  */
 public class Coordinator {
+
+    // Observer
+    private ConcreteSubject subject = ConcreteSubject.getInstance();
 
     // Views
     private Content content;
@@ -38,6 +42,7 @@ public class Coordinator {
     public void startApp() {
         startView();
         startDrivers();
+        subject.notifyObservers();
 
         java.awt.EventQueue.invokeLater(() -> {
             content.setVisible(true);
@@ -73,14 +78,14 @@ public class Coordinator {
                 .withViewAbout(about)
                 .build();
 
-        controllerDashboard = new ControllerDashboard(dashboard);
-        controllerGenerateResolution = new ControllerGenerateResolution(generateResolution);
-        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary);
-        controllerRegisterProperty = new ControllerRegisterProperty(registerProperty);
-        controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution);
-        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions);
+        controllerDashboard = new ControllerDashboard(dashboard, subject);
+        controllerGenerateResolution = new ControllerGenerateResolution(generateResolution, subject);
+        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, subject);
+        controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
+        controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
+        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, subject);
         controllerSettings = new ControllerSettings(settings);
-        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries);
+        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, subject);
     }
 
 }

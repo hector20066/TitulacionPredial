@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 /**
@@ -9,9 +10,11 @@ import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 public class ControllerGenerateResolution {
 
     private final GenerateResolution generateResolution;
+    private final Subject subject;
 
-    public ControllerGenerateResolution(GenerateResolution generateResolution) {
+    public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject) {
         this.generateResolution = generateResolution;
+        this.subject = subject;
 
         connectEvents();
     }
