@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -29,34 +30,61 @@ public class DAOSpouseImpl implements DAOSpouse {
 
     @Override
     public void add(DTOSpouse dto) throws Exception {
-        String sql = "";
+        String sql = "INSERT INTO spouse(id, full_name, expedition_location, address, phone, beneficiary_code) VALUES(?, ?, ?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-
+             st.setLong(1, dto.getId());
+             st.setString(2, dto.getFullName());
+             st.setString(3, dto.getExpeditionLocation());
+             st.setString(4, dto.getAddress());
+             st.setLong(5, dto.getPhone());
+             st.setInt(6, dto.getBeneficiaryCode());
+             st.executeUpdate();
         }
     }
 
     @Override
-    public DTOSpouse findByCode(int code) throws Exception {
-        String sql = "";
+    public DTOSpouse findByCode(int id) throws Exception {
+        String sql = "SELECT id, full_name, expedition_location, address, phone, beneficiary_code FROM spouse WHERE id = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
+             st.setLong(1, id);
 
+             return createDTO(st);
         }
-
-        return null;
     }
 
     @Override
-    public void delete(int code) throws Exception {
-        String sql = "";
+    public void delete(int id) throws Exception {
+        String sql = "DELETE FROM spouse WHERE id = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-
+             st.setLong(1, id);
         }
+    }
+
+    private DTOSpouse createDTO(PreparedStatement st) throws Exception {
+        try(ResultSet rs = st.executeQuery()) {
+            if(!rs.next()) {
+                return null;
+            }
+
+            DTOSpouse dto = new DTOSpouse();
+            executeQuery(dto, rs);
+            return dto;
+        }
+    }
+
+    private void executeQuery(DTOSpouse dto, ResultSet rs) throws Exception {
+        dto.setId(rs.getLong("id"));
+        dto.setFullName(rs.getString("full_name"));
+        dto.setExpeditionLocation(rs.getString("expedition_location"));
+        dto.setAddress(rs.getString("address"));
+        dto.setPhone(rs.getLong("phone"));
+        dto.setBeneficiaryCode(rs.getInt("beneficiary_code"));
     }
 
 }
