@@ -15,7 +15,6 @@ import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 
 import javax.swing.*;
-import java.sql.SQLException;
 
 /**
  *
@@ -46,6 +45,7 @@ public class ControllerRegisterBeneficiary implements Observer {
         registerBeneficiary.setControllerRegister(e -> registerBeneficiary());
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
+        registerBeneficiary.setControllerCbx_affectation(e -> affectationSelected());
     }
 
     @Override
@@ -71,8 +71,8 @@ public class ControllerRegisterBeneficiary implements Observer {
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
             String code = registerBeneficiary.getTxt_followingCode().getText().trim();
 
-            if (isInvalidData(name, lastName, id, phone, expeditionLocation, neighborhood, address, cadastralReference, publication, crossing, affectation)) {
-                return;
+            if (isInvalidData(name, lastName, id, phone, expeditionLocation, neighborhood, address, cadastralReference, publication, crossing)) {
+                throw new Exception("Información invalida, verifique la información");
             }
 
             String fullName = name + " " + lastName;
@@ -84,12 +84,12 @@ public class ControllerRegisterBeneficiary implements Observer {
             prepareUI();
             doInBackGround(fullName, codeInt, idLong, phoneLong, department, municipality, maritalStatus, expeditionLocation, neighborhood, address, cadastralReferenceLong, publication, crossing, affectation);
         } catch (Exception e) {
-
+            MessageUtils.errorMessage("Ha ocurrido un error al obtener la informacion.\nError: " + e.getMessage(), registerBeneficiary);
         }
     }
 
-    private boolean isInvalidData(String name, String lastName, String id, String phone, String expeditionLocation, String neighborhood, String address, String cadastralReference, String publication, String crossing, String affectation) {
-        return name.isBlank() || lastName.isBlank() || id.isBlank() || phone.isBlank() || expeditionLocation.isBlank() || neighborhood.isBlank() || address.isBlank() || cadastralReference.isBlank() || publication.isBlank() || crossing.isBlank() || affectation.isBlank();
+    private boolean isInvalidData(String name, String lastName, String id, String phone, String expeditionLocation, String neighborhood, String address, String cadastralReference, String publication, String crossing) {
+        return name.isBlank() || lastName.isBlank() || id.isBlank() || phone.isBlank() || expeditionLocation.isBlank() || neighborhood.isBlank() || address.isBlank() || cadastralReference.isBlank() || publication.isBlank() || crossing.isBlank();
     }
 
     private void prepareUI() {
@@ -104,15 +104,15 @@ public class ControllerRegisterBeneficiary implements Observer {
                     throw new Exception("Ya existe un usuario con este numero de cedula");
                 }
 
+                daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus, affectation, phone, crossing, publication, neighborhood, expeditionLocation);
+
                 if (maritalStatus == MaritalStatus.CASADO || maritalStatus == MaritalStatus.UNION_LIBRE) {
                     registerSpouse(code);
                 }
 
-                daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus, affectation, phone, crossing, publication, neighborhood, expeditionLocation);
-
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("No se ha podido registrar el usuario.\nError: " + e.getMessage(), registerBeneficiary));
             }
         }).start();
     }
@@ -127,12 +127,27 @@ public class ControllerRegisterBeneficiary implements Observer {
 
     private void runInvokeLater() {
         resetUI();
-        MessageUtils.informationMessage("Se ha registrado la informacion del beneficiario en la base de datos", registerBeneficiary);
+        MessageUtils.informationMessage("Se ha registrado la información del beneficiario en la base de datos", registerBeneficiary);
+        subject.notifyObservers();
     }
 
     private void resetUI() {
         registerBeneficiary.getBtn_register().setEnabled(true);
         registerBeneficiary.getBtn_register().setText("AGREGAR BENEFICIARIO");
+        registerBeneficiary.getTxt_name().setText("");
+        registerBeneficiary.getTxt_lastName().setText("");
+        registerBeneficiary.getTxt_id().setText("");
+        registerBeneficiary.getTxt_phone().setText("");
+        registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
+        registerBeneficiary.getTxt_expeditionLocation().setText("");
+        registerBeneficiary.getCbo_department().getSelectedItem();
+        registerBeneficiary.getCbo_municipality().getSelectedItem();
+        registerBeneficiary.getTxt_neighborhood().setText("");
+        registerBeneficiary.getTxt_address().setText("");
+        registerBeneficiary.getTxt_cadastralReference().setText("");
+        registerBeneficiary.getTxt_publication().setText("");
+        registerBeneficiary.getTxa_crossing().setText("");
+        registerBeneficiary.getTxa_affectation().setText("");
     }
 
     private void selectDepartment() {
@@ -151,25 +166,25 @@ public class ControllerRegisterBeneficiary implements Observer {
     }
 
     private void showSpouseDialog() {
-        try {
-            MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
+        MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
-            if (selected == MaritalStatus.CASADO || selected == MaritalStatus.UNION_LIBRE) {
-                java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
+        if (selected == MaritalStatus.CASADO || selected == MaritalStatus.UNION_LIBRE) {
+            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
 
-                SpouseData dialog = new SpouseData(parentFrame, true);
-                dialog.setLocationRelativeTo(registerBeneficiary);
-                dialog.setVisible(true);
+            SpouseData dialog = new SpouseData(parentFrame, true);
+            dialog.setLocationRelativeTo(registerBeneficiary);
+            dialog.setVisible(true);
 
-                if (dialog.isConfirmed()) {
-                    this.dtoSpouse = dialog.getSpouse();
-                }
-            } else {
-                this.dtoSpouse = null;
+            if (dialog.isConfirmed()) {
+                this.dtoSpouse = dialog.getSpouse();
             }
-        } catch (Exception e) {
-
+        } else {
+            this.dtoSpouse = null;
         }
+    }
+
+    private void affectationSelected() {
+        registerBeneficiary.getTxa_affectation().setEditable(registerBeneficiary.getCbx_affectation().isSelected());
     }
 
 }
