@@ -259,14 +259,13 @@ public class SpouseData extends javax.swing.JDialog {
             return null;
         }
 
-        /*return new DTOSpouse.Builder()
+        return new DTOSpouse.Builder()
                 .fullName(txt_name.getText().trim() + " " + txt_lastName.getText().trim())
                 .id(Long.parseLong(txt_id.getText().trim()))
                 .expeditionLocation(txt_expeditionLocation.getText().trim())
                 .address(txt_address.getText().trim())
                 .phone(Long.parseLong(txt_phone.getText().trim()))
-                .build();*/
-        return null;
+                .build();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
