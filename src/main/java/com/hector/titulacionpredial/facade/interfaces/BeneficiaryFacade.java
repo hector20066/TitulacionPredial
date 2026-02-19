@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails>, IRemovable, ICountable {
 
-    void add(long id, String fullName, Department department, Municipalities municipality, String address, long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation, int propertyCode) throws Exception;
+    void add(long id, String fullName, Department department, Municipalities municipality, String address, long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation) throws Exception;
     DTOBeneficiarySimpleDetails findByCode(int code) throws Exception;
     DTOBeneficiarySimpleDetails findById(long id) throws Exception;
     DTOBeneficiarySimpleDetails findByName(String fullName) throws Exception;

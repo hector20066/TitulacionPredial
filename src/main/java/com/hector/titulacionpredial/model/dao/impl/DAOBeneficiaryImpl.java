@@ -36,7 +36,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location, property_code) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -59,7 +59,6 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         st.setString(12, dto.getPublication());
         st.setString(13, dto.getNeighborhood());
         st.setString(14, dto.getExpeditionLocation());
-        st.setInt(15, dto.getPropertyCode());
     }
 
     @Override

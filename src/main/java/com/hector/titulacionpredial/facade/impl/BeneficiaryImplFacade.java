@@ -23,7 +23,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public void add(long id, String fullName, Department department, Municipalities municipality, String address, long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation, int propertyCode) throws Exception {
+    public void add(long id, String fullName, Department department, Municipalities municipality, String address, long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, String expeditionLocation) throws Exception {
         DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
                 .id(id)
                 .fullName(fullName)
@@ -38,7 +38,6 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
                 .publication(publication)
                 .neighborhood(neighborhood)
                 .expeditionLocation(expeditionLocation)
-                .propertyCode(propertyCode)
                 .build();
 
         daoBeneficiary.add(dto);
