@@ -2,7 +2,6 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
@@ -42,12 +41,12 @@ public class DAOResolutionImpl implements DAOResolution {
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, dto.getResolutionNumber());
              st.setDate(2, Date.valueOf(dto.getNotification()));
-             st.setDate(4, Date.valueOf(dto.getExecutory()));
-             st.setString(5, dto.getFmi());
-             st.setString(6, dto.getAct());
-             st.setString(7, dto.getPublicWriting());
-             st.setString(8, dto.getNotary());
-             st.setInt(9, dto.getPropertyCode());
+             st.setDate(3, Date.valueOf(dto.getExecutory()));
+             st.setString(4, dto.getFmi());
+             st.setString(5, dto.getAct());
+             st.setString(6, dto.getPublicWriting());
+             st.setString(7, dto.getNotary());
+             st.setInt(8, dto.getPropertyCode());
              st.executeUpdate();
         }
     }

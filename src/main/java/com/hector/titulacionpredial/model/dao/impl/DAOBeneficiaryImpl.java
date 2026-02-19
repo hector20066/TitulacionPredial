@@ -36,7 +36,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -48,17 +48,17 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     private void statementDetails(PreparedStatement st, DTOBeneficiaryCreate dto) throws Exception {
         st.setLong(1, dto.getId());
         st.setString(2, dto.getFullName());
-        st.setString(4, String.valueOf(dto.getDepartment()));
-        st.setString(5, String.valueOf(dto.getMunicipality()));
-        st.setString(6, dto.getAddress());
-        st.setLong(7, dto.getCadastralReference());
-        st.setString(8, String.valueOf(dto.getMaritalStatus()));
-        st.setString(9, dto.getAffectation());
-        st.setLong(10, dto.getPhone());
-        st.setString(11, dto.getCrossing());
-        st.setString(12, dto.getPublication());
-        st.setString(13, dto.getNeighborhood());
-        st.setString(14, dto.getExpeditionLocation());
+        st.setString(3, String.valueOf(dto.getDepartment()));
+        st.setString(4, String.valueOf(dto.getMunicipality()));
+        st.setString(5, dto.getAddress());
+        st.setLong(6, dto.getCadastralReference());
+        st.setString(7, String.valueOf(dto.getMaritalStatus()));
+        st.setString(8, dto.getAffectation());
+        st.setLong(9, dto.getPhone());
+        st.setString(10, dto.getCrossing());
+        st.setString(11, dto.getPublication());
+        st.setString(12, dto.getNeighborhood());
+        st.setString(13, dto.getExpeditionLocation());
     }
 
     @Override
