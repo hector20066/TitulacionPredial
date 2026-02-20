@@ -179,6 +179,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
         DTOPropertyDetails property = new DTOPropertyDetails();
+        property.setPropertyCode(rs.getInt("property_code"));
         property.setCadastralId(rs.getString("cadastral_id"));
         property.setArea(rs.getDouble("area"));
 

@@ -50,7 +50,7 @@ public class ControllerRegisterBeneficiary implements Observer {
 
     @Override
     public void update() {
-
+        
     }
 
     private void registerBeneficiary() {
@@ -134,20 +134,7 @@ public class ControllerRegisterBeneficiary implements Observer {
     private void resetUI() {
         registerBeneficiary.getBtn_register().setEnabled(true);
         registerBeneficiary.getBtn_register().setText("AGREGAR BENEFICIARIO");
-        registerBeneficiary.getTxt_name().setText("");
-        registerBeneficiary.getTxt_lastName().setText("");
-        registerBeneficiary.getTxt_id().setText("");
-        registerBeneficiary.getTxt_phone().setText("");
-        registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
-        registerBeneficiary.getTxt_expeditionLocation().setText("");
-        registerBeneficiary.getCbo_department().getSelectedItem();
-        registerBeneficiary.getCbo_municipality().getSelectedItem();
-        registerBeneficiary.getTxt_neighborhood().setText("");
-        registerBeneficiary.getTxt_address().setText("");
-        registerBeneficiary.getTxt_cadastralReference().setText("");
-        registerBeneficiary.getTxt_publication().setText("");
-        registerBeneficiary.getTxa_crossing().setText("");
-        registerBeneficiary.getTxa_affectation().setText("");
+        registerBeneficiary.clearFields();
     }
 
     private void selectDepartment() {

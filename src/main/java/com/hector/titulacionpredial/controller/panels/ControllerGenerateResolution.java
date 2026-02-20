@@ -50,7 +50,7 @@ public class ControllerGenerateResolution {
             Date notification = (Date) generateResolution.getFtx_notification().getValue();
             String fmi = generateResolution.getTxt_fmi().getText().trim();
             String notary = generateResolution.getTxt_note().getText().trim();
-            String propertyCode = generateResolution.getTxt_idBeneficiary().getText().trim();
+            String propertyCode = generateResolution.getTxt_propertyCode().getText().trim();
 
             if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
                 throw new Exception("Debe ingresar toda la información solicitada");

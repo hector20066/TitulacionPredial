@@ -6,6 +6,7 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOProperty {
 
+    private int propertyCode;
     private String cadastralId;
     private Double area;
 
@@ -13,9 +14,14 @@ public class DTOProperty {
 
     }
 
-    public DTOProperty(String cadastralId, Double area) {
+    public DTOProperty(int propertyCode, String cadastralId, Double area) {
+        this.propertyCode = propertyCode;
         this.cadastralId = cadastralId;
         this.area = area;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public void setCadastralId(String cadastralId) {
@@ -24,6 +30,10 @@ public class DTOProperty {
 
     public void setArea(Double area) {
         this.area = area;
+    }
+
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
     public String getCadastralId() {

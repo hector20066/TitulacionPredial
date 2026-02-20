@@ -567,7 +567,20 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }
     
     public void clearFields() {
-        
+        txt_name.setText("");
+        txt_lastName.setText("");
+        txt_id.setText("");
+        txt_phone.setText("");
+        cbo_maritalStatus.getSelectedItem();
+        txt_expeditionLocation.setText("");
+        cbo_department.getSelectedItem();
+        cbo_municipality.getSelectedItem();
+        txt_neighborhood.setText("");
+        txt_address.setText("");
+        txt_cadastralReference.setText("");
+        txt_publication.setText("");
+        txa_crossing.setText("");
+        txa_affectation.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

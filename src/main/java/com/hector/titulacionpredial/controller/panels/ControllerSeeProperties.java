@@ -56,6 +56,7 @@ public class ControllerSeeProperties implements Observer {
 
     private void generateResolution() {
         try {
+
             NavigatorUtils.showForms(generateResolution);
         } catch (Exception e) {
 

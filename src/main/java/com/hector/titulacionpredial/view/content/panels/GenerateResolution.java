@@ -90,6 +90,8 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_distance4 = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         txt_hillside4 = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        txt_propertyCode = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_numResolution = new javax.swing.JTextField();
@@ -335,6 +337,15 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_hillside4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel38.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel38.setText("Cogigo de la propiedad:");
+
+        txt_propertyCode.setEditable(false);
+        txt_propertyCode.setBackground(new java.awt.Color(255, 255, 255));
+        txt_propertyCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_propertyCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -440,9 +451,16 @@ public class GenerateResolution extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(42, 42, 42))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_propertyCode)))
+                .addGap(501, 501, 501))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,7 +487,11 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel19)
@@ -543,7 +565,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         scroll2.setViewportView(jPanel3);
@@ -759,6 +781,10 @@ public class GenerateResolution extends javax.swing.JPanel {
         return ftx_notification;
     }
 
+    public JTextField getTxt_propertyCode() {
+        return txt_propertyCode;
+    }
+
     public JTextField getTxt_addressBeneficiary() {
         return txt_addressBeneficiary;
     }
@@ -902,6 +928,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -938,6 +965,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_northCoordinate4;
     private javax.swing.JTextField txt_note;
     private javax.swing.JTextField txt_numResolution;
+    private javax.swing.JTextField txt_propertyCode;
     private javax.swing.JTextField txt_publicWriting;
     // End of variables declaration//GEN-END:variables
 }

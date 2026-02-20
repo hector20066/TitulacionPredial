@@ -151,29 +151,7 @@ public class ControllerRegisterProperty {
     private void resetUI() {
         registerProperty.getBtn_register().setText("REGISTRAR PREDIO");
         registerProperty.getBtn_register().setEnabled(true);
-        registerProperty.getTxt_cadastralId().setText("");
-        registerProperty.getTxt_area().setText("");
-        registerProperty.getTxt_beneficiaryCode().setText("");
-
-        registerProperty.getTxt_northCoordinate1().setText("");
-        registerProperty.getTxt_eastCoordinate1().setText("");
-        registerProperty.getTxt_distance1().setText("");
-        registerProperty.getTxt_hillside1().setText("");
-
-        registerProperty.getTxt_northCoordinate2().setText("");
-        registerProperty.getTxt_eastCoordinate2().setText("");
-        registerProperty.getTxt_distance2().setText("");
-        registerProperty.getTxt_hillside2().setText("");
-
-        registerProperty.getTxt_northCoordinate3().setText("");
-        registerProperty.getTxt_eastCoordinate3().setText("");
-        registerProperty.getTxt_distance3().setText("");
-        registerProperty.getTxt_hillside3().setText("");
-
-        registerProperty.getTxt_northCoordinate4().setText("");
-        registerProperty.getTxt_eastCoordinate4().setText("");
-        registerProperty.getTxt_distance4().setText("");
-        registerProperty.getTxt_hillside4().setText("");
+        registerProperty.clearFields();
     }
 
     private void actionAfter() {

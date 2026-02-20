@@ -22,8 +22,8 @@ public class DTOPropertyDetails extends DTOProperty {
         this.points = new ArrayList<>();
     }
 
-    public DTOPropertyDetails(String cadastralId, Double area, List<DTOBeneficiaryPropertyDetails> beneficiaries, List<DTOPointDetails> points) {
-        super(cadastralId, area);
+    public DTOPropertyDetails(int propertyCode, String cadastralId, Double area, List<DTOBeneficiaryPropertyDetails> beneficiaries, List<DTOPointDetails> points) {
+        super(propertyCode, cadastralId, area);
         this.beneficiaries = beneficiaries;
         this.points = points;
     }

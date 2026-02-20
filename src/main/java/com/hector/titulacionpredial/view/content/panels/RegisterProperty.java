@@ -822,7 +822,25 @@ public class RegisterProperty extends javax.swing.JPanel {
     }
     
     public void clearFields() {
-        
+        txt_cadastralId.setText("");
+        txt_area.setText("");
+        txt_beneficiaryCode.setText("");
+        txt_northCoordinate1.setText("");
+        txt_eastCoordinate1.setText("");
+        txt_distance1.setText("");
+        txt_hillside1.setText("");
+        txt_northCoordinate2.setText("");
+        txt_eastCoordinate2.setText("");
+        txt_distance2.setText("");
+        txt_hillside2.setText("");
+        txt_northCoordinate3.setText("");
+        txt_eastCoordinate3.setText("");
+        txt_distance3.setText("");
+        txt_hillside3.setText("");
+        txt_northCoordinate4.setText("");
+        txt_eastCoordinate4.setText("");
+        txt_distance4.setText("");
+        txt_hillside4.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
