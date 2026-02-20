@@ -30,8 +30,8 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public DTOPropertyDetails findByCode(int code) throws Exception {
-        return daoProperty.findByCode(code);
+    public DTOPropertyDetails findByCode(String cadastralId) throws Exception {
+        return daoProperty.findByCode(cadastralId);
     }
 
     @Override
