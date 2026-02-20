@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
@@ -27,7 +28,7 @@ public class SeeProperties extends JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {"Codigo Propiedad", "Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Barrio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
+        String[] titles = {"Codigo Propiedad", "Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Municipio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
         model.setColumnIdentifiers(titles);
         jtbl_properties.setModel(model);
         
@@ -254,86 +255,82 @@ public class SeeProperties extends JPanel {
         return txt_search;
     }
 
-    public void loadData(List<DTOPropertyDetails> dto) {
-        model.setRowCount(0);
+    public void loadData(DTOPropertyDetails dto) {
+        int propertyCode = dto.getPropertyCode();
+        StringBuilder beneficiaries = new StringBuilder();
+        StringBuilder idBeneficiaries = new StringBuilder();
 
-        dto.forEach(details -> {
-            int propertyCode = details.getPropertyCode();
-            StringBuilder beneficiaries = new StringBuilder();
-            StringBuilder idBeneficiaries = new StringBuilder();
+        dto.getBeneficiaries().forEach(beneficiary -> {
+            beneficiaries.append(beneficiary.getFullName()).append(" - ");
+            idBeneficiaries.append(beneficiary.getId()).append(" - ");
+        });
 
-            details.getBeneficiaries().forEach(beneficiary -> {
-                beneficiaries.append(beneficiary.getFullName()).append(" - ");
-                idBeneficiaries.append(beneficiary.getId()).append(" - ");
-            });
+        String beneficiariesName = beneficiaries.toString();
+        String addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
+        String neighborhood = dto.getBeneficiaries().getFirst().getNeighborhood();
+        String beneficiaryId = idBeneficiaries.toString();
 
-            String beneficiariesName = beneficiaries.toString();
-            String addressBeneficiary = details.getBeneficiaries().getFirst().getAddress();
-            String neighborhood = details.getBeneficiaries().getFirst().getNeighborhood();
-            String beneficiaryId = idBeneficiaries.toString();
+        long resolutionNumber = dto.getNumResolution();
+        LocalDate notification = dto.getNotification();
+        LocalDate executory = dto.getExecutory();
+        String fmi = dto.getFmi();
+        String act = dto.getAct();
+        String publicWriting = dto.getPublicWriting();
+        String notary = dto.getNotary();
+        String cadastralReference = dto.getCadastralId();
+        double area = dto.getArea();
 
-            String resolutionNumber = "";
-            String notification = "";
-            String executory = "";
-            String fmi = "";
-            String act = "";
-            String publicWriting = "";
-            String notary = "";
-            String cadastralReference = details.getCadastralId();
-            double area = details.getArea();
+        double northCoordinate1 = 0;
+        double eastCoordinate1 = 0;
+        double distance1 = 0;
+        String hillside1 = "";
 
-            double northCoordinate1 = 0;
-            double eastCoordinate1 = 0;
-            double distance1 = 0;
-            String hillside1 = "";
+        double northCoordinate2 = 0;
+        double eastCoordinate2 = 0;
+        double distance2 = 0;
+        String hillside2 = "";
 
-            double northCoordinate2 = 0;
-            double eastCoordinate2 = 0;
-            double distance2 = 0;
-            String hillside2 = "";
+        double northCoordinate3 = 0;
+        double eastCoordinate3 = 0;
+        double distance3 = 0;
+        String hillside3 = "";
 
-            double northCoordinate3 = 0;
-            double eastCoordinate3 = 0;
-            double distance3 = 0;
-            String hillside3 = "";
+        double northCoordinate4 = 0;
+        double eastCoordinate4 = 0;
+        double distance4 = 0;
+        String hillside4 = "";
 
-            double northCoordinate4 = 0;
-            double eastCoordinate4 = 0;
-            double distance4 = 0;
-            String hillside4 = "";
-
-            for (DTOPointDetails point : details.getPoints()) {
-                switch(point.getNumberPoint()) {
-                    case 1 -> {
-                        northCoordinate1 = point.getNorthCoordinate();
-                        eastCoordinate1 = point.getEastCoordinate();
-                        distance1 = point.getDistance();
-                        hillside1 = point.getHillside();
-                    }
-                    case 2 -> {
-                        northCoordinate2 = point.getNorthCoordinate();
-                        eastCoordinate2 = point.getEastCoordinate();
-                        distance2 = point.getDistance();
-                        hillside2 = point.getHillside();
-                    }
-                    case 3 -> {
-                        northCoordinate3 = point.getNorthCoordinate();
-                        eastCoordinate3 = point.getEastCoordinate();
-                        distance3 = point.getDistance();
-                        hillside3 = point.getHillside();
-                    }
-                    case 4 -> {
-                        northCoordinate4 = point.getNorthCoordinate();
-                        eastCoordinate4 = point.getEastCoordinate();
-                        distance4 = point.getDistance();
-                        hillside4 = point.getHillside();
-                    }
+        for (DTOPointDetails point : dto.getPoints()) {
+            switch(point.getNumberPoint()) {
+                case 1 -> {
+                    northCoordinate1 = point.getNorthCoordinate();
+                    eastCoordinate1 = point.getEastCoordinate();
+                    distance1 = point.getDistance();
+                    hillside1 = point.getHillside();
+                }
+                case 2 -> {
+                    northCoordinate2 = point.getNorthCoordinate();
+                    eastCoordinate2 = point.getEastCoordinate();
+                    distance2 = point.getDistance();
+                    hillside2 = point.getHillside();
+                }
+                case 3 -> {
+                    northCoordinate3 = point.getNorthCoordinate();
+                    eastCoordinate3 = point.getEastCoordinate();
+                    distance3 = point.getDistance();
+                    hillside3 = point.getHillside();
+                }
+                case 4 -> {
+                    northCoordinate4 = point.getNorthCoordinate();
+                    eastCoordinate4 = point.getEastCoordinate();
+                    distance4 = point.getDistance();
+                    hillside4 = point.getHillside();
                 }
             }
+        }
 
-            Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification, executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, neighborhood, eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2, hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4, distance4, hillside4, area};
-            model.addRow(addData);
-        });
+        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification, executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, neighborhood, eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2, hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4, distance4, hillside4, area};
+        model.addRow(addData);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

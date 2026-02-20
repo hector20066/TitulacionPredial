@@ -97,6 +97,8 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside4 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         txt_propertyCode = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        txt_area = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_numResolution = new javax.swing.JTextField();
@@ -180,7 +182,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel17.setText("Informacion de los puntos");
+        jLabel17.setText("Informacion del Predio");
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(33, 37, 41));
@@ -344,12 +346,21 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel38.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel38.setText("Cogigo de la propiedad:");
+        jLabel38.setText("Codigo de la propiedad:");
 
         txt_propertyCode.setEditable(false);
         txt_propertyCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_propertyCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_propertyCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+
+        jLabel39.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel39.setText("Area:");
+
+        txt_area.setEditable(false);
+        txt_area.setBackground(new java.awt.Color(255, 255, 255));
+        txt_area.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_area.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -456,16 +467,19 @@ public class GenerateResolution extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(42, 42, 42))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel38)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_propertyCode)))
-                .addGap(501, 501, 501))
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,11 +506,11 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel38)
-                            .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
+                            .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39))
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel19)
@@ -515,6 +529,10 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_hillside1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel24)
@@ -570,7 +588,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         scroll2.setViewportView(jPanel3);
@@ -890,7 +908,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_publicWriting;
     }
 
-    public void loadData(String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
+    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
         BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
             txt_idBeneficiary.setText(String.valueOf(beneficiary.getId()));
@@ -919,6 +937,8 @@ public class GenerateResolution extends javax.swing.JPanel {
             txt_eastCoordinate4.setText(point4[1]);
             txt_distance4.setText(point4[2]);
             txt_hillside4.setText(point4[3]);
+            
+            txt_area.setText(String.valueOf(area));
         };
 
         consumer.accept(dtoProperty, dtoBeneficiary);
@@ -964,6 +984,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -977,6 +998,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JScrollPane scroll2;
     private javax.swing.JTextField txt_act;
     private javax.swing.JTextField txt_addressBeneficiary;
+    private javax.swing.JTextField txt_area;
     private javax.swing.JTextField txt_cadastralReference;
     private javax.swing.JTextField txt_distance1;
     private javax.swing.JTextField txt_distance2;
