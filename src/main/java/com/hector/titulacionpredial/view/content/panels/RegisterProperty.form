@@ -58,7 +58,6 @@
                                   <Component id="txt_area" min="-2" pref="264" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace pref="37" max="32767" attributes="0"/>

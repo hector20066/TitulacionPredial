@@ -560,6 +560,14 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return txt_publication;
     }
 
+    public void loadFollowingCode(int code) {
+        txt_followingCode.setText(String.valueOf(code));
+    }
+    
+    public void clearFields() {
+        
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_register;
     private javax.swing.JComboBox<Department> cbo_department;

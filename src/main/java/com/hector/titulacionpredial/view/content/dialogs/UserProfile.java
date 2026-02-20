@@ -53,7 +53,6 @@ public class UserProfile extends javax.swing.JDialog {
                     setVisible(false);
                 }
             }
-
         };
         
         animator = new Animator(200, target);

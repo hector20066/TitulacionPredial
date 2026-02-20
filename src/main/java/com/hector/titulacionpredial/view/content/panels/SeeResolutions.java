@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 import java.awt.Color;
@@ -24,14 +25,14 @@ public class SeeResolutions extends javax.swing.JPanel {
     public SeeResolutions() {
         initComponents();
         
-        String[] titles = {"Codigo", "Num. Resolucion", "Notificacion", "Ejecutoria", "Notaria", "FMI", "Acto", "Esc. Publica"};
+        String[] titles = {"Código", "Num. Resolución", "Notificación", "Ejecutoria", "Notaria", "FMI", "Acto", "Esc. Publica"};
         model.setColumnIdentifiers(titles);
         jtbl_resolutions.setModel(model);
         
         JTableHeader header = jtbl_resolutions.getTableHeader();
         header.setBackground(new Color(187, 222, 251));
         header.setForeground(new Color(0, 18, 25));
-        header.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
     }
 
@@ -185,6 +186,10 @@ public class SeeResolutions extends javax.swing.JPanel {
 
     public JTextField getTxt_search() {
         return txt_search;
+    }
+
+    public void loadData(DTOResolutionDetails dto) {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

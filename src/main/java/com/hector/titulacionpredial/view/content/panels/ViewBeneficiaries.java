@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 import java.awt.Color;
@@ -25,14 +26,14 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     public ViewBeneficiaries() {
         initComponents();
         
-        String[] titles = {"Codigo", "Cedula", "Nombre", "Telefono", "Ref. Catastral", "Municipio", "Direccion"};
+        String[] titles = {"Código", "Cedula", "Nombre", "Teléfono", "Ref. Catastral", "Municipio", "Dirección"};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
         
         JTableHeader header = jtbl_beneficiaries.getTableHeader();
         header.setBackground(new Color(187, 222, 251));
         header.setForeground(new Color(0, 18, 25));
-        header.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
     }
 
@@ -230,6 +231,10 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
 
     public JTextField getTxt_search() {
         return txt_search;
+    }
+
+    public void loadData(DTOBeneficiarySimpleDetails dto) {
+
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

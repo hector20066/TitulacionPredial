@@ -4,6 +4,8 @@
  */
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import java.awt.event.ActionListener;
 import javax.swing.JFormattedTextField;
@@ -46,7 +48,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         txt_idBeneficiary = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txt_addresBeneficiary = new javax.swing.JTextField();
+        txt_addressBeneficiary = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txt_cadastralReference = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -146,10 +148,10 @@ public class GenerateResolution extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(33, 37, 41));
         jLabel14.setText("Direccion:");
 
-        txt_addresBeneficiary.setEditable(false);
-        txt_addresBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
-        txt_addresBeneficiary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_addresBeneficiary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_addressBeneficiary.setEditable(false);
+        txt_addressBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
+        txt_addressBeneficiary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_addressBeneficiary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(33, 37, 41));
@@ -422,7 +424,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                                         .addGap(90, 90, 90)
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_addresBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_addressBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -456,7 +458,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                     .addComponent(jLabel13)
                     .addComponent(txt_idBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(txt_addresBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_addressBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -755,8 +757,8 @@ public class GenerateResolution extends javax.swing.JPanel {
         return ftx_notification;
     }
 
-    public JTextField getTxt_addresBeneficiary() {
-        return txt_addresBeneficiary;
+    public JTextField getTxt_addressBeneficiary() {
+        return txt_addressBeneficiary;
     }
 
     public JTextField getTxt_cadastralReference() {
@@ -855,6 +857,14 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_publicWriting;
     }
 
+    public void loadData(DTOPropertyDetails dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
+        
+    }
+    
+    public void clearFields() {
+        
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_generate;
     private javax.swing.JFormattedTextField ftx_executory;
@@ -902,7 +912,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JScrollPane scroll1;
     private javax.swing.JScrollPane scroll2;
     private javax.swing.JTextField txt_act;
-    private javax.swing.JTextField txt_addresBeneficiary;
+    private javax.swing.JTextField txt_addressBeneficiary;
     private javax.swing.JTextField txt_cadastralReference;
     private javax.swing.JTextField txt_distance1;
     private javax.swing.JTextField txt_distance2;

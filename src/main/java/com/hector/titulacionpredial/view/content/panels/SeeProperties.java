@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 import java.awt.Color;
@@ -25,14 +26,14 @@ public class SeeProperties extends javax.swing.JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {"Nombre", "Cedula", "N. Resolucion", "Notificacion", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Barrio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
+        String[] titles = {"Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Barrio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
         model.setColumnIdentifiers(titles);
         jtbl_properties.setModel(model);
         
         JTableHeader header = jtbl_properties.getTableHeader();
         header.setBackground(new Color(187, 222, 251));
         header.setForeground(new Color(0, 18, 25));
-        header.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
 
         jscp_scrollContent.getHorizontalScrollBar().setUnitIncrement(15);
@@ -245,6 +246,10 @@ public class SeeProperties extends javax.swing.JPanel {
 
     public JTextField getTxt_search() {
         return txt_search;
+    }
+
+    public void loadData(DTOPropertyDetails dto) {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

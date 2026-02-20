@@ -819,6 +819,10 @@ public class RegisterProperty extends javax.swing.JPanel {
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
+    
+    public void clearFields() {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_goPoint2;

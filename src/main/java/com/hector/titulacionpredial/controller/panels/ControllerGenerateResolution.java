@@ -65,7 +65,7 @@ public class ControllerGenerateResolution {
         }
     }
 
-    private JDialog createLoadDialog(String mensaje) {
+    private JDialog createLoadDialog() {
         Window parentWindow = SwingUtilities.getWindowAncestor(generateResolution);
 
         JDialog dialog = new JDialog(parentWindow, "Procesando", Dialog.ModalityType.APPLICATION_MODAL);
@@ -78,9 +78,10 @@ public class ControllerGenerateResolution {
                 BorderFactory.createLineBorder(new Color(180, 180, 180), 1),
                 BorderFactory.createEmptyBorder(15, 20, 15, 20)
         ));
+
         panel.setBackground(Color.WHITE);
 
-        JLabel label = new JLabel(mensaje);
+        JLabel label = new JLabel("Generando documento, por favor espere...");
         label.setFont(new Font("SansSerif", Font.PLAIN, 14));
         label.setForeground(new Color(60, 60, 60));
         label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,8 +102,8 @@ public class ControllerGenerateResolution {
         return dialog;
     }
 
-    private void executeWithDialog(String message, Callable<Void> task) {
-        JDialog dialog = createLoadDialog(message);
+    private void executeWithDialog(Callable<Void> task) {
+        JDialog dialog = createLoadDialog();
 
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
@@ -131,7 +132,7 @@ public class ControllerGenerateResolution {
     }
 
     private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting, LocalDate notification, String fmi, String notary, int propertyCode) {
-        executeWithDialog("Generando documento, por favor espere...", () -> {
+        executeWithDialog(() -> {
             if (daoResolution.findByCode((int) numResolution) != null) {
                 throw new Exception("Ya existe un registro con este numero de resolución en la base de datos");
             }

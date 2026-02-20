@@ -322,7 +322,7 @@
                                                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_addresBeneficiary" min="-2" pref="327" max="-2" attributes="0"/>
+                                                          <Component id="txt_addressBeneficiary" min="-2" pref="327" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" attributes="0">
                                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -368,7 +368,7 @@
                                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txt_idBeneficiary" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_addresBeneficiary" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_addressBeneficiary" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -547,7 +547,7 @@
                             <Property name="text" type="java.lang.String" value="Direccion:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txt_addresBeneficiary">
+                        <Component class="javax.swing.JTextField" name="txt_addressBeneficiary">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
