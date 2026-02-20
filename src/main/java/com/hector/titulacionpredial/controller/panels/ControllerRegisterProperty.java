@@ -1,12 +1,20 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.impl.PointImplFacade;
+import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.facade.interfaces.PointFacade;
+import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
-import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 
+import javax.swing.*;
 import java.awt.*;
-import java.security.spec.ECField;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,10 +24,18 @@ public class ControllerRegisterProperty {
 
     private final RegisterProperty registerProperty;
     private final Subject subject;
+    
+    private final PropertyFacade daoProperty;
+    private final PointFacade daoPoint;
+    private final BeneficiaryFacade daoBeneficiary;
 
     public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject) {
         this.registerProperty = registerProperty;
         this.subject = subject;
+        
+        this.daoProperty = new PropertyImplFacade();
+        this.daoPoint = new PointImplFacade();
+        this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
     }
@@ -41,57 +57,51 @@ public class ControllerRegisterProperty {
             String area = registerProperty.getTxt_area().getText().trim();
             String beneficiaryCode = registerProperty.getTxt_beneficiaryCode().getText().trim().replace("F", "");
 
-            if (cadastralId.isBlank() || area.isBlank() || beneficiaryCode.isBlank()) {
-                return;
+            if (cadastralId.isBlank() || area.isBlank()) {
+                throw new Exception("Por favor ingrese toda la información del predio");
             }
 
-            prepareUI();
-            doInBackGround();
-        } catch (Exception e) {
+            if (beneficiaryCode.isBlank()) {
+                throw new Exception("Por favor ingrese el código del beneficiario");
+            }
 
+            List<PointData> points = extractPoints();
+
+            prepareUI();
+            doInBackGround(cadastralId, Double.parseDouble(area), Integer.parseInt(beneficiaryCode), points);
+        } catch (Exception e) {
+            MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + e.getMessage(), registerProperty);
         }
     }
 
-    private void prepareUI() {
+    private List<PointData> extractPoints() throws Exception {
+        JTextField[][] fields = {
+                { registerProperty.getTxt_northCoordinate1(), registerProperty.getTxt_eastCoordinate1(), registerProperty.getTxt_distance1(), registerProperty.getTxt_hillside1() },
+                { registerProperty.getTxt_northCoordinate2(), registerProperty.getTxt_eastCoordinate2(), registerProperty.getTxt_distance2(), registerProperty.getTxt_hillside2() },
+                { registerProperty.getTxt_northCoordinate3(), registerProperty.getTxt_eastCoordinate3(), registerProperty.getTxt_distance3(), registerProperty.getTxt_hillside3() },
+                { registerProperty.getTxt_northCoordinate4(), registerProperty.getTxt_eastCoordinate4(), registerProperty.getTxt_distance4(), registerProperty.getTxt_hillside4() },
+        };
 
+        return getPointData(fields);
     }
 
-    private void doInBackGround() {
-        new Thread(() -> {
-            try {
+    private List<PointData> getPointData(JTextField[][] fields) throws Exception {
+        List<PointData> points = new ArrayList<>();
 
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+        for (int i = 0; i < fields.length; i++) {
+            String north = fields[i][0].getText().trim();
+            String east = fields[i][1].getText().trim();
+            String distance = fields[i][2].getText().trim();
+            String hillside = fields[i][3].getText().trim();
+
+            if (invalidPoints(north, east, distance, hillside)) {
+                throw new Exception("Por favor ingrese toda la información del punto " + (i + 1));
             }
-        }).start();
-    }
 
-    private void registerPoint1() {
-        String northCoord1 = registerProperty.getTxt_northCoordinate1().getText().trim();
-        String eastCoord1 = registerProperty.getTxt_eastCoordinate1().getText().trim();
-        String distance1 = registerProperty.getTxt_distance1().getText().trim();
-        String hillside1 = registerProperty.getTxt_hillside1().getText().trim();
-    }
+            points.add(new PointData(i + 1, north, east, distance, hillside));
+        }
 
-    private void registerPoint2() {
-        String northCoord2 = registerProperty.getTxt_northCoordinate2().getText().trim();
-        String eastCoord2 = registerProperty.getTxt_eastCoordinate2().getText().trim();
-        String distance2 = registerProperty.getTxt_distance2().getText().trim();
-        String hillside2 = registerProperty.getTxt_hillside2().getText().trim();
-    }
-
-    private void registerPoint3() {
-        String northCoord3 = registerProperty.getTxt_northCoordinate3().getText().trim();
-        String eastCoord3 = registerProperty.getTxt_eastCoordinate3().getText().trim();
-        String distance3 = registerProperty.getTxt_distance3().getText().trim();
-        String hillside3 = registerProperty.getTxt_hillside3().getText().trim();
-    }
-
-    private void registerPoint4() {
-        String northCoord4 = registerProperty.getTxt_northCoordinate4().getText().trim();
-        String eastCoord4 = registerProperty.getTxt_eastCoordinate4().getText().trim();
-        String distance4 = registerProperty.getTxt_distance4().getText().trim();
-        String hillside4 = registerProperty.getTxt_hillside4().getText().trim();
+        return points;
     }
 
     private boolean invalidPoints(String... info) {
@@ -102,6 +112,68 @@ public class ControllerRegisterProperty {
         }
 
         return false;
+    }
+
+    private void prepareUI() {
+        registerProperty.getBtn_register().setText("Registrando Información...");
+        registerProperty.getBtn_register().setEnabled(false);
+    }
+
+    private void doInBackGround(String cadastralId, double area, int beneficiaryCode, List<PointData> points) {
+        new Thread(() -> {
+            try {
+                int propertyCode = daoProperty.add(cadastralId, area);
+
+                for (PointData p : points) {
+                    daoPoint.add(p.pointNumber(),
+                            Double.parseDouble(p.north()),
+                            Double.parseDouble(p.east()),
+                            Double.parseDouble(p.distance()),
+                            p.hillside(),
+                            propertyCode);
+                }
+
+                daoBeneficiary.modifyProperty(beneficiaryCode, propertyCode);
+
+                SwingUtilities.invokeLater(this::runInvokeLater);
+            } catch (Exception e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al registrar la información.\nError: " + e.getMessage(), registerProperty));
+            }
+        }).start();
+    }
+
+    private void runInvokeLater() {
+        MessageUtils.informationMessage("Se ha registrado la información correctamente", registerProperty);
+        subject.notifyObservers();
+        resetUI();
+    }
+
+    private void resetUI() {
+        registerProperty.getBtn_register().setText("REGISTRAR PREDIO");
+        registerProperty.getBtn_register().setEnabled(true);
+        registerProperty.getTxt_cadastralId().setText("");
+        registerProperty.getTxt_area().setText("");
+        registerProperty.getTxt_beneficiaryCode().setText("");
+
+        registerProperty.getTxt_northCoordinate1().setText("");
+        registerProperty.getTxt_eastCoordinate1().setText("");
+        registerProperty.getTxt_distance1().setText("");
+        registerProperty.getTxt_hillside1().setText("");
+
+        registerProperty.getTxt_northCoordinate2().setText("");
+        registerProperty.getTxt_eastCoordinate2().setText("");
+        registerProperty.getTxt_distance2().setText("");
+        registerProperty.getTxt_hillside2().setText("");
+
+        registerProperty.getTxt_northCoordinate3().setText("");
+        registerProperty.getTxt_eastCoordinate3().setText("");
+        registerProperty.getTxt_distance3().setText("");
+        registerProperty.getTxt_hillside3().setText("");
+
+        registerProperty.getTxt_northCoordinate4().setText("");
+        registerProperty.getTxt_eastCoordinate4().setText("");
+        registerProperty.getTxt_distance4().setText("");
+        registerProperty.getTxt_hillside4().setText("");
     }
 
     private void actionAfter() {
@@ -125,6 +197,10 @@ public class ControllerRegisterProperty {
             int beneficiaryCode = dialog.codeBeneficiarySelected();
             registerProperty.getTxt_beneficiaryCode().setText("F" + beneficiaryCode);
         }
+    }
+
+    private record PointData(int pointNumber, String north, String east, String distance, String hillside) {
+
     }
 
 }
