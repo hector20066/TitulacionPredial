@@ -38,33 +38,33 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_beneficiaryCode" min="-2" pref="306" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="btn_selectBeneficiary" min="-2" pref="195" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_cadastralId" min="-2" pref="305" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_area" min="-2" pref="264" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Component id="jpl_contentPoints" min="-2" pref="988" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txt_beneficiaryCode" min="-2" pref="306" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="btn_selectBeneficiary" min="-2" pref="195" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txt_cadastralId" min="-2" pref="305" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txt_area" min="-2" pref="264" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -127,7 +127,7 @@
               <Font name="SansSerif" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="25" red="21" type="rgb"/>
+              <Color blue="15" green="1c" red="8" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registrar Predio"/>
           </Properties>
@@ -140,7 +140,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder roundedCorners="true">
-                  <Color PropertyName="color" blue="66" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="9b" green="b7" red="8c" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -263,7 +263,7 @@
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_goPoint2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-right.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-right.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -502,14 +502,14 @@
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_goPoint3">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-right.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-right.png"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_returnPoint1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-left.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-left.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -748,14 +748,14 @@
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_returnPoint2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-left.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-left.png"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_goPoint4">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-right.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-right.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -987,7 +987,7 @@
                 <Component class="com.hector.titulacionpredial.view.swing.button.ButtonBadges" name="btn_returnPoint3">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/chevron-left.png"/>
+                      <Image iconType="3" name="/image/circle-chevron-left.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1109,6 +1109,12 @@
         </Container>
         <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_register">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6c" green="91" red="40" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="REGISTRAR PREDIO"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="15" style="1"/>
@@ -1225,7 +1231,7 @@
         <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_selectBeneficiary">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="33" type="rgb"/>
+              <Color blue="b2" green="d5" red="95" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="29" green="25" red="21" type="rgb"/>

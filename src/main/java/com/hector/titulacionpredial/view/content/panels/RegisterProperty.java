@@ -87,11 +87,11 @@ public class RegisterProperty extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel7.setForeground(new java.awt.Color(8, 28, 21));
         jLabel7.setText("Registrar Predio");
 
         jpl_contentPoints.setBackground(new java.awt.Color(255, 255, 255));
-        jpl_contentPoints.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        jpl_contentPoints.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(140, 183, 155), 1, true));
         jpl_contentPoints.setLayout(new java.awt.CardLayout());
 
         jpl_point1.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,7 +100,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
         jLabel5.setText("Punto 1");
 
-        btn_goPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-right.png"))); // NOI18N
+        btn_goPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 37, 41));
@@ -208,9 +208,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
         jLabel6.setText("Punto 2");
 
-        btn_goPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-right.png"))); // NOI18N
+        btn_goPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
 
-        btn_returnPoint1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-left.png"))); // NOI18N
+        btn_returnPoint1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(33, 37, 41));
@@ -323,9 +323,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(33, 37, 41));
         jLabel8.setText("Punto 3");
 
-        btn_returnPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-left.png"))); // NOI18N
+        btn_returnPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
 
-        btn_goPoint4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-right.png"))); // NOI18N
+        btn_goPoint4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(33, 37, 41));
@@ -438,7 +438,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(33, 37, 41));
         jLabel9.setText("Punto 4");
 
-        btn_returnPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chevron-left.png"))); // NOI18N
+        btn_returnPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(33, 37, 41));
@@ -539,6 +539,8 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jpl_contentPoints.add(jpl_point4, "card5");
 
+        btn_register.setBackground(new java.awt.Color(64, 145, 108));
+        btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("REGISTRAR PREDIO");
         btn_register.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -575,7 +577,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        btn_selectBeneficiary.setBackground(new java.awt.Color(51, 204, 255));
+        btn_selectBeneficiary.setBackground(new java.awt.Color(149, 213, 178));
         btn_selectBeneficiary.setForeground(new java.awt.Color(33, 37, 41));
         btn_selectBeneficiary.setText("Buscar Beneficiario");
         btn_selectBeneficiary.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -588,28 +590,27 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_cadastralId, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(37, Short.MAX_VALUE)
                         .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_cadastralId, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(113, 113, 113)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel7))

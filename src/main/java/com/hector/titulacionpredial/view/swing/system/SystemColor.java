@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class SystemColor {
 
-    public static final Color MAIN_COLOR_1 = Color.decode("#8f94fb");
-    public static final Color MAIN_COLOR_2 = Color.decode("#4e54c8");
+    public static final Color MAIN_COLOR_1 = Color.decode("#74c69d");
+    public static final Color MAIN_COLOR_2 = Color.decode("#40916c");
 
 }

@@ -30,8 +30,8 @@ public class SeeResolutions extends javax.swing.JPanel {
         jtbl_resolutions.setModel(model);
         
         JTableHeader header = jtbl_resolutions.getTableHeader();
-        header.setBackground(new Color(187, 222, 251));
-        header.setForeground(new Color(0, 18, 25));
+        header.setBackground(new Color(0x8cb79b));
+        header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
     }
@@ -63,13 +63,14 @@ public class SeeResolutions extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jtbl_resolutions);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Resoluciones");
 
         roundedPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        roundedPanel3.setBorderColor(new java.awt.Color(102, 102, 102));
+        roundedPanel3.setBorderColor(new java.awt.Color(116, 198, 157));
 
         txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setForeground(new java.awt.Color(64, 145, 108));
         txt_search.setText("Buscar");
         txt_search.setBorder(null);
 
@@ -101,6 +102,8 @@ public class SeeResolutions extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btn_modify.setBackground(new java.awt.Color(64, 145, 108));
+        btn_modify.setForeground(new java.awt.Color(255, 255, 255));
         btn_modify.setText("Modificar");
         btn_modify.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_modify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -31,8 +31,8 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jtbl_beneficiaries.setModel(tableModel);
         
         JTableHeader header = jtbl_beneficiaries.getTableHeader();
-        header.setBackground(new Color(187, 222, 251));
-        header.setForeground(new Color(0, 18, 25));
+        header.setBackground(new Color(0x8cb79b));
+        header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
     }
@@ -54,7 +54,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jpl_content.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Beneficiarios");
 
         jtbl_beneficiaries.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,9 +71,10 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jtbl_beneficiaries);
 
         roundedPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        roundedPanel1.setBorderColor(new java.awt.Color(102, 102, 102));
+        roundedPanel1.setBorderColor(new java.awt.Color(116, 198, 157));
 
         txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setForeground(new java.awt.Color(64, 145, 108));
         txt_search.setText("Buscar");
         txt_search.setBorder(null);
 
@@ -105,14 +106,20 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btn_seeProfile.setBackground(new java.awt.Color(64, 145, 108));
+        btn_seeProfile.setForeground(new java.awt.Color(255, 255, 255));
         btn_seeProfile.setText("Ver Informacion Completa");
         btn_seeProfile.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_seeProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_modify.setBackground(new java.awt.Color(149, 213, 178));
+        btn_modify.setForeground(new java.awt.Color(5, 31, 32));
         btn_modify.setText("Modificar");
         btn_modify.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_modify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_delete.setBackground(new java.awt.Color(149, 213, 178));
+        btn_delete.setForeground(new java.awt.Color(5, 31, 32));
         btn_delete.setText("Eliminar");
         btn_delete.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

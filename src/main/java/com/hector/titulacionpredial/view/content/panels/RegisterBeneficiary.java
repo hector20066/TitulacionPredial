@@ -114,7 +114,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Agregar Beneficiario");
 
         jscp_info.setBackground(new java.awt.Color(255, 255, 255));
@@ -409,6 +409,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jscp_info.setViewportView(jPanel2);
 
+        btn_register.setBackground(new java.awt.Color(64, 145, 108));
+        btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("AGREGAR BENEFICIARIO");
         btn_register.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

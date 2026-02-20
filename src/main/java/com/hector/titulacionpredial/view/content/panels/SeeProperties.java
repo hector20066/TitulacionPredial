@@ -31,8 +31,8 @@ public class SeeProperties extends javax.swing.JPanel {
         jtbl_properties.setModel(model);
         
         JTableHeader header = jtbl_properties.getTableHeader();
-        header.setBackground(new Color(187, 222, 251));
-        header.setForeground(new Color(0, 18, 25));
+        header.setBackground(new Color(0x8cb79b));
+        header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
 
@@ -57,9 +57,10 @@ public class SeeProperties extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         roundedPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        roundedPanel3.setBorderColor(new java.awt.Color(102, 102, 102));
+        roundedPanel3.setBorderColor(new java.awt.Color(116, 198, 157));
 
         txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setForeground(new java.awt.Color(64, 145, 108));
         txt_search.setText("Buscar");
         txt_search.setBorder(null);
 
@@ -92,7 +93,7 @@ public class SeeProperties extends javax.swing.JPanel {
         );
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Predios");
 
         jscp_scrollContent.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,15 +127,19 @@ public class SeeProperties extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jscp_scrollContent.setViewportView(jPanel2);
 
+        btn_generate.setBackground(new java.awt.Color(64, 145, 108));
+        btn_generate.setForeground(new java.awt.Color(255, 255, 255));
         btn_generate.setText("Generar Resolucion");
         btn_generate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_delete.setBackground(new java.awt.Color(149, 213, 178));
+        btn_delete.setForeground(new java.awt.Color(5, 31, 32));
         btn_delete.setText("Eliminar");
         btn_delete.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -162,7 +167,7 @@ public class SeeProperties extends javax.swing.JPanel {
                         .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,12 +177,12 @@ public class SeeProperties extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jscp_scrollContent, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jscp_scrollContent, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

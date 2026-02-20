@@ -44,8 +44,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         jtbl_beneficiaries.setModel(model);
         
         JTableHeader header = jtbl_beneficiaries.getTableHeader();
-        header.setBackground(new Color(187, 222, 251));
-        header.setForeground(new Color(0, 18, 25));
+        header.setBackground(new Color(0x8cb79b));
+        header.setForeground(new Color(0x051f20));
         header.setFont(new Font("Segoe UI", Font.BOLD, 12));
         header.setReorderingAllowed(false);
         
@@ -112,14 +112,15 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jtbl_beneficiaries);
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Seleccionar beneficiario");
 
         roundedPanelori.setBackground(new java.awt.Color(255, 255, 255));
-        roundedPanelori.setBorderColor(new java.awt.Color(102, 102, 102));
+        roundedPanelori.setBorderColor(new java.awt.Color(116, 198, 157));
 
         txt_searchori.setBackground(new java.awt.Color(255, 255, 255));
+        txt_searchori.setForeground(new java.awt.Color(64, 145, 108));
         txt_searchori.setText("Buscar");
         txt_searchori.setBorder(null);
 
@@ -151,40 +152,40 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        btn_select.setBackground(new java.awt.Color(64, 145, 108));
         btn_select.setText("Seleccionar");
         btn_select.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_select.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_cancel.setBackground(new java.awt.Color(149, 213, 178));
+        btn_cancel.setForeground(new java.awt.Color(5, 31, 32));
         btn_cancel.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(roundedPanelori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(btn_select, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(roundedPanelori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(roundedPanelori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +193,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,16 +297,13 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_cancel;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchOri;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_select;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbl_beneficiaries;
-    private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanelori;
-    private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_searchori;
     // End of variables declaration//GEN-END:variables
 }

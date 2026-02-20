@@ -87,7 +87,7 @@ public class SpouseData extends javax.swing.JDialog {
         panelShadow1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Datos Del Conyuge");
 
@@ -128,9 +128,12 @@ public class SpouseData extends javax.swing.JDialog {
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        btn_save.setBackground(new java.awt.Color(64, 145, 108));
         btn_save.setText("Guardar");
         btn_save.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_cancel.setBackground(new java.awt.Color(149, 213, 178));
+        btn_cancel.setForeground(new java.awt.Color(5, 31, 32));
         btn_cancel.setText("Cancelar");
         btn_cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 

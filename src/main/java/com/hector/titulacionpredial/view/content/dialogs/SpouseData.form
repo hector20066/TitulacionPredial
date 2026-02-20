@@ -150,7 +150,7 @@
               <Font name="SansSerif" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="25" red="21" type="rgb"/>
+              <Color blue="15" green="1c" red="8" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Datos Del Conyuge"/>
@@ -293,12 +293,21 @@
         </Component>
         <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_save">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6c" green="91" red="40" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
         <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_cancel">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b2" green="d5" red="95" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1f" red="5" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>

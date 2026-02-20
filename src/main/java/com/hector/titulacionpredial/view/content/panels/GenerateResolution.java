@@ -687,9 +687,11 @@ public class GenerateResolution extends javax.swing.JPanel {
         scroll1.setViewportView(jPanel2);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Generar Resolucion");
 
+        btn_generate.setBackground(new java.awt.Color(64, 145, 108));
+        btn_generate.setForeground(new java.awt.Color(255, 255, 255));
         btn_generate.setText("Generar");
         btn_generate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -706,12 +708,12 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addComponent(scroll1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(462, 462, 462)
-                .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -767,7 +767,7 @@
               <Font name="SansSerif" size="18" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="25" red="21" type="rgb"/>
+              <Color blue="15" green="1c" red="8" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Perfil del Beneficiario"/>
           </Properties>
@@ -807,6 +807,9 @@
         </Component>
         <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_exit">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6c" green="91" red="40" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cerrar"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="15" style="1"/>

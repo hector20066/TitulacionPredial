@@ -460,7 +460,7 @@ public class UserProfile extends javax.swing.JDialog {
         scroll.setViewportView(jPanel2);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Perfil del Beneficiario");
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -475,6 +475,7 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_name.setForeground(new java.awt.Color(33, 37, 41));
         jlb_name.setText("Hector Luis Acevedo Contreras");
 
+        btn_exit.setBackground(new java.awt.Color(64, 145, 108));
         btn_exit.setText("Cerrar");
         btn_exit.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
