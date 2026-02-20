@@ -74,7 +74,7 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
         List<DTOResolutionDetails> list = new ArrayList<>();
-        String sql = "SELECT num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution;";
+        String sql = "SELECT num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution ORDER BY code DESC LIMIT 1000;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);

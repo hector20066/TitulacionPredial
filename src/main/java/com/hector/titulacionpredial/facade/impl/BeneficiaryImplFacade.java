@@ -110,4 +110,9 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
         return daoBeneficiary.countRecords();
     }
 
+    @Override
+    public int getLastCode() throws Exception {
+        return daoBeneficiary.getLastCode();
+    }
+
 }

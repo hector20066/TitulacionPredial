@@ -133,7 +133,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public List<DTOBeneficiarySimpleDetails> findByAll() throws Exception {
         List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary;";
+        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary ORDER BY code DESC LIMIT 1000;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
@@ -261,6 +261,22 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                  return 0;
              }
              return rs.getInt("total_records");
+        }
+    }
+
+    @Override
+    public int getLastCode() throws Exception {
+        String sql = "SELECT MAX(code) AS last_code FROM beneficiary;";
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+
+            if (!rs.next()) {
+                return 0;
+            }
+
+            return rs.getInt("last_code");
         }
     }
 

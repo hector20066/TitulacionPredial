@@ -115,9 +115,9 @@ public class DAOPropertyImpl implements DAOProperty {
     public List<DTOPropertyDetails> findByAll() throws Exception {
         String sql = """
             SELECT 
-                p.code AS property_code,
-                p.cadastral_id,
-                p.area,
+                p.code AS property_code, 
+                p.cadastral_id, 
+                p.area, 
                 b.code AS beneficiary_code,
                 b.full_name AS beneficiary_fullname,
                 pt.number,
@@ -128,8 +128,14 @@ public class DAOPropertyImpl implements DAOProperty {
             FROM property p
             JOIN point pt ON pt.property_code = p.code
             JOIN beneficiary b ON b.property_code = p.code
-            ORDER BY p.code, pt.number
-        """;
+            WHERE p.code IN (
+                SELECT code 
+                FROM property 
+                ORDER BY code DESC 
+                LIMIT 1000
+            )
+            ORDER BY p.code DESC, pt.number
+    """;
 
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 

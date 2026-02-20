@@ -25,5 +25,6 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     DTOBeneficiaryDetails findAllData(int code) throws Exception;
     boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws Exception;
     boolean modifyProperty(int code, int propertyCode) throws Exception;
+    int getLastCode() throws Exception;
 
 }

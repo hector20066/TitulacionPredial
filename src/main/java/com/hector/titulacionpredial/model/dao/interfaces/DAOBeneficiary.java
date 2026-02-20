@@ -19,5 +19,6 @@ public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBenefic
     List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws Exception;
     DTOBeneficiaryDetails findAllData(int code) throws Exception;
     boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws Exception;
+    int getLastCode() throws Exception;
 
 }
