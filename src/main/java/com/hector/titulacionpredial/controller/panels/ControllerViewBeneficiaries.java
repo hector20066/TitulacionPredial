@@ -1,17 +1,22 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  *
@@ -22,11 +27,15 @@ public class ControllerViewBeneficiaries implements Observer {
     private final ViewBeneficiaries viewBeneficiaries;
     private final Subject subject;
 
+    private final BeneficiaryFacade daoBeneficiary;
+
     public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, Subject subject) {
         this.viewBeneficiaries = viewBeneficiaries;
         this.subject = subject;
 
         this.subject.register(this);
+
+        this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
     }
@@ -43,7 +52,8 @@ public class ControllerViewBeneficiaries implements Observer {
     public void update() {
         new Thread(() -> {
             try {
-
+                List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
+                SwingUtilities.invokeLater(() -> loadData(listBeneficiaries));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -125,6 +135,10 @@ public class ControllerViewBeneficiaries implements Observer {
                 }
             }
         });
+    }
+
+    private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
+        viewBeneficiaries.loadData(listBeneficiaries);
     }
 
 }

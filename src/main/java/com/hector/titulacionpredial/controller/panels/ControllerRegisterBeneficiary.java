@@ -50,7 +50,14 @@ public class ControllerRegisterBeneficiary implements Observer {
 
     @Override
     public void update() {
-        
+        new Thread(() -> {
+            try {
+                int code = daoBeneficiary.getLastCode();
+                SwingUtilities.invokeLater(() -> registerBeneficiary.loadFollowingCode(code + 1));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     private void registerBeneficiary() {

@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
@@ -14,6 +17,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  *
@@ -25,12 +29,16 @@ public class ControllerSeeProperties implements Observer {
     private final GenerateResolution generateResolution;
     private final Subject subject;
 
+    private final PropertyFacade daoProperty;
+
     public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution, Subject subject) {
         this.seeProperties = seeProperties;
         this.generateResolution = generateResolution;
         this.subject = subject;
 
         this.subject.register(this);
+
+        this.daoProperty = new PropertyImplFacade();
 
         connectEvents();
     }
@@ -47,7 +55,8 @@ public class ControllerSeeProperties implements Observer {
     public void update() {
         new Thread(() -> {
             try {
-
+                List<DTOPropertyDetails> properties = daoProperty.findByAll();
+                SwingUtilities.invokeLater(() -> loadData(properties));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -116,6 +125,10 @@ public class ControllerSeeProperties implements Observer {
                 }
             }
         });
+    }
+
+    private void loadData(List<DTOPropertyDetails> listProperties) {
+        seeProperties.loadData(listProperties);
     }
 
 }

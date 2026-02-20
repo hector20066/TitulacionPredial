@@ -1,16 +1,21 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  *
@@ -21,11 +26,15 @@ public class ControllerSeeResolutions implements Observer {
     private final SeeResolutions seeResolutions;
     private final Subject subject;
 
+    private final ResolutionFacade daoResolution;
+
     public ControllerSeeResolutions(SeeResolutions seeResolutions, Subject subject) {
         this.seeResolutions = seeResolutions;
         this.subject = subject;
 
         this.subject.register(this);
+
+        this.daoResolution = new ResolutionImplFacade();
 
         connectEvents();
     }
@@ -41,7 +50,8 @@ public class ControllerSeeResolutions implements Observer {
     public void update() {
         new Thread(() -> {
             try {
-
+                List<DTOResolutionDetails> listResolutions = daoResolution.findByAll();
+                SwingUtilities.invokeLater(() -> loadData(listResolutions));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -101,6 +111,10 @@ public class ControllerSeeResolutions implements Observer {
                 }
             }
         });
+    }
+
+    private void loadData(List<DTOResolutionDetails> listResolutions) {
+        seeResolutions.loadData(listResolutions);
     }
 
 }
