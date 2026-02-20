@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 import java.awt.Color;
@@ -8,6 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -240,8 +242,21 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         return txt_search;
     }
 
-    public void loadData(DTOBeneficiarySimpleDetails dto) {
+    public void loadData(List<DTOBeneficiarySimpleDetails> dto) {
+        tableModel.setRowCount(0);
 
+        dto.forEach(beneficiary -> {
+            int code = beneficiary.getCode();
+            long id = beneficiary.getId();
+            String fullName = beneficiary.getFullName();
+            long phone = beneficiary.getPhone();
+            long cadastralReference = beneficiary.getCadastralReference();
+            Municipalities municipality = beneficiary.getMunicipality();
+            String address = beneficiary.getAddress();
+
+            Object[] data = new Object[]{code, id, fullName, phone, cadastralReference, municipality.getValue(), address};
+            tableModel.addRow(data);
+        });
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

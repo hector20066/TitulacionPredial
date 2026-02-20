@@ -4,10 +4,15 @@
  */
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.function.BiConsumer;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
@@ -52,7 +57,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txt_cadastralReference = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txt_neighborhood = new javax.swing.JTextField();
+        txt_municipality = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -166,12 +171,12 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel16.setText("Barrio:");
+        jLabel16.setText("Municipio:");
 
-        txt_neighborhood.setEditable(false);
-        txt_neighborhood.setBackground(new java.awt.Color(255, 255, 255));
-        txt_neighborhood.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_neighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_municipality.setEditable(false);
+        txt_municipality.setBackground(new java.awt.Color(255, 255, 255));
+        txt_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_municipality.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
@@ -443,7 +448,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_neighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_municipality, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(66, 66, 66)
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -480,7 +485,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(txt_neighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_municipality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
                     .addComponent(txt_cadastralReference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
@@ -853,8 +858,8 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_nameBeneficiary;
     }
 
-    public JTextField getTxt_neighborhood() {
-        return txt_neighborhood;
+    public JTextField getTxt_municipality() {
+        return txt_municipality;
     }
 
     public JTextField getTxt_northCoordinate1() {
@@ -885,10 +890,40 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_publicWriting;
     }
 
-    public void loadData(DTOPropertyDetails dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
-        
+    public void loadData(String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
+        BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
+            txt_nameBeneficiary.setText(beneficiary.getFullName());
+            txt_idBeneficiary.setText(String.valueOf(beneficiary.getId()));
+            txt_addressBeneficiary.setText(beneficiary.getAddress());
+            txt_municipality.setText(beneficiary.getMunicipality().getValue());
+            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralReference()));
+
+            txt_propertyCode.setText(String.valueOf(codeProperty));
+
+            txt_northCoordinate1.setText(point1[0]);
+            txt_eastCoordinate1.setText(point1[1]);
+            txt_distance1.setText(point1[2]);
+            txt_hillside1.setText(point1[3]);
+
+            txt_northCoordinate2.setText(point2[0]);
+            txt_eastCoordinate2.setText(point2[1]);
+            txt_distance2.setText(point2[2]);
+            txt_hillside2.setText(point2[3]);
+
+            txt_northCoordinate3.setText(point3[0]);
+            txt_eastCoordinate3.setText(point3[1]);
+            txt_distance3.setText(point3[2]);
+            txt_hillside3.setText(point3[3]);
+
+            txt_northCoordinate4.setText(point4[0]);
+            txt_eastCoordinate4.setText(point4[1]);
+            txt_distance4.setText(point4[2]);
+            txt_hillside4.setText(point4[3]);
+        };
+
+        consumer.accept(dtoProperty, dtoBeneficiary);
     }
-    
+
     public void clearFields() {
         
     }
@@ -957,8 +992,8 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_hillside3;
     private javax.swing.JTextField txt_hillside4;
     private javax.swing.JTextField txt_idBeneficiary;
+    private javax.swing.JTextField txt_municipality;
     private javax.swing.JTextField txt_nameBeneficiary;
-    private javax.swing.JTextField txt_neighborhood;
     private javax.swing.JTextField txt_northCoordinate1;
     private javax.swing.JTextField txt_northCoordinate2;
     private javax.swing.JTextField txt_northCoordinate3;

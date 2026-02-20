@@ -8,6 +8,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
@@ -191,8 +194,22 @@ public class SeeResolutions extends javax.swing.JPanel {
         return txt_search;
     }
 
-    public void loadData(DTOResolutionDetails dto) {
+    public void loadData(List<DTOResolutionDetails> dto) {
+        model.setRowCount(0);
 
+        dto.forEach(resolution -> {
+            int code = resolution.getCode();
+            long numResolution = resolution.getResolutionNumber();
+            LocalDate notification = resolution.getNotification();
+            LocalDate executory = resolution.getExecutory();
+            String notary = resolution.getNotary();
+            String fmi = resolution.getFmi();
+            String act = resolution.getAct();
+            String publicWriting = resolution.getPublicWriting();
+
+            Object[] data = new Object[]{code, numResolution, notification, executory, notary, fmi, act, publicWriting};
+            model.addRow(data);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

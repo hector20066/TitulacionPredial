@@ -332,7 +332,7 @@
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_neighborhood" min="-2" pref="375" max="-2" attributes="0"/>
+                                                          <Component id="txt_municipality" min="-2" pref="375" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
@@ -383,7 +383,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_neighborhood" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_municipality" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txt_cadastralReference" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -617,10 +617,10 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="29" green="25" red="21" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Barrio:"/>
+                            <Property name="text" type="java.lang.String" value="Municipio:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txt_neighborhood">
+                        <Component class="javax.swing.JTextField" name="txt_municipality">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
