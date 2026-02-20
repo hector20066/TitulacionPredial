@@ -12,6 +12,6 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
         ICountable {
 
     int add(DTOPropertyCreate dto) throws Exception;
-    DTOPropertyDetails findByCode(int code) throws Exception;
+    DTOPropertyDetails findByCode(String cadastralId) throws Exception;
 
 }

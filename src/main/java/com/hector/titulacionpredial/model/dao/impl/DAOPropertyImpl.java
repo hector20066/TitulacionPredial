@@ -59,7 +59,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
-    public DTOPropertyDetails findByCode(int code) throws Exception {
+    public DTOPropertyDetails findByCode(String cadastralId) throws Exception {
         String sql = """
            SELECT
               p.code AS property_code,
@@ -85,7 +85,7 @@ public class DAOPropertyImpl implements DAOProperty {
            JOIN point pt ON pt.property_code = p.code
            JOIN beneficiary b ON b.property_code = p.code
            JOIN resolution r ON r.property_code = p.code
-           WHERE p.code = ?
+           WHERE p.cadastral_id = ?
            ORDER BY pt.number
         """;
 
@@ -93,10 +93,12 @@ public class DAOPropertyImpl implements DAOProperty {
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
-            st.setInt(1, code);
+            st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
+                    int propertyCode = rs.getInt("property_code");
+
                     if (property == null) {
                         property = createDTOPropertyDetails(rs);
                     }
@@ -112,7 +114,7 @@ public class DAOPropertyImpl implements DAOProperty {
                     boolean pointExists = verifyPointExists(property, numberPoint);
 
                     if (!pointExists) {
-                        property.getPoints().add(createDTOPoints(rs, numberPoint, code));
+                        property.getPoints().add(createDTOPoints(rs, numberPoint, propertyCode));
                     }
                 }
             }
