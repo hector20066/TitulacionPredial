@@ -7,10 +7,7 @@ import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -37,14 +34,27 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
-    public void add(DTOPropertyCreate dto) throws Exception {
+    public int add(DTOPropertyCreate dto) throws Exception {
         String sql = "INSERT INTO property (cadastral_id, area) VALUES (?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, dto.getCadastralId());
             st.setDouble(2, dto.getArea());
-            st.executeUpdate();
+
+            int affectedRows = st.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Error al crear la propiedad; no hay filas afectadas.");
+            }
+
+            try (ResultSet generatedKeys = st.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Error al crear la propiedad, no se obtuvo ninguna identificación.");
+                }
+            }
         }
     }
 
