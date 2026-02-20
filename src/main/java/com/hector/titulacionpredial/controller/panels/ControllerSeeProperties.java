@@ -45,7 +45,13 @@ public class ControllerSeeProperties implements Observer {
 
     @Override
     public void update() {
+        new Thread(() -> {
+            try {
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     private void generateResolution() {

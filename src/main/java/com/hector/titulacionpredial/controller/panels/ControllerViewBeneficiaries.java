@@ -41,7 +41,13 @@ public class ControllerViewBeneficiaries implements Observer {
 
     @Override
     public void update() {
+        new Thread(() -> {
+            try {
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     private void showDetails() {
@@ -53,9 +59,7 @@ public class ControllerViewBeneficiaries implements Observer {
 
             // Beneficiary beneficiary = getBeneficiaryFromTable(selectedRow);
 
-            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities
-                    .getWindowAncestor(viewBeneficiaries);
-
+            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(viewBeneficiaries);
             UserProfile dialog = new UserProfile(parentFrame, true);
 
             // Cargar los datos en el diálogo (necesitas agregar este método a UserProfile)
