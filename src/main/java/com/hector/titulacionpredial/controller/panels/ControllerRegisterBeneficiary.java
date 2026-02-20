@@ -108,7 +108,7 @@ public class ControllerRegisterBeneficiary implements Observer {
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
-                    throw new Exception("Ya existe un usuario con este numero de cedula");
+                    throw new Exception("Este usuario ya se encuentra registrado.");
                 }
 
                 daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus, affectation, phone, crossing, publication, neighborhood, expeditionLocation);
