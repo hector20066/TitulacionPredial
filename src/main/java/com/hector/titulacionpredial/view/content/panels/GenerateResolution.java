@@ -6,6 +6,7 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import java.awt.event.ActionListener;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 /**
@@ -91,9 +92,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txt_numResolution = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txt_notification = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txt_executory = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_fmi = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -102,9 +101,10 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_publicWriting = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txt_note = new javax.swing.JTextField();
+        ftx_notification = new javax.swing.JFormattedTextField();
+        ftx_executory = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         btn_generate = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        btn_preview = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -562,17 +562,9 @@ public class GenerateResolution extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
         jLabel5.setText("Notificacion:");
 
-        txt_notification.setBackground(new java.awt.Color(255, 255, 255));
-        txt_notification.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_notification.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
-
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
         jLabel6.setText("Ejecutoria:");
-
-        txt_executory.setBackground(new java.awt.Color(255, 255, 255));
-        txt_executory.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_executory.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
@@ -606,6 +598,10 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_note.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_note.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
+        ftx_notification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
+
+        ftx_executory.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -633,11 +629,11 @@ public class GenerateResolution extends javax.swing.JPanel {
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_notification, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
+                                .addComponent(ftx_notification, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_executory, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ftx_executory, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -664,10 +660,10 @@ public class GenerateResolution extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(txt_numResolution, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_notification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txt_executory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(ftx_notification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftx_executory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_fmi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -683,7 +679,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         scroll1.setViewportView(jPanel2);
@@ -695,9 +691,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         btn_generate.setText("Generar");
         btn_generate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        btn_preview.setText("Previsualizar");
-        btn_preview.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -714,9 +707,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btn_preview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(315, 315, 315)
+                .addGap(462, 462, 462)
                 .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -728,9 +719,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scroll1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_preview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -750,20 +739,20 @@ public class GenerateResolution extends javax.swing.JPanel {
         btn_generate.addActionListener(action);
     }
     
-    public void setControllerPreview(ActionListener action) {
-        btn_preview.addActionListener(action);
-    }
-    
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
-    public ButtonAction getBtn_preview() {
-        return btn_preview;
-    }
-
     public JTextField getTxt_act() {
         return txt_act;
+    }
+
+    public JFormattedTextField getFtx_executory() {
+        return ftx_executory;
+    }
+
+    public JFormattedTextField getFtx_notification() {
+        return ftx_notification;
     }
 
     public JTextField getTxt_addresBeneficiary() {
@@ -804,10 +793,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
-    }
-
-    public JTextField getTxt_executory() {
-        return txt_executory;
     }
 
     public JTextField getTxt_fmi() {
@@ -862,10 +847,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_note;
     }
 
-    public JTextField getTxt_notification() {
-        return txt_notification;
-    }
-
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
@@ -876,7 +857,8 @@ public class GenerateResolution extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_generate;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_preview;
+    private javax.swing.JFormattedTextField ftx_executory;
+    private javax.swing.JFormattedTextField ftx_notification;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -930,7 +912,6 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_eastCoordinate2;
     private javax.swing.JTextField txt_eastCoordinate3;
     private javax.swing.JTextField txt_eastCoordinate4;
-    private javax.swing.JTextField txt_executory;
     private javax.swing.JTextField txt_fmi;
     private javax.swing.JTextField txt_hillside1;
     private javax.swing.JTextField txt_hillside2;
@@ -944,7 +925,6 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_northCoordinate3;
     private javax.swing.JTextField txt_northCoordinate4;
     private javax.swing.JTextField txt_note;
-    private javax.swing.JTextField txt_notification;
     private javax.swing.JTextField txt_numResolution;
     private javax.swing.JTextField txt_publicWriting;
     // End of variables declaration//GEN-END:variables
