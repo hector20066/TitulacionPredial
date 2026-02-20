@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
@@ -74,10 +75,33 @@ public class ControllerSeeProperties implements Observer {
 
     private void deleteProperty() {
         try {
+            if (seeProperties.getJtbl_properties().getSelectedRow() < 0) {
+                throw new Exception("Por favor seleccione una fila para eliminar");
+            }
 
+            int code = (int) seeProperties.getJtbl_properties().getValueAt(seeProperties.getJtbl_properties().getSelectedRow(), 0);
+
+            runDelete(() -> {
+                try {
+                    daoProperty.delete(code);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
         } catch (Exception e) {
 
         }
+    }
+
+    private void runDelete(Runnable delete) {
+        new Thread(() -> {
+            delete.run();
+
+            SwingUtilities.invokeLater(() -> {
+                MessageUtils.informationMessage("Se ha eliminado el registro", seeProperties);
+                subject.notifyObservers();
+            });
+        }).start();
     }
 
     private void searchProperty() {

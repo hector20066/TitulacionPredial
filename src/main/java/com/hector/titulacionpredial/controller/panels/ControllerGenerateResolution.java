@@ -51,6 +51,7 @@ public class ControllerGenerateResolution {
             String fmi = generateResolution.getTxt_fmi().getText().trim();
             String notary = generateResolution.getTxt_note().getText().trim();
             String propertyCode = generateResolution.getTxt_propertyCode().getText().trim();
+            String beneficiaryName = generateResolution.getTxt_nameBeneficiary().getName().trim();
 
             if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
                 throw new Exception("Debe ingresar toda la información solicitada");
@@ -59,7 +60,7 @@ public class ControllerGenerateResolution {
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate, fmi, notary, Integer.parseInt(propertyCode));
+            doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate, fmi, notary, Integer.parseInt(propertyCode), beneficiaryName);
         } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }
@@ -131,13 +132,13 @@ public class ControllerGenerateResolution {
         dialog.setVisible(true);
     }
 
-    private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting, LocalDate notification, String fmi, String notary, int propertyCode) {
+    private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting, LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName) {
         executeWithDialog(() -> {
             if (daoResolution.findByCode((int) numResolution) != null) {
                 throw new Exception("Ya existe un registro con este numero de resolución en la base de datos");
             }
 
-            daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode);
+            daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
             generateDocument();
             return null;
         });

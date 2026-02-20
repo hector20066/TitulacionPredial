@@ -264,7 +264,7 @@ public class SeeProperties extends JPanel {
 
             details.getBeneficiaries().forEach(beneficiary -> {
                 beneficiaries.append(beneficiary.getFullName()).append(" - ");
-                idBeneficiaries.append(beneficiary.getCode()).append(" - ");
+                idBeneficiaries.append(beneficiary.getId()).append(" - ");
             });
 
             String beneficiariesName = beneficiaries.toString();

@@ -165,15 +165,20 @@ public class ControllerRegisterProperty {
     }
 
     private void showBeneficiaries() {
-        java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
+        try {
+            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
 
-        SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
-        dialog.setLocationRelativeTo(registerProperty);
-        dialog.setVisible(true);
+            SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
+            dialog.setLocationRelativeTo(registerProperty);
+            dialog.loadBeneficiaries(daoBeneficiary.findByAll());
+            dialog.setVisible(true);
 
-        if (dialog.isConfirmed()) {
-            int beneficiaryCode = dialog.codeBeneficiarySelected();
-            registerProperty.getTxt_beneficiaryCode().setText("F" + beneficiaryCode);
+            if (dialog.isConfirmed()) {
+                int beneficiaryCode = dialog.codeBeneficiarySelected();
+                registerProperty.getTxt_beneficiaryCode().setText("F" + beneficiaryCode);
+            }
+        } catch (Exception e) {
+            MessageUtils.errorMessage("Ha ocurrido un error al mostrar los beneficiarios", registerProperty);
         }
     }
 
