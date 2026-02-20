@@ -129,17 +129,17 @@ public class DAOPropertyImpl implements DAOProperty {
                 pt.east_coordinate,
                 pt.distance,
                 pt.hillside
-            FROM property p
-            JOIN point pt ON pt.property_code = p.code
-            JOIN beneficiary b ON b.property_code = p.code
-            WHERE p.code IN (
+            FROM (
                 SELECT code 
                 FROM property 
                 ORDER BY code DESC 
                 LIMIT 1000
-            )
+            ) last_properties
+            JOIN property p ON p.code = last_properties.code
+            JOIN point pt ON pt.property_code = p.code
+            JOIN beneficiary b ON b.property_code = p.code
             ORDER BY p.code DESC, pt.number
-    """;
+        """;
 
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 

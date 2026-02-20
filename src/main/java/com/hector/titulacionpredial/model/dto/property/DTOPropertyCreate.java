@@ -16,4 +16,6 @@ public class DTOPropertyCreate extends DTOProperty {
         super(cadastralId, area);
     }
 
+
+
 }

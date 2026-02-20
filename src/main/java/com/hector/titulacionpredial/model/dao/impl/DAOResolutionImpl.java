@@ -53,7 +53,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws Exception {
-        String sql = "SELECT num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution WHERE num_resolution = ? LIMIT 1;";
+        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution WHERE num_resolution = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -74,7 +74,7 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
         List<DTOResolutionDetails> list = new ArrayList<>();
-        String sql = "SELECT num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution ORDER BY code DESC LIMIT 1000;";
+        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution ORDER BY code DESC LIMIT 1000;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
@@ -91,6 +91,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws Exception {
+        dto.setCode(rs.getInt("code"));
         dto.setResolutionNumber(rs.getLong("num_resolution"));
         dto.setNotification(rs.getDate("notification").toLocalDate());
         dto.setExecutory(rs.getDate("executory").toLocalDate());
@@ -127,6 +128,7 @@ public class DAOResolutionImpl implements DAOResolution {
             if(!rs.next()) {
                 return 0;
             }
+
             return rs.getInt("total_records");
         }
     }

@@ -13,8 +13,11 @@ import java.util.List;
  */
 public class DTOPropertyDetails extends DTOProperty {
 
+    private int propertyCode;
     private List<DTOBeneficiaryPropertyDetails> beneficiaries;
     private List<DTOPointDetails> points;
+
+    // Traer datos de la resolucion
 
     public DTOPropertyDetails() {
         super();
@@ -23,9 +26,14 @@ public class DTOPropertyDetails extends DTOProperty {
     }
 
     public DTOPropertyDetails(int propertyCode, String cadastralId, Double area, List<DTOBeneficiaryPropertyDetails> beneficiaries, List<DTOPointDetails> points) {
-        super(propertyCode, cadastralId, area);
+        super(cadastralId, area);
+        this.propertyCode = propertyCode;
         this.beneficiaries = beneficiaries;
         this.points = points;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
@@ -34,6 +42,10 @@ public class DTOPropertyDetails extends DTOProperty {
 
     public void setPoints(List<DTOPointDetails> points) {
         this.points = points;
+    }
+
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
     public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
