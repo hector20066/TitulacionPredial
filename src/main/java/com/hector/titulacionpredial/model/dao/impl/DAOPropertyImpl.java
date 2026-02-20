@@ -67,6 +67,8 @@ public class DAOPropertyImpl implements DAOProperty {
                 p.area, 
                 b.code AS beneficiary_code,
                 b.full_name AS beneficiary_fullname,
+                b.neighborhood AS beneficiary_neighborhood,
+                b.address AS beneficiary_address,
                 pt.number,
                 pt.north_coordinate,
                 pt.east_coordinate,
@@ -95,7 +97,7 @@ public class DAOPropertyImpl implements DAOProperty {
                     boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
 
                     if (!beneficiaryExists) {
-                        property.getBeneficiaries().add(new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode));
+                        property.getBeneficiaries().add(new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode, rs.getString("beneficiary_neighborhood"), rs.getString("beneficiary_address")));
                     }
 
                     int numberPoint = rs.getInt("number");
@@ -120,6 +122,8 @@ public class DAOPropertyImpl implements DAOProperty {
                 p.area, 
                 b.code AS beneficiary_code,
                 b.full_name AS beneficiary_fullname,
+                b.neighborhood AS beneficiary_neighborhood,
+                b.address AS beneficiary_address,
                 pt.number,
                 pt.north_coordinate,
                 pt.east_coordinate,
@@ -156,7 +160,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
 
                 if (!beneficiaryExists) {
-                    DTOBeneficiaryPropertyDetails beneficiary = new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode);
+                    DTOBeneficiaryPropertyDetails beneficiary = new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode, rs.getString("beneficiary_neighborhood"), rs.getString("beneficiary_address"));
                     property.getBeneficiaries().add(beneficiary);
                 }
 
