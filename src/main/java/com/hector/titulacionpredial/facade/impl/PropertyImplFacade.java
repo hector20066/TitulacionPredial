@@ -21,12 +21,12 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public void add(String cadastralId, Double area) throws Exception {
+    public int add(String cadastralId, Double area) throws Exception {
         DTOPropertyCreate dto = new DTOPropertyCreate();
         dto.setCadastralId(cadastralId);
         dto.setArea(area);
 
-        daoProperty.add(dto);
+        return daoProperty.add(dto);
     }
 
     @Override

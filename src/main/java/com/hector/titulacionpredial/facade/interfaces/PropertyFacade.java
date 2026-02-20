@@ -11,7 +11,7 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
  */
 public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovable, ICountable {
 
-    void add(String cadastralId, Double area) throws Exception;
+    int add(String cadastralId, Double area) throws Exception;
     DTOPropertyDetails findByCode(int code) throws Exception;
 
 }
