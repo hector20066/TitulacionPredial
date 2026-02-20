@@ -7,7 +7,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 public class DTOBeneficiaryPropertyDetails {
 
     private String fullName;
-    private int code;
+    private int id;
     private String neighborhood;
     private String address;
 
@@ -17,7 +17,7 @@ public class DTOBeneficiaryPropertyDetails {
 
     public DTOBeneficiaryPropertyDetails(String fullName, int code, String neighborhood, String address) {
         this.fullName = fullName;
-        this.code = code;
+        this.id = code;
         this.neighborhood = neighborhood;
         this.address = address;
     }
@@ -27,7 +27,7 @@ public class DTOBeneficiaryPropertyDetails {
     }
 
     public void setCode(int code) {
-        this.code = code;
+        this.id = code;
     }
 
     public void setNeighborhood(String neighborhood) {
@@ -42,8 +42,8 @@ public class DTOBeneficiaryPropertyDetails {
         return fullName;
     }
 
-    public int getCode() {
-        return code;
+    public int getId() {
+        return id;
     }
 
     public String getNeighborhood() {

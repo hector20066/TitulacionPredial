@@ -61,24 +61,32 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public DTOPropertyDetails findByCode(int code) throws Exception {
         String sql = """
-            SELECT 
-                p.code AS property_code, 
-                p.cadastral_id, 
-                p.area, 
-                b.code AS beneficiary_code,
-                b.full_name AS beneficiary_fullname,
-                b.neighborhood AS beneficiary_neighborhood,
-                b.address AS beneficiary_address,
-                pt.number,
-                pt.north_coordinate,
-                pt.east_coordinate,
-                pt.distance,
-                pt.hillside
-            FROM property p
-            JOIN point pt ON pt.property_code = p.code
-            JOIN beneficiary b ON b.property_code = p.code
-            WHERE p.code = ?
-            ORDER BY pt.number
+           SELECT
+              p.code AS property_code,
+              p.cadastral_id,
+              p.area,
+              b.id AS beneficiary_code,
+              b.full_name AS beneficiary_fullname,
+              b.neighborhood AS beneficiary_neighborhood,
+              b.address AS beneficiary_address,
+              pt.number,
+              pt.north_coordinate,
+              pt.east_coordinate,
+              pt.distance,
+              pt.hillside,
+              r.num_resolution,
+              r.notification,
+              r.executory,
+              r.fmi,
+              r.act,
+              r.public_writing,
+              r.notary
+           FROM property p
+           JOIN point pt ON pt.property_code = p.code
+           JOIN beneficiary b ON b.property_code = p.code
+           JOIN resolution r ON r.property_code = p.code
+           WHERE p.code = ?
+           ORDER BY pt.number
         """;
 
         DTOPropertyDetails property = null;
@@ -120,7 +128,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 p.code AS property_code, 
                 p.cadastral_id, 
                 p.area, 
-                b.code AS beneficiary_code,
+                b.id AS beneficiary_code,
                 b.full_name AS beneficiary_fullname,
                 b.neighborhood AS beneficiary_neighborhood,
                 b.address AS beneficiary_address,
@@ -128,7 +136,14 @@ public class DAOPropertyImpl implements DAOProperty {
                 pt.north_coordinate,
                 pt.east_coordinate,
                 pt.distance,
-                pt.hillside
+                pt.hillside,
+                r.num_resolution,
+                r.notification,
+                r.executory,
+                r.fmi,
+                r.act,
+                r.public_writing,
+                r.notary
             FROM (
                 SELECT code 
                 FROM property 
@@ -138,6 +153,7 @@ public class DAOPropertyImpl implements DAOProperty {
             JOIN property p ON p.code = last_properties.code
             JOIN point pt ON pt.property_code = p.code
             JOIN beneficiary b ON b.property_code = p.code
+            JOIN resolution r ON r.property_code = p.code
             ORDER BY p.code DESC, pt.number
         """;
 
@@ -182,6 +198,13 @@ public class DAOPropertyImpl implements DAOProperty {
         property.setPropertyCode(rs.getInt("property_code"));
         property.setCadastralId(rs.getString("cadastral_id"));
         property.setArea(rs.getDouble("area"));
+        property.setNumResolution(rs.getLong("num_resolution"));
+        property.setNotification(rs.getDate("notification").toLocalDate());
+        property.setExecutory(rs.getDate("executory").toLocalDate());
+        property.setFmi(rs.getString("fmi"));
+        property.setAct(rs.getString("act"));
+        property.setPublicWriting(rs.getString("public_writing"));
+        property.setNotary(rs.getString("notary"));
 
         return property;
     }
@@ -189,7 +212,7 @@ public class DAOPropertyImpl implements DAOProperty {
     private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
         return property.getBeneficiaries()
                 .stream()
-                .anyMatch(b -> b.getCode() == beneficiaryCode);
+                .anyMatch(b -> b.getId() == beneficiaryCode);
     }
 
     private boolean verifyPointExists(DTOPropertyDetails property, int numberPoint) {

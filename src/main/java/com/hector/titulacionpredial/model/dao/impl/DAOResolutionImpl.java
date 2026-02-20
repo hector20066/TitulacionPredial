@@ -35,7 +35,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public void add(DTOResolutionCreate dto) throws Exception {
-        String sql = "INSERT INTO resolution(num_resolution, notification, executory, fmi, act, public_writing, notary, property_code) VALUES(?, ?, ?, ? ,?, ?, ?, ?);";
+        String sql = "INSERT INTO resolution(num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name, property_code) VALUES(?, ?, ?, ?, ? ,?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -46,14 +46,15 @@ public class DAOResolutionImpl implements DAOResolution {
              st.setString(5, dto.getAct());
              st.setString(6, dto.getPublicWriting());
              st.setString(7, dto.getNotary());
-             st.setInt(8, dto.getPropertyCode());
+             st.setString(8, dto.getBeneficiaryName());
+             st.setInt(9, dto.getPropertyCode());
              st.executeUpdate();
         }
     }
 
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws Exception {
-        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution WHERE num_resolution = ? LIMIT 1;";
+        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name FROM resolution WHERE num_resolution = ? LIMIT 1;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -74,7 +75,7 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
         List<DTOResolutionDetails> list = new ArrayList<>();
-        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary FROM resolution ORDER BY code DESC LIMIT 1000;";
+        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name FROM resolution ORDER BY code DESC LIMIT 1000;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
@@ -99,6 +100,7 @@ public class DAOResolutionImpl implements DAOResolution {
         dto.setAct(rs.getString("act"));
         dto.setPublicWriting(rs.getString("public_writing"));
         dto.setNotary(rs.getString("notary"));
+        dto.setBeneficiaryName(rs.getString("beneficiary_name"));
     }
 
     @Override

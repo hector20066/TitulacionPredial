@@ -16,7 +16,8 @@ public class Resolution {
     private String act;
     private String publicWriting;
     private String notary;
-    private int propertyCode;
+    private Property property;
+    private Beneficiary beneficiary;
 
     public Resolution() {
 
@@ -31,7 +32,7 @@ public class Resolution {
         this.act = builder.act;
         this.publicWriting = builder.publicWriting;
         this.notary = builder.notary;
-        this.propertyCode = builder.propertyCode;
+        this.property = builder.property;
     }
 
     public void setCode(int code) {
@@ -66,8 +67,12 @@ public class Resolution {
         this.notary = notary;
     }
 
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
+    public void setProperty(Property property) {
+        this.property = property;
+    }
+
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
     }
 
     public int getCode() {
@@ -102,8 +107,12 @@ public class Resolution {
         return notary;
     }
 
-    public int getPropertyCode() {
-        return propertyCode;
+    public Property getProperty() {
+        return property;
+    }
+
+    public Beneficiary getBeneficiary() {
+        return beneficiary;
     }
 
     @Override
@@ -116,7 +125,8 @@ public class Resolution {
                 "\nAct= " + act +
                 "\nPublicWriting= " + publicWriting +
                 "\nNotary= " + notary +
-                "\nProperty= " + propertyCode;
+                "\nProperty= " + property +
+                "\nBeneficiary= " + beneficiary;
     }
 
     public static class Builder {
@@ -129,7 +139,8 @@ public class Resolution {
         private String act;
         private String publicWriting;
         private String notary;
-        private int propertyCode;
+        private Property property;
+        private Beneficiary beneficiary;
 
         public Builder code(int code) {
             this.code = code;
@@ -171,8 +182,13 @@ public class Resolution {
             return this;
         }
 
-        public Builder propertyCode(int propertyCode) {
-            this.propertyCode = propertyCode;
+        public Builder property(Property property) {
+            this.property = property;
+            return this;
+        }
+
+        public Builder beneficiary(Beneficiary beneficiary) {
+            this.beneficiary = beneficiary;
             return this;
         }
 

@@ -14,6 +14,7 @@ public class DTOResolutionDetails extends DTOResolution {
     private LocalDate notification;
     private String fmi;
     private String notary;
+    private String beneficiaryName;
 
     public DTOResolutionDetails() {
         super();
@@ -25,6 +26,7 @@ public class DTOResolutionDetails extends DTOResolution {
         this.notification = builder.notification;
         this.fmi = builder.fmi;
         this.notary = builder.notary;
+        this.beneficiaryName = builder.beneficiaryName;
     }
 
     public void setCode(int code) {
@@ -43,6 +45,10 @@ public class DTOResolutionDetails extends DTOResolution {
         this.notary = notary;
     }
 
+    public void setBeneficiaryName(String beneficiaryName) {
+        this.beneficiaryName = beneficiaryName;
+    }
+
     public int getCode() {
         return code;
     }
@@ -59,12 +65,17 @@ public class DTOResolutionDetails extends DTOResolution {
         return notary;
     }
 
+    public String getBeneficiaryName() {
+        return beneficiaryName;
+    }
+
     public static class Builder extends DTOResolution.Builder<Builder> {
 
         private int code;
         private LocalDate notification;
         private String fmi;
         private String notary;
+        private String beneficiaryName;
 
         public Builder code(int code) {
             this.code = code;
@@ -83,6 +94,11 @@ public class DTOResolutionDetails extends DTOResolution {
 
         public Builder notary(String notary) {
             this.notary = notary;
+            return this;
+        }
+
+        public Builder beneficiaryName(String beneficiaryName) {
+            this.beneficiaryName = beneficiaryName;
             return this;
         }
 
