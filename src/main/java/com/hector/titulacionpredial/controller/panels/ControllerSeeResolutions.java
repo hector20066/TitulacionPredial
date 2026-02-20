@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 import javax.swing.*;
@@ -68,10 +69,32 @@ public class ControllerSeeResolutions implements Observer {
 
     private void searchResolution() {
         try {
+            String numResolutionText = seeResolutions.getTxt_search().getText().trim();
 
+            if (numResolutionText.isBlank() || numResolutionText.equals("Buscar")) {
+                throw new Exception("Debe ingresar el numero de la resolución para realizar la búsqueda");
+            }
+
+            doInBackground(Integer.parseInt(numResolutionText));
         } catch (Exception e) {
-
+            MessageUtils.warningMessage("Ha ocurrido un error.\nError: " + e.getMessage(), seeResolutions);
         }
+    }
+
+    private void doInBackground(int numResolution) {
+        new Thread(() -> {
+            try {
+                DTOResolutionDetails dto = daoResolution.findByCode(numResolution);
+
+                if (dto == null) {
+                    throw new Exception("No se ha encontrado la resolución con el numero " + numResolution);
+                }
+
+                SwingUtilities.invokeLater(() -> seeResolutions.loadData(dto));
+            } catch (Exception e) {
+                MessageUtils.errorMessage(e.getMessage(), seeResolutions);
+            }
+        }).start();
     }
 
     private void documentListeners() {
@@ -114,7 +137,8 @@ public class ControllerSeeResolutions implements Observer {
     }
 
     private void loadData(List<DTOResolutionDetails> listResolutions) {
-        seeResolutions.loadData(listResolutions);
+        seeResolutions.getModel().setRowCount(0);
+        listResolutions.forEach(seeResolutions::loadData);
     }
 
 }
