@@ -120,7 +120,6 @@ public class DAOPropertyImpl implements DAOProperty {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             throw new Exception(e.getMessage());
         }
 
@@ -195,7 +194,6 @@ public class DAOPropertyImpl implements DAOProperty {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             throw new Exception(e.getMessage());
         }
 
