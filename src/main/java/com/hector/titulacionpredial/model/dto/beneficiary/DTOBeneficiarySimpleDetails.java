@@ -2,6 +2,10 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class DTOBeneficiarySimpleDetails {
 
     private int code;

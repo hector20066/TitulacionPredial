@@ -5,11 +5,8 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.FilterUtils;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 

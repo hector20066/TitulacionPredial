@@ -1,7 +1,6 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.*;
 
 /**
  *

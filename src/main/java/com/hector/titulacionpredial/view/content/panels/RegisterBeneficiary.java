@@ -1,9 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.model.enums.*;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import java.awt.*;

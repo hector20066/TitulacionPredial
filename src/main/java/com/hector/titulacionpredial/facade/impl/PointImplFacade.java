@@ -3,8 +3,7 @@ package com.hector.titulacionpredial.facade.impl;
 import com.hector.titulacionpredial.facade.interfaces.PointFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPointImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
-import com.hector.titulacionpredial.model.dto.point.DTOPointCreate;
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
+import com.hector.titulacionpredial.model.dto.point.*;
 
 /**
  *

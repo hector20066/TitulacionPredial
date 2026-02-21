@@ -4,9 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  *

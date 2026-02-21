@@ -3,11 +3,8 @@ package com.hector.titulacionpredial.controller.panels;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.FilterUtils;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
@@ -18,11 +15,8 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 

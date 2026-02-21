@@ -4,7 +4,6 @@
  */
 package com.hector.titulacionpredial.view.content.dialogs;
 
-import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import java.awt.Color;
 import org.jdesktop.animation.timing.Animator;

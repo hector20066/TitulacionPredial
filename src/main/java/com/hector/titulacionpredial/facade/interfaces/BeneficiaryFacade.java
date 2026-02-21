@@ -5,9 +5,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.model.enums.*;
 
 import java.util.List;
 

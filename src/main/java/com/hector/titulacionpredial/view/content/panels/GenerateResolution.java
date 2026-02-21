@@ -4,10 +4,7 @@
  */
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import java.awt.*;

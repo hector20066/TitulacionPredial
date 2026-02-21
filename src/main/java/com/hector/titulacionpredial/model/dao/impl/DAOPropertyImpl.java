@@ -4,8 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.sql.*;

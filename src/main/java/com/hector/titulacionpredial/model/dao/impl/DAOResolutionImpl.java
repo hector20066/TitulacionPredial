@@ -2,14 +2,9 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
+import com.hector.titulacionpredial.model.dto.resolution.*;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 

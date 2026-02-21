@@ -1,6 +1,5 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -12,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.time.LocalDate;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;

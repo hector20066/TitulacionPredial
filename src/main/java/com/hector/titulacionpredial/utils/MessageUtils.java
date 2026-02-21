@@ -25,7 +25,7 @@ public class MessageUtils {
     }
 
     public static int confirmDialog(String message, JComponent container) {
-        return JOptionPane.showConfirmDialog(container, message, "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        return JOptionPane.showConfirmDialog(container, message, "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 
     public static int yesOption(){

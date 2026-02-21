@@ -3,8 +3,7 @@ package com.hector.titulacionpredial.facade.impl;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.*;
 
 import java.util.List;
 

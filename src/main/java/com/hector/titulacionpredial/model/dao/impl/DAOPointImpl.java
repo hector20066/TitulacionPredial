@@ -5,9 +5,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.point.DTOPointCreate;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  *
