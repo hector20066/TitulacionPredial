@@ -581,6 +581,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_publication.setText("");
         txa_crossing.setText("");
         txa_affectation.setText("");
+        cbo_department.setSelectedIndex(0);
+        cbo_maritalStatus.setSelectedIndex(0);
+        cbo_municipality.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
