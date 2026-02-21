@@ -7,6 +7,8 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 import javax.swing.*;
@@ -16,6 +18,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -25,15 +28,15 @@ import java.util.List;
 public class ControllerSeeResolutions implements Observer {
 
     private final SeeResolutions seeResolutions;
-    private final Subject subject;
+    private final ModifyResolution modifyResolution;
 
     private final ResolutionFacade daoResolution;
 
-    public ControllerSeeResolutions(SeeResolutions seeResolutions, Subject subject) {
+    public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject) {
         this.seeResolutions = seeResolutions;
-        this.subject = subject;
+        this.modifyResolution = modifyResolution;
 
-        this.subject.register(this);
+        subject.register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 
@@ -61,10 +64,41 @@ public class ControllerSeeResolutions implements Observer {
 
     private void modify() {
         try {
+            int selectedRow = seeResolutions.getJtbl_resolutions().getSelectedRow();
 
+            if (seeResolutions.getJtbl_resolutions().getSelectedRowCount() != 1) {
+                throw new Exception("Solo puede modificar una resolución a la vez");
+            }
+
+            int code = (int) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 0);
+            long numResolution = (long) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 1);
+            LocalDate notification = (LocalDate) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 2);
+            LocalDate executory = (LocalDate) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 3);
+            String notary = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 4).toString();
+            String fmi = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 5).toString();
+            String act = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 6).toString();
+            String publicWriting = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 7).toString();
+
+            DTOResolutionDetails dto = createDTO(code, numResolution, notification, executory, notary, fmi, act, publicWriting);
+
+            modifyResolution.loadData(dto);
+            NavigatorUtils.showForms(modifyResolution);
         } catch (Exception e) {
-
+            MessageUtils.warningMessage(e.getMessage(), seeResolutions);
         }
+    }
+
+    private DTOResolutionDetails createDTO(int code, long numResolution, LocalDate notification, LocalDate executory, String notary, String fmi, String act, String publicWriting) {
+        return new DTOResolutionDetails.Builder()
+                .code(code)
+                .resolutionNumber(numResolution)
+                .notification(notification)
+                .executory(executory)
+                .notary(notary)
+                .fmi(fmi)
+                .act(act)
+                .publicWriting(publicWriting)
+                .build();
     }
 
     private void searchResolution() {
