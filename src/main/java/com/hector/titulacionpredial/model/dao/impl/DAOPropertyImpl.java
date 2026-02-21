@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryProperty
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -82,11 +83,11 @@ public class DAOPropertyImpl implements DAOProperty {
               r.public_writing,
               r.notary
            FROM property p
-           JOIN point pt ON pt.property_code = p.code
-           JOIN beneficiary b ON b.property_code = p.code
-           JOIN resolution r ON r.property_code = p.code
-           WHERE p.cadastral_id = ?
-           ORDER BY pt.number
+          JOIN point pt ON pt.property_code = p.code
+          JOIN beneficiary b ON b.property_code = p.code
+          LEFT JOIN resolution r ON r.property_code = p.code
+          WHERE p.cadastral_id = ?
+          ORDER BY pt.number
         """;
 
         DTOPropertyDetails property = null;
@@ -107,7 +108,7 @@ public class DAOPropertyImpl implements DAOProperty {
                     boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
 
                     if (!beneficiaryExists) {
-                        property.getBeneficiaries().add(new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode, rs.getString("beneficiary_neighborhood"), rs.getString("beneficiary_address")));
+                        property.getBeneficiaries().add(createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode));
                     }
 
                     int numberPoint = rs.getInt("number");
@@ -118,6 +119,9 @@ public class DAOPropertyImpl implements DAOProperty {
                     }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
         }
 
         return property;
@@ -132,7 +136,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 p.area, 
                 b.id AS beneficiary_code,
                 b.full_name AS beneficiary_fullname,
-                b.neighborhood AS beneficiary_neighborhood,
+                b.municipality AS beneficiary_municipality,
                 b.address AS beneficiary_address,
                 pt.number,
                 pt.north_coordinate,
@@ -155,7 +159,7 @@ public class DAOPropertyImpl implements DAOProperty {
             JOIN property p ON p.code = last_properties.code
             JOIN point pt ON pt.property_code = p.code
             JOIN beneficiary b ON b.property_code = p.code
-            JOIN resolution r ON r.property_code = p.code
+            LEFT JOIN resolution r ON r.property_code = p.code
             ORDER BY p.code DESC, pt.number
         """;
 
@@ -178,7 +182,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
 
                 if (!beneficiaryExists) {
-                    DTOBeneficiaryPropertyDetails beneficiary = new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"), beneficiaryCode, rs.getString("beneficiary_neighborhood"), rs.getString("beneficiary_address"));
+                    DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
                     property.getBeneficiaries().add(beneficiary);
                 }
 
@@ -190,6 +194,9 @@ public class DAOPropertyImpl implements DAOProperty {
                     property.getPoints().add(point);
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
         }
 
         return new ArrayList<>(properties.values());
@@ -197,18 +204,33 @@ public class DAOPropertyImpl implements DAOProperty {
 
     private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
         DTOPropertyDetails property = new DTOPropertyDetails();
+
         property.setPropertyCode(rs.getInt("property_code"));
         property.setCadastralId(rs.getString("cadastral_id"));
         property.setArea(rs.getDouble("area"));
-        property.setNumResolution(rs.getLong("num_resolution"));
-        property.setNotification(rs.getDate("notification").toLocalDate());
-        property.setExecutory(rs.getDate("executory").toLocalDate());
+
+        long numResolution = rs.getLong("num_resolution");
+        property.setNumResolution(rs.wasNull() ? 0 : numResolution);
+
+        Date notification = rs.getDate("notification");
+        property.setNotification(notification != null ? notification.toLocalDate() : null);
+
+        Date executory = rs.getDate("executory");
+        property.setExecutory(executory != null ? executory.toLocalDate() : null);
+
         property.setFmi(rs.getString("fmi"));
         property.setAct(rs.getString("act"));
         property.setPublicWriting(rs.getString("public_writing"));
         property.setNotary(rs.getString("notary"));
 
         return property;
+    }
+
+    private DTOBeneficiaryPropertyDetails createDtoBeneficiaryPropertyDetails(ResultSet rs, int beneficiaryCode) throws SQLException {
+        return new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"),
+                beneficiaryCode,
+                Municipalities.valueOf(rs.getString("beneficiary_municipality")),
+                rs.getString("beneficiary_address"));
     }
 
     private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
