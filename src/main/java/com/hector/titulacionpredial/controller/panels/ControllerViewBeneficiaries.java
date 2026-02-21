@@ -74,33 +74,47 @@ public class ControllerViewBeneficiaries implements Observer {
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
-            AtomicReference<DTOBeneficiaryDetails> dto = new AtomicReference<>();
 
-            doInBackground(dto, code);
-
-            if (dto.get() == null) {
-                throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
-            }
-
-            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(viewBeneficiaries);
-            UserProfile dialog = new UserProfile(parentFrame, true);
-            dialog.loadBeneficiary(dto.get());
-
-            dialog.setLocationRelativeTo(viewBeneficiaries);
-            dialog.setVisible(true);
+            prepareUI();
+            doInBackground(code);
         } catch (Exception e) {
             MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries);
         }
     }
 
-    private void doInBackground(AtomicReference<DTOBeneficiaryDetails> dto, int code) {
+    private void prepareUI() {
+        viewBeneficiaries.getBtn_seeProfile().setEnabled(false);
+        viewBeneficiaries.getBtn_seeProfile().setText("Buscando Información...");
+    }
+
+    private void doInBackground(int code) {
         new Thread(() -> {
             try {
-                dto.set(daoBeneficiary.findAllData(code));
+                DTOBeneficiaryDetails dto = daoBeneficiary.findAllData(code);
+
+                if (dto == null) {
+                    throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
+                }
+
+                SwingUtilities.invokeLater(() -> {
+                    java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(viewBeneficiaries);
+                    UserProfile dialog = new UserProfile(parentFrame, true);
+                    dialog.loadBeneficiary(dto);
+
+                    dialog.setLocationRelativeTo(viewBeneficiaries);
+                    dialog.setVisible(true);
+
+                    resetUI();
+                });
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
             }
         }).start();
+    }
+
+    private void resetUI() {
+        viewBeneficiaries.getBtn_seeProfile().setEnabled(true);
+        viewBeneficiaries.getBtn_seeProfile().setText("Ver Información Completa");
     }
 
     private void modifyBeneficiary() {
