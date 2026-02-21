@@ -7,6 +7,10 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
@@ -263,15 +267,21 @@ public class ModifyResolution extends javax.swing.JPanel {
         return ftx_notification;
     }
     
-    public void loadData(DTOResolutionDetails dto, String notification, String executory) {
+    public void loadData(DTOResolutionDetails dto, String notification, String executory) throws ParseException {
         txt_code.setText(String.valueOf(dto.getCode()));
         txt_act.setText(dto.getAct());
         txt_fmi.setText(dto.getFmi());
         txt_note.setText(dto.getNotary());
         txt_numResolution.setText(String.valueOf(dto.getResolutionNumber()));
         txt_publicWriting.setText(dto.getPublicWriting());
-        ftx_executory.setText(executory);
-        ftx_notification.setText(notification);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale.of("es", "ES"));
+
+        Date notifDate = sdf.parse(notification);
+        Date execDate = sdf.parse(executory);
+
+        ftx_notification.setValue(notifDate);
+        ftx_executory.setValue(execDate);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
