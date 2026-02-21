@@ -169,13 +169,14 @@ public class ControllerRegisterProperty {
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
 
             SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
-            dialog.setLocationRelativeTo(registerProperty);
             dialog.loadBeneficiaries(daoBeneficiary.findByAll());
+            dialog.setLocationRelativeTo(registerProperty);
             dialog.setVisible(true);
 
             if (dialog.isConfirmed()) {
                 int beneficiaryCode = dialog.codeBeneficiarySelected();
-                registerProperty.getTxt_beneficiaryCode().setText("F" + beneficiaryCode);
+                String beneficiaryCodeStr = registerProperty.getTxt_beneficiaryCode().getText().trim();
+                registerProperty.getTxt_beneficiaryCode().setText( beneficiaryCodeStr + (beneficiaryCodeStr.isBlank() ? "" : " - ") + "F" + beneficiaryCode);
             }
         } catch (Exception e) {
             MessageUtils.errorMessage("Ha ocurrido un error al mostrar los beneficiarios", registerProperty);
