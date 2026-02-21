@@ -568,20 +568,18 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_publication.setText(beneficiary.getPublication());
         txa_crossing.setText(beneficiary.getCrossing());
         txa_affectation.setText(beneficiary.getAffectation());
-    }
 
-    public void loadSpouse(DTOSpouse spouse) {
-        if (spouse != null) {
-            txt_spouseName.setText(spouse.getFullName());
-            jlb_spouseId.setText(String.valueOf(spouse.getId()));
-            jlb_spouseExpeditionSite.setText(spouse.getExpeditionLocation());
-            jlb_spouseAddress.setText(spouse.getAddress());
-            jlb_phoneSpouse.setText(String.valueOf(spouse.getPhone()));
-        } else {
+        if (beneficiary.getFullNameSpouse() == null) {
             txt_spouseName.setText("No aplica");
             jlb_spouseId.setText("No aplica");
             jlb_spouseExpeditionSite.setText("No aplica");
             jlb_spouseAddress.setText("No aplica");
+        } else {
+            txt_spouseName.setText(beneficiary.getFullNameSpouse());
+            jlb_spouseId.setText(String.valueOf(beneficiary.getIdSpouse()));
+            jlb_spouseExpeditionSite.setText(beneficiary.getExpeditionLocationSpouse());
+            jlb_spouseAddress.setText(beneficiary.getAddressSpouse());
+            jlb_phoneSpouse.setText(String.valueOf(beneficiary.getPhoneSpouse()));
         }
     }
 
