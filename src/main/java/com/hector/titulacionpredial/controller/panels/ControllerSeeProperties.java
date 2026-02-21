@@ -76,10 +76,10 @@ public class ControllerSeeProperties implements Observer {
 
             int propertyCode = (int) seeProperties.getJtbl_properties().getValueAt(selectedRow, 0);
             String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
-            long beneficiaryId = (long) seeProperties.getJtbl_properties().getValueAt(selectedRow, 2);
+            String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
             String address = seeProperties.getJtbl_properties().getValueAt(selectedRow, 11).toString();
             Municipalities municipalities = Municipalities.valueOf(seeProperties.getJtbl_properties().getValueAt(selectedRow, 12).toString());
-            long cadastralReference = (long) seeProperties.getJtbl_properties().getValueAt(selectedRow, 10);
+            long cadastralReference = Long.parseLong(seeProperties.getJtbl_properties().getValueAt(selectedRow, 10).toString());
 
             double eastCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 13);
             double northCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 14);
@@ -108,19 +108,19 @@ public class ControllerSeeProperties implements Observer {
 
             double area = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 29);
             
-            DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, beneficiaryId, address, municipalities, cadastralReference);
+            DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, address, municipalities, cadastralReference);
 
-            generateResolution.loadData(area, point1, point2, point3, point4, propertyCode, dtoBeneficiary);
+            generateResolution.loadData(area, point1, point2, point3, point4, propertyCode, dtoBeneficiary, beneficiaryId);
+            generateResolution.clearFields();
             NavigatorUtils.showForms(generateResolution);
         } catch (Exception e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);
         }
     }
 
-    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, long id, String address, Municipalities municipalities, long cadastralReference) {
+    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address, Municipalities municipalities, long cadastralReference) {
         return new DTOBeneficiarySimpleDetails.Builder()
                 .fullName(nameBeneficiary)
-                .id(id)
                 .address(address)
                 .municipality(municipalities)
                 .cadastralReference(cadastralReference)
@@ -181,7 +181,10 @@ public class ControllerSeeProperties implements Observer {
                     throw new Exception("No se ha encontrado el Predio con la cedula catastral: " + searchText);
                 }
 
-                SwingUtilities.invokeLater(() -> seeProperties.loadData(dtoPropertyDetails));
+                SwingUtilities.invokeLater(() -> {
+                    seeProperties.getModel().setRowCount(0);
+                    seeProperties.loadData(dtoPropertyDetails);
+                });
             } catch (Exception e) {
                 MessageUtils.errorMessage(e.getMessage(), seeProperties);
             }
