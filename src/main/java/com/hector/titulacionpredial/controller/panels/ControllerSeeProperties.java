@@ -129,7 +129,7 @@ public class ControllerSeeProperties implements Observer {
 
     private void deleteProperty() {
         try {
-            if (seeProperties.getJtbl_properties().getSelectedRow() < 0) {
+            if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1 ) {
                 throw new Exception("Por favor seleccione una fila para eliminar");
             }
 

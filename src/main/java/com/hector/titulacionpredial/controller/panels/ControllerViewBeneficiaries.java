@@ -115,7 +115,7 @@ public class ControllerViewBeneficiaries implements Observer {
         try {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
-            if (selectedRow < 0) {
+            if (viewBeneficiaries.getJtbl_beneficiaries().getSelectedRowCount() != 1) {
                 throw new Exception("Debe seleccionar el beneficiario que desea eliminar");
             }
 
