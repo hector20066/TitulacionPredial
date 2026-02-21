@@ -66,7 +66,7 @@ public class DAOSpouseImpl implements DAOSpouse {
 
     @Override
     public void delete(int id) throws Exception {
-        String sql = "DELETE FROM spouse WHERE id = ?;";
+        String sql = "DELETE FROM spouse WHERE beneficiary_code = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {

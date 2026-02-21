@@ -203,7 +203,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public boolean modify(DTOBeneficiaryUpdate dto) throws Exception {
-        String sql = "UPDATE beneficiary SET department = ?, municipality = ?, address = ?, marital_status = ?, affectation = ?, phone = ?, crossing = ?, publication = ?, neighborhood = ? WHERE code = ?;";
+        String sql = "UPDATE beneficiary SET departament = ?, municipality = ?, address = ?, marital_status = ?, affectation = ?, phone = ?, crossing = ?, publication = ?, neighborhood = ? WHERE code = ?;";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
