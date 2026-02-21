@@ -68,7 +68,7 @@ public class DAOPropertyImpl implements DAOProperty {
               p.area,
               b.id AS beneficiary_code,
               b.full_name AS beneficiary_fullname,
-              b.neighborhood AS beneficiary_neighborhood,
+              b.municipality AS beneficiary_municipality,
               b.address AS beneficiary_address,
               pt.number,
               pt.north_coordinate,
@@ -82,9 +82,9 @@ public class DAOPropertyImpl implements DAOProperty {
               r.act,
               r.public_writing,
               r.notary
-           FROM property p
+            FROM property p
           JOIN point pt ON pt.property_code = p.code
-          JOIN beneficiary b ON b.property_code = p.code
+          LEFT JOIN beneficiary b ON b.property_code = p.code
           LEFT JOIN resolution r ON r.property_code = p.code
           WHERE p.cadastral_id = ?
           ORDER BY pt.number
@@ -104,11 +104,15 @@ public class DAOPropertyImpl implements DAOProperty {
                         property = createDTOPropertyDetails(rs);
                     }
 
-                    int beneficiaryCode = rs.getInt("beneficiary_code");
-                    boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+                    Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
 
-                    if (!beneficiaryExists) {
-                        property.getBeneficiaries().add(createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode));
+                    if (beneficiaryCode != null) {
+                        boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+
+                        if (!beneficiaryExists) {
+                            DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
+                            property.getBeneficiaries().add(beneficiary);
+                        }
                     }
 
                     int numberPoint = rs.getInt("number");
@@ -157,7 +161,7 @@ public class DAOPropertyImpl implements DAOProperty {
             ) last_properties
             JOIN property p ON p.code = last_properties.code
             JOIN point pt ON pt.property_code = p.code
-            JOIN beneficiary b ON b.property_code = p.code
+            LEFT JOIN beneficiary b ON b.property_code = p.code
             LEFT JOIN resolution r ON r.property_code = p.code
             ORDER BY p.code DESC, pt.number
         """;
@@ -177,12 +181,15 @@ public class DAOPropertyImpl implements DAOProperty {
                     properties.put(propertyCode, property);
                 }
 
-                int beneficiaryCode = rs.getInt("beneficiary_code");
-                boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+                Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
 
-                if (!beneficiaryExists) {
-                    DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
-                    property.getBeneficiaries().add(beneficiary);
+                if (beneficiaryCode != null) {
+                    boolean beneficiaryExists = verifyBeneficiaryExist(property, beneficiaryCode);
+
+                    if (!beneficiaryExists) {
+                        DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
+                        property.getBeneficiaries().add(beneficiary);
+                    }
                 }
 
                 int numberPoint = rs.getInt("number");
@@ -225,10 +232,19 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     private DTOBeneficiaryPropertyDetails createDtoBeneficiaryPropertyDetails(ResultSet rs, int beneficiaryCode) throws SQLException {
-        return new DTOBeneficiaryPropertyDetails(rs.getString("beneficiary_fullname"),
+        String municipalityStr = rs.getString("beneficiary_municipality");
+        Municipalities municipality = null;
+
+        if (municipalityStr != null) {
+            municipality = Municipalities.valueOf(municipalityStr);
+        }
+
+        return new DTOBeneficiaryPropertyDetails(
+                rs.getString("beneficiary_fullname"),
                 beneficiaryCode,
-                Municipalities.valueOf(rs.getString("beneficiary_municipality")),
-                rs.getString("beneficiary_address"));
+                municipality,
+                rs.getString("beneficiary_address")
+        );
     }
 
     private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
