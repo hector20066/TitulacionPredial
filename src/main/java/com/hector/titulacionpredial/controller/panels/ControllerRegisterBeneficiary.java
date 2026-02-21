@@ -95,8 +95,14 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
-    private boolean isInvalidData(String name, String lastName, String id, String phone, String expeditionLocation, String neighborhood, String address, String cadastralReference, String publication, String crossing) {
-        return name.isBlank() || lastName.isBlank() || id.isBlank() || phone.isBlank() || expeditionLocation.isBlank() || neighborhood.isBlank() || address.isBlank() || cadastralReference.isBlank() || publication.isBlank() || crossing.isBlank();
+    private boolean isInvalidData(String... fields) {
+        for (String field : fields) {
+            if (field.isBlank()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void prepareUI() {
