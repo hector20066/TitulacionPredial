@@ -161,11 +161,14 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiaryDetails findAllData(int code) throws Exception {
-        String sql = "SELECT beneficiary.code, beneficiary.id, beneficiary.full_name, beneficiary.departament, beneficiary.municipality, beneficiary.address, beneficiary.cadastral_reference, beneficiary.marital_status, beneficiary.affectation, beneficiary.phone, beneficiary.crossing, beneficiary.publication, beneficiary.neighborhood, beneficiary.expedition_location, spouse.id AS spouse_id, spouse.full_name AS spouse_full_name, spouse.expedition_location AS spouse_expedition_location, spouse.addres AS spouse_address, spouse.phone AS spouse_phone FROM beneficiary INNER JOIN spouse ON beneficiary.code = spouse.beneficiary_code;";
+        String sql = "SELECT beneficiary.code, beneficiary.id, beneficiary.full_name, beneficiary.departament, beneficiary.municipality, beneficiary.address, beneficiary.cadastral_reference, beneficiary.marital_status, beneficiary.affectation, beneficiary.phone, beneficiary.crossing, beneficiary.publication, beneficiary.neighborhood, beneficiary.expedition_location, spouse.id AS spouse_id, spouse.full_name AS spouse_full_name, spouse.expedition_location AS spouse_expedition_location, spouse.address AS spouse_address, spouse.phone AS spouse_phone FROM beneficiary LEFT JOIN spouse ON beneficiary.code = spouse.beneficiary_code WHERE beneficiary.code = ?;";
 
         try(Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+            PreparedStatement st = connection.prepareStatement(sql)) {
+
+            st.setInt(1, code);
+            ResultSet rs = st.executeQuery();
+
             if (!rs.next()) {
                 return null;
             }
@@ -191,8 +194,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 .neighborhood(rs.getString("neighborhood"))
                 .expeditionLocation(rs.getString("expedition_location"))
                 .idSpouse(rs.getLong("spouse_id"))
-                .fullNameSpouse(rs.getString("spuose_full_name"))
-                .expeditionLocationSpouse(rs.getString("spuose_expedition_location"))
+                .fullNameSpouse(rs.getString("spouse_full_name"))
+                .expeditionLocationSpouse(rs.getString("spouse_expedition_location"))
                 .addressSpouse(rs.getString("spouse_address"))
                 .phoneSpouse(rs.getLong("spouse_phone"))
                 .build();
