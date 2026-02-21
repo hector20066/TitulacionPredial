@@ -908,10 +908,10 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_publicWriting;
     }
 
-    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary) {
+    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
         BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
-            txt_idBeneficiary.setText(String.valueOf(beneficiary.getId()));
+            txt_idBeneficiary.setText(beneficiariesId);
             txt_addressBeneficiary.setText(beneficiary.getAddress());
             txt_municipality.setText(beneficiary.getMunicipality().getValue());
             txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralReference()));
@@ -945,7 +945,13 @@ public class GenerateResolution extends javax.swing.JPanel {
     }
 
     public void clearFields() {
-        
+        txt_numResolution.setText("");
+        ftx_executory.setText("");
+        ftx_notification.setText("");
+        txt_fmi.setText("");
+        txt_act.setText("");
+        txt_publicWriting.setText("");
+        txt_note.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
