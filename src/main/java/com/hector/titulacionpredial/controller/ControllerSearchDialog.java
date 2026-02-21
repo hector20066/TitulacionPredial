@@ -9,6 +9,10 @@ import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 import javax.swing.*;
 import java.util.concurrent.ExecutionException;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class ControllerSearchDialog {
 
     private final SelectBeneficiary selectBeneficiary;

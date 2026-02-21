@@ -14,7 +14,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
 public class Coordinator {
 
     // Observer
-    private ConcreteSubject subject = ConcreteSubject.getInstance();
+    private final ConcreteSubject subject = ConcreteSubject.getInstance();
 
     // Views
     private Content content;
@@ -25,6 +25,7 @@ public class Coordinator {
     private ViewBeneficiaries viewBeneficiaries;
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
+    private ModifyResolution modifyResolution;
     private Settings settings;
     private About about;
 
@@ -38,6 +39,7 @@ public class Coordinator {
     private ControllerSeeResolutions controllerSeeResolutions;
     private ControllerSettings controllerSettings;
     private ControllerViewBeneficiaries controllerViewBeneficiaries;
+    private ControllerModifyResolution controllerModifyResolution;
 
     public void startApp() {
         startView();
@@ -61,6 +63,7 @@ public class Coordinator {
         viewBeneficiaries = new ViewBeneficiaries();
         seeProperties = new SeeProperties();
         seeResolutions = new SeeResolutions();
+        modifyResolution = new ModifyResolution();
         settings = new Settings();
         about = new About();
     }
@@ -83,9 +86,10 @@ public class Coordinator {
         controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, subject);
         controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
         controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
-        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, subject);
+        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
         controllerSettings = new ControllerSettings(settings);
         controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, subject);
+        controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
     }
 
 }
