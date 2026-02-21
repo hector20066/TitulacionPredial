@@ -131,7 +131,10 @@ public class ControllerSeeResolutions implements Observer {
                     throw new Exception("No se ha encontrado la resolución con el numero " + numResolution);
                 }
 
-                SwingUtilities.invokeLater(() -> seeResolutions.loadData(dto));
+                SwingUtilities.invokeLater(() -> {
+                    seeResolutions.getModel().setRowCount(0);
+                    seeResolutions.loadData(dto);
+                });
             } catch (Exception e) {
                 MessageUtils.errorMessage(e.getMessage(), seeResolutions);
             }
