@@ -65,10 +65,12 @@ public class ControllerRegisterProperty {
                 throw new Exception("Por favor ingrese el código del beneficiario");
             }
 
+            String[] beneficiariesCode = beneficiaryCode.split(" - ");
+
             List<PointData> points = extractPoints();
 
             prepareUI();
-            doInBackGround(cadastralId, Double.parseDouble(area), Integer.parseInt(beneficiaryCode), points);
+            doInBackGround(cadastralId, Double.parseDouble(area), beneficiariesCode, points);
         } catch (Exception e) {
             MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + e.getMessage(), registerProperty);
         }
@@ -119,7 +121,7 @@ public class ControllerRegisterProperty {
         registerProperty.getBtn_register().setEnabled(false);
     }
 
-    private void doInBackGround(String cadastralId, double area, int beneficiaryCode, List<PointData> points) {
+    private void doInBackGround(String cadastralId, double area, String[] beneficiaryCodes, List<PointData> points) {
         new Thread(() -> {
             try {
                 int propertyCode = daoProperty.add(cadastralId, area);
@@ -133,7 +135,9 @@ public class ControllerRegisterProperty {
                             propertyCode);
                 }
 
-                daoBeneficiary.modifyProperty(beneficiaryCode, propertyCode);
+                for (String beneficiaryCode : beneficiaryCodes) {
+                    daoBeneficiary.modifyProperty(Integer.parseInt(beneficiaryCode), propertyCode);
+                }
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (Exception e) {
