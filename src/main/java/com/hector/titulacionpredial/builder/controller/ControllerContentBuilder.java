@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.builder.controller;
 
 import com.hector.titulacionpredial.controller.ControllerContent;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -18,6 +19,7 @@ public class ControllerContentBuilder {
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
     private Settings settings;
+    private Subject subject;
     private About about;
 
     public ControllerContentBuilder withViewContent(Content content) {
@@ -60,6 +62,11 @@ public class ControllerContentBuilder {
         return this;
     }
 
+    public ControllerContentBuilder withSubject(Subject subject) {
+        this.subject = subject;
+        return this;
+    }
+
     public ControllerContentBuilder withViewAbout(About about) {
         this.about = about;
         return this;
@@ -99,6 +106,10 @@ public class ControllerContentBuilder {
 
     public Settings getSettings() {
         return settings;
+    }
+
+    public Subject getSubject() {
+        return subject;
     }
 
     public About getAbout() {
