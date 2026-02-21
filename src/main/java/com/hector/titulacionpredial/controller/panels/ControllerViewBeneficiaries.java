@@ -8,7 +8,9 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
+import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 import javax.swing.*;
@@ -29,12 +31,14 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ControllerViewBeneficiaries implements Observer {
 
     private final ViewBeneficiaries viewBeneficiaries;
+    private final RegisterBeneficiary registerBeneficiary;
     private final Subject subject;
 
     private final BeneficiaryFacade daoBeneficiary;
 
-    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, Subject subject) {
+    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, RegisterBeneficiary registerBeneficiary, Subject subject) {
         this.viewBeneficiaries = viewBeneficiaries;
+        this.registerBeneficiary = registerBeneficiary;
         this.subject = subject;
 
         this.subject.register(this);
@@ -119,10 +123,37 @@ public class ControllerViewBeneficiaries implements Observer {
 
     private void modifyBeneficiary() {
         try {
+            int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
+            if (selectedRow == -1) {
+                throw new Exception("Debe seleccionar un beneficiario para ver su información");
+            }
+
+            int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+            doInBackgroundModify(code);
         } catch (Exception e) {
-
+            MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
+    }
+
+    private void doInBackgroundModify(int code) {
+        new Thread(() -> {
+            try {
+                DTOBeneficiaryDetails dto = daoBeneficiary.findAllData(code);
+
+                if (dto == null) {
+                    throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
+                }
+
+                SwingUtilities.invokeLater(() -> {
+                    NavigatorUtils.showForms(registerBeneficiary);
+                    registerBeneficiary.loadDataModify(dto);
+                    registerBeneficiary.setModify(true);
+                });
+            } catch (Exception e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
+            }
+        }).start();
     }
 
     private void deleteBeneficiary() {
@@ -214,6 +245,7 @@ public class ControllerViewBeneficiaries implements Observer {
             return;
         }
 
+        viewBeneficiaries.getTableModel().setRowCount(0);
         viewBeneficiaries.loadData(result);
     }
 

@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
@@ -20,6 +21,7 @@ public class ControllerContent {
     private final SeeResolutions seeResolutions;
     private final Settings settings;
     private final About about;
+    private final Subject subject;
 
     public ControllerContent(ControllerContentBuilder builder) {
         this.content = builder.getContent();
@@ -31,6 +33,7 @@ public class ControllerContent {
         this.seeResolutions = builder.getSeeResolutions();
         this.settings = builder.getSettings();
         this.about = builder.getAbout();
+        this.subject = builder.getSubject();
 
         connectEvents();
     }
@@ -44,7 +47,12 @@ public class ControllerContent {
             case 0 -> NavigatorUtils.showForms(dashboard);
             case 1 -> {
                 switch (indexSubMenu) {
-                    case 1 -> NavigatorUtils.showForms(registerBeneficiary);
+                    case 1 -> {
+                        NavigatorUtils.showForms(registerBeneficiary);
+                        registerBeneficiary.clearFields();
+                        subject.notifyObservers();
+                        registerBeneficiary.setModify(false);
+                    }
                     case 2 -> NavigatorUtils.showForms(registerProperty);
                 }
             }
