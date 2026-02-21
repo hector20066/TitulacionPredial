@@ -4,6 +4,7 @@
  */
 package com.hector.titulacionpredial.view.content.dialogs;
 
+import com.hector.titulacionpredial.controller.ControllerSearchDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import java.awt.Color;
@@ -63,7 +64,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
 
             @Override
             public void end() {
-                if (show == false) {
+                if (!show) {
                     setVisible(false);
                 }
             }
@@ -88,9 +89,9 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_beneficiaries = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        roundedPanelori = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
-        txt_searchori = new javax.swing.JTextField();
-        btn_searchOri = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        roundedPanel = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
+        txt_search = new javax.swing.JTextField();
+        btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_select = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_cancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
@@ -116,38 +117,38 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setText("Seleccionar beneficiario");
 
-        roundedPanelori.setBackground(new java.awt.Color(255, 255, 255));
-        roundedPanelori.setBorderColor(new java.awt.Color(116, 198, 157));
+        roundedPanel.setBackground(new java.awt.Color(255, 255, 255));
+        roundedPanel.setBorderColor(new java.awt.Color(116, 198, 157));
 
-        txt_searchori.setBackground(new java.awt.Color(255, 255, 255));
-        txt_searchori.setForeground(new java.awt.Color(64, 145, 108));
-        txt_searchori.setText("Buscar");
-        txt_searchori.setBorder(null);
+        txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setForeground(new java.awt.Color(64, 145, 108));
+        txt_search.setText("Buscar");
+        txt_search.setBorder(null);
 
-        btn_searchOri.setBackground(new java.awt.Color(255, 255, 255));
-        btn_searchOri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        btn_searchOri.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_searchOri.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_search.setBackground(new java.awt.Color(255, 255, 255));
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout roundedPaneloriLayout = new javax.swing.GroupLayout(roundedPanelori);
-        roundedPanelori.setLayout(roundedPaneloriLayout);
-        roundedPaneloriLayout.setHorizontalGroup(
-            roundedPaneloriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPaneloriLayout.createSequentialGroup()
+        javax.swing.GroupLayout roundedPanelLayout = new javax.swing.GroupLayout(roundedPanel);
+        roundedPanel.setLayout(roundedPanelLayout);
+        roundedPanelLayout.setHorizontalGroup(
+            roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanelLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(txt_searchori, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
-                .addComponent(btn_searchOri, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        roundedPaneloriLayout.setVerticalGroup(
-            roundedPaneloriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundedPaneloriLayout.createSequentialGroup()
+        roundedPanelLayout.setVerticalGroup(
+            roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(roundedPaneloriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_searchori)
-                    .addGroup(roundedPaneloriLayout.createSequentialGroup()
-                        .addComponent(btn_searchOri, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_search)
+                    .addGroup(roundedPanelLayout.createSequentialGroup()
+                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -176,7 +177,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(roundedPanelori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(roundedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -186,7 +187,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(roundedPanelori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(roundedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
@@ -211,13 +212,13 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void connectEvents() {
-        btn_searchOri.addActionListener(e -> {
-            
+        btn_search.addActionListener(e -> {
+           searchBeneficiary();
         });
         
         btn_select.addActionListener(e -> {
             confirmed = true;
-            //codeBeneficiarySelected();
+            codeBeneficiarySelected();
             closeMenu();
         });
         
@@ -226,38 +227,53 @@ public class SelectBeneficiary extends javax.swing.JDialog {
             dispose();
             closeMenu();
         });
-        
-        txt_searchori.getDocument().addDocumentListener(new DocumentListener() {
+
+        addDocumentListener();
+        addFocusListener();
+        addMouseListener();
+    }
+
+    private void searchBeneficiary() {
+        String param = txt_search.getText().trim();
+        new ControllerSearchDialog(this).searchBeneficiary(param);
+    }
+
+    private void addDocumentListener() {
+        txt_search.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_searchori, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_searchori, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_searchori, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
             }
         });
-        
-        txt_searchori.addFocusListener(new FocusAdapter() {
+    }
+
+    private void addFocusListener() {
+        txt_search.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                if (txt_searchori.getText().isBlank()) {
-                    txt_searchori.setText("Buscar");
+                if (txt_search.getText().isBlank()) {
+                    txt_search.setText("Buscar");
                 }
             }
         });
-        
-        txt_searchori.addMouseListener(new MouseAdapter() {
+    }
+
+    private void addMouseListener() {
+        txt_search.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (txt_searchori.getText().equals("Buscar")) {
-                    txt_searchori.setText("");
+                if (txt_search.getText().equals("Buscar")) {
+                    txt_search.setText("");
                 }
             }
         });
@@ -281,6 +297,17 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         });
     }
     
+    public void loadBeneficiary(DTOBeneficiarySimpleDetails dto) {
+        model.setRowCount(0);
+
+        int code = dto.getCode();
+        String name = dto.getFullName();
+        long id = dto.getId();
+        long cadastralReference = dto.getCadastralReference();
+
+        Object[] data = new Object[]{code, name, id, cadastralReference};
+    }
+    
     public int codeBeneficiarySelected() {
         int code = 0;
         
@@ -297,13 +324,13 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_cancel;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchOri;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_select;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbl_beneficiaries;
-    private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanelori;
-    private javax.swing.JTextField txt_searchori;
+    private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel;
+    private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
 }

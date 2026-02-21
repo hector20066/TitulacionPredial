@@ -56,7 +56,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="roundedPanelori" min="-2" max="-2" attributes="0"/>
+                          <Component id="roundedPanel" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="921" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -70,7 +70,7 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="roundedPanelori" min="-2" max="-2" attributes="0"/>
+                  <Component id="roundedPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="208" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
             <Property name="text" type="java.lang.String" value="Seleccionar beneficiario"/>
           </Properties>
         </Component>
-        <Container class="com.hector.titulacionpredial.view.swing.panel.RoundedPanel" name="roundedPanelori">
+        <Container class="com.hector.titulacionpredial.view.swing.panel.RoundedPanel" name="roundedPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -131,9 +131,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="txt_searchori" pref="716" max="32767" attributes="0"/>
+                      <Component id="txt_search" pref="716" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="btn_searchOri" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_search" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -143,9 +143,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_searchori" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_search" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="btn_searchOri" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="btn_search" min="-2" pref="34" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -155,7 +155,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_searchori">
+            <Component class="javax.swing.JTextField" name="txt_search">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -169,7 +169,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_searchOri">
+            <Component class="com.hector.titulacionpredial.view.swing.button.ButtonAction" name="btn_search">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

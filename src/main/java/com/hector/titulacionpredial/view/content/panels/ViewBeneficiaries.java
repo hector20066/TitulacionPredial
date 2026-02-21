@@ -242,21 +242,17 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         return txt_search;
     }
 
-    public void loadData(List<DTOBeneficiarySimpleDetails> dto) {
-        tableModel.setRowCount(0);
+    public void loadData(DTOBeneficiarySimpleDetails dto) {
+        int code = dto.getCode();
+        long id = dto.getId();
+        String fullName = dto.getFullName();
+        long phone = dto.getPhone();
+        long cadastralReference = dto.getCadastralReference();
+        Municipalities municipality = dto.getMunicipality();
+        String address = dto.getAddress();
 
-        dto.forEach(beneficiary -> {
-            int code = beneficiary.getCode();
-            long id = beneficiary.getId();
-            String fullName = beneficiary.getFullName();
-            long phone = beneficiary.getPhone();
-            long cadastralReference = beneficiary.getCadastralReference();
-            Municipalities municipality = beneficiary.getMunicipality();
-            String address = beneficiary.getAddress();
-
-            Object[] data = new Object[]{code, id, fullName, phone, cadastralReference, municipality.getValue(), address};
-            tableModel.addRow(data);
-        });
+        Object[] data = new Object[]{code, id, fullName, phone, cadastralReference, municipality.getValue(), address};
+        tableModel.addRow(data);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
