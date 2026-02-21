@@ -78,17 +78,18 @@ public class Coordinator {
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)
                 .withViewSettings(settings)
+                .withSubject(subject)
                 .withViewAbout(about)
                 .build();
 
         controllerDashboard = new ControllerDashboard(dashboard, subject);
         controllerGenerateResolution = new ControllerGenerateResolution(generateResolution, subject);
-        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, subject);
+        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
         controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
         controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
         controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
         controllerSettings = new ControllerSettings(settings);
-        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, subject);
+        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
         controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
     }
 
