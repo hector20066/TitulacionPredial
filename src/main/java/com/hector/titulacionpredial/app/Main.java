@@ -20,7 +20,7 @@ public class Main {
             UIManager.put("ComboBox.selectionForeground", Color.WHITE);
             UIManager.put("Component.focusColor", new Color(0x8cb79b));
             UIManager.put("Component.focusedBorderColor", new Color(0x8cb79b));
-            //UIManager.put("Table.selectionBackground", new Color(0x8cb79b));
+
             UIManager.put("Table.selectionBackground", new Color(0x8cb79b));
             UIManager.put("Table.selectionForeground", Color.WHITE);
 

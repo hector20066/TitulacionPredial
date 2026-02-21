@@ -18,8 +18,13 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -79,21 +84,23 @@ public class ControllerSeeResolutions implements Observer {
             String act = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 6).toString();
             String publicWriting = seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 7).toString();
 
-            DTOResolutionDetails dto = createDTO(code, numResolution, notification, executory, notary, fmi, act, publicWriting);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy", Locale.of("es", "ES"));
+            String notificationString = notification.format(formatter);
+            String executoryString = executory.format(formatter);
 
-            modifyResolution.loadData(dto);
+            DTOResolutionDetails dto = createDTO(code, numResolution, notary, fmi, act, publicWriting);
+
+            modifyResolution.loadData(dto, notificationString, executoryString);
             NavigatorUtils.showForms(modifyResolution);
         } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), seeResolutions);
         }
     }
 
-    private DTOResolutionDetails createDTO(int code, long numResolution, LocalDate notification, LocalDate executory, String notary, String fmi, String act, String publicWriting) {
+    private DTOResolutionDetails createDTO(int code, long numResolution, String notary, String fmi, String act, String publicWriting) {
         return new DTOResolutionDetails.Builder()
                 .code(code)
                 .resolutionNumber(numResolution)
-                .notification(notification)
-                .executory(executory)
                 .notary(notary)
                 .fmi(fmi)
                 .act(act)

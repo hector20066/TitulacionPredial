@@ -263,15 +263,15 @@ public class ModifyResolution extends javax.swing.JPanel {
         return ftx_notification;
     }
     
-    public void loadData(DTOResolutionDetails dto) {
+    public void loadData(DTOResolutionDetails dto, String notification, String executory) {
         txt_code.setText(String.valueOf(dto.getCode()));
         txt_act.setText(dto.getAct());
         txt_fmi.setText(dto.getFmi());
         txt_note.setText(dto.getNotary());
         txt_numResolution.setText(String.valueOf(dto.getResolutionNumber()));
         txt_publicWriting.setText(dto.getPublicWriting());
-        ftx_executory.setText(String.valueOf(dto.getExecutory()));
-        ftx_notification.setText(String.valueOf(dto.getNotification()));
+        ftx_executory.setText(executory);
+        ftx_notification.setText(notification);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
