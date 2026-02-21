@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
+import com.hector.titulacionpredial.model.enums.Municipalities;
+
 /**
  *
  * @author hectoracevedo
@@ -8,17 +10,17 @@ public class DTOBeneficiaryPropertyDetails {
 
     private String fullName;
     private int id;
-    private String neighborhood;
+    private Municipalities municipalities;
     private String address;
 
     public DTOBeneficiaryPropertyDetails() {
 
     }
 
-    public DTOBeneficiaryPropertyDetails(String fullName, int code, String neighborhood, String address) {
+    public DTOBeneficiaryPropertyDetails(String fullName, int code, Municipalities municipality, String address) {
         this.fullName = fullName;
         this.id = code;
-        this.neighborhood = neighborhood;
+        this.municipalities = municipality;
         this.address = address;
     }
 
@@ -30,8 +32,8 @@ public class DTOBeneficiaryPropertyDetails {
         this.id = code;
     }
 
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
+    public void setMunicipalities(Municipalities municipalities) {
+        this.municipalities = municipalities;
     }
 
     public void setAddress(String address) {
@@ -46,8 +48,8 @@ public class DTOBeneficiaryPropertyDetails {
         return id;
     }
 
-    public String getNeighborhood() {
-        return neighborhood;
+    public Municipalities getMunicipalities() {
+        return municipalities;
     }
 
     public String getAddress() {
