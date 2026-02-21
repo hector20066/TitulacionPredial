@@ -50,6 +50,7 @@ public class ControllerSeeProperties implements Observer {
         seeProperties.setControllerGenerate(e -> generateResolution());
         seeProperties.setControllerDelete(e -> deleteProperty());
         seeProperties.setControllerSearch(e -> searchProperty());
+        seeProperties.setControllerSearchCancel(e -> cancelSearch());
         documentListeners();
         listenerSearch();
     }
@@ -166,6 +167,9 @@ public class ControllerSeeProperties implements Observer {
                 throw new Exception("Por favor ingrese la cedula catastral para realizar la búsqueda");
             }
 
+            seeProperties.getBtn_searchCancel().setVisible(true);
+            seeProperties.getBtn_search().setVisible(false);
+
             doInBackground(searchText);
         } catch (Exception e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);
@@ -228,6 +232,12 @@ public class ControllerSeeProperties implements Observer {
                 }
             }
         });
+    }
+
+    private void cancelSearch() {
+        seeProperties.getBtn_searchCancel().setVisible(false);
+        seeProperties.getBtn_search().setVisible(true);
+        subject.notifyObservers();
     }
 
     private void loadData(List<DTOPropertyDetails> listProperties) {
