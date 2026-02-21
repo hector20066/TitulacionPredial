@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 import java.awt.Color;
@@ -267,7 +268,7 @@ public class SeeProperties extends JPanel {
 
         String beneficiariesName = beneficiaries.toString();
         String addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
-        String neighborhood = dto.getBeneficiaries().getFirst().getNeighborhood();
+        Municipalities municipalities = dto.getBeneficiaries().getFirst().getMunicipalities();
         String beneficiaryId = idBeneficiaries.toString();
 
         long resolutionNumber = dto.getNumResolution();
@@ -329,7 +330,7 @@ public class SeeProperties extends JPanel {
             }
         }
 
-        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification, executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, neighborhood, eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2, hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4, distance4, hillside4, area};
+        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification, executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, municipalities, eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2, hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4, distance4, hillside4, area};
         model.addRow(addData);
     }
 
