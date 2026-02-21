@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -15,6 +16,8 @@ import javax.swing.*;
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {
 
+    private boolean modify = false;
+    
     public RegisterBeneficiary() {
         initComponents();
 
@@ -64,12 +67,20 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             }
         });
     }
+    
+    public void setModify(boolean modify) {
+        this.modify = modify;
+    }
+    
+    public boolean isModify() {
+        return modify;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
         jscp_info = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -113,9 +124,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Agregar Beneficiario");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Agregar Beneficiario");
 
         jscp_info.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -123,7 +134,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel2.setText("Informacion de los beneficiarios del sistema");
+        jLabel2.setText("Informacion del beneficiario del sistema");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
@@ -436,7 +447,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jLabel1))
+                            .addComponent(jlb_title))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(16, 16, 16)
                             .addComponent(jscp_info, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -450,7 +461,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -565,16 +576,85 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public void loadFollowingCode(int code) {
         txt_followingCode.setText(String.valueOf(code));
     }
+
+    public boolean isLoading = false;
+
+    public boolean isLoading() {
+        return isLoading;
+    }
+
+    public void loadDataModify(DTOBeneficiaryDetails dto) {
+        isLoading = true;
+
+        txt_followingCode.setText(String.valueOf(dto.getCode()));
+
+        String fullName = dto.getFullName().trim();
+        validateName(fullName);
+
+        txt_id.setText(String.valueOf(dto.getId()));
+        txt_phone.setText(String.valueOf(dto.getPhone()));
+        cbo_maritalStatus.setSelectedItem(dto.getMaritalStatus());
+        txt_expeditionLocation.setText(dto.getExpeditionLocation());
+        cbo_department.setSelectedItem(dto.getDepartment());
+        cbo_municipality.setSelectedItem(dto.getMunicipality());
+        txt_neighborhood.setText(dto.getNeighborhood());
+        txt_address.setText(dto.getAddress());
+        txt_cadastralReference.setText(String.valueOf(dto.getCadastralReference()));
+        txt_publication.setText(dto.getPublication());
+        txa_crossing.setText(dto.getCrossing());
+        txa_affectation.setText(dto.getAffectation());
+        txt_name.setEditable(false);
+        txt_lastName.setEditable(false);
+        txt_id.setEditable(false);
+        txt_cadastralReference.setEditable(false);
+        txt_expeditionLocation.setEditable(false);
+        
+        jlb_title.setText("Modificar Beneficiario");
+        btn_register.setText("MODIFICAR BENEFICIARIO");
+
+        isLoading = false;
+    }
+
+    private void validateName(String fullName) {
+        if (fullName == null || fullName.trim().isEmpty()) {
+            txt_name.setText("");
+            txt_lastName.setText("");
+            return;
+        }
+
+        String[] parts = fullName.trim().split("\\s+");
+
+        if (parts.length == 1) {
+            txt_name.setText(parts[0]);
+            txt_lastName.setText("");
+            return;
+        }
+
+        int mitad = parts.length / 2;
+
+        StringBuilder nombres = new StringBuilder();
+        StringBuilder apellidos = new StringBuilder();
+
+        for (int i = 0; i < mitad; i++) {
+            nombres.append(parts[i]).append(" ");
+        }
+
+        for (int i = mitad; i < parts.length; i++) {
+            apellidos.append(parts[i]).append(" ");
+        }
+
+        txt_name.setText(nombres.toString().trim());
+        txt_lastName.setText(apellidos.toString().trim());
+    }
     
     public void clearFields() {
+        jlb_title.setText("Agregar Beneficiario");
+        btn_register.setText("AGREGAR BENEFICIARIO");
         txt_name.setText("");
         txt_lastName.setText("");
         txt_id.setText("");
         txt_phone.setText("");
-        cbo_maritalStatus.getSelectedItem();
         txt_expeditionLocation.setText("");
-        cbo_department.getSelectedItem();
-        cbo_municipality.getSelectedItem();
         txt_neighborhood.setText("");
         txt_address.setText("");
         txt_cadastralReference.setText("");
@@ -584,6 +664,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_department.setSelectedIndex(0);
         cbo_maritalStatus.setSelectedIndex(0);
         cbo_municipality.setSelectedIndex(0);
+        cbx_affectation.setSelected(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -592,7 +673,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
     private javax.swing.JComboBox<Municipalities> cbo_municipality;
     private javax.swing.JCheckBox cbx_affectation;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -616,6 +696,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JScrollPane jscp_info;
     private javax.swing.JTextArea txa_affectation;
     private javax.swing.JTextArea txa_crossing;
