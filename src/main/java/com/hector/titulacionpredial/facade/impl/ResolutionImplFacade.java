@@ -50,12 +50,16 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    public boolean modify(LocalDate executory, String act, String publicWriting, long numResolution) throws Exception {
+    public boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution, LocalDate notification, String fmi, String notary) throws Exception {
         DTOResolutionUpdate dto = new DTOResolutionUpdate.Builder()
                 .resolutionNumber(numResolution)
                 .executory(executory)
                 .act(act)
                 .publicWriting(publicWriting)
+                .code(code)
+                .notification(notification)
+                .fmi(fmi)
+                .notary(notary)
                 .build();
 
         return daoResolution.modify(dto);
