@@ -71,7 +71,7 @@ public class ControllerSeeResolutions implements Observer {
         try {
             String numResolutionText = seeResolutions.getTxt_search().getText().trim();
 
-            if (numResolutionText.isBlank() || numResolutionText.equals("Buscar")) {
+            if (numResolutionText.isBlank() || numResolutionText.equalsIgnoreCase("Buscar")) {
                 throw new Exception("Debe ingresar el numero de la resolución para realizar la búsqueda");
             }
 

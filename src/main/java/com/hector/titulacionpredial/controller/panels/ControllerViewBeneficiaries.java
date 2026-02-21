@@ -2,10 +2,12 @@ package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
@@ -17,6 +19,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  *
@@ -44,6 +48,7 @@ public class ControllerViewBeneficiaries implements Observer {
         viewBeneficiaries.setControllerViewDetails(e -> showDetails());
         viewBeneficiaries.setControllerModify(e -> modifyBeneficiary());
         viewBeneficiaries.setControllerDelete(e -> deleteBeneficiary());
+        viewBeneficiaries.setControllerSearch(e -> search());
         documentListeners();
         listenerSearch();
     }
@@ -63,23 +68,39 @@ public class ControllerViewBeneficiaries implements Observer {
     private void showDetails() {
         try {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
+
             if (selectedRow == -1) {
-                // return;
+                throw new Exception("Debe seleccionar un beneficiario para ver su información");
             }
 
-            // Beneficiary beneficiary = getBeneficiaryFromTable(selectedRow);
+            int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+            AtomicReference<DTOBeneficiaryDetails> dto = new AtomicReference<>();
+
+            doInBackground(dto, code);
+
+            if (dto.get() == null) {
+                throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
+            }
 
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(viewBeneficiaries);
             UserProfile dialog = new UserProfile(parentFrame, true);
-
-            // Cargar los datos en el diálogo (necesitas agregar este método a UserProfile)
-            // dialog.loadBeneficiary(beneficiary);
+            dialog.loadBeneficiary(dto.get());
 
             dialog.setLocationRelativeTo(viewBeneficiaries);
             dialog.setVisible(true);
         } catch (Exception e) {
-
+            MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries);
         }
+    }
+
+    private void doInBackground(AtomicReference<DTOBeneficiaryDetails> dto, int code) {
+        new Thread(() -> {
+            try {
+                dto.set(daoBeneficiary.findAllData(code));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     private void modifyBeneficiary() {
@@ -92,10 +113,105 @@ public class ControllerViewBeneficiaries implements Observer {
 
     private void deleteBeneficiary() {
         try {
+            int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
+            if (selectedRow < 0) {
+                throw new Exception("Debe seleccionar el beneficiario que desea eliminar");
+            }
+
+            int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+
+            runDelete(() -> {
+                try {
+                    daoBeneficiary.delete(code);
+                } catch (Exception e) {
+                    throw new RuntimeException("Ha ocurrido un error al eliminar el registro");
+                }
+            });
         } catch (Exception e) {
-
+            MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
+    }
+
+    private void runDelete(Runnable task) {
+        new Thread(() -> {
+            task.run();
+
+            SwingUtilities.invokeLater(() -> {
+                MessageUtils.informationMessage("Se ha eliminado el registro del beneficiario", viewBeneficiaries);
+                subject.notifyObservers();
+            });
+        }).start();
+    }
+
+    private void search() {
+        String param = getSearchParam();
+
+        if (!isValid(param)) {
+            MessageUtils.warningMessage("Debe ingresar un criterio de búsqueda", viewBeneficiaries);
+            return;
+        }
+
+        lockUI(false);
+        executeSearchAsync(param);
+    }
+
+    private String getSearchParam() {
+        return viewBeneficiaries.getTxt_search().getText().trim();
+    }
+
+    private boolean isValid(String param) {
+        return !(param.isBlank() || param.equalsIgnoreCase("Buscar"));
+    }
+
+    private void executeSearchAsync(String param) {
+        new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
+            @Override
+            protected DTOBeneficiarySimpleDetails doInBackground() throws Exception {
+                return resolveSearch(param);
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    handleResult(get());
+                } catch (Exception e) {
+                    MessageUtils.errorMessage("Error al buscar beneficiario", viewBeneficiaries);
+                } finally {
+                    lockUI(true);
+                }
+            }
+        }.execute();
+    }
+
+    private DTOBeneficiarySimpleDetails resolveSearch(String param) throws Exception {
+        if (isNumeric(param)) {
+            long value = Long.parseLong(param);
+
+            return (value > 1_000_000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);
+        }
+
+        return daoBeneficiary.findByName(param);
+    }
+
+    private void handleResult(DTOBeneficiarySimpleDetails result) {
+        if (result == null) {
+            MessageUtils.errorMessage("No se encontró el beneficiario", viewBeneficiaries);
+            return;
+        }
+
+        viewBeneficiaries.loadData(result);
+    }
+
+    private boolean isNumeric(String value) {
+        return value.matches("\\d+");
+    }
+
+    private void lockUI(boolean isBlocked) {
+        viewBeneficiaries.getBtn_search().setEnabled(isBlocked);
+        viewBeneficiaries.getBtn_delete().setEnabled(isBlocked);
+        viewBeneficiaries.getBtn_modify().setEnabled(isBlocked);
+        viewBeneficiaries.getBtn_seeProfile().setEnabled(isBlocked);
     }
 
     private void documentListeners() {
@@ -138,7 +254,8 @@ public class ControllerViewBeneficiaries implements Observer {
     }
 
     private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
-        viewBeneficiaries.loadData(listBeneficiaries);
+        viewBeneficiaries.getTableModel().setRowCount(0);
+        listBeneficiaries.forEach(viewBeneficiaries::loadData);
     }
 
 }

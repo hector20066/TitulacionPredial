@@ -162,7 +162,7 @@ public class ControllerSeeProperties implements Observer {
         try {
             String searchText = seeProperties.getTxt_search().getText().trim();
 
-            if (searchText.isBlank() || searchText.equals("Buscar")) {
+            if (searchText.isBlank() || searchText.equalsIgnoreCase("Buscar")) {
                 throw new Exception("Por favor ingrese la cedula catastral para realizar la búsqueda");
             }
 
