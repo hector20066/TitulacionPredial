@@ -10,7 +10,7 @@ import javax.swing.JLabel;
  * @author hectoracevedo
  */
 public class LabelColor extends JLabel {
-    
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
@@ -23,5 +23,5 @@ public class LabelColor extends JLabel {
         g2.setColor(getBackground());
         g2.fillOval(x, y, size, size);
     }
-    
+
 }

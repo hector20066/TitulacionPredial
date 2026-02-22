@@ -35,6 +35,8 @@ public class LegendItem extends javax.swing.JPanel {
         labelColor1 = new com.hector.titulacionpredial.view.swing.chart.LabelColor();
         lbName = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         labelColor1.setText("labelColor1");
 
         lbName.setForeground(new java.awt.Color(180, 180, 180));

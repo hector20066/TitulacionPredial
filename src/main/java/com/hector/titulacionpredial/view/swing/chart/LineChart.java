@@ -52,11 +52,13 @@ public class LineChart extends javax.swing.JPanel {
                 repaint();
             }
         };
+        
         animator = new Animator(800, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
         animator.setDeceleration(0.5f);
         blankPlotChart.getNiceScale().setMaxTicks(5);
+        
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChartRender() {
             @Override
             public int getMaxLegend(){
@@ -88,6 +90,7 @@ public class LineChart extends javax.swing.JPanel {
                     }else{
                         gra.get(i).lineTo(size.getX() + x + ss, size.getY() + size.getHeight() - seriesValues);
                     }
+                    
                     x += seriesSpace + seriesSize;
                 }
 
@@ -96,12 +99,13 @@ public class LineChart extends javax.swing.JPanel {
                     Dimension s = getLabelWidth(showLabel, g2);
                     int space = 3;
                     int spaceTop = 0;
-                    g2.setColor(new Color(30, 30, 30));
+                    g2.setColor(new Color(156, 151, 151));
                     g2.fillRoundRect(labelLocation.x - s.width / 2 - 3, labelLocation.y - s.height - space * 2 - spaceTop, s.width + space * 2, s.height + space * 2, 10, 10);
-                    g2.setColor(new Color(200, 200, 200));
+                    g2.setColor(new Color(0, 0, 0));
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
                     g2.drawString(showLabel, labelLocation.x - s.width / 2, labelLocation.y - spaceTop - space * 2);
                 }
+                
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
             }
 
@@ -153,6 +157,8 @@ public class LineChart extends javax.swing.JPanel {
         panelLegend.setOpaque(false);
         panelLegend.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
+        blankPlotChart.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,7 +174,7 @@ public class LineChart extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(blankPlotChart, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

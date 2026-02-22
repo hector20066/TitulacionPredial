@@ -29,7 +29,7 @@ public class BlankPlotChart extends JComponent {
     public BlankPlotChart(){
         setBackground(Color.WHITE);
         setOpaque(false);
-        setForeground(new Color(180, 180, 180));
+        setForeground(new Color(45,106,79));
         setBorder(new EmptyBorder(35, 10, 10, 10));
         init();
     }
@@ -87,6 +87,7 @@ public class BlankPlotChart extends JComponent {
 
     private void init(){
         initValues(0, 10);
+        
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent me) {
@@ -192,20 +193,24 @@ public class BlankPlotChart extends JComponent {
             for (int i = 0; i < labelCount; i++) {
                 blankPlotChatRender.renderSeries(this, g2, getRectangle(i, height, space, locationX, insets.top), i);
             }
+            
             List<Path2D.Double> gra = initGra(blankPlotChatRender.getMaxLegend());
+            
             for (int i = 0; i < labelCount; i++) {
                 blankPlotChatRender.renderSeries(this, g2, getRectangle(i, height, space, locationX, insets.top), i, gra);
             }
+            
             blankPlotChatRender.renderGraphics(g2, gra);
         }
     }
 
-    private List initGra(int size){
+    private List<Path2D.Double> initGra(int size){
         List<Path2D.Double> list = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
             list.add(new Path2D.Double());
         }
+        
         return list;
     }
 
@@ -222,6 +227,7 @@ public class BlankPlotChart extends JComponent {
             
             for (int i = 0; i < labelCount; i++) {
                 boolean stop = blankPlotChatRender.mouseMoving(this, evt, g2, getRectangle(i, height, space, locationX, insets.top), i);
+                
                 if (stop) {
                     break;
                 }
@@ -233,15 +239,19 @@ public class BlankPlotChart extends JComponent {
         double width = 0;
         FontMetrics ft = g2.getFontMetrics();
         double valuesCount = niceScale.getNiceMin();
+        
         for (int i = 0; i <= niceScale.getMaxTicks(); i++) {
             String text = format.format(valuesCount);
             Rectangle2D r2 = ft.getStringBounds(text, g2);
             double w = r2.getWidth();
+            
             if (w > width) {
                 width = w;
             }
+            
             valuesCount += niceScale.getTickSpacing();
         }
+        
         return width;
     }
 
