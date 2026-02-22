@@ -20,5 +20,6 @@ public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBenefic
     DTOBeneficiaryDetails findAllData(int code) throws Exception;
     boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws Exception;
     int getLastCode() throws Exception;
+    List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception;
 
 }

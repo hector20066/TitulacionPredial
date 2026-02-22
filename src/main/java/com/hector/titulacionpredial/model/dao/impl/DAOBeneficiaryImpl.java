@@ -280,4 +280,39 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         }
     }
 
+    @Override
+    public List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception {
+        List<DTOBeneficiariesByMonth> result = new ArrayList<>();
+
+        String sql = """
+            SELECT 
+                YEAR(entry_date) AS anio,
+                MONTH(entry_date) AS mes,
+                COUNT(*) AS total
+            FROM beneficiary
+            WHERE entry_date IS NOT NULL
+              AND entry_date >= DATE_SUB(CURDATE(), INTERVAL ? MONTH)
+            GROUP BY YEAR(entry_date), MONTH(entry_date)
+            ORDER BY anio, mes
+        """;
+
+        try (Connection conn = DataBasePool.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, months);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    result.add(new DTOBeneficiariesByMonth(
+                            rs.getInt("anio"),
+                            rs.getInt("mes"),
+                            rs.getInt("total")
+                    ));
+                }
+            }
+        }
+
+        return result;
+    }
+
 }
