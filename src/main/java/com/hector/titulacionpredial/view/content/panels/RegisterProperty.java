@@ -547,7 +547,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel1.setText("Informacion del Predio:");
+        jLabel1.setText("Información del Predio:");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
@@ -567,11 +567,11 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel4.setText("Informacion de los puntos:");
+        jLabel4.setText("Información de los puntos:");
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel10.setText("Codigo del Beneficiario:");
+        jLabel10.setText("Código del Beneficiario:");
 
         txt_beneficiaryCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N

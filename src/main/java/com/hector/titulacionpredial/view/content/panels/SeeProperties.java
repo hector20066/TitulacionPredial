@@ -27,7 +27,7 @@ public class SeeProperties extends JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {"Codigo Propiedad", "Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Municipio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
+        String[] titles = {"Código Propiedad", "Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Dirección", "Municipio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
         model.setColumnIdentifiers(titles);
         jtbl_properties.setModel(model);
         
@@ -117,7 +117,7 @@ public class SeeProperties extends JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Cedula", "N. Resolucion", "Notificacion", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Direccion", "Barrio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"
+                "Nombre", "Cedula", "N. Resolución", "Notificación", "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Dirección", "Barrio", "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS", "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"
             }
         ));
         jScrollPane2.setViewportView(jtbl_properties);
@@ -143,7 +143,7 @@ public class SeeProperties extends JPanel {
 
         btn_generate.setBackground(new java.awt.Color(64, 145, 108));
         btn_generate.setForeground(new java.awt.Color(255, 255, 255));
-        btn_generate.setText("Generar Resolucion");
+        btn_generate.setText("Generar Resolución");
         btn_generate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 

@@ -109,7 +109,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
 
         btn_seeProfile.setBackground(new java.awt.Color(64, 145, 108));
         btn_seeProfile.setForeground(new java.awt.Color(255, 255, 255));
-        btn_seeProfile.setText("Ver Informacion Completa");
+        btn_seeProfile.setText("Ver Información Completa");
         btn_seeProfile.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_seeProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 

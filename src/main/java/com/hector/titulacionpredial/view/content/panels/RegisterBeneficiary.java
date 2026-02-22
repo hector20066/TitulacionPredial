@@ -132,7 +132,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel2.setText("Informacion del beneficiario del sistema");
+        jLabel2.setText("Información del beneficiario del sistema");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
@@ -144,7 +144,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel11.setText("Telefono:");
+        jLabel11.setText("Teléfono:");
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -200,7 +200,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel9.setText("Direccion:");
+        jLabel9.setText("Dirección:");
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
         txt_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -231,7 +231,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel15.setText("Afectacion:");
+        jLabel15.setText("Afectación:");
 
         txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
@@ -240,7 +240,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jScrollPane3.setViewportView(txa_affectation);
 
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel17.setText("Lugar Expedicion:");
+        jLabel17.setText("Lugar Expedición:");
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -248,7 +248,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel18.setText("Publicacion:");
+        jLabel18.setText("Publicación:");
 
         txt_publication.setBackground(new java.awt.Color(255, 255, 255));
         txt_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -426,7 +426,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel16.setText("Codigo: F");
+        jLabel16.setText("Código: F");
 
         txt_followingCode.setEditable(false);
         txt_followingCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
