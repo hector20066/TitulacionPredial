@@ -193,8 +193,8 @@ public class ControllerViewBeneficiaries implements Observer {
             return;
         }
 
-        viewBeneficiaries.getBtn_searchCancel().setVisible(true);
         viewBeneficiaries.getBtn_search().setVisible(false);
+        viewBeneficiaries.getBtn_searchCancel().setVisible(true);
 
         lockUI(false);
         executeSearchAsync(param);

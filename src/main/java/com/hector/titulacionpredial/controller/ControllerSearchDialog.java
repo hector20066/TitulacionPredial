@@ -7,6 +7,7 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -24,43 +25,80 @@ public class ControllerSearchDialog {
     }
 
     public void searchBeneficiary(String param) {
+        if (isInvalidParam(param)) {
+            MessageUtils.errorMessage("Debe ingresar el número de cédula, código o nombre", null);
+            return;
+        }
+
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
             @Override
-            public DTOBeneficiarySimpleDetails doInBackground() throws Exception {
-                return resolveSearch(param);
+            protected DTOBeneficiarySimpleDetails doInBackground() throws Exception {
+                return resolveSearch(param.trim());
             }
 
             @Override
-            public void done() {
+            protected void done() {
                 try {
                     DTOBeneficiarySimpleDetails dto = get();
 
                     if (dto == null) {
-                        throw new Exception("No se han encontrado registros asociados al parámetro de búsqueda \"" + param + "\"");
+                        MessageUtils.errorMessage("No se encontraron registros para: \"" + param + "\"", null);
+                        return;
                     }
 
                     selectBeneficiary.loadBeneficiary(dto);
-                } catch (InterruptedException | ExecutionException e) {
-                    throw new RuntimeException("Error al realizar la búsqueda.");
-                } catch (Exception e) {
-                    MessageUtils.errorMessage("No se ha encontrado el beneficiario", null);
+                } catch (ExecutionException e) {
+                    MessageUtils.errorMessage(e.getCause().getMessage(), null);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
         }.execute();
     }
 
+    private boolean isInvalidParam(String param) {
+        return param == null || param.isBlank() || param.equalsIgnoreCase("Buscar");
+    }
+
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws Exception {
         if (isNumeric(param)) {
-            long value = Long.parseLong(param);
-
-            return (value > 1_000_000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);
+            return searchByNumericValue(param);
         }
 
         return daoBeneficiary.findByName(param);
     }
 
+    private DTOBeneficiarySimpleDetails searchByNumericValue(String value) throws Exception {
+        long numericValue = Long.parseLong(value);
+
+        if (isDocumentNumber(numericValue)) {
+            return daoBeneficiary.findById(numericValue);
+        }
+
+        return daoBeneficiary.findByCode((int) numericValue);
+    }
+
+    private boolean isDocumentNumber(long value) {
+        return value >= 1_000_000;
+    }
+
     private boolean isNumeric(String value) {
-        return value.matches("\\d+");
+        for (char c : value.toCharArray()) {
+            if (!Character.isDigit(c)) return false;
+        }
+
+        return true;
+    }
+
+    public void loadUsers() {
+        new Thread(() -> {
+            try {
+                List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
+                SwingUtilities.invokeLater(() -> selectBeneficiary.loadBeneficiaries(listBeneficiaries));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
 }

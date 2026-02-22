@@ -30,9 +30,12 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private boolean show = true;
     DefaultTableModel model = new DefaultTableModel();
 
+    private ControllerSearchDialog controllerSearchDialog;
+
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.controllerSearchDialog =  new ControllerSearchDialog(this);
 
         String[] titles = {"Código", "Nombre", "Cedula", "Ref. Catastral"};
         model.setColumnIdentifiers(titles);
@@ -228,7 +231,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
             txt_search.setText("Buscar");
             btn_searchCancel.setVisible(false);
             btn_search.setVisible(true);
-            ConcreteSubject.getInstance().notifyObservers();
+            controllerSearchDialog.loadUsers();
         });
 
         addDocumentListener();
@@ -237,11 +240,11 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     private void searchBeneficiary() {
-        btn_searchCancel.setVisible(false);
-        btn_search.setVisible(true);
+        btn_searchCancel.setVisible(true);
+        btn_search.setVisible(false);
 
         String param = txt_search.getText().trim();
-        new ControllerSearchDialog(this).searchBeneficiary(param);
+        controllerSearchDialog.searchBeneficiary(param);
     }
 
     private void addDocumentListener() {
