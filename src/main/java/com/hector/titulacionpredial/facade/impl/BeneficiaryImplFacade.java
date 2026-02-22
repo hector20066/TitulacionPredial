@@ -113,4 +113,9 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
         return daoBeneficiary.getLastCode();
     }
 
+    @Override
+    public List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception {
+        return daoBeneficiary.countBeneficiariesLastMonths(months);
+    }
+
 }

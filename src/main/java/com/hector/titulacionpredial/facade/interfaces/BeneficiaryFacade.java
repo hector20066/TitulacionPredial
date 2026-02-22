@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.facade.interfaces;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.enums.*;
@@ -24,5 +25,6 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus, String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws Exception;
     boolean modifyProperty(int code, int propertyCode) throws Exception;
     int getLastCode() throws Exception;
+    List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception;
 
 }
