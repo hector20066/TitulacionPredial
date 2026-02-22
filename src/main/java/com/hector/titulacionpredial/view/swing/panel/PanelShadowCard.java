@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.view.swing.panel;
 
-import com.hector.titulacionpredial.view.swing.shadow.ShadowRenderer;
+import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowRendererChart;
 import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowType;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -98,7 +98,7 @@ public class PanelShadowCard extends JPanel {
         g.setColor(getBackground());
         g.fillRoundRect(0, 0, width, height, 10, 10);
         //  Create Shadow
-        ShadowRenderer render = new ShadowRenderer(shadowSize, shadowOpacity, shadowColor);
+        ShadowRendererChart render = new ShadowRendererChart(shadowSize, shadowOpacity, shadowColor);
         shadowImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = shadowImage.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
