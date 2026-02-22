@@ -2,6 +2,7 @@ package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.controller.ControllerSearchDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import java.awt.Color;
 import java.awt.Font;
@@ -23,7 +24,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  * @author hectoracevedo
  */
 public class SelectBeneficiary extends javax.swing.JDialog {
-    
+
     private boolean confirmed = false;
     private final Animator animator;
     private boolean show = true;
@@ -32,19 +33,21 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         String[] titles = {"Código", "Nombre", "Cedula", "Ref. Catastral"};
         model.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(model);
-        
+
         JTableHeader header = jtbl_beneficiaries.getTableHeader();
         header.setBackground(new Color(0x8cb79b));
         header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
-        
+
+        btn_searchCancel.setVisible(false);
+
         connectEvents();
-        
+
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -62,7 +65,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 }
             }
         };
-        
+
         animator = new Animator(200, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
@@ -78,6 +81,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         roundedPanel = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
         txt_search = new javax.swing.JTextField();
         btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_searchCancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_select = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_cancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
@@ -116,14 +120,21 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btn_searchCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btn_searchCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/x.png"))); // NOI18N
+        btn_searchCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_searchCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout roundedPanelLayout = new javax.swing.GroupLayout(roundedPanel);
         roundedPanel.setLayout(roundedPanelLayout);
         roundedPanelLayout.setHorizontalGroup(
             roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
-                .addGap(2, 2, 2)
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -132,11 +143,10 @@ public class SelectBeneficiary extends javax.swing.JDialog {
             .addGroup(roundedPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_search)
-                    .addGroup(roundedPanelLayout.createSequentialGroup()
-                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btn_select.setBackground(new java.awt.Color(64, 145, 108));
@@ -199,19 +209,26 @@ public class SelectBeneficiary extends javax.swing.JDialog {
 
     private void connectEvents() {
         btn_search.addActionListener(e -> {
-           searchBeneficiary();
+            searchBeneficiary();
         });
-        
+
         btn_select.addActionListener(e -> {
             confirmed = true;
             codeBeneficiarySelected();
             closeMenu();
         });
-        
+
         btn_cancel.addActionListener(e -> {
             confirmed = false;
             dispose();
             closeMenu();
+        });
+
+        btn_searchCancel.addActionListener(e -> {
+            txt_search.setText("Buscar");
+            btn_searchCancel.setVisible(false);
+            btn_search.setVisible(true);
+            ConcreteSubject.getInstance().notifyObservers();
         });
 
         addDocumentListener();
@@ -220,6 +237,9 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     private void searchBeneficiary() {
+        btn_searchCancel.setVisible(false);
+        btn_search.setVisible(true);
+
         String param = txt_search.getText().trim();
         new ControllerSearchDialog(this).searchBeneficiary(param);
     }
@@ -264,25 +284,25 @@ public class SelectBeneficiary extends javax.swing.JDialog {
             }
         });
     }
-    
+
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
         }
-        
+
         show = false;
         animator.start();
     }
-    
+
     public void loadBeneficiaries(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         model.setRowCount(0);
-        
+
         listBeneficiaries.forEach(e -> {
             Object[] data = new Object[]{e.getCode(), e.getFullName(), e.getId(), e.getCadastralReference()};
             model.addRow(data);
         });
     }
-    
+
     public void loadBeneficiary(DTOBeneficiarySimpleDetails dto) {
         model.setRowCount(0);
 
@@ -294,24 +314,25 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         Object[] data = new Object[]{code, name, id, cadastralReference};
         model.addRow(data);
     }
-    
+
     public int codeBeneficiarySelected() {
         int code = 0;
-        
+
         if (jtbl_beneficiaries.getSelectedRow() > -1) {
             code = Integer.parseInt(jtbl_beneficiaries.getValueAt(jtbl_beneficiaries.getSelectedRow(), 0).toString());
         }
-        
+
         return code;
     }
-    
+
     public boolean isConfirmed() {
         return confirmed;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_cancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_select;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

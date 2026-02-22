@@ -35,6 +35,7 @@ public class SeeResolutions extends javax.swing.JPanel {
         header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
+        btn_searchCancel.setVisible(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,6 +47,7 @@ public class SeeResolutions extends javax.swing.JPanel {
         roundedPanel3 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
         txt_search = new javax.swing.JTextField();
         btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_searchCancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_modify = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -80,14 +82,21 @@ public class SeeResolutions extends javax.swing.JPanel {
         btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btn_searchCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btn_searchCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/x.png"))); // NOI18N
+        btn_searchCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_searchCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout roundedPanel3Layout = new javax.swing.GroupLayout(roundedPanel3);
         roundedPanel3.setLayout(roundedPanel3Layout);
         roundedPanel3Layout.setHorizontalGroup(
             roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel3Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
-                .addGap(2, 2, 2)
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -96,11 +105,10 @@ public class SeeResolutions extends javax.swing.JPanel {
             .addGroup(roundedPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_search)
-                    .addGroup(roundedPanel3Layout.createSequentialGroup()
-                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btn_modify.setBackground(new java.awt.Color(64, 145, 108));
@@ -156,6 +164,10 @@ public class SeeResolutions extends javax.swing.JPanel {
         btn_search.addActionListener(action);
     }
     
+    public void setControllerSearchCancel(ActionListener action) {
+        btn_searchCancel.addActionListener(action);
+    }
+    
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
@@ -178,6 +190,10 @@ public class SeeResolutions extends javax.swing.JPanel {
 
     public ButtonAction getBtn_search() {
         return btn_search;
+    }
+
+    public ButtonAction getBtn_searchCancel() {
+        return btn_searchCancel;
     }
 
     public JTable getJtbl_resolutions() {
@@ -209,6 +225,7 @@ public class SeeResolutions extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbl_resolutions;

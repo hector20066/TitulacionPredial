@@ -36,6 +36,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         header.setForeground(new Color(0x051f20));
         header.setFont(new Font("SansSerif", Font.BOLD, 12));
         header.setReorderingAllowed(false);
+        btn_searchCancel.setVisible(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -48,6 +49,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         roundedPanel1 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
         txt_search = new javax.swing.JTextField();
         btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_searchCancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_seeProfile = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_modify = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_delete = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
@@ -84,14 +86,21 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btn_searchCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btn_searchCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/x.png"))); // NOI18N
+        btn_searchCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_searchCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout roundedPanel1Layout = new javax.swing.GroupLayout(roundedPanel1);
         roundedPanel1.setLayout(roundedPanel1Layout);
         roundedPanel1Layout.setHorizontalGroup(
             roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(txt_search, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
-                .addGap(2, 2, 2)
+                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -100,16 +109,15 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
             .addGroup(roundedPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_search)
-                    .addGroup(roundedPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btn_seeProfile.setBackground(new java.awt.Color(64, 145, 108));
         btn_seeProfile.setForeground(new java.awt.Color(255, 255, 255));
-        btn_seeProfile.setText("Ver Información Completa");
+        btn_seeProfile.setText("Ver Informacion Completa");
         btn_seeProfile.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_seeProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -162,7 +170,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
                     .addComponent(btn_seeProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -191,6 +199,10 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
+    }
+    
+    public void setControllerSearchCancel(ActionListener action) {
+        btn_searchCancel.addActionListener(action);
     }
     
     public void setControllerTxt_searchDocument(DocumentListener listen) {
@@ -223,6 +235,10 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
 
     public ButtonAction getBtn_seeProfile() {
         return btn_seeProfile;
+    }
+
+    public ButtonAction getBtn_searchCancel() {
+        return btn_searchCancel;
     }
 
     public JPanel getJpl_content() {
@@ -258,6 +274,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_delete;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_seeProfile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
