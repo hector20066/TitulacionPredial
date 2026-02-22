@@ -18,8 +18,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  *
@@ -50,6 +48,7 @@ public class ControllerViewBeneficiaries implements Observer {
         viewBeneficiaries.setControllerModify(e -> modifyBeneficiary());
         viewBeneficiaries.setControllerDelete(e -> deleteBeneficiary());
         viewBeneficiaries.setControllerSearch(e -> search());
+        viewBeneficiaries.setControllerSearchCancel(e -> cancelSearch());
         documentListeners();
         listenerSearch();
     }
@@ -194,6 +193,9 @@ public class ControllerViewBeneficiaries implements Observer {
             return;
         }
 
+        viewBeneficiaries.getBtn_searchCancel().setVisible(true);
+        viewBeneficiaries.getBtn_search().setVisible(false);
+
         lockUI(false);
         executeSearchAsync(param);
     }
@@ -251,7 +253,6 @@ public class ControllerViewBeneficiaries implements Observer {
     }
 
     private void lockUI(boolean isBlocked) {
-        viewBeneficiaries.getBtn_search().setEnabled(isBlocked);
         viewBeneficiaries.getBtn_delete().setEnabled(isBlocked);
         viewBeneficiaries.getBtn_modify().setEnabled(isBlocked);
         viewBeneficiaries.getBtn_seeProfile().setEnabled(isBlocked);
@@ -294,6 +295,13 @@ public class ControllerViewBeneficiaries implements Observer {
                 }
             }
         });
+    }
+
+    private void cancelSearch() {
+        viewBeneficiaries.getTxt_search().setText("Buscar");
+        viewBeneficiaries.getBtn_searchCancel().setVisible(false);
+        viewBeneficiaries.getBtn_search().setVisible(true);
+        subject.notifyObservers();
     }
 
     private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {

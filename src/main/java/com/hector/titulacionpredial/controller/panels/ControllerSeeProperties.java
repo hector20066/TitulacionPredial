@@ -232,6 +232,7 @@ public class ControllerSeeProperties implements Observer {
     }
 
     private void cancelSearch() {
+        seeProperties.getBtn_search().setText("Buscar");
         seeProperties.getBtn_searchCancel().setVisible(false);
         seeProperties.getBtn_search().setVisible(true);
         subject.notifyObservers();

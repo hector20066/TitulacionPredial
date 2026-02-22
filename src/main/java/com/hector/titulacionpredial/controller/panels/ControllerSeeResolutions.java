@@ -28,14 +28,16 @@ public class ControllerSeeResolutions implements Observer {
 
     private final SeeResolutions seeResolutions;
     private final ModifyResolution modifyResolution;
+    private final Subject subject;
 
     private final ResolutionFacade daoResolution;
 
     public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject) {
         this.seeResolutions = seeResolutions;
         this.modifyResolution = modifyResolution;
+        this.subject = subject;
 
-        subject.register(this);
+        this.subject.register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 
@@ -45,6 +47,7 @@ public class ControllerSeeResolutions implements Observer {
     private void connectEvents() {
         seeResolutions.setControllerModify(e -> modify());
         seeResolutions.setControllerSearch(e -> searchResolution());
+        seeResolutions.setControllerSearchCancel(e -> cancelSearch());
         documentListeners();
         listenerSearch();
     }
@@ -110,6 +113,9 @@ public class ControllerSeeResolutions implements Observer {
                 throw new Exception("Debe ingresar el numero de la resolución para realizar la búsqueda");
             }
 
+            seeResolutions.getBtn_searchCancel().setVisible(true);
+            seeResolutions.getBtn_search().setVisible(false);
+
             doInBackground(Integer.parseInt(numResolutionText));
         } catch (Exception e) {
             MessageUtils.warningMessage("Ha ocurrido un error.\nError: " + e.getMessage(), seeResolutions);
@@ -172,6 +178,13 @@ public class ControllerSeeResolutions implements Observer {
                 }
             }
         });
+    }
+
+    private void cancelSearch() {
+        seeResolutions.getBtn_searchCancel().setText("Buscar");
+        seeResolutions.getBtn_searchCancel().setVisible(false);
+        seeResolutions.getBtn_search().setVisible(true);
+        subject.notifyObservers();
     }
 
     private void loadData(List<DTOResolutionDetails> listResolutions) {
