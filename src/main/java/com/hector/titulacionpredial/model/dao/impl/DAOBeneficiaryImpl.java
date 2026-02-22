@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location, entry_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -54,6 +55,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         st.setString(11, dto.getPublication());
         st.setString(12, dto.getNeighborhood());
         st.setString(13, dto.getExpeditionLocation());
+        st.setDate(14, Date.valueOf(LocalDate.now()));
     }
 
     @Override
