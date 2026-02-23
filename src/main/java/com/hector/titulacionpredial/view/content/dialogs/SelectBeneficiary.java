@@ -15,6 +15,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
+import com.hector.titulacionpredial.view.swing.panel.PanelShadowCard;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -77,7 +79,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new PanelShadowCard();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_beneficiaries = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -93,6 +95,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jtbl_beneficiaries.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jtbl_beneficiaries.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -114,6 +117,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         roundedPanel.setBorderColor(new java.awt.Color(116, 198, 157));
 
         txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txt_search.setForeground(new java.awt.Color(64, 145, 108));
         txt_search.setText("Buscar");
         txt_search.setBorder(null);
@@ -133,8 +137,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         roundedPanelLayout.setHorizontalGroup(
             roundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanelLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_searchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,6 +164,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         btn_cancel.setBackground(new java.awt.Color(149, 213, 178));
         btn_cancel.setForeground(new java.awt.Color(5, 31, 32));
         btn_cancel.setText("Cancelar");
+        btn_cancel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,9 +180,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(roundedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roundedPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -338,7 +342,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_select;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private PanelShadowCard jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbl_beneficiaries;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel;

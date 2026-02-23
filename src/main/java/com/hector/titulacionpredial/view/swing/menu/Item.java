@@ -35,6 +35,7 @@ public class Item extends JButton {
         setContentAreaFilled(false);
         setHorizontalAlignment(JButton.LEFT);
         setForeground(new Color(50, 50, 50));
+        setFont(new Font("sansserif", Font.PLAIN, 14));
 
         if (mainMenu) {
             setBorder(new EmptyBorder(0, 20, 0, 0));

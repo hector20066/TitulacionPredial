@@ -75,41 +75,47 @@ public class SpouseData extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Datos Del Cónyuge");
+        jLabel1.setText("Datos Del Conyuge");
 
         jLabel2.setBackground(new java.awt.Color(33, 37, 41));
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
         jLabel2.setText("Nombre:");
 
         txt_name.setBackground(new java.awt.Color(255, 255, 255));
         txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
         jLabel3.setText("Apellido:");
 
         txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
         txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
         jLabel4.setText("Cedula:");
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
         txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Lugar Expedición:");
+        jLabel5.setText("Lugar Expedicion:");
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel6.setText("Dirección:");
+        jLabel6.setText("Direccion:");
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
         txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Teléfono:");
+        jLabel7.setText("Telefono:");
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
@@ -157,7 +163,7 @@ public class SpouseData extends javax.swing.JDialog {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +205,7 @@ public class SpouseData extends javax.swing.JDialog {
                 .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

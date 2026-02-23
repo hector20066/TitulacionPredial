@@ -30,28 +30,34 @@ public class About extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setText("Acerca De");
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel2.setText("Información de la aplicación");
+        jLabel2.setText("Informacion de la aplicacion");
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
         jLabel3.setText("Version: 1.0");
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
         jLabel4.setText("Fecha Lanzamiento: Undefined");
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
         jLabel5.setText("Los Creadores");
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
         jLabel6.setText("Ing. Hector Acevedo ");
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Ing. Juan Bohórquez");
+        jLabel7.setText("Ing. Juan Bohorquez");
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(33, 37, 41));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Para mas información sobre los creadores visite:");
+        jLabel8.setText("Para mas informacion sobre los creadores visite:");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 2, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(33, 37, 41));
@@ -108,7 +114,7 @@ public class About extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)

@@ -48,19 +48,23 @@ public class ModifyResolution extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Modificar Resolución");
+        jLabel1.setText("Modificar Resolucion");
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Código:");
+        jLabel7.setText("Codigo:");
 
         txt_code.setBackground(new java.awt.Color(242, 246, 253));
+        txt_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_code.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
         txt_code.setEnabled(false);
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel3.setText("Num. Resolución:");
+        jLabel3.setText("Num. Resolucion:");
 
         txt_numResolution.setBackground(new java.awt.Color(242, 246, 253));
+        txt_numResolution.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_numResolution.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -97,7 +101,7 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         btn_modify.setBackground(new java.awt.Color(64, 145, 108));
         btn_modify.setForeground(new java.awt.Color(255, 255, 255));
-        btn_modify.setText("Modificar Resolución");
+        btn_modify.setText("Modificar Resolucion");
         btn_modify.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_modify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -107,11 +111,13 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Notificación:");
+        jLabel5.setText("Notificacion:");
 
         ftx_notification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
+        ftx_notification.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         ftx_executory.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
+        ftx_executory.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
@@ -210,7 +216,7 @@ public class ModifyResolution extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

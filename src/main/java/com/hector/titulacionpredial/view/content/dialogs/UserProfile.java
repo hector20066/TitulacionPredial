@@ -120,7 +120,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Teléfono");
+        jLabel7.setText("Telefono");
 
         jlb_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
@@ -128,7 +128,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel14.setText("Dirección");
+        jLabel14.setText("Direccion");
 
         jlb_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_address.setForeground(new java.awt.Color(33, 37, 41));
@@ -148,7 +148,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jlb_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_municipality.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_municipality.setText("Sahagún");
+        jlb_municipality.setText("Sahagun");
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(33, 37, 41));
@@ -156,11 +156,11 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel9.setText("Lugar de expedición");
+        jLabel9.setText("Lugar de expedicion");
 
         jlb_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_expeditionLocation.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_expeditionLocation.setText("Sahagún");
+        jlb_expeditionLocation.setText("Sahagun");
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 37, 41));
@@ -187,21 +187,23 @@ public class UserProfile extends javax.swing.JDialog {
 
         txa_crossing.setEditable(false);
         txa_crossing.setColumns(20);
+        txa_crossing.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txa_crossing.setRows(5);
         jScrollPane2.setViewportView(txa_crossing);
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel23.setText("Afectación");
+        jLabel23.setText("Afectacion");
 
         txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
+        txa_affectation.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txa_affectation.setRows(5);
         jScrollPane3.setViewportView(txa_affectation);
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel24.setText("Datos del cónyuge");
+        jLabel24.setText("Datos del conyuge");
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(33, 37, 41));
@@ -221,7 +223,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel29.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel29.setText("Lugar de expedición:");
+        jLabel29.setText("Lugar de expedicion:");
 
         jlb_spouseExpeditionSite.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_spouseExpeditionSite.setForeground(new java.awt.Color(33, 37, 41));
@@ -229,7 +231,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel31.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel31.setText("Dirección:");
+        jLabel31.setText("Direccion:");
 
         jlb_spouseAddress.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_spouseAddress.setForeground(new java.awt.Color(33, 37, 41));
@@ -237,7 +239,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel33.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel33.setText("Teléfono:");
+        jLabel33.setText("Telefono:");
 
         jlb_phoneSpouse.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phoneSpouse.setForeground(new java.awt.Color(33, 37, 41));
@@ -253,7 +255,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel37.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel37.setText("Publicación");
+        jLabel37.setText("Publicacion");
 
         jlb_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_publication.setForeground(new java.awt.Color(33, 37, 41));
@@ -451,7 +453,7 @@ public class UserProfile extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Código:");
+        jLabel5.setText("Codigo:");
 
         jlb_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_code.setForeground(new java.awt.Color(33, 37, 41));

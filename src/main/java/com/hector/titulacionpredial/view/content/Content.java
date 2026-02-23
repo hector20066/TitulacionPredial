@@ -36,6 +36,8 @@ public class Content extends javax.swing.JFrame {
         jpl_menu.setBackground(new java.awt.Color(255, 255, 255));
         jpl_menu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(64, 145, 108)));
 
+        menu.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jpl_menuLayout = new javax.swing.GroupLayout(jpl_menu);
         jpl_menu.setLayout(jpl_menuLayout);
         jpl_menuLayout.setHorizontalGroup(
