@@ -26,7 +26,6 @@ public class Coordinator {
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
     private ModifyResolution modifyResolution;
-    private Settings settings;
     private About about;
 
     // Drivers
@@ -37,7 +36,6 @@ public class Coordinator {
     private ControllerRegisterProperty controllerRegisterProperty;
     private ControllerSeeProperties controllerSeeProperties;
     private ControllerSeeResolutions controllerSeeResolutions;
-    private ControllerSettings controllerSettings;
     private ControllerViewBeneficiaries controllerViewBeneficiaries;
     private ControllerModifyResolution controllerModifyResolution;
 
@@ -64,7 +62,6 @@ public class Coordinator {
         seeProperties = new SeeProperties();
         seeResolutions = new SeeResolutions();
         modifyResolution = new ModifyResolution();
-        settings = new Settings();
         about = new About();
     }
 
@@ -77,7 +74,6 @@ public class Coordinator {
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)
-                .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
                 .build();
@@ -88,7 +84,6 @@ public class Coordinator {
         controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
         controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
         controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
-        controllerSettings = new ControllerSettings(settings);
         controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
         controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
     }
