@@ -1,0 +1,1 @@
+DELETE FROM spouse WHERE beneficiary_code = ?;

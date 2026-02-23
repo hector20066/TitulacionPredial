@@ -1,0 +1,1 @@
+INSERT INTO resolution(num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name, property_code) VALUES(?, ?, ?, ?, ? ,?, ?, ?, ?);

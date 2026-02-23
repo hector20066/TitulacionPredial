@@ -1,0 +1,1 @@
+SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name FROM resolution ORDER BY code DESC LIMIT 1000;
