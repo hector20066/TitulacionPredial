@@ -319,6 +319,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery()) {
+
             if (!rs.next()) {
                 return 0;
             }
@@ -340,6 +341,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery()) {
+
             if (!rs.next()) {
                 return 0;
             }
