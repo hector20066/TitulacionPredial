@@ -1,0 +1,1 @@
+INSERT INTO property (cadastral_id, area) VALUES (?, ?);

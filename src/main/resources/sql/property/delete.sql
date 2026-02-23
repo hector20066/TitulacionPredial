@@ -1,0 +1,1 @@
+DELETE FROM property WHERE code = ?;

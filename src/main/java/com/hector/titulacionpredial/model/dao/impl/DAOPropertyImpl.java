@@ -320,7 +320,7 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public int countPropertyWithResolution() throws Exception {
         String sql = """
-                SELECT 
+                SELECT
                     COUNT(*) AS properties_with_resolution
                 FROM property INNER JOIN resolution
                 ON resolution.property_code = property.code;
