@@ -74,11 +74,6 @@ public class ControllerContentBuilder {
         return this;
     }
 
-    public ControllerContentBuilder withControllerDashboard(ControllerDashboard controllerDashboard) {
-        this.controllerDashboard = controllerDashboard;
-        return this;
-    }
-
     public ControllerContent build() {
         return new ControllerContent(this);
     }
@@ -121,10 +116,6 @@ public class ControllerContentBuilder {
 
     public About getAbout() {
         return about;
-    }
-
-    public ControllerDashboard getControllerDashboard() {
-        return  controllerDashboard;
     }
 
 }
