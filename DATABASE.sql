@@ -26,6 +26,7 @@ CREATE TABLE beneficiary (
      neighborhood VARCHAR(100) NOT NULL,
      expedition_location VARCHAR(100) NOT NULL,
      property_code INT,
+     entry_date DATE,
 
      CONSTRAINT fk_beneficiary_property
          FOREIGN KEY (property_code)
