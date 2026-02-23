@@ -57,7 +57,8 @@ public class ControllerModifyResolution {
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            doInBackground(Integer.parseInt(code), Long.parseLong(numResolution), notificationLocalDate, executoryLocalDate, notary, fmi, act, publicWriting);
+            doInBackground(Integer.parseInt(code), Long.parseLong(numResolution), notificationLocalDate, executoryLocalDate,
+                    notary, fmi, act, publicWriting);
         } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), modifyResolution);
         }
@@ -73,7 +74,8 @@ public class ControllerModifyResolution {
         return false;
     }
 
-    private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary, String fmi, String act, String publicWriting) {
+    private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary,
+                                String fmi, String act, String publicWriting) {
         new Thread(() -> {
             try {
                 boolean success = daoResolution.modify(code, executory, act, publicWriting, numResolution, notification, fmi, notary);

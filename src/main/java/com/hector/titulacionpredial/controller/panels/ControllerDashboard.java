@@ -27,7 +27,6 @@ import java.util.Locale;
 public class ControllerDashboard implements Observer {
 
     private final Dashboard dashboard;
-    private final Subject subject;
 
     private final BeneficiaryFacade daoBeneficiary;
     private final PropertyFacade daoProperty;
@@ -35,13 +34,12 @@ public class ControllerDashboard implements Observer {
 
     public ControllerDashboard(Dashboard dashboard, Subject subject) {
         this.dashboard = dashboard;
-        this.subject = subject;
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.daoResolution = new ResolutionImplFacade();
 
-        this.subject.register(this);
+        subject.register(this);
     }
 
     @Override
@@ -70,7 +68,7 @@ public class ControllerDashboard implements Observer {
                     loadDataProperties(propertiesWithResolution, propertiesWithoutResolution, totalProperties);
                 });
             } catch (Exception e) {
-                e.printStackTrace();
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al cargar la información", dashboard));
             }
         }).start();
     }

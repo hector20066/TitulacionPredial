@@ -145,7 +145,8 @@ public class ControllerRegisterProperty {
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al registrar la información.\nError: " + e.getMessage(), registerProperty));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al registrar la información.\nError: " +
+                        e.getMessage(), registerProperty));
             }
         }).start();
     }

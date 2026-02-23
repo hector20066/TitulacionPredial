@@ -28,17 +28,6 @@ public class Coordinator {
     private ModifyResolution modifyResolution;
     private About about;
 
-    // Drivers
-    private ControllerContent controllerContent;
-    private ControllerDashboard controllerDashboard;
-    private ControllerGenerateResolution controllerGenerateResolution;
-    private ControllerRegisterBeneficiary controllerRegisterBeneficiary;
-    private ControllerRegisterProperty controllerRegisterProperty;
-    private ControllerSeeProperties controllerSeeProperties;
-    private ControllerSeeResolutions controllerSeeResolutions;
-    private ControllerViewBeneficiaries controllerViewBeneficiaries;
-    private ControllerModifyResolution controllerModifyResolution;
-
     public void startApp() {
         startView();
         startDrivers();
@@ -66,7 +55,7 @@ public class Coordinator {
     }
 
     private void startDrivers() {
-        controllerContent = new ControllerContentBuilder()
+        ControllerContent controllerContent = new ControllerContentBuilder()
                 .withViewContent(content)
                 .withViewDashboard(dashboard)
                 .withViewRegisterBeneficiary(registerBeneficiary)
@@ -78,14 +67,14 @@ public class Coordinator {
                 .withViewAbout(about)
                 .build();
 
-        controllerDashboard = new ControllerDashboard(dashboard, subject);
-        controllerGenerateResolution = new ControllerGenerateResolution(generateResolution, subject);
-        controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
-        controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
-        controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
-        controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
-        controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
-        controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
+        ControllerDashboard controllerDashboard = new ControllerDashboard(dashboard, subject);
+        ControllerGenerateResolution controllerGenerateResolution = new ControllerGenerateResolution(generateResolution, subject);
+        ControllerRegisterBeneficiary controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
+        ControllerRegisterProperty controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
+        ControllerSeeProperties controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
+        ControllerSeeResolutions controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
+        ControllerViewBeneficiaries controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
+        ControllerModifyResolution controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
     }
 
 }

@@ -60,7 +60,8 @@ public class ControllerGenerateResolution {
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate, fmi, notary, Integer.parseInt(propertyCode), beneficiaryName);
+            doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
+                    fmi, notary, Integer.parseInt(propertyCode), beneficiaryName);
         } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }
@@ -132,7 +133,8 @@ public class ControllerGenerateResolution {
         dialog.setVisible(true);
     }
 
-    private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting, LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName) {
+    private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting,
+                                LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName) {
         executeWithDialog(() -> {
             if (daoResolution.findByCode((int) numResolution) != null) {
                 throw new Exception("Ya existe un registro con este numero de resolución en la base de datos");

@@ -121,7 +121,8 @@ public class ControllerRegisterBeneficiary implements Observer {
 
                 SwingUtilities.invokeLater(() -> runInvokeLaterModify(success));
             } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al modificar la información.\nError: " + e.getMessage(), registerBeneficiary));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al modificar la información.\nError: " +
+                        e.getMessage(), registerBeneficiary));
             }
         }).start();
     }
@@ -189,7 +190,8 @@ public class ControllerRegisterBeneficiary implements Observer {
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("No se ha podido registrar el usuario.\nError: " + e.getMessage(), registerBeneficiary));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("No se ha podido registrar el usuario.\nError: " +
+                        e.getMessage(), registerBeneficiary));
             }
         }).start();
     }

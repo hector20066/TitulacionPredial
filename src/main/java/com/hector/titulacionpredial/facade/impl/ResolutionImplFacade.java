@@ -21,7 +21,9 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    public void add(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act, String publicWriting, String notary, int propertyCode, String beneficiaryName) throws Exception {
+    public void add(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act,
+                    String publicWriting, String notary, int propertyCode, String beneficiaryName) throws Exception {
+
         DTOResolutionCreate dto = new DTOResolutionCreate.Builder()
                 .resolutionNumber(resolutionNumber)
                 .notification(notification)
@@ -48,7 +50,9 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    public boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution, LocalDate notification, String fmi, String notary) throws Exception {
+    public boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution,
+                          LocalDate notification, String fmi, String notary) throws Exception {
+
         DTOResolutionUpdate dto = new DTOResolutionUpdate.Builder()
                 .resolutionNumber(numResolution)
                 .executory(executory)
