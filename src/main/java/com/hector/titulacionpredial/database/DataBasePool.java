@@ -19,8 +19,8 @@ public class DataBasePool {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(AppConfig.get("db.dev.url"));
         config.setUsername(AppConfig.get("db.dev.username"));
-        //config.setPassword(AppConfig.get("db.dev.password"));
-        config.setPassword("");
+        config.setPassword(AppConfig.get("db.dev.password"));
+        //config.setPassword("");
         config.setDriverClassName(AppConfig.get("db.driver"));
 
         config.setMaximumPoolSize(20);
