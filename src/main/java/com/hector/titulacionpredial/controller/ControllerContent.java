@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.panels.ControllerDashboard;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
@@ -63,8 +64,8 @@ public class ControllerContent {
                     case 3 -> NavigatorUtils.showForms(seeResolutions);
                 }
             }
-            case 3 -> NavigatorUtils.showForms(settings);
-            case 4 -> NavigatorUtils.showForms(about);
+            //case 3 -> NavigatorUtils.showForms(settings);
+            case 3 -> NavigatorUtils.showForms(about);
         }
     }
 
