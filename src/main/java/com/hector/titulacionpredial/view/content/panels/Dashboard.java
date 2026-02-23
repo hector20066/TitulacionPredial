@@ -15,16 +15,30 @@ public class Dashboard extends javax.swing.JPanel {
     public Dashboard() {
         initComponents();
         
-        gaugeChart1.setValueWithAnimation(75);
-        gaugeChart2.setValueWithAnimation(90);
-        
         scroll.getVerticalScrollBar().setUnitIncrement(15);
     }
     
-    public void updateCards(int dishesSold, int drinkSold, float totalProfit) {
-        // card1.setData(new CardModel(new ImageIcon(getClass().getResource("/view/image/martini.png")), "Bebidas", String.valueOf(drinkSold), "Total de bebidas vendidas"));
-        // card2.setData(new CardModel(new ImageIcon(getClass().getResource("/view/image/utensils.png")), "Platos", String.valueOf(dishesSold), "Total de platos vendidos"));
-        // card3.setData(new CardModel(new ImageIcon(getClass().getResource("/view/image/profit.png")), "Total Ventas", String.valueOf(totalProfit), "Total ganado en ventas"));
+    public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
+        card1.setData(new CardModel(new ImageIcon(getClass().getResource("/image/users-round.png")), "Beneficiarios", String.valueOf(totalBeneficiaries), "Beneficiarios registrados"));
+        card2.setData(new CardModel(new ImageIcon(getClass().getResource("/image/house.png")), "Predios", String.valueOf(totalProperties), "Predios Registrados"));
+        card3.setData(new CardModel(new ImageIcon(getClass().getResource("/image/file-text.png")), "Resoluciones", String.valueOf(totalResolutions), "Resoluciones hechas"));
+    }
+
+    public void updateGaugeCharts(int percentBeneficiaries, int percentProperties) {
+        gaugeChart1.setValueWithAnimation(percentBeneficiaries);
+        gaugeChart2.setValueWithAnimation(percentProperties);
+    }
+
+    public void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
+        jlb_withProperty.setText("# " + withProperty);
+        jlb_withoutProperty.setText("# " + withoutProperty);
+        jlb_totalBeneficiaries.setText("# " + total);
+    }
+
+    public void loadDataProperties(int withResolution, int withoutResolution, int total) {
+        jlb_withResolution.setText("# " + withResolution);
+        jlb_withoutResolution.setText("# " + withoutResolution);
+        jlb_totalProperties.setText("# " + total);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,18 +53,18 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jlb_totalBeneficiaries = new javax.swing.JLabel();
+        jlb_withoutProperty = new javax.swing.JLabel();
+        jlb_withProperty = new javax.swing.JLabel();
         gaugeChart1 = new com.hector.titulacionpredial.view.swing.chart.GaugeChart();
         panelShadowCard2 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jlb_totalProperties = new javax.swing.JLabel();
+        jlb_withoutResolution = new javax.swing.JLabel();
+        jlb_withResolution = new javax.swing.JLabel();
         gaugeChart2 = new com.hector.titulacionpredial.view.swing.chart.GaugeChart();
         panelShadowCard4 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
         card1 = new com.hector.titulacionpredial.view.swing.chart.Card();
@@ -93,23 +107,23 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel7.setText("Total");
         jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 116, 253));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("# 15");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_totalBeneficiaries.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_totalBeneficiaries.setForeground(new java.awt.Color(80, 116, 253));
+        jlb_totalBeneficiaries.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_totalBeneficiaries.setText("# 15");
+        jlb_totalBeneficiaries.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("# 10");
-        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withoutProperty.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withoutProperty.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withoutProperty.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_withoutProperty.setText("# 10");
+        jlb_withoutProperty.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("# 5");
-        jLabel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withProperty.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withProperty.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withProperty.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_withProperty.setText("# 5");
+        jlb_withProperty.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         gaugeChart1.setColor1(new java.awt.Color(216, 243, 220));
         gaugeChart1.setColor2(new java.awt.Color(64, 145, 108));
@@ -131,9 +145,9 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jlb_withProperty)
+                    .addComponent(jlb_withoutProperty)
+                    .addComponent(jlb_totalBeneficiaries))
                 .addGap(28, 28, 28))
         );
         panelShadowCard1Layout.setVerticalGroup(
@@ -146,15 +160,15 @@ public class Dashboard extends javax.swing.JPanel {
                     .addGroup(panelShadowCard1Layout.createSequentialGroup()
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(jlb_withProperty))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jlb_withoutProperty))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel6)))
+                            .addComponent(jlb_totalBeneficiaries)))
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -179,23 +193,23 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel12.setText("Total");
         jLabel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel13.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(150, 56, 248));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("# 70");
-        jLabel13.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_totalProperties.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_totalProperties.setForeground(new java.awt.Color(150, 56, 248));
+        jlb_totalProperties.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_totalProperties.setText("# 70");
+        jlb_totalProperties.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("# 20");
-        jLabel14.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withoutResolution.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withoutResolution.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withoutResolution.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_withoutResolution.setText("# 20");
+        jlb_withoutResolution.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("# 50");
-        jLabel15.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withResolution.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withResolution.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withResolution.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlb_withResolution.setText("# 50");
+        jlb_withResolution.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         gaugeChart2.setColor1(new java.awt.Color(237, 242, 251));
         gaugeChart2.setColor2(new java.awt.Color(69, 71, 252));
@@ -217,9 +231,9 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13))
+                    .addComponent(jlb_withResolution)
+                    .addComponent(jlb_withoutResolution)
+                    .addComponent(jlb_totalProperties))
                 .addGap(25, 25, 25))
         );
         panelShadowCard2Layout.setVerticalGroup(
@@ -232,15 +246,15 @@ public class Dashboard extends javax.swing.JPanel {
                     .addGroup(panelShadowCard2Layout.createSequentialGroup()
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel15))
+                            .addComponent(jlb_withResolution))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel14))
+                            .addComponent(jlb_withoutResolution))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel13)))
+                            .addComponent(jlb_totalProperties)))
                     .addComponent(gaugeChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -417,22 +431,22 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jlb_totalBeneficiaries;
+    private javax.swing.JLabel jlb_totalProperties;
+    private javax.swing.JLabel jlb_withProperty;
+    private javax.swing.JLabel jlb_withResolution;
+    private javax.swing.JLabel jlb_withoutProperty;
+    private javax.swing.JLabel jlb_withoutResolution;
     private com.hector.titulacionpredial.view.swing.chart.LineChart lineChart1;
     private com.hector.titulacionpredial.view.swing.panel.PanelShadowCard panelShadowCard1;
     private com.hector.titulacionpredial.view.swing.panel.PanelShadowCard panelShadowCard2;
