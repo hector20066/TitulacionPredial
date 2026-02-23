@@ -48,4 +48,14 @@ public class PropertyImplFacade implements PropertyFacade {
         return daoProperty.countRecords();
     }
 
+    @Override
+    public int percentPropertiesWithResolutions() throws Exception {
+        return daoProperty.percentPropertiesWithResolutions();
+    }
+
+    @Override
+    public int countPropertyWithResolution() throws Exception {
+        return daoProperty.countPropertyWithResolution();
+    }
+
 }

@@ -295,4 +295,46 @@ public class DAOPropertyImpl implements DAOProperty {
         }
     }
 
+    @Override
+    public int percentPropertiesWithResolutions() throws Exception {
+        String sql = """
+                SELECT
+                    ROUND(
+                        COUNT(DISTINCT resolution.property_code) * 100.0 / COUT(DISTINCT property.code), 0
+                    ) AS percent
+                FROM property LEFT JOIN resolution
+                ON resolution.property_code = property.code;
+                """;
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery()) {
+            if (!rs.next()) {
+                return 0;
+            }
+
+            return rs.getInt("percent");
+        }
+    }
+
+    @Override
+    public int countPropertyWithResolution() throws Exception {
+        String sql = """
+                SELECT 
+                    COUNT(*) AS properties_with_resolution
+                FROM property INNER JOIN resolution
+                ON resolution.property_code = property.code;
+                """;
+
+        try(Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            ResultSet rs = st.executeQuery();
+            if(!rs.next()) {
+                return 0;
+            }
+
+            return rs.getInt("properties_with_resolution");
+        }
+    }
+
 }

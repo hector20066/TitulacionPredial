@@ -37,7 +37,9 @@ public class ControllerDashboard implements Observer {
 
     @Override
     public void update() {
-        loadInfo();
+        new Thread(() -> {
+
+        }).start();
     }
 
     private void loadInfo() {

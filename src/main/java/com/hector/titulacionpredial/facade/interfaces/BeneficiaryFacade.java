@@ -26,5 +26,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     boolean modifyProperty(int code, int propertyCode) throws Exception;
     int getLastCode() throws Exception;
     List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception;
+    int countBeneficiariesWithProperty() throws Exception;
+    int percentBeneficiariesWithProperty() throws Exception;
 
 }

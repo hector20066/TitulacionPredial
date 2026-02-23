@@ -13,5 +13,7 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
 
     int add(String cadastralId, Double area) throws Exception;
     DTOPropertyDetails findByCode(String cadastralId) throws Exception;
+    int percentPropertiesWithResolutions() throws Exception;
+    int countPropertyWithResolution() throws Exception;
 
 }

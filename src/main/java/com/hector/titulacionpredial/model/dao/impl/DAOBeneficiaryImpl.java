@@ -303,16 +303,49 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    result.add(new DTOBeneficiariesByMonth(
-                            rs.getInt("anio"),
-                            rs.getInt("mes"),
-                            rs.getInt("total")
-                    ));
+                    DTOBeneficiariesByMonth dto = new DTOBeneficiariesByMonth(rs.getInt("anio"), rs.getInt("mes"), rs.getInt("total"));
+                    result.add(dto);
                 }
             }
         }
 
         return result;
+    }
+
+    @Override
+    public int countBeneficiariesWithProperty() throws Exception {
+        String sql = "SELECT COUNT(property_code) AS beneficiaries_with_property FROM beneficiary;";
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery()) {
+            if (!rs.next()) {
+                return 0;
+            }
+
+            return rs.getInt("beneficiaries_with_property");
+        }
+    }
+
+    @Override
+    public int percentBeneficiariesWithProperty() throws Exception {
+        String sql = """
+                SELECT
+                    ROUND(
+                        COUNT(property_code) * 100.0 / COUNT(*), 0
+                    ) AS percent
+                FROM beneficiary;
+                """;
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery()) {
+            if (!rs.next()) {
+                return 0;
+            }
+
+            return rs.getInt("percent");
+        }
     }
 
 }

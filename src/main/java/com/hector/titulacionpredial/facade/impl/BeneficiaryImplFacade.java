@@ -118,4 +118,14 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
         return daoBeneficiary.countBeneficiariesLastMonths(months);
     }
 
+    @Override
+    public int countBeneficiariesWithProperty() throws Exception {
+        return daoBeneficiary.countBeneficiariesWithProperty();
+    }
+
+    @Override
+    public int percentBeneficiariesWithProperty() throws Exception {
+        return daoBeneficiary.percentBeneficiariesWithProperty();
+    }
+
 }

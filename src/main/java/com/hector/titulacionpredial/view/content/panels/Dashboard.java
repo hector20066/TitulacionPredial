@@ -65,7 +65,7 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 37, 41));
+        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestionamos Urbano Rural S.A.S");
 
@@ -120,11 +120,11 @@ public class Dashboard extends javax.swing.JPanel {
         panelShadowCard1Layout.setHorizontalGroup(
             panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadowCard1Layout.createSequentialGroup()
-                .addGap(0, 27, Short.MAX_VALUE)
+                .addGap(0, 30, Short.MAX_VALUE)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel4)
@@ -134,7 +134,7 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addGap(25, 25, 25))
+                .addGap(28, 28, 28))
         );
         panelShadowCard1Layout.setVerticalGroup(
             panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,13 +275,15 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(8, 28, 21));
         jLabel23.setText("Total de Registro Guardados");
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(8, 28, 21));
         jLabel24.setText("Porcentaje de trabajos terminados");
 
         javax.swing.GroupLayout panelShadowCard3Layout = new javax.swing.GroupLayout(panelShadowCard3);
@@ -301,6 +303,8 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGap(29, 29, 29))
         );
 
+        jLabel16.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(8, 28, 21));
         jLabel16.setText("Beneficiarios Registrados durante los ultimos meses");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
