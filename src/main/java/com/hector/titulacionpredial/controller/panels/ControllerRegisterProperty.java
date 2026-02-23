@@ -124,6 +124,10 @@ public class ControllerRegisterProperty {
     private void doInBackGround(String cadastralId, double area, String[] beneficiaryCodes, List<PointData> points) {
         new Thread(() -> {
             try {
+                if (daoProperty.findByCode(cadastralId) != null) {
+                    throw new Exception("El predio con cedula catastral '" + cadastralId + "' ya se encuentra registrado");
+                }
+
                 int propertyCode = daoProperty.add(cadastralId, area);
 
                 for (PointData p : points) {
