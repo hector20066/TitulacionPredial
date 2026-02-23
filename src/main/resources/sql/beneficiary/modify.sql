@@ -1,0 +1,1 @@
+UPDATE beneficiary SET departament = ?, municipality = ?, address = ?, marital_status = ?, affectation = ?, phone = ?, crossing = ?, publication = ?, neighborhood = ? WHERE code = ?;

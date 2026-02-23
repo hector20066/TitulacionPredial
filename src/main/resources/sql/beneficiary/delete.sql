@@ -1,0 +1,1 @@
+DELETE FROM beneficiary WHERE code = ?;
