@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
@@ -58,8 +62,8 @@ public class ControllerSeeResolutions implements Observer {
             try {
                 List<DTOResolutionDetails> listResolutions = daoResolution.findByAll();
                 SwingUtilities.invokeLater(() -> loadData(listResolutions));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeResolutions));
             }
         }).start();
     }
@@ -69,7 +73,7 @@ public class ControllerSeeResolutions implements Observer {
             int selectedRow = seeResolutions.getJtbl_resolutions().getSelectedRow();
 
             if (seeResolutions.getJtbl_resolutions().getSelectedRowCount() != 1) {
-                throw new Exception("Solo puede modificar una resolución a la vez");
+                throw new Exception("Debe seleccionar una resolución para modificarla");
             }
 
             int code = (int) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 0);
@@ -110,15 +114,19 @@ public class ControllerSeeResolutions implements Observer {
             String numResolutionText = seeResolutions.getTxt_search().getText().trim();
 
             if (numResolutionText.isBlank() || numResolutionText.equalsIgnoreCase("Buscar")) {
-                throw new Exception("Debe ingresar el numero de la resolución para realizar la búsqueda");
+                throw new InvalidInputException("Debe ingresar el numero de la resolución para realizar la búsqueda");
+            }
+
+            if (!NumericalValidationUtils.isNumeric(numResolutionText)) {
+                throw new InvalidNumberInputException("de Búsqueda");
             }
 
             seeResolutions.getBtn_searchCancel().setVisible(true);
             seeResolutions.getBtn_search().setVisible(false);
 
             doInBackground(Integer.parseInt(numResolutionText));
-        } catch (Exception e) {
-            MessageUtils.warningMessage("Ha ocurrido un error.\nError: " + e.getMessage(), seeResolutions);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), seeResolutions);
         }
     }
 
@@ -128,14 +136,14 @@ public class ControllerSeeResolutions implements Observer {
                 DTOResolutionDetails dto = daoResolution.findByCode(numResolution);
 
                 if (dto == null) {
-                    throw new Exception("No se ha encontrado la resolución con el numero " + numResolution);
+                    throw new ResolutionNotFoundException(String.valueOf(numResolution));
                 }
 
                 SwingUtilities.invokeLater(() -> {
                     seeResolutions.getModel().setRowCount(0);
                     seeResolutions.loadData(dto);
                 });
-            } catch (Exception e) {
+            } catch (DAOException e) {
                 MessageUtils.errorMessage(e.getMessage(), seeResolutions);
             }
         }).start();

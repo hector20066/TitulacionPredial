@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.*;
+import com.hector.titulacionpredial.exception.validation.*;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.SpouseImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
@@ -9,6 +11,7 @@ import com.hector.titulacionpredial.model.enums.*;
 import com.hector.titulacionpredial.observer.*;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
@@ -55,50 +58,45 @@ public class ControllerRegisterBeneficiary implements Observer {
             try {
                 int code = daoBeneficiary.getLastCode();
                 SwingUtilities.invokeLater(() -> registerBeneficiary.loadFollowingCode(code + 1));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
             }
         }).start();
     }
 
     private void registerOrModifyBeneficiary() {
         try {
-            String name = registerBeneficiary.getTxt_name().getText().trim();
-            String lastName = registerBeneficiary.getTxt_lastName().getText().trim();
-            String id = registerBeneficiary.getTxt_id().getText().trim();
             String phone = registerBeneficiary.getTxt_phone().getText().trim();
             MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
-            String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
             Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
             Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
             String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
             String address = registerBeneficiary.getTxt_address().getText().trim();
-            String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
             String publication = registerBeneficiary.getTxt_publication().getText().trim();
             String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
             String code = registerBeneficiary.getTxt_followingCode().getText().trim();
 
-            if (lastName.split(" ").length < 2) {
-                throw new Exception("Por favor ingrese los dos Apellidos del beneficiario");
+            if (phone.length() > 10) {
+                throw new MaxLengthExceededException("Teléfono", "10");
             }
 
             if (registerBeneficiary.isModify()) {
                 modify(code, phone, department, municipality, maritalStatus, neighborhood, address, publication, crossing, affectation);
             } else {
-                register(name, lastName, code, id, phone, department, municipality, maritalStatus, expeditionLocation,
-                        neighborhood, address, cadastralReference, publication, crossing, affectation);
+                register(code, phone, department, municipality, maritalStatus, neighborhood, address, publication, crossing, affectation);
             }
-        } catch (Exception e) {
-            MessageUtils.errorMessage("Ha ocurrido un error al obtener la información.\nError: " + e.getMessage(), registerBeneficiary);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
     }
 
-    private void modify(String code, String phone, Department department, Municipalities municipality, MaritalStatus maritalStatus,
-                        String neighborhood, String address, String publication, String crossing, String affectation) throws Exception {
+    private void modify(String code, String phone, Department department, Municipalities municipality,
+                        MaritalStatus maritalStatus, String neighborhood, String address, String publication,
+                        String crossing, String affectation) throws InvalidInputException {
 
         if (isInvalidData(phone, neighborhood, address, publication, crossing)) {
-            throw new Exception("Información invalida, verifique la información");
+            throw new EmptyFieldException("Teléfono, Barrio, Dirección, Publicación y Cruce");
         }
 
         int codeLong = Integer.parseInt(code);
@@ -120,9 +118,8 @@ public class ControllerRegisterBeneficiary implements Observer {
                 }
 
                 SwingUtilities.invokeLater(() -> runInvokeLaterModify(success));
-            } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al modificar la información.\nError: " +
-                        e.getMessage(), registerBeneficiary));
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
             }
         }).start();
     }
@@ -138,13 +135,17 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
-    private void register(String name, String lastName, String code, String id, String phone, Department department,
-                          Municipalities municipality, MaritalStatus maritalStatus, String expeditionLocation, String neighborhood,
-                          String address, String cadastralReference, String publication, String crossing, String affectation) throws Exception {
+    private void register(String code, String phone, Department department, Municipalities municipality,
+                          MaritalStatus maritalStatus, String neighborhood, String address, String publication,
+                          String crossing, String affectation) throws InvalidInputException {
 
-        if (isInvalidData(name, lastName, id, phone, expeditionLocation, neighborhood, address, cadastralReference, publication, crossing)) {
-            throw new Exception("Información invalida, verifique la información");
-        }
+        String name = registerBeneficiary.getTxt_name().getText().trim();
+        String lastName = registerBeneficiary.getTxt_lastName().getText().trim();
+        String id = registerBeneficiary.getTxt_id().getText().trim();
+        String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
+        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
+
+        validations(name, lastName, id, phone, cadastralReference, expeditionLocation, neighborhood, address, publication, crossing);
 
         String fullName = name + " " + lastName;
         int codeInt = Integer.parseInt(code);
@@ -155,6 +156,29 @@ public class ControllerRegisterBeneficiary implements Observer {
         prepareUI();
         doInBackGround(fullName, codeInt, idLong, phoneLong, department, municipality, maritalStatus, expeditionLocation,
                 neighborhood, address, cadastralReferenceLong, publication, crossing, affectation);
+    }
+
+    private void validations(String name, String lastName, String id, String phone, String cadastralReference,
+                             String expeditionLocation, String neighborhood, String address, String publication,
+                             String crossing) throws InvalidInputException {
+
+        if (lastName.split(" ").length < 2) {
+            throw new InvalidInputException("Por favor ingrese los dos Apellidos del beneficiario");
+        }
+
+        if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(phone)
+                || !NumericalValidationUtils.isNumeric(cadastralReference)) {
+            throw new InvalidNumberInputException("Cedula, Teléfono y Referencia Catastral");
+        }
+
+        if (id.length() > 10 || phone.length() > 10) {
+            throw new MaxLengthExceededException("Cedula y Teléfono", "10");
+        }
+
+        if (isInvalidData(name, lastName, id, phone, expeditionLocation, neighborhood, address, cadastralReference, publication, crossing)) {
+            throw new EmptyFieldException("Nombre, Apellido, Cedula, Teléfono, Lugar de Expedición, Barrio, Dirección, "
+                    + "Referencia Catastral, Publicación y Cruce");
+        }
     }
 
     private boolean isInvalidData(String... fields) {
@@ -178,7 +202,7 @@ public class ControllerRegisterBeneficiary implements Observer {
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
-                    throw new Exception("Este usuario ya se encuentra registrado.");
+                    throw new PersistenceException("Este usuario ya se encuentra registrado.");
                 }
 
                 daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
@@ -189,16 +213,15 @@ public class ControllerRegisterBeneficiary implements Observer {
                 }
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
-            } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("No se ha podido registrar el usuario.\nError: " +
-                        e.getMessage(), registerBeneficiary));
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
             }
         }).start();
     }
 
-    private void registerSpouse(int beneficiaryCode) throws Exception {
+    private void registerSpouse(int beneficiaryCode) throws DAOException {
         if (dtoSpouse == null) {
-            throw new Exception("No se han encontrado registros del conyugue.");
+            throw new DataNotFoundException("No se han encontrado registros del conjugue.");
         }
 
         daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(), dtoSpouse.getAddress(),

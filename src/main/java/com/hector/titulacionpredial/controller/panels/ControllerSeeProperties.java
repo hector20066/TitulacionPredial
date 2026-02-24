@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
@@ -58,8 +62,8 @@ public class ControllerSeeProperties implements Observer {
             try {
                 List<DTOPropertyDetails> properties = daoProperty.findByAll();
                 SwingUtilities.invokeLater(() -> loadData(properties));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
             }
         }).start();
     }
@@ -68,7 +72,7 @@ public class ControllerSeeProperties implements Observer {
         try {
             int selectedRow = seeProperties.getJtbl_properties().getSelectedRow();
 
-            if (selectedRow < 0) {
+            if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1) {
                 throw new Exception("Por favor seleccione una fila para generar la resolución");
             }
 
@@ -128,7 +132,7 @@ public class ControllerSeeProperties implements Observer {
     private void deleteProperty() {
         try {
             if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1 ) {
-                throw new Exception("Por favor seleccione una fila para eliminar");
+                throw new InvalidInputException("Por favor seleccione una fila para eliminar");
             }
 
             int code = (int) seeProperties.getJtbl_properties().getValueAt(seeProperties.getJtbl_properties().getSelectedRow(), 0);
@@ -136,11 +140,11 @@ public class ControllerSeeProperties implements Observer {
             runDelete(() -> {
                 try {
                     daoProperty.delete(code);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                } catch (DAOException e) {
+                    SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
                 }
             });
-        } catch (Exception e) {
+        } catch (InvalidInputException e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);
         }
     }
@@ -161,15 +165,15 @@ public class ControllerSeeProperties implements Observer {
             String searchText = seeProperties.getTxt_search().getText().trim();
 
             if (searchText.isBlank() || searchText.equalsIgnoreCase("Buscar")) {
-                throw new Exception("Por favor ingrese la cedula catastral para realizar la búsqueda");
+                throw new InvalidInputException("Por favor ingrese la cedula catastral para realizar la búsqueda");
             }
 
             seeProperties.getBtn_searchCancel().setVisible(true);
             seeProperties.getBtn_search().setVisible(false);
 
             doInBackground(searchText);
-        } catch (Exception e) {
-            MessageUtils.errorMessage(e.getMessage(), seeProperties);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), seeProperties);
         }
     }
 
@@ -179,14 +183,14 @@ public class ControllerSeeProperties implements Observer {
                 DTOPropertyDetails dtoPropertyDetails = daoProperty.findByCode(searchText);
 
                 if (dtoPropertyDetails == null) {
-                    throw new Exception("No se ha encontrado el Predio con la cedula catastral: " + searchText);
+                    throw new PropertyNotFoundException(searchText);
                 }
 
                 SwingUtilities.invokeLater(() -> {
                     seeProperties.getModel().setRowCount(0);
                     seeProperties.loadData(dtoPropertyDetails);
                 });
-            } catch (Exception e) {
+            } catch (DAOException e) {
                 MessageUtils.errorMessage(e.getMessage(), seeProperties);
             }
         }).start();

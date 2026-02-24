@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
@@ -67,27 +68,22 @@ public class ControllerDashboard implements Observer {
                     loadDataBeneficiaries(beneficiariesWithProperty, beneficiariesWithoutProperty, totalBeneficiaries);
                     loadDataProperties(propertiesWithResolution, propertiesWithoutResolution, totalProperties);
                 });
-            } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al cargar la información", dashboard));
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), dashboard));
             }
         }).start();
     }
 
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
-        try {
-            dashboard.getLineChart1().clear();
-            dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149,213,178), new Color(45,106,79));
+        dashboard.getLineChart1().clear();
+        dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149,213,178), new Color(45,106,79));
 
-            for (DTOBeneficiariesByMonth dto : list) {
-                String nombreMes = Month.of(dto.getMonth()).getDisplayName(TextStyle.FULL, Locale.of("es"));
+        list.forEach(dto -> {
+            String nombreMes = Month.of(dto.getMonth()).getDisplayName(TextStyle.FULL, Locale.of("es"));
+            dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.getTotal()}));
+        });
 
-                dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.getTotal()}));
-            }
-
-            dashboard.getLineChart1().start();
-        } catch (Exception e) {
-            MessageUtils.errorMessage("Error al cargar la información del gráfico", dashboard);
-        }
+        dashboard.getLineChart1().start();
     }
 
     public void loadCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {

@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
@@ -59,8 +62,8 @@ public class ControllerViewBeneficiaries implements Observer {
             try {
                 List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
                 SwingUtilities.invokeLater(() -> loadData(listBeneficiaries));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
             }
         }).start();
     }
@@ -70,14 +73,14 @@ public class ControllerViewBeneficiaries implements Observer {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (selectedRow == -1) {
-                throw new Exception("Debe seleccionar un beneficiario para ver su información");
+                throw new InvalidInputException("Debe seleccionar un beneficiario para ver su información");
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
 
             prepareUI();
             doInBackground(code);
-        } catch (Exception e) {
+        } catch (InvalidInputException e) {
             MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries);
         }
     }
@@ -91,10 +94,6 @@ public class ControllerViewBeneficiaries implements Observer {
         new Thread(() -> {
             try {
                 DTOBeneficiaryDetails dto = daoBeneficiary.findAllData(code);
-
-                if (dto == null) {
-                    throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
-                }
 
                 SwingUtilities.invokeLater(() -> {
                     java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(viewBeneficiaries);
@@ -138,7 +137,7 @@ public class ControllerViewBeneficiaries implements Observer {
                 DTOBeneficiaryDetails dto = daoBeneficiary.findAllData(code);
 
                 if (dto == null) {
-                    throw new Exception("No se han encontrado registros para este usuario, lamentamos los inconvenientes.");
+                    throw new BeneficiaryNotFoundException(String.valueOf(code));
                 }
 
                 SwingUtilities.invokeLater(() -> {
@@ -157,7 +156,7 @@ public class ControllerViewBeneficiaries implements Observer {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (viewBeneficiaries.getJtbl_beneficiaries().getSelectedRowCount() != 1) {
-                throw new Exception("Debe seleccionar el beneficiario que desea eliminar");
+                throw new InvalidInputException("Debe seleccionar el beneficiario que desea eliminar");
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
@@ -165,11 +164,11 @@ public class ControllerViewBeneficiaries implements Observer {
             runDelete(() -> {
                 try {
                     daoBeneficiary.delete(code);
-                } catch (Exception e) {
-                    throw new RuntimeException("Ha ocurrido un error al eliminar el registro");
+                } catch (DAOException e) {
+                    SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
                 }
             });
-        } catch (Exception e) {
+        } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
     }
@@ -211,14 +210,14 @@ public class ControllerViewBeneficiaries implements Observer {
     private void executeSearchAsync(String param) {
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
             @Override
-            protected DTOBeneficiarySimpleDetails doInBackground() throws Exception {
+            protected DTOBeneficiarySimpleDetails doInBackground() throws DAOException {
                 return resolveSearch(param);
             }
 
             @Override
             protected void done() {
                 try {
-                    handleResult(get());
+                    handleResult(get(), param);
                 } catch (Exception e) {
                     MessageUtils.errorMessage("Error al buscar beneficiario", viewBeneficiaries);
                 } finally {
@@ -228,7 +227,7 @@ public class ControllerViewBeneficiaries implements Observer {
         }.execute();
     }
 
-    private DTOBeneficiarySimpleDetails resolveSearch(String param) throws Exception {
+    private DTOBeneficiarySimpleDetails resolveSearch(String param) throws DAOException {
         if (isNumeric(param)) {
             long value = Long.parseLong(param);
 
@@ -238,10 +237,9 @@ public class ControllerViewBeneficiaries implements Observer {
         return daoBeneficiary.findByName(param);
     }
 
-    private void handleResult(DTOBeneficiarySimpleDetails result) {
+    private void handleResult(DTOBeneficiarySimpleDetails result, String param) throws DAOException {
         if (result == null) {
-            MessageUtils.errorMessage("No se encontró el beneficiario", viewBeneficiaries);
-            return;
+            throw new BeneficiaryNotFoundException(param);
         }
 
         viewBeneficiaries.getTableModel().setRowCount(0);

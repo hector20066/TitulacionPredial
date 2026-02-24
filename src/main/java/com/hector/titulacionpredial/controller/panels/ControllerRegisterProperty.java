@@ -1,11 +1,16 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.PersistenceException;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.PointImplFacade;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.PointFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
@@ -58,25 +63,20 @@ public class ControllerRegisterProperty {
             String beneficiaryCode = registerProperty.getTxt_beneficiaryCode().getText().trim().replace("F", "");
 
             if (cadastralId.isBlank() || area.isBlank()) {
-                throw new Exception("Por favor ingrese toda la información del predio");
-            }
-
-            if (beneficiaryCode.isBlank()) {
-                throw new Exception("Por favor ingrese el código del beneficiario");
+                throw new EmptyFieldException("Cedula Catastral, Area y Código del Beneficiario");
             }
 
             String[] beneficiariesCode = beneficiaryCode.split(" - ");
-
             List<PointData> points = extractPoints();
 
             prepareUI();
             doInBackGround(cadastralId, Double.parseDouble(area), beneficiariesCode, points);
-        } catch (Exception e) {
-            MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + e.getMessage(), registerProperty);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), registerProperty);
         }
     }
 
-    private List<PointData> extractPoints() throws Exception {
+    private List<PointData> extractPoints() throws InvalidInputException {
         JTextField[][] fields = {
                 { registerProperty.getTxt_northCoordinate1(), registerProperty.getTxt_eastCoordinate1(), registerProperty.getTxt_distance1(), registerProperty.getTxt_hillside1() },
                 { registerProperty.getTxt_northCoordinate2(), registerProperty.getTxt_eastCoordinate2(), registerProperty.getTxt_distance2(), registerProperty.getTxt_hillside2() },
@@ -87,7 +87,7 @@ public class ControllerRegisterProperty {
         return getPointData(fields);
     }
 
-    private List<PointData> getPointData(JTextField[][] fields) throws Exception {
+    private List<PointData> getPointData(JTextField[][] fields) throws InvalidInputException {
         List<PointData> points = new ArrayList<>();
 
         for (int i = 0; i < fields.length; i++) {
@@ -97,7 +97,7 @@ public class ControllerRegisterProperty {
             String hillside = fields[i][3].getText().trim();
 
             if (invalidPoints(north, east, distance, hillside)) {
-                throw new Exception("Por favor ingrese toda la información del punto " + (i + 1));
+                throw new EmptyFieldException("del punto " + (i + 1));
             }
 
             points.add(new PointData(i + 1, north, east, distance, hillside));
@@ -125,7 +125,7 @@ public class ControllerRegisterProperty {
         new Thread(() -> {
             try {
                 if (daoProperty.findByCode(cadastralId) != null) {
-                    throw new Exception("El predio con cedula catastral '" + cadastralId + "' ya se encuentra registrado");
+                    throw new PersistenceException("El predio con cedula catastral '" + cadastralId + "' ya se encuentra registrado");
                 }
 
                 int propertyCode = daoProperty.add(cadastralId, area);
@@ -144,9 +144,8 @@ public class ControllerRegisterProperty {
                 }
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
-            } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al registrar la información.\nError: " +
-                        e.getMessage(), registerProperty));
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerProperty));
             }
         }).start();
     }
@@ -174,22 +173,45 @@ public class ControllerRegisterProperty {
     }
 
     private void showBeneficiaries() {
-        try {
-            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
+        prepareUILoadBeneficiaries();
 
-            SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
-            dialog.loadBeneficiaries(daoBeneficiary.findByAll());
-            dialog.setLocationRelativeTo(registerProperty);
-            dialog.setVisible(true);
-
-            if (dialog.isConfirmed()) {
-                int beneficiaryCode = dialog.codeBeneficiarySelected();
-                String beneficiaryCodeStr = registerProperty.getTxt_beneficiaryCode().getText().trim();
-                registerProperty.getTxt_beneficiaryCode().setText( beneficiaryCodeStr + (beneficiaryCodeStr.isBlank() ? "" : " - ") + "F" + beneficiaryCode);
+        new Thread(() -> {
+            try {
+                List<DTOBeneficiarySimpleDetails> dto = daoBeneficiary.findByAll();
+                SwingUtilities.invokeLater(() -> loadInvokerDialog(dto));
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerProperty));
             }
-        } catch (Exception e) {
-            MessageUtils.errorMessage("Ha ocurrido un error al mostrar los beneficiarios", registerProperty);
+        }).start();
+    }
+
+    private void prepareUILoadBeneficiaries() {
+        registerProperty.getBtn_register().setEnabled(false);
+        registerProperty.getBtn_selectBeneficiary().setEnabled(false);
+        registerProperty.getBtn_selectBeneficiary().setText("Buscando Beneficiarios...");
+    }
+
+    private void loadInvokerDialog(List<DTOBeneficiarySimpleDetails> dto) {
+        java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
+
+        SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
+        dialog.loadBeneficiaries(dto);
+        dialog.setLocationRelativeTo(registerProperty);
+        dialog.setVisible(true);
+
+        resetUILoadBeneficiaries();
+
+        if (dialog.isConfirmed()) {
+            int beneficiaryCode = dialog.codeBeneficiarySelected();
+            String beneficiaryCodeStr = registerProperty.getTxt_beneficiaryCode().getText().trim();
+            registerProperty.getTxt_beneficiaryCode().setText(beneficiaryCodeStr + (beneficiaryCodeStr.isBlank() ? "" : " - ") + "F" + beneficiaryCode);
         }
+    }
+
+    private void resetUILoadBeneficiaries() {
+        registerProperty.getBtn_register().setEnabled(true);
+        registerProperty.getBtn_selectBeneficiary().setEnabled(true);
+        registerProperty.getBtn_selectBeneficiary().setText("Buscar Beneficiario");
     }
 
     private record PointData(int pointNumber, String north, String east, String distance, String hillside) {

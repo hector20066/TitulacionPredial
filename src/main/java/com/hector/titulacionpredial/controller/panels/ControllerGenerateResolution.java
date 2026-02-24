@@ -1,9 +1,14 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.PersistenceException;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 import javax.swing.*;
@@ -38,10 +43,6 @@ public class ControllerGenerateResolution {
     }
 
     private void generateResolution() {
-        saveRecordDataBase();
-    }
-
-    private void saveRecordDataBase() {
         try {
             String resolutionNumber = generateResolution.getTxt_numResolution().getText().trim();
             Date executory = (Date) generateResolution.getFtx_executory().getValue();
@@ -54,7 +55,11 @@ public class ControllerGenerateResolution {
             String beneficiaryName = generateResolution.getTxt_nameBeneficiary().getText().trim();
 
             if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
-                throw new Exception("Debe ingresar toda la información solicitada");
+                throw new EmptyFieldException("N. Resolución y Nota");
+            }
+
+            if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
+                throw new InvalidNumberInputException("N. Resolución");
             }
 
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -62,7 +67,7 @@ public class ControllerGenerateResolution {
 
             doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
                     fmi, notary, Integer.parseInt(propertyCode), beneficiaryName);
-        } catch (Exception e) {
+        } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }
     }
@@ -137,7 +142,7 @@ public class ControllerGenerateResolution {
                                 LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName) {
         executeWithDialog(() -> {
             if (daoResolution.findByCode((int) numResolution) != null) {
-                throw new Exception("Ya existe un registro con este numero de resolución en la base de datos");
+                throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
             }
 
             daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
