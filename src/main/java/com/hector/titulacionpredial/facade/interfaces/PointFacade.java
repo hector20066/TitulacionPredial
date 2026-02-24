@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 /**
@@ -8,7 +9,7 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  */
 public interface PointFacade {
 
-    void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) throws Exception;
-    DTOPoint findByCode(int propertyCode) throws Exception;
+    void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) throws DAOException;
+    DTOPoint findByCode(int propertyCode) throws DAOException;
 
 }

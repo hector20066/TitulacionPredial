@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOSpouseImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
@@ -18,7 +19,7 @@ public class SpouseImplFacade implements SpouseFacade {
     }
 
     @Override
-    public void add(long id, String fullName, String expeditionLocation, String address, long phone, int beneficiaryCode) throws Exception {
+    public void add(long id, String fullName, String expeditionLocation, String address, long phone, int beneficiaryCode) throws DAOException {
         DTOSpouse dto = new DTOSpouse.Builder()
                 .id(id)
                 .fullName(fullName)
@@ -32,12 +33,12 @@ public class SpouseImplFacade implements SpouseFacade {
     }
 
     @Override
-    public DTOSpouse findByCode(int id) throws Exception {
+    public DTOSpouse findByCode(int id) throws DAOException {
         return daoSpouse.findByCode(id);
     }
 
     @Override
-    public void delete(int id) throws Exception {
+    public void delete(int id) throws DAOException {
         daoSpouse.delete(id);
     }
 

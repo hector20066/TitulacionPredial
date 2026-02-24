@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
@@ -20,7 +21,7 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public int add(String cadastralId, Double area) throws Exception {
+    public int add(String cadastralId, Double area) throws DAOException {
         DTOPropertyCreate dto = new DTOPropertyCreate();
         dto.setCadastralId(cadastralId);
         dto.setArea(area);
@@ -29,32 +30,32 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public DTOPropertyDetails findByCode(String cadastralId) throws Exception {
+    public DTOPropertyDetails findByCode(String cadastralId) throws DAOException {
         return daoProperty.findByCode(cadastralId);
     }
 
     @Override
-    public List<DTOPropertyDetails> findByAll() throws Exception {
+    public List<DTOPropertyDetails> findByAll() throws DAOException {
         return daoProperty.findByAll();
     }
 
     @Override
-    public void delete(int code) throws Exception {
+    public void delete(int code) throws DAOException {
         daoProperty.delete(code);
     }
 
     @Override
-    public int countRecords() throws Exception {
+    public int countRecords() throws DAOException {
         return daoProperty.countRecords();
     }
 
     @Override
-    public int percentPropertiesWithResolutions() throws Exception {
+    public int percentPropertiesWithResolutions() throws DAOException {
         return daoProperty.percentPropertiesWithResolutions();
     }
 
     @Override
-    public int countPropertyWithResolution() throws Exception {
+    public int countPropertyWithResolution() throws DAOException {
         return daoProperty.countPropertyWithResolution();
     }
 

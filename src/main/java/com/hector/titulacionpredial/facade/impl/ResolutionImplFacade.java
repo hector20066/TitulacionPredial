@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOResolutionImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
@@ -40,18 +41,18 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    public DTOResolutionDetails findByCode(int numResolution) throws Exception {
+    public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         return daoResolution.findByCode(numResolution);
     }
 
     @Override
-    public List<DTOResolutionDetails> findByAll() throws Exception {
+    public List<DTOResolutionDetails> findByAll() throws DAOException {
         return daoResolution.findByAll();
     }
 
     @Override
     public boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution,
-                          LocalDate notification, String fmi, String notary) throws Exception {
+                          LocalDate notification, String fmi, String notary) throws DAOException {
 
         DTOResolutionUpdate dto = new DTOResolutionUpdate.Builder()
                 .resolutionNumber(numResolution)
@@ -68,7 +69,7 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    public int countRecords() throws Exception {
+    public int countRecords() throws DAOException {
         return daoResolution.countRecords();
     }
 
