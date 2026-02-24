@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -32,7 +33,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void add(DTOBeneficiaryCreate dto) throws Exception {
-        String sql = "INSERT INTO beneficiary(id, full_name, departament, municipality, address, cadastral_reference, marital_status, affectation, phone, crossing, publication, neighborhood, expedition_location, entry_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = SQLRepository.get("sql/beneficiary/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -60,7 +61,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiarySimpleDetails findByCode(int code) throws Exception {
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE code = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/beneficiary/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -72,7 +73,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiarySimpleDetails findById(long id) throws Exception {
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE id = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/beneficiary/findById.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -84,7 +85,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiarySimpleDetails findByName(String name) throws Exception {
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE full_name = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/beneficiary/findByName.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -109,7 +110,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws Exception {
         List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary WHERE municipality = ?;";
+        String sql = SQLRepository.get("sql/beneficiary/findByMunicipalities.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -130,7 +131,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public List<DTOBeneficiarySimpleDetails> findByAll() throws Exception {
         List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
-        String sql = "SELECT code, id, full_name, phone, cadastral_reference, municipality, address FROM beneficiary ORDER BY code DESC LIMIT 1000;";
+        String sql = SQLRepository.get("sql/beneficiary/findByAll.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
@@ -158,7 +159,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public DTOBeneficiaryDetails findAllData(int code) throws Exception {
-        String sql = "SELECT beneficiary.code, beneficiary.id, beneficiary.full_name, beneficiary.departament, beneficiary.municipality, beneficiary.address, beneficiary.cadastral_reference, beneficiary.marital_status, beneficiary.affectation, beneficiary.phone, beneficiary.crossing, beneficiary.publication, beneficiary.neighborhood, beneficiary.expedition_location, spouse.id AS spouse_id, spouse.full_name AS spouse_full_name, spouse.expedition_location AS spouse_expedition_location, spouse.address AS spouse_address, spouse.phone AS spouse_phone FROM beneficiary LEFT JOIN spouse ON beneficiary.code = spouse.beneficiary_code WHERE beneficiary.code = ?;";
+        String sql = SQLRepository.get("sql/beneficiary/findAllData.sql");
 
         try(Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql)) {
@@ -200,7 +201,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public boolean modify(DTOBeneficiaryUpdate dto) throws Exception {
-        String sql = "UPDATE beneficiary SET departament = ?, municipality = ?, address = ?, marital_status = ?, affectation = ?, phone = ?, crossing = ?, publication = ?, neighborhood = ? WHERE code = ?;";
+        String sql = SQLRepository.get("sql/beneficiary/modify.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -226,7 +227,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws Exception {
-        String sql = "UPDATE beneficiary SET property_code = ? WHERE code = ?;";
+        String sql = SQLRepository.get("sql/beneficiary/modifyProperty.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -240,7 +241,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public void delete(int code) throws Exception {
-        String sql = "DELETE FROM beneficiary WHERE code = ?;";
+        String sql = SQLRepository.get("sql/beneficiary/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -251,7 +252,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public int countRecords() throws Exception {
-        String sql = "SELECT COUNT(*) AS total_records FROM beneficiary;";
+        String sql = SQLRepository.get("sql/beneficiary/countRecords.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -266,7 +267,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public int getLastCode() throws Exception {
-        String sql = "SELECT MAX(code) AS last_code FROM beneficiary;";
+        String sql = SQLRepository.get("sql/beneficiary/getLastCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
@@ -283,18 +284,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws Exception {
         List<DTOBeneficiariesByMonth> result = new ArrayList<>();
-
-        String sql = """
-            SELECT 
-                YEAR(entry_date) AS anio,
-                MONTH(entry_date) AS mes,
-                COUNT(*) AS total
-            FROM beneficiary
-            WHERE entry_date IS NOT NULL
-              AND entry_date >= DATE_SUB(CURDATE(), INTERVAL ? MONTH)
-            GROUP BY YEAR(entry_date), MONTH(entry_date)
-            ORDER BY anio, mes
-        """;
+        String sql = SQLRepository.get("sql/beneficiary/countBeneficiariesLastMonths.sql");
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -303,7 +293,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    DTOBeneficiariesByMonth dto = new DTOBeneficiariesByMonth(rs.getInt("anio"), rs.getInt("mes"), rs.getInt("total"));
+                    DTOBeneficiariesByMonth dto = new DTOBeneficiariesByMonth(rs.getInt("anio"),
+                            rs.getInt("mes"), rs.getInt("total"));
                     result.add(dto);
                 }
             }
@@ -314,7 +305,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public int countBeneficiariesWithProperty() throws Exception {
-        String sql = "SELECT COUNT(property_code) AS beneficiaries_with_property FROM beneficiary;";
+        String sql = SQLRepository.get("sql/beneficiary/countBeneficiariesWithProperty.sql");
 
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
@@ -330,13 +321,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     @Override
     public int percentBeneficiariesWithProperty() throws Exception {
-        String sql = """
-                SELECT
-                    ROUND(
-                        COUNT(property_code) * 100.0 / COUNT(*), 0
-                    ) AS percent
-                FROM beneficiary;
-                """;
+        String sql = SQLRepository.get("sql/beneficiary/percenBeneficiariesWithProperty.sql");
 
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
