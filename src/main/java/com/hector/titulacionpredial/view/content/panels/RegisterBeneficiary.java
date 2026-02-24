@@ -15,6 +15,7 @@ import javax.swing.*;
 public class RegisterBeneficiary extends javax.swing.JPanel {
 
     private boolean modify = false;
+    private MaritalStatus nowStatus;
     
     public RegisterBeneficiary() {
         initComponents();
@@ -72,6 +73,14 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     
     public boolean isModify() {
         return modify;
+    }
+
+    public void setNowStatus(MaritalStatus nowStatus) {
+        this.nowStatus = nowStatus;
+    }
+
+    public MaritalStatus getNowStatus() {
+        return nowStatus;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -614,6 +623,15 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         isLoading = false;
     }
 
+    public void resetUI() {
+        txt_name.setEditable(true);
+        txt_lastName.setEditable(true);
+        txt_id.setEditable(true);
+        txt_cadastralReference.setEditable(true);
+        txt_expeditionLocation.setEditable(true);
+        txa_affectation.setEditable(false);
+    }
+
     private void validateName(String fullName) {
         if (fullName == null || fullName.trim().isEmpty()) {
             txt_name.setText("");
@@ -664,6 +682,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_maritalStatus.setSelectedIndex(0);
         cbo_municipality.setSelectedIndex(0);
         cbx_affectation.setSelected(false);
+
+        resetUI();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

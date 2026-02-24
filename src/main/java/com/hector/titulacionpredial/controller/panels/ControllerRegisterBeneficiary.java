@@ -71,7 +71,7 @@ public class ControllerRegisterBeneficiary implements Observer {
             Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
             Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
             String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
-            String address = registerBeneficiary.getTxt_address().getText().trim();
+            String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
             String publication = registerBeneficiary.getTxt_publication().getText().trim();
             String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
@@ -95,12 +95,12 @@ public class ControllerRegisterBeneficiary implements Observer {
                         MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                         String crossing, String affectation) throws InvalidInputException {
 
-        if (isInvalidData(phone, neighborhood, address, publication, crossing)) {
-            throw new EmptyFieldException("Teléfono, Barrio, Dirección, Publicación y Cruce");
+        if (isInvalidData(neighborhood, address)) {
+            throw new EmptyFieldException("Barrio y Dirección");
         }
 
         int codeLong = Integer.parseInt(code);
-        long phoneLong = Long.parseLong(phone);
+        long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
         doInBackgroundModify(codeLong, phoneLong, department, municipality, maritalStatus, neighborhood, address, publication,
                 crossing, affectation);
@@ -113,8 +113,10 @@ public class ControllerRegisterBeneficiary implements Observer {
                 boolean success = daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
                         crossing, publication, neighborhood, code);
 
-                if (maritalStatus == MaritalStatus.SOLTERO || maritalStatus == MaritalStatus.DIVORCIADO || maritalStatus == MaritalStatus.VIUDO) {
-                    daoSpouse.delete(code);
+                if (registerBeneficiary.getNowStatus() == MaritalStatus.CASADO || registerBeneficiary.getNowStatus() == MaritalStatus.UNION_LIBRE) {
+                    if (maritalStatus == MaritalStatus.SOLTERO || maritalStatus == MaritalStatus.DIVORCIADO || maritalStatus == MaritalStatus.VIUDO) {
+                        daoSpouse.delete(code);
+                    }
                 }
 
                 SwingUtilities.invokeLater(() -> runInvokeLaterModify(success));
@@ -139,18 +141,18 @@ public class ControllerRegisterBeneficiary implements Observer {
                           MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                           String crossing, String affectation) throws InvalidInputException {
 
-        String name = registerBeneficiary.getTxt_name().getText().trim();
-        String lastName = registerBeneficiary.getTxt_lastName().getText().trim();
+        String name = registerBeneficiary.getTxt_name().getText().trim().toUpperCase();
+        String lastName = registerBeneficiary.getTxt_lastName().getText().trim().toUpperCase();
         String id = registerBeneficiary.getTxt_id().getText().trim();
         String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
 
-        validations(name, lastName, id, phone, cadastralReference, expeditionLocation, neighborhood, address, publication, crossing);
+        validations(name, lastName, id, phone, cadastralReference, expeditionLocation, neighborhood, address);
 
         String fullName = name + " " + lastName;
         int codeInt = Integer.parseInt(code);
         long idLong = Long.parseLong(id);
-        long phoneLong = Long.parseLong(phone);
+        long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
         prepareUI();
         doInBackGround(fullName, codeInt, idLong, phoneLong, department, municipality, maritalStatus, expeditionLocation,
@@ -158,25 +160,29 @@ public class ControllerRegisterBeneficiary implements Observer {
     }
 
     private void validations(String name, String lastName, String id, String phone, String cadastralReference,
-                             String expeditionLocation, String neighborhood, String address, String publication,
-                             String crossing) throws InvalidInputException {
+                             String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
 
         if (lastName.split(" ").length < 2) {
             throw new InvalidInputException("Por favor ingrese los dos Apellidos del beneficiario");
         }
 
-        if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(phone)
-                || !NumericalValidationUtils.isNumeric(cadastralReference)) {
-            throw new InvalidNumberInputException("Cedula, Teléfono y Referencia Catastral");
+        if (!phone.isBlank()) {
+            if (!NumericalValidationUtils.isNumeric(phone)) {
+                throw new InvalidNumberInputException("Teléfono");
+            }
+        }
+
+        if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(cadastralReference)) {
+            throw new InvalidNumberInputException("Cedula y Referencia Catastral");
         }
 
         if (id.length() > 10 || phone.length() > 10) {
             throw new MaxLengthExceededException("Cedula y Teléfono", "10");
         }
 
-        if (isInvalidData(name, lastName, id, phone, expeditionLocation, neighborhood, address, cadastralReference, publication, crossing)) {
-            throw new EmptyFieldException("Nombre, Apellido, Cedula, Teléfono, Lugar de Expedición, Barrio, Dirección, "
-                    + "Referencia Catastral, Publicación y Cruce");
+        if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
+            throw new EmptyFieldException("Nombre, Apellido, Cedula, Lugar de Expedición, Barrio, Dirección "
+                    + "y Referencia Catastral");
         }
     }
 

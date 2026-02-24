@@ -144,6 +144,7 @@ public class ControllerViewBeneficiaries implements Observer {
                     NavigatorUtils.showForms(registerBeneficiary);
                     registerBeneficiary.loadDataModify(dto);
                     registerBeneficiary.setModify(true);
+                    registerBeneficiary.setNowStatus(dto.getMaritalStatus());
                 });
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
