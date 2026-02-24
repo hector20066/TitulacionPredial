@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.model.dao.impl;
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
 
@@ -28,7 +29,7 @@ public class DAOSpouseImpl implements DAOSpouse {
 
     @Override
     public void add(DTOSpouse dto) throws Exception {
-        String sql = "INSERT INTO spouse(id, full_name, expedition_location, address, phone, beneficiary_code) VALUES(?, ?, ?, ?, ?, ?);";
+        String sql = SQLRepository.get("sql/spouse/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -44,7 +45,7 @@ public class DAOSpouseImpl implements DAOSpouse {
 
     @Override
     public DTOSpouse findByCode(int id) throws Exception {
-        String sql = "SELECT id, full_name, expedition_location, address, phone, beneficiary_code FROM spouse WHERE id = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/spouse/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -64,7 +65,7 @@ public class DAOSpouseImpl implements DAOSpouse {
 
     @Override
     public void delete(int id) throws Exception {
-        String sql = "DELETE FROM spouse WHERE beneficiary_code = ?;";
+        String sql = SQLRepository.get("sql/spouse/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {

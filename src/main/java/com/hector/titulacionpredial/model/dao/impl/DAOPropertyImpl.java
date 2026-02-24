@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryProperty
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public int add(DTOPropertyCreate dto) throws Exception {
-        String sql = "INSERT INTO property (cadastral_id, area) VALUES (?, ?);";
+        String sql = SQLRepository.get("sql/property/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -60,35 +61,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public DTOPropertyDetails findByCode(String cadastralId) throws Exception {
-        String sql = """
-           SELECT
-              p.code AS property_code,
-              p.cadastral_id,
-              p.area,
-              b.id AS beneficiary_code,
-              b.full_name AS beneficiary_fullname,
-              b.municipality AS beneficiary_municipality,
-              b.address AS beneficiary_address,
-              pt.number,
-              pt.north_coordinate,
-              pt.east_coordinate,
-              pt.distance,
-              pt.hillside,
-              r.num_resolution,
-              r.notification,
-              r.executory,
-              r.fmi,
-              r.act,
-              r.public_writing,
-              r.notary
-            FROM property p
-          JOIN point pt ON pt.property_code = p.code
-          LEFT JOIN beneficiary b ON b.property_code = p.code
-          LEFT JOIN resolution r ON r.property_code = p.code
-          WHERE p.cadastral_id = ?
-          ORDER BY pt.number
-        """;
-
+        String sql = SQLRepository.get("sql/property/findByCode.sql");
         DTOPropertyDetails property = null;
 
         try (Connection conn = DataBasePool.getConnection();
@@ -131,40 +104,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public List<DTOPropertyDetails> findByAll() throws Exception {
-        String sql = """
-            SELECT 
-                p.code AS property_code, 
-                p.cadastral_id, 
-                p.area, 
-                b.id AS beneficiary_code,
-                b.full_name AS beneficiary_fullname,
-                b.municipality AS beneficiary_municipality,
-                b.address AS beneficiary_address,
-                pt.number,
-                pt.north_coordinate,
-                pt.east_coordinate,
-                pt.distance,
-                pt.hillside,
-                r.num_resolution,
-                r.notification,
-                r.executory,
-                r.fmi,
-                r.act,
-                r.public_writing,
-                r.notary
-            FROM (
-                SELECT code 
-                FROM property 
-                ORDER BY code DESC 
-                LIMIT 1000
-            ) last_properties
-            JOIN property p ON p.code = last_properties.code
-            JOIN point pt ON pt.property_code = p.code
-            LEFT JOIN beneficiary b ON b.property_code = p.code
-            LEFT JOIN resolution r ON r.property_code = p.code
-            ORDER BY p.code DESC, pt.number
-        """;
-
+        String sql = SQLRepository.get("sql/property/findByAll.sql");
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
         try (Connection conn = DataBasePool.getConnection();
@@ -271,7 +211,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public void delete(int code) throws Exception {
-        String sql = "DELETE FROM property WHERE code = ?";
+        String sql = SQLRepository.get("sql/property/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -287,6 +227,7 @@ public class DAOPropertyImpl implements DAOProperty {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
              ResultSet rs = st.executeQuery()) {
+
             if (!rs.next()) {
                 return 0;
             }
@@ -297,18 +238,12 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public int percentPropertiesWithResolutions() throws Exception {
-        String sql = """
-                SELECT
-                    ROUND(
-                        COUNT(DISTINCT resolution.property_code) * 100.0 / COUNT(DISTINCT property.code), 0
-                    ) AS percent
-                FROM property LEFT JOIN resolution
-                ON resolution.property_code = property.code;
-                """;
+        String sql = SQLRepository.get("sql/property/percentPropertiesWithResolution.sql");
 
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery()) {
+
             if (!rs.next()) {
                 return 0;
             }
@@ -319,16 +254,12 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public int countPropertyWithResolution() throws Exception {
-        String sql = """
-                SELECT
-                    COUNT(*) AS properties_with_resolution
-                FROM property INNER JOIN resolution
-                ON resolution.property_code = property.code;
-                """;
+        String sql = SQLRepository.get("sql/property/countPropertiesWithResolution.sql");
 
         try(Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
-            ResultSet rs = st.executeQuery();
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery()) {
+
             if(!rs.next()) {
                 return 0;
             }

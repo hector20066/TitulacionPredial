@@ -46,13 +46,6 @@ public class DAOPointImpl implements DAOPoint {
 
     @Override
     public DTOPointDetails findById(int id) throws Exception {
-        String sql = "";
-
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-
-        }
-
         return null;
     }
 

@@ -261,6 +261,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              if(!rs.next()) {
                  return 0;
              }
+
              return rs.getInt("total_records");
         }
     }
@@ -293,8 +294,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    DTOBeneficiariesByMonth dto = new DTOBeneficiariesByMonth(rs.getInt("anio"),
-                            rs.getInt("mes"), rs.getInt("total"));
+                    DTOBeneficiariesByMonth dto = new DTOBeneficiariesByMonth(rs.getInt("year_value"),
+                            rs.getInt("month_value"), rs.getInt("total_count"));
                     result.add(dto);
                 }
             }

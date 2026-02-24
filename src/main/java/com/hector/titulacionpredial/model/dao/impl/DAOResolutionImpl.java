@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.model.dao.impl;
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.*;
+import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public void add(DTOResolutionCreate dto) throws Exception {
-        String sql = "INSERT INTO resolution(num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name, property_code) VALUES(?, ?, ?, ?, ? ,?, ?, ?, ?);";
+        String sql = SQLRepository.get("sql/resolution/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
             PreparedStatement st = connection.prepareStatement(sql)) {
@@ -49,7 +50,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws Exception {
-        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name FROM resolution WHERE num_resolution = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/resolution/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql)) {
@@ -70,7 +71,7 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public List<DTOResolutionDetails> findByAll() throws Exception {
         List<DTOResolutionDetails> list = new ArrayList<>();
-        String sql = "SELECT code, num_resolution, notification, executory, fmi, act, public_writing, notary, beneficiary_name FROM resolution ORDER BY code DESC LIMIT 1000;";
+        String sql = SQLRepository.get("sql/resolution/findByAll.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
             PreparedStatement st = connection.prepareStatement(sql); 
@@ -100,7 +101,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public boolean modify(DTOResolutionUpdate dto) throws Exception {
-        String sql = "UPDATE resolution SET executory = ?, act = ?, public_writing = ?, notification = ?, num_resolution = ?, fmi = ?, notary = ? WHERE code = ?;";
+        String sql = SQLRepository.get("sql/resolution/modify.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
             PreparedStatement st = connection.prepareStatement(sql)) {
@@ -120,7 +121,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
     @Override
     public int countRecords() throws Exception {
-        String sql = "SELECT COUNT(*) AS total_records FROM resolution;";
+        String sql = SQLRepository.get("sql/resolution/countRecords.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
             PreparedStatement st = connection.prepareStatement(sql)) {
