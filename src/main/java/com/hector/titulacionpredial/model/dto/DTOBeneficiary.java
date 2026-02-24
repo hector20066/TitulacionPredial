@@ -6,28 +6,26 @@ import com.hector.titulacionpredial.model.enums.*;
  *
  * @author hectoracevedo
  */
-public class DTOBeneficiary {
+public class DTOBeneficiary extends DTOBasePerson {
 
     protected Department department;
     protected Municipalities municipality;
     protected String neighborhood;
-    protected String address;
-    protected long phone;
     protected String crossing;
     protected String publication;
     protected MaritalStatus maritalStatus;
     protected String affectation;
 
     public DTOBeneficiary() {
-
+        super();
     }
 
     public DTOBeneficiary(Builder<?> builder) {
+        super(builder.address, builder.phone);
+
         this.department = builder.department;
         this.municipality = builder.municipality;
         this.neighborhood = builder.neighborhood;
-        this.address = builder.address;
-        this.phone = builder.phone;
         this.crossing = builder.crossing;
         this.publication = builder.publication;
         this.maritalStatus = builder.maritalStatus;
@@ -44,14 +42,6 @@ public class DTOBeneficiary {
 
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
     }
 
     public void setCrossing(String crossing) {
@@ -80,14 +70,6 @@ public class DTOBeneficiary {
 
     public String getNeighborhood() {
         return neighborhood;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public long getPhone() {
-        return phone;
     }
 
     public String getCrossing() {

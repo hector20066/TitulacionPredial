@@ -4,13 +4,11 @@ package com.hector.titulacionpredial.model.dto;
  *
  * @author hectoracevedo
  */
-public class DTOSpouse {
+public class DTOSpouse extends DTOBasePerson {
 
     private long id;
     private String fullName;
     private String expeditionLocation;
-    private String address;
-    private long phone;
     private int beneficiaryCode;
 
     public DTOSpouse() {
@@ -18,11 +16,11 @@ public class DTOSpouse {
     }
 
     public DTOSpouse(Builder builder) {
+        super(builder.address, builder.phone);
+
         this.id = builder.id;
         this.fullName = builder.fullName;
         this.expeditionLocation = builder.expeditionLocation;
-        this.address = builder.address;
-        this.phone = builder.phone;
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
@@ -36,14 +34,6 @@ public class DTOSpouse {
 
     public void setExpeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
-    }
-
-    public void setAddress(String address) {
-            this.address = address;
-    }
-
-    public void setPhone(long phone) {
-            this.phone = phone;
     }
 
     public void setBeneficiaryCode(int beneficiaryCode) {
@@ -60,14 +50,6 @@ public class DTOSpouse {
 
     public String getExpeditionLocation() {
             return expeditionLocation;
-    }
-
-    public String getAddress() {
-            return address;
-    }
-
-    public long getPhone() {
-            return phone;
     }
 
     public int getBeneficiaryCode() {
