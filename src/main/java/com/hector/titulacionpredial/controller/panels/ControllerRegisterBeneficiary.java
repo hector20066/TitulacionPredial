@@ -151,11 +151,10 @@ public class ControllerRegisterBeneficiary implements Observer {
         int codeInt = Integer.parseInt(code);
         long idLong = Long.parseLong(id);
         long phoneLong = Long.parseLong(phone);
-        long cadastralReferenceLong = Long.parseLong(cadastralReference);
 
         prepareUI();
         doInBackGround(fullName, codeInt, idLong, phoneLong, department, municipality, maritalStatus, expeditionLocation,
-                neighborhood, address, cadastralReferenceLong, publication, crossing, affectation);
+                neighborhood, address, cadastralReference, publication, crossing, affectation);
     }
 
     private void validations(String name, String lastName, String id, String phone, String cadastralReference,
@@ -198,7 +197,7 @@ public class ControllerRegisterBeneficiary implements Observer {
 
     private void doInBackGround(String fullName, int code, long id, long phone, Department department, Municipalities municipalities,
                                 MaritalStatus maritalStatus, String expeditionLocation, String neighborhood, String address,
-                                long cadastralReference, String publication, String crossing, String affectation) {
+                                String cadastralReference, String publication, String crossing, String affectation) {
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {

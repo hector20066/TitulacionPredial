@@ -315,7 +315,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         int code = dto.getCode();
         String name = dto.getFullName();
         long id = dto.getId();
-        long cadastralReference = dto.getCadastralReference();
+        String cadastralReference = dto.getCadastralReference();
 
         Object[] data = new Object[]{code, name, id, cadastralReference};
         model.addRow(data);

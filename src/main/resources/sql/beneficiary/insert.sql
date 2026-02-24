@@ -1,7 +1,7 @@
 INSERT INTO beneficiary(
                         id,
                         full_name,
-                        departament,
+                        department,
                         municipality,
                         address, cadastral_reference,
                         marital_status,

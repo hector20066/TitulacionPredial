@@ -53,7 +53,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         st.setString(3, String.valueOf(dto.getDepartment()));
         st.setString(4, String.valueOf(dto.getMunicipality()));
         st.setString(5, dto.getAddress());
-        st.setLong(6, dto.getCadastralReference());
+        st.setString(6, dto.getCadastralReference());
         st.setString(7, String.valueOf(dto.getMaritalStatus()));
         st.setString(8, dto.getAffectation());
         st.setLong(9, dto.getPhone());
@@ -72,7 +72,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setInt(1, code);
 
-             return executeResultSet(st, String.valueOf(code));
+             return executeResultSet(st);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con código: " + code, e);
         }
@@ -86,7 +86,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, id);
 
-            return executeResultSet(st, String.valueOf(id));
+            return executeResultSet(st);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con cedula: " + id, e);
         }
@@ -100,13 +100,13 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, name);
 
-            return executeResultSet(st, name);
+            return executeResultSet(st);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con nombre: " + name, e);
         }
     }
 
-    private DTOBeneficiarySimpleDetails executeResultSet(PreparedStatement st, String param) throws DAOException {
+    private DTOBeneficiarySimpleDetails executeResultSet(PreparedStatement st) throws DAOException {
         try (ResultSet rs = st.executeQuery()) {
             if (!rs.next()) {
                 return null;
@@ -169,7 +169,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setPhone(rs.getLong("phone"));
-        dto.setCadastralReference(rs.getLong("cadastral_reference"));
+        dto.setCadastralReference(rs.getString("cadastral_reference"));
         dto.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
         dto.setAddress(rs.getString("address"));
     }
@@ -198,10 +198,10 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 .code(rs.getInt("code"))
                 .id(rs.getLong("id"))
                 .fullName(rs.getString("full_name"))
-                .department(Department.valueOf(rs.getString("departament")))
+                .department(Department.valueOf(rs.getString("department")))
                 .municipality(Municipalities.valueOf(rs.getString("municipality")))
                 .address(rs.getString("address"))
-                .cadastralReference(rs.getLong("cadastral_reference"))
+                .cadastralReference(rs.getString("cadastral_reference"))
                 .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
                 .affectation(rs.getString("affectation"))
                 .phone(rs.getLong("phone"))

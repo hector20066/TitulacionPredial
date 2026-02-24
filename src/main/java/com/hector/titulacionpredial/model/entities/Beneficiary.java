@@ -11,7 +11,7 @@ public class Beneficiary extends Person {
     private int code;
     private Department department;
     private Municipalities municipality;
-    private long cadastralReference;
+    private String cadastralReference;
     private MaritalStatus maritalStatus;
     private String affectation;
     private String crossing;
@@ -47,7 +47,7 @@ public class Beneficiary extends Person {
         this.municipality = municipality;
     }
 
-    public void setCadastralReference(long cadastralReference) {
+    public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }
 
@@ -83,7 +83,7 @@ public class Beneficiary extends Person {
         return municipality;
     }
 
-    public long getCadastralReference() {
+    public String getCadastralReference() {
         return cadastralReference;
     }
 
@@ -126,7 +126,7 @@ public class Beneficiary extends Person {
         private int code;
         private Department department;
         private Municipalities municipality;
-        private long cadastralReference;
+        private String cadastralReference;
         private MaritalStatus maritalStatus;
         private String affectation;
         private String crossing;
@@ -148,7 +148,7 @@ public class Beneficiary extends Person {
             return this;
         }
 
-        public Builder cadastralReference(long cadastralReference) {
+        public Builder cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
             return this;
         }

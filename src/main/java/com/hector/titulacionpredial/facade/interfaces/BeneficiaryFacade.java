@@ -18,7 +18,7 @@ import java.util.List;
 public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails>, IRemovable, ICountable {
 
     void add(long id, String fullName, Department department, Municipalities municipality, String address,
-             long cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing,
+             String cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing,
              String publication, String neighborhood, String expeditionLocation) throws DAOException;
 
     DTOBeneficiarySimpleDetails findByCode(int code) throws DAOException;

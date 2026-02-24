@@ -11,7 +11,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     private long id;
     private String fullName;
     private String expeditionLocation;
-    private long cadastralReference;
+    private String cadastralReference;
 
     public DTOBeneficiaryCreate() {
         super();
@@ -37,7 +37,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.expeditionLocation = expeditionLocation;
     }
 
-    public void setCadastralReference(long cadastralReference) {
+    public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }
 
@@ -53,7 +53,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         return expeditionLocation;
     }
 
-    public long getCadastralReference() {
+    public String getCadastralReference() {
         return cadastralReference;
     }
 
@@ -62,7 +62,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         private long id;
         private String fullName;
         private String expeditionLocation;
-        private long cadastralReference;
+        private String cadastralReference;
 
         public T id(long id) {
             this.id = id;
@@ -79,7 +79,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
             return self();
         }
 
-        public T cadastralReference(long cadastralReference) {
+        public T cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
             return self();
         }

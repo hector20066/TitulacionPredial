@@ -2,7 +2,7 @@ package com.hector.titulacionpredial.app;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.hector.titulacionpredial.controller.Coordinator;
-
+ca
 import javax.swing.*;
 import java.awt.*;
 

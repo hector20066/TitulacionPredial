@@ -265,7 +265,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         long id = dto.getId();
         String fullName = dto.getFullName();
         long phone = dto.getPhone();
-        long cadastralReference = dto.getCadastralReference();
+        String cadastralReference = dto.getCadastralReference();
         Municipalities municipality = dto.getMunicipality();
         String address = dto.getAddress();
 

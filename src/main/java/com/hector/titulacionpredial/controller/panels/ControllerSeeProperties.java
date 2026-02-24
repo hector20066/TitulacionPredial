@@ -81,7 +81,7 @@ public class ControllerSeeProperties implements Observer {
             String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
             String address = seeProperties.getJtbl_properties().getValueAt(selectedRow, 11).toString();
             Municipalities municipalities = Municipalities.valueOf(seeProperties.getJtbl_properties().getValueAt(selectedRow, 12).toString());
-            long cadastralReference = Long.parseLong(seeProperties.getJtbl_properties().getValueAt(selectedRow, 10).toString());
+            String cadastralReference = seeProperties.getJtbl_properties().getValueAt(selectedRow, 10).toString();
 
             double eastCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 13);
             double northCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 14);
@@ -120,7 +120,7 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
-    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address, Municipalities municipalities, long cadastralReference) {
+    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address, Municipalities municipalities, String cadastralReference) {
         return new DTOBeneficiarySimpleDetails.Builder()
                 .fullName(nameBeneficiary)
                 .address(address)
