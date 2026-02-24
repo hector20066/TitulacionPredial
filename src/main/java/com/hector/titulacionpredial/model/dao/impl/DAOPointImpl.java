@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.PointNotFountException;
+import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -28,7 +31,7 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    public void add(DTOPoint dto) throws Exception {
+    public void add(DTOPoint dto) throws DAOException {
         String sql = SQLRepository.get("sql/point/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -40,11 +43,13 @@ public class DAOPointImpl implements DAOPoint {
              st.setString(5, dto.getHillside());
              st.setInt(6, dto.getPropertyCode());
              st.executeUpdate();
+        } catch (SQLException e) {
+            throw new PointPersistenceException("No fue posible guardar la información del punto", e);
         }
     }
 
     @Override
-    public DTOPoint findByCode(int propertyCode) throws Exception {
+    public DTOPoint findByCode(int propertyCode) throws DAOException {
         String sql = SQLRepository.get("sql/point/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -53,17 +58,19 @@ public class DAOPointImpl implements DAOPoint {
 
             try(ResultSet rs = st.executeQuery()) {
                 if(!rs.next()) {
-                    return null;
+                    throw new PointNotFountException(String.valueOf(propertyCode));
                 }
 
                 DTOPoint dto = new DTOPoint();
                 executeQuery(dto, rs);
                 return dto;
             }
+        } catch (SQLException e) {
+            throw new PointPersistenceException("Error al recuperar la información del punto de la propiedad con código: " + propertyCode, e);
         }
     }
 
-    private void executeQuery(DTOPoint dto, ResultSet rs) throws Exception {
+    private void executeQuery(DTOPoint dto, ResultSet rs) throws SQLException {
         dto.setNumberPoint(rs.getInt("number"));
         dto.setNorthCoordinate(rs.getDouble("north_coordinate"));
         dto.setEastCoordinate(rs.getDouble("east_coordinate"));
