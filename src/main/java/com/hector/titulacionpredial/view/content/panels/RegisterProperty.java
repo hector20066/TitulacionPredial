@@ -725,6 +725,10 @@ public class RegisterProperty extends javax.swing.JPanel {
         return btn_returnPoint3;
     }
 
+    public ButtonAction getBtn_selectBeneficiary() {
+        return btn_selectBeneficiary;
+    }
+
     public JPanel getJpl_contentPoints() {
         return jpl_contentPoints;
     }
