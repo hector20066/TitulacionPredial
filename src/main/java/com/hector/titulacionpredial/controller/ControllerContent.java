@@ -42,7 +42,10 @@ public class ControllerContent {
 
     private void selectedMenu(int index, int indexSubMenu) {
         switch(index) {
-            case 0 -> NavigatorUtils.showForms(dashboard);
+            case 0 -> {
+                NavigatorUtils.showForms(dashboard);
+                subject.notifyObservers();
+            }
             case 1 -> {
                 switch (indexSubMenu) {
                     case 1 -> {

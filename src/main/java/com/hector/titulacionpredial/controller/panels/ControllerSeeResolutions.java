@@ -181,7 +181,7 @@ public class ControllerSeeResolutions implements Observer {
     }
 
     private void cancelSearch() {
-        seeResolutions.getBtn_searchCancel().setText("Buscar");
+        seeResolutions.getTxt_search().setText("Buscar");
         seeResolutions.getBtn_searchCancel().setVisible(false);
         seeResolutions.getBtn_search().setVisible(true);
         subject.notifyObservers();

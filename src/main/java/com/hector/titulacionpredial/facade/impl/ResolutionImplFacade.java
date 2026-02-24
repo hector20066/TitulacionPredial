@@ -23,7 +23,7 @@ public class ResolutionImplFacade implements ResolutionFacade {
 
     @Override
     public void add(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act,
-                    String publicWriting, String notary, int propertyCode, String beneficiaryName) throws Exception {
+                    String publicWriting, String notary, int propertyCode, String beneficiaryName) throws DAOException {
 
         DTOResolutionCreate dto = new DTOResolutionCreate.Builder()
                 .resolutionNumber(resolutionNumber)
