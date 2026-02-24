@@ -7,7 +7,7 @@ package com.hector.titulacionpredial.exception.validation;
 public class InvalidFieldException extends Exception {
 
     public InvalidFieldException() {
-
+        super("Campo invalido");
     }
 
     public InvalidFieldException(String message) {
