@@ -3,7 +3,7 @@ package com.hector.titulacionpredial.facade.impl;
 import com.hector.titulacionpredial.facade.interfaces.PointFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPointImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
-import com.hector.titulacionpredial.model.dto.point.*;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 /**
  *
@@ -19,7 +19,7 @@ public class PointImplFacade implements PointFacade {
 
     @Override
     public void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) throws Exception {
-        DTOPointCreate dto = new DTOPointCreate.Builder()
+        DTOPoint dto = new DTOPoint.Builder()
                 .numberPoint(numberPoint)
                 .northCoordinate(northCoordinate)
                 .eastCoordinate(eastCoordinate)
@@ -32,12 +32,7 @@ public class PointImplFacade implements PointFacade {
     }
 
     @Override
-    public DTOPointDetails findById(int numberPoint) throws Exception {
-        return daoPoint.findById(numberPoint);
-    }
-
-    @Override
-    public DTOPointDetails findByCode(int propertyCode) throws Exception {
+    public DTOPoint findByCode(int propertyCode) throws Exception {
         return daoPoint.findByCode(propertyCode);
     }
 

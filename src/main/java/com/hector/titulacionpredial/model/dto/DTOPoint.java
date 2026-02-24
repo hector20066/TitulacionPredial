@@ -6,18 +6,18 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOPoint {
 
-    private int numberPoint;
-    private Double northCoordinate;
-    private Double eastCoordinate;
-    private Double distance;
-    private String hillside;
-    private int propertyCode;
+    protected int numberPoint;
+    protected Double northCoordinate;
+    protected Double eastCoordinate;
+    protected Double distance;
+    protected String hillside;
+    protected int propertyCode;
 
     public DTOPoint() {
 
     }
 
-    public DTOPoint(Builder<?> builder) {
+    public DTOPoint(Builder builder) {
         this.numberPoint = builder.numberPoint;
         this.northCoordinate = builder.northCoordinate;
         this.eastCoordinate = builder.eastCoordinate;
@@ -74,7 +74,7 @@ public class DTOPoint {
         return propertyCode;
     }
 
-    public static class Builder<T extends Builder<T>> {
+    public static class Builder {
 
         private int numberPoint;
         private Double northCoordinate;
@@ -83,39 +83,34 @@ public class DTOPoint {
         private String hillside;
         private int propertyCode;
 
-        @SuppressWarnings("unchecked")
-        protected T self() {
-            return (T) this;
-        }
-
-        public T numberPoint(int numberPoint) {
+        public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
-            return self();
+            return this;
         }
 
-        public T northCoordinate(Double northCoordinate) {
+        public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
-            return self();
+            return this;
         }
 
-        public T eastCoordinate(Double eastCoordinate) {
+        public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
-            return self();
+            return  this;
         }
 
-        public T distance(Double distance) {
+        public Builder distance(Double distance) {
             this.distance = distance;
-            return self();
+            return this;
         }
 
-        public T hillside(String hillside) {
+        public Builder hillside(String hillside) {
             this.hillside = hillside;
-            return self();
+            return this;
         }
 
-        public T propertyCode(int propertyCode) {
+        public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
-            return self();
+            return this;
         }
 
         public DTOPoint build() {

@@ -6,8 +6,8 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOProperty {
 
-    private String cadastralId;
-    private Double area;
+    protected String cadastralId;
+    protected Double area;
 
     public DTOProperty() {
 

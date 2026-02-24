@@ -1,8 +1,8 @@
 package com.hector.titulacionpredial.model.dto.property;
 
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class DTOPropertyDetails extends DTOProperty {
 
     private int propertyCode;
     private List<DTOBeneficiaryPropertyDetails> beneficiaries;
-    private List<DTOPointDetails> points;
+    private List<DTOPoint> points;
     private long numResolution;
     private LocalDate notification;
     private LocalDate executory;
@@ -53,7 +53,7 @@ public class DTOPropertyDetails extends DTOProperty {
         this.beneficiaries = beneficiaries;
     }
 
-    public void setPoints(List<DTOPointDetails> points) {
+    public void setPoints(List<DTOPoint> points) {
         this.points = points;
     }
 
@@ -93,7 +93,7 @@ public class DTOPropertyDetails extends DTOProperty {
         return beneficiaries;
     }
 
-    public List<DTOPointDetails> getPoints() {
+    public List<DTOPoint> getPoints() {
         return points;
     }
 
@@ -131,7 +131,7 @@ public class DTOPropertyDetails extends DTOProperty {
         private String cadastralId;
         private Double area;
         private List<DTOBeneficiaryPropertyDetails> beneficiaries = new ArrayList<>();
-        private List<DTOPointDetails> points = new ArrayList<>();
+        private List<DTOPoint> points = new ArrayList<>();
         private long numResolution;
         private LocalDate notification;
         private LocalDate executory;
@@ -160,7 +160,7 @@ public class DTOPropertyDetails extends DTOProperty {
             return this;
         }
 
-        public Builder points(List<DTOPointDetails> points) {
+        public Builder points(List<DTOPoint> points) {
             this.points = points;
             return this;
         }

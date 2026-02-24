@@ -8,10 +8,13 @@ import java.time.LocalDate;
  */
 public class DTOResolution {
 
-    private long resolutionNumber;
-    private LocalDate executory;
-    private String act;
-    private String publicWriting;
+    protected long resolutionNumber;
+    protected LocalDate executory;
+    protected String act;
+    protected String publicWriting;
+    protected LocalDate notification;
+    protected String fmi;
+    protected String notary;
 
     public DTOResolution() {
 
@@ -22,6 +25,9 @@ public class DTOResolution {
         this.executory = builder.executory;
         this.act = builder.act;
         this.publicWriting = builder.publicWriting;
+        this.notification = builder.notification;
+        this.fmi = builder.fmi;
+        this.notary = builder.notary;
     }
 
     public void setResolutionNumber(long resolutionNumber) {
@@ -40,6 +46,18 @@ public class DTOResolution {
         this.publicWriting = publicWriting;
     }
 
+    public void setNotification(LocalDate notification) {
+        this.notification = notification;
+    }
+
+    public void setFmi(String fmi) {
+        this.fmi = fmi;
+    }
+
+    public void setNotary(String notary) {
+        this.notary = notary;
+    }
+
     public long getResolutionNumber() {
         return resolutionNumber;
     }
@@ -56,12 +74,27 @@ public class DTOResolution {
         return publicWriting;
     }
 
+    public LocalDate getNotification() {
+        return notification;
+    }
+
+    public String getFmi() {
+        return fmi;
+    }
+
+    public String getNotary() {
+        return notary;
+    }
+
     public static class Builder<T extends Builder<T>> {
 
         private long resolutionNumber;
         private LocalDate executory;
         private String act;
         private String publicWriting;
+        private LocalDate notification;
+        private String fmi;
+        private String notary;
 
         @SuppressWarnings("unchecked")
         protected T self() {
@@ -85,6 +118,21 @@ public class DTOResolution {
 
         public T publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
+            return self();
+        }
+
+        public T notification(LocalDate notification) {
+            this.notification = notification;
+            return self();
+        }
+
+        public T fmi(String fmi) {
+            this.fmi = fmi;
+            return self();
+        }
+
+        public T notary(String notary) {
+            this.notary = notary;
             return self();
         }
 

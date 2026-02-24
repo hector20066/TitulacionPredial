@@ -2,8 +2,8 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
 import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -135,7 +135,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 boolean pointExists = verifyPointExists(property, numberPoint);
 
                 if (!pointExists) {
-                    DTOPointDetails point = createDTOPoints(rs, numberPoint, propertyCode);
+                    DTOPoint point = createDTOPoints(rs, numberPoint, propertyCode);
                     property.getPoints().add(point);
                 }
             }
@@ -198,8 +198,8 @@ public class DAOPropertyImpl implements DAOProperty {
                 .anyMatch(p -> p.getNumberPoint() == numberPoint);
     }
 
-    private DTOPointDetails createDTOPoints(ResultSet rs, int numberPoint, int propertyCode) throws SQLException {
-        return new DTOPointDetails.Builder()
+    private DTOPoint createDTOPoints(ResultSet rs, int numberPoint, int propertyCode) throws SQLException {
+        return new DTOPoint.Builder()
                 .numberPoint(numberPoint)
                 .northCoordinate(rs.getDouble("north_coordinate"))
                 .eastCoordinate(rs.getDouble("east_coordinate"))

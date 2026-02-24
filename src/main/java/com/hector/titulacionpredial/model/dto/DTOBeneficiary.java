@@ -8,15 +8,15 @@ import com.hector.titulacionpredial.model.enums.*;
  */
 public class DTOBeneficiary {
 
-    private Department department;
-    private Municipalities municipality;
-    private String neighborhood;
-    private String address;
-    private long phone;
-    private String crossing;
-    private String publication;
-    private MaritalStatus maritalStatus;
-    private String affectation;
+    protected Department department;
+    protected Municipalities municipality;
+    protected String neighborhood;
+    protected String address;
+    protected long phone;
+    protected String crossing;
+    protected String publication;
+    protected MaritalStatus maritalStatus;
+    protected String affectation;
 
     public DTOBeneficiary() {
 

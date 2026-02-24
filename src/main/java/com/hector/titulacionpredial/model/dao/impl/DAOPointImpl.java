@@ -2,8 +2,7 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
-import com.hector.titulacionpredial.model.dto.point.DTOPointCreate;
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
@@ -29,7 +28,7 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    public void add(DTOPointCreate dto) throws Exception {
+    public void add(DTOPoint dto) throws Exception {
         String sql = SQLRepository.get("sql/point/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -45,12 +44,7 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    public DTOPointDetails findById(int id) throws Exception {
-        return null;
-    }
-
-    @Override
-    public DTOPointDetails findByCode(int propertyCode) throws Exception {
+    public DTOPoint findByCode(int propertyCode) throws Exception {
         String sql = SQLRepository.get("sql/point/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -62,14 +56,14 @@ public class DAOPointImpl implements DAOPoint {
                     return null;
                 }
 
-                DTOPointDetails dto = new DTOPointDetails();
+                DTOPoint dto = new DTOPoint();
                 executeQuery(dto, rs);
                 return dto;
             }
         }
     }
 
-    private void executeQuery(DTOPointDetails dto, ResultSet rs) throws Exception {
+    private void executeQuery(DTOPoint dto, ResultSet rs) throws Exception {
         dto.setNumberPoint(rs.getInt("number"));
         dto.setNorthCoordinate(rs.getDouble("north_coordinate"));
         dto.setEastCoordinate(rs.getDouble("east_coordinate"));

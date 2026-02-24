@@ -15,7 +15,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
@@ -335,7 +335,7 @@ public class SeeProperties extends JPanel {
         double distance4 = 0;
         String hillside4 = "";
 
-        for (DTOPointDetails point : dto.getPoints()) {
+        for (DTOPoint point : dto.getPoints()) {
             switch(point.getNumberPoint()) {
                 case 1 -> {
                     northCoordinate1 = point.getNorthCoordinate();
