@@ -141,8 +141,8 @@ public class ControllerRegisterBeneficiary implements Observer {
                           MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                           String crossing, String affectation) throws InvalidInputException {
 
-        String name = registerBeneficiary.getTxt_name().getText().trim().toUpperCase();
-        String lastName = registerBeneficiary.getTxt_lastName().getText().trim().toUpperCase();
+        String name = registerBeneficiary.getTxt_name().getText().trim();
+        String lastName = registerBeneficiary.getTxt_lastName().getText().trim();
         String id = registerBeneficiary.getTxt_id().getText().trim();
         String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
