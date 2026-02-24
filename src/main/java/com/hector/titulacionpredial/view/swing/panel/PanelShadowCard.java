@@ -69,6 +69,7 @@ public class PanelShadowCard extends JPanel {
         int y = 0;
         int width = getWidth() - size;
         int height = getHeight() - size;
+
         if (shadowType == ShadowType.TOP) {
             x = shadowSize;
             y = size;
@@ -88,16 +89,15 @@ public class PanelShadowCard extends JPanel {
             x = 0;
             y = 0;
         } else {
-            //  Center
             x = shadowSize;
             y = shadowSize;
         }
+
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setColor(getBackground());
         g.fillRoundRect(0, 0, width, height, 10, 10);
-        //  Create Shadow
         ShadowRendererChart render = new ShadowRendererChart(shadowSize, shadowOpacity, shadowColor);
         shadowImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = shadowImage.createGraphics();

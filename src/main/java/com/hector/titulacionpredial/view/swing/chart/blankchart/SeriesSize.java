@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class SeriesSize {
     
     private double x;

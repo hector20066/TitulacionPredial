@@ -16,6 +16,10 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class BlankPlotChart extends JComponent {
     
     private final DecimalFormat format = new DecimalFormat("#,##0.##");
@@ -270,8 +274,7 @@ public class BlankPlotChart extends JComponent {
 
     public SeriesSize getRectangle(int index, double height, double space, double startX, double startY){
         double x = startX + space * index;
-        SeriesSize size = new SeriesSize(x, startY + 1, space, height);
-        return size;
+        return new SeriesSize(x, startY + 1, space, height);
     }
 
     public double getSeriesValuesOf(double values, double height){

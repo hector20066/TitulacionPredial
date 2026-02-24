@@ -6,6 +6,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class SQLRepository {
 
     private static final Map<String, String> CACHE = new ConcurrentHashMap<>();

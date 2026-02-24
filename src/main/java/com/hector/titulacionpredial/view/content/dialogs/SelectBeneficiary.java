@@ -2,7 +2,6 @@ package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.controller.ControllerSearchDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,7 +15,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import com.hector.titulacionpredial.view.swing.panel.PanelShadowCard;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -32,7 +30,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private boolean show = true;
     DefaultTableModel model = new DefaultTableModel();
 
-    private ControllerSearchDialog controllerSearchDialog;
+    private final ControllerSearchDialog controllerSearchDialog;
 
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

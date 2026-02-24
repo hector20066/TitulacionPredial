@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.hector.titulacionpredial.view.swing.model;
 
 import java.awt.Color;
@@ -22,31 +18,31 @@ public class ModelLegend {
         this.colorLight = colorLight;
     }
 
-    public ModelLegend(){
+    public ModelLegend() {
 
     }
 
-    public void setNombre(String name){
+    public void setNombre(String name) {
         this.name = name;
     }
 
-    public void setColor(Color color){
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public void setColorLight(Color colorLight){
+    public void setColorLight(Color colorLight) {
         this.colorLight = colorLight;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
-    public Color getColorLight(){
+    public Color getColorLight() {
         return colorLight;
     }
     

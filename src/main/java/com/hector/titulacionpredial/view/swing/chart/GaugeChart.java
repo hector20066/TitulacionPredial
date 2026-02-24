@@ -60,9 +60,11 @@ public class GaugeChart extends JComponent {
         if (animator.isRunning()) {
             animator.stop();
         }
+
         if (value < 0) {
             value = 0;
         }
+
         this.value = value;
         lastAnimate = getValueFixed();
         repaint();
@@ -91,6 +93,7 @@ public class GaugeChart extends JComponent {
         setFont(new JLabel().getFont().deriveFont(0, 20));
         setPreferredSize(new Dimension(250, 220));
         setForeground(new Color(60, 60, 60));
+
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -105,6 +108,7 @@ public class GaugeChart extends JComponent {
                 lastAnimate = currentAnimate;
             }
         };
+
         animator = new Animator(500, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
@@ -129,30 +133,34 @@ public class GaugeChart extends JComponent {
         g2.setColor(new Color(240, 240, 240));
         g2.fillOval(centerX - centerSize / 2, centerY - centerSize / 2, centerSize, centerSize);
         g2.setStroke(new BasicStroke(gaugeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
+
         Shape s = new Arc2D.Double(x, y, size, size, angleStart, 250, Arc2D.OPEN);
         g2.draw(s);
         double angle = getAngleOfValues();
+
         if (angle > 0) {
             s = new Arc2D.Double(x, y, size, size, angleStart + 250 - angle, angle, Arc2D.OPEN);
             GradientPaint gra = new GradientPaint(0, 0, color1, width, 0, color2);
             g2.setPaint(gra);
             g2.draw(s);
         }
+
         g2.setStroke(new BasicStroke(1f));
-        //  Create line
+
         double len = 20;
         double space = 250 / len;
         double start = angleStart + 7;
-        double angleSize = (size / 2) - gaugeSize;
+        double angleSize = ((double) size / 2) - gaugeSize;
         g2.setColor(new Color(200, 200, 200));
         for (int i = 1; i <= len; i++) {
             Point p = getLocation(start, angleSize);
             g2.fillOval(centerX + p.x - 2, centerY - p.y - 2, 4, 4);
             start += space;
         }
-        //  Create pointer
+
         double ang = angleStart + 250 - angle;
         g2.setColor(color2);
+
         Path2D p = new Path2D.Double();
         Point end = getLocation(ang, angleSize);
         Point right = getLocation(ang - 90, 5);
@@ -201,10 +209,13 @@ public class GaugeChart extends JComponent {
         if (value < 0) {
             value = 0;
         }
+
         this.targetAnimate = value > maximum ? maximum : value;
+
         if (animator.isRunning()) {
             animator.stop();
         }
+
         animator.start();
     }
     
