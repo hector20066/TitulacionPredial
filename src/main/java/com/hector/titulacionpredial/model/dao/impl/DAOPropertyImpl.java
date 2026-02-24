@@ -75,7 +75,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             try (ResultSet rs = st.executeQuery()) {
                 if (!rs.next()) {
-                    throw new PropertyNotFoundException(cadastralId);
+                    return null;
                 }
 
                 int propertyCode = rs.getInt("property_code");

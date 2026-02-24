@@ -58,7 +58,7 @@ public class DAOSpouseImpl implements DAOSpouse {
 
             try(ResultSet rs = st.executeQuery()) {
                 if(!rs.next()) {
-                    throw new SpouseNotFoundException(String.valueOf(id));
+                    return null;
                 }
 
                 DTOSpouse dto = new DTOSpouse();

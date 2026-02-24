@@ -58,7 +58,7 @@ public class DAOPointImpl implements DAOPoint {
 
             try(ResultSet rs = st.executeQuery()) {
                 if(!rs.next()) {
-                    throw new PointNotFountException(String.valueOf(propertyCode));
+                    return null;
                 }
 
                 DTOPoint dto = new DTOPoint();

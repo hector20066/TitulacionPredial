@@ -64,7 +64,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
             try (ResultSet rs = st.executeQuery()) {
                 if (!rs.next()) {
-                    throw new ResolutionNotFoundException(String.valueOf(numResolution));
+                    return null;
                 }
 
                 DTOResolutionDetails dto = new DTOResolutionDetails();

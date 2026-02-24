@@ -109,7 +109,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     private DTOBeneficiarySimpleDetails executeResultSet(PreparedStatement st, String param) throws DAOException {
         try (ResultSet rs = st.executeQuery()) {
             if (!rs.next()) {
-                throw new BeneficiaryNotFoundException(param);
+                return null;
             }
 
             DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
