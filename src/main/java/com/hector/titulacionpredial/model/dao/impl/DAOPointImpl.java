@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.point.DTOPointCreate;
 import com.hector.titulacionpredial.model.dto.point.DTOPointDetails;
+import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
 
@@ -29,7 +30,8 @@ public class DAOPointImpl implements DAOPoint {
 
     @Override
     public void add(DTOPointCreate dto) throws Exception {
-        String sql = "INSERT INTO point(number, north_coordinate, east_coordinate, distance, hillside, property_code) VALUES(?, ?, ?, ?, ?, ?);";
+        // String sql = "INSERT INTO point(number, north_coordinate, east_coordinate, distance, hillside, property_code) VALUES(?, ?, ?, ?, ?, ?);";
+        String sql = SQLRepository.get("sql/point/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
@@ -57,7 +59,8 @@ public class DAOPointImpl implements DAOPoint {
 
     @Override
     public DTOPointDetails findByCode(int propertyCode) throws Exception {
-        String sql = "SELECT number, north_coordinate, east_coordinate, distance, hillside FROM point WHERE property_code = ? LIMIT 1;";
+        // String sql = "SELECT number, north_coordinate, east_coordinate, distance, hillside FROM point WHERE property_code = ? LIMIT 1;";
+        String sql = SQLRepository.get("sql/point/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
