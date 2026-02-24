@@ -7,7 +7,7 @@ package com.hector.titulacionpredial.exception.dao;
 public class PersistenceException extends Exception {
 
     public PersistenceException() {
-        super("Ha ocurrido un error con el manejo de la información");
+        super("Error en la capa de persistencia.");
     }
 
     public PersistenceException(String message) {
