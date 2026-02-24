@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
+import com.hector.titulacionpredial.exception.dao.persistence.SpousePersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -28,7 +31,7 @@ public class DAOSpouseImpl implements DAOSpouse {
     }
 
     @Override
-    public void add(DTOSpouse dto) throws Exception {
+    public void add(DTOSpouse dto) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -40,11 +43,13 @@ public class DAOSpouseImpl implements DAOSpouse {
              st.setLong(5, dto.getPhone());
              st.setInt(6, dto.getBeneficiaryCode());
              st.executeUpdate();
+        } catch (SQLException e) {
+            throw new SpouseNotFoundException("No fue posible guardar la información del cónyuge;", e);
         }
     }
 
     @Override
-    public DTOSpouse findByCode(int id) throws Exception {
+    public DTOSpouse findByCode(int id) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -53,28 +58,35 @@ public class DAOSpouseImpl implements DAOSpouse {
 
             try(ResultSet rs = st.executeQuery()) {
                 if(!rs.next()) {
-                    return null;
+                    throw new SpouseNotFoundException(String.valueOf(id));
                 }
 
                 DTOSpouse dto = new DTOSpouse();
                 executeQuery(dto, rs);
                 return dto;
             }
+        } catch (SQLException e) {
+            throw new SpousePersistenceException("Error al recuperar la información del cónyuge con cedula " + id, e);
         }
     }
 
     @Override
-    public void delete(int id) throws Exception {
+    public void delete(int id) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
              st.setLong(1, id);
-             st.executeUpdate();
+
+             if (st.executeUpdate() == 0) {
+                 throw new SpouseNotFoundException(String.valueOf(id));
+             }
+        } catch (SQLException e) {
+            throw new SpousePersistenceException("Error al recuperar la información del cónyuge", e);
         }
     }
 
-    private void executeQuery(DTOSpouse dto, ResultSet rs) throws Exception {
+    private void executeQuery(DTOSpouse dto, ResultSet rs) throws SQLException {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setExpeditionLocation(rs.getString("expedition_location"));
