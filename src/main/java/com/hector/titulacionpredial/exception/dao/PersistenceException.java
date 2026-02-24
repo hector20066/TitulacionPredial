@@ -4,7 +4,7 @@ package com.hector.titulacionpredial.exception.dao;
  *
  * @author hectoracevedo
  */
-public class PersistenceException extends Exception {
+public class PersistenceException extends DAOException {
 
     public PersistenceException() {
         super("Error en la capa de persistencia.");

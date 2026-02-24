@@ -4,7 +4,7 @@ package com.hector.titulacionpredial.exception.dao;
  *
  * @author hectoracevedo
  */
-public class DataNotFoundException extends Exception {
+public class DataNotFoundException extends DAOException {
 
     public DataNotFoundException() {
         super("No se han encontrado registros");
