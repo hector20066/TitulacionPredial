@@ -17,7 +17,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         super();
     }
 
-    public DTOBeneficiaryCreate(Builder builder) {
+    public DTOBeneficiaryCreate(AbstractBuilder<?> builder) {
         super(builder);
         this.id = builder.id;
         this.fullName = builder.fullName;
@@ -57,32 +57,36 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         return cadastralReference;
     }
 
-    public static class Builder extends DTOBeneficiary.Builder<Builder> {
+    public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {
 
         private long id;
         private String fullName;
         private String expeditionLocation;
         private long cadastralReference;
 
-        public Builder id(long id) {
+        public T id(long id) {
             this.id = id;
-            return this;
+            return self();
         }
 
-        public Builder fullName(String fullName) {
+        public T fullName(String fullName) {
             this.fullName = fullName;
-            return this;
+            return self();
         }
 
-        public Builder expeditionLocation(String expeditionLocation) {
+        public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
-            return this;
+            return self();
         }
 
-        public Builder cadastralReference(long cadastralReference) {
+        public T cadastralReference(long cadastralReference) {
             this.cadastralReference = cadastralReference;
-            return this;
+            return self();
         }
+
+    }
+
+    public static class Builder extends AbstractBuilder<Builder> {
 
         @Override
         public DTOBeneficiaryCreate build() {
