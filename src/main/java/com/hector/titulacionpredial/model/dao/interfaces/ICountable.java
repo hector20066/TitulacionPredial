@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+
 /**
  *
  * @author hectoracevedo
@@ -7,6 +9,6 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 @FunctionalInterface
 public interface ICountable {
 
-    int countRecords() throws Exception;
+    int countRecords() throws DAOException;
 
 }

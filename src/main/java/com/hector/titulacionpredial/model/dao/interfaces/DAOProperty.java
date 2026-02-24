@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.property.*;
 
 /**
@@ -10,9 +11,9 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
         IRemovable,
         ICountable {
 
-    int add(DTOPropertyCreate dto) throws Exception;
-    DTOPropertyDetails findByCode(String cadastralId) throws Exception;
-    int percentPropertiesWithResolutions() throws Exception;
-    int countPropertyWithResolution() throws Exception;
+    int add(DTOPropertyCreate dto) throws DAOException;
+    DTOPropertyDetails findByCode(String cadastralId) throws DAOException;
+    int percentPropertiesWithResolutions() throws DAOException;
+    int countPropertyWithResolution() throws DAOException;
 
 }
