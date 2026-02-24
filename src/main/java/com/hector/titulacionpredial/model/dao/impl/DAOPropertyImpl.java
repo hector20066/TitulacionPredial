@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
+import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
@@ -35,7 +38,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
-    public int add(DTOPropertyCreate dto) throws Exception {
+    public int add(DTOPropertyCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -46,21 +49,23 @@ public class DAOPropertyImpl implements DAOProperty {
             int affectedRows = st.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException("Error al crear la propiedad; no hay filas afectadas.");
+                throw new PropertyNotFoundException("Error al crear la propiedad, no hay filas afectadas.");
             }
 
             try (ResultSet generatedKeys = st.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 } else {
-                    throw new SQLException("Error al crear la propiedad, no se obtuvo ninguna identificación.");
+                    throw new PropertyNotFoundException("Error al crear la propiedad, no se obtuvo ninguna identificación.");
                 }
             }
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("No fue posible guardar la información de la propiedad.", e);
         }
     }
 
     @Override
-    public DTOPropertyDetails findByCode(String cadastralId) throws Exception {
+    public DTOPropertyDetails findByCode(String cadastralId) throws DAOException {
         String sql = SQLRepository.get("sql/property/findByCode.sql");
         DTOPropertyDetails property = null;
 
@@ -69,7 +74,7 @@ public class DAOPropertyImpl implements DAOProperty {
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
-                while (rs.next()) {
+                if (rs.next()) {
                     int propertyCode = rs.getInt("property_code");
 
                     if (property == null) {
@@ -95,15 +100,15 @@ public class DAOPropertyImpl implements DAOProperty {
                     }
                 }
             }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
 
-        return property;
+            return property;
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información del predio con cedula catastral: " + cadastralId, e);
+        }
     }
 
     @Override
-    public List<DTOPropertyDetails> findByAll() throws Exception {
+    public List<DTOPropertyDetails> findByAll() throws DAOException {
         String sql = SQLRepository.get("sql/property/findByAll.sql");
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
@@ -139,11 +144,11 @@ public class DAOPropertyImpl implements DAOProperty {
                     property.getPoints().add(point);
                 }
             }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
 
-        return new ArrayList<>(properties.values());
+            return new ArrayList<>(properties.values());
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información de los predios", e);
+        }
     }
 
     private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
@@ -210,18 +215,23 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
-    public void delete(int code) throws Exception {
+    public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/property/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, code);
-            st.executeUpdate();
+
+            if (st.executeUpdate() == 0) {
+                throw new PropertyNotFoundException(String.valueOf(code));
+            }
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información del predio con código: " + code, e);
         }
     }
 
     @Override
-    public int countRecords() throws Exception {
+    public int countRecords() throws DAOException {
         String sql = "SELECT COUNT(*) AS total_records FROM property;";
 
         try (Connection connection = DataBasePool.getConnection();
@@ -229,15 +239,17 @@ public class DAOPropertyImpl implements DAOProperty {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                return 0;
+                throw new PropertyNotFoundException("No hay registros para contar");
             }
 
             return rs.getInt("total_records");
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
         }
     }
 
     @Override
-    public int percentPropertiesWithResolutions() throws Exception {
+    public int percentPropertiesWithResolutions() throws DAOException {
         String sql = SQLRepository.get("sql/property/percentPropertiesWithResolution.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -245,15 +257,17 @@ public class DAOPropertyImpl implements DAOProperty {
             ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                return 0;
+                throw new PropertyNotFoundException("No se han encontrado registros de predios.");
             }
 
             return rs.getInt("percent");
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
         }
     }
 
     @Override
-    public int countPropertyWithResolution() throws Exception {
+    public int countPropertyWithResolution() throws DAOException {
         String sql = SQLRepository.get("sql/property/countPropertiesWithResolution.sql");
 
         try(Connection connection = DataBasePool.getConnection();
@@ -261,10 +275,12 @@ public class DAOPropertyImpl implements DAOProperty {
             ResultSet rs = st.executeQuery()) {
 
             if(!rs.next()) {
-                return 0;
+                throw new PropertyNotFoundException("No se han encontrado registros de predios.");
             }
 
             return rs.getInt("properties_with_resolution");
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
         }
     }
 
