@@ -105,7 +105,7 @@ public class ControllerViewBeneficiaries implements Observer {
 
                     resetUI();
                 });
-            } catch (Exception e) {
+            } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
             }
         }).start();
@@ -121,12 +121,12 @@ public class ControllerViewBeneficiaries implements Observer {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (selectedRow == -1) {
-                throw new Exception("Debe seleccionar un beneficiario para ver su información");
+                throw new InvalidInputException("Debe seleccionar un beneficiario para ver su información");
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
             doInBackgroundModify(code);
-        } catch (Exception e) {
+        } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
     }
@@ -145,7 +145,7 @@ public class ControllerViewBeneficiaries implements Observer {
                     registerBeneficiary.loadDataModify(dto);
                     registerBeneficiary.setModify(true);
                 });
-            } catch (Exception e) {
+            } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
             }
         }).start();
