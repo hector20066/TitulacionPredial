@@ -4,17 +4,17 @@ package com.hector.titulacionpredial.exception.validation;
  *
  * @author hectoracevedo
  */
-public class InvalidFieldException extends Exception {
+public class InvalidInputException extends Exception {
 
-    public InvalidFieldException() {
+    public InvalidInputException() {
         super("Campo invalido");
     }
 
-    public InvalidFieldException(String message) {
+    public InvalidInputException(String message) {
         super(message);
     }
 
-    public InvalidFieldException(String message, Throwable cause) {
+    public InvalidInputException(String message, Throwable cause) {
         super(message, cause);
     }
 

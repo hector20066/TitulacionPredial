@@ -4,7 +4,7 @@ package com.hector.titulacionpredial.exception.validation;
  *
  * @author hectoracevedo
  */
-public class InvalidNumberInputException extends InvalidFieldException {
+public class InvalidNumberInputException extends InvalidInputException {
 
     public InvalidNumberInputException(String fieldName) {
         super("El campo '" + fieldName + "' debe tener un valor numérico.");

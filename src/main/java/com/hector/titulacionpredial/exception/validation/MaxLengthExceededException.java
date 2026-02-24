@@ -4,7 +4,7 @@ package com.hector.titulacionpredial.exception.validation;
  *
  * @author hectoracevedo
  */
-public class MaxLengthExceededException extends InvalidFieldException {
+public class MaxLengthExceededException extends InvalidInputException {
 
     public MaxLengthExceededException(String fieldName, String maximumValue) {
         super("El campo '" + fieldName + "' debe tener un valor máximo de " + maximumValue + " caracteres");
