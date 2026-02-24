@@ -1,6 +1,10 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
+import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.*;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -30,7 +34,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
-    public void add(DTOResolutionCreate dto) throws Exception {
+    public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
@@ -45,11 +49,13 @@ public class DAOResolutionImpl implements DAOResolution {
             st.setString(8, dto.getBeneficiaryName());
             st.setInt(9, dto.getPropertyCode());
             st.executeUpdate();
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException("No fue posible guardar la información de la resolución", e);
         }
     }
 
     @Override
-    public DTOResolutionDetails findByCode(int numResolution) throws Exception {
+    public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -58,18 +64,20 @@ public class DAOResolutionImpl implements DAOResolution {
 
             try (ResultSet rs = st.executeQuery()) {
                 if (!rs.next()) {
-                    return null;
+                    throw new ResolutionNotFoundException(String.valueOf(numResolution));
                 }
 
                 DTOResolutionDetails dto = new DTOResolutionDetails();
                 executeQuery(dto, rs);
                 return dto;
             }
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero " + numResolution, e);
         }
     }
 
     @Override
-    public List<DTOResolutionDetails> findByAll() throws Exception {
+    public List<DTOResolutionDetails> findByAll() throws DAOException {
         List<DTOResolutionDetails> list = new ArrayList<>();
         String sql = SQLRepository.get("sql/resolution/findByAll.sql");
 
@@ -82,12 +90,14 @@ public class DAOResolutionImpl implements DAOResolution {
                 executeQuery(dto, rs);
                 list.add(dto);
             }
-        }
 
-        return list;
+            return  list;
+        }catch (SQLException e) {
+            throw new ResolutionPersistenceException("Error al recuperar la información de las resoluciones.", e);
+        }
     }
 
-    private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws Exception {
+    private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
         dto.setResolutionNumber(rs.getLong("num_resolution"));
         dto.setNotification(rs.getDate("notification").toLocalDate());
@@ -100,7 +110,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
-    public boolean modify(DTOResolutionUpdate dto) throws Exception {
+    public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
@@ -113,14 +123,19 @@ public class DAOResolutionImpl implements DAOResolution {
             st.setString(6, dto.getFmi());
             st.setString(7, dto.getNotary());
             st.setInt(8, dto.getCode());
-            st.executeUpdate();
+
+            if (st.executeUpdate() == 0) {
+                throw new ResolutionNotFoundException(String.valueOf(dto.getResolutionNumber()));
+            }
 
             return true;
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero" + dto.getResolutionNumber(), e);
         }
     }
 
     @Override
-    public int countRecords() throws Exception {
+    public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
@@ -128,10 +143,12 @@ public class DAOResolutionImpl implements DAOResolution {
             ResultSet rs = st.executeQuery();
 
             if (!rs.next()) {
-                return 0;
+                throw new BeneficiaryNotFoundException("No hay registros para contar");
             }
 
             return rs.getInt("total_records");
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException("Error al recuperar la información de las resoluciones.", e);
         }
     }
 
