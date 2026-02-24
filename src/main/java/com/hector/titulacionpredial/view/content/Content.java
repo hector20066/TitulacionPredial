@@ -42,7 +42,7 @@ public class Content extends javax.swing.JFrame {
         jpl_menu.setLayout(jpl_menuLayout);
         jpl_menuLayout.setHorizontalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
         );
         jpl_menuLayout.setVerticalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,10 +70,10 @@ public class Content extends javax.swing.JFrame {
             jpl_bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_bodyLayout.createSequentialGroup()
                 .addComponent(jpl_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpl_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
-            .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, 1320, Short.MAX_VALUE)
+            .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, 1350, Short.MAX_VALUE)
         );
         jpl_bodyLayout.setVerticalGroup(
             jpl_bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
