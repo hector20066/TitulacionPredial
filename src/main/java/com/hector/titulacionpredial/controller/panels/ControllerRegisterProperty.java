@@ -70,7 +70,7 @@ public class ControllerRegisterProperty {
             List<PointData> points = extractPoints();
 
             prepareUI();
-            doInBackGround(cadastralId, Double.parseDouble(area), beneficiariesCode, points);
+            doInBackGround(cadastralId, Double.parseDouble(area.replace(",", ".")), beneficiariesCode, points);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerProperty);
         }
@@ -99,6 +99,11 @@ public class ControllerRegisterProperty {
             if (invalidPoints(north, east, distance, hillside)) {
                 throw new EmptyFieldException("del punto " + (i + 1));
             }
+
+            north = north.replace(",", ".");
+            east = east.replace(",", ".");
+            distance = distance.replace(",", ".");
+            hillside = hillside.replace(",", ".");
 
             points.add(new PointData(i + 1, north, east, distance, hillside));
         }
