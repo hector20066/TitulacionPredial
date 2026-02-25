@@ -153,10 +153,10 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addComponent(jLabel13)
                                 .addGap(222, 222, 222)
                                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(txt_hillside1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel14)))
+                                        .addComponent(txt_hillside1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jpl_point1Layout.createSequentialGroup()
                                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
@@ -266,10 +266,10 @@ public class RegisterProperty extends javax.swing.JPanel {
                         .addComponent(jLabel16)
                         .addGap(222, 222, 222)
                         .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
                             .addGroup(jpl_point2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel17)))
+                                .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpl_point2Layout.createSequentialGroup()
                         .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
@@ -381,10 +381,10 @@ public class RegisterProperty extends javax.swing.JPanel {
                         .addComponent(jLabel20)
                         .addGap(222, 222, 222)
                         .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
                             .addGroup(jpl_point3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(txt_hillside3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel21)))
+                                .addComponent(txt_hillside3, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpl_point3Layout.createSequentialGroup()
                         .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
@@ -490,10 +490,10 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addComponent(jLabel24)
                                 .addGap(222, 222, 222)
                                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
                                     .addGroup(jpl_point4Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel25)))
+                                        .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jpl_point4Layout.createSequentialGroup()
                                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23)
@@ -547,7 +547,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel1.setText("Información del Predio:");
+        jLabel1.setText("Informacion del Predio:");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
@@ -567,11 +567,11 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel4.setText("Información de los puntos:");
+        jLabel4.setText("Informacion de los puntos:");
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel10.setText("Código del Beneficiario:");
+        jLabel10.setText("Codigo del Beneficiario:");
 
         txt_beneficiaryCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N

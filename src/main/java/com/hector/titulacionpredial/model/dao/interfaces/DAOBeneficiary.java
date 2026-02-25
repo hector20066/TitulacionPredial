@@ -19,6 +19,7 @@ public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBenefic
     DTOBeneficiarySimpleDetails findByName(String name) throws DAOException;
     List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws DAOException;
     DTOBeneficiaryDetails findAllData(int code) throws DAOException;
+    List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
     boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws DAOException;
     int getLastCode() throws DAOException;
     List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws DAOException;

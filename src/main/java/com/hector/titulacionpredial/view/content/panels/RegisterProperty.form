@@ -180,11 +180,11 @@
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                  <Component id="txt_hillside1" min="-2" pref="308" max="-2" attributes="0"/>
+                                                  <Component id="txt_hillside1" min="-2" pref="579" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -418,11 +418,11 @@
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="txt_hillside2" min="-2" pref="308" max="-2" attributes="0"/>
+                                          <Component id="txt_hillside2" min="-2" pref="579" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -664,11 +664,11 @@
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="txt_hillside3" min="-2" pref="308" max="-2" attributes="0"/>
+                                          <Component id="txt_hillside3" min="-2" pref="579" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -904,11 +904,11 @@
                                           <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                  <Component id="txt_hillside4" min="-2" pref="308" max="-2" attributes="0"/>
+                                                  <Component id="txt_hillside4" min="-2" pref="579" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">

@@ -177,7 +177,7 @@ public class ControllerRegisterProperty {
 
         new Thread(() -> {
             try {
-                List<DTOBeneficiarySimpleDetails> dto = daoBeneficiary.findByAll();
+                List<DTOBeneficiarySimpleDetails> dto = daoBeneficiary.findAllWithoutProperty();
                 SwingUtilities.invokeLater(() -> loadInvokerDialog(dto));
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerProperty));

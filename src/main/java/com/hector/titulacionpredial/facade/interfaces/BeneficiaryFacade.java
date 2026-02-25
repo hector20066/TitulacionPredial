@@ -26,6 +26,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     DTOBeneficiarySimpleDetails findByName(String fullName) throws DAOException;
     List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws DAOException;
     DTOBeneficiaryDetails findAllData(int code) throws DAOException;
+    List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
     boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
                    String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws DAOException;
 
