@@ -4,18 +4,27 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
+import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
@@ -28,12 +37,14 @@ public class ControllerGenerateResolution {
     private final Subject subject;
 
     private final ResolutionFacade daoResolution;
+    private final BeneficiaryFacade daoBeneficiary;
 
     public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject) {
         this.generateResolution = generateResolution;
         this.subject = subject;
 
         this.daoResolution = new ResolutionImplFacade();
+        this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
     }
@@ -53,6 +64,16 @@ public class ControllerGenerateResolution {
             String notary = generateResolution.getTxt_note().getText().trim();
             String propertyCode = generateResolution.getTxt_propertyCode().getText().trim();
             String beneficiaryName = generateResolution.getTxt_nameBeneficiary().getText().trim();
+            String address = generateResolution.getTxt_addressBeneficiary().getText().trim();
+            String cadastralId = generateResolution.getTxt_cadastralReference().getText().trim().replace(".", "");
+            String area = generateResolution.getTxt_area().getText().trim();
+            String idBeneficiaries = generateResolution.getTxt_idBeneficiary().getText().trim();
+
+            String path = selectRoute();
+
+            if (path == null) {
+                throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
+            }
 
             if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
                 throw new EmptyFieldException("N. Resolución y Nota");
@@ -66,8 +87,9 @@ public class ControllerGenerateResolution {
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
             doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
-                    fmi, notary, Integer.parseInt(propertyCode), beneficiaryName);
+                    fmi, notary, Integer.parseInt(propertyCode), beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
         } catch (InvalidInputException e) {
+            e.printStackTrace();
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }
     }
@@ -125,9 +147,10 @@ public class ControllerGenerateResolution {
 
                 try {
                     get();
-                    MessageUtils.informationMessage("Se ha completado la operación", generateResolution);
+                    MessageUtils.informationMessage("Se ha generado la resolución.", generateResolution);
                     subject.notifyObservers();
                 } catch (Exception e) {
+                    e.printStackTrace();
                     String msg = (e.getCause() != null) ? e.getCause().getMessage() : e.getMessage();
                     MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + msg, generateResolution);
                 }
@@ -139,20 +162,111 @@ public class ControllerGenerateResolution {
     }
 
     private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting,
-                                LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName) {
+                                LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName,
+                                String idBeneficiaries, String address, String cadastralId, String area, String path) {
         executeWithDialog(() -> {
-            if (daoResolution.findByCode((int) numResolution) != null) {
-                throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
-            }
+            try {
+                if (daoResolution.findByCode((int) numResolution) != null) {
+                    throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
+                }
 
-            daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
-            generateDocument();
+                List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = new ArrayList<>();
+                String[] beneficiaries = idBeneficiaries.split(" - ");
+
+                for (String idBeneficiary : beneficiaries) {
+                    //idBeneficiary = idBeneficiary.replace(" - ", "");
+                    DTOBeneficiarySimpleDetails dto = daoBeneficiary.findById(Long.parseLong(idBeneficiary.replace(" -", "")));
+                    listDTOBeneficiaries.add(dto);
+                }
+
+                daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
+                generateDocument(path, listDTOBeneficiaries, address, cadastralId, fmi, area);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         });
     }
 
-    private void generateDocument() {
+    private void generateDocument(String path, List<DTOBeneficiarySimpleDetails> beneficiariesList,
+                                  String address, String cadastralId, String fmi, String area) throws IOException {
+        IO.println(path);
 
+        String northCoordinate1 = generateResolution.getTxt_northCoordinate1().getText().trim();
+        String eastCoordinate1 = generateResolution.getTxt_eastCoordinate1().getText().trim();
+        String distance1 = generateResolution.getTxt_distance1().getText().trim();
+        String hillside1 = generateResolution.getTxt_hillside1().getText().trim();
+
+        String northCoordinate2 = generateResolution.getTxt_northCoordinate2().getText().trim();
+        String eastCoordinate2 =  generateResolution.getTxt_eastCoordinate2().getText().trim();
+        String distance2 = generateResolution.getTxt_distance2().getText().trim();
+        String hillside2 = generateResolution.getTxt_hillside2().getText().trim();
+
+        String northCoordinate3 = generateResolution.getTxt_northCoordinate3().getText().trim();
+        String eastCoordinate3 =  generateResolution.getTxt_eastCoordinate3().getText().trim();
+        String distance3 = generateResolution.getTxt_distance3().getText().trim();
+        String hillside3 = generateResolution.getTxt_hillside3().getText().trim();
+
+        String northCoordinate4 = generateResolution.getTxt_northCoordinate4().getText().trim();
+        String eastCoordinate4 =  generateResolution.getTxt_eastCoordinate4().getText().trim();
+        String distance4 = generateResolution.getTxt_distance4().getText().trim();
+        String hillside4 = generateResolution.getTxt_hillside4().getText().trim();
+
+        List<DTOPoint> points = new ArrayList<>();
+        points.add(new DTOPoint.Builder()
+                        .numberPoint(1)
+                        .northCoordinate(Double.parseDouble(northCoordinate1))
+                        .eastCoordinate(Double.parseDouble(eastCoordinate1))
+                        .distance(Double.parseDouble(distance1))
+                        .hillside(hillside1)
+                        .build());
+
+        points.add(new DTOPoint.Builder()
+                .numberPoint(2)
+                .northCoordinate(Double.parseDouble(northCoordinate2))
+                .eastCoordinate(Double.parseDouble(eastCoordinate2))
+                .distance(Double.parseDouble(distance2))
+                .hillside(hillside2)
+                .build());
+
+        points.add(new DTOPoint.Builder()
+                .numberPoint(3)
+                .northCoordinate(Double.parseDouble(northCoordinate3))
+                .eastCoordinate(Double.parseDouble(eastCoordinate3))
+                .distance(Double.parseDouble(distance3))
+                .hillside(hillside3)
+                .build());
+
+        points.add(new DTOPoint.Builder()
+                .numberPoint(4)
+                .northCoordinate(Double.parseDouble(northCoordinate4))
+                .eastCoordinate(Double.parseDouble(eastCoordinate4))
+                .distance(Double.parseDouble(distance4))
+                .hillside(hillside4)
+                .build());
+
+        GenerateResolutionUtils.generateResolution(beneficiariesList, points, address, cadastralId, fmi, area, path);
+    }
+
+    private String selectRoute() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+
+        int result = fileChooser.showOpenDialog(this.generateResolution);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedDirectory = fileChooser.getSelectedFile();
+
+            if (selectedDirectory == null || selectedDirectory.getAbsolutePath().isEmpty()) {
+                MessageUtils.errorMessage("Error al seleccionar la carpeta", generateResolution);
+                return null;
+            } else {
+                return selectedDirectory.getAbsolutePath();
+            }
+        }
+
+        return null;
     }
 
 }
