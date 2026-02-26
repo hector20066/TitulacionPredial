@@ -144,7 +144,7 @@ public class ControllerSeeResolutions implements Observer {
                     seeResolutions.loadData(dto);
                 });
             } catch (DAOException e) {
-                MessageUtils.errorMessage(e.getMessage(), seeResolutions);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeResolutions));
             }
         }).start();
     }

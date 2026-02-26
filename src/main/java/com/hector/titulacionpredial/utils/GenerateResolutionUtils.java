@@ -74,9 +74,14 @@ public class GenerateResolutionUtils {
 
     private static void defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         String identifyingText = " identificad(o)(a) con cedula de ciudadanía N° ";
-        int numBeneficiaries = verifyMaritalStatus(beneficiariesList);
 
-        if (numBeneficiaries > 1) {
+        if (beneficiariesList.isEmpty()) {
+            return;
+        }
+
+        int numDistinctMaritalStatuses = verifyMaritalStatus(beneficiariesList);
+
+        if (numDistinctMaritalStatuses > 1) {
             for (DTOBeneficiarySimpleDetails beneficiary : beneficiariesList) {
                 sb.append(beneficiary.getFullName())
                         .append(identifyingText)
@@ -89,7 +94,7 @@ public class GenerateResolutionUtils {
                 sb.append(beneficiary.getFullName()).append(identifyingText).append(beneficiary.getId()).append(", ");
             }
 
-            if (numBeneficiaries == 1) {
+            if (numDistinctMaritalStatuses == 1) {
                 sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue());
             } else {
                 sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue()).append("s");

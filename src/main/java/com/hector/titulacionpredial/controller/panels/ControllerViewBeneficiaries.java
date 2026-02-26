@@ -5,6 +5,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -171,26 +172,23 @@ public class ControllerViewBeneficiaries implements Observer {
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
 
-            runDelete(() -> {
-                try {
-                    daoBeneficiary.delete(code);
-                } catch (DAOException e) {
-                    SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
-                }
-            });
+            runDelete(code);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
     }
 
-    private void runDelete(Runnable task) {
+    private void runDelete(int code) {
         new Thread(() -> {
-            task.run();
-
-            SwingUtilities.invokeLater(() -> {
-                MessageUtils.informationMessage("Se ha eliminado el registro del beneficiario", viewBeneficiaries);
-                subject.notifyObservers();
-            });
+            try {
+                daoBeneficiary.delete(code);
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.informationMessage("Se ha eliminado el registro del beneficiario", viewBeneficiaries);
+                    subject.notifyObservers();
+                });
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
+            }
         }).start();
     }
 
@@ -228,7 +226,7 @@ public class ControllerViewBeneficiaries implements Observer {
             protected void done() {
                 try {
                     handleResult(get(), param);
-                } catch (Exception e) {
+                } catch (DAOException | InterruptedException | ExecutionException e) {
                     MessageUtils.errorMessage("Error al buscar beneficiario", viewBeneficiaries);
                 } finally {
                     lockUI(true);
@@ -241,7 +239,7 @@ public class ControllerViewBeneficiaries implements Observer {
         if (isNumeric(param)) {
             long value = Long.parseLong(param);
 
-            return (value > 1_000_000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);
+            return (value > 100000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);
         }
 
         return daoBeneficiary.findByName(param);

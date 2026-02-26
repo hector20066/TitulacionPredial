@@ -79,7 +79,7 @@ public class ControllerSearchDialog {
     }
 
     private boolean isDocumentNumber(long value) {
-        return value >= 1_000_000;
+        return value >= 100000;
     }
 
     private boolean isNumeric(String value) {
@@ -96,7 +96,7 @@ public class ControllerSearchDialog {
                 List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
                 SwingUtilities.invokeLater(() -> selectBeneficiary.loadBeneficiaries(listBeneficiaries));
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Error. " + e.getMessage(), null));
             }
         }).start();
     }

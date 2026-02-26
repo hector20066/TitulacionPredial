@@ -161,26 +161,23 @@ public class ControllerSeeProperties implements Observer {
 
             int code = (int) seeProperties.getJtbl_properties().getValueAt(seeProperties.getJtbl_properties().getSelectedRow(), 0);
 
-            runDelete(() -> {
-                try {
-                    daoProperty.delete(code);
-                } catch (DAOException e) {
-                    SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
-                }
-            });
+            runDelete(code);
         } catch (InvalidInputException e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);
         }
     }
 
-    private void runDelete(Runnable delete) {
+    private void runDelete(int code) {
         new Thread(() -> {
-            delete.run();
-
-            SwingUtilities.invokeLater(() -> {
-                MessageUtils.informationMessage("Se ha eliminado el registro", seeProperties);
-                subject.notifyObservers();
-            });
+            try {
+                daoProperty.delete(code);
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.informationMessage("Se ha eliminado el registro", seeProperties);
+                    subject.notifyObservers();
+                });
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
+            }
         }).start();
     }
 
@@ -215,7 +212,7 @@ public class ControllerSeeProperties implements Observer {
                     seeProperties.loadData(dtoPropertyDetails);
                 });
             } catch (DAOException e) {
-                MessageUtils.errorMessage(e.getMessage(), seeProperties);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
             }
         }).start();
     }

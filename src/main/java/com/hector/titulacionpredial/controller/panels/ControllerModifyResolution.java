@@ -75,7 +75,7 @@ public class ControllerModifyResolution {
         }
     }
 
-    public boolean isInvalidData(String... fields) {
+    private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
                 return true;
@@ -92,7 +92,7 @@ public class ControllerModifyResolution {
                 boolean success = daoResolution.modify(code, executory, act, publicWriting, numResolution, notification, fmi, notary);
                 SwingUtilities.invokeLater(() -> runInvokeLater(success));
             } catch (DAOException e) {
-                MessageUtils.errorMessage(e.getMessage(), modifyResolution);
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), modifyResolution));
             }
         }).start();
     }

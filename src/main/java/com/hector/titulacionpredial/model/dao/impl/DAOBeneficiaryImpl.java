@@ -140,15 +140,15 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, municipality);
 
-            ResultSet rs = st.executeQuery();
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
+                    executeSimpleQuery(dto, rs);
+                    list.add(dto);
+                }
 
-            while(rs.next()) {
-                DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
-                executeSimpleQuery(dto, rs);
-                list.add(dto);
+                return list;
             }
-
-            return list;
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información de beneficiarios del municipio de " + municipality, e);
         }
@@ -203,13 +203,14 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try(Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, code);
-            ResultSet rs = st.executeQuery();
 
-            if (!rs.next()) {
-                throw new BeneficiaryNotFoundException(String.valueOf(code));
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    throw new BeneficiaryNotFoundException(String.valueOf(code));
+                }
+
+                return executeQuery(rs);
             }
-
-            return executeQuery(rs);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios", e);
         }

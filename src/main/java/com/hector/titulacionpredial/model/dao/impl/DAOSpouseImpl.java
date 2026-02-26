@@ -44,7 +44,7 @@ public class DAOSpouseImpl implements DAOSpouse {
              st.setInt(6, dto.getBeneficiaryCode());
              st.executeUpdate();
         } catch (SQLException e) {
-            throw new SpouseNotFoundException("No fue posible guardar la información del cónyuge;", e);
+            throw new SpousePersistenceException("No fue posible guardar la información del cónyuge;", e);
         }
     }
 

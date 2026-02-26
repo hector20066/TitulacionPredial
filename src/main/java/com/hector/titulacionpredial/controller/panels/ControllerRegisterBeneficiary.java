@@ -81,6 +81,10 @@ public class ControllerRegisterBeneficiary implements Observer {
                 throw new MaxLengthExceededException("Teléfono", "10");
             }
 
+            if (!NumericalValidationUtils.isNumeric(phone)) {
+                throw new InvalidNumberInputException("Teléfono");
+            }
+
             if (registerBeneficiary.isModify()) {
                 modify(code, phone, department, municipality, maritalStatus, neighborhood, address, publication, crossing, affectation);
             } else {
@@ -162,27 +166,21 @@ public class ControllerRegisterBeneficiary implements Observer {
     private void validations(String name, String lastName, String id, String phone, String cadastralReference,
                              String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
 
-        if (lastName.split(" ").length < 2) {
-            throw new InvalidInputException("Por favor ingrese los dos Apellidos del beneficiario");
+        if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
+            throw new EmptyFieldException("Nombre, Apellido, Cedula, Lugar de Expedición, Barrio, Dirección "
+                    + "y Referencia Catastral");
         }
 
-        if (!phone.isBlank()) {
-            if (!NumericalValidationUtils.isNumeric(phone)) {
-                throw new InvalidNumberInputException("Teléfono");
-            }
+        if (lastName.split(" ").length < 2) {
+            throw new InvalidInputException("Por favor ingrese los dos Apellidos del beneficiario");
         }
 
         if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(cadastralReference)) {
             throw new InvalidNumberInputException("Cedula y Referencia Catastral");
         }
 
-        if (id.length() > 10 || phone.length() > 10) {
-            throw new MaxLengthExceededException("Cedula y Teléfono", "10");
-        }
-
-        if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
-            throw new EmptyFieldException("Nombre, Apellido, Cedula, Lugar de Expedición, Barrio, Dirección "
-                    + "y Referencia Catastral");
+        if (id.length() > 10) {
+            throw new MaxLengthExceededException("Cedula", "10");
         }
     }
 

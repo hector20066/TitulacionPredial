@@ -139,8 +139,8 @@ public class DAOResolutionImpl implements DAOResolution {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");
 
         try (Connection connection = DataBasePool.getConnection(); 
-            PreparedStatement st = connection.prepareStatement(sql)) {
-            ResultSet rs = st.executeQuery();
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
                 throw new ResolutionNotFoundException("No hay registros para contar");

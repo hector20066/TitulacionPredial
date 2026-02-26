@@ -69,6 +69,10 @@ public class ControllerGenerateResolution {
 
             String path = DialogUtils.selectRoute(generateResolution);
 
+            if (executory == null || notification == null) {
+                throw new EmptyFieldException("Ejecutorio y notificación");
+            }
+
             if (path == null) {
                 throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
             }
@@ -84,7 +88,7 @@ public class ControllerGenerateResolution {
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
+            doInBackground(Integer.parseInt(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
                     fmi, notary, Integer.parseInt(propertyCode), beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
@@ -96,7 +100,7 @@ public class ControllerGenerateResolution {
                 "Se ha generado la resolución.", task, subject::notifyObservers);
     }
 
-    private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting,
+    private void doInBackground(int numResolution, LocalDate executory, String act, String publicWriting,
                                 LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName,
                                 String idBeneficiaries, String address, String cadastralId, String area, String path) {
         executeWithDialog(() -> {
