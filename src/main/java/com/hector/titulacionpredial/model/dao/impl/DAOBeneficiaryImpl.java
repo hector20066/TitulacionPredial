@@ -181,6 +181,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setPhone(rs.getLong("phone"));
         dto.setCadastralReference(rs.getString("cadastral_reference"));
         dto.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
+        dto.setMaritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")));
         dto.setAddress(rs.getString("address"));
     }
 
