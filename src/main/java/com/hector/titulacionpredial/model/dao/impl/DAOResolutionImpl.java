@@ -2,7 +2,6 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
@@ -144,7 +143,7 @@ public class DAOResolutionImpl implements DAOResolution {
             ResultSet rs = st.executeQuery();
 
             if (!rs.next()) {
-                throw new BeneficiaryNotFoundException("No hay registros para contar");
+                throw new ResolutionNotFoundException("No hay registros para contar");
             }
 
             return rs.getInt("total_records");

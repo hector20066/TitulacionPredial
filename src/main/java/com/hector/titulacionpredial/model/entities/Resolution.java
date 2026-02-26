@@ -33,6 +33,7 @@ public class Resolution {
         this.publicWriting = builder.publicWriting;
         this.notary = builder.notary;
         this.property = builder.property;
+        this.beneficiary = builder.beneficiary;
     }
 
     public void setCode(int code) {

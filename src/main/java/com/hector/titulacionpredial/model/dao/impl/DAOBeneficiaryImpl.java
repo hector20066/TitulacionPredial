@@ -1,18 +1,29 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -201,6 +212,41 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             return executeQuery(rs);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios", e);
+        }
+    }
+
+    @Override
+    public List<DTOBeneficiaryCreate> findAllForExport() throws DAOException {
+        String sql = SQLRepository.get("sql/beneficiary/findAllForExport.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+
+            List<DTOBeneficiaryCreate> list = new ArrayList<>();
+
+            while (rs.next()) {
+                DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
+                        .id(rs.getLong("id"))
+                        .fullName(rs.getString("full_name"))
+                        .department(Department.valueOf(rs.getString("department")))
+                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                        .address(rs.getString("address"))
+                        .cadastralReference(rs.getString("cadastral_reference"))
+                        .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
+                        .affectation(rs.getString("affectation"))
+                        .phone(rs.getLong("phone"))
+                        .crossing(rs.getString("crossing"))
+                        .publication(rs.getString("publication"))
+                        .neighborhood(rs.getString("neighborhood"))
+                        .expeditionLocation(rs.getString("expedition_location"))
+                        .build();
+                list.add(dto);
+            }
+
+            return list;
+        } catch (SQLException e) {
+            throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios para exportar", e);
         }
     }
 

@@ -90,6 +90,16 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public List<DTOPropertyDetails> findByAll() throws DAOException {
         String sql = SQLRepository.get("sql/property/findByAll.sql");
+        return getDtoPropertyDetails(sql);
+    }
+
+    @Override
+    public List<DTOPropertyDetails> findByAllForExport() throws DAOException {
+        String sql = SQLRepository.get("sql/property/findByAllExport.sql");
+        return getDtoPropertyDetails(sql);
+    }
+
+    private List<DTOPropertyDetails> getDtoPropertyDetails(String sql) throws PropertyPersistenceException {
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
         try (Connection conn = DataBasePool.getConnection();
