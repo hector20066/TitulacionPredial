@@ -89,3 +89,8 @@ CREATE TABLE resolution (
             REFERENCES property(code)
             ON DELETE RESTRICT
 );
+
+CREATE INDEX idx_beneficiary_full_name ON beneficiary(full_name);
+CREATE INDEX idx_beneficiary_municipality ON beneficiary(municipality);
+CREATE INDEX idx_property_cadastral_id ON property(cadastral_id);
+CREATE INDEX idx_resolution_num ON resolution(num_resolution);
