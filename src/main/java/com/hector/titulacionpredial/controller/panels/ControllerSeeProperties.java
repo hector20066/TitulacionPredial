@@ -1,5 +1,15 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -8,19 +18,15 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-import com.hector.titulacionpredial.observer.*;
-import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.GenerateExcel;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
 /**
  *
@@ -48,6 +54,7 @@ public class ControllerSeeProperties implements Observer {
 
     private void connectEvents() {
         seeProperties.setControllerGenerate(e -> generateResolution());
+        seeProperties.setControllerExportToExcel(e -> exportToExcel());
         seeProperties.setControllerDelete(e -> deleteProperty());
         seeProperties.setControllerSearch(e -> searchProperty());
         seeProperties.setControllerSearchCancel(e -> cancelSearch());
@@ -127,6 +134,23 @@ public class ControllerSeeProperties implements Observer {
                 .municipality(municipalities)
                 .cadastralReference(cadastralReference)
                 .build();
+    }
+    
+    private void exportToExcel() {
+        try {
+            String path = DialogUtils.selectRoute(seeProperties);
+
+            if (path == null) return;
+
+            DialogUtils.executeWithDialog(seeProperties, "Exportando reporte, por favor espere...",
+                    "Reporte exportado exitosamente", () -> {
+                        List<DTOPropertyDetails> allProperties = daoProperty.findByAllForExport();
+                        GenerateExcel.export(allProperties, path);
+                        return null;
+                    });
+        } catch (Exception e) {
+            MessageUtils.errorMessage(e.getMessage(), seeProperties);
+        }
     }
 
     private void deleteProperty() {

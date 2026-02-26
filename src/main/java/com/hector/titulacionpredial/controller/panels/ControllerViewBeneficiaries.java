@@ -1,26 +1,34 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
-import com.hector.titulacionpredial.exception.validation.InvalidInputException;
-import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
-import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.observer.*;
-import com.hector.titulacionpredial.utils.*;
-import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
-import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
-import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.GenerateExcelBeneficiary;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
+import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
+import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
  *
@@ -52,6 +60,7 @@ public class ControllerViewBeneficiaries implements Observer {
         viewBeneficiaries.setControllerDelete(e -> deleteBeneficiary());
         viewBeneficiaries.setControllerSearch(e -> search());
         viewBeneficiaries.setControllerSearchCancel(e -> cancelSearch());
+        viewBeneficiaries.setControllerExportToExcel(e -> exportToExcel());
         documentListeners();
         listenerSearch();
     }
@@ -306,6 +315,23 @@ public class ControllerViewBeneficiaries implements Observer {
     private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         viewBeneficiaries.getTableModel().setRowCount(0);
         listBeneficiaries.forEach(viewBeneficiaries::loadData);
+    }
+
+    private void exportToExcel() {
+        try {
+            String path = DialogUtils.selectRoute(viewBeneficiaries);
+
+            if (path == null) return;
+
+            DialogUtils.executeWithDialog(viewBeneficiaries, "Exportando reporte, por favor espere...",
+                    "Reporte exportado exitosamente", () -> {
+                        List<DTOBeneficiaryCreate> allBeneficiaries = daoBeneficiary.findAllForExport();
+                        GenerateExcelBeneficiary.export(allBeneficiaries, path);
+                        return null;
+                    });
+        } catch (Exception e) {
+            MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries);
+        }
     }
 
 }

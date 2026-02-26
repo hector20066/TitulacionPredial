@@ -1,22 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.PersistenceException;
-import com.hector.titulacionpredial.exception.validation.*;
-import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
-import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
-import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
-import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NumericalValidationUtils;
-import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -24,6 +7,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import com.hector.titulacionpredial.exception.dao.PersistenceException;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
+import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 /**
  *
@@ -67,7 +67,7 @@ public class ControllerGenerateResolution {
             String area = generateResolution.getTxt_area().getText().trim();
             String idBeneficiaries = generateResolution.getTxt_idBeneficiary().getText().trim();
 
-            String path = selectRoute();
+            String path = DialogUtils.selectRoute(generateResolution);
 
             if (path == null) {
                 throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
@@ -91,70 +91,9 @@ public class ControllerGenerateResolution {
         }
     }
 
-    private JDialog createLoadDialog() {
-        Window parentWindow = SwingUtilities.getWindowAncestor(generateResolution);
-
-        JDialog dialog = new JDialog(parentWindow, "Procesando", Dialog.ModalityType.APPLICATION_MODAL);
-        dialog.setSize(350, 120);
-        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        dialog.setResizable(false);
-
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(180, 180, 180), 1),
-                BorderFactory.createEmptyBorder(15, 20, 15, 20)
-        ));
-
-        panel.setBackground(Color.WHITE);
-
-        JLabel label = new JLabel("Generando documento, por favor espere...");
-        label.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        label.setForeground(new Color(60, 60, 60));
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JProgressBar progress = new JProgressBar();
-        progress.setIndeterminate(true);
-        progress.setPreferredSize(new Dimension(0, 8));
-        progress.setBorderPainted(false);
-        progress.setForeground(new Color(70, 130, 180));
-        progress.setBackground(new Color(230, 230, 230));
-
-        panel.add(label, BorderLayout.CENTER);
-        panel.add(progress, BorderLayout.SOUTH);
-
-        dialog.setContentPane(panel);
-        dialog.setLocationRelativeTo(generateResolution);
-
-        return dialog;
-    }
-
     private void executeWithDialog(Callable<Void> task) {
-        JDialog dialog = createLoadDialog();
-
-        SwingWorker<Void, Void> worker = new SwingWorker<>() {
-            @Override
-            protected Void doInBackground() throws Exception {
-                task.call();
-                return null;
-            }
-
-            @Override
-            protected void done() {
-                dialog.dispose();
-
-                try {
-                    get();
-                    MessageUtils.informationMessage("Se ha generado la resolución.", generateResolution);
-                    subject.notifyObservers();
-                } catch (Exception e) {
-                    String msg = (e.getCause() != null) ? e.getCause().getMessage() : e.getMessage();
-                    MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + msg, generateResolution);
-                }
-            }
-        };
-
-        worker.execute();
-        dialog.setVisible(true);
+        DialogUtils.executeWithDialog(generateResolution, "Generando documento, por favor espere...",
+                "Se ha generado la resolución.", task, subject::notifyObservers);
     }
 
     private void doInBackground(long numResolution, LocalDate executory, String act, String publicWriting,
@@ -235,27 +174,6 @@ public class ControllerGenerateResolution {
                 .build());
 
         GenerateResolutionUtils.generateResolution(beneficiariesList, points, address, cadastralId, fmi, area, notification, path);
-    }
-
-    private String selectRoute() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.setAcceptAllFileFilterUsed(false);
-
-        int result = fileChooser.showOpenDialog(this.generateResolution);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedDirectory = fileChooser.getSelectedFile();
-
-            if (selectedDirectory == null || selectedDirectory.getAbsolutePath().isEmpty()) {
-                MessageUtils.errorMessage("Error al seleccionar la carpeta", generateResolution);
-                return null;
-            } else {
-                return selectedDirectory.getAbsolutePath();
-            }
-        }
-
-        return null;
     }
 
 }
