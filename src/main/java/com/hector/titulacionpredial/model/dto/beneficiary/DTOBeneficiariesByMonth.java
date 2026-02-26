@@ -6,9 +6,9 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  */
 public class DTOBeneficiariesByMonth {
 
-    private int year;
-    private int month;
-    private int total;
+    private final int year;
+    private final int month;
+    private final int total;
 
     public DTOBeneficiariesByMonth(int year, int month, int total) {
         this.year = year;

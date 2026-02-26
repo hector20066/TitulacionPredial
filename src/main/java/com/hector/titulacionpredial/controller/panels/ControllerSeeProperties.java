@@ -1,7 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
@@ -120,7 +119,8 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
-    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address, Municipalities municipalities, String cadastralReference) {
+    private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address,
+                                                               Municipalities municipalities, String cadastralReference) {
         return new DTOBeneficiarySimpleDetails.Builder()
                 .fullName(nameBeneficiary)
                 .address(address)

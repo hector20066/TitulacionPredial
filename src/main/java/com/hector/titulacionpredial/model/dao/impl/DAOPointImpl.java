@@ -2,7 +2,6 @@ package com.hector.titulacionpredial.model.dao.impl;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.notfound.PointNotFountException;
 import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;

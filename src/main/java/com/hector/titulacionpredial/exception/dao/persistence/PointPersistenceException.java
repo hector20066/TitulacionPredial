@@ -8,10 +8,6 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
  */
 public class PointPersistenceException extends PersistenceException {
 
-    public PointPersistenceException() {
-        super();
-    }
-
     public PointPersistenceException(String message) {
         super(message);
     }

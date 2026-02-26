@@ -1,10 +1,10 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.view.swing.chart.Card;
 import com.hector.titulacionpredial.view.swing.chart.GaugeChart;
 import com.hector.titulacionpredial.view.swing.chart.LineChart;
 import com.hector.titulacionpredial.view.swing.model.CardModel;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Dashboard extends javax.swing.JPanel {
     }
     
     public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
-        card1.setData(new CardModel(new ImageIcon(getClass().getResource("/image/users-round.png")), "Beneficiarios", String.valueOf(totalBeneficiaries), "Beneficiarios registrados"));
-        card2.setData(new CardModel(new ImageIcon(getClass().getResource("/image/house.png")), "Predios", String.valueOf(totalProperties), "Predios Registrados"));
-        card3.setData(new CardModel(new ImageIcon(getClass().getResource("/image/file-text.png")), "Resoluciones", String.valueOf(totalResolutions), "Resoluciones hechas"));
+        card1.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/users-round.svg")), "Beneficiarios", String.valueOf(totalBeneficiaries), "Beneficiarios registrados"));
+        card2.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/house.svg")), "Predios", String.valueOf(totalProperties), "Predios Registrados"));
+        card3.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/file-text.svg")), "Resoluciones", String.valueOf(totalResolutions), "Resoluciones hechas"));
     }
 
     public void updateGaugeCharts(int percentBeneficiaries, int percentProperties) {

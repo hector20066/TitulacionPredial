@@ -130,7 +130,8 @@ public class DAOResolutionImpl implements DAOResolution {
 
             return true;
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero" + dto.getResolutionNumber(), e);
+            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero"
+                    + dto.getResolutionNumber(), e);
         }
     }
 

@@ -19,7 +19,8 @@ public class PointImplFacade implements PointFacade {
     }
 
     @Override
-    public void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside, int propertyCode) throws DAOException {
+    public void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside,
+                    int propertyCode) throws DAOException {
         DTOPoint dto = new DTOPoint.Builder()
                 .numberPoint(numberPoint)
                 .northCoordinate(northCoordinate)

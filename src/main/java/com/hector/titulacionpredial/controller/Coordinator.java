@@ -55,7 +55,7 @@ public class Coordinator {
     }
 
     private void startDrivers() {
-        ControllerContent controllerContent = new ControllerContentBuilder()
+        new ControllerContentBuilder()
                 .withViewContent(content)
                 .withViewDashboard(dashboard)
                 .withViewRegisterBeneficiary(registerBeneficiary)
@@ -67,14 +67,14 @@ public class Coordinator {
                 .withViewAbout(about)
                 .build();
 
-        ControllerDashboard controllerDashboard = new ControllerDashboard(dashboard, subject);
-        ControllerGenerateResolution controllerGenerateResolution = new ControllerGenerateResolution(generateResolution, subject);
-        ControllerRegisterBeneficiary controllerRegisterBeneficiary = new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
-        ControllerRegisterProperty controllerRegisterProperty = new ControllerRegisterProperty(registerProperty, subject);
-        ControllerSeeProperties controllerSeeProperties = new ControllerSeeProperties(seeProperties, generateResolution, subject);
-        ControllerSeeResolutions controllerSeeResolutions = new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
-        ControllerViewBeneficiaries controllerViewBeneficiaries = new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
-        ControllerModifyResolution controllerModifyResolution = new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
+        new ControllerDashboard(dashboard, subject);
+        new ControllerGenerateResolution(generateResolution, subject);
+        new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
+        new ControllerRegisterProperty(registerProperty, subject);
+        new ControllerSeeProperties(seeProperties, generateResolution, subject);
+        new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
+        new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
+        new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
     }
 
 }

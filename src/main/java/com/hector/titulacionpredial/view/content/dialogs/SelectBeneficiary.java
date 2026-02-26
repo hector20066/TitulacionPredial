@@ -5,13 +5,9 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDe
 import com.hector.titulacionpredial.utils.FilterUtils;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.List;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
