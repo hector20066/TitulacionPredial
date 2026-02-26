@@ -1,1 +1,3 @@
-DELETE FROM property WHERE code = ?;
+DELETE
+FROM property
+WHERE code = ?;

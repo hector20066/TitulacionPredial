@@ -1,1 +1,22 @@
-SELECT beneficiary.code, beneficiary.id, beneficiary.full_name, beneficiary.department, beneficiary.municipality, beneficiary.address, beneficiary.cadastral_reference, beneficiary.marital_status, beneficiary.affectation, beneficiary.phone, beneficiary.crossing, beneficiary.publication, beneficiary.neighborhood, beneficiary.expedition_location, spouse.id AS spouse_id, spouse.full_name AS spouse_full_name, spouse.expedition_location AS spouse_expedition_location, spouse.address AS spouse_address, spouse.phone AS spouse_phone FROM beneficiary LEFT JOIN spouse ON beneficiary.code = spouse.beneficiary_code WHERE beneficiary.code = ?;
+SELECT beneficiary.code,
+       beneficiary.id,
+       beneficiary.full_name,
+       beneficiary.department,
+       beneficiary.municipality,
+       beneficiary.address,
+       beneficiary.cadastral_reference,
+       beneficiary.marital_status,
+       beneficiary.affectation,
+       beneficiary.phone,
+       beneficiary.crossing,
+       beneficiary.publication,
+       beneficiary.neighborhood,
+       beneficiary.expedition_location,
+       spouse.id AS spouse_id,
+       spouse.full_name AS spouse_full_name,
+       spouse.expedition_location AS spouse_expedition_location,
+       spouse.address AS spouse_address,
+       spouse.phone AS spouse_phone
+FROM beneficiary
+LEFT JOIN spouse ON beneficiary.code = spouse.beneficiary_code
+WHERE beneficiary.code = ?;

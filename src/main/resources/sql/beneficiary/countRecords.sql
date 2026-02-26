@@ -1,1 +1,2 @@
-SELECT COUNT(*) AS total_records FROM beneficiary;
+SELECT COUNT(*) AS total_records
+FROM beneficiary;

@@ -232,7 +232,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
     @Override
     public int countRecords() throws DAOException {
-        String sql = "SELECT COUNT(*) AS total_records FROM property;";
+        String sql = SQLRepository.get("sql/property/countRecords.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);

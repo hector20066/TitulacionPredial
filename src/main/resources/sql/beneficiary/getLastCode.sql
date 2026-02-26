@@ -1,1 +1,2 @@
-SELECT MAX(code) AS last_code FROM beneficiary;
+SELECT MAX(code) AS last_code
+FROM beneficiary;

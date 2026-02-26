@@ -1,1 +1,2 @@
-SELECT COUNT(property_code) AS beneficiaries_with_property FROM beneficiary;
+SELECT COUNT(property_code) AS beneficiaries_with_property
+FROM beneficiary;

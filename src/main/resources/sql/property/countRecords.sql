@@ -1,1 +1,2 @@
-SELECT COUNT(*) AS total_records FROM property;
+SELECT COUNT(*) AS total_records
+FROM property;

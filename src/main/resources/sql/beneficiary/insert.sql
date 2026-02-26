@@ -11,5 +11,5 @@ INSERT INTO beneficiary(
                         publication,
                         neighborhood,
                         expedition_location,
-                        entry_date
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                        entry_date)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

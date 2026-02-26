@@ -1,1 +1,3 @@
-DELETE FROM beneficiary WHERE code = ?;
+DELETE
+FROM beneficiary
+WHERE code = ?;

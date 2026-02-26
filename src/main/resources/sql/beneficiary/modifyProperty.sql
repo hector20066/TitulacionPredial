@@ -1,1 +1,3 @@
-UPDATE beneficiary SET property_code = ? WHERE code = ?;
+UPDATE beneficiary
+SET property_code = ?
+WHERE code = ?;

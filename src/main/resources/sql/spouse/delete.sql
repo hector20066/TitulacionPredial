@@ -1,1 +1,3 @@
-DELETE FROM spouse WHERE beneficiary_code = ?;
+DELETE
+FROM spouse
+WHERE beneficiary_code = ?;
