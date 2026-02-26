@@ -40,6 +40,11 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
+    public List<DTOPropertyDetails> findByAllForExport() throws DAOException {
+        return daoProperty.findByAllForExport();
+    }
+
+    @Override
     public void delete(int code) throws DAOException {
         daoProperty.delete(code);
     }

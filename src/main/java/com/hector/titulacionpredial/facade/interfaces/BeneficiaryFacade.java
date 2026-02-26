@@ -1,15 +1,18 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.enums.*;
-
-import java.util.List;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  *
@@ -26,6 +29,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     DTOBeneficiarySimpleDetails findByName(String fullName) throws DAOException;
     List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws DAOException;
     DTOBeneficiaryDetails findAllData(int code) throws DAOException;
+    List<DTOBeneficiaryCreate> findAllForExport() throws DAOException;
     List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
     boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
                    String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws DAOException;
