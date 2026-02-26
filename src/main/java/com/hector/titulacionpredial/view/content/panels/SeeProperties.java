@@ -65,6 +65,7 @@ public class SeeProperties extends JPanel {
         jtbl_properties = new javax.swing.JTable();
         btn_generate = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_delete = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_exportToExcel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -164,6 +165,12 @@ public class SeeProperties extends JPanel {
         btn_delete.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btn_exportToExcel.setBackground(new java.awt.Color(64, 145, 108));
+        btn_exportToExcel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exportToExcel.setText("Exportar a Excel");
+        btn_exportToExcel.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_exportToExcel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,6 +190,8 @@ public class SeeProperties extends JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(btn_exportToExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -201,7 +210,8 @@ public class SeeProperties extends JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_exportToExcel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -219,6 +229,10 @@ public class SeeProperties extends JPanel {
 
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
+    }
+    
+    public void setControllerExportToExcel(ActionListener action) {
+        btn_exportToExcel.addActionListener(action);
     }
     
     public void setControllerDelete(ActionListener action) {
@@ -364,12 +378,17 @@ public class SeeProperties extends JPanel {
             }
         }
 
-        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification, executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, municipalities, eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2, hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4, distance4, hillside4, area};
+        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification,
+                executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, municipalities,
+                eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2,
+                hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4,
+                distance4, hillside4, area};
         model.addRow(addData);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_delete;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_exportToExcel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_generate;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
