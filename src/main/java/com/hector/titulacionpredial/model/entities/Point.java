@@ -26,57 +26,57 @@ public class Point {
         this.hillside = builder.hillside;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setNumberPoint(int numberPoint) {
-        this.numberPoint = numberPoint;
-    }
-
-    public void setNorthCoordinate(Double northCoordinate) {
-        this.northCoordinate = northCoordinate;
-    }
-
-    public void setEastCoordinate(Double eastCoordinate) {
-        this.eastCoordinate = eastCoordinate;
-    }
-
-    public void setDistance(Double distance) {
-        this.distance = distance;
-    }
-
-    public void setHillside(String hillside) {
-        this.hillside = hillside;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public int getNumberPoint() {
         return numberPoint;
     }
 
+    public void setNumberPoint(int numberPoint) {
+        this.numberPoint = numberPoint;
+    }
+
     public Double getNorthCoordinate() {
         return northCoordinate;
+    }
+
+    public void setNorthCoordinate(Double northCoordinate) {
+        this.northCoordinate = northCoordinate;
     }
 
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
+    public void setEastCoordinate(Double eastCoordinate) {
+        this.eastCoordinate = eastCoordinate;
+    }
+
     public Double getDistance() {
         return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
     public String getHillside() {
         return hillside;
     }
 
+    public void setHillside(String hillside) {
+        this.hillside = hillside;
+    }
+
     @Override
     public String toString() {
-        return  "Code=" + code +
+        return "Code=" + code +
                 "\nNumber Point= " + numberPoint +
                 "\nNorth Coordinate= " + northCoordinate +
                 "\nEast Coordinate= " + eastCoordinate +

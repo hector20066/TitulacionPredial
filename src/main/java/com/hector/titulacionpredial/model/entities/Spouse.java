@@ -17,12 +17,12 @@ public class Spouse extends Person {
         this.beneficiary = builder.beneficiary;
     }
 
-    public void setBeneficiary(Beneficiary beneficiary) {
-        this.beneficiary = beneficiary;
-    }
-
     public Beneficiary getBeneficiary() {
         return beneficiary;
+    }
+
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
     }
 
     @Override

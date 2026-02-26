@@ -1,4 +1,4 @@
-package com.hector.titulacionpredial.builder.controller;
+package com.hector.titulacionpredial.controller.builder;
 
 import com.hector.titulacionpredial.controller.ControllerContent;
 import com.hector.titulacionpredial.observer.Subject;

@@ -24,49 +24,49 @@ public class Person {
         this.phone = builder.phone;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setExpeditionLocation(String expeditionLocation) {
-        this.expeditionLocation = expeditionLocation;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFullName() {
         return fullName;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    public void setExpeditionLocation(String expeditionLocation) {
+        this.expeditionLocation = expeditionLocation;
+    }
+
     public long getPhone() {
         return phone;
     }
 
+    public void setPhone(long phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
-        return  "Id= " + id +
+        return "Id= " + id +
                 "\nName= " + fullName +
                 "\nAddress= " + address +
                 "\nExpedition Location= " + expeditionLocation +

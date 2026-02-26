@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.entities;
 
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  *
@@ -35,76 +37,76 @@ public class Beneficiary extends Person {
         this.neighborhood = builder.neighborhood;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public void setMunicipality(Municipalities municipality) {
-        this.municipality = municipality;
-    }
-
-    public void setCadastralReference(String cadastralReference) {
-        this.cadastralReference = cadastralReference;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public void setAffectation(String affectation) {
-        this.affectation = affectation;
-    }
-
-    public void setCrossing(String crossing) {
-        this.crossing = crossing;
-    }
-
-    public void setPublication(String publication) {
-        this.publication = publication;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public Department getDepartment() {
         return department;
     }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public Municipalities getMunicipality() {
         return municipality;
+    }
+
+    public void setMunicipality(Municipalities municipality) {
+        this.municipality = municipality;
     }
 
     public String getCadastralReference() {
         return cadastralReference;
     }
 
+    public void setCadastralReference(String cadastralReference) {
+        this.cadastralReference = cadastralReference;
+    }
+
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
+    }
+
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     public String getAffectation() {
         return affectation;
     }
 
+    public void setAffectation(String affectation) {
+        this.affectation = affectation;
+    }
+
     public String getCrossing() {
         return crossing;
+    }
+
+    public void setCrossing(String crossing) {
+        this.crossing = crossing;
     }
 
     public String getPublication() {
         return publication;
     }
 
+    public void setPublication(String publication) {
+        this.publication = publication;
+    }
+
     public String getNeighborhood() {
         return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
     }
 
     @Override

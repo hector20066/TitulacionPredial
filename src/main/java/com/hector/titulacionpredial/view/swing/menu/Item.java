@@ -19,9 +19,9 @@ public class Item extends JButton {
 
     private final Color mainColor = SystemColor.MAIN_COLOR_2;
     private final int index;
+    private final boolean mainMenu;
     private Animator animator;
     private String icon;
-    private final boolean mainMenu;
     private boolean mouseEnter;
     private float alpha;
 

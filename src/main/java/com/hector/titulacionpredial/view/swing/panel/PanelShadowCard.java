@@ -2,19 +2,27 @@ package com.hector.titulacionpredial.view.swing.panel;
 
 import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowRendererChart;
 import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowType;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
 
 /**
  *
  * @author hectoracevedo
  */
 public class PanelShadowCard extends JPanel {
-    
+
+    private ShadowType shadowType = ShadowType.CENTER;
+    private int shadowSize = 10;
+    private float shadowOpacity = 0.3f;
+    private Color shadowColor = new Color(48, 44, 90);
+    private BufferedImage shadowImage;
+
+    public PanelShadowCard() {
+        setOpaque(false);
+    }
+
     public ShadowType getShadowType() {
         return shadowType;
     }
@@ -45,16 +53,6 @@ public class PanelShadowCard extends JPanel {
 
     public void setShadowColor(Color shadowColor) {
         this.shadowColor = shadowColor;
-    }
-
-    private ShadowType shadowType = ShadowType.CENTER;
-    private int shadowSize = 10;
-    private float shadowOpacity = 0.3f;
-    private Color shadowColor = new Color(48, 44, 90);
-    private BufferedImage shadowImage;
-
-    public PanelShadowCard() {
-        setOpaque(false);
     }
 
     @Override
@@ -112,5 +110,5 @@ public class PanelShadowCard extends JPanel {
         super.setBounds(i, i1, i2, i3);
         createShadow();
     }
-    
+
 }

@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.dto;
 
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  *
@@ -32,60 +34,60 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = builder.affectation;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public void setMunicipality(Municipalities municipality) {
-        this.municipality = municipality;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public void setCrossing(String crossing) {
-        this.crossing = crossing;
-    }
-
-    public void setPublication(String publication) {
-        this.publication = publication;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
-    }
-
-    public void setAffectation(String affectation) {
-        this.affectation = affectation;
-    }
-
     public Department getDepartment() {
         return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Municipalities getMunicipality() {
         return municipality;
     }
 
+    public void setMunicipality(Municipalities municipality) {
+        this.municipality = municipality;
+    }
+
     public String getNeighborhood() {
         return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
     }
 
     public String getCrossing() {
         return crossing;
     }
 
+    public void setCrossing(String crossing) {
+        this.crossing = crossing;
+    }
+
     public String getPublication() {
         return publication;
+    }
+
+    public void setPublication(String publication) {
+        this.publication = publication;
     }
 
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
     public String getAffectation() {
         return affectation;
+    }
+
+    public void setAffectation(String affectation) {
+        this.affectation = affectation;
     }
 
     public static class Builder<T extends Builder<T>> {

@@ -11,6 +11,7 @@ public interface PointFacade {
 
     void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside,
              int propertyCode) throws DAOException;
+
     DTOPoint findByCode(int propertyCode) throws DAOException;
 
 }

@@ -1,7 +1,10 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.validation.*;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
+import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.observer.Subject;

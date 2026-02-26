@@ -25,36 +25,36 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
         this.cadastralReference = builder.cadastralReference;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setCadastralReference(String cadastralReference) {
-        this.cadastralReference = cadastralReference;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getFullName() {
         return fullName;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getCadastralReference() {
         return cadastralReference;
+    }
+
+    public void setCadastralReference(String cadastralReference) {
+        this.cadastralReference = cadastralReference;
     }
 
     public static class Builder extends DTOBeneficiary.Builder<Builder> {

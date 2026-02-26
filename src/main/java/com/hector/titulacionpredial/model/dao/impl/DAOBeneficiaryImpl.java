@@ -1,29 +1,20 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
+
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -51,8 +42,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             statementDetails(st, dto);
-             st.executeUpdate();
+            statementDetails(st, dto);
+            st.executeUpdate();
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("No fue posible guardar la información del beneficiario", e);
         }
@@ -81,9 +72,9 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setInt(1, code);
+            st.setInt(1, code);
 
-             return executeResultSet(st);
+            return executeResultSet(st);
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con código: " + code, e);
         }
@@ -95,7 +86,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setLong(1, id);
+            st.setLong(1, id);
 
             return executeResultSet(st);
         } catch (SQLException e) {
@@ -173,7 +164,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             List<DTOBeneficiarySimpleDetails> list = new ArrayList<>();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails();
                 executeSimpleQuery(dto, rs);
                 list.add(dto);
@@ -200,8 +191,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     public DTOBeneficiaryDetails findAllData(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findAllData.sql");
 
-        try(Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, code);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -281,13 +272,13 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             statementDetailsUpdate(st, dto);
+            statementDetailsUpdate(st, dto);
 
-             if (st.executeUpdate() == 0) {
-                 throw new BeneficiaryNotFoundException("No se ha encontrado el beneficiario a modificar.");
-             }
+            if (st.executeUpdate() == 0) {
+                throw new BeneficiaryNotFoundException("No se ha encontrado el beneficiario a modificar.");
+            }
 
-             return true;
+            return true;
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("Error al acceder a la información del beneficiario a modificar.", e);
         }
@@ -331,11 +322,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setInt(1, code);
+            st.setInt(1, code);
 
-             if (st.executeUpdate() == 0) {
-                 throw new BeneficiaryNotFoundException(String.valueOf(code));
-             }
+            if (st.executeUpdate() == 0) {
+                throw new BeneficiaryNotFoundException(String.valueOf(code));
+            }
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException();
         }
@@ -349,11 +340,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              PreparedStatement st = connection.prepareStatement(sql);
              ResultSet rs = st.executeQuery()) {
 
-             if(!rs.next()) {
-                 throw new BeneficiaryNotFoundException("No hay registros para contar");
-             }
+            if (!rs.next()) {
+                throw new BeneficiaryNotFoundException("No hay registros para contar");
+            }
 
-             return rs.getInt("total_records");
+            return rs.getInt("total_records");
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
         }
@@ -406,8 +397,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         String sql = SQLRepository.get("sql/beneficiary/countBeneficiariesWithProperty.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
                 throw new BeneficiaryNotFoundException();
@@ -424,8 +415,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         String sql = SQLRepository.get("sql/beneficiary/percenBeneficiariesWithProperty.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
                 throw new BeneficiaryNotFoundException();

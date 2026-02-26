@@ -24,36 +24,36 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setId(long id) {
-            this.id = id;
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
     public void setFullName(String fullName) {
-            this.fullName = fullName;
-    }
-
-    public void setExpeditionLocation(String expeditionLocation) {
-            this.expeditionLocation = expeditionLocation;
-    }
-
-    public void setBeneficiaryCode(int beneficiaryCode) {
-            this.beneficiaryCode = beneficiaryCode;
-    }
-
-    public long getId() {
-            return id;
-        }
-
-    public String getFullName() {
-            return fullName;
+        this.fullName = fullName;
     }
 
     public String getExpeditionLocation() {
-            return expeditionLocation;
+        return expeditionLocation;
+    }
+
+    public void setExpeditionLocation(String expeditionLocation) {
+        this.expeditionLocation = expeditionLocation;
     }
 
     public int getBeneficiaryCode() {
         return beneficiaryCode;
+    }
+
+    public void setBeneficiaryCode(int beneficiaryCode) {
+        this.beneficiaryCode = beneficiaryCode;
     }
 
     public static class Builder {

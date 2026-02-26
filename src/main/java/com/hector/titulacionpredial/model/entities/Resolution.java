@@ -36,89 +36,89 @@ public class Resolution {
         this.beneficiary = builder.beneficiary;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setResolutionNumber(long resolutionNumber) {
-        this.resolutionNumber = resolutionNumber;
-    }
-
-    public void setNotification(LocalDate notification) {
-        this.notification = notification;
-    }
-
-    public void setExecutory(LocalDate executory) {
-        this.executory = executory;
-    }
-
-    public void setFmi(String fmi) {
-        this.fmi = fmi;
-    }
-
-    public void setAct(String act) {
-        this.act = act;
-    }
-
-    public void setPublicWriting(String publicWriting) {
-        this.publicWriting = publicWriting;
-    }
-
-    public void setNotary(String notary) {
-        this.notary = notary;
-    }
-
-    public void setProperty(Property property) {
-        this.property = property;
-    }
-
-    public void setBeneficiary(Beneficiary beneficiary) {
-        this.beneficiary = beneficiary;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
+    public void setResolutionNumber(long resolutionNumber) {
+        this.resolutionNumber = resolutionNumber;
+    }
+
     public LocalDate getNotification() {
         return notification;
+    }
+
+    public void setNotification(LocalDate notification) {
+        this.notification = notification;
     }
 
     public LocalDate getExecutory() {
         return executory;
     }
 
+    public void setExecutory(LocalDate executory) {
+        this.executory = executory;
+    }
+
     public String getFmi() {
         return fmi;
+    }
+
+    public void setFmi(String fmi) {
+        this.fmi = fmi;
     }
 
     public String getAct() {
         return act;
     }
 
+    public void setAct(String act) {
+        this.act = act;
+    }
+
     public String getPublicWriting() {
         return publicWriting;
+    }
+
+    public void setPublicWriting(String publicWriting) {
+        this.publicWriting = publicWriting;
     }
 
     public String getNotary() {
         return notary;
     }
 
+    public void setNotary(String notary) {
+        this.notary = notary;
+    }
+
     public Property getProperty() {
         return property;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
     }
 
     public Beneficiary getBeneficiary() {
         return beneficiary;
     }
 
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
+    }
+
     @Override
     public String toString() {
-        return  "Code= " + code +
+        return "Code= " + code +
                 "\nResolution Number= " + resolutionNumber +
                 "\nNotification= " + notification +
                 "\nExecutory= " + executory +

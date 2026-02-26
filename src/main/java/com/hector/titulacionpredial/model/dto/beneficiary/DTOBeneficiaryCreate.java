@@ -25,36 +25,36 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.cadastralReference = builder.cadastralReference;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setExpeditionLocation(String expeditionLocation) {
-        this.expeditionLocation = expeditionLocation;
-    }
-
-    public void setCadastralReference(String cadastralReference) {
-        this.cadastralReference = cadastralReference;
-    }
-
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFullName() {
         return fullName;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    public void setExpeditionLocation(String expeditionLocation) {
+        this.expeditionLocation = expeditionLocation;
+    }
+
     public String getCadastralReference() {
         return cadastralReference;
+    }
+
+    public void setCadastralReference(String cadastralReference) {
+        this.cadastralReference = cadastralReference;
     }
 
     public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {

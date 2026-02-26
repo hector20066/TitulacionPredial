@@ -24,13 +24,13 @@ public class RoundedPanel extends JPanel {
         setOpaque(false);
     }
 
+    public boolean isDrawBorder() {
+        return drawBorder;
+    }
+
     public void setDrawBorder(boolean drawBorder) {
         this.drawBorder = drawBorder;
         repaint();
-    }
-
-    public boolean isDrawBorder() {
-        return drawBorder;
     }
 
     public void setBorderColor(Color borderColor) {

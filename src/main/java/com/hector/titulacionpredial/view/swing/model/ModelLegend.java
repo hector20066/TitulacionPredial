@@ -1,18 +1,18 @@
 package com.hector.titulacionpredial.view.swing.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  *
  * @author hectoracevedo
  */
 public class ModelLegend {
-    
+
     private String name;
     private Color color;
     private Color colorLight;
 
-    public ModelLegend(String name, Color color, Color colorLight){
+    public ModelLegend(String name, Color color, Color colorLight) {
         this.name = name;
         this.color = color;
         this.colorLight = colorLight;
@@ -26,14 +26,6 @@ public class ModelLegend {
         this.name = name;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public void setColorLight(Color colorLight) {
-        this.colorLight = colorLight;
-    }
-
     public String getName() {
         return name;
     }
@@ -42,8 +34,16 @@ public class ModelLegend {
         return color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Color getColorLight() {
         return colorLight;
     }
-    
+
+    public void setColorLight(Color colorLight) {
+        this.colorLight = colorLight;
+    }
+
 }

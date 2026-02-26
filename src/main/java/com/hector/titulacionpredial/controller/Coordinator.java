@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.controller;
 
-import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
 import com.hector.titulacionpredial.controller.panels.*;
 import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;

@@ -29,7 +29,7 @@ public class ControllerRegisterProperty {
 
     private final RegisterProperty registerProperty;
     private final Subject subject;
-    
+
     private final PropertyFacade daoProperty;
     private final PointFacade daoPoint;
     private final BeneficiaryFacade daoBeneficiary;
@@ -37,7 +37,7 @@ public class ControllerRegisterProperty {
     public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject) {
         this.registerProperty = registerProperty;
         this.subject = subject;
-        
+
         this.daoProperty = new PropertyImplFacade();
         this.daoPoint = new PointImplFacade();
         this.daoBeneficiary = new BeneficiaryImplFacade();
@@ -78,10 +78,10 @@ public class ControllerRegisterProperty {
 
     private List<PointData> extractPoints() throws InvalidInputException {
         JTextField[][] fields = {
-                { registerProperty.getTxt_northCoordinate1(), registerProperty.getTxt_eastCoordinate1(), registerProperty.getTxt_distance1(), registerProperty.getTxt_hillside1() },
-                { registerProperty.getTxt_northCoordinate2(), registerProperty.getTxt_eastCoordinate2(), registerProperty.getTxt_distance2(), registerProperty.getTxt_hillside2() },
-                { registerProperty.getTxt_northCoordinate3(), registerProperty.getTxt_eastCoordinate3(), registerProperty.getTxt_distance3(), registerProperty.getTxt_hillside3() },
-                { registerProperty.getTxt_northCoordinate4(), registerProperty.getTxt_eastCoordinate4(), registerProperty.getTxt_distance4(), registerProperty.getTxt_hillside4() },
+                {registerProperty.getTxt_northCoordinate1(), registerProperty.getTxt_eastCoordinate1(), registerProperty.getTxt_distance1(), registerProperty.getTxt_hillside1()},
+                {registerProperty.getTxt_northCoordinate2(), registerProperty.getTxt_eastCoordinate2(), registerProperty.getTxt_distance2(), registerProperty.getTxt_hillside2()},
+                {registerProperty.getTxt_northCoordinate3(), registerProperty.getTxt_eastCoordinate3(), registerProperty.getTxt_distance3(), registerProperty.getTxt_hillside3()},
+                {registerProperty.getTxt_northCoordinate4(), registerProperty.getTxt_eastCoordinate4(), registerProperty.getTxt_distance4(), registerProperty.getTxt_hillside4()},
         };
 
         return getPointData(fields);

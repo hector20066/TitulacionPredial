@@ -5,7 +5,7 @@ package com.hector.titulacionpredial.view.swing.model;
  * @author hectoracevedo
  */
 public class ModelChart {
-    
+
     private String label;
     private double[] values;
 
@@ -37,14 +37,14 @@ public class ModelChart {
     public double getMaxValues() {
         double max = 0;
 
-        for(double v : values){
-            if(v > max){
+        for (double v : values) {
+            if (v > max) {
                 max = v;
             }
         }
 
         return max;
     }
-    
+
 }
 

@@ -45,84 +45,84 @@ public class DTOPropertyDetails extends DTOProperty {
         this.notary = builder.notary;
     }
 
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
-    }
-
-    public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
-        this.beneficiaries = beneficiaries;
-    }
-
-    public void setPoints(List<DTOPoint> points) {
-        this.points = points;
-    }
-
-    public void setNumResolution(long numResolution) {
-        this.numResolution = numResolution;
-    }
-
-    public void setNotification(LocalDate notification) {
-        this.notification = notification;
-    }
-
-    public void setExecutory(LocalDate executory) {
-        this.executory = executory;
-    }
-
-    public void setFmi(String fmi) {
-        this.fmi = fmi;
-    }
-
-    public void setAct(String act) {
-        this.act = act;
-    }
-
-    public void setPublicWriting(String publicWriting) {
-        this.publicWriting = publicWriting;
-    }
-
-    public void setNotary(String notary) {
-        this.notary = notary;
-    }
-
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
         return beneficiaries;
     }
 
+    public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
+        this.beneficiaries = beneficiaries;
+    }
+
     public List<DTOPoint> getPoints() {
         return points;
+    }
+
+    public void setPoints(List<DTOPoint> points) {
+        this.points = points;
     }
 
     public long getNumResolution() {
         return numResolution;
     }
 
+    public void setNumResolution(long numResolution) {
+        this.numResolution = numResolution;
+    }
+
     public LocalDate getNotification() {
         return notification;
+    }
+
+    public void setNotification(LocalDate notification) {
+        this.notification = notification;
     }
 
     public LocalDate getExecutory() {
         return executory;
     }
 
+    public void setExecutory(LocalDate executory) {
+        this.executory = executory;
+    }
+
     public String getFmi() {
         return fmi;
+    }
+
+    public void setFmi(String fmi) {
+        this.fmi = fmi;
     }
 
     public String getAct() {
         return act;
     }
 
+    public void setAct(String act) {
+        this.act = act;
+    }
+
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    public void setPublicWriting(String publicWriting) {
+        this.publicWriting = publicWriting;
+    }
+
     public String getNotary() {
         return notary;
+    }
+
+    public void setNotary(String notary) {
+        this.notary = notary;
     }
 
     public static class Builder {

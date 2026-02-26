@@ -20,12 +20,12 @@ public class DTOResolutionUpdate extends DTOResolution {
         this.code = builder.code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public static class Builder extends DTOResolution.Builder<Builder> {

@@ -24,29 +24,29 @@ public class PanelShadow extends JPanel {
         setOpaque(false);
     }
 
-    public void setShadowType(ShadowBorder.ShadowType shadowType) {
-        this.shadowType = shadowType;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
-    public void setShadowSize(int shadowSize) {
-        this.shadowSize = shadowSize;
-        setBorder(new EmptyBorder(shadowSize, shadowSize, shadowSize, shadowSize));
-    }
-
     public ShadowBorder.ShadowType getShadowType() {
         return shadowType;
+    }
+
+    public void setShadowType(ShadowBorder.ShadowType shadowType) {
+        this.shadowType = shadowType;
     }
 
     public int getRadius() {
         return radius;
     }
 
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
     public int getShadowSize() {
         return shadowSize;
+    }
+
+    public void setShadowSize(int shadowSize) {
+        this.shadowSize = shadowSize;
+        setBorder(new EmptyBorder(shadowSize, shadowSize, shadowSize, shadowSize));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.controller;
 
-import com.hector.titulacionpredial.builder.controller.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
@@ -41,7 +41,7 @@ public class ControllerContent {
     }
 
     private void selectedMenu(int index, int indexSubMenu) {
-        switch(index) {
+        switch (index) {
             case 0 -> {
                 NavigatorUtils.showForms(dashboard);
                 subject.notifyObservers();

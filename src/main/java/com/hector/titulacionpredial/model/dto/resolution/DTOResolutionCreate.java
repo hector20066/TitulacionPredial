@@ -21,12 +21,12 @@ public class DTOResolutionCreate extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
-    }
-
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public String getBeneficiaryName() {

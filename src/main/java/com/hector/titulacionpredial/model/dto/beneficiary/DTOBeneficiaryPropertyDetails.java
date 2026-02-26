@@ -24,16 +24,16 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
         setAddress(address);
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public void setCode(long code) {
         this.id = code;
     }
 
     public String getFullName() {
         return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public long getId() {

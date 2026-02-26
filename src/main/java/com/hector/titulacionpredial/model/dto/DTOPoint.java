@@ -26,52 +26,52 @@ public class DTOPoint {
         this.propertyCode = builder.propertyCode;
     }
 
-    public void setNumberPoint(int numberPoint) {
-        this.numberPoint = numberPoint;
-    }
-
-    public void setNorthCoordinate(Double northCoordinate) {
-        this.northCoordinate = northCoordinate;
-    }
-
-    public void setEastCoordinate(Double eastCoordinate) {
-        this.eastCoordinate = eastCoordinate;
-    }
-
-    public void setDistance(Double distance) {
-        this.distance = distance;
-    }
-
-    public void setHillside(String hillside) {
-        this.hillside = hillside;
-    }
-
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
-    }
-
     public int getNumberPoint() {
         return numberPoint;
+    }
+
+    public void setNumberPoint(int numberPoint) {
+        this.numberPoint = numberPoint;
     }
 
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
+    public void setNorthCoordinate(Double northCoordinate) {
+        this.northCoordinate = northCoordinate;
+    }
+
     public Double getEastCoordinate() {
         return eastCoordinate;
+    }
+
+    public void setEastCoordinate(Double eastCoordinate) {
+        this.eastCoordinate = eastCoordinate;
     }
 
     public Double getDistance() {
         return distance;
     }
 
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
     public String getHillside() {
         return hillside;
     }
 
+    public void setHillside(String hillside) {
+        this.hillside = hillside;
+    }
+
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     public static class Builder {
@@ -95,7 +95,7 @@ public class DTOPoint {
 
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
-            return  this;
+            return this;
         }
 
         public Builder distance(Double distance) {

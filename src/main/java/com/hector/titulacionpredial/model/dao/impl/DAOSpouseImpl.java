@@ -8,7 +8,10 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -36,13 +39,13 @@ public class DAOSpouseImpl implements DAOSpouse {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setLong(1, dto.getId());
-             st.setString(2, dto.getFullName());
-             st.setString(3, dto.getExpeditionLocation());
-             st.setString(4, dto.getAddress());
-             st.setLong(5, dto.getPhone());
-             st.setInt(6, dto.getBeneficiaryCode());
-             st.executeUpdate();
+            st.setLong(1, dto.getId());
+            st.setString(2, dto.getFullName());
+            st.setString(3, dto.getExpeditionLocation());
+            st.setString(4, dto.getAddress());
+            st.setLong(5, dto.getPhone());
+            st.setInt(6, dto.getBeneficiaryCode());
+            st.executeUpdate();
         } catch (SQLException e) {
             throw new SpousePersistenceException("No fue posible guardar la información del cónyuge;", e);
         }
@@ -54,10 +57,10 @@ public class DAOSpouseImpl implements DAOSpouse {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setLong(1, id);
+            st.setLong(1, id);
 
-            try(ResultSet rs = st.executeQuery()) {
-                if(!rs.next()) {
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
                     return null;
                 }
 
@@ -76,11 +79,11 @@ public class DAOSpouseImpl implements DAOSpouse {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setLong(1, id);
+            st.setLong(1, id);
 
-             if (st.executeUpdate() == 0) {
-                 throw new SpouseNotFoundException(String.valueOf(id));
-             }
+            if (st.executeUpdate() == 0) {
+                throw new SpouseNotFoundException(String.valueOf(id));
+            }
         } catch (SQLException e) {
             throw new SpousePersistenceException("Error al recuperar la información del cónyuge", e);
         }

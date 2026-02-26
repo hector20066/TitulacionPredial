@@ -29,49 +29,49 @@ public class Property {
         this.points = builder.points;
     }
 
-    public void setCode(long code) {
-        this.code = code;
-    }
-
-    public void setCadastralId(String cadastralId) {
-        this.cadastralId = cadastralId;
-    }
-
-    public void setArea(Double area) {
-        this.area = area;
-    }
-
-    public void setBeneficiaries(List<Beneficiary> beneficiaries) {
-        this.beneficiaries = beneficiaries;
-    }
-
-    public void setPoints(Point[] points) {
-        this.points = points;
-    }
-
     public long getCode() {
         return code;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
     }
 
     public String getCadastralId() {
         return cadastralId;
     }
 
+    public void setCadastralId(String cadastralId) {
+        this.cadastralId = cadastralId;
+    }
+
     public Double getArea() {
         return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
     }
 
     public List<Beneficiary> getBeneficiaries() {
         return beneficiaries;
     }
 
+    public void setBeneficiaries(List<Beneficiary> beneficiaries) {
+        this.beneficiaries = beneficiaries;
+    }
+
     public Point[] getPoints() {
         return points;
     }
 
+    public void setPoints(Point[] points) {
+        this.points = points;
+    }
+
     @Override
     public String toString() {
-        return  "Code= " + code +
+        return "Code= " + code +
                 "\nCadastral Id= " + cadastralId +
                 "\nArea= " + area +
                 "\nBeneficiaries= " + beneficiaries +

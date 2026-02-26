@@ -29,60 +29,60 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         this.spouseBeneficiaryCode = builder.spouseBeneficiaryCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setIdSpouse(long idSpouse) {
-        this.idSpouse = idSpouse;
-    }
-
-    public void setFullNameSpouse(String fullNameSpouse) {
-        this.fullNameSpouse = fullNameSpouse;
-    }
-
-    public void setExpeditionLocationSpouse(String expeditionLocationSpouse) {
-        this.expeditionLocationSpouse = expeditionLocationSpouse;
-    }
-
-    public void setAddressSpouse(String addressSpouse) {
-        this.addressSpouse = addressSpouse;
-    }
-
-    public void setPhoneSpouse(long phoneSpouse) {
-        this.phoneSpouse = phoneSpouse;
-    }
-
-    public void setSpouseBeneficiaryCode(int spouseBeneficiaryCode) {
-        this.spouseBeneficiaryCode = spouseBeneficiaryCode;
-    }
-
     public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public long getIdSpouse() {
         return idSpouse;
     }
 
+    public void setIdSpouse(long idSpouse) {
+        this.idSpouse = idSpouse;
+    }
+
     public String getFullNameSpouse() {
         return fullNameSpouse;
+    }
+
+    public void setFullNameSpouse(String fullNameSpouse) {
+        this.fullNameSpouse = fullNameSpouse;
     }
 
     public String getExpeditionLocationSpouse() {
         return expeditionLocationSpouse;
     }
 
+    public void setExpeditionLocationSpouse(String expeditionLocationSpouse) {
+        this.expeditionLocationSpouse = expeditionLocationSpouse;
+    }
+
     public String getAddressSpouse() {
         return addressSpouse;
+    }
+
+    public void setAddressSpouse(String addressSpouse) {
+        this.addressSpouse = addressSpouse;
     }
 
     public long getPhoneSpouse() {
         return phoneSpouse;
     }
 
+    public void setPhoneSpouse(long phoneSpouse) {
+        this.phoneSpouse = phoneSpouse;
+    }
+
     public int getSpouseBeneficiaryCode() {
         return spouseBeneficiaryCode;
+    }
+
+    public void setSpouseBeneficiaryCode(int spouseBeneficiaryCode) {
+        this.spouseBeneficiaryCode = spouseBeneficiaryCode;
     }
 
     public static class Builder extends DTOBeneficiaryCreate.AbstractBuilder<Builder> {

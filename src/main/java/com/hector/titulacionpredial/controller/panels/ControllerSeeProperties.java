@@ -1,15 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
-
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -20,13 +10,18 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.DialogUtils;
-import com.hector.titulacionpredial.utils.FilterUtils;
-import com.hector.titulacionpredial.utils.GenerateExcel;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  *
@@ -115,7 +110,7 @@ public class ControllerSeeProperties implements Observer {
             String[] point4 = {String.valueOf(northCoordinate4), String.valueOf(eastCoordinate4), String.valueOf(distance4), hillside4};
 
             double area = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 29);
-            
+
             DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, address, municipalities, cadastralReference);
 
             generateResolution.loadData(area, point1, point2, point3, point4, propertyCode, dtoBeneficiary, beneficiaryId);
@@ -135,7 +130,7 @@ public class ControllerSeeProperties implements Observer {
                 .cadastralReference(cadastralReference)
                 .build();
     }
-    
+
     private void exportToExcel() {
         try {
             String path = DialogUtils.selectRoute(seeProperties);
@@ -155,7 +150,7 @@ public class ControllerSeeProperties implements Observer {
 
     private void deleteProperty() {
         try {
-            if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1 ) {
+            if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1) {
                 throw new InvalidInputException("Por favor seleccione una fila para eliminar");
             }
 

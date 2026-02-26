@@ -30,60 +30,60 @@ public class DTOResolution {
         this.notary = builder.notary;
     }
 
-    public void setResolutionNumber(long resolutionNumber) {
-        this.resolutionNumber = resolutionNumber;
-    }
-
-    public void setExecutory(LocalDate executory) {
-        this.executory = executory;
-    }
-
-    public void setAct(String act) {
-        this.act = act;
-    }
-
-    public void setPublicWriting(String publicWriting) {
-        this.publicWriting = publicWriting;
-    }
-
-    public void setNotification(LocalDate notification) {
-        this.notification = notification;
-    }
-
-    public void setFmi(String fmi) {
-        this.fmi = fmi;
-    }
-
-    public void setNotary(String notary) {
-        this.notary = notary;
-    }
-
     public long getResolutionNumber() {
         return resolutionNumber;
+    }
+
+    public void setResolutionNumber(long resolutionNumber) {
+        this.resolutionNumber = resolutionNumber;
     }
 
     public LocalDate getExecutory() {
         return executory;
     }
 
+    public void setExecutory(LocalDate executory) {
+        this.executory = executory;
+    }
+
     public String getAct() {
         return act;
+    }
+
+    public void setAct(String act) {
+        this.act = act;
     }
 
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    public void setPublicWriting(String publicWriting) {
+        this.publicWriting = publicWriting;
+    }
+
     public LocalDate getNotification() {
         return notification;
+    }
+
+    public void setNotification(LocalDate notification) {
+        this.notification = notification;
     }
 
     public String getFmi() {
         return fmi;
     }
 
+    public void setFmi(String fmi) {
+        this.fmi = fmi;
+    }
+
     public String getNotary() {
         return notary;
+    }
+
+    public void setNotary(String notary) {
+        this.notary = notary;
     }
 
     public static class Builder<T extends Builder<T>> {

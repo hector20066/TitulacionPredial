@@ -7,7 +7,8 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -253,8 +254,8 @@ public class DAOPropertyImpl implements DAOProperty {
         String sql = SQLRepository.get("sql/property/percentPropertiesWithResolution.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
                 throw new PropertyNotFoundException("No se han encontrado registros de predios.");
@@ -270,11 +271,11 @@ public class DAOPropertyImpl implements DAOProperty {
     public int countPropertyWithResolution() throws DAOException {
         String sql = SQLRepository.get("sql/property/countPropertiesWithResolution.sql");
 
-        try(Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
-            if(!rs.next()) {
+            if (!rs.next()) {
                 throw new PropertyNotFoundException("No se han encontrado registros de predios.");
             }
 

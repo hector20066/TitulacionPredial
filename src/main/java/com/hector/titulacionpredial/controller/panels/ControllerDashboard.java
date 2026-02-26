@@ -8,7 +8,8 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
-import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.swing.model.ModelChart;
@@ -75,11 +76,11 @@ public class ControllerDashboard implements Observer {
 
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
         dashboard.getLineChart1().clear();
-        dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149,213,178), new Color(45,106,79));
+        dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149, 213, 178), new Color(45, 106, 79));
 
         list.forEach(dto -> {
-            String nombreMes = Month.of(dto.getMonth()).getDisplayName(TextStyle.FULL, Locale.of("es"));
-            dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.getTotal()}));
+            String nombreMes = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of("es"));
+            dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.total()}));
         });
 
         dashboard.getLineChart1().start();

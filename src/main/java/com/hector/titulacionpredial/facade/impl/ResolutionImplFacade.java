@@ -4,7 +4,9 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOResolutionImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.resolution.*;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 
 import java.time.LocalDate;
 import java.util.List;

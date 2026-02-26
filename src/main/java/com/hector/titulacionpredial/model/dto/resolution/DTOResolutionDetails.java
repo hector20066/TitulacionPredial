@@ -21,20 +21,20 @@ public class DTOResolutionDetails extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public void setBeneficiaryName(String beneficiaryName) {
-        this.beneficiaryName = beneficiaryName;
-    }
-
     public int getCode() {
         return code;
     }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public String getBeneficiaryName() {
         return beneficiaryName;
+    }
+
+    public void setBeneficiaryName(String beneficiaryName) {
+        this.beneficiaryName = beneficiaryName;
     }
 
     public static class Builder extends DTOResolution.Builder<Builder> {

@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class Menu extends JPanel {
 
+    private final List<EventMenuSelected> events = new ArrayList<>();
     private MigLayout menuLayout;
     private JPanel panelMenu;
     private int index = -1;
-    private final List<EventMenuSelected> events = new ArrayList<>();
 
     public Menu() {
         init();
@@ -34,7 +34,7 @@ public class Menu extends JPanel {
         scroll.getViewport().setOpaque(false);
         scroll.setViewportBorder(null);
         add(scroll);
-        
+
         rebuildMenu();
     }
 
@@ -114,8 +114,7 @@ public class Menu extends JPanel {
 
     public void setSelectedIndex(int index, int indexSubMenu) {
         for (Component com : panelMenu.getComponents()) {
-            if (com instanceof MenuItem) {
-                MenuItem item = (MenuItem) com;
+            if (com instanceof MenuItem item) {
 
                 if (item.getIndex() == index) {
                     item.setSelectedIndex(indexSubMenu);
@@ -128,8 +127,7 @@ public class Menu extends JPanel {
 
     public void clearSelected() {
         for (Component com : panelMenu.getComponents()) {
-            if (com instanceof MenuItem) {
-                MenuItem item = (MenuItem) com;
+            if (com instanceof MenuItem item) {
                 item.clearSelected();
             }
         }

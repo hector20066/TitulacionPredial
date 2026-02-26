@@ -7,7 +7,10 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -35,13 +38,13 @@ public class DAOPointImpl implements DAOPoint {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-             st.setInt(1, dto.getNumberPoint());
-             st.setDouble(2, dto.getNorthCoordinate());
-             st.setDouble(3, dto.getEastCoordinate());
-             st.setDouble(4, dto.getDistance());
-             st.setString(5, dto.getHillside());
-             st.setInt(6, dto.getPropertyCode());
-             st.executeUpdate();
+            st.setInt(1, dto.getNumberPoint());
+            st.setDouble(2, dto.getNorthCoordinate());
+            st.setDouble(3, dto.getEastCoordinate());
+            st.setDouble(4, dto.getDistance());
+            st.setString(5, dto.getHillside());
+            st.setInt(6, dto.getPropertyCode());
+            st.executeUpdate();
         } catch (SQLException e) {
             throw new PointPersistenceException("No fue posible guardar la información del punto", e);
         }
@@ -55,8 +58,8 @@ public class DAOPointImpl implements DAOPoint {
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, propertyCode);
 
-            try(ResultSet rs = st.executeQuery()) {
-                if(!rs.next()) {
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
                     return null;
                 }
 

@@ -18,20 +18,20 @@ public class DTOProperty {
         this.area = area;
     }
 
-    public void setCadastralId(String cadastralId) {
-        this.cadastralId = cadastralId;
-    }
-
-    public void setArea(Double area) {
-        this.area = area;
-    }
-
     public String getCadastralId() {
         return cadastralId;
     }
 
+    public void setCadastralId(String cadastralId) {
+        this.cadastralId = cadastralId;
+    }
+
     public Double getArea() {
         return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
     }
 
 }

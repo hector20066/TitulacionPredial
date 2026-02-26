@@ -1,13 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.Callable;
-
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -24,6 +16,14 @@ import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  *
@@ -130,28 +130,28 @@ public class ControllerGenerateResolution {
         String hillside1 = generateResolution.getTxt_hillside1().getText().trim();
 
         String northCoordinate2 = generateResolution.getTxt_northCoordinate2().getText().trim();
-        String eastCoordinate2 =  generateResolution.getTxt_eastCoordinate2().getText().trim();
+        String eastCoordinate2 = generateResolution.getTxt_eastCoordinate2().getText().trim();
         String distance2 = generateResolution.getTxt_distance2().getText().trim();
         String hillside2 = generateResolution.getTxt_hillside2().getText().trim();
 
         String northCoordinate3 = generateResolution.getTxt_northCoordinate3().getText().trim();
-        String eastCoordinate3 =  generateResolution.getTxt_eastCoordinate3().getText().trim();
+        String eastCoordinate3 = generateResolution.getTxt_eastCoordinate3().getText().trim();
         String distance3 = generateResolution.getTxt_distance3().getText().trim();
         String hillside3 = generateResolution.getTxt_hillside3().getText().trim();
 
         String northCoordinate4 = generateResolution.getTxt_northCoordinate4().getText().trim();
-        String eastCoordinate4 =  generateResolution.getTxt_eastCoordinate4().getText().trim();
+        String eastCoordinate4 = generateResolution.getTxt_eastCoordinate4().getText().trim();
         String distance4 = generateResolution.getTxt_distance4().getText().trim();
         String hillside4 = generateResolution.getTxt_hillside4().getText().trim();
 
         List<DTOPoint> points = new ArrayList<>();
         points.add(new DTOPoint.Builder()
-                        .numberPoint(1)
-                        .northCoordinate(Double.parseDouble(northCoordinate1))
-                        .eastCoordinate(Double.parseDouble(eastCoordinate1))
-                        .distance(Double.parseDouble(distance1))
-                        .hillside(hillside1)
-                        .build());
+                .numberPoint(1)
+                .northCoordinate(Double.parseDouble(northCoordinate1))
+                .eastCoordinate(Double.parseDouble(eastCoordinate1))
+                .distance(Double.parseDouble(distance1))
+                .hillside(hillside1)
+                .build());
 
         points.add(new DTOPoint.Builder()
                 .numberPoint(2)

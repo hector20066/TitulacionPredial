@@ -5,7 +5,9 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.resolution.*;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
@@ -36,8 +38,8 @@ public class DAOResolutionImpl implements DAOResolution {
     public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
 
-        try (Connection connection = DataBasePool.getConnection(); 
-            PreparedStatement st = connection.prepareStatement(sql)) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setLong(1, dto.getResolutionNumber());
             st.setDate(2, Date.valueOf(dto.getNotification()));
             st.setDate(3, Date.valueOf(dto.getExecutory()));
@@ -58,7 +60,7 @@ public class DAOResolutionImpl implements DAOResolution {
         String sql = SQLRepository.get("sql/resolution/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setLong(1, numResolution);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -80,9 +82,9 @@ public class DAOResolutionImpl implements DAOResolution {
         List<DTOResolutionDetails> list = new ArrayList<>();
         String sql = SQLRepository.get("sql/resolution/findByAll.sql");
 
-        try (Connection connection = DataBasePool.getConnection(); 
-            PreparedStatement st = connection.prepareStatement(sql); 
-            ResultSet rs = st.executeQuery()) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
                 DTOResolutionDetails dto = new DTOResolutionDetails();
@@ -90,8 +92,8 @@ public class DAOResolutionImpl implements DAOResolution {
                 list.add(dto);
             }
 
-            return  list;
-        }catch (SQLException e) {
+            return list;
+        } catch (SQLException e) {
             throw new ResolutionPersistenceException("Error al recuperar la información de las resoluciones.", e);
         }
     }
@@ -112,8 +114,8 @@ public class DAOResolutionImpl implements DAOResolution {
     public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
 
-        try (Connection connection = DataBasePool.getConnection(); 
-            PreparedStatement st = connection.prepareStatement(sql)) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setDate(1, Date.valueOf(dto.getExecutory()));
             st.setString(2, dto.getAct());
             st.setString(3, dto.getPublicWriting());
@@ -138,9 +140,9 @@ public class DAOResolutionImpl implements DAOResolution {
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");
 
-        try (Connection connection = DataBasePool.getConnection(); 
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery()) {
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
                 throw new ResolutionNotFoundException("No hay registros para contar");

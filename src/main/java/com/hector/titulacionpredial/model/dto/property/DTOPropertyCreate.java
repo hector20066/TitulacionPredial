@@ -17,5 +17,4 @@ public class DTOPropertyCreate extends DTOProperty {
     }
 
 
-
 }

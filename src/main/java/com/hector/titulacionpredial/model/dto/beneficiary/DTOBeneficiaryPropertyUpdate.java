@@ -18,20 +18,20 @@ public class DTOBeneficiaryPropertyUpdate {
         this.propertyCode = propertyCode;
     }
 
-    public void setBeneficiaryCode(int beneficiaryCode) {
-        this.beneficiaryCode = beneficiaryCode;
-    }
-
-    public void setPropertyCode(int propertyCode) {
-        this.propertyCode = propertyCode;
-    }
-
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
+    public void setBeneficiaryCode(int beneficiaryCode) {
+        this.beneficiaryCode = beneficiaryCode;
+    }
+
     public int getPropertyCode() {
         return propertyCode;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
 }
