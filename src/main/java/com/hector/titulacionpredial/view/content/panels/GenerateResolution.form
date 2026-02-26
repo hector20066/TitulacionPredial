@@ -1378,7 +1378,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="29" green="25" red="21" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nota:"/>
+                    <Property name="text" type="java.lang.String" value="Notaria:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_note">

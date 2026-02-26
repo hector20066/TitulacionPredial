@@ -109,7 +109,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel2.setText("Resumen de la resolución");
+        jLabel2.setText("Resumen de la resolucion");
 
         scroll2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,7 +139,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel14.setText("Dirección:");
+        jLabel14.setText("Direccion:");
 
         txt_addressBeneficiary.setEditable(false);
         txt_addressBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
@@ -166,7 +166,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel17.setText("Información del Predio");
+        jLabel17.setText("Informacion del Predio");
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(33, 37, 41));
@@ -201,7 +201,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel22.setText("Colander");
+        jLabel22.setText("Colindero");
 
         txt_hillside1.setEditable(false);
         txt_hillside1.setBackground(new java.awt.Color(255, 255, 255));
@@ -330,7 +330,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel38.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel38.setText("Código de la propiedad:");
+        jLabel38.setText("Codigo de la propiedad:");
 
         txt_propertyCode.setEditable(false);
         txt_propertyCode.setBackground(new java.awt.Color(255, 255, 255));
@@ -579,11 +579,11 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel3.setText("Ingrese la siguiente información:");
+        jLabel3.setText("Ingrese la siguiente informacion:");
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel4.setText("N. Resolución:");
+        jLabel4.setText("N. Resolucion:");
 
         txt_numResolution.setBackground(new java.awt.Color(255, 255, 255));
         txt_numResolution.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -591,7 +591,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Notificación:");
+        jLabel5.setText("Notificacion:");
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(33, 37, 41));
@@ -623,7 +623,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel10.setText("Nota:");
+        jLabel10.setText("Notaria:");
 
         txt_note.setBackground(new java.awt.Color(255, 255, 255));
         txt_note.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -717,7 +717,7 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Generar Resolución");
+        jLabel1.setText("Generar Resolucion");
 
         btn_generate.setBackground(new java.awt.Color(64, 145, 108));
         btn_generate.setForeground(new java.awt.Color(255, 255, 255));
@@ -790,6 +790,10 @@ public class GenerateResolution extends javax.swing.JPanel {
 
     public JTextField getTxt_propertyCode() {
         return txt_propertyCode;
+    }
+
+    public JTextField getTxt_area() {
+        return txt_area;
     }
 
     public JTextField getTxt_addressBeneficiary() {
