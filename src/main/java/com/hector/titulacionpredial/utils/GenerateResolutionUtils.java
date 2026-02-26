@@ -21,17 +21,17 @@ import java.util.Map;
 public class GenerateResolutionUtils {
 
     public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points, String address,
-                                          String cadastralId, String fmi, String area, String path) throws IOException {
+                                          String cadastralId, String fmi, String area, String notificacion, String path) throws IOException {
         StringBuilder beneficiaries = new StringBuilder();
-        String file = defineTemplate(beneficiaries, beneficiariesList);
+        defineTemplate(beneficiaries, beneficiariesList);
 
-        // Construir el mapa de datos para el template
         Map<String, Object> data = new HashMap<>();
         data.put("BENEFICIARIES", beneficiaries.toString());
         data.put("FMI", fmi);
         data.put("ADDRESS", address);
         data.put("AREA", area);
         data.put("CADASTRAL_ID", cadastralId);
+        data.put("NOTIFICATION", notificacion);
 
         for (DTOPoint point : points) {
             switch (point.getNumberPoint()) {
@@ -62,24 +62,21 @@ public class GenerateResolutionUtils {
             }
         }
 
-        // Configurar para usar la sintaxis ${VARIABLE} en lugar del default {{VARIABLE}}
         Configure config = Configure.builder()
                 .buildGramer("${", "}")
                 .build();
 
-        InputStream templateStream = GenerateResolution.class.getClassLoader().getResourceAsStream(file);
+        InputStream templateStream = GenerateResolution.class.getClassLoader().getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
-        template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-PRUEBAS.docx");
+        template.writeToFile(path + File.separator + "MINUTA - RES FISCALES.docx");
         template.close();
     }
 
-    private static String defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {
-        String file = "resolution/MINUTA - RES FISCALES-1.docx";
+    private static void defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         String identifyingText = " identificad(o)(a) con cedula de ciudadanía N° ";
+        int numBeneficiaries = verifyMaritalStatus(beneficiariesList);
 
-        if (verifyMaritalStatus(beneficiariesList) > 1) {
-            file = "resolution/MINUTA - RES FISCALES-2.docx";
-
+        if (numBeneficiaries > 1) {
             for (DTOBeneficiarySimpleDetails beneficiary : beneficiariesList) {
                 sb.append(beneficiary.getFullName())
                         .append(identifyingText)
@@ -92,10 +89,12 @@ public class GenerateResolutionUtils {
                 sb.append(beneficiary.getFullName()).append(identifyingText).append(beneficiary.getId()).append(", ");
             }
 
-            sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue()).append("s");
+            if (numBeneficiaries == 1) {
+                sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue());
+            } else {
+                sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue()).append("s");
+            }
         }
-
-        return file;
     }
 
     private static int verifyMaritalStatus(List<DTOBeneficiarySimpleDetails> beneficiariesList) {

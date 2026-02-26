@@ -89,7 +89,6 @@ public class ControllerGenerateResolution {
             doInBackground(Long.parseLong(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
                     fmi, notary, Integer.parseInt(propertyCode), beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
         } catch (InvalidInputException e) {
-            e.printStackTrace();
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }
     }
@@ -150,7 +149,6 @@ public class ControllerGenerateResolution {
                     MessageUtils.informationMessage("Se ha generado la resolución.", generateResolution);
                     subject.notifyObservers();
                 } catch (Exception e) {
-                    e.printStackTrace();
                     String msg = (e.getCause() != null) ? e.getCause().getMessage() : e.getMessage();
                     MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + msg, generateResolution);
                 }
@@ -165,33 +163,26 @@ public class ControllerGenerateResolution {
                                 LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName,
                                 String idBeneficiaries, String address, String cadastralId, String area, String path) {
         executeWithDialog(() -> {
-            try {
-                if (daoResolution.findByCode((int) numResolution) != null) {
-                    throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
-                }
-
-                List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = new ArrayList<>();
-                String[] beneficiaries = idBeneficiaries.split(" - ");
-
-                for (String idBeneficiary : beneficiaries) {
-                    //idBeneficiary = idBeneficiary.replace(" - ", "");
-                    DTOBeneficiarySimpleDetails dto = daoBeneficiary.findById(Long.parseLong(idBeneficiary.replace(" -", "")));
-                    listDTOBeneficiaries.add(dto);
-                }
-
-                daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
-                generateDocument(path, listDTOBeneficiaries, address, cadastralId, fmi, area);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (daoResolution.findByCode((int) numResolution) != null) {
+                throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
             }
+
+            List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = new ArrayList<>();
+            String[] beneficiaries = idBeneficiaries.split(" - ");
+
+            for (String idBeneficiary : beneficiaries) {
+                DTOBeneficiarySimpleDetails dto = daoBeneficiary.findById(Long.parseLong(idBeneficiary.replace(" -", "")));
+                listDTOBeneficiaries.add(dto);
+            }
+
+            daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
+            generateDocument(path, listDTOBeneficiaries, address, cadastralId, fmi, area, String.valueOf(notification));
             return null;
         });
     }
 
     private void generateDocument(String path, List<DTOBeneficiarySimpleDetails> beneficiariesList,
-                                  String address, String cadastralId, String fmi, String area) throws IOException {
-        IO.println(path);
-
+                                  String address, String cadastralId, String fmi, String area, String notification) throws IOException {
         String northCoordinate1 = generateResolution.getTxt_northCoordinate1().getText().trim();
         String eastCoordinate1 = generateResolution.getTxt_eastCoordinate1().getText().trim();
         String distance1 = generateResolution.getTxt_distance1().getText().trim();
@@ -245,7 +236,7 @@ public class ControllerGenerateResolution {
                 .hillside(hillside4)
                 .build());
 
-        GenerateResolutionUtils.generateResolution(beneficiariesList, points, address, cadastralId, fmi, area, path);
+        GenerateResolutionUtils.generateResolution(beneficiariesList, points, address, cadastralId, fmi, area, notification, path);
     }
 
     private String selectRoute() {
