@@ -67,39 +67,23 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public DTOPropertyDetails findByCode(String cadastralId) throws DAOException {
         String sql = SQLRepository.get("sql/property/findByCode.sql");
-        DTOPropertyDetails property;
+        Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
+
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
-                if (!rs.next()) {
-                    return null;
-                }
-
-                int propertyCode = rs.getInt("property_code");
-                property = createDTOPropertyDetails(rs);
-
-                Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
-
-                if (beneficiaryCode != null) {
-                    if (!verifyBeneficiaryExist(property, beneficiaryCode)) {
-                        DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
-                        property.getBeneficiaries().add(beneficiary);
-                    }
-                }
-
-                int numberPoint = rs.getInt("number");
-
-                if (!verifyPointExists(property, numberPoint)) {
-                    property.getPoints().add(createDTOPoints(rs, numberPoint, propertyCode));
+                while (rs.next()) {
+                    processRow(rs, properties);
                 }
             }
 
-            return property;
+            return properties.values().stream().findFirst().orElse(null);
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información del predio con cedula catastral: " + cadastralId, e);
+            throw new PropertyPersistenceException("Error al recuperar la información del predio con cedula catastral: "
+                    + cadastralId, e);
         }
     }
 
@@ -113,34 +97,47 @@ public class DAOPropertyImpl implements DAOProperty {
              ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
-                int propertyCode = rs.getInt("property_code");
-                DTOPropertyDetails property = properties.get(propertyCode);
-
-                if (property == null) {
-                    property = createDTOPropertyDetails(rs);
-                    properties.put(propertyCode, property);
-                }
-
-                Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
-
-                if (beneficiaryCode != null) {
-                    if (!verifyBeneficiaryExist(property, beneficiaryCode)) {
-                        DTOBeneficiaryPropertyDetails beneficiary = createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
-                        property.getBeneficiaries().add(beneficiary);
-                    }
-                }
-
-                int numberPoint = rs.getInt("number");
-
-                if (!verifyPointExists(property, numberPoint)) {
-                    DTOPoint point = createDTOPoints(rs, numberPoint, propertyCode);
-                    property.getPoints().add(point);
-                }
+                processRow(rs, properties);
             }
 
             return new ArrayList<>(properties.values());
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información de los predios", e);
+            throw new PropertyPersistenceException(
+                    "Error al recuperar la información de los predios", e);
+        }
+    }
+
+    private void processRow(ResultSet rs, Map<Integer, DTOPropertyDetails> properties) throws SQLException {
+        int propertyCode = rs.getInt("property_code");
+
+        DTOPropertyDetails property = properties.get(propertyCode);
+
+        if (property == null) {
+            property = createDTOPropertyDetails(rs);
+            properties.put(propertyCode, property);
+        }
+
+        addBeneficiaryIfNecessary(rs, property);
+        addPointIfNecessary(rs, property, propertyCode);
+    }
+
+    private void addBeneficiaryIfNecessary(ResultSet rs, DTOPropertyDetails property) throws SQLException {
+        Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
+
+        if (beneficiaryCode != null && !verifyBeneficiaryExist(property, beneficiaryCode)) {
+            DTOBeneficiaryPropertyDetails beneficiary =
+                    createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
+
+            property.getBeneficiaries().add(beneficiary);
+        }
+    }
+
+    private void addPointIfNecessary(ResultSet rs, DTOPropertyDetails property, int propertyCode) throws SQLException {
+        int numberPoint = rs.getInt("number");
+
+        if (!verifyPointExists(property, numberPoint)) {
+            DTOPoint point = createDTOPoints(rs, numberPoint, propertyCode);
+            property.getPoints().add(point);
         }
     }
 
