@@ -8,8 +8,7 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.observer.*;
 import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
@@ -165,6 +164,11 @@ public class ControllerViewBeneficiaries implements Observer {
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+            int option = MessageUtils.confirmDialog("¿Estas seguro que deseas eliminar este beneficiario?", viewBeneficiaries);
+
+            if (option != MessageUtils.yesOption()) {
+                return;
+            }
 
             runDelete(code);
         } catch (InvalidInputException e) {

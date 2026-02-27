@@ -15,13 +15,9 @@ import java.util.List;
 public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovable, ICountable {
 
     int add(String cadastralId, Double area) throws DAOException;
-
     DTOPropertyDetails findByCode(String cadastralId) throws DAOException;
-
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
-
     int percentPropertiesWithResolutions() throws DAOException;
-
     int countPropertyWithResolution() throws DAOException;
 
 }

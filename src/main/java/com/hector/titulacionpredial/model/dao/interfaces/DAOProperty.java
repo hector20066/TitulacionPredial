@@ -15,13 +15,9 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
         ICountable {
 
     int add(DTOPropertyCreate dto) throws DAOException;
-
     DTOPropertyDetails findByCode(String cadastralId) throws DAOException;
-
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
-
     int percentPropertiesWithResolutions() throws DAOException;
-
     int countPropertyWithResolution() throws DAOException;
 
 }

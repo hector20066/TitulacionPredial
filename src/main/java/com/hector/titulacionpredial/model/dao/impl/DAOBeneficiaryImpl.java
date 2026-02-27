@@ -6,9 +6,7 @@ import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundEx
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.model.enums.*;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
@@ -375,7 +373,6 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
-
             st.setInt(1, months);
 
             try (ResultSet rs = st.executeQuery()) {

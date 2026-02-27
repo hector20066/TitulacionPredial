@@ -5,9 +5,7 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOBeneficiaryImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.model.enums.*;
 
 import java.util.List;
 
@@ -89,7 +87,8 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
     @Override
     public boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
-                          String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws DAOException {
+                          String affectation, long phone, String crossing, String publication, String neighborhood,
+                          int code) throws DAOException {
 
         DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
                 .department(department)

@@ -20,8 +20,10 @@ import java.util.Map;
  */
 public class GenerateResolutionUtils {
 
-    public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points, String address,
-                                          String cadastralId, String fmi, String area, String notificacion, String path) throws IOException {
+    public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points,
+                                          String address, String cadastralId, String fmi, String area,
+                                          String notificacion, String path) throws IOException {
+
         StringBuilder beneficiaries = new StringBuilder();
         defineTemplate(beneficiaries, beneficiariesList);
 
@@ -66,7 +68,8 @@ public class GenerateResolutionUtils {
                 .buildGramer("${", "}")
                 .build();
 
-        InputStream templateStream = GenerateResolution.class.getClassLoader().getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
+        InputStream templateStream = GenerateResolution.class.getClassLoader().
+                getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
         template.writeToFile(path + File.separator + "MINUTA - RES FISCALES.docx");
         template.close();

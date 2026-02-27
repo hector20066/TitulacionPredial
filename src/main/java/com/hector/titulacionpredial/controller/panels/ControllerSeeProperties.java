@@ -8,8 +8,7 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.observer.*;
 import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
@@ -155,6 +154,11 @@ public class ControllerSeeProperties implements Observer {
             }
 
             int code = (int) seeProperties.getJtbl_properties().getValueAt(seeProperties.getJtbl_properties().getSelectedRow(), 0);
+            int option = MessageUtils.confirmDialog("¿Estas seguro que deseas eliminar la información de este predio?", seeProperties);
+
+            if (option != MessageUtils.yesOption()) {
+                return;
+            }
 
             runDelete(code);
         } catch (InvalidInputException e) {

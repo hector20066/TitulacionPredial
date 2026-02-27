@@ -5,9 +5,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
+import com.hector.titulacionpredial.model.dto.resolution.*;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;

@@ -9,7 +9,6 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 public interface DAOBase<C, D> {
 
     void add(C dto) throws DAOException;
-
     D findByCode(int code) throws DAOException;
 
 }

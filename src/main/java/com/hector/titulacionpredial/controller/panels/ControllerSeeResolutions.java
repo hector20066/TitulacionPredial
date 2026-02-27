@@ -7,8 +7,7 @@ import com.hector.titulacionpredial.exception.validation.InvalidNumberInputExcep
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.observer.*;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;

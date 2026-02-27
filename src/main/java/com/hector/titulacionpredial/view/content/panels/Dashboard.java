@@ -19,9 +19,23 @@ public class Dashboard extends javax.swing.JPanel {
     }
     
     public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
-        card1.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/users-round.svg")), "Beneficiarios", String.valueOf(totalBeneficiaries), "Beneficiarios registrados"));
-        card2.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/house.svg")), "Predios", String.valueOf(totalProperties), "Predios Registrados"));
-        card3.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/file-text.svg")), "Resoluciones", String.valueOf(totalResolutions), "Resoluciones hechas"));
+        card1.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/users-round.svg")),
+                "Beneficiarios",
+                String.valueOf(totalBeneficiaries),
+                "Beneficiarios registrados"));
+
+        card2.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/house.svg")),
+                "Predios",
+                String.valueOf(totalProperties),
+                "Predios Registrados"));
+
+        card3.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/file-text.svg")),
+                "Resoluciones",
+                String.valueOf(totalResolutions),
+                "Resoluciones hechas"));
     }
 
     public void updateGaugeCharts(int percentBeneficiaries, int percentProperties) {

@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class GenerateExcel {
 
     public static void export(List<DTOPropertyDetails> properties, String path) throws IOException {

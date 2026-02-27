@@ -119,11 +119,11 @@ public class GaugeChart extends JComponent {
     public void paint(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        float spaceBot = 0.15f; //  space bot 15%
+        float spaceBot = 0.15f;
         int width = getWidth();
         int height = getHeight();
         height += (int) (height * spaceBot);
-        int size = Math.min(width, height) - (gaugeSize + 5);   //  5 is margin
+        int size = Math.min(width, height) - (gaugeSize + 5);
         int centerSize = 20;
         int x = (width - size) / 2;
         int y = (height - size) / 2;
@@ -191,8 +191,7 @@ public class GaugeChart extends JComponent {
         double max = maximum;
         double v = getValueFixed();
         double n = v / max * 100f;
-        double angle = n * 250f / 100f;
-        return angle;
+        return n * 250f / 100f;
     }
 
     private int getValueFixed() {

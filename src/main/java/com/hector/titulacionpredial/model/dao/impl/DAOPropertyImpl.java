@@ -7,8 +7,7 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -72,7 +71,6 @@ public class DAOPropertyImpl implements DAOProperty {
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
-
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {

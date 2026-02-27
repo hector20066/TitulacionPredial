@@ -27,8 +27,7 @@ public class Spouse extends Person {
 
     @Override
     public String toString() {
-        return super.toString() +
-                "\nCode Beneficiary= " + beneficiary;
+        return super.toString() + "\nCode Beneficiary= " + beneficiary;
     }
 
     public static class Builder extends Person.Builder<Builder> {

@@ -31,17 +31,14 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         this.controllerSearchDialog =  new ControllerSearchDialog(this);
 
         String[] titles = {"Código", "Nombre", "Cedula", "Ref. Catastral"};
         model.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(model);
 
-        JTableHeader header = jtbl_beneficiaries.getTableHeader();
-        header.setBackground(new Color(0x8cb79b));
-        header.setForeground(new Color(0x051f20));
-        header.setFont(new Font("SansSerif", Font.BOLD, 12));
-        header.setReorderingAllowed(false);
+        tableHeader();
 
         btn_searchCancel.setVisible(false);
 
@@ -68,6 +65,14 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         animator = new Animator(200, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
+    }
+
+    private void tableHeader() {
+        JTableHeader header = jtbl_beneficiaries.getTableHeader();
+        header.setBackground(new Color(0x8cb79b));
+        header.setForeground(new Color(0x051f20));
+        header.setFont(new Font("SansSerif", Font.BOLD, 12));
+        header.setReorderingAllowed(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

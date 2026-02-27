@@ -29,7 +29,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_department.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof Department) {
@@ -42,7 +43,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_maritalStatus.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof MaritalStatus) {
@@ -55,7 +57,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_municipality.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof Municipalities) {

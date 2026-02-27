@@ -1,22 +1,14 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
-import com.hector.titulacionpredial.exception.dao.PersistenceException;
-import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
-import com.hector.titulacionpredial.exception.validation.InvalidInputException;
-import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
-import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
+import com.hector.titulacionpredial.exception.dao.*;
+import com.hector.titulacionpredial.exception.validation.*;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.SpouseImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
-import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.observer.*;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;

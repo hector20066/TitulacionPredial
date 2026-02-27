@@ -9,6 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class GenerateExcelBeneficiary {
 
     public static void export(List<DTOBeneficiaryCreate> beneficiaries, String path) throws IOException {

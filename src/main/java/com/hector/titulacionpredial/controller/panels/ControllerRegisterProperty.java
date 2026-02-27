@@ -1,7 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.dao.PersistenceException;
+import com.hector.titulacionpredial.exception.dao.*;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;

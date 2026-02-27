@@ -5,6 +5,10 @@ import com.hector.titulacionpredial.view.content.Content;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *
+ * @author hectoracevedo
+ */
 public class NavigatorUtils {
 
     public static void showForms(JComponent component) {

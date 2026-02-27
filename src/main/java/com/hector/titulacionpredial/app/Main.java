@@ -12,7 +12,7 @@ import java.awt.*;
  */
 public class Main {
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         try {
             FlatIntelliJLaf.setup();
 
