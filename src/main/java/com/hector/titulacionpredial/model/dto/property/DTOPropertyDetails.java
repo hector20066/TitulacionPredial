@@ -9,8 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Data Transfer Object (DTO) que representa el detalle completo
+ * de un predio dentro del sistema.
+ *
+ * <p>
+ *     Esta clase se utiliza para transportar información desde la
+ *     capa de persistencia o servicio hacia la capa de presentación,
+ *     encapsulando datos del predio junto con información asociada
+ *     como beneficiarios, puntos geográficos y datos de resolución.
+ * </p>
+ *
+ * <p>
+ *     Extiende {@link DTOProperty} agregando atributos adicionales
+ *     necesarios para mostrar información detallada del predio,
+ *     evitando exponer directamente la entidad de dominio.
+ * </p>
+ *
+ * <p><strong>Incluye:</strong></p>
+ * <ul>
+ *     <li>Identificador interno del predio.</li>
+ *     <li>Lista de beneficiarios asociados.</li>
+ *     <li>Lista de puntos que definen la geometría del predio.</li>
+ *     <li>Información relacionada con la resolución administrativa.</li>
+ * </ul>
+ *
+ * <p>
+ *     Es una clase mutable y soporta construcción mediante el patrón Builder.
+ * </p>
  *
  * @author hectoracevedo
+ * @since 1.0
  */
 public class DTOPropertyDetails extends DTOProperty {
 
@@ -25,12 +53,21 @@ public class DTOPropertyDetails extends DTOProperty {
     private String publicWriting;
     private String notary;
 
+    /**
+     * Constructor vacío requerido para frameworks
+     * de serialización o mapeo.
+     */
     public DTOPropertyDetails() {
         super();
         this.beneficiaries = new ArrayList<>();
         this.points = new ArrayList<>();
     }
 
+    /**
+     * Constructor utilizado por el patrón Builder.
+     *
+     * @param builder instancia configurada del builder
+     */
     public DTOPropertyDetails(Builder builder) {
         super(builder.cadastralId, builder.area);
         this.propertyCode = builder.propertyCode;
@@ -125,6 +162,24 @@ public class DTOPropertyDetails extends DTOProperty {
         this.notary = notary;
     }
 
+    /**
+     * Implementación del patrón Builder para la construcción
+     * controlada e incremental de instancias de {@code DTOPropertyDetails}.
+     *
+     * <p>
+     *     Permite crear objetos complejos de manera legible y
+     *     evitando constructores con múltiples parámetros.
+     * </p>
+     *
+     * <pre>
+     * DTOPropertyDetails dto = new DTOPropertyDetails.Builder()
+     *      .propertyCode(1)
+     *      .cadastralId("123-456")
+     *      .area(1500.0)
+     *      .numResolution(2023001L)
+     *      .build();
+     * </pre>
+     */
     public static class Builder {
 
         private int propertyCode;
@@ -200,6 +255,11 @@ public class DTOPropertyDetails extends DTOProperty {
             return this;
         }
 
+        /**
+         * Construye una nueva instancia de {@link DTOPropertyDetails}.
+         *
+         * @return nuevo DTO configurado
+         */
         public DTOPropertyDetails build() {
             return new DTOPropertyDetails(this);
         }
