@@ -1,8 +1,6 @@
 package com.hector.titulacionpredial.model.dto;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.model.enums.*;
 
 /**
  * Data Transfer Object (DTO) que representa la información

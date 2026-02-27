@@ -1,8 +1,31 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 /**
+ * Data Transfer Object (DTO) que contiene la informacion obtenida
+ * de un beneficiario.
+ *
+ * <p>
+ * Se utiliza para transportar datos de la capa de persistencia
+ * a la capa de presentacion para mostrar la informacion, evitando
+ * exponer directamente la entidad {@code Beneficiary}.
+ * </p>
+ *
+ * <p>
+ * Extiende {@link DTOBeneficiaryCreate} agregando informacion especifica
+ * relacionada con el codigo y la informacion del conyuge del beneficiario.
+ * </p>
+ *
+ * <p>
+ * Este DTO no contiene logica de negocio ni reglas de validacion.
+ * Su unica responsabilidad es encapsular datos.
+ * </p>
+ *
+ * <p>
+ * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryDetails.Builder}.
+ * </p>
  *
  * @author hectoracevedo
+ * @since 1.0
  */
 public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
 
@@ -14,10 +37,19 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
     private long phoneSpouse;
     private int spouseBeneficiaryCode;
 
+    /**
+     * Constructor vacío requerido para frameworks
+     * de serialización o mapeo.
+     */
     public DTOBeneficiaryDetails() {
         super();
     }
 
+    /**
+     * Constructor utilizado por el patrón Builder.
+     *
+     * @param builder instancia configurada del builder
+     */
     public DTOBeneficiaryDetails(Builder builder) {
         super(builder);
         this.code = builder.code;
@@ -85,6 +117,15 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         this.spouseBeneficiaryCode = spouseBeneficiaryCode;
     }
 
+    /**
+     * Builder para la construccion fluida de instancias
+     * de {@link DTOBeneficiaryDetails}.
+     *
+     * <p>
+     * Permite configurar los atributos antes de invocar
+     * {@link #build()}.
+     * </p>
+     */
     public static class Builder extends DTOBeneficiaryCreate.AbstractBuilder<Builder> {
 
         private int code;
@@ -130,6 +171,11 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
             return this;
         }
 
+        /**
+         * Construye una nueva instancia de {@link DTOBeneficiaryDetails}.
+         *
+         * @return nuevo DTO configurado
+         */
         @Override
         public DTOBeneficiaryDetails build() {
             return new DTOBeneficiaryDetails(this);
