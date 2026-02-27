@@ -1,8 +1,33 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
+ * Data Transfer Object (DTO) que representa la información
+ * de un conjugue para operaciones de entrada o salida
+ * del sistema.
+ *
+ * <p>
+ * Se utiliza para transportar datos entre la capa de presentacion
+ * y la capa de persistencia, evitando exponer directamente la entidad
+ * {@code Spouse}.
+ * </p>
+ *
+ * <p>
+ * Extiende {@link DTOBasePerson} agregando informacion especifica
+ * relacionada con la fecha de expidicion, el nombre completo y el
+ * código de {@code Beneficiary}.
+ * </p>
+ *
+ * <p>
+ * Este DTO no contiene lógica de negocio ni reglas de validación.
+ * Su única responsabilidad es encapsular datos.
+ * </p>
+ *
+ * <p>
+ * Soporta construcción fluida mediante el patrin {@link Builder}
+ * </p>
  *
  * @author hectoracevedo
+ * @since 1.0
  */
 public class DTOSpouse extends DTOBasePerson {
 
@@ -11,10 +36,19 @@ public class DTOSpouse extends DTOBasePerson {
     private String expeditionLocation;
     private int beneficiaryCode;
 
+    /**
+     * Constructor vacío requerido para frameworks
+     * de serialización o mapeo.
+     */
     public DTOSpouse() {
 
     }
 
+    /**
+     * Constructor utilizado por el patrón Builder.
+     *
+     * @param builder instancia configurada del builder
+     */
     public DTOSpouse(Builder builder) {
         super(builder.address, builder.phone);
 
@@ -56,6 +90,14 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = beneficiaryCode;
     }
 
+    /**
+     * Builder para la construcción fluida de instancias de {@link DTOSpouse}
+     *
+     * <p>
+     * Permite configurar los atributos antes de invocar
+     * {@link #build()}.
+     * </p>
+     */
     public static class Builder {
 
         private long id;
@@ -95,6 +137,11 @@ public class DTOSpouse extends DTOBasePerson {
             return this;
         }
 
+        /**
+         * Construye una nueva instancia de {@link DTOSpouse}.
+         *
+         * @return nuevo DTO configurado
+         */
         public DTOSpouse build() {
             return new DTOSpouse(this);
         }
