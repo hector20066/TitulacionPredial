@@ -3,8 +3,39 @@ package com.hector.titulacionpredial.model.entities;
 import java.time.LocalDate;
 
 /**
+ * Entidad de dominio que representa una Resolución administrativa
+ * dentro del sistema de Titulación Predial.
  *
- * @author hectoracevedo
+ * <p>
+ * Una resolución formaliza un acto jurídico o trámite aplicado
+ * a un {@link Property}, pudiendo involucrar uno o más
+ * {@link Beneficiary}.
+ * </p>
+ *
+ * <p>
+ * Esta entidad permite mantener trazabilidad e historial
+ * de los procesos realizados sobre un predio.
+ * </p>
+ *
+ * <p>
+ * Características principales:
+ * </p>
+ * <ul>
+ *     <li>Posee identidad propia mediante el atributo {@code code}.</li>
+ *     <li>Se asocia a un {@link Property} (relación muchos-a-uno).</li>
+ *     <li>Puede asociarse a un {@link Beneficiary} específico.</li>
+ *     <li>Contiene fechas clave como notificación y ejecutoria.</li>
+ *     <li>Forma parte del modelo persistente del sistema.</li>
+ *     <li>Soporta construccion mediante el patron {@link Builder}.</li>
+ * </ul>
+ *
+ * <p>
+ * Su ciclo de vida es independiente del predio, pero
+ * conceptualmente depende de la existencia del mismo.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class Resolution {
 
@@ -19,10 +50,19 @@ public class Resolution {
     private Property property;
     private Beneficiary beneficiary;
 
+    /**
+     * Constructor vacio requerido para frameworks de persistencia
+     * o mecanismos de reflexion.
+     */
     public Resolution() {
 
     }
 
+    /**
+     * Constructor utilizado por el patron Builder.
+     *
+     * @param builder instancia del constructor paso a paso.
+     */
     public Resolution(Builder builder) {
         this.code = builder.code;
         this.resolutionNumber = builder.resolutionNumber;
@@ -116,6 +156,11 @@ public class Resolution {
         this.beneficiary = beneficiary;
     }
 
+    /**
+     * Representacion textual de la entidad.
+     *
+     * @return descripcion formateada de los atributos principales.
+     */
     @Override
     public String toString() {
         return "Code= " + code +
@@ -130,6 +175,19 @@ public class Resolution {
                 "\nBeneficiary= " + beneficiary;
     }
 
+    /**
+     * Builder para la construcción controlada de instancias de {@link Resolution}.
+     *
+     * <p>
+     * Permite configurar de forma fluida los atributos del predio antes
+     * de su creación definitiva mediante {@link #build()}.
+     * </p>
+     *
+     * <p>
+     * No realiza validaciones automáticas; dichas reglas deben
+     * garantizarse en la capa de servicio o agregarse explícitamente.
+     * </p>
+     */
     public static class Builder {
 
         private int code;
@@ -193,6 +251,11 @@ public class Resolution {
             return this;
         }
 
+        /**
+         * Construye una nueva instancia de {@link Resolution}
+         *
+         * @return nuevo predio construido.
+         */
         public Resolution build() {
             return new Resolution(this);
         }

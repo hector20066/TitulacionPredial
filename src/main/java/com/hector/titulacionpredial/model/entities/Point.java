@@ -1,8 +1,31 @@
 package com.hector.titulacionpredial.model.entities;
 
 /**
+ * Entidad que representa una coordenada geográfica asociada
+ * a un {@link Property}.
  *
- * @author hectoracevedo
+ * <p>
+ * Define un punto que forma parte de los límites del predio,
+ * incluyendo sus coordenadas y datos complementarios.
+ * </p>
+ *
+ * <p>
+ * Esta clase:
+ * </p>
+ * <ul>
+ *     <li>Posee identidad propia mediante el atributo {@code code}.</li>
+ *     <li>Contiene coordenadas norte y este.</li>
+ *     <li>Puede incluir información adicional como distancia y linderos.</li>
+ *     <li>Es mutable mediante métodos setter.</li>
+ *     <li>Soporta construcción mediante el patrón {@link Builder}.</li>
+ * </ul>
+ *
+ * <p>
+ * Su ciclo de vida depende del {@link Property} al que pertenece.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class Point {
 
@@ -13,10 +36,19 @@ public class Point {
     private Double distance;
     private String hillside;
 
+    /**
+     * Constructor vacío requerido para frameworks de persistencia
+     * o mecanismos basados en reflexion.
+     */
     public Point() {
 
     }
 
+    /**
+     * Constructor utilizado por el patron Builder.
+     *
+     * @param builder instancia del constructor paso a paso
+     */
     public Point(Builder builder) {
         this.code = builder.code;
         this.numberPoint = builder.numberPoint;
@@ -74,6 +106,11 @@ public class Point {
         this.hillside = hillside;
     }
 
+    /**
+     * Representacion textual de la entidad.
+     *
+     * @return descripcion formateada de los atributos principales.
+     */
     @Override
     public String toString() {
         return "Code=" + code +
@@ -84,6 +121,19 @@ public class Point {
                 "\nHillside= " + hillside;
     }
 
+    /**
+     * Builder para la construcción controlada de instancias de {@link Point}.
+     *
+     * <p>
+     * Permite configurar de forma fluida los atributos del predio antes
+     * de su creación definitiva mediante {@link #build()}.
+     * </p>
+     *
+     * <p>
+     * No realiza validaciones automáticas; dichas reglas deben
+     * garantizarse en la capa de servicio o agregarse explícitamente.
+     * </p>
+     */
     public static class Builder {
 
         private int code;
@@ -123,6 +173,11 @@ public class Point {
             return this;
         }
 
+        /**
+         * Construye una nueva instancia de {@link Point}
+         *
+         * @return nuevo predio construido.
+         */
         public Point build() {
             return new Point(this);
         }
