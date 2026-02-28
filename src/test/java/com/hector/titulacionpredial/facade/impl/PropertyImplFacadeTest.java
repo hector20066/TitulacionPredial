@@ -1,22 +1,29 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import java.lang.reflect.Field;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("PropertyImplFacade Tests")
@@ -133,5 +140,26 @@ class PropertyImplFacadeTest {
 
         assertEquals(8, facade.countPropertyWithResolution());
         verify(daoProperty).countPropertyWithResolution();
+    }
+
+    @Test
+    @DisplayName("findByCode debe propagar DAOException")
+    void findByCodeShouldPropagateDAOException() throws DAOException {
+        when(daoProperty.findByCode(anyString())).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByCode("CAD-XXX"));
+    }
+
+    @Test
+    @DisplayName("findByAll debe propagar DAOException")
+    void findByAllShouldPropagateDAOException() throws DAOException {
+        when(daoProperty.findByAll()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByAll());
+    }
+
+    @Test
+    @DisplayName("countRecords debe propagar DAOException")
+    void countRecordsShouldPropagateDAOException() throws DAOException {
+        when(daoProperty.countRecords()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.countRecords());
     }
 }

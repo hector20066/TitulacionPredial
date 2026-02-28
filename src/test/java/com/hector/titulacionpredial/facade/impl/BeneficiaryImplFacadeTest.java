@@ -1,24 +1,38 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import java.lang.reflect.Field;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("BeneficiaryImplFacade Tests")
@@ -255,5 +269,43 @@ class BeneficiaryImplFacadeTest {
         int result = facade.percentBeneficiariesWithProperty();
 
         assertEquals(75, result);
+    }
+
+    @Test
+    @DisplayName("findByCode debe propagar DAOException")
+    void findByCodeShouldPropagateDAOException() throws DAOException {
+        when(daoBeneficiary.findByCode(anyInt())).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByCode(1));
+    }
+
+    @Test
+    @DisplayName("findByAll debe propagar DAOException")
+    void findByAllShouldPropagateDAOException() throws DAOException {
+        when(daoBeneficiary.findByAll()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByAll());
+    }
+
+    @Test
+    @DisplayName("countRecords debe propagar DAOException")
+    void countRecordsShouldPropagateDAOException() throws DAOException {
+        when(daoBeneficiary.countRecords()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.countRecords());
+    }
+
+    @Test
+    @DisplayName("delete debe propagar DAOException")
+    void deleteShouldPropagateDAOException() throws DAOException {
+        doThrow(new DAOException("Error")).when(daoBeneficiary).delete(anyInt());
+        assertThrows(DAOException.class, () -> facade.delete(1));
+    }
+
+    @Test
+    @DisplayName("modify debe propagar DAOException")
+    void modifyShouldPropagateDAOException() throws DAOException {
+        when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () ->
+                facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
+                        "Dir", MaritalStatus.SOLTERO, "Afect",
+                        300L, "Cruce", "Pub", "Barrio", 1));
     }
 }

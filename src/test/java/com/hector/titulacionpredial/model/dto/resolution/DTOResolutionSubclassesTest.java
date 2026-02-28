@@ -1,13 +1,15 @@
 package com.hector.titulacionpredial.model.dto.resolution;
 
-import com.hector.titulacionpredial.model.dto.DTOResolution;
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 @DisplayName("DTOResolution Subclasses Tests")
 class DTOResolutionSubclassesTest {
@@ -43,6 +45,19 @@ class DTOResolutionSubclassesTest {
             assertEquals(10, dto.getPropertyCode());
             assertEquals("Juan Pérez", dto.getBeneficiaryName());
             assertEquals("FMI-001", dto.getFmi());
+            assertEquals(LocalDate.of(2025, 1, 1), dto.getNotification());
+            assertEquals(LocalDate.of(2025, 2, 1), dto.getExecutory());
+            assertEquals("Acto 1", dto.getAct());
+            assertEquals("EP-001", dto.getPublicWriting());
+            assertEquals("Notaría 1", dto.getNotary());
+        }
+
+        @Test
+        @DisplayName("setPropertyCode debe funcionar correctamente")
+        void setPropertyCodeShouldWork() {
+            DTOResolutionCreate dto = new DTOResolutionCreate();
+            dto.setPropertyCode(25);
+            assertEquals(25, dto.getPropertyCode());
         }
 
         @Test
@@ -73,11 +88,22 @@ class DTOResolutionSubclassesTest {
                     .beneficiaryName("Ana López")
                     .resolutionNumber(200L)
                     .fmi("FMI-002")
+                    .notification(LocalDate.of(2025, 3, 1))
+                    .executory(LocalDate.of(2025, 4, 1))
+                    .act("Acto Details")
+                    .publicWriting("EP-Details")
+                    .notary("Notaría Details")
                     .build();
 
             assertEquals(5, dto.getCode());
             assertEquals("Ana López", dto.getBeneficiaryName());
             assertEquals(200L, dto.getResolutionNumber());
+            assertEquals("FMI-002", dto.getFmi());
+            assertEquals(LocalDate.of(2025, 3, 1), dto.getNotification());
+            assertEquals(LocalDate.of(2025, 4, 1), dto.getExecutory());
+            assertEquals("Acto Details", dto.getAct());
+            assertEquals("EP-Details", dto.getPublicWriting());
+            assertEquals("Notaría Details", dto.getNotary());
         }
 
         @Test
@@ -118,6 +144,10 @@ class DTOResolutionSubclassesTest {
             assertEquals(15, dto.getCode());
             assertEquals(300L, dto.getResolutionNumber());
             assertEquals("Acto Update", dto.getAct());
+            assertEquals(LocalDate.of(2025, 5, 1), dto.getExecutory());
+            assertEquals("EP-Update", dto.getPublicWriting());
+            assertEquals("FMI-Update", dto.getFmi());
+            assertEquals("Notaría Update", dto.getNotary());
         }
 
         @Test

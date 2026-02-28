@@ -1,16 +1,19 @@
 package com.hector.titulacionpredial.model.dto.property;
 
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 
 @DisplayName("DTOPropertyCreate & DTOPropertyDetails Tests")
 class DTOPropertySubclassesTest {
@@ -79,12 +82,22 @@ class DTOPropertySubclassesTest {
     @DisplayName("DTOPropertyDetails setters deben funcionar correctamente")
     void detailsSettersShouldWork() {
         DTOPropertyDetails dto = new DTOPropertyDetails();
+        LocalDate notifDate = LocalDate.of(2025, 3, 1);
+        LocalDate execDate = LocalDate.of(2025, 4, 1);
+        List<DTOBeneficiaryPropertyDetails> beneficiaries = List.of(
+                new DTOBeneficiaryPropertyDetails("Test", 1L, null, null));
+        List<DTOPoint> points = List.of(new DTOPoint());
+
         dto.setPropertyCode(42);
         dto.setNumResolution(999L);
         dto.setFmi("FMI-TEST");
         dto.setAct("Acto Test");
         dto.setPublicWriting("EP-Test");
         dto.setNotary("Notaría Test");
+        dto.setNotification(notifDate);
+        dto.setExecutory(execDate);
+        dto.setBeneficiaries(beneficiaries);
+        dto.setPoints(points);
 
         assertEquals(42, dto.getPropertyCode());
         assertEquals(999L, dto.getNumResolution());
@@ -92,5 +105,27 @@ class DTOPropertySubclassesTest {
         assertEquals("Acto Test", dto.getAct());
         assertEquals("EP-Test", dto.getPublicWriting());
         assertEquals("Notaría Test", dto.getNotary());
+        assertEquals(notifDate, dto.getNotification());
+        assertEquals(execDate, dto.getExecutory());
+        assertEquals(1, dto.getBeneficiaries().size());
+        assertEquals(1, dto.getPoints().size());
+    }
+
+    @Test
+    @DisplayName("DTOPropertyDetails Builder debe verificar beneficiaries y points")
+    void detailsBuilderShouldVerifyListFields() {
+        DTOBeneficiaryPropertyDetails ben = new DTOBeneficiaryPropertyDetails(
+                "Juan", 100L, null, "Calle 1");
+        DTOPoint point = new DTOPoint();
+
+        DTOPropertyDetails dto = new DTOPropertyDetails.Builder()
+                .propertyCode(5)
+                .beneficiaries(List.of(ben))
+                .points(List.of(point))
+                .build();
+
+        assertEquals(1, dto.getBeneficiaries().size());
+        assertEquals("Juan", dto.getBeneficiaries().get(0).getFullName());
+        assertEquals(1, dto.getPoints().size());
     }
 }

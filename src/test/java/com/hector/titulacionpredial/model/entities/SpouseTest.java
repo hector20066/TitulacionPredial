@@ -1,10 +1,12 @@
 package com.hector.titulacionpredial.model.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Spouse Entity Tests")
 class SpouseTest {
@@ -20,25 +22,17 @@ class SpouseTest {
 
             assertEquals(0, spouse.getId());
             assertNull(spouse.getFullName());
-            assertNull(spouse.getBeneficiary());
         }
 
         @Test
-        @DisplayName("Builder debe crear cónyuge con todos los campos")
+        @DisplayName("Builder debe crear cónyuge con todos los campos heredados de Person")
         void builderShouldCreateWithAllFields() {
-            Beneficiary beneficiary = new Beneficiary.Builder()
-                    .id(111L)
-                    .fullName("Juan")
-                    .code(1)
-                    .build();
-
             Spouse spouse = new Spouse.Builder()
                     .id(222L)
                     .fullName("María García")
                     .address("Calle 20")
                     .expeditionLocation("Cartagena")
                     .phone(3001111111L)
-                    .beneficiary(beneficiary)
                     .build();
 
             assertEquals(222L, spouse.getId());
@@ -46,8 +40,6 @@ class SpouseTest {
             assertEquals("Calle 20", spouse.getAddress());
             assertEquals("Cartagena", spouse.getExpeditionLocation());
             assertEquals(3001111111L, spouse.getPhone());
-            assertNotNull(spouse.getBeneficiary());
-            assertEquals(111L, spouse.getBeneficiary().getId());
         }
     }
 
@@ -68,15 +60,20 @@ class SpouseTest {
     class GetterSetterTests {
 
         @Test
-        @DisplayName("setBeneficiary y getBeneficiary deben funcionar correctamente")
-        void setAndGetBeneficiaryShouldWork() {
+        @DisplayName("Setters y getters heredados de Person deben funcionar")
+        void inheritedSettersAndGettersShouldWork() {
             Spouse spouse = new Spouse();
-            Beneficiary b = new Beneficiary();
-            b.setCode(5);
-            spouse.setBeneficiary(b);
+            spouse.setId(555L);
+            spouse.setFullName("Test Cónyuge");
+            spouse.setAddress("Calle Test");
+            spouse.setPhone(3009999999L);
+            spouse.setExpeditionLocation("Bogotá");
 
-            assertNotNull(spouse.getBeneficiary());
-            assertEquals(5, spouse.getBeneficiary().getCode());
+            assertEquals(555L, spouse.getId());
+            assertEquals("Test Cónyuge", spouse.getFullName());
+            assertEquals("Calle Test", spouse.getAddress());
+            assertEquals(3009999999L, spouse.getPhone());
+            assertEquals("Bogotá", spouse.getExpeditionLocation());
         }
     }
 
@@ -85,7 +82,7 @@ class SpouseTest {
     class ToStringTests {
 
         @Test
-        @DisplayName("toString debe incluir información de Person y Spouse")
+        @DisplayName("toString debe incluir información de Person")
         void toStringShouldContainInfo() {
             Spouse spouse = new Spouse.Builder()
                     .id(333L)

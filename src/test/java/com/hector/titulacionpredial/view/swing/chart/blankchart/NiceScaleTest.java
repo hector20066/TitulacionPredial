@@ -1,10 +1,11 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("NiceScale Tests")
 class NiceScaleTest {
@@ -140,6 +141,50 @@ class NiceScaleTest {
         void sameMinMaxShouldNotCrash() {
             // Edge case - no debería fallar
             assertDoesNotThrow(() -> new NiceScale(50, 51));
+        }
+
+        @Test
+        @DisplayName("Rango con valores negativos debe funcionar")
+        void negativeRangeShouldWork() {
+            NiceScale scale = new NiceScale(-100, -10);
+            assertTrue(scale.getNiceMin() <= -100);
+            assertTrue(scale.getNiceMax() >= -10);
+            assertTrue(scale.getTickSpacing() > 0);
+        }
+
+        @Test
+        @DisplayName("Rango cruzando cero debe funcionar")
+        void crossingZeroRangeShouldWork() {
+            NiceScale scale = new NiceScale(-50, 50);
+            assertTrue(scale.getNiceMin() <= -50);
+            assertTrue(scale.getNiceMax() >= 50);
+            assertTrue(scale.getTickSpacing() > 0);
+        }
+    }
+
+    @Nested
+    @DisplayName("setMin y setMax Tests")
+    class SetMinSetMaxTests {
+
+        @Test
+        @DisplayName("setMin debe recalcular valores")
+        void setMinShouldRecalculate() {
+            NiceScale scale = new NiceScale(0, 100);
+            double originalNiceMin = scale.getNiceMin();
+
+            scale.setMin(-50);
+            assertEquals(-50, scale.getMin());
+            assertTrue(scale.getNiceMin() <= -50);
+        }
+
+        @Test
+        @DisplayName("setMax debe recalcular valores")
+        void setMaxShouldRecalculate() {
+            NiceScale scale = new NiceScale(0, 100);
+
+            scale.setMax(500);
+            assertEquals(500, scale.getMax());
+            assertTrue(scale.getNiceMax() >= 500);
         }
     }
 }

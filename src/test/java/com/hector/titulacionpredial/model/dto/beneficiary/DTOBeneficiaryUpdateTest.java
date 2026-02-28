@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiaryUpdate Tests")
 class DTOBeneficiaryUpdateTest {
@@ -39,6 +39,11 @@ class DTOBeneficiaryUpdateTest {
         assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
         assertEquals("Calle 80", dto.getAddress());
         assertEquals(MaritalStatus.SOLTERO, dto.getMaritalStatus());
+        assertEquals("Ninguna", dto.getAffectation());
+        assertEquals(3001234567L, dto.getPhone());
+        assertEquals("Cruce B", dto.getCrossing());
+        assertEquals("Pub 2", dto.getPublication());
+        assertEquals("El Poblado", dto.getNeighborhood());
     }
 
     @Test

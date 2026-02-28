@@ -1,13 +1,13 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiarySimpleDetails Tests")
 class DTOBeneficiarySimpleDetailsTest {
@@ -57,5 +57,37 @@ class DTOBeneficiarySimpleDetailsTest {
         assertEquals(Department.ATLANTICO, dto.getDepartment());
         assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
         assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+    }
+
+    @Test
+    @DisplayName("Builder debe heredar campos de DTOBeneficiary.Builder")
+    void builderShouldInheritAllBeneficiaryFields() {
+        DTOBeneficiarySimpleDetails dto = new DTOBeneficiarySimpleDetails.Builder()
+                .code(2)
+                .id(555L)
+                .fullName("Inherited Test")
+                .department(Department.BOLIVAR)
+                .municipality(Municipalities.CARTAGENA)
+                .maritalStatus(MaritalStatus.VIUDO)
+                .address("Calle Heredada 10")
+                .phone(3109876543L)
+                .neighborhood("Manga")
+                .crossing("Cruce Sur")
+                .publication("Pub-Heredada")
+                .affectation("Parcial")
+                .build();
+
+        assertEquals(2, dto.getCode());
+        assertEquals(555L, dto.getId());
+        assertEquals("Inherited Test", dto.getFullName());
+        assertEquals(Department.BOLIVAR, dto.getDepartment());
+        assertEquals(Municipalities.CARTAGENA, dto.getMunicipality());
+        assertEquals(MaritalStatus.VIUDO, dto.getMaritalStatus());
+        assertEquals("Calle Heredada 10", dto.getAddress());
+        assertEquals(3109876543L, dto.getPhone());
+        assertEquals("Manga", dto.getNeighborhood());
+        assertEquals("Cruce Sur", dto.getCrossing());
+        assertEquals("Pub-Heredada", dto.getPublication());
+        assertEquals("Parcial", dto.getAffectation());
     }
 }

@@ -1,13 +1,15 @@
 package com.hector.titulacionpredial.model.dto;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiary Tests")
 class DTOBeneficiaryTest {
@@ -88,6 +90,56 @@ class DTOBeneficiaryTest {
             DTOBeneficiary dto = new DTOBeneficiary();
             dto.setAffectation("Ninguna");
             assertEquals("Ninguna", dto.getAffectation());
+        }
+    }
+
+    @Nested
+    @DisplayName("Builder Tests")
+    class BuilderTests {
+
+        @Test
+        @DisplayName("Builder debe construir DTOBeneficiary con todos los campos")
+        void builderShouldBuildWithAllFields() {
+            DTOBeneficiary dto = new DTOBeneficiary.Builder<>()
+                    .department(Department.ATLANTICO)
+                    .municipality(Municipalities.BARRANQUILLA)
+                    .neighborhood("El Prado")
+                    .address("Calle 72 #50-10")
+                    .phone(3001234567L)
+                    .crossing("Cruce Norte")
+                    .publication("Pub-2025")
+                    .maritalStatus(MaritalStatus.CASADO)
+                    .affectation("Ninguna")
+                    .build();
+
+            assertEquals(Department.ATLANTICO, dto.getDepartment());
+            assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
+            assertEquals("El Prado", dto.getNeighborhood());
+            assertEquals("Calle 72 #50-10", dto.getAddress());
+            assertEquals(3001234567L, dto.getPhone());
+            assertEquals("Cruce Norte", dto.getCrossing());
+            assertEquals("Pub-2025", dto.getPublication());
+            assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+            assertEquals("Ninguna", dto.getAffectation());
+        }
+
+        @Test
+        @DisplayName("Builder con campos parciales debe dejar los demás en default")
+        void builderWithPartialFieldsShouldWork() {
+            DTOBeneficiary dto = new DTOBeneficiary.Builder<>()
+                    .department(Department.BOLIVAR)
+                    .maritalStatus(MaritalStatus.SOLTERO)
+                    .build();
+
+            assertEquals(Department.BOLIVAR, dto.getDepartment());
+            assertEquals(MaritalStatus.SOLTERO, dto.getMaritalStatus());
+            assertNull(dto.getMunicipality());
+            assertNull(dto.getNeighborhood());
+            assertNull(dto.getAddress());
+            assertEquals(0L, dto.getPhone());
+            assertNull(dto.getCrossing());
+            assertNull(dto.getPublication());
+            assertNull(dto.getAffectation());
         }
     }
 

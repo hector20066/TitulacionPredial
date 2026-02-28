@@ -1,12 +1,14 @@
 package com.hector.titulacionpredial.utils;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("NumericalValidationUtils Tests")
 class NumericalValidationUtilsTest {
@@ -51,6 +53,18 @@ class NumericalValidationUtilsTest {
         @DisplayName("Debe lanzar excepción para null")
         void shouldThrowForNull() {
             assertThrows(NullPointerException.class, () -> NumericalValidationUtils.isNumeric(null));
+        }
+    }
+
+    @Nested
+    @DisplayName("Utility Class Tests")
+    class UtilityClassTests {
+
+        @Test
+        @DisplayName("La clase debe tener un constructor por defecto")
+        void defaultConstructorShouldExist() {
+            assertDoesNotThrow(NumericalValidationUtils::new,
+                    "La clase debe tener constructor por defecto");
         }
     }
 }
