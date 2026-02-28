@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOUserProfileText;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -104,7 +105,7 @@ public class UserProfile extends javax.swing.JDialog {
         txa_affectation = new javax.swing.JTextArea();
         jlb_spouseData = new javax.swing.JLabel();
         jlb_spouseNameText = new javax.swing.JLabel();
-        txt_spouseName = new javax.swing.JLabel();
+        jlb_spouseName = new javax.swing.JLabel();
         jlb_spouseIdText = new javax.swing.JLabel();
         jlb_spouseId = new javax.swing.JLabel();
         jlb_spouseExpeditionText = new javax.swing.JLabel();
@@ -230,9 +231,9 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_spouseNameText.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spouseNameText.setText("Nombre:");
 
-        txt_spouseName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_spouseName.setForeground(new java.awt.Color(33, 37, 41));
-        txt_spouseName.setText("No aplica");
+        jlb_spouseName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_spouseName.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseName.setText("No aplica");
 
         jlb_spouseIdText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jlb_spouseIdText.setForeground(new java.awt.Color(33, 37, 41));
@@ -381,7 +382,7 @@ public class UserProfile extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jlb_spouseNameText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_spouseName)
+                                .addComponent(jlb_spouseName)
                                 .addGap(157, 157, 157)
                                 .addComponent(jlb_spouseIdText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -416,7 +417,7 @@ public class UserProfile extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_spouseNameText)
-                    .addComponent(txt_spouseName)
+                    .addComponent(jlb_spouseName)
                     .addComponent(jlb_spouseIdText)
                     .addComponent(jlb_spouseId))
                 .addGap(18, 18, 18)
@@ -546,6 +547,31 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void updateLanguage(DTOUserProfileText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_codeText.setText(texts.getCode());
+        jlb_idText.setText(texts.getId());
+        jlb_phoneText.setText(texts.getPhone());
+        jlb_addressText.setText(texts.getAddress());
+        jlb_departmentText.setText(texts.getDepartment());
+        jlb_municipalityText.setText(texts.getMunicipality());
+        jlb_neighborhoodText.setText(texts.getNeighborhood());
+        jlb_residenceData.setText(texts.getResidenceData());
+        jlb_expeditionText.setText(texts.getExpeditionLocation());
+        jlb_maritalStatusText.setText(texts.getMaritalStatus());
+        jlb_cadastralRefText.setText(texts.getCadastralRef());
+        jlb_crossingText.setText(texts.getCrossing());
+        jlb_affectationText.setText(texts.getAffectation());
+        jlb_publicationText.setText(texts.getPublication());
+        jlb_spouseData.setText(texts.getSpouseData());
+        jlb_spouseNameText.setText(texts.getSpouseName());
+        jlb_spouseIdText.setText(texts.getSpouseId());
+        jlb_spouseExpeditionText.setText(texts.getSpouseExpeditionLocation());
+        jlb_spouseAddressText.setText(texts.getSpouseAddress());
+        jlb_spousePhoneText.setText(texts.getSpousePhone());
+        btn_exit.setText(texts.getBtnExit());
+    }
+
     /**
      * Conecta el evento del botón de salida para cerrar el diálogo.
      */
@@ -596,12 +622,13 @@ public class UserProfile extends javax.swing.JDialog {
         txa_affectation.setText(beneficiary.getAffectation());
 
         if (beneficiary.getFullNameSpouse() == null) {
-            txt_spouseName.setText("No aplica");
+            jlb_spouseName.setText("No aplica");
             jlb_spouseId.setText("No aplica");
             jlb_spouseExpeditionSite.setText("No aplica");
             jlb_spouseAddress.setText("No aplica");
+            jlb_phoneSpouse.setText("No aplica");
         } else {
-            txt_spouseName.setText(beneficiary.getFullNameSpouse());
+            jlb_spouseName.setText(beneficiary.getFullNameSpouse());
             jlb_spouseId.setText(String.valueOf(beneficiary.getIdSpouse()));
             jlb_spouseExpeditionSite.setText(beneficiary.getExpeditionLocationSpouse());
             jlb_spouseAddress.setText(beneficiary.getAddressSpouse());
@@ -650,12 +677,12 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel jlb_spouseExpeditionText;
     private javax.swing.JLabel jlb_spouseId;
     private javax.swing.JLabel jlb_spouseIdText;
+    private javax.swing.JLabel jlb_spouseName;
     private javax.swing.JLabel jlb_spouseNameText;
     private javax.swing.JLabel jlb_spousePhoneText;
     private javax.swing.JLabel jlb_title;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTextArea txa_affectation;
     private javax.swing.JTextArea txa_crossing;
-    private javax.swing.JLabel txt_spouseName;
     // End of variables declaration//GEN-END:variables
 }

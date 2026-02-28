@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
@@ -230,6 +231,19 @@ public class ModifyResolution extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOModifyResolutionText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_code.setText(texts.getCode());
+        jlb_numResolution.setText(texts.getNumResolution());
+        jlb_fmi.setText(texts.getFmi());
+        jlb_act.setText(texts.getAct());
+        jlb_publicWriting.setText(texts.getPublicWriting());
+        jlb_notary.setText(texts.getNotary());
+        jlb_executory.setText(texts.getExecutory());
+        jlb_notification.setText(texts.getNotification());
+        btn_modify.setText(texts.getModifyBtn());
+    }
 
     /**
      * Asigna el listener para el botón de modificar.

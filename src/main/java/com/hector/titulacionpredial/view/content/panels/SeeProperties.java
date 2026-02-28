@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 
@@ -31,6 +32,20 @@ import java.time.LocalDate;
  */
 public class SeeProperties extends JPanel {
 
+    private String code = "Código Propiedad";
+    private String name = "Nombre";
+    private String id = "Cédula";
+    private String numResolution = "N. Resolución";
+    private String notification = "Notificación";
+    private String executory = "Ejecutoria";
+    private String fmi = "FMI";
+    private String act = "Acto";
+    private String publicWriting = "Esc. Publica";
+    private String notary = "Notaria";
+    private String cadastralRef = "Ref. Catastral";
+    private String address = "Dirección";
+    private String municipality = "Municipio";
+
     DefaultTableModel model = new DefaultTableModel();
 
     /**
@@ -39,8 +54,8 @@ public class SeeProperties extends JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {"Código Propiedad", "Nombre", "Cedula", "N. Resolución", "Notificación",
-                "Ejecutoria", "FMI", "Acto", "Esc. Publica", "Notaria", "Ref. Catastral", "Dirección", "Municipio",
+        String[] titles = {code, name, id, numResolution, notification,
+                executory, fmi, act, publicWriting, notary, cadastralRef, address, municipality,
                 "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS",
                 "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
 
@@ -233,6 +248,27 @@ public class SeeProperties extends JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOSeePropertiesText texts) {
+        jlb_title.setText(texts.getProperties());
+        code = texts.getCode();
+        name = texts.getName();
+        id = texts.getId();
+        numResolution = texts.getNumResolution();
+        notification = texts.getNotify();
+        executory = texts.getExecutory();
+        fmi = texts.getFmi();
+        act = texts.getAct();
+        publicWriting = texts.getPublicWriting();
+        notary = texts.getNotary();
+        cadastralRef = texts.getCadastralRef();
+        address = texts.getAddress();
+        municipality = texts.getMunicipality();
+        txt_search.setText(texts.getSearch());
+        btn_generate.setText(texts.getGenerateBtn());
+        btn_exportToExcel.setText(texts.getExportExcelBtn());
+        btn_delete.setText(texts.getDeleteBtn());
+    }
 
     /**
      * Asigna el listener para el botón de generar.

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
+
 /**
  * Panel «Acerca de» que muestra la información de la aplicación,
  * versión, créditos del equipo de desarrollo y enlace
@@ -139,6 +141,17 @@ public class About extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOAboutText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_subtitle1.setText(texts.getAppInfo());
+        jlb_version.setText(texts.getVersion());
+        jlb_release.setText(texts.getReleaseDate());
+        jlb_subtitle2.setText(texts.getCreators());
+        jlb_creator1.setText(texts.getCreator1());
+        jlb_creator2.setText(texts.getCreator2());
+        jlb_moreInfo.setText(texts.getMoreInfo());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

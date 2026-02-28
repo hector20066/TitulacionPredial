@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 
@@ -29,6 +30,15 @@ import java.time.LocalDate;
  */
 public class SeeResolutions extends javax.swing.JPanel {
 
+    private String code = "Código";
+    private String number = "Num. Resolución";
+    private String notification = "Notificación";
+    private String executory = "Ejecutora";
+    private String notary = "Notaria";
+    private String fmi = "FMI";
+    private String act = "Acto";
+    private String publicWriting = "Esc. Pública";
+
     DefaultTableModel model = new DefaultTableModel();
 
     /**
@@ -37,7 +47,7 @@ public class SeeResolutions extends javax.swing.JPanel {
     public SeeResolutions() {
         initComponents();
         
-        String[] titles = {"Código", "Num. Resolución", "Notificación", "Ejecutoria", "Notaria", "FMI", "Acto", "Esc. Publica"};
+        String[] titles = {code, number, notification, executory, notary, fmi, act, publicWriting};
         model.setColumnIdentifiers(titles);
         jtbl_resolutions.setModel(model);
         
@@ -168,6 +178,20 @@ public class SeeResolutions extends javax.swing.JPanel {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOSeeResolutionsText texts) {
+        jlb_title.setText(texts.getTitle());
+        code = texts.getCode();
+        number = texts.getNumber();
+        notification = texts.getNotification();
+        executory = texts.getExecutory();
+        notary = texts.getNotary();
+        fmi = texts.getFmi();
+        act = texts.getAct();
+        publicWriting = texts.getPublicWriting();
+        txt_search.setText(texts.getSearch());
+        btn_modify.setText(texts.getModifyBtn());
+    }
 
     /**
      * Asigna el listener para el botón de modificar.

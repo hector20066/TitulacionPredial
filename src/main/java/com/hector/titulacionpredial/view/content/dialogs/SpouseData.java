@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSpouseDataText;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -247,6 +248,18 @@ public class SpouseData extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOSpouseDataText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_name.setText(texts.getSpouseName());
+        jlb_lastName.setText(texts.getSpouseLastName());
+        jlb_id.setText(texts.getSpouseId());
+        jlb_expeditionLocation.setText(texts.getSpouseExpeditionLocation());
+        jlb_address.setText(texts.getSpouseAddress());
+        jlb_phone.setText(texts.getSpousePhone());
+        btn_save.setText(texts.getBtnSave());
+        btn_cancel.setText(texts.getBtnCancel());
+    }
 
     /**
      * Conecta los eventos de los botones guardar y cancelar.

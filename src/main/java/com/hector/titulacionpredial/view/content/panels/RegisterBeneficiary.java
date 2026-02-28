@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
@@ -508,6 +509,29 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTORegisterBeneficiaryText texts) {
+        jlb_title.setText(texts.getAddTitle());
+        jlb_beneficiaryInfo.setText(texts.getBeneficiaryInfo());
+        jlb_name.setText(texts.getName());
+        jlb_phone.setText(texts.getPhone());
+        jlb_lastName.setText(texts.getLastName());
+        jlb_id.setText(texts.getId());
+        jlb_maritalStatus.setText(texts.getMaritalStatus());
+        jlb_residenceData.setText(texts.getResidenceData());
+        jlb_department.setText(texts.getDepartment());
+        jlb_municipality.setText(texts.getMunicipality());
+        jlb_neighborhood.setText(texts.getNeighborhood());
+        jlb_address.setText(texts.getAddress());
+        jlb_cadastralRef.setText(texts.getCadastralRef());
+        jlb_crossing.setText(texts.getCrossing());
+        jlb_affectation.setText(texts.getAffectation());
+        jlb_expeditionLocation.setText(texts.getExpeditionLocation());
+        jlb_publication.setText(texts.getPublication());
+        jlb_code.setText(texts.getCode());
+        cbx_affectation.setText(texts.getAffected());
+        btn_register.setText(texts.getAddBtn());
+    }
 
     /**
      * Asigna el listener para el botón de registro.

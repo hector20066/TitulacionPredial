@@ -2,6 +2,7 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 
@@ -28,6 +29,14 @@ import java.awt.event.MouseListener;
  */
 public class ViewBeneficiaries extends javax.swing.JPanel {
 
+    private String code = "Código";
+    private String id = "Cédula";
+    private String name = "Nombre";
+    private String phone = "Teléfono";
+    private String cadastralRef = "Ref. Catastral";
+    private String municipality = "Municipio";
+    private String address = "Dirección";
+
     DefaultTableModel tableModel = new DefaultTableModel();
 
     /**
@@ -36,7 +45,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     public ViewBeneficiaries() {
         initComponents();
         
-        String[] titles = {"Código", "Cedula", "Nombre", "Teléfono", "Ref. Catastral", "Municipio", "Dirección"};
+        String[] titles = {code, id, name, phone, cadastralRef, municipality, address};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
         
@@ -208,6 +217,21 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
             .addComponent(jpl_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOViewBeneficiariesText texts) {
+        jlb_title.setText(texts.getTitle());
+        code = texts.getCode();
+        name = texts.getName();
+        phone = texts.getPhone();
+        cadastralRef = texts.getCadastralRef();
+        municipality = texts.getMunicipality();
+        address = texts.getAddress();
+        txt_search.setText(texts.getSearch());
+        btn_seeProfile.setText(texts.getFullInfoBtn());
+        btn_modify.setText(texts.getModifyBtn());
+        btn_delete.setText(texts.getDeleteBtn());
+        btn_exportToExcel.setText(texts.getExportExcelBtn());
+    }
 
     /**
      * Asigna el listener para ver detalles del beneficiario.

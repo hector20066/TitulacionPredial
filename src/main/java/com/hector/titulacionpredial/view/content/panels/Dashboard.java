@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
 import com.hector.titulacionpredial.view.swing.chart.Card;
 import com.hector.titulacionpredial.view.swing.chart.GaugeChart;
 import com.hector.titulacionpredial.view.swing.chart.LineChart;
@@ -23,6 +24,13 @@ import com.hector.titulacionpredial.view.swing.model.CardModel;
  */
 public class Dashboard extends javax.swing.JPanel {
 
+    private String beneficiaries = "Beneficiarios";
+    private String beneficiariesDesc = "Beneficiarios registrados";
+    private String properties = "Predios";
+    private String propertiesDesc = "Predios Registrados";
+    private String resolutions = "Resoluciones";
+    private String resolutionsDesc = "Resoluciones hechas";
+
     /**
      * Crea el panel del tablero e inicializa los componentes gráficos.
      */
@@ -42,21 +50,21 @@ public class Dashboard extends javax.swing.JPanel {
     public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
         card1.setData(new CardModel(
                 new FlatSVGIcon(getClass().getResource("/image/users-round.svg")),
-                "Beneficiarios",
+                beneficiaries,
                 String.valueOf(totalBeneficiaries),
-                "Beneficiarios registrados"));
+                beneficiariesDesc));
 
         card2.setData(new CardModel(
                 new FlatSVGIcon(getClass().getResource("/image/house.svg")),
-                "Predios",
+                properties,
                 String.valueOf(totalProperties),
-                "Predios Registrados"));
+                propertiesDesc));
 
         card3.setData(new CardModel(
                 new FlatSVGIcon(getClass().getResource("/image/file-text.svg")),
-                "Resoluciones",
+                resolutions,
                 String.valueOf(totalResolutions),
-                "Resoluciones hechas"));
+                resolutionsDesc));
     }
 
     /**
@@ -451,6 +459,27 @@ public class Dashboard extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTODashboardText texts) {
+        jlb_title.setText(texts.getNameCompany());
+        jlb_subtitle1.setText(texts.getTotalRegisters());
+        beneficiaries = texts.getBeneficiaries();
+        beneficiariesDesc = texts.getBeneficiariesDesc();
+        properties = texts.getProperties();
+        propertiesDesc = texts.getPropertiesDesc();
+        resolutions = texts.getResolutions();
+        resolutionsDesc = texts.getResolutionsDesc();
+        jlb_subtitle2.setText(texts.getPercentWorks());
+        jlb_beneficiaries.setText(texts.getBeneficiaries());
+        jlb_properties.setText(texts.getProperties());
+        jlb_withPropertyText.setText(texts.getWithProperty());
+        jlb_withoutPropertyText.setText(texts.getWithoutProperty());
+        jlb_withResolutionText.setText(texts.getWithResolution());
+        jlb_withoutResolutionText.setText(texts.getWithoutResolution());
+        jlb_totalBenenficiariesText.setText(texts.getTotal());
+        jlb_totalPropertiesText.setText(texts.getTotal());
+        jlb_subtitle3.setText(texts.getRegistersMonth());
+    }
 
     public Card getCard1() {
         return card1;

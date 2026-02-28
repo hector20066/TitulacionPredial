@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
 
@@ -677,6 +678,37 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTORegisterPropertyText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_propertyInfo.setText(texts.getPropertyInfo());
+        jlb_cadastralId.setText(texts.getCadastralId());
+        jlb_area.setText(texts.getArea());
+        jlb_beneficiaryCode.setText(texts.getBeneficiaryCode());
+        btn_selectBeneficiary.setText(texts.getSearchBeneficiary());
+        jlb_pointInfo.setText(texts.getPointsInfo());
+        jlb_point1.setText(texts.getPoint());
+        jlb_point2.setText(texts.getPoint());
+        jlb_point3.setText(texts.getPoint());
+        jlb_point4.setText(texts.getPoint());
+        jlb_north1.setText(texts.getNorthCord());
+        jlb_north2.setText(texts.getNorthCord());
+        jlb_north3.setText(texts.getNorthCord());
+        jlb_north4.setText(texts.getNorthCord());
+        jlb_east1.setText(texts.getEastCord());
+        jlb_east2.setText(texts.getEastCord());
+        jlb_east3.setText(texts.getEastCord());
+        jlb_east4.setText(texts.getEastCord());
+        jlb_distance1.setText(texts.getDistance());
+        jlb_distance2.setText(texts.getDistance());
+        jlb_distance3.setText(texts.getDistance());
+        jlb_distance4.setText(texts.getDistance());
+        jlb_hillside1.setText(texts.getHillside());
+        jlb_hillside2.setText(texts.getHillside());
+        jlb_hillside3.setText(texts.getHillside());
+        jlb_hillside4.setText(texts.getHillside());
+        btn_register.setText(texts.getRegisterBtn());
+    }
 
     /**
      * Asigna el listener para el botón de registrar.

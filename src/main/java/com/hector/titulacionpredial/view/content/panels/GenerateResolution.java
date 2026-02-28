@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
@@ -777,6 +778,49 @@ public class GenerateResolution extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateLanguage(DTOGenerateResolutionText texts) {
+        jlb_title.setText(texts.getGenerateLabel());
+        jlb_resume.setText(texts.getResumeTitle());
+        jlb_beneficiaryData.setText(texts.getBeneficiaryData());
+        jlb_names.setText(texts.getNames());
+        jlb_id.setText(texts.getId());
+        jlb_address.setText(texts.getAddress());
+        jlb_cadastralRef.setText(texts.getCadastralRef());
+        jlb_municipality.setText(texts.getMunicipality());
+        jlb_propertyInfo.setText(texts.getPropertyInfo());
+        jlb_point1.setText(texts.getPoint() + " 1");
+        jlb_point2.setText(texts.getPoint() + " 2");
+        jlb_point3.setText(texts.getPoint() + " 3");
+        jlb_point4.setText(texts.getPoint() + " 4");
+        jlb_north1.setText(texts.getNorthCord());
+        jlb_north2.setText(texts.getNorthCord());
+        jlb_north3.setText(texts.getNorthCord());
+        jlb_north4.setText(texts.getNorthCord());
+        jlb_east1.setText(texts.getEastCord());
+        jlb_east2.setText(texts.getEastCord());
+        jlb_east3.setText(texts.getEastCord());
+        jlb_east4.setText(texts.getEastCord());
+        jlb_distance1.setText(texts.getDistance());
+        jlb_distance2.setText(texts.getDistance());
+        jlb_distance3.setText(texts.getDistance());
+        jlb_distance4.setText(texts.getDistance());
+        jlb_hillside1.setText(texts.getHillside());
+        jlb_hillside2.setText(texts.getHillside());
+        jlb_hillside3.setText(texts.getHillside());
+        jlb_hillside4.setText(texts.getHillside());
+        jlb_propertyCode.setText(texts.getPropertyCode());
+        jlb_area.setText(texts.getArea());
+        jlb_enterInfo.setText(texts.getEnterInfo());
+        jlb_numResolution.setText(texts.getNumResolution());
+        jlb_notification.setText(texts.getNotification());
+        jlb_executory.setText(texts.getExecutory());
+        jlb_fmi.setText(texts.getFmi());
+        jlb_act.setText(texts.getAct());
+        jlb_publicWriting.setText(texts.getPublicWriting());
+        jlb_notary.setText(texts.getNotary());
+        btn_generate.setText(texts.getGenerateBtn());
+    }
 
     /**
      * Asigna el listener para el botón de generar resolución.
