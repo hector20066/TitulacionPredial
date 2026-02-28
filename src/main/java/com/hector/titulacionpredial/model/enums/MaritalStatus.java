@@ -20,30 +20,11 @@ package com.hector.titulacionpredial.model.enums;
  */
 public enum MaritalStatus {
 
-    /**
-     * Estado civil soltero.
-     */
-    SOLTERO("Soltero"),
-
-    /**
-     * Estado civil casado.
-     */
-    CASADO("Casado"),
-
-    /**
-     * Estado civil unión libre.
-     */
-    UNION_LIBRE("Union Libre"),
-
-    /**
-     * Estado civil divorciado.
-     */
-    DIVORCIADO("Divorciado"),
-
-    /**
-     * Estado civil viudo.
-     */
-    VIUDO("Viudo");
+    SINGLE("Soltero"),
+    MARRIED("Casado"),
+    FREE_UNION("Union Libre"),
+    DIVORCED("Divorciado"),
+    WIDOWER("Viudo");
 
     /**
      * Valor legible del estado civil.

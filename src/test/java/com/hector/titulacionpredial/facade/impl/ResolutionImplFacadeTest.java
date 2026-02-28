@@ -1,24 +1,33 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.lang.reflect.Field;
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("ResolutionImplFacade Tests")
@@ -118,5 +127,26 @@ class ResolutionImplFacadeTest {
 
         assertEquals(15, facade.countRecords());
         verify(daoResolution).countRecords();
+    }
+
+    @Test
+    @DisplayName("findByCode debe propagar DAOException")
+    void findByCodeShouldPropagateDAOException() throws DAOException {
+        when(daoResolution.findByCode(anyInt())).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByCode(1));
+    }
+
+    @Test
+    @DisplayName("findByAll debe propagar DAOException")
+    void findByAllShouldPropagateDAOException() throws DAOException {
+        when(daoResolution.findByAll()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.findByAll());
+    }
+
+    @Test
+    @DisplayName("countRecords debe propagar DAOException")
+    void countRecordsShouldPropagateDAOException() throws DAOException {
+        when(daoResolution.countRecords()).thenThrow(new DAOException("Error"));
+        assertThrows(DAOException.class, () -> facade.countRecords());
     }
 }

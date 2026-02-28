@@ -1,15 +1,22 @@
 package com.hector.titulacionpredial.exception.dao;
 
-import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
-import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
-import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
-import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
-import com.hector.titulacionpredial.exception.dao.persistence.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
+import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
+import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
+import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException;
+import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
+import com.hector.titulacionpredial.exception.dao.persistence.SpousePersistenceException;
 
 @DisplayName("DAO Exception Hierarchy Tests")
 class DAOExceptionHierarchyTest {
@@ -77,9 +84,16 @@ class DAOExceptionHierarchyTest {
             DataNotFoundException ex = new DataNotFoundException();
             assertInstanceOf(DAOException.class, ex);
         }
-    }
 
-    // ===================== PersistenceException =====================
+        @Test
+        @DisplayName("Constructor con mensaje y causa debe funcionar")
+        void messageAndCauseConstructorShouldWork() {
+            RuntimeException cause = new RuntimeException("causa not found");
+            DataNotFoundException ex = new DataNotFoundException("Error data", cause);
+            assertEquals("Error data", ex.getMessage());
+            assertEquals(cause, ex.getCause());
+        }
+    }
 
     @Nested
     @DisplayName("PersistenceException Tests")
@@ -294,10 +308,16 @@ class DAOExceptionHierarchyTest {
             ResolutionPersistenceException ex = new ResolutionPersistenceException("test");
             assertInstanceOf(PersistenceException.class, ex);
         }
-    }
 
-    @Nested
-    @DisplayName("SpousePersistenceException Tests")
+        @Test
+        @DisplayName("Constructor con mensaje y causa debe funcionar")
+        void messageAndCauseConstructorShouldWork() {
+            RuntimeException cause = new RuntimeException("causa resolución");
+            ResolutionPersistenceException ex = new ResolutionPersistenceException("Error", cause);
+            assertEquals("Error", ex.getMessage());
+            assertEquals(cause, ex.getCause());
+        }
+    }
     class SpousePersistenceTests {
 
         @Test
@@ -313,10 +333,16 @@ class DAOExceptionHierarchyTest {
             SpousePersistenceException ex = new SpousePersistenceException("test");
             assertInstanceOf(PersistenceException.class, ex);
         }
-    }
 
-    @Nested
-    @DisplayName("PointPersistenceException Tests")
+        @Test
+        @DisplayName("Constructor con mensaje y causa debe funcionar")
+        void messageAndCauseConstructorShouldWork() {
+            RuntimeException cause = new RuntimeException("causa cónyuge");
+            SpousePersistenceException ex = new SpousePersistenceException("Error", cause);
+            assertEquals("Error", ex.getMessage());
+            assertEquals(cause, ex.getCause());
+        }
+    }
     class PointPersistenceTests {
 
         @Test
@@ -331,6 +357,15 @@ class DAOExceptionHierarchyTest {
         void shouldExtendPersistenceException() {
             PointPersistenceException ex = new PointPersistenceException("test");
             assertInstanceOf(PersistenceException.class, ex);
+        }
+
+        @Test
+        @DisplayName("Constructor con mensaje y causa debe funcionar")
+        void messageAndCauseConstructorShouldWork() {
+            RuntimeException cause = new RuntimeException("causa punto");
+            PointPersistenceException ex = new PointPersistenceException("Error", cause);
+            assertEquals("Error", ex.getMessage());
+            assertEquals(cause, ex.getCause());
         }
     }
 }

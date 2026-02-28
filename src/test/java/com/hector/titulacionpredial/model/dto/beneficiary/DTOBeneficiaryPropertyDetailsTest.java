@@ -1,11 +1,15 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiaryPropertyDetails Tests")
 class DTOBeneficiaryPropertyDetailsTest {
@@ -47,5 +51,29 @@ class DTOBeneficiaryPropertyDetailsTest {
     void shouldExtendDTOBeneficiary() {
         DTOBeneficiaryPropertyDetails dto = new DTOBeneficiaryPropertyDetails();
         assertInstanceOf(DTOBeneficiary.class, dto);
+    }
+
+    @Test
+    @DisplayName("Debe heredar address y phone de DTOBasePerson")
+    void shouldInheritBasePersonFields() {
+        DTOBeneficiaryPropertyDetails dto = new DTOBeneficiaryPropertyDetails();
+        dto.setAddress("Calle Heredada 20");
+        dto.setPhone(3201234567L);
+
+        assertEquals("Calle Heredada 20", dto.getAddress());
+        assertEquals(3201234567L, dto.getPhone());
+    }
+
+    @Test
+    @DisplayName("Debe heredar department y maritalStatus de DTOBeneficiary")
+    void shouldInheritBeneficiaryFields() {
+        DTOBeneficiaryPropertyDetails dto = new DTOBeneficiaryPropertyDetails();
+        dto.setDepartment(Department.ATLANTICO);
+        dto.setMaritalStatus(MaritalStatus.CASADO);
+        dto.setNeighborhood("Centro");
+
+        assertEquals(Department.ATLANTICO, dto.getDepartment());
+        assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+        assertEquals("Centro", dto.getNeighborhood());
     }
 }
