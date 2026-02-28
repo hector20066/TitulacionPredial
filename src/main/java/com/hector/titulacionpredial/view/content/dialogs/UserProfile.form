@@ -242,7 +242,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jlb_spouseNameText" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_spouseName" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlb_spouseName" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                                           <Component id="jlb_spouseIdText" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -288,7 +288,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlb_spouseNameText" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_spouseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlb_spouseName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_spouseIdText" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_spouseId" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -627,7 +627,7 @@
                     <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="txt_spouseName">
+                <Component class="javax.swing.JLabel" name="jlb_spouseName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="0"/>
