@@ -11,7 +11,7 @@ package com.hector.titulacionpredial.model.dto;
  * </p>
  *
  * <p>
- * Contiene la informacion base de un predio, como la cedula catastral
+ * Contiene la información base de un predio, como la cedula catastral
  * y el area del predio.
  * </p>
  *

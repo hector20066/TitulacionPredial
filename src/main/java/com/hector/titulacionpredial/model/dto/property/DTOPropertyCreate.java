@@ -7,19 +7,19 @@ import com.hector.titulacionpredial.model.dto.DTOProperty;
  * para registrar predios en el sistema.
  *
  * <p>
- *     Se utiliza para transportar datos de la capa de presentacion
- *     a la capa de persistencia para guardar la informacion, evitando
- *     exponer directamente la entidad {@code Property}.
+ * Se utiliza para transportar datos de la capa de presentacion
+ * a la capa de persistencia para guardar la informacion, evitando
+ * exponer directamente la entidad {@code Property}.
  * </p>
  *
  * <p>
- *     Extiende {@link DTOProperty} obteniendo la informacion necesaria
- *     que se necesita para registrar un predio.
+ * Extiende {@link DTOProperty} obteniendo la informacion necesaria
+ * que se necesita para registrar un predio.
  * </p>
  *
  * <p>
- *     Este DTO no contiene logica de negocio ni reglas de validacion.
- *     Su unica responsabilidad es encapsular datos.
+ * Este DTO no contiene logica de negocio ni reglas de validacion.
+ * Su unica responsabilidad es encapsular datos.
  * </p>
  *
  * @author hectoracevedo
@@ -39,7 +39,7 @@ public class DTOPropertyCreate extends DTOProperty {
      * Constructor utilizado para inicializar las variables.
      *
      * @param cadastralId cedula catastral del predio
-     * @param area area del predio
+     * @param area        area del predio
      */
     public DTOPropertyCreate(String cadastralId, Double area) {
         super(cadastralId, area);

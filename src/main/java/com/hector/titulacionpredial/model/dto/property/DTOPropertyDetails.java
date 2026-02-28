@@ -13,16 +13,16 @@ import java.util.List;
  * de un predio dentro del sistema.
  *
  * <p>
- *     Esta clase se utiliza para transportar información desde la
- *     capa de persistencia o servicio hacia la capa de presentación,
- *     encapsulando datos del predio junto con información asociada
- *     como beneficiarios, puntos geográficos y datos de resolución.
+ * Esta clase se utiliza para transportar información desde la
+ * capa de persistencia o servicio hacia la capa de presentación,
+ * encapsulando datos del predio junto con información asociada
+ * como beneficiarios, puntos geográficos y datos de resolución.
  * </p>
  *
  * <p>
- *     Extiende {@link DTOProperty} agregando atributos adicionales
- *     necesarios para mostrar información detallada del predio,
- *     evitando exponer directamente la entidad de dominio.
+ * Extiende {@link DTOProperty} agregando atributos adicionales
+ * necesarios para mostrar información detallada del predio,
+ * evitando exponer directamente la entidad de dominio.
  * </p>
  *
  * <p><strong>Incluye:</strong></p>
@@ -167,8 +167,8 @@ public class DTOPropertyDetails extends DTOProperty {
      * controlada e incremental de instancias de {@code DTOPropertyDetails}.
      *
      * <p>
-     *     Permite crear objetos complejos de manera legible y
-     *     evitando constructores con múltiples parámetros.
+     * Permite crear objetos complejos de manera legible y
+     * evitando constructores con múltiples parámetros.
      * </p>
      *
      * <pre>

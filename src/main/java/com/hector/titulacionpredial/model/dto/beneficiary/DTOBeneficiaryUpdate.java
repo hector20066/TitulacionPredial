@@ -7,14 +7,14 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  * para actualizar los datos del beneficiario.
  *
  * <p>
- *     Se utiliza para transportar datos de la capa de presentación a
- *     la capa de persistencia para actualizar la información, evitando
- *     exponer directamente la entidad {@code Beneficiary}.
+ * Se utiliza para transportar datos de la capa de presentación a
+ * la capa de persistencia para actualizar la información, evitando
+ * exponer directamente la entidad {@code Beneficiary}.
  * </p>
  *
  * <p>
- *     Extiende {@link DTOBeneficiary} agregando informacion especifica
- *     relacionada con el código usado para identificar al beneficiario.
+ * Extiende {@link DTOBeneficiary} agregando informacion especifica
+ * relacionada con el código usado para identificar al beneficiario.
  * </p>
  *
  * <p>

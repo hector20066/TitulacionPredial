@@ -239,7 +239,7 @@ public class DTOBeneficiary extends DTOBasePerson {
          * Establecer cruce
          *
          * @param crossing cruce
-         * @return
+         * @return builder actual
          */
         public T crossing(String crossing) {
             this.crossing = crossing;
