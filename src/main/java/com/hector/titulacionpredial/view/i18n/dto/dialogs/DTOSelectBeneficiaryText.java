@@ -6,6 +6,7 @@ package com.hector.titulacionpredial.view.i18n.dto.dialogs;
  */
 public class DTOSelectBeneficiaryText {
 
+    private final String title;
     private final String beneficiaryCode;
     private final String beneficiaryName;
     private final String beneficiaryId;
@@ -13,11 +14,16 @@ public class DTOSelectBeneficiaryText {
     private final String search;
 
     public DTOSelectBeneficiaryText(Builder builder) {
+        this.title = builder.title;
         this.beneficiaryCode = builder.beneficiaryCode;
         this.beneficiaryName = builder.beneficiaryName;
         this.beneficiaryId = builder.beneficiaryId;
         this.beneficiaryCadastralRef = builder.beneficiaryCadastralRef;
         this.search = builder.search;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getBeneficiaryCode() {
@@ -42,11 +48,17 @@ public class DTOSelectBeneficiaryText {
 
     public static class Builder {
 
+        private String title;
         private String beneficiaryCode;
         private String beneficiaryName;
         private String beneficiaryId;
         private String beneficiaryCadastralRef;
         private String search;
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
 
         public Builder beneficiaryCode(String beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
