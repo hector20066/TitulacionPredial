@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.dto;
 
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Data Transfer Object (DTO) que representa la información
@@ -181,7 +183,7 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer departamento
+         * Establece el departamento.
          *
          * @param department departamento asociado al beneficiario
          * @return builder actual
@@ -192,7 +194,7 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer Municipio
+         * Establece el municipio.
          *
          * @param municipalities municipio asociado al beneficiario
          * @return builder actual
@@ -203,7 +205,7 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer barrio
+         * Establece el barrio.
          *
          * @param neighborhood barrio de residencia
          * @return builder actual
@@ -214,9 +216,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer direccion
+         * Establece la dirección.
          *
-         * @param address direccion del beneficiario
+         * @param address dirección del beneficiario
          * @return builder actual
          */
         public T address(String address) {
@@ -225,9 +227,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer telefono
+         * Establece el teléfono.
          *
-         * @param phone telefono del beneficiario
+         * @param phone teléfono del beneficiario
          * @return builder actual
          */
         public T phone(long phone) {
@@ -236,9 +238,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer cruce
+         * Establece el cruce.
          *
-         * @param crossing cruce
+         * @param crossing cruce del beneficiario
          * @return builder actual
          */
         public T crossing(String crossing) {
@@ -247,9 +249,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer publicacion
+         * Establece la publicación.
          *
-         * @param publication publicacion
+         * @param publication publicación oficial
          * @return builder actual
          */
         public T publication(String publication) {
@@ -258,7 +260,7 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer el estado civil
+         * Establece el estado civil.
          *
          * @param maritalStatus estado civil del beneficiario
          * @return builder actual
@@ -269,9 +271,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establecer afectacion
+         * Establece la afectación.
          *
-         * @param affectation afectacion del beneficiario
+         * @param affectation afectación del beneficiario
          * @return builder actual
          */
         public T affectation(String affectation) {

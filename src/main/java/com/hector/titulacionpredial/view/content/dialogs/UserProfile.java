@@ -1,14 +1,24 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import java.awt.Color;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
+import java.awt.*;
+
 /**
+ * Diálogo modal para visualizar el perfil detallado
+ * de un beneficiario.
  *
- * @author hectoracevedo
+ * <p>
+ * Muestra la información personal del beneficiario en un
+ * diálogo animado con transición de entrada y salida
+ * utilizando la librería TimingFramework.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class UserProfile extends javax.swing.JDialog {
 

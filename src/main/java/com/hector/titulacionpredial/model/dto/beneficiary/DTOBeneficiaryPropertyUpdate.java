@@ -1,17 +1,17 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion para actualizar
+ * Data Transfer Object (DTO) que contiene la información para actualizar
  * los datos del beneficiario con respecto a un predio.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentacion a
- * la capa de persistencia para actualizar la informacion, evitando
+ * Se utiliza para transportar datos de la capa de presentación a
+ * la capa de persistencia para actualizar la información, evitando
  * exponer directamente la entidad {@code Beneficiary}.
  * </p>
  *
  * <p>
- * Contiene el codigo de la propiedad la cual se ha asignado al
+ * Contiene el código de la propiedad la cual se ha asignado al
  * beneficiario.
  * </p>
  *
@@ -20,7 +20,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryPropertyUpdate {
@@ -39,8 +39,8 @@ public class DTOBeneficiaryPropertyUpdate {
     /**
      * Constructor utilizado para inicializar las variables.
      *
-     * @param beneficiaryCode codigo del beneficiario
-     * @param propertyCode    codigo de la propiedad
+     * @param beneficiaryCode código del beneficiario
+     * @param propertyCode    código de la propiedad
      */
     public DTOBeneficiaryPropertyUpdate(int beneficiaryCode, int propertyCode) {
         this.beneficiaryCode = beneficiaryCode;

@@ -5,8 +5,15 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 /**
+ * Panel con esquinas redondeadas y borde opcional.
  *
- * @author hectoracevedo
+ * <p>
+ * Dibuja un fondo con {@code RoundRectangle2D} y permite
+ * configurar el radio de las esquinas y el color del borde.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class RoundedPanel extends JPanel {
 

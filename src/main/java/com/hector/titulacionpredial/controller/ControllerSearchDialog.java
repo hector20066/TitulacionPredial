@@ -11,14 +11,36 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Controlador del diálogo de búsqueda de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite buscar beneficiarios por cédula, código o nombre
+ * de forma asíncrona usando {@link SwingWorker}. Se utiliza
+ * en el diálogo {@link SelectBeneficiary} para seleccionar
+ * un beneficiario existente.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see SelectBeneficiary
+ * @see BeneficiaryFacade
+ * @since 1.0
  */
 public class ControllerSearchDialog {
 
+    /**
+     * Diálogo de selección de beneficiarios.
+     */
     private final SelectBeneficiary selectBeneficiary;
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
 
+    /**
+     * Crea el controlador asociado al diálogo indicado.
+     *
+     * @param selectBeneficiary diálogo de selección
+     */
     public ControllerSearchDialog(SelectBeneficiary selectBeneficiary) {
         this.selectBeneficiary = selectBeneficiary;
         this.daoBeneficiary = new BeneficiaryImplFacade();

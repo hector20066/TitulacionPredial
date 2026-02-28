@@ -7,7 +7,8 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -18,17 +19,40 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Implementación del DAO para la gestión de predios
+ * en la base de datos PostgreSQL.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza el patrón Singleton para garantizar una única instancia.
+ * Maneja relaciones complejas entre predios, beneficiarios y
+ * puntos geográficos mediante consultas con JOINs.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see DAOProperty
+ * @see DataBasePool
+ * @see SQLRepository
+ * @since 1.0
  */
 public class DAOPropertyImpl implements DAOProperty {
 
+    /**
+     * Instancia única del DAO (patrón Singleton).
+     */
     private static DAOPropertyImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOPropertyImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia única del DAO.
+     *
+     * @return instancia Singleton de {@code DAOPropertyImpl}
+     */
     public static DAOPropertyImpl getInstance() {
         if (instance == null) {
             instance = new DAOPropertyImpl();

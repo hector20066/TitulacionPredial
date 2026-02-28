@@ -3,7 +3,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion
+ * Data Transfer Object (DTO) que contiene la información
  * para actualizar los datos del beneficiario.
  *
  * <p>
@@ -13,7 +13,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando informacion especifica
+ * Extiende {@link DTOBeneficiary} agregando información específica
  * relacionada con el código usado para identificar al beneficiario.
  * </p>
  *
@@ -26,7 +26,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryUpdate.Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryUpdate extends DTOBeneficiary {
@@ -72,6 +72,12 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
 
         private int code;
 
+        /**
+         * Establece el código del beneficiario a actualizar.
+         *
+         * @param code código del beneficiario
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;

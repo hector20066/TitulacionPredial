@@ -1,8 +1,11 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
 /**
+ * Interfaz funcional para manejar la selección de opciones
+ * en el menú lateral de la aplicación.
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
+ * @since 1.0
  */
 @FunctionalInterface
 public interface EventMenuSelected {

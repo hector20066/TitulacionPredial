@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.*;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
@@ -21,18 +22,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Controlador del panel de registro de predios.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la validación del formulario, el registro del predio
+ * con sus cuatro puntos geográficos y la asociación con
+ * beneficiarios seleccionados. Utiliza un {@link CardLayout}
+ * para navegar entre los paneles de coordenadas.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see RegisterProperty
+ * @see PropertyFacade
+ * @see PointFacade
+ * @since 1.0
  */
 public class ControllerRegisterProperty {
 
+    /**
+     * Vista del formulario de registro de predios.
+     */
     private final RegisterProperty registerProperty;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de predios.
+     */
     private final PropertyFacade daoProperty;
+    /**
+     * Fachada de acceso a datos de puntos geográficos.
+     */
     private final PointFacade daoPoint;
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
 
+    /**
+     * Crea el controlador y conecta los eventos del formulario.
+     *
+     * @param registerProperty vista del formulario
+     * @param subject          sujeto para notificación de cambios
+     */
     public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject) {
         this.registerProperty = registerProperty;
         this.subject = subject;

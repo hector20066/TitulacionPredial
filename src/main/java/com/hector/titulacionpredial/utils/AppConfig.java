@@ -4,11 +4,24 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
+ * Clase utilitaria para la carga y acceso a las propiedades
+ * de configuración de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Lee el archivo {@code config/application.properties} desde
+ * el classpath al inicializar la clase. Proporciona acceso
+ * estático a las propiedades de configuración como la URL
+ * de la base de datos, credenciales y driver JDBC.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class AppConfig {
 
+    /**
+     * Propiedades de configuración cargadas desde el archivo.
+     */
     private static final Properties properties = new Properties();
 
     static {
@@ -23,6 +36,12 @@ public class AppConfig {
         }
     }
 
+    /**
+     * Obtiene el valor de una propiedad de configuración.
+     *
+     * @param key clave de la propiedad
+     * @return valor asociado a la clave, o {@code null} si no existe
+     */
     public static String get(String key) {
         return properties.getProperty(key);
     }

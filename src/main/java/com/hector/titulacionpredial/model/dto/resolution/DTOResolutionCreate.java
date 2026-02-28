@@ -3,30 +3,30 @@ package com.hector.titulacionpredial.model.dto.resolution;
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion obtenida
- * de una Resolucion.
+ * Data Transfer Object (DTO) que contiene la información obtenida
+ * de una resolución.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentacion
- * a la capa de persistencia para guardar la informacion, evitando
+ * Se utiliza para transportar datos de la capa de presentación
+ * a la capa de persistencia para guardar la información, evitando
  * exponer directamente la entidad {@code Resolution}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOResolution} agregando informacion especifica
- * relacionada con el codigo de la propiedad y el nombre del beneficiario.
+ * Extiende {@link DTOResolution} agregando información específica
+ * relacionada con el código de la propiedad y el nombre del beneficiario.
  * </p>
  *
  * <p>
- * Este DTO no contiene logica de negocio ni reglas de validacion.
- * Su unica responsabilidad es encapsular datos.
+ * Este DTO no contiene lógica de negocio ni reglas de validación.
+ * Su única responsabilidad es encapsular datos.
  * </p>
  *
  * <p>
- * Soporta construccion fluida mediante el patron {@link DTOResolutionCreate.Builder}.
+ * Soporta construcción fluida mediante el patrón {@link DTOResolutionCreate.Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOResolutionCreate extends DTOResolution {
@@ -66,7 +66,7 @@ public class DTOResolutionCreate extends DTOResolution {
     }
 
     /**
-     * Builder para la construccion fluida de instancias
+     * Builder para la construcción fluida de instancias
      * de {@link DTOResolutionCreate}.
      *
      * <p>
@@ -79,11 +79,23 @@ public class DTOResolutionCreate extends DTOResolution {
         private int propertyCode;
         private String beneficiaryName;
 
+        /**
+         * Establece el código del predio asociado.
+         *
+         * @param propertyCode código del predio
+         * @return builder actual
+         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
+        /**
+         * Establece el nombre del beneficiario.
+         *
+         * @param beneficiaryName nombre completo del beneficiario
+         * @return builder actual
+         */
         public Builder beneficiaryName(String beneficiaryName) {
             this.beneficiaryName = beneficiaryName;
             return this;

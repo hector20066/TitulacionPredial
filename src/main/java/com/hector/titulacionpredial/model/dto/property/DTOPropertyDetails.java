@@ -37,7 +37,7 @@ import java.util.List;
  *     Es una clase mutable y soporta construcción mediante el patrón Builder.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOPropertyDetails extends DTOProperty {
@@ -195,61 +195,133 @@ public class DTOPropertyDetails extends DTOProperty {
         private String publicWriting;
         private String notary;
 
+        /**
+         * Establece el código del predio.
+         *
+         * @param propertyCode código del predio
+         * @return builder actual
+         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
+        /**
+         * Establece el identificador catastral.
+         *
+         * @param cadastralId identificador catastral
+         * @return builder actual
+         */
         public Builder cadastralId(String cadastralId) {
             this.cadastralId = cadastralId;
             return this;
         }
 
+        /**
+         * Establece el área del predio.
+         *
+         * @param area área en metros cuadrados
+         * @return builder actual
+         */
         public Builder area(Double area) {
             this.area = area;
             return this;
         }
 
+        /**
+         * Establece la lista de beneficiarios del predio.
+         *
+         * @param beneficiaries lista de beneficiarios
+         * @return builder actual
+         */
         public Builder beneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
             this.beneficiaries = beneficiaries;
             return this;
         }
 
+        /**
+         * Establece la lista de puntos geográficos.
+         *
+         * @param points lista de coordenadas
+         * @return builder actual
+         */
         public Builder points(List<DTOPoint> points) {
             this.points = points;
             return this;
         }
 
+        /**
+         * Establece el número de resolución.
+         *
+         * @param numResolution número de resolución
+         * @return builder actual
+         */
         public Builder numResolution(long numResolution) {
             this.numResolution = numResolution;
             return this;
         }
 
+        /**
+         * Establece la fecha de notificación.
+         *
+         * @param notification fecha de notificación
+         * @return builder actual
+         */
         public Builder notification(LocalDate notification) {
             this.notification = notification;
             return this;
         }
 
+        /**
+         * Establece la fecha de ejecutoria.
+         *
+         * @param executory fecha de ejecutoria
+         * @return builder actual
+         */
         public Builder executory(LocalDate executory) {
             this.executory = executory;
             return this;
         }
 
+        /**
+         * Establece el Folio de Matrícula Inmobiliaria.
+         *
+         * @param fmi número FMI
+         * @return builder actual
+         */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
+        /**
+         * Establece el número de acta.
+         *
+         * @param act número de acta
+         * @return builder actual
+         */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
+        /**
+         * Establece el número de escritura pública.
+         *
+         * @param publicWriting número de escritura pública
+         * @return builder actual
+         */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
+        /**
+         * Establece la notaría.
+         *
+         * @param notary nombre de la notaría
+         * @return builder actual
+         */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;

@@ -3,18 +3,18 @@ package com.hector.titulacionpredial.model.dto.resolution;
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion
- * para actualizar los datos del beneficiario.
+ * Data Transfer Object (DTO) que contiene la información
+ * para actualizar los datos de una resolución.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentacion a
- * la capa de persistencia para actualizar la informacion, evitando
+ * Se utiliza para transportar datos de la capa de presentación a
+ * la capa de persistencia para actualizar la información, evitando
  * exponer directamente la entidad {@code Resolution}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOResolution} agregando informacion especifica
- * relacionada con el codigo de la resolucion.
+ * Extiende {@link DTOResolution} agregando información específica
+ * relacionada con el código de la resolución.
  * </p>
  *
  * <p>
@@ -26,7 +26,7 @@ import com.hector.titulacionpredial.model.dto.DTOResolution;
  * Soporta construcción fluida mediante el patrón {@link DTOResolution.Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOResolutionUpdate extends DTOResolution {
@@ -60,18 +60,24 @@ public class DTOResolutionUpdate extends DTOResolution {
     }
 
     /**
-     * Builder para la construccion fluida de instancias
-     * de {@link DTOResolutionUpdate}
+     * Builder para la construcción fluida de instancias
+     * de {@link DTOResolutionUpdate}.
      *
      * <p>
      * Permite configurar los atributos antes de invocar
-     * {@link #build()}
+     * {@link #build()}.
      * </p>
      */
     public static class Builder extends DTOResolution.Builder<Builder> {
 
         private int code;
 
+        /**
+         * Establece el código de la resolución a actualizar.
+         *
+         * @param code código de la resolución
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;

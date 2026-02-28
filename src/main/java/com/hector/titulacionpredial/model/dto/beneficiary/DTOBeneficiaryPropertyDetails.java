@@ -4,26 +4,26 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion obtenida
+ * Data Transfer Object (DTO) que contiene la información obtenida
  * de un beneficiario.
  *
  * <p>
  * Se utiliza para transportar datos de la capa de persistencia
- * a la capa de presentacion para mostrar la informacion, evitando
- * exponer directamente la entidad {@code Beneficiary}
+ * a la capa de presentación para mostrar la información, evitando
+ * exponer directamente la entidad {@code Beneficiary}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando informacion especial
- * relacionada con el nombre completo y la cedula del beneficiario.
+ * Extiende {@link DTOBeneficiary} agregando información especial
+ * relacionada con el nombre completo y la cédula del beneficiario.
  * </p>
  *
  * <p>
- * Este DTO no contiene logica de negocio ni reglas de validacion.
- * Su unica responsabilidad es encapsular datos.
+ * Este DTO no contiene lógica de negocio ni reglas de validación.
+ * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
@@ -40,12 +40,12 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
     }
 
     /**
-     * Constructor usado para inicializar los parametros de la clase.
+     * Constructor usado para inicializar los parámetros de la clase.
      *
      * @param fullName     nombre completo del beneficiario
-     * @param code         codigo unico del beneficiario
+     * @param code         código único del beneficiario
      * @param municipality municipio de residencia del beneficiario
-     * @param address      direccion del beneficiario
+     * @param address      dirección del beneficiario
      */
     public DTOBeneficiaryPropertyDetails(String fullName, long code, Municipalities municipality, String address) {
         super();

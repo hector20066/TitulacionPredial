@@ -3,19 +3,19 @@ package com.hector.titulacionpredial.model.dto;
 import java.time.LocalDate;
 
 /**
- * Data Transfer Object (DTO) que representa la informacion
- * de una resolucion para operaciones de entrada o salida
+ * Data Transfer Object (DTO) que representa la información
+ * de una resolución para operaciones de entrada o salida
  * del sistema.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentacion y
+ * Se utiliza para transportar datos entre la capa de presentación y
  * la capa de persistencia, evitando exponer directamente la entidad
  * {@code Resolution}.
  * </p>
  *
  * <p>
- * Contiene la informacion necesaria para una resolución, como el numero
- * de la resolución y la informacion que esta contendrá.
+ * Contiene la información necesaria para una resolución, como el número
+ * de la resolución y la información que esta contendrá.
  * </p>
  *
  * <p>
@@ -23,43 +23,43 @@ import java.time.LocalDate;
  * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOResolution {
 
     /**
-     * Numero unico de la resolucion
+     * Número único de la resolución.
      */
     protected long resolutionNumber;
 
     /**
-     * Fecha de la ejecutoria
+     * Fecha de la ejecutoria.
      */
     protected LocalDate executory;
 
     /**
-     * Descripcion del proceso
+     * Descripción del proceso.
      */
     protected String act;
 
     /**
-     * Escritura publica
+     * Escritura pública.
      */
     protected String publicWriting;
 
     /**
-     * Fecha en la que se genera la resolucion.
+     * Fecha en la que se genera la resolución.
      */
     protected LocalDate notification;
 
     /**
-     * Folio de Matricula Inmobiliaria
+     * Folio de Matrícula Inmobiliaria.
      */
     protected String fmi;
 
     /**
-     * Notaria donde se ejecuta la resolucion
+     * Notaría donde se ejecuta la resolución.
      */
     protected String notary;
 
@@ -174,9 +174,9 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer el número de la resolución.
+         * Establece el número de la resolución.
          *
-         * @param resolutionNumber numero de la resolución
+         * @param resolutionNumber número de la resolución
          * @return builder actual
          */
         public T resolutionNumber(long resolutionNumber) {
@@ -185,7 +185,7 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer la ejecutoria
+         * Establece la ejecutoria.
          *
          * @param executory fecha de la ejecutoria
          * @return builder actual
@@ -196,7 +196,7 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer el acto
+         * Establece el acto.
          *
          * @param act acto de la ejecutoria
          * @return builder actual
@@ -207,9 +207,9 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer la escritura pública
+         * Establece la escritura pública.
          *
-         * @param publicWriting escritura publica
+         * @param publicWriting escritura pública
          * @return builder actual
          */
         public T publicWriting(String publicWriting) {
@@ -218,9 +218,9 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer fecha de notificacion
+         * Establece la fecha de notificación.
          *
-         * @param notification fecha de notificacion
+         * @param notification fecha de notificación
          * @return builder actual
          */
         public T notification(LocalDate notification) {
@@ -229,7 +229,7 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer Folio de Matrícula Inmobiliaria
+         * Establece el Folio de Matrícula Inmobiliaria.
          *
          * @param fmi Folio de Matrícula Inmobiliaria
          * @return builder actual
@@ -240,9 +240,9 @@ public class DTOResolution {
         }
 
         /**
-         * Establecer notaria
+         * Establece la notaría.
          *
-         * @param notary notaria
+         * @param notary notaría
          * @return builder actual
          */
         public T notary(String notary) {

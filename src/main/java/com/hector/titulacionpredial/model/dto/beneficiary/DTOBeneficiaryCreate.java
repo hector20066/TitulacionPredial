@@ -3,18 +3,18 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion
+ * Data Transfer Object (DTO) que contiene la información
  * para registrar un beneficiario en el sistema.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentacion
- * a la capa de persistencia para guardar la informacion, evitando
+ * Se utiliza para transportar datos de la capa de presentación
+ * a la capa de persistencia para guardar la información, evitando
  * exponer directamente la entidad {@code Beneficiary}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando informacion especifica
- * relacionada con el lugar de expedicion, la referencia catastral
+ * Extiende {@link DTOBeneficiary} agregando información específica
+ * relacionada con el lugar de expedición, la referencia catastral
  * y datos personales.
  * </p>
  *
@@ -27,28 +27,28 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryCreate.Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     /**
-     * Cedula unica del beneficiario
+     * Cédula única del beneficiario.
      */
     protected long id;
 
     /**
-     * Nombre completo del beneficiario
+     * Nombre completo del beneficiario.
      */
     protected String fullName;
 
     /**
-     * Lugar de expedicion
+     * Lugar de expedición.
      */
     protected String expeditionLocation;
 
     /**
-     * Referencia Catastral
+     * Referencia catastral.
      */
     protected String cadastralReference;
 
@@ -106,12 +106,12 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     }
 
     /**
-     * Builder generico para la construccion fluida de instancias
-     * de {@link DTOBeneficiaryCreate}
+     * Builder genérico para la construcción fluida de instancias
+     * de {@link DTOBeneficiaryCreate}.
      *
      * <p>
      * Permite configurar los atributos antes de invocar
-     * {@link #build()}
+     * {@link #build()}.
      * </p>
      *
      * @param <T> tipo concreto del builder
@@ -124,9 +124,9 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         private String cadastralReference;
 
         /**
-         * Establecer id
+         * Establece el id.
          *
-         * @param id id del beneficiario
+         * @param id cédula del beneficiario
          * @return builder actual
          */
         public T id(long id) {
@@ -135,7 +135,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establecer nombre completo
+         * Establece el nombre completo.
          *
          * @param fullName nombre completo del beneficiario
          * @return builder actual
@@ -146,9 +146,9 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establecer lugar de expedicion
+         * Establece el lugar de expedición.
          *
-         * @param expeditionLocation lugar de expedicion
+         * @param expeditionLocation lugar de expedición
          * @return builder actual
          */
         public T expeditionLocation(String expeditionLocation) {
@@ -157,7 +157,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establecer referencia catastral
+         * Establece la referencia catastral.
          *
          * @param cadastralReference referencia catastral
          * @return builder actual
@@ -170,8 +170,8 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     }
 
     /**
-     * Builder con implementacion concreta del metodo {@link #build()}
-     * para la creacion de la instancia de {@link DTOBeneficiaryCreate}
+     * Builder con implementación concreta del método {@link #build()}
+     * para la creación de la instancia de {@link DTOBeneficiaryCreate}.
      */
     public static class Builder extends AbstractBuilder<Builder> {
 

@@ -4,8 +4,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Renderizador de sombras mediante desenfoque gaussiano
+ * sobre el canal alfa de una imagen.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera imágenes de sombra configurables en tamaño,
+ * opacidad y color. Utilizado por {@link ShadowBorder}
+ * para crear efectos de sombra en los paneles.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see ShadowBorder
  */
 public class ShadowRenderer {
 

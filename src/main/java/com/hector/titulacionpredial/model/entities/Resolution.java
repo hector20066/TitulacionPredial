@@ -26,7 +26,7 @@ import java.time.LocalDate;
  *     <li>Puede asociarse a un {@link Beneficiary} específico.</li>
  *     <li>Contiene fechas clave como notificación y ejecutoria.</li>
  *     <li>Forma parte del modelo persistente del sistema.</li>
- *     <li>Soporta construccion mediante el patron {@link Builder}.</li>
+ *     <li>Soporta construcción mediante el patrón {@link Builder}.</li>
  * </ul>
  *
  * <p>
@@ -51,17 +51,17 @@ public class Resolution {
     private Beneficiary beneficiary;
 
     /**
-     * Constructor vacio requerido para frameworks de persistencia
-     * o mecanismos de reflexion.
+     * Constructor vacío requerido para frameworks de persistencia
+     * o mecanismos de reflexión.
      */
     public Resolution() {
 
     }
 
     /**
-     * Constructor utilizado por el patron Builder.
+     * Constructor utilizado por el patrón Builder.
      *
-     * @param builder instancia del constructor paso a paso.
+     * @param builder instancia del constructor paso a paso
      */
     public Resolution(Builder builder) {
         this.code = builder.code;
@@ -157,9 +157,9 @@ public class Resolution {
     }
 
     /**
-     * Representacion textual de la entidad.
+     * Representación textual de la entidad.
      *
-     * @return descripcion formateada de los atributos principales.
+     * @return descripción formateada de los atributos principales
      */
     @Override
     public String toString() {
@@ -201,60 +201,120 @@ public class Resolution {
         private Property property;
         private Beneficiary beneficiary;
 
+        /**
+         * Establece el código de la resolución.
+         *
+         * @param code código único
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece el número de resolución.
+         *
+         * @param resolutionNumber número de la resolución
+         * @return builder actual
+         */
         public Builder resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
             return this;
         }
 
+        /**
+         * Establece la fecha de notificación.
+         *
+         * @param notification fecha de notificación
+         * @return builder actual
+         */
         public Builder notification(LocalDate notification) {
             this.notification = notification;
             return this;
         }
 
+        /**
+         * Establece la fecha de ejecutoria.
+         *
+         * @param executory fecha de ejecutoria
+         * @return builder actual
+         */
         public Builder executory(LocalDate executory) {
             this.executory = executory;
             return this;
         }
 
+        /**
+         * Establece el folio de matrícula inmobiliaria.
+         *
+         * @param fmi folio de matrícula inmobiliaria
+         * @return builder actual
+         */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
+        /**
+         * Establece el acta.
+         *
+         * @param act descripción del acta
+         * @return builder actual
+         */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
+        /**
+         * Establece la escritura pública.
+         *
+         * @param publicWriting escritura pública
+         * @return builder actual
+         */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
+        /**
+         * Establece la notaría.
+         *
+         * @param notary nombre de la notaría
+         * @return builder actual
+         */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;
         }
 
+        /**
+         * Establece el predio asociado.
+         *
+         * @param property predio vinculado
+         * @return builder actual
+         */
         public Builder property(Property property) {
             this.property = property;
             return this;
         }
 
+        /**
+         * Establece el beneficiario asociado.
+         *
+         * @param beneficiary beneficiario vinculado
+         * @return builder actual
+         */
         public Builder beneficiary(Beneficiary beneficiary) {
             this.beneficiary = beneficiary;
             return this;
         }
 
         /**
-         * Construye una nueva instancia de {@link Resolution}
+         * Construye una nueva instancia de {@link Resolution}.
          *
-         * @return nuevo predio construido.
+         * @return nueva resolución construida
          */
         public Resolution build() {
             return new Resolution(this);

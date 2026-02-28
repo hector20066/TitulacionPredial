@@ -2,18 +2,18 @@ package com.hector.titulacionpredial.model.dto;
 
 /**
  * Data Transfer Object (DTO) que representa la información
- * de un conjugue para operaciones de entrada o salida
+ * de un cónyuge para operaciones de entrada o salida
  * del sistema.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentacion
+ * Se utiliza para transportar datos entre la capa de presentación
  * y la capa de persistencia, evitando exponer directamente la entidad
  * {@code Spouse}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBasePerson} agregando informacion especifica
- * relacionada con la fecha de expidicion, el nombre completo y el
+ * Extiende {@link DTOBasePerson} agregando información específica
+ * relacionada con el lugar de expedición, el nombre completo y el
  * código de {@code Beneficiary}.
  * </p>
  *
@@ -23,10 +23,10 @@ package com.hector.titulacionpredial.model.dto;
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrin {@link Builder}
+ * Soporta construcción fluida mediante el patrón {@link Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOSpouse extends DTOBasePerson {
@@ -107,31 +107,67 @@ public class DTOSpouse extends DTOBasePerson {
         private long phone;
         private int beneficiaryCode;
 
+        /**
+         * Establece el id del cónyuge.
+         *
+         * @param id cédula del cónyuge
+         * @return builder actual
+         */
         public Builder id(long id) {
             this.id = id;
             return this;
         }
 
+        /**
+         * Establece el nombre completo.
+         *
+         * @param fullName nombre completo del cónyuge
+         * @return builder actual
+         */
         public Builder fullName(String fullName) {
             this.fullName = fullName;
             return this;
         }
 
+        /**
+         * Establece el lugar de expedición.
+         *
+         * @param expeditionLocation lugar de expedición
+         * @return builder actual
+         */
         public Builder expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
             return this;
         }
 
+        /**
+         * Establece la dirección.
+         *
+         * @param address dirección del cónyuge
+         * @return builder actual
+         */
         public Builder address(String address) {
             this.address = address;
             return this;
         }
 
+        /**
+         * Establece el teléfono.
+         *
+         * @param phone teléfono de contacto
+         * @return builder actual
+         */
         public Builder phone(long phone) {
             this.phone = phone;
             return this;
         }
 
+        /**
+         * Establece el código del beneficiario asociado.
+         *
+         * @param beneficiaryCode código del beneficiario
+         * @return builder actual
+         */
         public Builder beneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
             return this;

@@ -8,12 +8,35 @@ import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
+ * Coordinador principal de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Se encarga de inicializar todas las vistas y controladores
+ * de la aplicación, conectarlos entre sí y arrancar la
+ * interfaz gráfica. Implementa el patrón Coordinator para
+ * centralizar la construcción y configuración del sistema.
+ * </p>
+ *
+ * <p>
+ * Flujo de inicio:
+ * </p>
+ * <ol>
+ *   <li>Crear las vistas ({@code startView})</li>
+ *   <li>Crear los controladores ({@code startDrivers})</li>
+ *   <li>Notificar a los observadores para cargar datos iniciales</li>
+ *   <li>Mostrar la ventana principal</li>
+ * </ol>
+ *
+ * @author Hector Acevedo
+ * @see ControllerContentBuilder
+ * @see ConcreteSubject
+ * @since 1.0
  */
 public class Coordinator {
 
-    // Observer
+    /**
+     * Sujeto concreto del patrón Observer (Singleton).
+     */
     private final ConcreteSubject subject = ConcreteSubject.getInstance();
 
     // Views

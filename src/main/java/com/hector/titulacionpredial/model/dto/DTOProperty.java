@@ -11,8 +11,8 @@ package com.hector.titulacionpredial.model.dto;
  * </p>
  *
  * <p>
- * Contiene la información base de un predio, como la cedula catastral
- * y el area del predio.
+ * Contiene la información base de un predio, como la cédula catastral
+ * y el área del predio.
  * </p>
  *
  * <p>
@@ -20,18 +20,18 @@ package com.hector.titulacionpredial.model.dto;
  * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOProperty {
 
     /**
-     * Referencia Catastral
+     * Referencia catastral.
      */
     protected String cadastralId;
 
     /**
-     * Area del predio
+     * Área del predio.
      */
     protected Double area;
 
@@ -44,10 +44,10 @@ public class DTOProperty {
     }
 
     /**
-     * Constructor utilizado para inicializar las variables
+     * Constructor utilizado para inicializar las variables.
      *
-     * @param cadastralId cedula catastral del predio
-     * @param area        area del predio
+     * @param cadastralId cédula catastral del predio
+     * @param area        área del predio
      */
     public DTOProperty(String cadastralId, Double area) {
         this.cadastralId = cadastralId;

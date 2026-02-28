@@ -1,13 +1,21 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.util.List;
 
 /**
+ * Interfaz de renderizado para el gráfico base ({@link BlankPlotChart}).
  *
- * @author hectoracevedo
+ * <p>
+ * Define el contrato para dibujar las series de datos
+ * sobre el área de trazado del gráfico.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see BlankPlotChart
  */
 public interface BlankPlotChartRender {
     

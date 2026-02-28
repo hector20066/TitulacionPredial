@@ -5,7 +5,9 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
-import com.hector.titulacionpredial.model.dto.resolution.*;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
@@ -13,8 +15,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Implementación concreta de {@link DAOResolution} que gestiona
+ * las operaciones de persistencia relacionadas con resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Esta clase pertenece a la capa de acceso a datos (DAO) y es
+ * responsable de ejecutar operaciones CRUD contra la base de datos
+ * utilizando JDBC y sentencias SQL externas obtenidas desde
+ * {@link SQLRepository}.
+ * </p>
+ *
+ * <p>
+ * Las conexiones son obtenidas mediante {@link DataBasePool},
+ * garantizando el uso de un pool de conexiones para mejorar
+ * el rendimiento y la gestión de recursos.
+ * </p>
+ *
+ * <p>
+ * Implementa el patrón Singleton para asegurar una única instancia
+ * compartida dentro del contexto de la aplicación.
+ * </p>
+ *
+ * <p><strong>Manejo de errores:</strong></p>
+ * <ul>
+ *     <li>Lanza {@link ResolutionPersistenceException} ante errores SQL.</li>
+ *     <li>Lanza {@link ResolutionNotFoundException} cuando no se encuentran registros esperados.</li>
+ *     <li>Propaga {@link DAOException} como contrato general de la capa DAO.</li>
+ * </ul>
+ *
+ * <p>
+ * Esta clase no contiene lógica de negocio; únicamente realiza
+ * operaciones de acceso a datos.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class DAOResolutionImpl implements DAOResolution {
 
@@ -32,6 +67,14 @@ public class DAOResolutionImpl implements DAOResolution {
         return instance;
     }
 
+    /**
+     * Inserta una nueva resolución en la base de datos.
+     *
+     * @param dto objeto que contiene la información necesaria
+     *            para crear la resolución
+     * @throws DAOException si ocurre un error durante la operación
+     *                      de persistencia
+     */
     @Override
     public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
@@ -53,6 +96,14 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    /**
+     * Recupera una resolución a partir de su número.
+     *
+     * @param numResolution número de resolución a buscar
+     * @return {@link DTOResolutionDetails} con la información encontrada,
+     * o {@code null} si no existe registro asociado
+     * @throws DAOException si ocurre un error de acceso a datos
+     */
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/findByCode.sql");
@@ -75,6 +126,13 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    /**
+     * Recupera todas las resoluciones registradas en la base de datos.
+     *
+     * @return lista de {@link DTOResolutionDetails}.
+     * Puede estar vacía si no existen registros.
+     * @throws DAOException si ocurre un error durante la consulta
+     */
     @Override
     public List<DTOResolutionDetails> findByAll() throws DAOException {
         List<DTOResolutionDetails> list = new ArrayList<>();
@@ -108,6 +166,15 @@ public class DAOResolutionImpl implements DAOResolution {
         dto.setBeneficiaryName(rs.getString("beneficiary_name"));
     }
 
+    /**
+     * Actualiza la información de una resolución existente.
+     *
+     * @param dto objeto que contiene los datos actualizados
+     * @return {@code true} si la actualización fue exitosa
+     * @throws ResolutionNotFoundException si no existe una resolución
+     *                                     con el identificador proporcionado
+     * @throws DAOException                si ocurre un error durante la operación
+     */
     @Override
     public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
@@ -134,6 +201,13 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    /**
+     * Obtiene la cantidad total de resoluciones registradas.
+     *
+     * @return número total de registros
+     * @throws ResolutionNotFoundException si no existen registros
+     * @throws DAOException                si ocurre un error durante la consulta
+     */
     @Override
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");

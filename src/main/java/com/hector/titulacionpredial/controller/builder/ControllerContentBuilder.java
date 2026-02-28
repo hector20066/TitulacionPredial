@@ -6,8 +6,18 @@ import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
+ * Builder para construir el {@link ControllerContent} con
+ * todas sus vistas y dependencias.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite configurar de forma fluida cada panel de la
+ * aplicación antes de crear el controlador principal
+ * del contenido mediante el método {@link #build()}.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see ControllerContent
+ * @since 1.0
  */
 public class ControllerContentBuilder {
 

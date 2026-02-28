@@ -15,8 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Grupo de menú con submenús expandibles.
  *
- * @author hectoracevedo
+ * <p>
+ * Contiene un elemento principal ({@link Item}) y una lista
+ * de sub-elementos que se despliegan con animación al hacer
+ * clic. Utiliza MigLayout para organizar los sub-ítems.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see Item
+ * @see ModelMenuItem
  */
 public class MenuItem extends JPanel {
 

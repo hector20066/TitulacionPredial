@@ -3,30 +3,30 @@ package com.hector.titulacionpredial.model.dto.resolution;
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
- * Data Transfer Object (DTO) que contiene la informacion obtenida
- * de una Resolucion.
+ * Data Transfer Object (DTO) que contiene la información obtenida
+ * de una resolución.
  *
  * <p>
  * Se utiliza para transportar datos de la capa de persistencia
- * a la capa de presentacion para mostrar la informacion, evitando
+ * a la capa de presentación para mostrar la información, evitando
  * exponer directamente la entidad {@code Resolution}.
  * </p>
  *
  * <p>
- * Extiende {@link DTOResolution} agregando información especifica
- * relacionada con el codigo y el nombre del beneficiario.
+ * Extiende {@link DTOResolution} agregando información específica
+ * relacionada con el código y el nombre del beneficiario.
  * </p>
  *
  * <p>
- * Este DTO no contiene logica de negocio ni reglas de validacion.
- * Su unica responsabilidad es encapsular datos.
+ * Este DTO no contiene lógica de negocio ni reglas de validación.
+ * Su única responsabilidad es encapsular datos.
  * </p>
  *
  * <p>
  * Soporta construcción fluida mediante el patrón {@link DTOResolutionDetails.Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOResolutionDetails extends DTOResolution {
@@ -83,11 +83,23 @@ public class DTOResolutionDetails extends DTOResolution {
         private int code;
         private String beneficiaryName;
 
+        /**
+         * Establece el código de la resolución.
+         *
+         * @param code código de la resolución
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece el nombre del beneficiario.
+         *
+         * @param beneficiaryName nombre completo del beneficiario
+         * @return builder actual
+         */
         public Builder beneficiaryName(String beneficiaryName) {
             this.beneficiaryName = beneficiaryName;
             return this;

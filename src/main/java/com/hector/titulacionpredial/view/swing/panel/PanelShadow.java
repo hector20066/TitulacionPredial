@@ -8,8 +8,17 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Panel con efecto de sombra interior y exterior.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza {@link ShadowBorder} para renderizar sombras
+ * alrededor del contenido del panel. Configurable en
+ * radio de esquinas y tamaño de sombra.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see ShadowBorder
  */
 public class PanelShadow extends JPanel {
 

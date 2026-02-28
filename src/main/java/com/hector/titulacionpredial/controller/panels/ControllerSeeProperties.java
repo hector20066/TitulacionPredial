@@ -8,7 +8,8 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
@@ -23,17 +24,49 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 /**
+ * Controlador del panel de visualización de predios.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar la tabla de
+ * predios cuando se producen cambios. Ofrece funcionalidades
+ * de búsqueda, eliminación, exportación a Excel y navegación
+ * hacia el formulario de generación de resoluciones.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see SeeProperties
+ * @see PropertyFacade
+ * @see GenerateExcel
+ * @since 1.0
  */
 public class ControllerSeeProperties implements Observer {
 
+    /**
+     * Vista del listado de predios.
+     */
     private final SeeProperties seeProperties;
+    /**
+     * Vista del formulario de generación de resoluciones.
+     */
     private final GenerateResolution generateResolution;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de predios.
+     */
     private final PropertyFacade daoProperty;
 
+    /**
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del panel.
+     *
+     * @param seeProperties      vista del listado de predios
+     * @param generateResolution vista de generación de resoluciones
+     * @param subject            sujeto para registro del observador
+     */
     public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution, Subject subject) {
         this.seeProperties = seeProperties;
         this.generateResolution = generateResolution;

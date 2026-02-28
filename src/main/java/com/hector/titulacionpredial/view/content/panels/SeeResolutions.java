@@ -3,21 +3,29 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
-import java.awt.Color;
-import java.awt.Font;
+
+import javax.swing.*;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.time.LocalDate;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 /**
+ * Panel para la visualización de resoluciones registradas
+ * en formato de tabla.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite buscar y modificar resoluciones existentes.
+ * Muestra información como número de resolución, código
+ * de predio, FMI, fechas de notificación y ejecutoria.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class SeeResolutions extends javax.swing.JPanel {
 

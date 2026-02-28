@@ -4,21 +4,27 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDe
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseListener;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+
+import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
 
 /**
+ * Panel para la visualización y gestión de beneficiarios
+ * en formato de tabla.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite buscar, modificar, eliminar, exportar y ver
+ * el perfil de los beneficiarios registrados en el sistema.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ViewBeneficiaries extends javax.swing.JPanel {
 

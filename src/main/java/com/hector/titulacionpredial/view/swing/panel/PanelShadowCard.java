@@ -8,8 +8,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Panel con efecto de sombra tipo tarjeta.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza {@link ShadowRendererChart} para generar imágenes
+ * de sombra en diferentes posiciones ({@link ShadowType}).
+ * Soporta 7 direcciones de sombra: centro, esquinas y bordes.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see ShadowRendererChart
+ * @see ShadowType
  */
 public class PanelShadowCard extends JPanel {
 

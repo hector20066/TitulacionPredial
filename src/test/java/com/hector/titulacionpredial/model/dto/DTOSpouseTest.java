@@ -1,10 +1,9 @@
 package com.hector.titulacionpredial.model.dto;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("DTOSpouse Tests")
 class DTOSpouseTest {

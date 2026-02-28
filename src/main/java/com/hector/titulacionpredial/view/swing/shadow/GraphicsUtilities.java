@@ -10,8 +10,17 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * Utilidades para manipulación de imágenes {@link BufferedImage}.
  *
- * @author hectoracevedo
+ * <p>
+ * Proporciona métodos para crear imágenes compatibles con
+ * la configuración gráfica del sistema, generar miniaturas
+ * y acceder directamente a los píxeles del raster para
+ * optimizar el rendimiento.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class GraphicsUtilities {
 

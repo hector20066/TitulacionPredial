@@ -55,9 +55,9 @@ public class Property {
     }
 
     /**
-     * Constructor utilizado por el patron Builder.
+     * Constructor utilizado por el patrón Builder.
      *
-     * @param builder instancia del constructor paso a paso.
+     * @param builder instancia del constructor paso a paso
      */
     public Property(Builder builder) {
         this.code = builder.code;
@@ -108,9 +108,9 @@ public class Property {
     }
 
     /**
-     * Representacion textual de la entidad.
+     * Representación textual de la entidad.
      *
-     * @return descripcion formateada de los atributos principales.
+     * @return descripción formateada de los atributos principales
      */
     @Override
     public String toString() {
@@ -142,35 +142,65 @@ public class Property {
         private List<Beneficiary> beneficiaries;
         private Point[] points;
 
+        /**
+         * Establece el código del predio.
+         *
+         * @param code código único
+         * @return builder actual
+         */
         public Builder code(long code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece la cédula catastral.
+         *
+         * @param cadastralId cédula catastral
+         * @return builder actual
+         */
         public Builder cadastralId(String cadastralId) {
             this.cadastralId = cadastralId;
             return this;
         }
 
+        /**
+         * Establece el área del predio.
+         *
+         * @param area área en metros cuadrados
+         * @return builder actual
+         */
         public Builder area(Double area) {
             this.area = area;
             return this;
         }
 
+        /**
+         * Establece la lista de beneficiarios.
+         *
+         * @param beneficiaries lista de beneficiarios asociados
+         * @return builder actual
+         */
         public Builder beneficiaries(List<Beneficiary> beneficiaries) {
             this.beneficiaries = beneficiaries;
             return this;
         }
 
+        /**
+         * Establece los puntos geográficos del predio.
+         *
+         * @param points arreglo de puntos
+         * @return builder actual
+         */
         public Builder points(Point[] points) {
             this.points = points;
             return this;
         }
 
         /**
-         * Construye una nueva instancia de {@link Property}
+         * Construye una nueva instancia de {@link Property}.
          *
-         * @return nuevo predio construido.
+         * @return nuevo predio construido
          */
         public Property build() {
             return new Property(this);

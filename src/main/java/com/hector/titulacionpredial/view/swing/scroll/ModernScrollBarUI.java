@@ -5,8 +5,16 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
+ * UI personalizada para barras de desplazamiento con estilo moderno.
  *
- * @author hectoracevedo
+ * <p>
+ * Muestra un indicador (thumb) delgado y translúcido sin
+ * botones de flecha ni pista visible, logrando una
+ * estética minimalista y plana.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ModernScrollBarUI extends BasicScrollBarUI {
 

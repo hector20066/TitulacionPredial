@@ -1,14 +1,22 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import com.hector.titulacionpredial.exception.dao.*;
-import com.hector.titulacionpredial.exception.validation.*;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.exception.dao.PersistenceException;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
+import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.SpouseImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
-import com.hector.titulacionpredial.model.enums.*;
-import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
@@ -19,19 +27,58 @@ import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import javax.swing.*;
 
 /**
+ * Controlador del panel de registro y modificación de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar el código
+ * secuencial del próximo beneficiario. Gestiona las
+ * validaciones de los datos del formulario, el registro
+ * y la modificación de beneficiarios, incluyendo la
+ * gestión del cónyuge cuando el estado civil lo requiere.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see RegisterBeneficiary
+ * @see BeneficiaryFacade
+ * @see SpouseFacade
+ * @since 1.0
  */
 public class ControllerRegisterBeneficiary implements Observer {
 
+    /**
+     * Vista del formulario de registro.
+     */
     private final RegisterBeneficiary registerBeneficiary;
+    /**
+     * Vista de listado de beneficiarios.
+     */
     private final ViewBeneficiaries viewBeneficiaries;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
+    /**
+     * Fachada de acceso a datos de cónyuges.
+     */
     private final SpouseFacade daoSpouse;
+    /**
+     * Datos del cónyuge capturados desde el diálogo.
+     */
     private DTOSpouse dtoSpouse;
 
+    /**
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del formulario.
+     *
+     * @param registerBeneficiary vista del formulario
+     * @param viewBeneficiaries   vista de listado
+     * @param subject             sujeto para registro del observador
+     */
     public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary, ViewBeneficiaries viewBeneficiaries, Subject subject) {
         this.registerBeneficiary = registerBeneficiary;
         this.viewBeneficiaries = viewBeneficiaries;

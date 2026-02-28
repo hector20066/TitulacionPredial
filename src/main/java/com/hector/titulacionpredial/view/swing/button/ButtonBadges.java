@@ -9,8 +9,17 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
+ * Botón con insignia numérica (badge) superpuesta.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} para mostrar un círculo con un
+ * número en la esquina superior derecha, útil para indicar
+ * conteos o notificaciones. Incluye efecto de animación
+ * al pasar el mouse.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ButtonBadges extends JButton {
 

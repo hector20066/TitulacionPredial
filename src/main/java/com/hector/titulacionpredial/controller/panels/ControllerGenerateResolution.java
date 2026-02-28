@@ -1,7 +1,9 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
-import com.hector.titulacionpredial.exception.validation.*;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
@@ -24,17 +26,46 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
+ * Controlador del panel de generación de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la validación de los datos del formulario,
+ * el registro de la resolución en la base de datos y la
+ * generación del documento Word mediante
+ * {@link GenerateResolutionUtils}.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see GenerateResolution
+ * @see GenerateResolutionUtils
+ * @since 1.0
  */
 public class ControllerGenerateResolution {
 
+    /**
+     * Vista del formulario de generación de resoluciones.
+     */
     private final GenerateResolution generateResolution;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
 
+    /**
+     * Crea el controlador y conecta los eventos del formulario.
+     *
+     * @param generateResolution vista del formulario
+     * @param subject            sujeto para notificación de cambios
+     */
     public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject) {
         this.generateResolution = generateResolution;
         this.subject = subject;

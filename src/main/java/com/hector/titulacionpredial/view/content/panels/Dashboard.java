@@ -7,8 +7,19 @@ import com.hector.titulacionpredial.view.swing.chart.LineChart;
 import com.hector.titulacionpredial.view.swing.model.CardModel;
 
 /**
+ * Panel principal del tablero de control (Dashboard).
  *
- * @author hectoracevedo
+ * <p>
+ * Presenta tarjetas de resumen ({@link Card}), gráficos de calibre
+ * ({@link GaugeChart}) y gráficos de líneas ({@link LineChart})
+ * con estadísticas de beneficiarios, predios y resoluciones.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see Card
+ * @see GaugeChart
+ * @see LineChart
  */
 public class Dashboard extends javax.swing.JPanel {
 

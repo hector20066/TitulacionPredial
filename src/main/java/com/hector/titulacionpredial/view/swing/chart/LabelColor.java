@@ -1,13 +1,19 @@
 package com.hector.titulacionpredial.view.swing.chart;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
+ * Etiqueta ({@link JLabel}) con renderizado personalizado
+ * de color de fondo redondeado.
  *
- * @author hectoracevedo
+ * <p>
+ * Utilizada como indicador de color en las leyendas
+ * de los gráficos.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class LabelColor extends JLabel {
 

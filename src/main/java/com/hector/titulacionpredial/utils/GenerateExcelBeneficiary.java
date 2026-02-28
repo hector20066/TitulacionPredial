@@ -10,11 +10,27 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Clase utilitaria para la exportación de beneficiarios a
+ * un archivo Excel (.xls) usando Apache POI.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera un reporte con los datos personales de cada
+ * beneficiario registrado en el sistema.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see DTOBeneficiaryCreate
+ * @since 1.0
  */
 public class GenerateExcelBeneficiary {
 
+    /**
+     * Exporta la lista de beneficiarios a un archivo Excel.
+     *
+     * @param beneficiaries lista de DTOs con los datos de los beneficiarios
+     * @param path          ruta del directorio donde guardar el archivo
+     * @throws IOException si ocurre un error al escribir el archivo
+     */
     public static void export(List<DTOBeneficiaryCreate> beneficiaries, String path) throws IOException {
         File archivoXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
         Workbook book = new HSSFWorkbook();

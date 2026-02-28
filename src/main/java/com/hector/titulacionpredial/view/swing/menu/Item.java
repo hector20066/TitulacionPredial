@@ -12,8 +12,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
+ * Elemento individual del menú lateral.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} con estilo plano, icono SVG,
+ * indicador de submenú y efecto de animación al pasar
+ * el mouse. Cambia de color según el estado de selección.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class Item extends JButton {
 

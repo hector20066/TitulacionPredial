@@ -13,11 +13,28 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * Clase utilitaria para la exportación de predios a
+ * un archivo Excel (.xls) usando Apache POI.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera un reporte completo con la información de cada
+ * predio, incluyendo beneficiarios, resoluciones, puntos
+ * geográficos y área.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see DTOPropertyDetails
+ * @since 1.0
  */
 public class GenerateExcel {
 
+    /**
+     * Exporta la lista de predios a un archivo Excel.
+     *
+     * @param properties lista de DTOs con los datos de los predios
+     * @param path       ruta del directorio donde guardar el archivo
+     * @throws IOException si ocurre un error al escribir el archivo
+     */
     public static void export(List<DTOPropertyDetails> properties, String path) throws IOException {
         File archivoXLS = new File(path + File.separator + "Reporte.xls");
         Workbook book = new HSSFWorkbook();

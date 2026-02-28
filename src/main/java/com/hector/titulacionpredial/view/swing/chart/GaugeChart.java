@@ -1,27 +1,27 @@
 package com.hector.titulacionpredial.view.swing.chart;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Path2D;
+import java.awt.geom.Rectangle2D;
+
 /**
+ * Componente gráfico de tipo medidor (gauge) semicircular.
  *
- * @author hectoracevedo
+ * <p>
+ * Dibuja un arco de progreso con gradiente de colores
+ * y muestra el valor porcentual en el centro. Incluye
+ * animación suave al actualizar el valor mediante
+ * la librería TimingFramework.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class GaugeChart extends JComponent {
     

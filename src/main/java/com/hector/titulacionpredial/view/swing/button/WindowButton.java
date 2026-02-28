@@ -5,8 +5,16 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
+ * Botón personalizado para los controles de ventana
+ * (minimizar, maximizar, cerrar).
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} con un estilo plano sin borde
+ * ni fondo, utilizando un icono SVG centrado.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class WindowButton extends JButton {
 

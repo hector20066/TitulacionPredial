@@ -4,33 +4,33 @@ package com.hector.titulacionpredial.model.entities;
  * Entidad de dominio que representa un Cónyuge dentro del sistema.
  *
  * <p>
- *     Extiende {@link Person} agregando información específica
- *     que debe tener el cónyuge.
- *     Esta entidad forma parte del modelo de dominio y es
- *     persistida en la base de datos.
+ * Extiende {@link Person} agregando información específica
+ * que debe tener el cónyuge.
+ * Esta entidad forma parte del modelo de dominio y es
+ * persistida en la base de datos.
  * </p>
  * <p>
- *     La construcción de instancias se soporta mediante el patron
- *     {@link Builder}, permitiendo herencia fluida desde {@link Person.Builder}
+ * La construcción de instancias se soporta mediante el patrón
+ * {@link Builder}, permitiendo herencia fluida desde {@link Person.Builder}
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class Spouse extends Person {
 
     /**
      * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos basados en reflexion.
+     * o mecanismos basados en reflexión.
      */
     public Spouse() {
 
     }
 
     /**
-     * Constructor utilizado por el patron Builder.
+     * Constructor utilizado por el patrón Builder.
      *
-     * @param builder instancia configurada del builder.
+     * @param builder instancia configurada del builder
      */
     public Spouse(Builder builder) {
         super(builder);
@@ -52,8 +52,8 @@ public class Spouse extends Person {
      * de {@link Spouse}
      *
      * <p>
-     *     Extiende {@link Person.Builder} para permitir el configuracion
-     *     de atributos heredados y específicos en una misma cadena fluida.
+     * Extiende {@link Person.Builder} para permitir la configuración
+     * de atributos heredados y específicos en una misma cadena fluida.
      * </p>
      */
     public static class Builder extends Person.Builder<Builder> {

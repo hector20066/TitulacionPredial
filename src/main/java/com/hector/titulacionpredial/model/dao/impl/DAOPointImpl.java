@@ -13,17 +13,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Implementación del DAO para la gestión de puntos geográficos
+ * (coordenadas) en la base de datos PostgreSQL.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza el patrón Singleton para garantizar una única instancia.
+ * Las consultas SQL se obtienen desde {@link SQLRepository} y la
+ * conexión a la base de datos mediante {@link DataBasePool}.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see DAOPoint
+ * @see DataBasePool
+ * @see SQLRepository
+ * @since 1.0
  */
 public class DAOPointImpl implements DAOPoint {
 
+    /**
+     * Instancia única del DAO (patrón Singleton).
+     */
     private static DAOPointImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOPointImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia única del DAO.
+     *
+     * @return instancia Singleton de {@code DAOPointImpl}
+     */
     public static DAOPointImpl getInstance() {
         if (instance == null) {
             instance = new DAOPointImpl();

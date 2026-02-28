@@ -1,22 +1,26 @@
 package com.hector.titulacionpredial.view.swing.shadow.chart;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.RenderingHints;
-import java.awt.Transparency;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
 import java.net.URL;
-import javax.imageio.ImageIO;
 
 /**
+ * Utilidades gráficas específicas para los componentes
+ * de gráficos y tarjetas.
  *
- * @author hectoracevedo
+ * <p>
+ * Provee funcionalidades de manipulación de {@link BufferedImage}
+ * similares a {@link com.hector.titulacionpredial.view.swing.shadow.GraphicsUtilities},
+ * optimizadas para el renderizado de sombras en tarjetas.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class GraphicsUtilitiesChart {
     

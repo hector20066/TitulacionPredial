@@ -5,29 +5,33 @@ import com.hector.titulacionpredial.view.swing.chart.blankchart.BlankPlotChartRe
 import com.hector.titulacionpredial.view.swing.chart.blankchart.SeriesSize;
 import com.hector.titulacionpredial.view.swing.model.ModelChart;
 import com.hector.titulacionpredial.view.swing.model.ModelLegend;
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.GradientPaint;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Polygon;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JPanel;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTarget;
-import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 /**
+ * Componente gráfico de líneas con soporte para múltiples series.
  *
- * @author hectoracevedo
+ * <p>
+ * Dibuja series de datos como líneas suavizadas con relleno
+ * de gradiente, leyenda inferior y tooltip interactivo
+ * al pasar el mouse. Utiliza {@link BlankPlotChart} como
+ * base para los ejes coordenados.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see BlankPlotChart
+ * @see ModelChart
  */
 public class LineChart extends javax.swing.JPanel {
 

@@ -1,22 +1,15 @@
 package com.hector.titulacionpredial.exception.dao;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
-import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
-import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
-import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException;
-import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
-import com.hector.titulacionpredial.exception.dao.persistence.SpousePersistenceException;
+import com.hector.titulacionpredial.exception.dao.persistence.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("DAO Exception Hierarchy Tests")
 class DAOExceptionHierarchyTest {

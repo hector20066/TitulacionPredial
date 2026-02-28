@@ -7,7 +7,8 @@ import com.hector.titulacionpredial.exception.validation.InvalidNumberInputExcep
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
@@ -28,17 +29,48 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * Controlador del panel de visualización de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar la tabla de
+ * resoluciones cuando se producen cambios. Ofrece funcionalidades
+ * de búsqueda por número de resolución, filtrado en tiempo real
+ * y navegación hacia el formulario de modificación.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see SeeResolutions
+ * @see ResolutionFacade
+ * @since 1.0
  */
 public class ControllerSeeResolutions implements Observer {
 
+    /**
+     * Vista del listado de resoluciones.
+     */
     private final SeeResolutions seeResolutions;
+    /**
+     * Vista del formulario de modificación de resoluciones.
+     */
     private final ModifyResolution modifyResolution;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del panel.
+     *
+     * @param seeResolutions   vista del listado de resoluciones
+     * @param modifyResolution vista del formulario de modificación
+     * @param subject          sujeto para registro del observador
+     */
     public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject) {
         this.seeResolutions = seeResolutions;
         this.modifyResolution = modifyResolution;

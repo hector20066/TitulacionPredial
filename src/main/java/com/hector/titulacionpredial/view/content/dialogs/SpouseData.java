@@ -1,14 +1,25 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
-import java.awt.Color;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
+import java.awt.*;
+
 /**
+ * Diálogo modal para registrar los datos del cónyuge
+ * de un beneficiario.
  *
- * @author hectoracevedo
+ * <p>
+ * Se muestra cuando el estado civil del beneficiario
+ * es «casado», permitiendo ingresar nombre, apellido
+ * y cédula del cónyuge. Incluye animación de entrada.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see DTOSpouse
  */
 public class SpouseData extends javax.swing.JDialog {
 

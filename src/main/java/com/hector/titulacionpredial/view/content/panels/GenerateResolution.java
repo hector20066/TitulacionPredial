@@ -3,15 +3,22 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.function.BiConsumer;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 /**
+ * Formulario para la generación de resoluciones de titulación.
  *
- * @author hectoracevedo
+ * <p>
+ * Presenta un resumen con los datos del beneficiario, predio
+ * y coordenadas (solo lectura) junto con campos editables para
+ * número de resolución, notificación, ejecutoria, FMI, acta,
+ * escritura pública y observaciones.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class GenerateResolution extends javax.swing.JPanel {
 

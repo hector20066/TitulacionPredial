@@ -3,8 +3,15 @@ package com.hector.titulacionpredial.view.swing.model;
 import java.awt.*;
 
 /**
+ * Modelo de datos para un elemento de la leyenda del gráfico.
  *
- * @author hectoracevedo
+ * <p>
+ * Almacena el nombre de la serie, su color principal
+ * y su color claro para el relleno de gradiente.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ModelLegend {
 

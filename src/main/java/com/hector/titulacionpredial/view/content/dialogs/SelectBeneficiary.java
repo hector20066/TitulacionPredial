@@ -3,21 +3,34 @@ package com.hector.titulacionpredial.view.content.dialogs;
 import com.hector.titulacionpredial.controller.ControllerSearchDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.FilterUtils;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.*;
-import java.util.List;
-import javax.swing.event.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
 /**
+ * Diálogo modal para seleccionar un beneficiario
+ * desde una tabla con búsqueda integrada.
  *
- * @author hectoracevedo
+ * <p>
+ * Utilizado al registrar predios o generar resoluciones
+ * para asociar un beneficiario existente. Incluye filtrado
+ * en tiempo real y animación de entrada.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see ControllerSearchDialog
  */
 public class SelectBeneficiary extends javax.swing.JDialog {
 

@@ -11,8 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Panel del menú lateral de navegación de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Organiza los elementos de menú ({@link MenuItem}) en una
+ * lista vertical con scroll personalizado. Gestiona la
+ * selección de opciones y notifica al controlador mediante
+ * {@link EventMenuSelected}.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see MenuItem
+ * @see EventMenuSelected
  */
 public class Menu extends JPanel {
 

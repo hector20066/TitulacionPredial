@@ -8,7 +8,8 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.observer.*;
+import com.hector.titulacionpredial.observer.Observer;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
@@ -25,17 +26,50 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Controlador del panel de visualización de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar la tabla de
+ * beneficiarios cuando se producen cambios. Ofrece funcionalidades
+ * de búsqueda (por cédula, código o nombre), eliminación,
+ * modificación, visualización de perfil detallado y exportación
+ * a Excel.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see ViewBeneficiaries
+ * @see BeneficiaryFacade
+ * @see GenerateExcelBeneficiary
+ * @since 1.0
  */
 public class ControllerViewBeneficiaries implements Observer {
 
+    /**
+     * Vista del listado de beneficiarios.
+     */
     private final ViewBeneficiaries viewBeneficiaries;
+    /**
+     * Vista del formulario de registro (destino al modificar).
+     */
     private final RegisterBeneficiary registerBeneficiary;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
 
+    /**
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del panel.
+     *
+     * @param viewBeneficiaries   vista del listado
+     * @param registerBeneficiary vista del formulario de registro
+     * @param subject             sujeto para registro del observador
+     */
     public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, RegisterBeneficiary registerBeneficiary, Subject subject) {
         this.viewBeneficiaries = viewBeneficiaries;
         this.registerBeneficiary = registerBeneficiary;

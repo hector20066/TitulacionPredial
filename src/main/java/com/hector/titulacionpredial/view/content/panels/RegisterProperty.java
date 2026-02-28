@@ -2,13 +2,23 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
+ * Formulario para el registro de predios con sus
+ * coordenadas geográficas.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza un {@code CardLayout} para organizar la entrada
+ * de hasta 4 puntos geográficos (Norte, Este, distancia y
+ * ladera). Incluye campos para cédula catastral, área y
+ * código del beneficiario asociado.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class RegisterProperty extends javax.swing.JPanel {
 

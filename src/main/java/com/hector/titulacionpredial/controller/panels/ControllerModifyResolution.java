@@ -1,7 +1,10 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.exception.validation.*;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
+import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.observer.Subject;
@@ -17,17 +20,47 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
+ * Controlador del panel de modificación de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la validación de los datos del formulario y
+ * la actualización de la resolución en la base de datos.
+ * Al completar la modificación, navega de regreso al
+ * listado de resoluciones.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see ModifyResolution
+ * @see ResolutionFacade
+ * @since 1.0
  */
 public class ControllerModifyResolution {
 
+    /**
+     * Vista del formulario de modificación.
+     */
     private final ModifyResolution modifyResolution;
+    /**
+     * Vista del listado de resoluciones (destino tras modificar).
+     */
     private final SeeResolutions seeResolutions;
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador y conecta los eventos del formulario.
+     *
+     * @param modifyResolution vista del formulario de modificación
+     * @param seeResolutions   vista de listado de resoluciones
+     * @param subject          sujeto para notificación de cambios
+     */
     public ControllerModifyResolution(ModifyResolution modifyResolution, SeeResolutions seeResolutions, Subject subject) {
         this.modifyResolution = modifyResolution;
         this.seeResolutions = seeResolutions;

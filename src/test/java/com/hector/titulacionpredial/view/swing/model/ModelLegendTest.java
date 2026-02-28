@@ -1,11 +1,12 @@
 package com.hector.titulacionpredial.view.swing.model;
 
-import java.awt.Color;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 @DisplayName("ModelLegend Tests")
 class ModelLegendTest {

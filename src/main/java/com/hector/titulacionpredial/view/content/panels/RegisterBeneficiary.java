@@ -1,16 +1,26 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 /**
+ * Formulario para el registro y modificación de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Incluye campos para nombre, apellido, cédula, departamento,
+ * municipio, estado civil, afectación predial y código de seguimiento.
+ * Soporta modo de creación y modo de edición (modificación).
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {
 

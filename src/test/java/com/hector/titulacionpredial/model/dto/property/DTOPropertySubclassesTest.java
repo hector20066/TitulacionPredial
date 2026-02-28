@@ -1,19 +1,16 @@
 package com.hector.titulacionpredial.model.dto.property;
 
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("DTOPropertyCreate & DTOPropertyDetails Tests")
 class DTOPropertySubclassesTest {

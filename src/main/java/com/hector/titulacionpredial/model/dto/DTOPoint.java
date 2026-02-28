@@ -23,41 +23,41 @@ package com.hector.titulacionpredial.model.dto;
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patron {@link Builder}.
+ * Soporta construcción fluida mediante el patrón {@link Builder}.
  * </p>
  *
- * @author hectoracevedo
+ * @author Hector Acevedo
  * @since 1.0
  */
 public class DTOPoint {
 
     /**
-     * Numero del punto asociada
+     * Número del punto asociado.
      */
     protected int numberPoint;
 
     /**
-     * Coordenada norte
+     * Coordenada norte.
      */
     protected Double northCoordinate;
 
     /**
-     * Coordenada Este
+     * Coordenada este.
      */
     protected Double eastCoordinate;
 
     /**
-     * Distancia con respecto al siguiente punto
+     * Distancia con respecto al siguiente punto.
      */
     protected Double distance;
 
     /**
-     * Datos del lindero vecino al punto
+     * Datos del lindero vecino al punto.
      */
     protected String hillside;
 
     /**
-     * Código de {@code Property}
+     * Código de {@code Property}.
      */
     protected int propertyCode;
 
@@ -148,31 +148,67 @@ public class DTOPoint {
         private String hillside;
         private int propertyCode;
 
+        /**
+         * Establece el número del punto.
+         *
+         * @param numberPoint número del punto
+         * @return builder actual
+         */
         public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
             return this;
         }
 
+        /**
+         * Establece la coordenada norte.
+         *
+         * @param northCoordinate valor de la coordenada norte
+         * @return builder actual
+         */
         public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
+        /**
+         * Establece la coordenada este.
+         *
+         * @param eastCoordinate valor de la coordenada este
+         * @return builder actual
+         */
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }
 
+        /**
+         * Establece la distancia al siguiente punto.
+         *
+         * @param distance distancia en metros
+         * @return builder actual
+         */
         public Builder distance(Double distance) {
             this.distance = distance;
             return this;
         }
 
+        /**
+         * Establece la información del lindero vecino.
+         *
+         * @param hillside datos del lindero
+         * @return builder actual
+         */
         public Builder hillside(String hillside) {
             this.hillside = hillside;
             return this;
         }
 
+        /**
+         * Establece el código del predio asociado.
+         *
+         * @param propertyCode código del predio
+         * @return builder actual
+         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;

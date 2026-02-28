@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.entities;
 
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Entidad de dominio que representa un Beneficiario dentro del sistema.
@@ -192,51 +194,111 @@ public class Beneficiary extends Person {
         private String neighborhood;
         private Spouse spouse;
 
+        /**
+         * Establece el código del beneficiario.
+         *
+         * @param code código interno
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece el departamento.
+         *
+         * @param department departamento asociado
+         * @return builder actual
+         */
         public Builder department(Department department) {
             this.department = department;
             return this;
         }
 
+        /**
+         * Establece el municipio.
+         *
+         * @param municipality municipio asociado
+         * @return builder actual
+         */
         public Builder municipality(Municipalities municipality) {
             this.municipality = municipality;
             return this;
         }
 
+        /**
+         * Establece la referencia catastral.
+         *
+         * @param cadastralReference referencia catastral
+         * @return builder actual
+         */
         public Builder cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
             return this;
         }
 
+        /**
+         * Establece el estado civil.
+         *
+         * @param maritalStatus estado civil del beneficiario
+         * @return builder actual
+         */
         public Builder maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
             return this;
         }
 
+        /**
+         * Establece la afectación predial.
+         *
+         * @param affectation información de afectación
+         * @return builder actual
+         */
         public Builder affectation(String affectation) {
             this.affectation = affectation;
             return this;
         }
 
+        /**
+         * Establece el cruce.
+         *
+         * @param crossing información de cruce
+         * @return builder actual
+         */
         public Builder crossing(String crossing) {
             this.crossing = crossing;
             return this;
         }
 
+        /**
+         * Establece la publicación.
+         *
+         * @param publication información de publicación
+         * @return builder actual
+         */
         public Builder publication(String publication) {
             this.publication = publication;
             return this;
         }
 
+        /**
+         * Establece el barrio.
+         *
+         * @param neighborhood barrio de residencia
+         * @return builder actual
+         */
         public Builder neighborhood(String neighborhood) {
             this.neighborhood = neighborhood;
             return this;
         }
 
+        /**
+         * Establece el cónyuge del beneficiario.
+         *
+         * @param spouse entidad cónyuge
+         * @return builder actual
+         */
         public Builder spouse(Spouse spouse) {
             this.spouse = spouse;
             return this;

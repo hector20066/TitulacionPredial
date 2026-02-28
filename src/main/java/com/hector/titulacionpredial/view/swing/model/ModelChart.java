@@ -1,8 +1,15 @@
 package com.hector.titulacionpredial.view.swing.model;
 
 /**
+ * Modelo de datos para una serie del gráfico de líneas.
  *
- * @author hectoracevedo
+ * <p>
+ * Contiene la etiqueta del eje X y los valores
+ * correspondientes a cada serie de datos.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ModelChart {
 

@@ -22,17 +22,46 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * Controlador del panel Dashboard.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar automáticamente
+ * las estadísticas del dashboard cuando se producen cambios
+ * en los datos del sistema. Carga tarjetas resumen, gráficos
+ * de línea con tendencia mensual y gráficos de porcentaje.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see Dashboard
+ * @see Observer
+ * @since 1.0
  */
 public class ControllerDashboard implements Observer {
 
+    /**
+     * Vista del dashboard.
+     */
     private final Dashboard dashboard;
 
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
+    /**
+     * Fachada de acceso a datos de predios.
+     */
     private final PropertyFacade daoProperty;
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador y lo registra como observador.
+     *
+     * @param dashboard vista del dashboard
+     * @param subject   sujeto para registro del observador
+     */
     public ControllerDashboard(Dashboard dashboard, Subject subject) {
         this.dashboard = dashboard;
 

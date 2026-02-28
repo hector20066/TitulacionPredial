@@ -10,8 +10,16 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 
 /**
+ * Botón de acción personalizado con efecto ripple.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} con esquinas redondeadas, gradiente
+ * de color y un efecto visual de onda (ripple) al hacer clic.
+ * Utilizado para las acciones principales de la interfaz.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ButtonAction extends JButton {
 

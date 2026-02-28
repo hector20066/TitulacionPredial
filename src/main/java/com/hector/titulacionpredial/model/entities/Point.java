@@ -38,14 +38,14 @@ public class Point {
 
     /**
      * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos basados en reflexion.
+     * o mecanismos basados en reflexión.
      */
     public Point() {
 
     }
 
     /**
-     * Constructor utilizado por el patron Builder.
+     * Constructor utilizado por el patrón Builder.
      *
      * @param builder instancia del constructor paso a paso
      */
@@ -107,9 +107,9 @@ public class Point {
     }
 
     /**
-     * Representacion textual de la entidad.
+     * Representación textual de la entidad.
      *
-     * @return descripcion formateada de los atributos principales.
+     * @return descripción formateada de los atributos principales
      */
     @Override
     public String toString() {
@@ -143,40 +143,76 @@ public class Point {
         private Double distance;
         private String hillside;
 
+        /**
+         * Establece el código del punto.
+         *
+         * @param code código único
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece el número de punto.
+         *
+         * @param numberPoint número secuencial del punto
+         * @return builder actual
+         */
         public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
             return this;
         }
 
+        /**
+         * Establece la coordenada norte.
+         *
+         * @param northCoordinate coordenada norte
+         * @return builder actual
+         */
         public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
+        /**
+         * Establece la coordenada este.
+         *
+         * @param eastCoordinate coordenada este
+         * @return builder actual
+         */
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }
 
+        /**
+         * Establece la distancia al siguiente punto.
+         *
+         * @param distance distancia en metros
+         * @return builder actual
+         */
         public Builder distance(Double distance) {
             this.distance = distance;
             return this;
         }
 
+        /**
+         * Establece el lindero.
+         *
+         * @param hillside descripción del lindero
+         * @return builder actual
+         */
         public Builder hillside(String hillside) {
             this.hillside = hillside;
             return this;
         }
 
         /**
-         * Construye una nueva instancia de {@link Point}
+         * Construye una nueva instancia de {@link Point}.
          *
-         * @return nuevo predio construido.
+         * @return nuevo punto construido
          */
         public Point build() {
             return new Point(this);

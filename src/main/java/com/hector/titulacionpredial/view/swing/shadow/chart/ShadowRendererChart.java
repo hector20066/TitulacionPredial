@@ -1,11 +1,19 @@
 package com.hector.titulacionpredial.view.swing.shadow.chart;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Renderizador de sombras para componentes de gráficos.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera imágenes de sombra mediante desenfoque del canal alfa,
+ * utilizado por {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}
+ * para crear efectos visuales en las tarjetas.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ShadowRendererChart {
 

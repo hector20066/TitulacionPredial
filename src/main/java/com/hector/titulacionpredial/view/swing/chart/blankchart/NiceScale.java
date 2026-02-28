@@ -1,8 +1,16 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
 /**
+ * Calculadora de escalas «agradables» para ejes de gráficos.
  *
- * @author hectoracevedo
+ * <p>
+ * Dado un rango de valores mínimo y máximo, calcula
+ * intervalos de marcas (ticks) redondeados y límites
+ * de eje apropiados para una visualización legible.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class NiceScale {
     

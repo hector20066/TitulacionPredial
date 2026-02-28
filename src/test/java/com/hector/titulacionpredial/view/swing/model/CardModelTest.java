@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.view.swing.model;
 
-import javax.swing.Icon;
-import javax.swing.UIManager;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 @DisplayName("CardModel Tests")
 class CardModelTest {

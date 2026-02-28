@@ -1,8 +1,15 @@
 package com.hector.titulacionpredial.view.swing.model;
 
 /**
+ * Modelo de datos para los elementos del menú lateral.
  *
- * @author hectoracevedo
+ * <p>
+ * Contiene el icono SVG, el nombre del menú principal
+ * y la lista de nombres de los sub-menús.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ModelMenuItem {
 

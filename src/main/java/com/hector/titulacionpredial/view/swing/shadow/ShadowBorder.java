@@ -7,8 +7,18 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
+ * Singleton para la creación de bordes con efecto de sombra.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera imágenes de sombra interior ({@code createShadowIn})
+ * y exterior ({@code createShadowOut}) utilizando
+ * {@link ShadowRenderer}. Define el enum {@code ShadowType}
+ * para distinguir entre ambos tipos.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see ShadowRenderer
  */
 public class ShadowBorder {
 

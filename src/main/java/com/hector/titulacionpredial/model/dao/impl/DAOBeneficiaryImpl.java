@@ -6,7 +6,9 @@ import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundEx
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 import java.sql.*;
@@ -15,17 +17,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Implementación del DAO para la gestión de beneficiarios
+ * en la base de datos PostgreSQL.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza el patrón Singleton para garantizar una única instancia.
+ * Las consultas SQL se obtienen desde {@link SQLRepository} y la
+ * conexión a la base de datos mediante {@link DataBasePool}.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @see DAOBeneficiary
+ * @see DataBasePool
+ * @see SQLRepository
+ * @since 1.0
  */
 public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
+    /**
+     * Instancia única del DAO (patrón Singleton).
+     */
     private static DAOBeneficiaryImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOBeneficiaryImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia única del DAO.
+     *
+     * @return instancia Singleton de {@code DAOBeneficiaryImpl}
+     */
     public static DAOBeneficiaryImpl getInstance() {
         if (instance == null) {
             instance = new DAOBeneficiaryImpl();

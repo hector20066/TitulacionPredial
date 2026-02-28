@@ -1,15 +1,21 @@
 package com.hector.titulacionpredial.view.swing.chart;
 
 import com.hector.titulacionpredial.view.swing.model.CardModel;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+
+import java.awt.*;
 
 /**
+ * Tarjeta visual con fondo de gradiente para el dashboard.
  *
- * @author hectoracevedo
+ * <p>
+ * Muestra un icono, título y valores numéricos con un
+ * fondo de gradiente personalizable. Utilizada para
+ * presentar estadísticas clave en el tablero de control.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
+ * @see CardModel
  */
 public class Card extends javax.swing.JPanel {
 

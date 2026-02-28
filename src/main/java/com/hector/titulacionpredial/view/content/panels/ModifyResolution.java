@@ -2,17 +2,25 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 /**
+ * Formulario para la modificación de una resolución existente.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite editar los campos de número de resolución,
+ * notificación, ejecutoria, FMI, acta, escritura pública
+ * y observaciones de una resolución previamente registrada.
+ * </p>
+ *
+ * @author Hector Acevedo
+ * @since 1.0
  */
 public class ModifyResolution extends javax.swing.JPanel {
 
