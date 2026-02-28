@@ -5,8 +5,32 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
+ * Entidad de dominio que representa un Beneficiario dentro del sistema.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link Person} agregando información específica
+ * relacionada con el proceso de titulación, como:
+ * </p>
+ * <ul>
+ *     <li>Código interno del beneficiario.</li>
+ *     <li>Ubicación geográfica (departamento y municipio).</li>
+ *     <li>Referencia catastral asociada.</li>
+ *     <li>Estado civil.</li>
+ *     <li>Información jurídica y administrativa complementaria.</li>
+ * </ul>
+ *
+ * <p>
+ * Esta entidad forma parte del modelo de dominio y es
+ * persistida en la base de datos.
+ * </p>
+ *
+ * <p>
+ * La construcción de instancias se soporta mediante el patrón
+ * {@link Builder}, permitiendo herencia fluida desde {@link Person.Builder}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class Beneficiary extends Person {
 
@@ -19,12 +43,22 @@ public class Beneficiary extends Person {
     private String crossing;
     private String publication;
     private String neighborhood;
+    private Spouse spouse;
 
+    /**
+     * Constructor vacío requerido para frameworks de persistencia
+     * o mecanismos basados en reflexión.
+     */
     public Beneficiary() {
 
     }
 
-    public Beneficiary(Builder builder) {
+    /**
+     * Constructor utilizado por el patrón Builder.
+     *
+     * @param builder instancia configurada del builder
+     */
+    protected Beneficiary(Builder builder) {
         super(builder);
         this.code = builder.code;
         this.department = builder.department;
@@ -35,6 +69,7 @@ public class Beneficiary extends Person {
         this.crossing = builder.crossing;
         this.publication = builder.publication;
         this.neighborhood = builder.neighborhood;
+        this.spouse = builder.spouse;
     }
 
     public int getCode() {
@@ -109,6 +144,20 @@ public class Beneficiary extends Person {
         this.neighborhood = neighborhood;
     }
 
+    public Spouse getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Spouse spouse) {
+        this.spouse = spouse;
+    }
+
+    /**
+     * Devuelve una representación textual del beneficiario,
+     * incluyendo los atributos heredados y específicos.
+     *
+     * @return descripción formateada del beneficiario
+     */
     @Override
     public String toString() {
         return super.toString() +
@@ -123,6 +172,15 @@ public class Beneficiary extends Person {
                 "\nNeighborhood= " + neighborhood;
     }
 
+    /**
+     * Builder concreto para la construcción fluida de instancias
+     * de {@link Beneficiary}.
+     *
+     * <p>
+     * Extiende {@link Person.Builder} para permitir la configuración
+     * de atributos heredados y específicos en una misma cadena fluida.
+     * </p>
+     */
     public static class Builder extends Person.Builder<Builder> {
 
         private int code;
@@ -134,52 +192,123 @@ public class Beneficiary extends Person {
         private String crossing;
         private String publication;
         private String neighborhood;
+        private Spouse spouse;
 
+        /**
+         * Establece el código del beneficiario.
+         *
+         * @param code código interno
+         * @return builder actual
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+        /**
+         * Establece el departamento.
+         *
+         * @param department departamento asociado
+         * @return builder actual
+         */
         public Builder department(Department department) {
             this.department = department;
             return this;
         }
 
+        /**
+         * Establece el municipio.
+         *
+         * @param municipality municipio asociado
+         * @return builder actual
+         */
         public Builder municipality(Municipalities municipality) {
             this.municipality = municipality;
             return this;
         }
 
+        /**
+         * Establece la referencia catastral.
+         *
+         * @param cadastralReference referencia catastral
+         * @return builder actual
+         */
         public Builder cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
             return this;
         }
 
+        /**
+         * Establece el estado civil.
+         *
+         * @param maritalStatus estado civil del beneficiario
+         * @return builder actual
+         */
         public Builder maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
             return this;
         }
 
+        /**
+         * Establece la afectación predial.
+         *
+         * @param affectation información de afectación
+         * @return builder actual
+         */
         public Builder affectation(String affectation) {
             this.affectation = affectation;
             return this;
         }
 
+        /**
+         * Establece el cruce.
+         *
+         * @param crossing información de cruce
+         * @return builder actual
+         */
         public Builder crossing(String crossing) {
             this.crossing = crossing;
             return this;
         }
 
+        /**
+         * Establece la publicación.
+         *
+         * @param publication información de publicación
+         * @return builder actual
+         */
         public Builder publication(String publication) {
             this.publication = publication;
             return this;
         }
 
+        /**
+         * Establece el barrio.
+         *
+         * @param neighborhood barrio de residencia
+         * @return builder actual
+         */
         public Builder neighborhood(String neighborhood) {
             this.neighborhood = neighborhood;
             return this;
         }
 
+        /**
+         * Establece el cónyuge del beneficiario.
+         *
+         * @param spouse entidad cónyuge
+         * @return builder actual
+         */
+        public Builder spouse(Spouse spouse) {
+            this.spouse = spouse;
+            return this;
+        }
+
+        /**
+         * Construye una nueva instancia de {@link Beneficiary}.
+         *
+         * @return beneficiario completamente configurado
+         */
         @Override
         public Beneficiary build() {
             return new Beneficiary(this);

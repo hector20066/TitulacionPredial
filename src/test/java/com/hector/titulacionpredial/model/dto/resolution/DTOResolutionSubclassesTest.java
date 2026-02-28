@@ -1,15 +1,13 @@
 package com.hector.titulacionpredial.model.dto.resolution;
 
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import com.hector.titulacionpredial.model.dto.DTOResolution;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import com.hector.titulacionpredial.model.dto.DTOResolution;
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("DTOResolution Subclasses Tests")
 class DTOResolutionSubclassesTest {

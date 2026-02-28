@@ -7,34 +7,89 @@ import com.hector.titulacionpredial.view.swing.chart.LineChart;
 import com.hector.titulacionpredial.view.swing.model.CardModel;
 
 /**
+ * Panel principal del tablero de control (Dashboard).
  *
- * @author hectoracevedo
+ * <p>
+ * Presenta tarjetas de resumen ({@link Card}), gráficos de calibre
+ * ({@link GaugeChart}) y gráficos de líneas ({@link LineChart})
+ * con estadísticas de beneficiarios, predios y resoluciones.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
+ * @see Card
+ * @see GaugeChart
+ * @see LineChart
  */
 public class Dashboard extends javax.swing.JPanel {
 
+    /**
+     * Crea el panel del tablero e inicializa los componentes gráficos.
+     */
     public Dashboard() {
         initComponents();
         
         scroll.getVerticalScrollBar().setUnitIncrement(15);
     }
-    
+
+    /**
+     * Actualiza las tarjetas de resumen con los totales indicados.
+     *
+     * @param totalBeneficiaries total de beneficiarios
+     * @param totalProperties    total de predios
+     * @param totalResolutions   total de resoluciones
+     */
     public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
-        card1.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/users-round.svg")), "Beneficiarios", String.valueOf(totalBeneficiaries), "Beneficiarios registrados"));
-        card2.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/house.svg")), "Predios", String.valueOf(totalProperties), "Predios Registrados"));
-        card3.setData(new CardModel(new FlatSVGIcon(getClass().getResource("/image/file-text.svg")), "Resoluciones", String.valueOf(totalResolutions), "Resoluciones hechas"));
+        card1.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/users-round.svg")),
+                "Beneficiarios",
+                String.valueOf(totalBeneficiaries),
+                "Beneficiarios registrados"));
+
+        card2.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/house.svg")),
+                "Predios",
+                String.valueOf(totalProperties),
+                "Predios Registrados"));
+
+        card3.setData(new CardModel(
+                new FlatSVGIcon(getClass().getResource("/image/file-text.svg")),
+                "Resoluciones",
+                String.valueOf(totalResolutions),
+                "Resoluciones hechas"));
     }
 
+    /**
+     * Anima los medidores semicirculares con los porcentajes.
+     *
+     * @param percentBeneficiaries porcentaje de beneficiarios
+     * @param percentProperties    porcentaje de predios
+     */
     public void updateGaugeCharts(int percentBeneficiaries, int percentProperties) {
         gaugeChart1.setValueWithAnimation(percentBeneficiaries);
         gaugeChart2.setValueWithAnimation(percentProperties);
     }
 
+    /**
+     * Carga los datos estadísticos de beneficiarios.
+     *
+     * @param withProperty    cantidad con predio asignado
+     * @param withoutProperty cantidad sin predio asignado
+     * @param total           total de beneficiarios
+     */
     public void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
         jlb_withProperty.setText("# " + withProperty);
         jlb_withoutProperty.setText("# " + withoutProperty);
         jlb_totalBeneficiaries.setText("# " + total);
     }
 
+    /**
+     * Carga los datos estadísticos de predios.
+     *
+     * @param withResolution    cantidad con resolución
+     * @param withoutResolution cantidad sin resolución
+     * @param total             total de predios
+     */
     public void loadDataProperties(int withResolution, int withoutResolution, int total) {
         jlb_withResolution.setText("# " + withResolution);
         jlb_withoutResolution.setText("# " + withoutResolution);

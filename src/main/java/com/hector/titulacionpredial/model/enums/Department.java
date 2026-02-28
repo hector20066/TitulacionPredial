@@ -5,8 +5,22 @@ import java.util.List;
 import static com.hector.titulacionpredial.model.enums.Municipalities.*;
 
 /**
+ * Enumeración que representa los departamentos de Colombia
+ * dentro del sistema de Titulación Predial.
  *
- * @author hectoracevedo
+ * <p>
+ * Cada departamento contiene una lista de {@link Municipalities}
+ * asociados, permitiendo la selección jerárquica de ubicación
+ * geográfica en el sistema.
+ * </p>
+ *
+ * <p>
+ * Incluye todos los 32 departamentos de Colombia y el Distrito
+ * Capital de Bogotá.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public enum Department {
 
@@ -1106,18 +1120,41 @@ public enum Department {
             SANTA_ROSALIA
     );
 
+    /**
+     * Lista de municipios pertenecientes al departamento.
+     */
     private final List<Municipalities> municipalities;
+
+    /**
+     * Nombre legible del departamento.
+     */
     private final String value;
 
+    /**
+     * Constructor del departamento.
+     *
+     * @param value          nombre legible del departamento
+     * @param municipalities municipios que pertenecen al departamento
+     */
     Department(String value, Municipalities... municipalities) {
         this.value = value;
         this.municipalities = List.of(municipalities);
     }
 
+    /**
+     * Obtiene la lista de municipios del departamento.
+     *
+     * @return lista inmutable de {@link Municipalities}
+     */
     public List<Municipalities> getMunicipalities() {
         return municipalities;
     }
 
+    /**
+     * Obtiene el nombre legible del departamento.
+     *
+     * @return nombre del departamento
+     */
     public String getValue() {
         return value;
     }

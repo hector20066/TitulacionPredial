@@ -7,21 +7,73 @@ import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
+ * Controlador principal del contenido de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la navegación entre los distintos paneles de la
+ * interfaz gráfica a través del menú lateral. Coordina la
+ * transición entre vistas y notifica al {@link Subject}
+ * cuando se requiere actualizar los datos.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see ControllerContentBuilder
+ * @see NavigatorUtils
+ * @since 1.0
  */
 public class ControllerContent {
 
+    /**
+     * Vista principal del contenido.
+     */
     private final Content content;
+
+    /**
+     * Panel del dashboard.
+     */
     private final Dashboard dashboard;
+
+    /**
+     * Panel de registro de beneficiarios.
+     */
     private final RegisterBeneficiary registerBeneficiary;
+
+    /**
+     * Panel de registro de predios.
+     */
     private final RegisterProperty registerProperty;
+
+    /**
+     * Panel de visualización de beneficiarios.
+     */
     private final ViewBeneficiaries viewBeneficiaries;
+
+    /**
+     * Panel de visualización de predios.
+     */
     private final SeeProperties seeProperties;
+
+    /**
+     * Panel de visualización de resoluciones.
+     */
     private final SeeResolutions seeResolutions;
+
+    /**
+     * Panel de información «Acerca de».
+     */
     private final About about;
+
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Crea el controlador a partir de un builder que contiene
+     * todas las vistas y dependencias necesarias.
+     *
+     * @param builder constructor con las vistas configuradas
+     */
     public ControllerContent(ControllerContentBuilder builder) {
         this.content = builder.getContent();
         this.dashboard = builder.getDashboard();
@@ -36,10 +88,26 @@ public class ControllerContent {
         connectEvents();
     }
 
+    /**
+     * Conecta los eventos del menú lateral con la lógica
+     * de navegación del controlador.
+     */
     private void connectEvents() {
         content.setControllerMenu(this::selectedMenu);
     }
 
+    /**
+     * Gestiona la selección del menú lateral y navega al panel correspondiente.
+     *
+     * <p>
+     * Según el índice del menú y submenú seleccionado, muestra
+     * el panel adecuado y notifica a los observadores cuando
+     * es necesario actualizar los datos.
+     * </p>
+     *
+     * @param index        índice del menú principal
+     * @param indexSubMenu índice del submenú seleccionado
+     */
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {
             case 0 -> {

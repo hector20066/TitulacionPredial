@@ -14,17 +14,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Implementación del DAO para la gestión de cónyuges
+ * en la base de datos PostgreSQL.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza el patrón Singleton para garantizar una única instancia.
+ * Las consultas SQL se obtienen desde {@link SQLRepository} y la
+ * conexión a la base de datos mediante {@link DataBasePool}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see DAOSpouse
+ * @see DataBasePool
+ * @see SQLRepository
+ * @since 1.0
  */
 public class DAOSpouseImpl implements DAOSpouse {
 
+    /**
+     * Instancia única del DAO (patrón Singleton).
+     */
     private static DAOSpouseImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOSpouseImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia única del DAO.
+     *
+     * @return instancia Singleton de {@code DAOSpouseImpl}
+     */
     public static DAOSpouseImpl getInstance() {
         if (instance == null) {
             instance = new DAOSpouseImpl();
@@ -89,6 +112,15 @@ public class DAOSpouseImpl implements DAOSpouse {
         }
     }
 
+    /**
+     * Configura el DTO con los datos del cónyuge obtenidos
+     * del {@link ResultSet}.
+     *
+     * @param dto objeto donde se guardarán los datos obtenidos
+     * @param rs  resultados de la consulta
+     * @throws SQLException si ocurre un error al leer los datos
+     *                      del {@code ResultSet}
+     */
     private void executeQuery(DTOSpouse dto, ResultSet rs) throws SQLException {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));

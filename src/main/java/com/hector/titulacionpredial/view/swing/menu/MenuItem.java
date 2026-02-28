@@ -15,8 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Grupo de menú con submenús expandibles.
  *
- * @author hectoracevedo
+ * <p>
+ * Contiene un elemento principal ({@link Item}) y una lista
+ * de sub-elementos que se despliegan con animación al hacer
+ * clic. Utiliza MigLayout para organizar los sub-ítems.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see Item
+ * @see ModelMenuItem
+ * @since 1.0
  */
 public class MenuItem extends JPanel {
 
@@ -27,6 +37,13 @@ public class MenuItem extends JPanel {
     private int buttonAngle = -1;
     private boolean open;
 
+    /**
+     * Crea un grupo de menú con sub-elementos expandibles.
+     *
+     * @param item   modelo con los datos del menú
+     * @param index  índice del grupo
+     * @param layout layout del contenedor padre
+     */
     public MenuItem(ModelMenuItem item, int index, MigLayout layout) {
         this.index = index;
         this.hasSubMenu = item.getSubMenu().length > 0;
@@ -38,6 +55,9 @@ public class MenuItem extends JPanel {
         }
     }
 
+    /**
+     * Inicializa los sub-ítems y eventos del menú.
+     */
     private void init(ModelMenuItem item) {
         setOpaque(false);
         setForeground(new Color(170, 170, 170));
@@ -81,6 +101,9 @@ public class MenuItem extends JPanel {
         }
     }
 
+    /**
+     * Inicializa la animación de apertura/cierre del sub-menú.
+     */
     private void initAnimator(MigLayout layout) {
         animator = new Animator(300, new TimingTargetAdapter() {
             private int height;
@@ -106,6 +129,9 @@ public class MenuItem extends JPanel {
         animator.setAcceleration(.5f);
     }
 
+    /**
+     * Inicia o reinicia la animación de expansión.
+     */
     private void startAnimator() {
         if (animator.isRunning()) {
             float f = animator.getTimingFraction();
@@ -118,10 +144,21 @@ public class MenuItem extends JPanel {
         animator.start();
     }
 
+    /**
+     * Agrega un listener de selección de menú.
+     *
+     * @param event listener a agregar
+     */
     public void addEvent(EventMenuSelected event) {
         this.events.add(event);
     }
 
+    /**
+     * Notifica a los listeners que se seleccionó un ítem.
+     *
+     * @param index    índice del menú
+     * @param subIndex índice del sub-menú
+     */
     private void runEvent(int index, int subIndex) {
         for (EventMenuSelected event : events) {
             event.menuSelected(index, subIndex);
@@ -132,10 +169,18 @@ public class MenuItem extends JPanel {
         return index;
     }
 
+    /**
+     * Indica si tiene sub-menús.
+     *
+     * @return {@code true} si tiene sub-menús
+     */
     public boolean isHasSubMenu() {
         return hasSubMenu;
     }
 
+    /**
+     * Limpia la selección de todos los sub-elementos.
+     */
     public void clearSelected() {
         setForeground(new Color(170, 170, 170));
 
@@ -145,6 +190,11 @@ public class MenuItem extends JPanel {
         }
     }
 
+    /**
+     * Selecciona el sub-elemento con el índice dado.
+     *
+     * @param index índice del sub-menú
+     */
     public void setSelectedIndex(int index) {
         for (Component com : getComponents()) {
             Item item = (Item) com;
@@ -161,6 +211,9 @@ public class MenuItem extends JPanel {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);

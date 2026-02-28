@@ -9,8 +9,17 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
+ * Botón con insignia numérica (badge) superpuesta.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} para mostrar un círculo con un
+ * número en la esquina superior derecha, útil para indicar
+ * conteos o notificaciones. Incluye efecto de animación
+ * al pasar el mouse.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class ButtonBadges extends JButton {
 
@@ -22,6 +31,9 @@ public class ButtonBadges extends JButton {
     private Color effectColor = new Color(173, 173, 173);
     private int badges;
 
+    /**
+     * Crea un botón con insignia con estilo predeterminado.
+     */
     public ButtonBadges() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -47,6 +59,9 @@ public class ButtonBadges extends JButton {
         });
     }
 
+    /**
+     * Inicializa el temporizador para la animación del efecto ripple.
+     */
     private void initAnimator() {
         int delay = 16;
         int duration = 400;
@@ -68,23 +83,26 @@ public class ButtonBadges extends JButton {
         });
     }
 
-    public void setBadges(int badges) {
-        this.badges = badges;
-        repaint();
-    }
-
     public int getBadges() {
         return badges;
     }
 
-    public void setEffectColor(Color effectColor) {
-        this.effectColor = effectColor;
+    public void setBadges(int badges) {
+        this.badges = badges;
+        repaint();
     }
 
     public Color getEffectColor() {
         return effectColor;
     }
 
+    public void setEffectColor(Color effectColor) {
+        this.effectColor = effectColor;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics g) {
         int width = getWidth();
@@ -116,6 +134,9 @@ public class ButtonBadges extends JButton {
         super.paintComponent(g);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -143,6 +164,12 @@ public class ButtonBadges extends JButton {
         }
     }
 
+    /**
+     * Limita el valor de alfa al rango [0, 1].
+     *
+     * @param value valor a limitar
+     * @return valor limitado
+     */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;
         if (value > 1f) return 1f;

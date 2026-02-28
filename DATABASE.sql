@@ -39,11 +39,11 @@ CREATE TABLE beneficiary (
 -- =========================
 CREATE TABLE spouse (
     id BIGINT PRIMARY KEY,
-    full_name VARCHAR(150) NOT NULL,
-    expedition_location VARCHAR(100) NOT NULL,
+    full_name VARCHAR(150),
+    expedition_location VARCHAR(100),
     address VARCHAR(40),
-    phone BIGINT NOT NULL,
-    beneficiary_code INT NOT NULL,
+    phone BIGINT,
+    beneficiary_code,
 
     CONSTRAINT fk_spouse_beneficiary
         FOREIGN KEY (beneficiary_code)

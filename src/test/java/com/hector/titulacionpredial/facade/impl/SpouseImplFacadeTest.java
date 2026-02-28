@@ -1,25 +1,21 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import java.lang.reflect.Field;
-
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
+import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import static org.mockito.ArgumentMatchers.any;
 import org.mockito.Mock;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
-import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import java.lang.reflect.Field;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("SpouseImplFacade Tests")

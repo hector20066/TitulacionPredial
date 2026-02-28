@@ -5,11 +5,24 @@ import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import javax.swing.*;
 
 /**
+ * Ventana principal ({@code JFrame}) de la aplicación
+ * Titulación Predial.
  *
- * @author hectoracevedo
+ * <p>
+ * Contiene el menú lateral ({@link com.hector.titulacionpredial.view.swing.menu.Menu}),
+ * la barra de título ({@link com.hector.titulacionpredial.view.component.Head})
+ * y el panel de contenido dinámico donde se cargan los diferentes
+ * formularios de la aplicación.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class Content extends javax.swing.JFrame {
     
+    /**
+     * Crea la ventana principal e inicializa menú, cabecera y contenido.
+     */
     public Content() {
         initComponents();
 
@@ -103,6 +116,11 @@ public class Content extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el controlador para los eventos de selección del menú.
+     *
+     * @param evt listener de selección de menú
+     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }

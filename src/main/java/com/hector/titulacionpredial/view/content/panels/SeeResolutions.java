@@ -3,26 +3,37 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
-import java.awt.Color;
-import java.awt.Font;
+
+import javax.swing.*;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.time.LocalDate;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 /**
+ * Panel para la visualización de resoluciones registradas
+ * en formato de tabla.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite buscar y modificar resoluciones existentes.
+ * Muestra información como número de resolución, código
+ * de predio, FMI, fechas de notificación y ejecutoria.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class SeeResolutions extends javax.swing.JPanel {
 
     DefaultTableModel model = new DefaultTableModel();
-    
+
+    /**
+     * Crea el panel de consulta de resoluciones y configura la tabla.
+     */
     public SeeResolutions() {
         initComponents();
         
@@ -158,30 +169,60 @@ public class SeeResolutions extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de modificar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para el botón de buscar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para cancelar búsqueda.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener de documento al campo de búsqueda.
+     *
+     * @param listen listener de cambios de documento
+     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de mouse al campo de búsqueda.
+     *
+     * @param listen listener de mouse
+     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de foco al campo de búsqueda.
+     *
+     * @param listen listener de foco
+     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
-    
+
     public DefaultTableModel getModel() {
         return model;
     }
@@ -210,6 +251,11 @@ public class SeeResolutions extends javax.swing.JPanel {
         return txt_search;
     }
 
+    /**
+     * Carga una resolución en la tabla.
+     *
+     * @param dto datos de la resolución
+     */
     public void loadData(DTOResolutionDetails dto) {
         int code = dto.getCode();
         long numResolution = dto.getResolutionNumber();

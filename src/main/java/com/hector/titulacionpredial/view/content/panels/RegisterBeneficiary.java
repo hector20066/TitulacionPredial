@@ -1,22 +1,35 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.enums.*;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 /**
+ * Formulario para el registro y modificación de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Incluye campos para nombre, apellido, cédula, departamento,
+ * municipio, estado civil, afectación predial y código de seguimiento.
+ * Soporta modo de creación y modo de edición (modificación).
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {
 
     private boolean modify = false;
     private MaritalStatus nowStatus;
-    
+
+    /**
+     * Crea el formulario de registro de beneficiarios y configura los combos y áreas de texto.
+     */
     public RegisterBeneficiary() {
         initComponents();
 
@@ -29,7 +42,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_department.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof Department) {
@@ -42,7 +56,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_maritalStatus.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof MaritalStatus) {
@@ -55,7 +70,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         cbo_municipality.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                                                          boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
                 if (value instanceof Municipalities) {
@@ -66,11 +82,11 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             }
         });
     }
-    
+
     public void setModify(boolean modify) {
         this.modify = modify;
     }
-    
+
     public boolean isModify() {
         return modify;
     }
@@ -493,22 +509,42 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de registro.
+     *
+     * @param action listener del botón
+     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
 
+    /**
+     * Asigna el listener para el combo de departamento.
+     *
+     * @param action listener del combo
+     */
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
 
+    /**
+     * Asigna el listener para el combo de estado civil.
+     *
+     * @param action listener del combo
+     */
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
 
+    /**
+     * Asigna el listener para el checkbox de afectación.
+     *
+     * @param action listener del checkbox
+     */
     public void setControllerCbx_affectation(ActionListener action) {
         cbx_affectation.addActionListener(action);
     }
-    
+
     public ButtonAction getBtn_register() {
         return btn_register;
     }
@@ -585,12 +621,23 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_followingCode.setText(String.valueOf(code));
     }
 
+    /** Indica si se están cargando datos en el formulario. */
     public boolean isLoading = false;
 
+    /**
+     * Indica si los datos se están cargando.
+     *
+     * @return {@code true} si está cargando
+     */
     public boolean isLoading() {
         return isLoading;
     }
 
+    /**
+     * Carga los datos del beneficiario para modificación.
+     *
+     * @param dto datos detallados del beneficiario
+     */
     public void loadDataModify(DTOBeneficiaryDetails dto) {
         isLoading = true;
 
@@ -623,6 +670,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         isLoading = false;
     }
 
+    /**
+     * Restablece los campos a modo editable después de una modificación.
+     */
     public void resetUI() {
         txt_name.setEditable(true);
         txt_lastName.setEditable(true);
@@ -632,6 +682,11 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txa_affectation.setEditable(false);
     }
 
+    /**
+     * Divide un nombre completo en nombre y apellido.
+     *
+     * @param fullName nombre completo
+     */
     private void validateName(String fullName) {
         if (fullName == null || fullName.trim().isEmpty()) {
             txt_name.setText("");
@@ -664,6 +719,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_lastName.setText(apellidos.toString().trim());
     }
     
+    /**
+     * Limpia todos los campos y restablece el formulario a modo registro.
+     */
     public void clearFields() {
         jlb_title.setText("Agregar Beneficiario");
         btn_register.setText("AGREGAR BENEFICIARIO");

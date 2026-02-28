@@ -19,17 +19,40 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Implementación del DAO para la gestión de predios
+ * en la base de datos PostgreSQL.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza el patrón Singleton para garantizar una única instancia.
+ * Maneja relaciones complejas entre predios, beneficiarios y
+ * puntos geográficos mediante consultas con JOIN.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see DAOProperty
+ * @see DataBasePool
+ * @see SQLRepository
+ * @since 1.0
  */
 public class DAOPropertyImpl implements DAOProperty {
 
+    /**
+     * Instancia única del DAO (patrón Singleton).
+     */
     private static DAOPropertyImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOPropertyImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia única del DAO.
+     *
+     * @return instancia Singleton de {@code DAOPropertyImpl}
+     */
     public static DAOPropertyImpl getInstance() {
         if (instance == null) {
             instance = new DAOPropertyImpl();
@@ -72,7 +95,6 @@ public class DAOPropertyImpl implements DAOProperty {
 
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
-
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -100,6 +122,19 @@ public class DAOPropertyImpl implements DAOProperty {
         return getDtoPropertyDetails(sql);
     }
 
+    /**
+     * Ejecuta una consulta SQL que retorna una lista de predios
+     * con sus beneficiarios y puntos geográficos.
+     *
+     * <p>
+     * Procesa cada fila del {@link ResultSet} agrupando
+     * la información por código de predio mediante un {@link LinkedHashMap}.
+     * </p>
+     *
+     * @param sql consulta SQL a ejecutar
+     * @return lista de DTOs de predios con sus relaciones
+     * @throws PropertyPersistenceException si ocurre un error en la consulta
+     */
     private List<DTOPropertyDetails> getDtoPropertyDetails(String sql) throws PropertyPersistenceException {
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
 
@@ -118,6 +153,21 @@ public class DAOPropertyImpl implements DAOProperty {
         }
     }
 
+    /**
+     * Procesa una fila del {@link ResultSet} y la agrupa
+     * dentro del mapa de predios.
+     *
+     * <p>
+     * Si el predio aún no existe en el mapa, lo crea.
+     * Luego añade los beneficiarios y puntos que no se hayan
+     * registrado previamente, evitando duplicados producidos
+     * por los JOINs.
+     * </p>
+     *
+     * @param rs         fila actual del resultado de la consulta
+     * @param properties mapa de predios indexado por código
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private void processRow(ResultSet rs, Map<Integer, DTOPropertyDetails> properties) throws SQLException {
         int propertyCode = rs.getInt("property_code");
 
@@ -132,6 +182,13 @@ public class DAOPropertyImpl implements DAOProperty {
         addPointIfNecessary(rs, property, propertyCode);
     }
 
+    /**
+     * Añade un beneficiario al predio si aún no ha sido registrado.
+     *
+     * @param rs       fila actual del resultado de la consulta
+     * @param property DTO del predio al que se añadirá el beneficiario
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private void addBeneficiaryIfNecessary(ResultSet rs, DTOPropertyDetails property) throws SQLException {
         Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
 
@@ -143,6 +200,14 @@ public class DAOPropertyImpl implements DAOProperty {
         }
     }
 
+    /**
+     * Añade un punto geográfico al predio si aún no ha sido registrado.
+     *
+     * @param rs           fila actual del resultado de la consulta
+     * @param property     DTO del predio al que se añadirá el punto
+     * @param propertyCode código del predio
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private void addPointIfNecessary(ResultSet rs, DTOPropertyDetails property, int propertyCode) throws SQLException {
         int numberPoint = rs.getInt("number");
 
@@ -152,6 +217,20 @@ public class DAOPropertyImpl implements DAOProperty {
         }
     }
 
+    /**
+     * Crea un objeto {@link DTOPropertyDetails} a partir de la fila
+     * actual del {@link ResultSet}.
+     *
+     * <p>
+     * Gestiona los valores nulos de los campos de resolución,
+     * notificación, ejecutoria, FMI, acta, escritura pública
+     * y notaría.
+     * </p>
+     *
+     * @param rs fila actual del resultado de la consulta
+     * @return DTO con los datos del predio
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
         DTOPropertyDetails property = new DTOPropertyDetails();
 
@@ -176,6 +255,15 @@ public class DAOPropertyImpl implements DAOProperty {
         return property;
     }
 
+    /**
+     * Crea un objeto {@link DTOBeneficiaryPropertyDetails}
+     * a partir de la fila actual del {@link ResultSet}.
+     *
+     * @param rs              fila actual del resultado de la consulta
+     * @param beneficiaryCode código del beneficiario
+     * @return DTO con los datos del beneficiario asociado al predio
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private DTOBeneficiaryPropertyDetails createDtoBeneficiaryPropertyDetails(ResultSet rs, int beneficiaryCode) throws SQLException {
         String municipalityStr = rs.getString("beneficiary_municipality");
         Municipalities municipality = null;
@@ -192,18 +280,42 @@ public class DAOPropertyImpl implements DAOProperty {
         );
     }
 
+    /**
+     * Verifica si un beneficiario ya fue agregado al predio.
+     *
+     * @param property        DTO del predio a verificar
+     * @param beneficiaryCode código del beneficiario a buscar
+     * @return {@code true} si el beneficiario ya existe en la lista
+     */
     private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
         return property.getBeneficiaries()
                 .stream()
                 .anyMatch(b -> b.getId() == beneficiaryCode);
     }
 
+    /**
+     * Verifica si un punto geográfico ya fue agregado al predio.
+     *
+     * @param property    DTO del predio a verificar
+     * @param numberPoint número del punto a buscar
+     * @return {@code true} si el punto ya existe en la lista
+     */
     private boolean verifyPointExists(DTOPropertyDetails property, int numberPoint) {
         return property.getPoints()
                 .stream()
                 .anyMatch(p -> p.getNumberPoint() == numberPoint);
     }
 
+    /**
+     * Crea un objeto {@link DTOPoint} mediante su Builder
+     * a partir de la fila actual del {@link ResultSet}.
+     *
+     * @param rs           fila actual del resultado de la consulta
+     * @param numberPoint  número del punto
+     * @param propertyCode código del predio al que pertenece el punto
+     * @return DTO con los datos del punto geográfico
+     * @throws SQLException si ocurre un error al leer los datos
+     */
     private DTOPoint createDTOPoints(ResultSet rs, int numberPoint, int propertyCode) throws SQLException {
         return new DTOPoint.Builder()
                 .numberPoint(numberPoint)

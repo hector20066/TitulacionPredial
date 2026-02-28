@@ -15,13 +15,39 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Clase utilitaria para la generación de documentos Word
+ * de resoluciones a partir de una plantilla.
  *
- * @author hectoracevedo
+ * <p>
+ * Utiliza la librería POI-TL (Deepoove) para reemplazar
+ * variables en una plantilla Word ({@code .docx}) con los
+ * datos de los beneficiarios, puntos geográficos y demás
+ * información de la resolución.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see XWPFTemplate
+ * @since 1.0
  */
 public class GenerateResolutionUtils {
 
-    public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points, String address,
-                                          String cadastralId, String fmi, String area, String notificacion, String path) throws IOException {
+    /**
+     * Genera el documento Word de resolución con los datos proporcionados.
+     *
+     * @param beneficiariesList lista de beneficiarios asociados
+     * @param points            lista de puntos geográficos del predio
+     * @param address           dirección del predio
+     * @param cadastralId       cédula catastral
+     * @param fmi               folio de matrícula inmobiliaria
+     * @param area              área del predio
+     * @param notificacion      fecha de notificación
+     * @param path              ruta del directorio de destino
+     * @throws IOException si ocurre un error al escribir el documento
+     */
+    public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points,
+                                          String address, String cadastralId, String fmi, String area,
+                                          String notificacion, String path) throws IOException {
+
         StringBuilder beneficiaries = new StringBuilder();
         defineTemplate(beneficiaries, beneficiariesList);
 
@@ -66,7 +92,8 @@ public class GenerateResolutionUtils {
                 .buildGramer("${", "}")
                 .build();
 
-        InputStream templateStream = GenerateResolution.class.getClassLoader().getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
+        InputStream templateStream = GenerateResolution.class.getClassLoader().
+                getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
         template.writeToFile(path + File.separator + "MINUTA - RES FISCALES.docx");
         template.close();

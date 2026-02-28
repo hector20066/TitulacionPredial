@@ -10,13 +10,31 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import java.util.List;
 
 /**
+ * Implementación de la fachada {@link PropertyFacade} para la
+ * gestión de predios.
  *
- * @author hectoracevedo
+ * <p>
+ * Construye los DTOs necesarios a partir de los parámetros
+ * recibidos y delega las operaciones al DAO
+ * {@link DAOPropertyImpl}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see PropertyFacade
+ * @see DAOPropertyImpl
+ * @since 1.0
  */
 public class PropertyImplFacade implements PropertyFacade {
 
+    /**
+     * DAO delegado para operaciones de predios.
+     */
     private final DAOProperty daoProperty;
 
+    /**
+     * Crea una nueva instancia obteniendo el DAO
+     * de predios mediante su Singleton.
+     */
     public PropertyImplFacade() {
         this.daoProperty = DAOPropertyImpl.getInstance();
     }

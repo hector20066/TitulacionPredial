@@ -1,59 +1,119 @@
 package com.hector.titulacionpredial.view.swing.shadow.chart;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.RenderingHints;
-import java.awt.Transparency;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
 import java.net.URL;
-import javax.imageio.ImageIO;
 
 /**
+ * Utilidades gráficas específicas para los componentes
+ * de gráficos y tarjetas.
  *
- * @author hectoracevedo
+ * <p>
+ * Provee funcionalidades de manipulación de {@link BufferedImage}
+ * similares a {@link com.hector.titulacionpredial.view.swing.shadow.GraphicsUtilities},
+ * optimizadas para el renderizado de sombras en tarjetas.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class GraphicsUtilitiesChart {
-    
+
+    /**
+     * Constructor privado para evitar instanciación.
+     */
     private GraphicsUtilitiesChart() {
+
     }
 
+    /**
+     * Obtiene la configuración gráfica predeterminada del sistema.
+     *
+     * @return configuración gráfica
+     */
     private static GraphicsConfiguration getGraphicsConfiguration() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
     }
 
+    /**
+     * Crea una imagen compatible con el modelo de color de la imagen fuente.
+     *
+     * @param image imagen de referencia
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createColorModelCompatibleImage(BufferedImage image) {
         ColorModel cm = image.getColorModel();
         return new BufferedImage(cm, cm.createCompatibleWritableRaster(image.getWidth(), image.getHeight()),
                 cm.isAlphaPremultiplied(), null);
     }
 
+    /**
+     * Crea una imagen compatible con las mismas dimensiones.
+     *
+     * @param image imagen de referencia
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image) {
         return createCompatibleImage(image, image.getWidth(), image.getHeight());
     }
 
+    /**
+     * Crea una imagen compatible con dimensiones específicas.
+     *
+     * @param image  imagen de referencia
+     * @param width  ancho
+     * @param height alto
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image, int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, image.getTransparency());
     }
 
+    /**
+     * Crea una imagen opaca compatible con las dimensiones dadas.
+     *
+     * @param width  ancho
+     * @param height alto
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height);
     }
 
+    /**
+     * Crea una imagen translúcida compatible.
+     *
+     * @param width  ancho
+     * @param height alto
+     * @return imagen translúcida
+     */
     public static BufferedImage createCompatibleTranslucentImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
     }
 
+    /**
+     * Carga una imagen desde un recurso y la convierte a formato compatible.
+     *
+     * @param resource URL del recurso
+     * @return imagen compatible
+     * @throws IOException si ocurre un error de lectura
+     */
     public static BufferedImage loadCompatibleImage(URL resource) throws IOException {
         BufferedImage image = ImageIO.read(resource);
         return toCompatibleImage(image);
     }
 
+    /**
+     * Convierte una imagen a formato compatible con el sistema.
+     *
+     * @param image imagen a convertir
+     * @return imagen compatible
+     */
     public static BufferedImage toCompatibleImage(BufferedImage image) {
         if (image.getColorModel().equals(getGraphicsConfiguration().getColorModel())) {
             return image;
@@ -61,8 +121,8 @@ public class GraphicsUtilitiesChart {
 
         BufferedImage compatibleImage
                 = getGraphicsConfiguration().createCompatibleImage(
-                        image.getWidth(), image.getHeight(),
-                        image.getTransparency());
+                image.getWidth(), image.getHeight(),
+                image.getTransparency());
 
         Graphics g = compatibleImage.getGraphics();
         g.drawImage(image, 0, 0, null);
@@ -71,6 +131,13 @@ public class GraphicsUtilitiesChart {
         return compatibleImage;
     }
 
+    /**
+     * Crea una miniatura rápida manteniendo la proporción.
+     *
+     * @param image   imagen fuente
+     * @param newSize tamaño máximo
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newSize) {
         float ratio;
         int width = image.getWidth();
@@ -107,6 +174,14 @@ public class GraphicsUtilitiesChart {
         return temp;
     }
 
+    /**
+     * Crea una miniatura rápida con dimensiones específicas.
+     *
+     * @param image     imagen fuente
+     * @param newWidth  nuevo ancho
+     * @param newHeight nuevo alto
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newWidth, int newHeight) {
         if (newWidth >= image.getWidth() || newHeight >= image.getHeight()) {
             throw new IllegalArgumentException("newWidth and newHeight cannot"
@@ -125,6 +200,13 @@ public class GraphicsUtilitiesChart {
         return temp;
     }
 
+    /**
+     * Crea una miniatura de alta calidad manteniendo la proporción.
+     *
+     * @param image   imagen fuente
+     * @param newSize tamaño máximo
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnail(BufferedImage image, int newSize) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -179,6 +261,14 @@ public class GraphicsUtilitiesChart {
         return thumb;
     }
 
+    /**
+     * Crea una miniatura de alta calidad con dimensiones específicas.
+     *
+     * @param image     imagen fuente
+     * @param newWidth  nuevo ancho
+     * @param newHeight nuevo alto
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnail(BufferedImage image, int newWidth, int newHeight) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -222,6 +312,17 @@ public class GraphicsUtilitiesChart {
         return thumb;
     }
 
+    /**
+     * Obtiene los píxeles de una región como arreglo ARGB.
+     *
+     * @param img    imagen fuente
+     * @param x      coordenada X
+     * @param y      coordenada Y
+     * @param w      ancho
+     * @param h      alto
+     * @param pixels arreglo destino ({@code null} para nuevo)
+     * @return arreglo de píxeles
+     */
     public static int[] getPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (w == 0 || h == 0) {
             return new int[0];
@@ -243,6 +344,16 @@ public class GraphicsUtilitiesChart {
         return img.getRGB(x, y, w, h, pixels, 0, w);
     }
 
+    /**
+     * Establece los píxeles en una región de la imagen.
+     *
+     * @param img    imagen destino
+     * @param x      coordenada X
+     * @param y      coordenada Y
+     * @param w      ancho
+     * @param h      alto
+     * @param pixels arreglo de píxeles ARGB
+     */
     public static void setPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (pixels == null || w == 0 || h == 0) {
             return;
@@ -259,5 +370,5 @@ public class GraphicsUtilitiesChart {
             img.setRGB(x, y, w, h, pixels, 0, w);
         }
     }
-    
+
 }

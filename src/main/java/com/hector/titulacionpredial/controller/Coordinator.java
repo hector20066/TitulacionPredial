@@ -8,12 +8,35 @@ import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
+ * Coordinador principal de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Se encarga de inicializar todas las vistas y controladores
+ * de la aplicación, conectarlos entre sí y arrancar la
+ * interfaz gráfica. Implementa el patrón Coordinator para
+ * centralizar la construcción y configuración del sistema.
+ * </p>
+ *
+ * <p>
+ * Flujo de inicio:
+ * </p>
+ * <ol>
+ *   <li>Crear las vistas ({@code startView})</li>
+ *   <li>Crear los controladores ({@code startDrivers})</li>
+ *   <li>Notificar a los observadores para cargar datos iniciales</li>
+ *   <li>Mostrar la ventana principal</li>
+ * </ol>
+ *
+ * @author Ing. Hector Acevedo
+ * @see ControllerContentBuilder
+ * @see ConcreteSubject
+ * @since 1.0
  */
 public class Coordinator {
 
-    // Observer
+    /**
+     * Sujeto concreto del patrón Observer (Singleton).
+     */
     private final ConcreteSubject subject = ConcreteSubject.getInstance();
 
     // Views
@@ -28,6 +51,15 @@ public class Coordinator {
     private ModifyResolution modifyResolution;
     private About about;
 
+    /**
+     * Encargado de iniciar la app, cargando dependencias
+     * y mostrando la interfaz grafica.
+     *
+     * <p>
+     * Notifica a los observadores para que carguen la
+     * informacion necesaria al iniciar la app.
+     * </p>
+     */
     public void startApp() {
         startView();
         startDrivers();
@@ -41,6 +73,15 @@ public class Coordinator {
         });
     }
 
+    /**
+     * Inicializa todas las vistas (paneles) de la aplicación.
+     *
+     * <p>
+     * Crea las instancias de cada panel que conforma la interfaz
+     * gráfica, incluyendo el dashboard, los formularios de registro,
+     * los listados y la vista «Acerca de».
+     * </p>
+     */
     private void startView() {
         content = new Content();
         dashboard = new Dashboard();
@@ -54,6 +95,16 @@ public class Coordinator {
         about = new About();
     }
 
+    /**
+     * Inicializa y conecta todos los controladores de la aplicación.
+     *
+     * <p>
+     * Construye el controlador principal del contenido mediante
+     * {@link ControllerContentBuilder} y crea los controladores
+     * de cada panel, inyectando las vistas y el sujeto del
+     * patrón Observer correspondiente.
+     * </p>
+     */
     private void startDrivers() {
         new ControllerContentBuilder()
                 .withViewContent(content)

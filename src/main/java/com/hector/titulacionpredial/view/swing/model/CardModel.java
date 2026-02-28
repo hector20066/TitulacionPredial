@@ -3,8 +3,15 @@ package com.hector.titulacionpredial.view.swing.model;
 import javax.swing.*;
 
 /**
+ * Modelo de datos para las tarjetas del dashboard.
  *
- * @author hectoracevedo
+ * <p>
+ * Almacena el título, los valores numéricos, el icono
+ * y los colores de gradiente utilizados por {@link com.hector.titulacionpredial.view.swing.chart.Card}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class CardModel {
 
@@ -13,6 +20,14 @@ public class CardModel {
     private String values;
     private String description;
 
+    /**
+     * Crea un modelo de tarjeta con los datos especificados.
+     *
+     * @param icon        icono de la tarjeta
+     * @param titulo      título
+     * @param valores     valor numérico
+     * @param descripcion descripción
+     */
     public CardModel(Icon icon, String titulo, String valores, String descripcion) {
         this.icon = icon;
         this.title = titulo;
@@ -20,6 +35,9 @@ public class CardModel {
         this.description = descripcion;
     }
 
+    /**
+     * Crea un modelo de tarjeta vacío.
+     */
     public CardModel() {
 
     }

@@ -12,8 +12,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
+ * Elemento individual del menú lateral.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link JButton} con estilo plano, icono SVG,
+ * indicador de submenú y efecto de animación al pasar
+ * el mouse. Cambia de color según el estado de selección.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class Item extends JButton {
 
@@ -25,12 +33,21 @@ public class Item extends JButton {
     private boolean mouseEnter;
     private float alpha;
 
+    /**
+     * Crea un elemento de menú.
+     *
+     * @param mainMenu {@code true} si es menú principal
+     * @param index    índice del elemento
+     */
     public Item(boolean mainMenu, int index) {
         this.mainMenu = mainMenu;
         this.index = index;
         init();
     }
 
+    /**
+     * Inicializa la apariencia, eventos del mouse y animación.
+     */
     private void init() {
         setContentAreaFilled(false);
         setHorizontalAlignment(JButton.LEFT);
@@ -84,6 +101,9 @@ public class Item extends JButton {
         }
     }
 
+    /**
+     * Inicia o reinicia la animación de hover.
+     */
     private void startAnimator() {
         if (animator.isRunning()) {
             float f = animator.getTimingFraction();
@@ -96,6 +116,9 @@ public class Item extends JButton {
         animator.start();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -128,6 +151,11 @@ public class Item extends JButton {
         }
     }
 
+    /**
+     * Establece el icono SVG del elemento.
+     *
+     * @param icon ruta del icono SVG
+     */
     public void setCustomIcon(String icon) {
         if (icon != null) {
             this.icon = icon;
@@ -135,6 +163,9 @@ public class Item extends JButton {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setSelected(boolean b) {
         super.setSelected(b);

@@ -1,8 +1,9 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("DTOBeneficiaryPropertyUpdate Tests")
 class DTOBeneficiaryPropertyUpdateTest {

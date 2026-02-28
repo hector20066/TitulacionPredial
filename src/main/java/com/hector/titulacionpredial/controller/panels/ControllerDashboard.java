@@ -22,17 +22,48 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * Controlador del panel Dashboard.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar automáticamente
+ * las estadísticas del dashboard cuando se producen cambios
+ * en los datos del sistema. Carga tarjetas resumen, gráficos
+ * de línea con tendencia mensual y gráficos de porcentaje.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see Dashboard
+ * @see Observer
+ * @since 1.0
  */
 public class ControllerDashboard implements Observer {
 
+    /**
+     * Vista del dashboard.
+     */
     private final Dashboard dashboard;
 
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
+
+    /**
+     * Fachada de acceso a datos de predios.
+     */
     private final PropertyFacade daoProperty;
+
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador y lo registra como observador.
+     *
+     * @param dashboard vista del dashboard
+     * @param subject   sujeto para registro del observador
+     */
     public ControllerDashboard(Dashboard dashboard, Subject subject) {
         this.dashboard = dashboard;
 
@@ -74,6 +105,17 @@ public class ControllerDashboard implements Observer {
         }).start();
     }
 
+    /**
+     * Carga los datos del gráfico de línea con la tendencia mensual
+     * de beneficiarios registrados.
+     *
+     * <p>
+     * Limpia el gráfico existente, configura la leyenda y agrega
+     * cada mes con su cantidad correspondiente.
+     * </p>
+     *
+     * @param list lista de DTOs con la cantidad de beneficiarios por mes
+     */
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
         dashboard.getLineChart1().clear();
         dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149, 213, 178), new Color(45, 106, 79));
@@ -86,19 +128,46 @@ public class ControllerDashboard implements Observer {
         dashboard.getLineChart1().start();
     }
 
+    /**
+     * Carga el número total de cada tipo de registros
+     *
+     * @param totalBeneficiaries numero total de beneficiarios registrados
+     * @param totalProperties    numero total de predios registrados.
+     * @param totalResolutions   número total de resoluciones registradas
+     */
     public void loadCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
         dashboard.updateCards(totalBeneficiaries, totalProperties, totalResolutions);
     }
 
+    /**
+     * Carga los porcentajes en los gráficos de medidor (gauge).
+     *
+     * @param percentBeneficiaries porcentaje de beneficiarios con predio
+     * @param percentProperties    porcentaje de predios con resolución
+     */
     private void loadDataPercent(int percentBeneficiaries, int percentProperties) {
         dashboard.updateGaugeCharts(percentBeneficiaries, percentProperties);
     }
 
-    public void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
+    /**
+     * Carga los datos de los beneficiarios con relación a los predios
+     *
+     * @param withProperty    beneficiarios con predios
+     * @param withoutProperty beneficiarios sin predios
+     * @param total           total de beneficiarios
+     */
+    private void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
         dashboard.loadDataBeneficiaries(withProperty, withoutProperty, total);
     }
 
-    public void loadDataProperties(int withResolution, int withoutResolution, int total) {
+    /**
+     * Carga los datos de los predios con relacion a las resoluciones
+     *
+     * @param withResolution    predios con resolucion
+     * @param withoutResolution predios sin resolucion
+     * @param total             total de predios
+     */
+    private void loadDataProperties(int withResolution, int withoutResolution, int total) {
         dashboard.loadDataProperties(withResolution, withoutResolution, total);
     }
 

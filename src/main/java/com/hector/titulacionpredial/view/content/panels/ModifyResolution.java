@@ -2,20 +2,31 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 /**
+ * Formulario para la modificación de una resolución existente.
  *
- * @author hectoracevedo
+ * <p>
+ * Permite editar los campos de número de resolución,
+ * notificación, ejecutoria, FMI, acta, escritura pública
+ * y observaciones de una resolución previamente registrada.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class ModifyResolution extends javax.swing.JPanel {
 
+    /**
+     * Crea el formulario de modificación de resoluciones.
+     */
     public ModifyResolution() {
         initComponents();
     }
@@ -220,6 +231,11 @@ public class ModifyResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de modificar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
@@ -259,7 +275,15 @@ public class ModifyResolution extends javax.swing.JPanel {
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
-    
+
+    /**
+     * Carga los datos de la resolución en el formulario.
+     *
+     * @param dto          datos de la resolución
+     * @param notification fecha de notificación formateada
+     * @param executory    fecha de ejecutoria formateada
+     * @throws ParseException si las fechas no se pueden parsear
+     */
     public void loadData(DTOResolutionDetails dto, String notification, String executory) throws ParseException {
         txt_code.setText(String.valueOf(dto.getCode()));
         txt_act.setText(dto.getAct());

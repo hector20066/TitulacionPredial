@@ -1,11 +1,19 @@
 package com.hector.titulacionpredial.view.swing.shadow.chart;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Renderizador de sombras para componentes de gráficos.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera imágenes de sombra mediante desenfoque del canal alfa,
+ * utilizado por {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}
+ * para crear efectos visuales en las tarjetas.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class ShadowRendererChart {
 
@@ -13,10 +21,20 @@ public class ShadowRendererChart {
     private float opacity = 0.5f;
     private Color color = Color.BLACK;
 
+    /**
+     * Crea un renderizador con valores predeterminados (tamaño 5, opacidad 0.5, negro).
+     */
     public ShadowRendererChart() {
         this(5, 0.5f, Color.BLACK);
     }
 
+    /**
+     * Crea un renderizador con los parámetros especificados.
+     *
+     * @param size    tamaño del desenfoque
+     * @param opacity opacidad (0.0 a 1.0)
+     * @param color   color de la sombra
+     */
     public ShadowRendererChart(final int size, final float opacity, final Color color) {
         this.size = size;
         this.opacity = opacity;
@@ -35,6 +53,12 @@ public class ShadowRendererChart {
         return size;
     }
 
+    /**
+     * Crea una imagen de sombra a partir de la imagen fuente.
+     *
+     * @param image imagen fuente
+     * @return imagen con la sombra generada
+     */
     public BufferedImage createShadow(final BufferedImage image) {
         int shadowSize = size * 2;
         int srcWidth = image.getWidth();
@@ -74,7 +98,7 @@ public class ShadowRendererChart {
         int srcOffset;
 
         for (int srcY = 0, dstOffset = left * dstWidth; srcY < srcHeight; srcY++) {
-            for (historyIdx = 0; historyIdx < shadowSize;) {
+            for (historyIdx = 0; historyIdx < shadowSize; ) {
                 aHistory[historyIdx++] = 0;
             }
 
@@ -109,7 +133,7 @@ public class ShadowRendererChart {
         for (int x = 0, bufferOffset = 0; x < dstWidth; x++, bufferOffset = x) {
             aSum = 0;
 
-            for (historyIdx = 0; historyIdx < left;) {
+            for (historyIdx = 0; historyIdx < left; ) {
                 aHistory[historyIdx++] = 0;
             }
 
@@ -151,5 +175,5 @@ public class ShadowRendererChart {
         GraphicsUtilitiesChart.setPixels(dst, 0, 0, dstWidth, dstHeight, dstBuffer);
         return dst;
     }
-    
+
 }

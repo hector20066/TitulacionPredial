@@ -1,20 +1,40 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import java.awt.Color;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
+import java.awt.*;
+
 /**
+ * Diálogo modal para visualizar el perfil detallado
+ * de un beneficiario.
  *
- * @author hectoracevedo
+ * <p>
+ * Muestra la información personal del beneficiario en un
+ * diálogo animado con transición de entrada y salida
+ * utilizando la librería TimingFramework.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class UserProfile extends javax.swing.JDialog {
 
     private final Animator animator;
     private boolean show = true;
 
+    /**
+     * Crea un nuevo diálogo para visualizar el perfil de un beneficiario.
+     *
+     * <p>Inicializa los componentes gráficos, configura el scroll,
+     * habilita el ajuste de línea en las áreas de texto y establece
+     * la animación de opacidad.</p>
+     *
+     * @param parent ventana padre del diálogo
+     * @param modal  {@code true} para bloquear la ventana padre mientras se muestra
+     */
     public UserProfile(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -526,13 +546,22 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Conecta el evento del botón de salida para cerrar el diálogo.
+     */
     private void connectEvents() {
         btn_exit.addActionListener(e -> {
             dispose();
             closeMenu();
         });
     }
-    
+
+    /**
+     * Cierra el diálogo con una animación de desvanecimiento.
+     *
+     * <p>Detiene cualquier animación en curso antes de iniciar
+     * la animación de cierre.</p>
+     */
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
@@ -542,6 +571,14 @@ public class UserProfile extends javax.swing.JDialog {
         animator.start();
     }
     
+    /**
+     * Carga los datos del beneficiario en los campos del diálogo.
+     *
+     * <p>Si el beneficiario no tiene cónyuge registrado, los campos
+     * correspondientes mostrarán «No aplica».</p>
+     *
+     * @param beneficiary DTO con los datos completos del beneficiario a mostrar
+     */
     public void loadBeneficiary(DTOBeneficiaryDetails beneficiary) {
         jlb_name.setText(beneficiary.getFullName());
         jlb_code.setText("F" + beneficiary.getCode());

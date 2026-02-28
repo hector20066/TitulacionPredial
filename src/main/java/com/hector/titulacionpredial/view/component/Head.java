@@ -2,20 +2,33 @@ package com.hector.titulacionpredial.view.component;
 
 import com.hector.titulacionpredial.view.swing.button.WinButton;
 import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
+
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
+ * Barra de título personalizada de la ventana principal.
  *
- * @author hectoracevedo
+ * <p>
+ * Extiende {@link PanelShadow} e incluye los botones de control
+ * de ventana (minimizar, maximizar, cerrar) y el soporte de
+ * arrastre para mover la ventana.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
+ * @see PanelShadow
+ * @see WinButton
  */
 public class Head extends PanelShadow {
 
     int xMouse;
     int yMouse;
 
+    /**
+     * Crea la barra de título con los botones de ventana.
+     */
     public Head() {
         initComponents();
     }
@@ -41,6 +54,11 @@ public class Head extends PanelShadow {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Configura la barra para permitir mover la ventana principal.
+     *
+     * @param frame ventana principal del programa.
+     */
     public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -62,6 +80,11 @@ public class Head extends PanelShadow {
         });
     }
     
+    /**
+     * Obtiene el botón de control de ventana.
+     *
+     * @return componente {@link WinButton}
+     */
     public WinButton getWinButton() {
         return winButton1;
     }

@@ -7,11 +7,39 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Clase de arranque de la aplicación Titulación Predial.
  *
- * @author hectoracevedo
+ * <p>
+ * Se encarga de:
+ * </p>
+ * <ul>
+ *     <li>Configurar el Look & Feel global mediante {@link FlatIntelliJLaf}.</li>
+ *     <li>Personalizar propiedades visuales del {@link UIManager}.</li>
+ *     <li>Inicializar el flujo principal delegando el control al {@link Coordinator}.</li>
+ * </ul>
+ *
+ * <p>
+ * Esta clase no contiene lógica de negocio. Su única responsabilidad
+ * es la configuración inicial y el bootstrap del sistema.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class Main {
 
+    /**
+     * Punto de entrada oficial de la aplicación.
+     *
+     * <p>
+     * Inicializa la configuración visual del sistema y delega la
+     * creación e inicialización de dependencias al {@link Coordinator}.
+     * </p>
+     *
+     * @param args argumentos de línea de comandos (no utilizados actualmente)
+     * @throws RuntimeException sí ocurre un error durante la inicialización
+     *                          del entorno gráfico o del coordinador.
+     */
     static void main(String[] args) {
         try {
             FlatIntelliJLaf.setup();

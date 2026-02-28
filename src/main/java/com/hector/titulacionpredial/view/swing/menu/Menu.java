@@ -11,8 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Panel del menú lateral de navegación de la aplicación.
  *
- * @author hectoracevedo
+ * <p>
+ * Organiza los elementos de menú ({@link MenuItem}) en una
+ * lista vertical con scroll personalizado. Gestiona la
+ * selección de opciones y notifica al controlador mediante
+ * {@link EventMenuSelected}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see MenuItem
+ * @see EventMenuSelected
+ * @since 1.0
  */
 public class Menu extends JPanel {
 
@@ -21,10 +32,16 @@ public class Menu extends JPanel {
     private JPanel panelMenu;
     private int index = -1;
 
+    /**
+     * Crea el menú lateral con los componentes predeterminados.
+     */
     public Menu() {
         init();
     }
 
+    /**
+     * Inicializa el layout, scroll y panel del menú.
+     */
     private void init() {
         setBackground(Color.white);
         setLayout(new BorderLayout());
@@ -38,6 +55,9 @@ public class Menu extends JPanel {
         rebuildMenu();
     }
 
+    /**
+     * Agrega las opciones de menú predeterminadas.
+     */
     public void addComponents() {
         addTitle("PRINCIPAL");
         addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));
@@ -50,6 +70,11 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));
     }
 
+    /**
+     * Crea un scroll personalizado sin bordes.
+     *
+     * @return panel de scroll
+     */
     private JScrollPane createScroll() {
         JScrollPane scroll = new JScrollPane();
         scroll.setBorder(null);
@@ -60,6 +85,11 @@ public class Menu extends JPanel {
         return scroll;
     }
 
+    /**
+     * Crea el panel contenedor de ítems de menú.
+     *
+     * @return panel del menú
+     */
     private JPanel createPanelMenu() {
         JPanel panel = new JPanel();
         panel.setOpaque(false);
@@ -69,6 +99,12 @@ public class Menu extends JPanel {
         return panel;
     }
 
+    /**
+     * Crea un ítem de menú con sus eventos de selección.
+     *
+     * @param item modelo del menú
+     * @return panel del ítem
+     */
     private JPanel createMenuItem(ModelMenuItem item) {
         MenuItem menuItem = new MenuItem(item, ++index, menuLayout);
 
@@ -82,16 +118,30 @@ public class Menu extends JPanel {
         return menuItem;
     }
 
+    /**
+     * Notifica a los listeners la selección de un menú.
+     *
+     * @param index        índice del menú
+     * @param indexSubMenu índice del sub-menú
+     */
     private void runEvent(int index, int indexSubMenu) {
         for (EventMenuSelected event : events) {
             event.menuSelected(index, indexSubMenu);
         }
     }
 
+    /**
+     * Agrega un ítem de menú al panel.
+     *
+     * @param menu modelo del menú
+     */
     public void addMenuItem(ModelMenuItem menu) {
         panelMenu.add(createMenuItem(menu), "h 35!");
     }
 
+    /**
+     * Reconstruye el menú eliminando y volviendo a agregar los componentes.
+     */
     protected void rebuildMenu() {
         panelMenu.removeAll();
         index = -1;
@@ -100,6 +150,11 @@ public class Menu extends JPanel {
         panelMenu.repaint();
     }
 
+    /**
+     * Agrega un título de sección al menú.
+     *
+     * @param title texto del título
+     */
     public void addTitle(String title) {
         JLabel label = new JLabel(title);
         label.setBorder(new EmptyBorder(15, 20, 5, 5));
@@ -108,10 +163,21 @@ public class Menu extends JPanel {
         panelMenu.add(label);
     }
 
+    /**
+     * Agrega un espacio vertical al menú.
+     *
+     * @param size tamaño del espacio en píxeles
+     */
     public void addSpace(int size) {
         panelMenu.add(new Label(), "h " + size + "!");
     }
 
+    /**
+     * Selecciona un ítem y sub-ítem del menú por índice.
+     *
+     * @param index        índice del menú
+     * @param indexSubMenu índice del sub-menú
+     */
     public void setSelectedIndex(int index, int indexSubMenu) {
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem item) {
@@ -125,6 +191,9 @@ public class Menu extends JPanel {
         }
     }
 
+    /**
+     * Limpia la selección de todos los ítems del menú.
+     */
     public void clearSelected() {
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem item) {
@@ -133,6 +202,11 @@ public class Menu extends JPanel {
         }
     }
 
+    /**
+     * Agrega un listener de selección de menú.
+     *
+     * @param event listener a agregar
+     */
     public void addEvent(EventMenuSelected event) {
         events.add(event);
     }

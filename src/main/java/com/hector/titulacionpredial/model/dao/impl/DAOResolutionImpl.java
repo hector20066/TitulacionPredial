@@ -15,17 +15,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Implementación concreta de {@link DAOResolution} que gestiona
+ * las operaciones de persistencia relacionadas con resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Esta clase pertenece a la capa de acceso a datos (DAO) y es
+ * responsable de ejecutar operaciones CRUD contra la base de datos
+ * utilizando JDBC y sentencias SQL externas obtenidas desde
+ * {@link SQLRepository}.
+ * </p>
+ *
+ * <p>
+ * Las conexiones son obtenidas mediante {@link DataBasePool},
+ * garantizando el uso de un pool de conexiones para mejorar
+ * el rendimiento y la gestión de recursos.
+ * </p>
+ *
+ * <p>
+ * Implementa el patrón Singleton para asegurar una única instancia
+ * compartida dentro del contexto de la aplicación.
+ * </p>
+ *
+ * <p><strong>Manejo de errores:</strong></p>
+ * <ul>
+ *     <li>Lanza {@link ResolutionPersistenceException} ante errores SQL.</li>
+ *     <li>Lanza {@link ResolutionNotFoundException} cuando no se encuentran registros esperados.</li>
+ *     <li>Propaga {@link DAOException} como contrato general de la capa DAO.</li>
+ * </ul>
+ *
+ * <p>
+ * Esta clase no contiene lógica de negocio; únicamente realiza
+ * operaciones de acceso a datos.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class DAOResolutionImpl implements DAOResolution {
 
+    /**
+     * Instancia unica del DAO (patron Singleton).
+     */
     private static DAOResolutionImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOResolutionImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia unica del DAO.
+     *
+     * @return instancia Singleton de {@code DAOResolutionImpl}
+     */
     public static DAOResolutionImpl getInstance() {
         if (instance == null) {
             instance = new DAOResolutionImpl();
@@ -98,6 +142,15 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    /**
+     * Configura el DTO con los datos de la resolución obtenidos
+     * del {@link ResultSet}.
+     *
+     * @param dto objeto donde se guardarán los datos obtenidos
+     * @param rs  resultados de la consulta
+     * @throws SQLException si ocurre un error al leer los datos
+     *                      del {@code ResultSet}
+     */
     private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
         dto.setResolutionNumber(rs.getLong("num_resolution"));

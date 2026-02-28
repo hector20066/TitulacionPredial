@@ -26,17 +26,48 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
+ * Controlador del panel de generación de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la validación de los datos del formulario,
+ * el registro de la resolución en la base de datos y la
+ * generación del documento Word mediante
+ * {@link GenerateResolutionUtils}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see GenerateResolution
+ * @see GenerateResolutionUtils
+ * @since 1.0
  */
 public class ControllerGenerateResolution {
 
+    /**
+     * Vista del formulario de generación de resoluciones.
+     */
     private final GenerateResolution generateResolution;
+
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
+
+    /**
+     * Fachada de acceso a datos de beneficiarios.
+     */
     private final BeneficiaryFacade daoBeneficiary;
 
+    /**
+     * Crea el controlador y conecta los eventos del formulario.
+     *
+     * @param generateResolution vista del formulario
+     * @param subject            sujeto para notificación de cambios
+     */
     public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject) {
         this.generateResolution = generateResolution;
         this.subject = subject;
@@ -47,10 +78,25 @@ public class ControllerGenerateResolution {
         connectEvents();
     }
 
+    /**
+     * Conecta el botón de generar resolución con el método
+     * {@link #generateResolution()}.
+     */
     private void connectEvents() {
         generateResolution.setControllerGenerate(e -> generateResolution());
     }
 
+    /**
+     * Valida los datos del formulario y lanza el proceso de
+     * generación de la resolución.
+     *
+     * <p>
+     * Extrae todos los campos del formulario, solicita al usuario
+     * la ruta de guardado, delega la acción de validación a
+     * {@link #validations(Date, Date, String, String, String, String)}
+     * delega la ejecución en segundo plano mediante {@link #doInBackground}.
+     * </p>
+     */
     private void generateResolution() {
         try {
             String resolutionNumber = generateResolution.getTxt_numResolution().getText().trim();
@@ -69,21 +115,7 @@ public class ControllerGenerateResolution {
 
             String path = DialogUtils.selectRoute(generateResolution);
 
-            if (executory == null || notification == null) {
-                throw new EmptyFieldException("Ejecutorio y notificación");
-            }
-
-            if (path == null) {
-                throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
-            }
-
-            if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
-                throw new EmptyFieldException("N. Resolución y Nota");
-            }
-
-            if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
-                throw new InvalidNumberInputException("N. Resolución");
-            }
+            validations(executory, notification, path, resolutionNumber, notary, propertyCode);
 
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -95,11 +127,72 @@ public class ControllerGenerateResolution {
         }
     }
 
+    /**
+     * Realiza la validación de los campos
+     *
+     * @param executory        fecha de ejecutoria.
+     * @param notification     fecha de la notificación.
+     * @param path             ruta donde se guardara el archivo.
+     * @param resolutionNumber número de la resolución
+     * @param notary           notaria
+     * @param propertyCode     codigo de la propiedad.
+     * @throws InvalidInputException excepción lanzada cuando
+     *                               se ingresan campos invalidos.
+     */
+    private void validations(Date executory, Date notification, String path, String resolutionNumber, String notary,
+                             String propertyCode) throws InvalidInputException {
+        if (executory == null || notification == null) {
+            throw new EmptyFieldException("Ejecutorio y notificación");
+        }
+
+        if (path == null) {
+            throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
+        }
+
+        if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
+            throw new EmptyFieldException("N. Resolución y Nota");
+        }
+
+        if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
+            throw new InvalidNumberInputException("N. Resolución");
+        }
+    }
+
+    /**
+     * Ejecuta una tarea asincrónica mostrando un diálogo de carga.
+     *
+     * @param task tarea a ejecutar en segundo plano
+     */
     private void executeWithDialog(Callable<Void> task) {
         DialogUtils.executeWithDialog(generateResolution, "Generando documento, por favor espere...",
                 "Se ha generado la resolución.", task, subject::notifyObservers);
     }
 
+    /**
+     * Registra la resolución en la base de datos y genera
+     * el documento Word en segundo plano.
+     *
+     * <p>
+     * Verifica que no exista una resolución duplicada, recupera
+     * los beneficiarios asociados, persiste la resolución y
+     * genera el documento mediante {@link GenerateResolutionUtils}.
+     * </p>
+     *
+     * @param numResolution   número de resolución
+     * @param executory       fecha de ejecutoria
+     * @param act             acto
+     * @param publicWriting   escritura pública
+     * @param notification    fecha de notificación
+     * @param fmi             Folio de Matrícula Inmobiliaria
+     * @param notary          nombre de la notaría
+     * @param propertyCode    código del predio
+     * @param beneficiaryName nombre del beneficiario
+     * @param idBeneficiaries cédulas de los beneficiarios separadas por " - "
+     * @param address         dirección del predio
+     * @param cadastralId     cédula catastral
+     * @param area            área del predio
+     * @param path            ruta donde se guarda el documento
+     */
     private void doInBackground(int numResolution, LocalDate executory, String act, String publicWriting,
                                 LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName,
                                 String idBeneficiaries, String address, String cadastralId, String area, String path) {
@@ -122,6 +215,25 @@ public class ControllerGenerateResolution {
         });
     }
 
+    /**
+     * Genera el documento Word de la resolución con los datos
+     * del predio y los beneficiarios.
+     *
+     * <p>
+     * Extrae las coordenadas de los cuatro puntos geográficos
+     * del formulario, construye los DTOs correspondientes y
+     * delega la generación a {@link GenerateResolutionUtils}.
+     * </p>
+     *
+     * @param path              ruta de guardado del documento
+     * @param beneficiariesList lista de beneficiarios asociados
+     * @param address           dirección del predio
+     * @param cadastralId       cédula catastral
+     * @param fmi               Folio de Matrícula Inmobiliaria
+     * @param area              área del predio
+     * @param notification      fecha de notificación
+     * @throws IOException si ocurre un error al escribir el archivo
+     */
     private void generateDocument(String path, List<DTOBeneficiarySimpleDetails> beneficiariesList,
                                   String address, String cadastralId, String fmi, String area, String notification) throws IOException {
         String northCoordinate1 = generateResolution.getTxt_northCoordinate1().getText().trim();

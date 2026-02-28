@@ -12,13 +12,31 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import java.util.List;
 
 /**
+ * Implementación de la fachada {@link BeneficiaryFacade} para la
+ * gestión de beneficiarios.
  *
- * @author hectoracevedo
+ * <p>
+ * Construye los DTOs necesarios a partir de los parámetros
+ * recibidos y delega las operaciones al DAO
+ * {@link DAOBeneficiaryImpl}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see BeneficiaryFacade
+ * @see DAOBeneficiaryImpl
+ * @since 1.0
  */
 public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
+    /**
+     * DAO delegado para operaciones de beneficiarios.
+     */
     private final DAOBeneficiary daoBeneficiary;
 
+    /**
+     * Crea una nueva instancia obteniendo el DAO
+     * de beneficiarios mediante su Singleton.
+     */
     public BeneficiaryImplFacade() {
         this.daoBeneficiary = DAOBeneficiaryImpl.getInstance();
     }
@@ -89,7 +107,8 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
     @Override
     public boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
-                          String affectation, long phone, String crossing, String publication, String neighborhood, int code) throws DAOException {
+                          String affectation, long phone, String crossing, String publication, String neighborhood,
+                          int code) throws DAOException {
 
         DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
                 .department(department)

@@ -4,8 +4,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Renderizador de sombras mediante desenfoque gaussiano
+ * sobre el canal alfa de una imagen.
  *
- * @author hectoracevedo
+ * <p>
+ * Genera imágenes de sombra configurables en tamaño,
+ * opacidad y color. Utilizado por {@link ShadowBorder}
+ * para crear efectos de sombra en los paneles.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see ShadowBorder
+ * @since 1.0
  */
 public class ShadowRenderer {
 
@@ -13,10 +23,20 @@ public class ShadowRenderer {
     private float opacity = 0.5f;
     private Color color = Color.BLACK;
 
+    /**
+     * Crea un renderizador con valores predeterminados (tamaño 5, opacidad 0.5, negro).
+     */
     public ShadowRenderer() {
         this(5, 0.5f, Color.BLACK);
     }
 
+    /**
+     * Crea un renderizador de sombra con los parámetros especificados.
+     *
+     * @param size    tamaño del desenfoque
+     * @param opacity opacidad (0.0 a 1.0)
+     * @param color   color de la sombra
+     */
     public ShadowRenderer(final int size, final float opacity, final Color color) {
         this.size = size;
         this.opacity = opacity;
@@ -35,6 +55,12 @@ public class ShadowRenderer {
         return size;
     }
 
+    /**
+     * Crea una imagen de sombra a partir de la imagen fuente.
+     *
+     * @param image imagen fuente
+     * @return imagen con la sombra generada
+     */
     public BufferedImage createShadow(final BufferedImage image) {
         int shadowSize = size * 2;
         int srcWidth = image.getWidth();
@@ -72,7 +98,7 @@ public class ShadowRenderer {
         int srcOffset;
 
         for (int srcY = 0, dstOffset = left * dstWidth; srcY < srcHeight; srcY++) {
-            for (historyIdx = 0; historyIdx < shadowSize;) {
+            for (historyIdx = 0; historyIdx < shadowSize; ) {
                 aHistory[historyIdx++] = 0;
             }
 
@@ -107,7 +133,7 @@ public class ShadowRenderer {
         for (int x = 0, bufferOffset = 0; x < dstWidth; x++, bufferOffset = x) {
             aSum = 0;
 
-            for (historyIdx = 0; historyIdx < left;) {
+            for (historyIdx = 0; historyIdx < left; ) {
                 aHistory[historyIdx++] = 0;
             }
 

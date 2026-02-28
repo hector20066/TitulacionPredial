@@ -12,13 +12,31 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * Implementación de la fachada {@link ResolutionFacade} para la
+ * gestión de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Construye los DTOs necesarios a partir de los parámetros
+ * recibidos y delega las operaciones al DAO
+ * {@link DAOResolutionImpl}.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see ResolutionFacade
+ * @see DAOResolutionImpl
+ * @since 1.0
  */
 public class ResolutionImplFacade implements ResolutionFacade {
 
+    /**
+     * DAO delegado para operaciones de resoluciones.
+     */
     private final DAOResolution daoResolution;
 
+    /**
+     * Crea una nueva instancia obteniendo el DAO
+     * de resoluciones mediante su Singleton.
+     */
     public ResolutionImplFacade() {
         this.daoResolution = DAOResolutionImpl.getInstance();
     }

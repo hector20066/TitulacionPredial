@@ -1,8 +1,9 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("SeriesSize Tests")
 class SeriesSizeTest {

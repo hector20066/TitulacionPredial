@@ -3,18 +3,28 @@ package com.hector.titulacionpredial.view.content.panels;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.function.BiConsumer;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 /**
+ * Formulario para la generación de resoluciones de titulación.
  *
- * @author hectoracevedo
+ * <p>
+ * Presenta un resumen con los datos del beneficiario, predio
+ * y coordenadas (solo lectura) junto con campos editables para
+ * número de resolución, notificación, ejecutoria, FMI, acta,
+ * escritura pública y observaciones.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class GenerateResolution extends javax.swing.JPanel {
 
+    /**
+     * Crea el formulario de generación de resoluciones.
+     */
     public GenerateResolution() {
         initComponents();
         
@@ -768,10 +778,15 @@ public class GenerateResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de generar resolución.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
-    
+
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
@@ -896,6 +911,18 @@ public class GenerateResolution extends javax.swing.JPanel {
         return txt_publicWriting;
     }
 
+    /**
+     * Carga los datos del predio y beneficiario en los campos del formulario.
+     *
+     * @param area             área del predio
+     * @param point1           coordenadas del punto 1 (norte, este, distancia, ladera)
+     * @param point2           coordenadas del punto 2
+     * @param point3           coordenadas del punto 3
+     * @param point4           coordenadas del punto 4
+     * @param dtoProperty      código del predio
+     * @param dtoBeneficiary   datos del beneficiario
+     * @param beneficiariesId  cédulas de los beneficiarios
+     */
     public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
         BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
@@ -932,6 +959,9 @@ public class GenerateResolution extends javax.swing.JPanel {
         consumer.accept(dtoProperty, dtoBeneficiary);
     }
 
+    /**
+     * Limpia los campos editables del formulario de resolución.
+     */
     public void clearFields() {
         txt_numResolution.setText("");
         ftx_executory.setText("");

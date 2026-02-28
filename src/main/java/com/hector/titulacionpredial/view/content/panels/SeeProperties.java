@@ -1,34 +1,41 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseListener;
-import java.time.LocalDate;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 
+import javax.swing.*;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
+import java.time.LocalDate;
+
 /**
+ * Panel para la visualización de predios registrados
+ * en formato de tabla con 30 columnas.
  *
- * @author hectoracevedo
+ * <p>
+ * Muestra la información detallada de cada predio incluyendo
+ * sus coordenadas geográficas (hasta 4 puntos), datos catastrales
+ * y municipio. Permite buscar, generar, eliminar y exportar predios.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class SeeProperties extends JPanel {
 
     DefaultTableModel model = new DefaultTableModel();
-    
+
+    /**
+     * Crea el panel de consulta de predios y configura la tabla.
+     */
     public SeeProperties() {
         initComponents();
         
@@ -227,42 +234,87 @@ public class SeeProperties extends JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de generar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para exportar a Excel.
+     *
+     * @param action listener del botón
+     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para el botón de eliminar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para el botón de buscar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para cancelar búsqueda.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
+    /**
+     * Obtiene el botón de cancelar búsqueda.
+     *
+     * @return botón de acción
+     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
-    
+
+    /**
+     * Asigna el listener de documento al campo de búsqueda.
+     *
+     * @param listen listener de cambios de documento
+     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de mouse al campo de búsqueda.
+     *
+     * @param listen listener de mouse
+     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de foco al campo de búsqueda.
+     *
+     * @param listen listener de foco
+     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
-    
+
     public DefaultTableModel getModel() {
         return model;
     }
@@ -295,6 +347,11 @@ public class SeeProperties extends JPanel {
         return txt_search;
     }
 
+    /**
+     * Carga un predio con todos sus datos en la tabla.
+     *
+     * @param dto datos detallados del predio
+     */
     public void loadData(DTOPropertyDetails dto) {
         int propertyCode = dto.getPropertyCode();
         StringBuilder beneficiaries = new StringBuilder();

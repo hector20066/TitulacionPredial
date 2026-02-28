@@ -29,17 +29,50 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * Controlador del panel de visualización de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Implementa {@link Observer} para actualizar la tabla de
+ * resoluciones cuando se producen cambios. Ofrece funcionalidades
+ * de búsqueda por número de resolución, filtrado en tiempo real
+ * y navegación hacia el formulario de modificación.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see SeeResolutions
+ * @see ResolutionFacade
+ * @since 1.0
  */
 public class ControllerSeeResolutions implements Observer {
 
+    /**
+     * Vista del listado de resoluciones.
+     */
     private final SeeResolutions seeResolutions;
+
+    /**
+     * Vista del formulario de modificación de resoluciones.
+     */
     private final ModifyResolution modifyResolution;
+
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del panel.
+     *
+     * @param seeResolutions   vista del listado de resoluciones
+     * @param modifyResolution vista del formulario de modificación
+     * @param subject          sujeto para registro del observador
+     */
     public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject) {
         this.seeResolutions = seeResolutions;
         this.modifyResolution = modifyResolution;
@@ -52,6 +85,10 @@ public class ControllerSeeResolutions implements Observer {
         connectEvents();
     }
 
+    /**
+     * Conecta todos los eventos de los botones y componentes del
+     * panel de resoluciones con sus respectivos métodos.
+     */
     private void connectEvents() {
         seeResolutions.setControllerModify(e -> modify());
         seeResolutions.setControllerSearch(e -> searchResolution());
@@ -72,6 +109,15 @@ public class ControllerSeeResolutions implements Observer {
         }).start();
     }
 
+    /**
+     * Extrae los datos de la resolución seleccionada, los carga
+     * en el formulario de modificación y navega hacia él.
+     *
+     * <p>
+     * Formatea las fechas de notificación y ejecutoria al formato
+     * español legible antes de pasarlas al formulario.
+     * </p>
+     */
     private void modify() {
         try {
             int selectedRow = seeResolutions.getJtbl_resolutions().getSelectedRow();
@@ -102,6 +148,17 @@ public class ControllerSeeResolutions implements Observer {
         }
     }
 
+    /**
+     * Construye un DTO con los datos de la resolución seleccionada.
+     *
+     * @param code          código de la resolución
+     * @param numResolution número de resolución
+     * @param notary        nombre de la notaría
+     * @param fmi           Folio de Matrícula Inmobiliaria
+     * @param act           acta
+     * @param publicWriting número de escritura pública
+     * @return DTO con los datos configurados
+     */
     private DTOResolutionDetails createDTO(int code, long numResolution, String notary, String fmi, String act, String publicWriting) {
         return new DTOResolutionDetails.Builder()
                 .code(code)
@@ -113,6 +170,14 @@ public class ControllerSeeResolutions implements Observer {
                 .build();
     }
 
+    /**
+     * Inicia la búsqueda de una resolución por su número.
+     *
+     * <p>
+     * Valida que el criterio no esté vacío y sea numérico,
+     * actualiza los botones y ejecuta la consulta en segundo plano.
+     * </p>
+     */
     private void searchResolution() {
         try {
             String numResolutionText = seeResolutions.getTxt_search().getText().trim();
@@ -134,6 +199,12 @@ public class ControllerSeeResolutions implements Observer {
         }
     }
 
+    /**
+     * Busca la resolución por su número en un hilo de fondo
+     * y muestra el resultado en la tabla.
+     *
+     * @param numResolution número de resolución a buscar
+     */
     private void doInBackground(int numResolution) {
         new Thread(() -> {
             try {
@@ -153,6 +224,10 @@ public class ControllerSeeResolutions implements Observer {
         }).start();
     }
 
+    /**
+     * Registra el {@link DocumentListener} en el campo de búsqueda
+     * para filtrar la tabla en tiempo real.
+     */
     private void documentListeners() {
         seeResolutions.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
@@ -172,6 +247,10 @@ public class ControllerSeeResolutions implements Observer {
         });
     }
 
+    /**
+     * Configura los listeners de foco y clic del campo de búsqueda
+     * para gestionar el texto placeholder «Buscar».
+     */
     private void listenerSearch() {
         seeResolutions.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
@@ -192,6 +271,10 @@ public class ControllerSeeResolutions implements Observer {
         });
     }
 
+    /**
+     * Cancela la búsqueda activa, restaura el placeholder y
+     * recarga todas las resoluciones.
+     */
     private void cancelSearch() {
         seeResolutions.getTxt_search().setText("Buscar");
         seeResolutions.getBtn_searchCancel().setVisible(false);
@@ -199,6 +282,11 @@ public class ControllerSeeResolutions implements Observer {
         subject.notifyObservers();
     }
 
+    /**
+     * Carga la lista de resoluciones en la tabla de la vista.
+     *
+     * @param listResolutions lista de DTOs de resoluciones a mostrar
+     */
     private void loadData(List<DTOResolutionDetails> listResolutions) {
         seeResolutions.getModel().setRowCount(0);
         listResolutions.forEach(seeResolutions::loadData);

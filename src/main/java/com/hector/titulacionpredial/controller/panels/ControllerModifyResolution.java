@@ -20,17 +20,50 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
+ * Controlador del panel de modificación de resoluciones.
  *
- * @author hectoracevedo
+ * <p>
+ * Gestiona la validación de los datos del formulario y
+ * la actualización de la resolución en la base de datos.
+ * Al completar la modificación, navega de regreso al
+ * listado de resoluciones.
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @see ModifyResolution
+ * @see ResolutionFacade
+ * @see SeeResolutions
+ * @since 1.0
  */
 public class ControllerModifyResolution {
 
+    /**
+     * Vista del formulario de modificación.
+     */
     private final ModifyResolution modifyResolution;
+
+    /**
+     * Vista del listado de resoluciones (destino tras modificar).
+     */
     private final SeeResolutions seeResolutions;
+
+    /**
+     * Sujeto del patrón Observer para notificar cambios.
+     */
     private final Subject subject;
 
+    /**
+     * Fachada de acceso a datos de resoluciones.
+     */
     private final ResolutionFacade daoResolution;
 
+    /**
+     * Crea el controlador y conecta los eventos del formulario.
+     *
+     * @param modifyResolution vista del formulario de modificación
+     * @param seeResolutions   vista de listado de resoluciones
+     * @param subject          sujeto para notificación de cambios
+     */
     public ControllerModifyResolution(ModifyResolution modifyResolution, SeeResolutions seeResolutions, Subject subject) {
         this.modifyResolution = modifyResolution;
         this.seeResolutions = seeResolutions;
@@ -41,10 +74,24 @@ public class ControllerModifyResolution {
         connectEvents();
     }
 
+    /**
+     * Conecta el botón de modificar con el método
+     * {@link #modifyResolution()}.
+     */
     private void connectEvents() {
         modifyResolution.setControllerModify(e -> modifyResolution());
     }
 
+    /**
+     * Valida los datos del formulario de modificación y
+     * lanza la actualización en segundo plano.
+     *
+     * <p>
+     * Extrae todos los campos del formulario, aplica las
+     * validaciones de campos obligatorios, formato numérico
+     * y longitud máxima antes de delegar al hilo de fondo.
+     * </p>
+     */
     private void modifyResolution() {
         try {
             String code = modifyResolution.getTxt_code().getText().trim();
@@ -78,6 +125,12 @@ public class ControllerModifyResolution {
         }
     }
 
+    /**
+     * Verifica si alguno de los campos proporcionados está vacío.
+     *
+     * @param fields campos a validar
+     * @return {@code true} si al menos un campo está en blanco
+     */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
@@ -88,6 +141,18 @@ public class ControllerModifyResolution {
         return false;
     }
 
+    /**
+     * Ejecuta la modificación de la resolución en un hilo de fondo.
+     *
+     * @param code          código de la resolución
+     * @param numResolution nuevo número de resolución
+     * @param notification  fecha de notificación
+     * @param executory     fecha de ejecutoria
+     * @param notary        nombre de la notaría
+     * @param fmi           Folio de Matrícula Inmobiliaria
+     * @param act           acta
+     * @param publicWriting número de escritura pública
+     */
     private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary,
                                 String fmi, String act, String publicWriting) {
         new Thread(() -> {
@@ -100,6 +165,17 @@ public class ControllerModifyResolution {
         }).start();
     }
 
+    /**
+     * Actualiza la interfaz tras completar la modificación.
+     *
+     * <p>
+     * Si la operación fue exitosa, muestra un mensaje de confirmación,
+     * notifica a los observadores y navega al listado de resoluciones.
+     * En caso contrario, muestra un mensaje de error.
+     * </p>
+     *
+     * @param success {@code true} si la modificación fue exitosa
+     */
     private void runInvokeLater(boolean success) {
         if (success) {
             MessageUtils.informationMessage("Se ha modificado la información de la resolución", modifyResolution);
