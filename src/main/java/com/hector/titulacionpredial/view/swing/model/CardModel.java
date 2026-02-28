@@ -10,7 +10,7 @@ import javax.swing.*;
  * y los colores de gradiente utilizados por {@link com.hector.titulacionpredial.view.swing.chart.Card}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class CardModel {

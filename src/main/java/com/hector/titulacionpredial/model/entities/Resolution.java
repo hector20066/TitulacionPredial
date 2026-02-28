@@ -34,7 +34,7 @@ import java.time.LocalDate;
  * conceptualmente depende de la existencia del mismo.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Resolution {

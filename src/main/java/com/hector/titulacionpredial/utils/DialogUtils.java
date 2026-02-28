@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
  * diálogos de carga, selectores de archivos y ejecución
  * de tareas en segundo plano con indicador de progreso.
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DialogUtils {

@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  * básicas de inserción y búsqueda por código.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOBase
  * @since 1.0
  */

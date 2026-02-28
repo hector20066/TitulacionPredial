@@ -18,7 +18,7 @@ import java.time.LocalDate;
  * de creación, búsqueda y modificación.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ResolutionImplFacade
  * @since 1.0
  */

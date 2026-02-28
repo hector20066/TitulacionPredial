@@ -11,7 +11,7 @@ import javax.swing.*;
  * error, advertencia, confirmación y mensajes planos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see JOptionPane
  * @since 1.0
  */

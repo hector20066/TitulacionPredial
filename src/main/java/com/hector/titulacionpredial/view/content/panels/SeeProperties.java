@@ -26,7 +26,7 @@ import java.time.LocalDate;
  * y municipio. Permite buscar, generar, eliminar y exportar predios.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class SeeProperties extends JPanel {

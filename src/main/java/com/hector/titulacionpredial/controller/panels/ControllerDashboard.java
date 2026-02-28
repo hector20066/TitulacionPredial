@@ -31,7 +31,7 @@ import java.util.Locale;
  * de línea con tendencia mensual y gráficos de porcentaje.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see Dashboard
  * @see Observer
  * @since 1.0
@@ -103,6 +103,17 @@ public class ControllerDashboard implements Observer {
         }).start();
     }
 
+    /**
+     * Carga los datos del gráfico de línea con la tendencia mensual
+     * de beneficiarios registrados.
+     *
+     * <p>
+     * Limpia el gráfico existente, configura la leyenda y agrega
+     * cada mes con su cantidad correspondiente.
+     * </p>
+     *
+     * @param list lista de DTOs con la cantidad de beneficiarios por mes
+     */
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
         dashboard.getLineChart1().clear();
         dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149, 213, 178), new Color(45, 106, 79));
@@ -119,6 +130,12 @@ public class ControllerDashboard implements Observer {
         dashboard.updateCards(totalBeneficiaries, totalProperties, totalResolutions);
     }
 
+    /**
+     * Carga los porcentajes en los gráficos de medidor (gauge).
+     *
+     * @param percentBeneficiaries porcentaje de beneficiarios con predio
+     * @param percentProperties    porcentaje de predios con resolución
+     */
     private void loadDataPercent(int percentBeneficiaries, int percentProperties) {
         dashboard.updateGaugeCharts(percentBeneficiaries, percentProperties);
     }

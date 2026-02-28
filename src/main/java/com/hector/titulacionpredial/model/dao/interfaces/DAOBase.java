@@ -13,7 +13,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
  *
  * @param <C> tipo del DTO utilizado para la creación del registro
  * @param <D> tipo del DTO devuelto como resultado de la consulta
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public interface DAOBase<C, D> {

@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
  * radio de esquinas y tamaño de sombra.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ShadowBorder
  */

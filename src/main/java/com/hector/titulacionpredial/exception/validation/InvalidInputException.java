@@ -14,7 +14,7 @@ package com.hector.titulacionpredial.exception.validation;
  *   <li>{@link MaxLengthExceededException} – longitud máxima excedida</li>
  * </ul>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class InvalidInputException extends Exception {

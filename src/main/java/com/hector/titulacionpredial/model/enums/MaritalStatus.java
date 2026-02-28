@@ -15,7 +15,7 @@ package com.hector.titulacionpredial.model.enums;
  * existencia de un cónyuge asociado al beneficiario.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public enum MaritalStatus {

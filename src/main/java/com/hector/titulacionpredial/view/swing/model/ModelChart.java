@@ -8,7 +8,7 @@ package com.hector.titulacionpredial.view.swing.model;
  * correspondientes a cada serie de datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModelChart {

@@ -21,7 +21,7 @@ package com.hector.titulacionpredial.model.dto;
  * simple de transporte.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOBasePerson {

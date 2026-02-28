@@ -17,7 +17,7 @@ import java.awt.*;
  * utilizando la librería TimingFramework.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class UserProfile extends javax.swing.JDialog {

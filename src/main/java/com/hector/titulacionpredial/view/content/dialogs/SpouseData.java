@@ -17,7 +17,7 @@ import java.awt.*;
  * y cédula del cónyuge. Incluye animación de entrada.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see DTOSpouse
  */

@@ -19,7 +19,7 @@ import java.net.URL;
  * optimizar el rendimiento.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class GraphicsUtilities {

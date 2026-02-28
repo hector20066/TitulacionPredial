@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
  * entidad {@code Beneficiary}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class BeneficiaryNotFoundException extends DataNotFoundException {

@@ -29,7 +29,7 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
  * {@link Builder}, permitiendo herencia fluida desde {@link Person.Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Beneficiary extends Person {

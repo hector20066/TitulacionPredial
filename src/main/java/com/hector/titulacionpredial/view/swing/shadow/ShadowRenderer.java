@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  * para crear efectos de sombra en los paneles.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ShadowBorder
  */

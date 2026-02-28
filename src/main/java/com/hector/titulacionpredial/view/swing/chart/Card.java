@@ -13,7 +13,7 @@ import java.awt.*;
  * presentar estadísticas clave en el tablero de control.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see CardModel
  */

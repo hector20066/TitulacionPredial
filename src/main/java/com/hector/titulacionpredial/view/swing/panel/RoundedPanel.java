@@ -12,7 +12,7 @@ import java.awt.geom.RoundRectangle2D;
  * configurar el radio de las esquinas y el color del borde.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class RoundedPanel extends JPanel {

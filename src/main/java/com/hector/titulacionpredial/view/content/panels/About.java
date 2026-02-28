@@ -5,7 +5,7 @@ package com.hector.titulacionpredial.view.content.panels;
  * versión, créditos del equipo de desarrollo y enlace
  * al sitio web de HLDevWorks.
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class About extends javax.swing.JPanel {

@@ -13,7 +13,7 @@ import java.awt.*;
  * estética minimalista y plana.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModernScrollBarUI extends BasicScrollBarUI {

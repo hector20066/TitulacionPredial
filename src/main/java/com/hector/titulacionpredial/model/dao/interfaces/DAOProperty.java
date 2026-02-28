@@ -16,7 +16,7 @@ import java.util.List;
  * eliminación, conteo y estadísticas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see IListable
  * @see IRemovable
  * @see ICountable

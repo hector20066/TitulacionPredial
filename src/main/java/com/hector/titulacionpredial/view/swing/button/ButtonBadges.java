@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
  * al pasar el mouse.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ButtonBadges extends JButton {

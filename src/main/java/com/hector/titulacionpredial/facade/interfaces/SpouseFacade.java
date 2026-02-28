@@ -15,7 +15,7 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  * {@link DTOSpouse} y encapsula las llamadas al DAO.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see SpouseImplFacade
  * @since 1.0
  */

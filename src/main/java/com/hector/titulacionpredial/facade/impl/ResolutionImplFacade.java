@@ -21,7 +21,7 @@ import java.util.List;
  * {@link DAOResolutionImpl}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ResolutionFacade
  * @see DAOResolutionImpl
  * @since 1.0

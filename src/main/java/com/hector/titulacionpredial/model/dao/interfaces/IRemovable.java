@@ -11,7 +11,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
  * la eliminación de registros por su código único.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 @FunctionalInterface

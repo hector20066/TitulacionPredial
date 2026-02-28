@@ -29,7 +29,7 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
  * Soporta construcción fluida mediante el patrón {@link Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiary extends DTOBasePerson {

@@ -11,7 +11,7 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  * eliminación de registros.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOBase
  * @see IRemovable
  * @since 1.0

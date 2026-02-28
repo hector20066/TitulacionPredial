@@ -14,7 +14,7 @@ import java.util.Properties;
  * de la base de datos, credenciales y driver JDBC.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class AppConfig {

@@ -22,7 +22,7 @@ import com.hector.titulacionpredial.model.dto.DTOProperty;
  * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOPropertyCreate extends DTOProperty {

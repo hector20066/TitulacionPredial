@@ -28,7 +28,7 @@ import java.util.Map;
  * puntos geográficos mediante consultas con JOINs.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOProperty
  * @see DataBasePool
  * @see SQLRepository

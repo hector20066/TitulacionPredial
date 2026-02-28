@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
  * Soporta modo de creación y modo de edición (modificación).
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {

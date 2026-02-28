@@ -9,7 +9,7 @@ package com.hector.titulacionpredial.view.swing.chart.blankchart;
  * de eje apropiados para una visualización legible.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class NiceScale {

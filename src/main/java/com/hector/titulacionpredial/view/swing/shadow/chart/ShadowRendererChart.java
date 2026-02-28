@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * para crear efectos visuales en las tarjetas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ShadowRendererChart {

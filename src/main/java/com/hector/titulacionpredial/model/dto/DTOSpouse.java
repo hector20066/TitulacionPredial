@@ -26,7 +26,7 @@ package com.hector.titulacionpredial.model.dto;
  * Soporta construcción fluida mediante el patrón {@link Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOSpouse extends DTOBasePerson {

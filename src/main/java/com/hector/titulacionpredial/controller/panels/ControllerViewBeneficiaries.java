@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutionException;
  * a Excel.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ViewBeneficiaries
  * @see BeneficiaryFacade
  * @see GenerateExcelBeneficiary
@@ -82,6 +82,10 @@ public class ControllerViewBeneficiaries implements Observer {
         connectEvents();
     }
 
+    /**
+     * Conecta todos los eventos de los botones y componentes
+     * del panel de beneficiarios con sus respectivos métodos.
+     */
     private void connectEvents() {
         viewBeneficiaries.setControllerViewDetails(e -> showDetails());
         viewBeneficiaries.setControllerModify(e -> modifyBeneficiary());
@@ -105,6 +109,16 @@ public class ControllerViewBeneficiaries implements Observer {
         }).start();
     }
 
+    /**
+     * Muestra el perfil detallado del beneficiario seleccionado
+     * en un diálogo modal.
+     *
+     * <p>
+     * Valida que se haya seleccionado una fila en la tabla,
+     * deshabilita el botón temporalmente y carga los datos
+     * completos del beneficiario en segundo plano.
+     * </p>
+     */
     private void showDetails() {
         try {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
@@ -122,11 +136,21 @@ public class ControllerViewBeneficiaries implements Observer {
         }
     }
 
+    /**
+     * Prepara la interfaz deshabilitando el botón de ver perfil
+     * y mostrando texto de carga.
+     */
     private void prepareUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(false);
         viewBeneficiaries.getBtn_seeProfile().setText("Buscando Información...");
     }
 
+    /**
+     * Consulta los datos completos del beneficiario en segundo plano
+     * y muestra el diálogo de perfil.
+     *
+     * @param code código del beneficiario a consultar
+     */
     private void doInBackground(int code) {
         new Thread(() -> {
             try {
@@ -148,11 +172,18 @@ public class ControllerViewBeneficiaries implements Observer {
         }).start();
     }
 
+    /**
+     * Restablece el botón de ver perfil a su estado original.
+     */
     private void resetUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(true);
         viewBeneficiaries.getBtn_seeProfile().setText("Ver Información Completa");
     }
 
+    /**
+     * Navega al formulario de registro con los datos del beneficiario
+     * seleccionado cargados para su modificación.
+     */
     private void modifyBeneficiary() {
         try {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
@@ -168,6 +199,12 @@ public class ControllerViewBeneficiaries implements Observer {
         }
     }
 
+    /**
+     * Carga los datos del beneficiario a modificar en segundo plano
+     * y navega al formulario de registro.
+     *
+     * @param code código del beneficiario a modificar
+     */
     private void doInBackgroundModify(int code) {
         new Thread(() -> {
             try {
@@ -189,6 +226,15 @@ public class ControllerViewBeneficiaries implements Observer {
         }).start();
     }
 
+    /**
+     * Elimina el beneficiario seleccionado previa confirmación
+     * del usuario.
+     *
+     * <p>
+     * Valida la selección, muestra un diálogo de confirmación
+     * y ejecuta la eliminación en segundo plano si el usuario acepta.
+     * </p>
+     */
     private void deleteBeneficiary() {
         try {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
@@ -210,6 +256,12 @@ public class ControllerViewBeneficiaries implements Observer {
         }
     }
 
+    /**
+     * Ejecuta la eliminación del beneficiario en un hilo de fondo
+     * y notifica a los observadores al completar.
+     *
+     * @param code código del beneficiario a eliminar
+     */
     private void runDelete(int code) {
         new Thread(() -> {
             try {
@@ -224,6 +276,16 @@ public class ControllerViewBeneficiaries implements Observer {
         }).start();
     }
 
+    /**
+     * Inicia la búsqueda del beneficiario con el criterio ingresado
+     * en el campo de texto.
+     *
+     * <p>
+     * Valida que el criterio no esté vacío, actualiza la visibilidad
+     * de los botones de búsqueda/cancelar y ejecuta la consulta
+     * de forma asíncrona.
+     * </p>
+     */
     private void search() {
         String param = getSearchParam();
 
@@ -247,6 +309,11 @@ public class ControllerViewBeneficiaries implements Observer {
         return !(param.isBlank() || param.equalsIgnoreCase("Buscar"));
     }
 
+    /**
+     * Ejecuta la búsqueda asincrónica usando {@link SwingWorker}.
+     *
+     * @param param criterio de búsqueda
+     */
     private void executeSearchAsync(String param) {
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
             @Override
@@ -267,6 +334,14 @@ public class ControllerViewBeneficiaries implements Observer {
         }.execute();
     }
 
+    /**
+     * Determina el tipo de búsqueda según el parámetro y
+     * consulta la fachada correspondiente.
+     *
+     * @param param criterio de búsqueda
+     * @return DTO del beneficiario encontrado, o {@code null}
+     * @throws DAOException si ocurre un error en la consulta
+     */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws DAOException {
         if (isNumeric(param)) {
             long value = Long.parseLong(param);
@@ -277,6 +352,13 @@ public class ControllerViewBeneficiaries implements Observer {
         return daoBeneficiary.findByName(param);
     }
 
+    /**
+     * Procesa el resultado de la búsqueda y lo muestra en la tabla.
+     *
+     * @param result DTO del beneficiario encontrado
+     * @param param  criterio original de búsqueda
+     * @throws DAOException si no se encontró ningún registro
+     */
     private void handleResult(DTOBeneficiarySimpleDetails result, String param) throws DAOException {
         if (result == null) {
             throw new BeneficiaryNotFoundException(param);
@@ -290,12 +372,22 @@ public class ControllerViewBeneficiaries implements Observer {
         return value.matches("\\d+");
     }
 
+    /**
+     * Habilita o deshabilita los botones de acción durante
+     * la búsqueda.
+     *
+     * @param isBlocked {@code true} para habilitar, {@code false} para deshabilitar
+     */
     private void lockUI(boolean isBlocked) {
         viewBeneficiaries.getBtn_delete().setEnabled(isBlocked);
         viewBeneficiaries.getBtn_modify().setEnabled(isBlocked);
         viewBeneficiaries.getBtn_seeProfile().setEnabled(isBlocked);
     }
 
+    /**
+     * Registra el {@link DocumentListener} en el campo de búsqueda
+     * para filtrar la tabla en tiempo real mientras el usuario escribe.
+     */
     private void documentListeners() {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
@@ -315,6 +407,10 @@ public class ControllerViewBeneficiaries implements Observer {
         });
     }
 
+    /**
+     * Configura los listeners de foco y clic del campo de búsqueda
+     * para gestionar el texto placeholder «Buscar».
+     */
     private void listenerSearch() {
         viewBeneficiaries.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
@@ -335,6 +431,10 @@ public class ControllerViewBeneficiaries implements Observer {
         });
     }
 
+    /**
+     * Cancela la búsqueda activa, restaura el placeholder y
+     * recarga todos los beneficiarios.
+     */
     private void cancelSearch() {
         viewBeneficiaries.getTxt_search().setText("Buscar");
         viewBeneficiaries.getBtn_searchCancel().setVisible(false);
@@ -342,11 +442,25 @@ public class ControllerViewBeneficiaries implements Observer {
         subject.notifyObservers();
     }
 
+    /**
+     * Carga la lista de beneficiarios en la tabla de la vista.
+     *
+     * @param listBeneficiaries lista de DTOs a mostrar
+     */
     private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         viewBeneficiaries.getTableModel().setRowCount(0);
         listBeneficiaries.forEach(viewBeneficiaries::loadData);
     }
 
+    /**
+     * Exporta la información de todos los beneficiarios a un
+     * archivo Excel.
+     *
+     * <p>
+     * Solicita al usuario la ruta de guardado y ejecuta la
+     * exportación en segundo plano mostrando un diálogo de carga.
+     * </p>
+     */
     private void exportToExcel() {
         try {
             String path = DialogUtils.selectRoute(viewBeneficiaries);

@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutionException;
  * un beneficiario existente.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see SelectBeneficiary
  * @see BeneficiaryFacade
  * @since 1.0
@@ -78,10 +78,28 @@ public class ControllerSearchDialog {
         }.execute();
     }
 
+    /**
+     * Verifica si el parámetro de búsqueda es inválido.
+     *
+     * @param param texto ingresado por el usuario
+     * @return {@code true} si el parámetro es nulo, vacío o es el placeholder
+     */
     private boolean isInvalidParam(String param) {
         return param == null || param.isBlank() || param.equalsIgnoreCase("Buscar");
     }
 
+    /**
+     * Resuelve la búsqueda del beneficiario según el tipo de parámetro.
+     *
+     * <p>
+     * Si el parámetro es numérico, busca por cédula o código;
+     * de lo contrario, busca por nombre.
+     * </p>
+     *
+     * @param param criterio de búsqueda
+     * @return DTO con los datos del beneficiario encontrado, o {@code null}
+     * @throws Exception si ocurre un error en la consulta
+     */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws Exception {
         if (isNumeric(param)) {
             return searchByNumericValue(param);
@@ -90,6 +108,18 @@ public class ControllerSearchDialog {
         return daoBeneficiary.findByName(param);
     }
 
+    /**
+     * Busca un beneficiario por valor numérico (cédula o código).
+     *
+     * <p>
+     * Si el valor numérico es mayor o igual a 100.000, se interpreta
+     * como número de cédula; de lo contrario, como código interno.
+     * </p>
+     *
+     * @param value cadena numérica con el valor de búsqueda
+     * @return DTO con los datos del beneficiario encontrado, o {@code null}
+     * @throws Exception si ocurre un error en la consulta
+     */
     private DTOBeneficiarySimpleDetails searchByNumericValue(String value) throws Exception {
         long numericValue = Long.parseLong(value);
 
@@ -100,10 +130,22 @@ public class ControllerSearchDialog {
         return daoBeneficiary.findByCode((int) numericValue);
     }
 
+    /**
+     * Determina si el valor corresponde a un número de documento.
+     *
+     * @param value valor numérico a evaluar
+     * @return {@code true} si es mayor o igual a 100.000
+     */
     private boolean isDocumentNumber(long value) {
         return value >= 100000;
     }
 
+    /**
+     * Verifica si una cadena contiene únicamente dígitos.
+     *
+     * @param value cadena a validar
+     * @return {@code true} si todos los caracteres son dígitos
+     */
     private boolean isNumeric(String value) {
         for (char c : value.toCharArray()) {
             if (!Character.isDigit(c)) return false;

@@ -24,7 +24,7 @@ package com.hector.titulacionpredial.model.entities;
  * Su ciclo de vida depende del {@link Property} al que pertenece.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Point {

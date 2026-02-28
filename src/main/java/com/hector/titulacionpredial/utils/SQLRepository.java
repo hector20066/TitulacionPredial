@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * el contenido almacenado.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class SQLRepository {

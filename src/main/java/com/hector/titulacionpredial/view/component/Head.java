@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
  * arrastre para mover la ventana.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see PanelShadow
  * @see WinButton

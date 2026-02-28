@@ -25,7 +25,7 @@ import java.util.Map;
  * información de la resolución.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see XWPFTemplate
  * @since 1.0
  */

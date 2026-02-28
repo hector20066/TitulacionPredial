@@ -14,7 +14,7 @@ import java.awt.*;
  * principal ({@link Content}) con el componente indicado.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see Content
  * @since 1.0
  */

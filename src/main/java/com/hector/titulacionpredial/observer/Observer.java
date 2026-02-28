@@ -11,7 +11,7 @@ package com.hector.titulacionpredial.observer;
  * paneles de dashboard, tablas y vistas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see Subject
  * @see ConcreteSubject
  * @since 1.0

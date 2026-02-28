@@ -16,7 +16,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * cuando se requiere actualizar los datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ControllerContentBuilder
  * @see NavigatorUtils
  * @since 1.0
@@ -80,10 +80,26 @@ public class ControllerContent {
         connectEvents();
     }
 
+    /**
+     * Conecta los eventos del menú lateral con la lógica
+     * de navegación del controlador.
+     */
     private void connectEvents() {
         content.setControllerMenu(this::selectedMenu);
     }
 
+    /**
+     * Gestiona la selección del menú lateral y navega al panel correspondiente.
+     *
+     * <p>
+     * Según el índice del menú y submenú seleccionado, muestra
+     * el panel adecuado y notifica a los observadores cuando
+     * es necesario actualizar los datos.
+     * </p>
+     *
+     * @param index        índice del menú principal
+     * @param indexSubMenu índice del submenú seleccionado
+     */
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {
             case 0 -> {

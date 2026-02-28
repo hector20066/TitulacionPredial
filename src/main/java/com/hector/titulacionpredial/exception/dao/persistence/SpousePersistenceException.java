@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
  * eliminación de cónyuges en la base de datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class SpousePersistenceException extends PersistenceException {

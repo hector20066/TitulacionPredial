@@ -19,7 +19,7 @@ import java.util.List;
  * o eliminación de datos).
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see Subject
  * @see Observer
  * @since 1.0

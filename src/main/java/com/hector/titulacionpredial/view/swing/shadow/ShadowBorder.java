@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
  * para distinguir entre ambos tipos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ShadowRenderer
  */

@@ -13,7 +13,7 @@ import javax.swing.*;
  * dentro de la leyenda del {@link LineChart}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ModelLegend
  */

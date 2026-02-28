@@ -15,7 +15,7 @@ import javax.swing.*;
  * formularios de la aplicación.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Content extends javax.swing.JFrame {

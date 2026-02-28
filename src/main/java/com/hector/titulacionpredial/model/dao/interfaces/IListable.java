@@ -14,7 +14,7 @@ import java.util.List;
  * </p>
  *
  * @param <T> tipo del DTO que representa cada registro
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 @FunctionalInterface

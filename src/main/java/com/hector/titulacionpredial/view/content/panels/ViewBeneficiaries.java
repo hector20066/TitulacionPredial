@@ -23,7 +23,7 @@ import java.awt.event.MouseListener;
  * el perfil de los beneficiarios registrados en el sistema.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ViewBeneficiaries extends javax.swing.JPanel {

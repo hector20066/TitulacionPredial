@@ -15,7 +15,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * del contenido mediante el método {@link #build()}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ControllerContent
  * @since 1.0
  */
@@ -76,6 +76,11 @@ public class ControllerContentBuilder {
         return this;
     }
 
+    /**
+     * Construye una nueva instancia de {@link ControllerContent}
+     *
+     * @return nuevo DTO configurado
+     */
     public ControllerContent build() {
         return new ControllerContent(this);
     }

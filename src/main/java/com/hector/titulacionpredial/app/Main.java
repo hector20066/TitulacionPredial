@@ -23,7 +23,7 @@ import java.awt.*;
  * es la configuración inicial y el bootstrap del sistema.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Main {

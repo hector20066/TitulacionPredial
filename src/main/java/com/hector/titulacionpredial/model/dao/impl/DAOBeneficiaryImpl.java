@@ -26,7 +26,7 @@ import java.util.List;
  * conexión a la base de datos mediante {@link DataBasePool}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOBeneficiary
  * @see DataBasePool
  * @see SQLRepository

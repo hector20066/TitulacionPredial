@@ -9,7 +9,7 @@ package com.hector.titulacionpredial.observer;
  * suscritos ante cambios de estado en el sistema.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see Observer
  * @see ConcreteSubject
  * @since 1.0

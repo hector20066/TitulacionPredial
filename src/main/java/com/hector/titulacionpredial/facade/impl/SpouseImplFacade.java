@@ -16,7 +16,7 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  * {@link DAOSpouseImpl}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see SpouseFacade
  * @see DAOSpouseImpl
  * @since 1.0

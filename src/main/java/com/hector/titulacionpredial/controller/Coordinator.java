@@ -27,7 +27,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  *   <li>Mostrar la ventana principal</li>
  * </ol>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ControllerContentBuilder
  * @see ConcreteSubject
  * @since 1.0
@@ -64,6 +64,15 @@ public class Coordinator {
         });
     }
 
+    /**
+     * Inicializa todas las vistas (paneles) de la aplicación.
+     *
+     * <p>
+     * Crea las instancias de cada panel que conforma la interfaz
+     * gráfica, incluyendo el dashboard, los formularios de registro,
+     * los listados y la vista «Acerca de».
+     * </p>
+     */
     private void startView() {
         content = new Content();
         dashboard = new Dashboard();
@@ -77,6 +86,16 @@ public class Coordinator {
         about = new About();
     }
 
+    /**
+     * Inicializa y conecta todos los controladores de la aplicación.
+     *
+     * <p>
+     * Construye el controlador principal del contenido mediante
+     * {@link ControllerContentBuilder} y crea los controladores
+     * de cada panel, inyectando las vistas y el sujeto del
+     * patrón Observer correspondiente.
+     * </p>
+     */
     private void startDrivers() {
         new ControllerContentBuilder()
                 .withViewContent(content)

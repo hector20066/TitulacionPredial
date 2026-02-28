@@ -24,7 +24,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryDetails.Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {

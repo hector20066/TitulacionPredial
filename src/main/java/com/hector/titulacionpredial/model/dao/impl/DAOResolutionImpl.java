@@ -48,7 +48,7 @@ import java.util.List;
  * operaciones de acceso a datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DAOResolutionImpl implements DAOResolution {

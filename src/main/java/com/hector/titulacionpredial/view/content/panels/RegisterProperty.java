@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * código del beneficiario asociado.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class RegisterProperty extends javax.swing.JPanel {

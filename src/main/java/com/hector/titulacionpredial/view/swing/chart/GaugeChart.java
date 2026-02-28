@@ -20,7 +20,7 @@ import java.awt.geom.Rectangle2D;
  * la librería TimingFramework.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class GaugeChart extends JComponent {

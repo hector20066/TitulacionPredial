@@ -13,7 +13,7 @@ import java.awt.*;
  * ni fondo, utilizando un icono SVG centrado.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class WindowButton extends JButton {

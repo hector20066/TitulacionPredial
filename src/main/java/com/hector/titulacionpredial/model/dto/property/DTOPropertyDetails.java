@@ -37,7 +37,7 @@ import java.util.List;
  *     Es una clase mutable y soporta construcción mediante el patrón Builder.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOPropertyDetails extends DTOProperty {

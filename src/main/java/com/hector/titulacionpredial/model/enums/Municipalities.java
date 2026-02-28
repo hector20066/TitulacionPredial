@@ -15,7 +15,7 @@ package com.hector.titulacionpredial.model.enums;
  * beneficiarios y predios registrados en el sistema.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public enum Municipalities {

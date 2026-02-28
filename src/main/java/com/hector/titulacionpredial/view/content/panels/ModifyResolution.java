@@ -19,7 +19,7 @@ import java.util.Locale;
  * y observaciones de una resolución previamente registrada.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModifyResolution extends javax.swing.JPanel {

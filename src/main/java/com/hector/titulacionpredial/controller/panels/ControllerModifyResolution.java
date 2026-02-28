@@ -29,7 +29,7 @@ import java.util.Date;
  * listado de resoluciones.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see ModifyResolution
  * @see ResolutionFacade
  * @since 1.0
@@ -71,10 +71,24 @@ public class ControllerModifyResolution {
         connectEvents();
     }
 
+    /**
+     * Conecta el botón de modificar con el método
+     * {@link #modifyResolution()}.
+     */
     private void connectEvents() {
         modifyResolution.setControllerModify(e -> modifyResolution());
     }
 
+    /**
+     * Valida los datos del formulario de modificación y
+     * lanza la actualización en segundo plano.
+     *
+     * <p>
+     * Extrae todos los campos del formulario, aplica las
+     * validaciones de campos obligatorios, formato numérico
+     * y longitud máxima antes de delegar al hilo de fondo.
+     * </p>
+     */
     private void modifyResolution() {
         try {
             String code = modifyResolution.getTxt_code().getText().trim();
@@ -108,6 +122,12 @@ public class ControllerModifyResolution {
         }
     }
 
+    /**
+     * Verifica si alguno de los campos proporcionados está vacío.
+     *
+     * @param fields campos a validar
+     * @return {@code true} si al menos un campo está en blanco
+     */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
@@ -118,6 +138,18 @@ public class ControllerModifyResolution {
         return false;
     }
 
+    /**
+     * Ejecuta la modificación de la resolución en un hilo de fondo.
+     *
+     * @param code          código de la resolución
+     * @param numResolution nuevo número de resolución
+     * @param notification  fecha de notificación
+     * @param executory     fecha de ejecutoria
+     * @param notary        nombre de la notaría
+     * @param fmi           Folio de Matrícula Inmobiliaria
+     * @param act           número de acta
+     * @param publicWriting número de escritura pública
+     */
     private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary,
                                 String fmi, String act, String publicWriting) {
         new Thread(() -> {
@@ -130,6 +162,17 @@ public class ControllerModifyResolution {
         }).start();
     }
 
+    /**
+     * Actualiza la interfaz tras completar la modificación.
+     *
+     * <p>
+     * Si la operación fue exitosa, muestra un mensaje de confirmación,
+     * notifica a los observadores y navega al listado de resoluciones.
+     * En caso contrario, muestra un mensaje de error.
+     * </p>
+     *
+     * @param success {@code true} si la modificación fue exitosa
+     */
     private void runInvokeLater(boolean success) {
         if (success) {
             MessageUtils.informationMessage("Se ha modificado la información de la resolución", modifyResolution);

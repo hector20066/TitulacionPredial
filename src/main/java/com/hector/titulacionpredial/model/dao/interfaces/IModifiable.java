@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
  * </p>
  *
  * @param <T> tipo del DTO con los datos a actualizar
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 @FunctionalInterface

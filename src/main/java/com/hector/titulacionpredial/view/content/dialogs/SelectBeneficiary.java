@@ -28,7 +28,7 @@ import java.util.List;
  * en tiempo real y animación de entrada.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ControllerSearchDialog
  */

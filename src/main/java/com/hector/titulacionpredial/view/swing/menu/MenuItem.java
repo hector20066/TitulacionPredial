@@ -23,7 +23,7 @@ import java.util.List;
  * clic. Utiliza MigLayout para organizar los sub-ítems.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see Item
  * @see ModelMenuItem

@@ -24,7 +24,7 @@ import java.util.List;
  *   <li>Estadísticas mensuales y porcentajes con predio</li>
  * </ul>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOBase
  * @see IListable
  * @see IModifiable

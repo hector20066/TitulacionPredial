@@ -22,7 +22,7 @@ import java.util.List;
  * geográficos y área.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DTOPropertyDetails
  * @since 1.0
  */

@@ -23,7 +23,7 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
  * Su única responsabilidad es encapsular datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {

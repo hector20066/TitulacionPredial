@@ -18,7 +18,7 @@ package com.hector.titulacionpredial.exception.dao;
  *     <li>{@link PersistenceException} – cuando falla una operación de escritura.</li>
  * </ul>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DAOException extends Exception {

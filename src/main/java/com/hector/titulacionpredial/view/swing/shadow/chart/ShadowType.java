@@ -9,7 +9,7 @@ package com.hector.titulacionpredial.view.swing.shadow.chart;
  * {@code BOT_RIGHT}, {@code BOT_LEFT}, {@code BOT}, {@code TOP}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public enum ShadowType {

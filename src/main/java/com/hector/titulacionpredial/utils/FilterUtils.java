@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * ingresado en un campo de texto.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class FilterUtils {

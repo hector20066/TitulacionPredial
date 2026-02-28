@@ -9,7 +9,7 @@ package com.hector.titulacionpredial.exception.validation;
  * la validación de campos requeridos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class EmptyFieldException extends InvalidInputException {

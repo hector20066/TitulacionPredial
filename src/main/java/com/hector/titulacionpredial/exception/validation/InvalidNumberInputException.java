@@ -9,7 +9,7 @@ package com.hector.titulacionpredial.exception.validation;
  * la validación de entradas numéricas en los formularios.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class InvalidNumberInputException extends InvalidInputException {

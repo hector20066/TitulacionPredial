@@ -18,7 +18,7 @@ import java.awt.geom.RoundRectangle2D;
  * Utilizado para las acciones principales de la interfaz.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ButtonAction extends JButton {

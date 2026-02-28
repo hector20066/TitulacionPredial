@@ -12,7 +12,7 @@ package com.hector.titulacionpredial.exception.dao;
  * {@link com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException}, etc.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class PersistenceException extends DAOException {

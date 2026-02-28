@@ -22,7 +22,7 @@ import java.util.List;
  * de los ejes.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see BlankPlotChartRender
  * @see NiceScale

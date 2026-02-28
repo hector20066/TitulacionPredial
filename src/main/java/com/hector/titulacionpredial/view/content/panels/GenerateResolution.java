@@ -17,7 +17,7 @@ import java.util.function.BiConsumer;
  * escritura pública y observaciones.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class GenerateResolution extends javax.swing.JPanel {

@@ -19,7 +19,7 @@ import java.util.List;
  * además de operaciones específicas como exportación y estadísticas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see PropertyImplFacade
  * @since 1.0
  */

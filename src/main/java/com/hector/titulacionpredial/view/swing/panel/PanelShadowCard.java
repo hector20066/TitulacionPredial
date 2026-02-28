@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
  * Soporta 7 direcciones de sombra: centro, esquinas y bordes.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ShadowRendererChart
  * @see ShadowType

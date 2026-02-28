@@ -11,7 +11,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
  * el total de registros de su entidad correspondiente.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 @FunctionalInterface

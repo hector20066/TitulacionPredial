@@ -15,7 +15,7 @@ import com.hector.titulacionpredial.view.swing.model.CardModel;
  * con estadísticas de beneficiarios, predios y resoluciones.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see Card
  * @see GaugeChart

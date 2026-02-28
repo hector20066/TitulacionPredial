@@ -24,7 +24,7 @@ import java.time.LocalDate;
  * de predio, FMI, fechas de notificación y ejecutoria.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class SeeResolutions extends javax.swing.JPanel {

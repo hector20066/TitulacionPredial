@@ -19,7 +19,7 @@ import static com.hector.titulacionpredial.model.enums.Municipalities.*;
  * Capital de Bogotá.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public enum Department {

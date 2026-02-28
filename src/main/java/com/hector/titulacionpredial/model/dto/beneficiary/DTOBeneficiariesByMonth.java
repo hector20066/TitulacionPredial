@@ -12,7 +12,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  * @param year  año correspondiente al registro
  * @param month mes correspondiente al registro (1-12)
  * @param total cantidad total de beneficiarios en el periodo
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public record DTOBeneficiariesByMonth(int year, int month, int total) {

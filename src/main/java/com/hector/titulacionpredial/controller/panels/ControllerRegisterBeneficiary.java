@@ -37,7 +37,7 @@ import javax.swing.*;
  * gestión del cónyuge cuando el estado civil lo requiere.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see RegisterBeneficiary
  * @see BeneficiaryFacade
  * @see SpouseFacade
@@ -92,6 +92,10 @@ public class ControllerRegisterBeneficiary implements Observer {
         connectEvents();
     }
 
+    /**
+     * Conecta los eventos de los componentes del formulario
+     * con sus respectivos métodos de acción.
+     */
     private void connectEvents() {
         registerBeneficiary.setControllerRegister(e -> registerOrModifyBeneficiary());
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
@@ -111,6 +115,16 @@ public class ControllerRegisterBeneficiary implements Observer {
         }).start();
     }
 
+    /**
+     * Determina si la acción es registrar o modificar un beneficiario
+     * y delega al método correspondiente.
+     *
+     * <p>
+     * Extrae los datos comunes del formulario (teléfono, estado civil,
+     * departamento, municipio, barrio, dirección, etc.) y valida
+     * el teléfono antes de continuar.
+     * </p>
+     */
     private void registerOrModifyBeneficiary() {
         try {
             String phone = registerBeneficiary.getTxt_phone().getText().trim();
@@ -142,6 +156,21 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
+    /**
+     * Valida y prepara los datos para la modificación del beneficiario.
+     *
+     * @param code          código del beneficiario
+     * @param phone         teléfono de contacto
+     * @param department    departamento seleccionado
+     * @param municipality  municipio seleccionado
+     * @param maritalStatus estado civil
+     * @param neighborhood  barrio
+     * @param address       dirección
+     * @param publication   publicación
+     * @param crossing      cruce
+     * @param affectation   afectación
+     * @throws InvalidInputException si los datos son inválidos
+     */
     private void modify(String code, String phone, Department department, Municipalities municipality,
                         MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                         String crossing, String affectation) throws InvalidInputException {
@@ -157,6 +186,26 @@ public class ControllerRegisterBeneficiary implements Observer {
                 crossing, affectation);
     }
 
+    /**
+     * Ejecuta la modificación del beneficiario en un hilo de fondo.
+     *
+     * <p>
+     * Además de actualizar los datos del beneficiario, gestiona
+     * la eliminación del cónyuge si el estado civil cambió a uno
+     * que no lo requiere.
+     * </p>
+     *
+     * @param code          código del beneficiario
+     * @param phone         teléfono de contacto
+     * @param department    departamento
+     * @param municipality  municipio
+     * @param maritalStatus nuevo estado civil
+     * @param neighborhood  barrio
+     * @param address       dirección
+     * @param publication   publicación
+     * @param crossing      cruce
+     * @param affectation   afectación
+     */
     private void doInBackgroundModify(int code, long phone, Department department, Municipalities municipality, MaritalStatus maritalStatus,
                                       String neighborhood, String address, String publication, String crossing, String affectation) {
         new Thread(() -> {
@@ -177,6 +226,16 @@ public class ControllerRegisterBeneficiary implements Observer {
         }).start();
     }
 
+    /**
+     * Actualiza la interfaz tras completar la modificación.
+     *
+     * <p>
+     * Si la operación fue exitosa, muestra un mensaje de confirmación,
+     * notifica a los observadores y navega al listado de beneficiarios.
+     * </p>
+     *
+     * @param success {@code true} si la modificación fue exitosa
+     */
     private void runInvokeLaterModify(boolean success) {
         if (success) {
             MessageUtils.informationMessage("Se ha modificado la información del beneficiario.", registerBeneficiary);
@@ -188,6 +247,21 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
+    /**
+     * Valida y prepara los datos para el registro de un nuevo beneficiario.
+     *
+     * @param code          código secuencial del beneficiario
+     * @param phone         teléfono de contacto
+     * @param department    departamento seleccionado
+     * @param municipality  municipio seleccionado
+     * @param maritalStatus estado civil
+     * @param neighborhood  barrio
+     * @param address       dirección
+     * @param publication   publicación
+     * @param crossing      cruce
+     * @param affectation   afectación
+     * @throws InvalidInputException si los datos son inválidos
+     */
     private void register(String code, String phone, Department department, Municipalities municipality,
                           MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                           String crossing, String affectation) throws InvalidInputException {
@@ -210,6 +284,25 @@ public class ControllerRegisterBeneficiary implements Observer {
                 neighborhood, address, cadastralReference, publication, crossing, affectation);
     }
 
+    /**
+     * Valida los campos obligatorios del formulario de registro.
+     *
+     * <p>
+     * Verifica que no estén vacíos, que el apellido tenga dos partes,
+     * que la cédula y referencia catastral sean numéricas,
+     * y que la cédula no exceda 10 caracteres.
+     * </p>
+     *
+     * @param name               nombre del beneficiario
+     * @param lastName           apellidos del beneficiario
+     * @param id                 cédula de ciudadanía
+     * @param phone              teléfono de contacto
+     * @param cadastralReference referencia catastral
+     * @param expeditionLocation lugar de expedición
+     * @param neighborhood       barrio
+     * @param address            dirección
+     * @throws InvalidInputException si alguna validación falla
+     */
     private void validations(String name, String lastName, String id, String phone, String cadastralReference,
                              String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
 
@@ -231,6 +324,12 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
+    /**
+     * Verifica si alguno de los campos proporcionados está vacío.
+     *
+     * @param fields campos a validar
+     * @return {@code true} si al menos un campo está en blanco
+     */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
@@ -241,11 +340,40 @@ public class ControllerRegisterBeneficiary implements Observer {
         return false;
     }
 
+    /**
+     * Prepara la interfaz deshabilitando el botón de registro
+     * y mostrando texto de carga.
+     */
     private void prepareUI() {
         registerBeneficiary.getBtn_register().setText("Registrando Beneficiario...");
         registerBeneficiary.getBtn_register().setEnabled(false);
     }
 
+    /**
+     * Registra el beneficiario y su cónyuge (si aplica) en
+     * un hilo de fondo.
+     *
+     * <p>
+     * Verifica que no exista un duplicado por cédula o nombre,
+     * persiste el beneficiario y registra el cónyuge cuando
+     * el estado civil lo requiere.
+     * </p>
+     *
+     * @param fullName           nombre completo del beneficiario
+     * @param code               código secuencial
+     * @param id                 cédula de ciudadanía
+     * @param phone              teléfono de contacto
+     * @param department         departamento
+     * @param municipalities     municipio
+     * @param maritalStatus      estado civil
+     * @param expeditionLocation lugar de expedición
+     * @param neighborhood       barrio
+     * @param address            dirección
+     * @param cadastralReference referencia catastral
+     * @param publication        publicación
+     * @param crossing           cruce
+     * @param affectation        afectación
+     */
     private void doInBackGround(String fullName, int code, long id, long phone, Department department, Municipalities municipalities,
                                 MaritalStatus maritalStatus, String expeditionLocation, String neighborhood, String address,
                                 String cadastralReference, String publication, String crossing, String affectation) {
@@ -269,6 +397,13 @@ public class ControllerRegisterBeneficiary implements Observer {
         }).start();
     }
 
+    /**
+     * Registra los datos del cónyuge asociado al beneficiario.
+     *
+     * @param beneficiaryCode código del beneficiario al que se asocia
+     * @throws DAOException si no se encontraron datos del cónyuge
+     *                      o si ocurre un error en la persistencia
+     */
     private void registerSpouse(int beneficiaryCode) throws DAOException {
         if (dtoSpouse == null) {
             throw new DataNotFoundException("No se han encontrado registros del conjugue.");
@@ -278,18 +413,30 @@ public class ControllerRegisterBeneficiary implements Observer {
                 dtoSpouse.getPhone(), beneficiaryCode);
     }
 
+    /**
+     * Muestra el mensaje de registro exitoso, notifica a los
+     * observadores y restablece la interfaz.
+     */
     private void runInvokeLater() {
         resetUI();
         MessageUtils.informationMessage("Se ha registrado la información del beneficiario en la base de datos", registerBeneficiary);
         subject.notifyObservers();
     }
 
+    /**
+     * Restablece el botón de registro y limpia los campos
+     * del formulario.
+     */
     private void resetUI() {
         registerBeneficiary.getBtn_register().setEnabled(true);
         registerBeneficiary.getBtn_register().setText("AGREGAR BENEFICIARIO");
         registerBeneficiary.clearFields();
     }
 
+    /**
+     * Actualiza el combo de municipios según el departamento
+     * seleccionado por el usuario.
+     */
     private void selectDepartment() {
         Department departmentSelected = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
 
@@ -305,6 +452,16 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
+    /**
+     * Muestra el diálogo de captura de datos del cónyuge
+     * cuando el estado civil es casado o unión libre.
+     *
+     * <p>
+     * Si el usuario confirma el diálogo, almacena el DTO del
+     * cónyuge. Si cambia a un estado civil sin cónyuge,
+     * limpia la referencia.
+     * </p>
+     */
     private void showSpouseDialog() {
         if (registerBeneficiary.isLoading()) return;
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
@@ -324,6 +481,10 @@ public class ControllerRegisterBeneficiary implements Observer {
         }
     }
 
+    /**
+     * Habilita o deshabilita el campo de afectación según
+     * el estado del checkbox.
+     */
     private void affectationSelected() {
         registerBeneficiary.getTxa_affectation().setEditable(registerBeneficiary.getCbx_affectation().isSelected());
     }

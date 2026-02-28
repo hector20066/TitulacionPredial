@@ -19,7 +19,7 @@ import java.util.List;
  * {@link DAOPropertyImpl}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see PropertyFacade
  * @see DAOPropertyImpl
  * @since 1.0

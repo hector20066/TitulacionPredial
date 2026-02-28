@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
  * eliminación de beneficiarios en la base de datos.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class BeneficiaryPersistenceException extends PersistenceException {

@@ -33,7 +33,7 @@ import java.util.List;
  * hacia el formulario de generación de resoluciones.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see SeeProperties
  * @see PropertyFacade
  * @see GenerateExcel
@@ -79,6 +79,10 @@ public class ControllerSeeProperties implements Observer {
         connectEvents();
     }
 
+    /**
+     * Conecta todos los eventos de los botones y componentes del
+     * panel de predios con sus respectivos métodos.
+     */
     private void connectEvents() {
         seeProperties.setControllerGenerate(e -> generateResolution());
         seeProperties.setControllerExportToExcel(e -> exportToExcel());
@@ -101,6 +105,16 @@ public class ControllerSeeProperties implements Observer {
         }).start();
     }
 
+    /**
+     * Extrae los datos del predio seleccionado y navega al
+     * formulario de generación de resoluciones con los datos precargados.
+     *
+     * <p>
+     * Obtiene del predio seleccionado: código del predio, nombre del
+     * beneficiario, cédula, dirección, municipio, coordenadas de los
+     * cuatro puntos geográficos y área.
+     * </p>
+     */
     private void generateResolution() {
         try {
             int selectedRow = seeProperties.getJtbl_properties().getSelectedRow();
@@ -153,6 +167,16 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
+    /**
+     * Construye un DTO con los datos básicos del beneficiario
+     * para el formulario de generación de resoluciones.
+     *
+     * @param nameBeneficiary    nombre completo del beneficiario
+     * @param address            dirección del predio
+     * @param municipalities     municipio del predio
+     * @param cadastralReference referencia catastral
+     * @return DTO con los datos configurados
+     */
     private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address,
                                                                Municipalities municipalities, String cadastralReference) {
         return new DTOBeneficiarySimpleDetails.Builder()
@@ -163,6 +187,14 @@ public class ControllerSeeProperties implements Observer {
                 .build();
     }
 
+    /**
+     * Exporta la información de todos los predios a un archivo Excel.
+     *
+     * <p>
+     * Solicita al usuario la ruta de guardado y ejecuta la
+     * exportación en segundo plano mostrando un diálogo de carga.
+     * </p>
+     */
     private void exportToExcel() {
         try {
             String path = DialogUtils.selectRoute(seeProperties);
@@ -180,6 +212,14 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
+    /**
+     * Elimina el predio seleccionado previa confirmación del usuario.
+     *
+     * <p>
+     * Valida la selección, muestra un diálogo de confirmación
+     * y ejecuta la eliminación en segundo plano si el usuario acepta.
+     * </p>
+     */
     private void deleteProperty() {
         try {
             if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1) {
@@ -199,6 +239,12 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
+    /**
+     * Ejecuta la eliminación del predio en un hilo de fondo
+     * y notifica a los observadores al completar.
+     *
+     * @param code código del predio a eliminar
+     */
     private void runDelete(int code) {
         new Thread(() -> {
             try {
@@ -213,6 +259,14 @@ public class ControllerSeeProperties implements Observer {
         }).start();
     }
 
+    /**
+     * Inicia la búsqueda del predio por cédula catastral.
+     *
+     * <p>
+     * Valida que el criterio no esté vacío, actualiza la visibilidad
+     * de los botones y ejecuta la consulta en segundo plano.
+     * </p>
+     */
     private void searchProperty() {
         try {
             String searchText = seeProperties.getTxt_search().getText().trim();
@@ -230,6 +284,12 @@ public class ControllerSeeProperties implements Observer {
         }
     }
 
+    /**
+     * Busca el predio por cédula catastral en un hilo de fondo
+     * y muestra el resultado en la tabla.
+     *
+     * @param searchText cédula catastral a buscar
+     */
     private void doInBackground(String searchText) {
         new Thread(() -> {
             try {
@@ -249,6 +309,10 @@ public class ControllerSeeProperties implements Observer {
         }).start();
     }
 
+    /**
+     * Registra el {@link DocumentListener} en el campo de búsqueda
+     * para filtrar la tabla en tiempo real.
+     */
     private void documentListeners() {
         seeProperties.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
@@ -268,6 +332,10 @@ public class ControllerSeeProperties implements Observer {
         });
     }
 
+    /**
+     * Configura los listeners de foco y clic del campo de búsqueda
+     * para gestionar el texto placeholder «Buscar».
+     */
     private void listenerSearch() {
         seeProperties.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
@@ -288,6 +356,10 @@ public class ControllerSeeProperties implements Observer {
         });
     }
 
+    /**
+     * Cancela la búsqueda activa, restaura el placeholder y
+     * recarga todos los predios.
+     */
     private void cancelSearch() {
         seeProperties.getTxt_search().setText("Buscar");
         seeProperties.getBtn_searchCancel().setVisible(false);
@@ -295,6 +367,11 @@ public class ControllerSeeProperties implements Observer {
         subject.notifyObservers();
     }
 
+    /**
+     * Carga la lista de predios en la tabla de la vista.
+     *
+     * @param listProperties lista de DTOs de predios a mostrar
+     */
     private void loadData(List<DTOPropertyDetails> listProperties) {
         seeProperties.getModel().setRowCount(0);
         listProperties.forEach(seeProperties::loadData);

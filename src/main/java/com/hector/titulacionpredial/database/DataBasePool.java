@@ -28,7 +28,7 @@ import java.sql.SQLException;
  *   <li>{@code maxLifetime} – 300 minutos</li>
  * </ul>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see AppConfig
  * @see HikariDataSource
  * @since 1.0

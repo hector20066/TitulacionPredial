@@ -16,7 +16,7 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  * {@link DAOPointImpl}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see PointFacade
  * @see DAOPointImpl
  * @since 1.0

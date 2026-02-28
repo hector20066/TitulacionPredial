@@ -28,7 +28,7 @@ import java.util.List;
  * base para los ejes coordenados.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see BlankPlotChart
  * @see ModelChart

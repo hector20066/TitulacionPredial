@@ -10,7 +10,7 @@ import java.awt.*;
  * y su color claro para el relleno de gradiente.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModelLegend {

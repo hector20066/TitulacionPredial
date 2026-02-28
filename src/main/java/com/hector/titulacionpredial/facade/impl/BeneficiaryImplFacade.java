@@ -21,7 +21,7 @@ import java.util.List;
  * {@link DAOBeneficiaryImpl}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see BeneficiaryFacade
  * @see DAOBeneficiaryImpl
  * @since 1.0

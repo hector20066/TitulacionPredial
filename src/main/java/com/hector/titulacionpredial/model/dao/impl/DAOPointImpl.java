@@ -22,7 +22,7 @@ import java.sql.SQLException;
  * conexión a la base de datos mediante {@link DataBasePool}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOPoint
  * @see DataBasePool
  * @see SQLRepository

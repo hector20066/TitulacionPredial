@@ -29,7 +29,7 @@ import java.util.List;
  * sobre sus entidades relacionadas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class Property {

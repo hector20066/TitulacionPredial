@@ -18,7 +18,7 @@ import java.util.List;
  * beneficiario registrado en el sistema.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DTOBeneficiaryCreate
  * @since 1.0
  */

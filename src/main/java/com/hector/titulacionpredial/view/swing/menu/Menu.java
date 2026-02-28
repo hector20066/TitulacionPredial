@@ -20,7 +20,7 @@ import java.util.List;
  * {@link EventMenuSelected}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see MenuItem
  * @see EventMenuSelected

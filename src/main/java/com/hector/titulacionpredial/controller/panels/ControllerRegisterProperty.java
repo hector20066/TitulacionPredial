@@ -31,7 +31,7 @@ import java.util.List;
  * para navegar entre los paneles de coordenadas.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see RegisterProperty
  * @see PropertyFacade
  * @see PointFacade
@@ -78,6 +78,10 @@ public class ControllerRegisterProperty {
         connectEvents();
     }
 
+    /**
+     * Conecta los eventos de los botones del formulario con
+     * sus respectivos métodos de acción.
+     */
     private void connectEvents() {
         registerProperty.setControllerRegister(e -> register());
         registerProperty.setControllerGoPoint2(e -> actionAfter());
@@ -89,6 +93,16 @@ public class ControllerRegisterProperty {
         registerProperty.setControllerShowBeneficiaries(e -> showBeneficiaries());
     }
 
+    /**
+     * Valida los datos del formulario y lanza el proceso
+     * de registro del predio con sus puntos geográficos.
+     *
+     * <p>
+     * Extrae la cédula catastral, área, códigos de beneficiarios
+     * y las coordenadas de los cuatro puntos, valida los
+     * campos obligatorios y delega al hilo de fondo.
+     * </p>
+     */
     private void register() {
         try {
             String cadastralId = registerProperty.getTxt_cadastralId().getText().trim();
@@ -154,11 +168,30 @@ public class ControllerRegisterProperty {
         return false;
     }
 
+    /**
+     * Prepara la interfaz deshabilitando el botón de registro
+     * y mostrando texto de carga.
+     */
     private void prepareUI() {
         registerProperty.getBtn_register().setText("Registrando Información...");
         registerProperty.getBtn_register().setEnabled(false);
     }
 
+    /**
+     * Registra el predio, sus puntos geográficos y la asociación
+     * con los beneficiarios en un hilo de fondo.
+     *
+     * <p>
+     * Verifica que no exista un predio duplicado con la misma
+     * cédula catastral, persiste el predio, registra cada punto
+     * y asocia los beneficiarios indicados.
+     * </p>
+     *
+     * @param cadastralId      cédula catastral del predio
+     * @param area             área del predio en metros cuadrados
+     * @param beneficiaryCodes códigos de los beneficiarios asociados
+     * @param points           lista de datos de los cuatro puntos geográficos
+     */
     private void doInBackGround(String cadastralId, double area, String[] beneficiaryCodes, List<PointData> points) {
         new Thread(() -> {
             try {
@@ -188,28 +221,53 @@ public class ControllerRegisterProperty {
         }).start();
     }
 
+    /**
+     * Muestra el mensaje de registro exitoso, notifica a los
+     * observadores y restablece la interfaz.
+     */
     private void runInvokeLater() {
         MessageUtils.informationMessage("Se ha registrado la información correctamente", registerProperty);
         subject.notifyObservers();
         resetUI();
     }
 
+    /**
+     * Restablece el botón de registro y limpia los campos
+     * del formulario.
+     */
     private void resetUI() {
         registerProperty.getBtn_register().setText("REGISTRAR PREDIO");
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.clearFields();
     }
 
+    /**
+     * Avanza al siguiente panel de coordenadas mediante
+     * el {@link CardLayout}.
+     */
     private void actionAfter() {
         CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
         card.next(registerProperty.getJpl_contentPoints());
     }
 
+    /**
+     * Retrocede al panel de coordenadas anterior mediante
+     * el {@link CardLayout}.
+     */
     private void actionPrevious() {
         CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
         card.previous(registerProperty.getJpl_contentPoints());
     }
 
+    /**
+     * Carga la lista de beneficiarios sin predio asignado
+     * y muestra el diálogo de selección.
+     *
+     * <p>
+     * Deshabilita los botones durante la carga y los restablece
+     * al cerrar el diálogo.
+     * </p>
+     */
     private void showBeneficiaries() {
         prepareUILoadBeneficiaries();
 
@@ -223,12 +281,22 @@ public class ControllerRegisterProperty {
         }).start();
     }
 
+    /**
+     * Prepara la interfaz deshabilitando botones mientras se
+     * cargan los beneficiarios.
+     */
     private void prepareUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_selectBeneficiary().setEnabled(false);
         registerProperty.getBtn_selectBeneficiary().setText("Buscando Beneficiarios...");
     }
 
+    /**
+     * Muestra el diálogo de selección de beneficiarios y
+     * añade el código seleccionado al campo del formulario.
+     *
+     * @param dto lista de beneficiarios disponibles para selección
+     */
     private void loadInvokerDialog(List<DTOBeneficiarySimpleDetails> dto) {
         java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
 
@@ -246,12 +314,26 @@ public class ControllerRegisterProperty {
         }
     }
 
+    /**
+     * Restablece los botones tras cerrar el diálogo de
+     * selección de beneficiarios.
+     */
     private void resetUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_selectBeneficiary().setEnabled(true);
         registerProperty.getBtn_selectBeneficiary().setText("Buscar Beneficiario");
     }
 
+    /**
+     * Registro inmutable que encapsula los datos de un punto
+     * geográfico del predio.
+     *
+     * @param pointNumber número del punto (1 a 4)
+     * @param north       coordenada norte
+     * @param east        coordenada este
+     * @param distance    distancia al siguiente punto
+     * @param hillside    lindero vecino
+     */
     private record PointData(int pointNumber, String north, String east, String distance, String hillside) {
 
     }

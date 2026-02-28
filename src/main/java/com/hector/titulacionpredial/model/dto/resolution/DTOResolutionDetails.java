@@ -26,7 +26,7 @@ import com.hector.titulacionpredial.model.dto.DTOResolution;
  * Soporta construcción fluida mediante el patrón {@link DTOResolutionDetails.Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOResolutionDetails extends DTOResolution {

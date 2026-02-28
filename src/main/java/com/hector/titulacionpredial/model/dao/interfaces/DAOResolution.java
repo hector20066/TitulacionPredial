@@ -13,7 +13,7 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
  * sobre la entidad {@code Resolution}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see DAOBase
  * @see IListable
  * @see IModifiable

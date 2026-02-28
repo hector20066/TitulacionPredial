@@ -11,7 +11,7 @@ package com.hector.titulacionpredial.exception.dao;
  * {@link com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException}, etc.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DataNotFoundException extends DAOException {

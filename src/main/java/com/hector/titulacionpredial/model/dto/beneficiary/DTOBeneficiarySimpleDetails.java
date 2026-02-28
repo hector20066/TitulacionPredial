@@ -28,7 +28,7 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  * {@link DTOBeneficiarySimpleDetails.Builder}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {

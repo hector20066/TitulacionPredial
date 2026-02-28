@@ -26,7 +26,7 @@ import java.util.List;
  * {@link IRemovable} e {@link ICountable}.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @see BeneficiaryImplFacade
  * @since 1.0
  */

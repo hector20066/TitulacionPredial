@@ -8,7 +8,7 @@ package com.hector.titulacionpredial.view.swing.model;
  * y la lista de nombres de los sub-menús.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModelMenuItem {

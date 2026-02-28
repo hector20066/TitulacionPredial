@@ -13,7 +13,7 @@ import java.util.List;
  * sobre el área de trazado del gráfico.
  * </p>
  *
- * @author Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see BlankPlotChart
  */
