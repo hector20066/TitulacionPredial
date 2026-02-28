@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.view.content.dialogs;
 import com.hector.titulacionpredial.controller.ControllerSearchDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSelectBeneficiaryText;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -34,6 +35,11 @@ import java.util.List;
  */
 public class SelectBeneficiary extends javax.swing.JDialog {
 
+    private String code = "Código";
+    private String name = "Nombre";
+    private String id = "Cédula";
+    private String cadastralRef = "Ref. Catastral";
+
     private boolean confirmed = false;
     private final Animator animator;
     private boolean show = true;
@@ -56,7 +62,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
 
         this.controllerSearchDialog =  new ControllerSearchDialog(this);
 
-        String[] titles = {"Código", "Nombre", "Cedula", "Ref. Catastral"};
+        String[] titles = {code, name, id, cadastralRef};
         model.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(model);
 
@@ -238,6 +244,15 @@ public class SelectBeneficiary extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void updateLanguage(DTOSelectBeneficiaryText texts) {
+        jlb_title.setText(texts.getTitle());
+        code = texts.getBeneficiaryCode();
+        name = texts.getBeneficiaryName();
+        id = texts.getBeneficiaryId();
+        cadastralRef = texts.getBeneficiaryCadastralRef();
+        txt_search.setText(texts.getSearch());
+    }
 
     /**
      * Conecta los eventos de los botones de buscar, seleccionar,
