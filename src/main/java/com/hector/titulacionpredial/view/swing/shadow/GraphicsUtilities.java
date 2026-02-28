@@ -24,40 +24,95 @@ import java.net.URL;
  */
 public class GraphicsUtilities {
 
+    /**
+     * Constructor privado para evitar instanciación.
+     */
     private GraphicsUtilities() {
 
     }
 
+    /**
+     * Obtiene la configuración gráfica predeterminada del sistema.
+     *
+     * @return configuración gráfica
+     */
     private static GraphicsConfiguration getGraphicsConfiguration() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
     }
 
+    /**
+     * Crea una imagen compatible con el modelo de color de la imagen fuente.
+     *
+     * @param image imagen de referencia
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createColorModelCompatibleImage(BufferedImage image) {
         ColorModel cm = image.getColorModel();
         return new BufferedImage(cm, cm.createCompatibleWritableRaster(image.getWidth(), image.getHeight()), cm.isAlphaPremultiplied(), null);
     }
 
+    /**
+     * Crea una imagen compatible con las mismas dimensiones.
+     *
+     * @param image imagen de referencia
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image) {
         return createCompatibleImage(image, image.getWidth(), image.getHeight());
     }
 
+    /**
+     * Crea una imagen compatible con dimensiones específicas.
+     *
+     * @param image  imagen de referencia
+     * @param width  ancho
+     * @param height alto
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image, int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, image.getTransparency());
     }
 
+    /**
+     * Crea una imagen opaca compatible con las dimensiones dadas.
+     *
+     * @param width  ancho
+     * @param height alto
+     * @return nueva imagen compatible
+     */
     public static BufferedImage createCompatibleImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height);
     }
 
+    /**
+     * Crea una imagen translúcida compatible con las dimensiones dadas.
+     *
+     * @param width  ancho
+     * @param height alto
+     * @return nueva imagen translúcida
+     */
     public static BufferedImage createCompatibleTranslucentImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
     }
 
+    /**
+     * Carga una imagen desde un recurso y la convierte a formato compatible.
+     *
+     * @param resource URL del recurso
+     * @return imagen compatible
+     * @throws IOException si ocurre un error al leer el recurso
+     */
     public static BufferedImage loadCompatibleImage(URL resource) throws IOException {
         BufferedImage image = ImageIO.read(resource);
         return toCompatibleImage(image);
     }
 
+    /**
+     * Convierte una imagen al formato compatible con el sistema gráfico.
+     *
+     * @param image imagen a convertir
+     * @return imagen compatible
+     */
     public static BufferedImage toCompatibleImage(BufferedImage image) {
         if (image.getColorModel().equals(getGraphicsConfiguration().getColorModel())) {
             return image;
@@ -71,6 +126,13 @@ public class GraphicsUtilities {
         return compatibleImage;
     }
 
+    /**
+     * Crea una miniatura rápida manteniendo la proporción.
+     *
+     * @param image   imagen fuente
+     * @param newSize tamaño máximo (ancho o alto)
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newSize) {
         float ratio;
         int width = image.getWidth();
@@ -101,6 +163,14 @@ public class GraphicsUtilities {
         return getBufferedImage(image, width, height);
     }
 
+    /**
+     * Crea una miniatura rápida con dimensiones específicas.
+     *
+     * @param image     imagen fuente
+     * @param newWidth  nuevo ancho
+     * @param newHeight nuevo alto
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newWidth, int newHeight) {
         if (newWidth >= image.getWidth() || newHeight >= image.getHeight()) {
             throw new IllegalArgumentException("newWidth and newHeight cannot" + " be greater than the image" + " dimensions");
@@ -111,6 +181,14 @@ public class GraphicsUtilities {
         return getBufferedImage(image, newWidth, newHeight);
     }
 
+    /**
+     * Escala la imagen a las dimensiones dadas con interpolación bilineal.
+     *
+     * @param image  imagen fuente
+     * @param width  nuevo ancho
+     * @param height nuevo alto
+     * @return imagen escalada
+     */
     private static BufferedImage getBufferedImage(BufferedImage image, int width, int height) {
         BufferedImage temp = createCompatibleImage(image, width, height);
         Graphics2D g2 = temp.createGraphics();
@@ -121,6 +199,13 @@ public class GraphicsUtilities {
         return temp;
     }
 
+    /**
+     * Crea una miniatura de alta calidad manteniendo la proporción.
+     *
+     * @param image   imagen fuente
+     * @param newSize tamaño máximo (ancho o alto)
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnail(BufferedImage image, int newSize) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -167,6 +252,14 @@ public class GraphicsUtilities {
         return thumb;
     }
 
+    /**
+     * Crea una miniatura de alta calidad con dimensiones específicas.
+     *
+     * @param image     imagen fuente
+     * @param newWidth  nuevo ancho
+     * @param newHeight nuevo alto
+     * @return imagen miniatura
+     */
     public static BufferedImage createThumbnail(BufferedImage image, int newWidth, int newHeight) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -202,6 +295,15 @@ public class GraphicsUtilities {
         return thumb;
     }
 
+    /**
+     * Escala progresivamente la imagen con interpolación bilineal.
+     *
+     * @param image  imagen fuente
+     * @param width  nuevo ancho
+     * @param height nuevo alto
+     * @param thumb  imagen intermedia acumulada
+     * @return imagen escalada
+     */
     private static BufferedImage getBufferedImage(BufferedImage image, int width, int height, BufferedImage thumb) {
         BufferedImage temp = createCompatibleImage(image, width, height);
         Graphics2D g2 = temp.createGraphics();
@@ -213,6 +315,17 @@ public class GraphicsUtilities {
         return thumb;
     }
 
+    /**
+     * Obtiene los píxeles de una región de la imagen como un arreglo de enteros ARGB.
+     *
+     * @param img    imagen fuente
+     * @param x      coordenada X
+     * @param y      coordenada Y
+     * @param w      ancho de la región
+     * @param h      alto de la región
+     * @param pixels arreglo destino ({@code null} para crear uno nuevo)
+     * @return arreglo de píxeles ARGB
+     */
     public static int[] getPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (w == 0 || h == 0) {
             return new int[0];
@@ -234,6 +347,16 @@ public class GraphicsUtilities {
         return img.getRGB(x, y, w, h, pixels, 0, w);
     }
 
+    /**
+     * Establece los píxeles en una región de la imagen.
+     *
+     * @param img    imagen destino
+     * @param x      coordenada X
+     * @param y      coordenada Y
+     * @param w      ancho de la región
+     * @param h      alto de la región
+     * @param pixels arreglo de píxeles ARGB
+     */
     public static void setPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (pixels == null || w == 0 || h == 0) {
             return;

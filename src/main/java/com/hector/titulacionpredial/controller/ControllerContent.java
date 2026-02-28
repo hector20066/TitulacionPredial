@@ -27,34 +27,42 @@ public class ControllerContent {
      * Vista principal del contenido.
      */
     private final Content content;
+
     /**
      * Panel del dashboard.
      */
     private final Dashboard dashboard;
+
     /**
      * Panel de registro de beneficiarios.
      */
     private final RegisterBeneficiary registerBeneficiary;
+
     /**
      * Panel de registro de predios.
      */
     private final RegisterProperty registerProperty;
+
     /**
      * Panel de visualización de beneficiarios.
      */
     private final ViewBeneficiaries viewBeneficiaries;
+
     /**
      * Panel de visualización de predios.
      */
     private final SeeProperties seeProperties;
+
     /**
      * Panel de visualización de resoluciones.
      */
     private final SeeResolutions seeResolutions;
+
     /**
      * Panel de información «Acerca de».
      */
     private final About about;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */

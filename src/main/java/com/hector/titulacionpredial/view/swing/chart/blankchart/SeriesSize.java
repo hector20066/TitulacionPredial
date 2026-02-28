@@ -13,53 +13,64 @@ package com.hector.titulacionpredial.view.swing.chart.blankchart;
  * @since 1.0
  */
 public class SeriesSize {
-    
+
     private double x;
     private double y;
     private double width;
     private double height;
 
-    public SeriesSize(double x, double y, double width, double height){
+    /**
+     * Crea un área de serie con posición y dimensiones.
+     *
+     * @param x      coordenada X
+     * @param y      coordenada Y
+     * @param width  ancho
+     * @param height alto
+     */
+    public SeriesSize(double x, double y, double width, double height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
 
-    public SeriesSize(){
+    /**
+     * Crea un área de serie vacía.
+     */
+    public SeriesSize() {
 
     }
 
-    public void setX(double x){
-        this.x = x;
-    }
-
-    public void setY(double y){
-        this.y = y;
-    }
-
-    public void setWidth(double width){
-        this.width = width;
-    }
-
-    public void setHeight(double height){
-        this.height = height;
-    }
-
-    public double getX(){
+    public double getX() {
         return x;
     }
 
-    public double getY(){
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
         return y;
     }
 
-    public double getWidth(){
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getWidth() {
         return width;
     }
 
-    public double getHeight(){
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
         return height;
     }
-    
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
 }

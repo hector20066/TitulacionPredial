@@ -44,7 +44,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @param maritalStatus      estado civil
      * @param affectation        tipo de afectación
      * @param phone              número de teléfono
-     * @param crossing           cruce de calles
+     * @param crossing           cruce
      * @param publication        publicación
      * @param neighborhood       barrio
      * @param expeditionLocation lugar de expedición del documento

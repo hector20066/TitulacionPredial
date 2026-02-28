@@ -26,6 +26,9 @@ public class Head extends PanelShadow {
     int xMouse;
     int yMouse;
 
+    /**
+     * Crea la barra de título con los botones de ventana.
+     */
     public Head() {
         initComponents();
     }
@@ -51,6 +54,11 @@ public class Head extends PanelShadow {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Configura la barra para permitir mover la ventana principal.
+     *
+     * @param frame ventana principal del programa.
+     */
     public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -72,6 +80,11 @@ public class Head extends PanelShadow {
         });
     }
     
+    /**
+     * Obtiene el botón de control de ventana.
+     *
+     * @return componente {@link WinButton}
+     */
     public WinButton getWinButton() {
         return winButton1;
     }

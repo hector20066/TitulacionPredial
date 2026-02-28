@@ -10,6 +10,12 @@ package com.hector.titulacionpredial.view.swing.menu;
 @FunctionalInterface
 public interface EventMenuSelected {
 
+    /**
+     * Se invoca cuando el usuario selecciona una opción del menú.
+     *
+     * @param index        índice del menú principal seleccionado
+     * @param indexSubmenu índice del sub-menú seleccionado
+     */
     void menuSelected(int index, int indexSubmenu);
 
 }

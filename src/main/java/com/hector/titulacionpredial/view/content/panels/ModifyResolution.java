@@ -24,6 +24,9 @@ import java.util.Locale;
  */
 public class ModifyResolution extends javax.swing.JPanel {
 
+    /**
+     * Crea el formulario de modificación de resoluciones.
+     */
     public ModifyResolution() {
         initComponents();
     }
@@ -228,6 +231,11 @@ public class ModifyResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de modificar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
@@ -267,7 +275,15 @@ public class ModifyResolution extends javax.swing.JPanel {
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
-    
+
+    /**
+     * Carga los datos de la resolución en el formulario.
+     *
+     * @param dto          datos de la resolución
+     * @param notification fecha de notificación formateada
+     * @param executory    fecha de ejecutoria formateada
+     * @throws ParseException si las fechas no se pueden parsear
+     */
     public void loadData(DTOResolutionDetails dto, String notification, String executory) throws ParseException {
         txt_code.setText(String.valueOf(dto.getCode()));
         txt_act.setText(dto.getAct());

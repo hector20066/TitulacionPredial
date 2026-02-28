@@ -17,10 +17,20 @@ public class ModelMenuItem {
     private String menuName;
     private String[] subMenu;
 
+    /**
+     * Crea un modelo de menú vacío.
+     */
     public ModelMenuItem() {
 
     }
 
+    /**
+     * Crea un modelo de menú con los datos especificados.
+     *
+     * @param icon     ruta del icono SVG
+     * @param menuName nombre del menú
+     * @param subMenu  nombres de los sub-menús
+     */
     public ModelMenuItem(String icon, String menuName, String... subMenu) {
         this.icon = icon;
         this.menuName = menuName;
@@ -50,4 +60,5 @@ public class ModelMenuItem {
     public void setSubMenu(String[] subMenu) {
         this.subMenu = subMenu;
     }
+
 }

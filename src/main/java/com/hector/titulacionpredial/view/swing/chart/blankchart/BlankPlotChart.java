@@ -23,12 +23,12 @@ import java.util.List;
  * </p>
  *
  * @author Ing. Hector Acevedo
- * @since 1.0
  * @see BlankPlotChartRender
  * @see NiceScale
+ * @since 1.0
  */
 public class BlankPlotChart extends JComponent {
-    
+
     private final DecimalFormat format = new DecimalFormat("#,##0.##");
     private NiceScale niceScale;
     private double maxValues;
@@ -37,68 +37,85 @@ public class BlankPlotChart extends JComponent {
     private String valuesFormat = "#,##0.##";
     private BlankPlotChartRender blankPlotChatRender;
 
-    public BlankPlotChart(){
+    /**
+     * Crea el componente de ejes coordenados con valores por defecto.
+     */
+    public BlankPlotChart() {
         setBackground(Color.WHITE);
         setOpaque(false);
-        setForeground(new Color(45,106,79));
+        setForeground(new Color(45, 106, 79));
         setBorder(new EmptyBorder(35, 10, 10, 10));
         init();
     }
 
-    public void setNiceScale(NiceScale niceScale){
+    public NiceScale getNiceScale() {
+        return niceScale;
+    }
+
+
+    public void setNiceScale(NiceScale niceScale) {
         this.niceScale = niceScale;
     }
 
-    public void setMaxValues(double maxValues){
+    public double getMaxValues() {
+        return maxValues;
+    }
+
+    /**
+     * Establece el valor máximo y recalcula la escala.
+     *
+     * @param maxValues valor máximo
+     */
+    public void setMaxValues(double maxValues) {
         this.maxValues = maxValues;
         niceScale.setMax(maxValues);
         repaint();
     }
 
-    public void setMinValues(double minValues){
+    public double getMinValues() {
+        return minValues;
+    }
+
+    public void setMinValues(double minValues) {
         this.minValues = minValues;
     }
 
-    public void setLabelCount(int labelCount){
+    public int getLabelCount() {
+        return labelCount;
+    }
+
+    public void setLabelCount(int labelCount) {
         this.labelCount = labelCount;
     }
 
-    public void setValuesFormat(String valuesFormat){
+    public String getValuesFormat() {
+        return valuesFormat;
+    }
+
+    /**
+     * Establece el patrón de formato de los valores.
+     *
+     * @param valuesFormat patrón {@link DecimalFormat}
+     */
+    public void setValuesFormat(String valuesFormat) {
         this.valuesFormat = valuesFormat;
         format.applyPattern(valuesFormat);
     }
 
-    public void setBlankPlotChatRender(BlankPlotChartRender blankPlotChatRender){
-        this.blankPlotChatRender = blankPlotChatRender;
-    }
-
-    public NiceScale getNiceScale(){
-        return niceScale;
-    }
-
-    public double getMaxValues(){
-        return maxValues;
-    }
-
-    public double getMinValues(){
-        return minValues;
-    }
-
-    public int getLabelCount(){
-        return labelCount;
-    }
-
-    public String getValuesFormat(){
-        return valuesFormat;
-    }
-
-    public BlankPlotChartRender getBlankPlotChatRender(){
+    public BlankPlotChartRender getBlankPlotChatRender() {
         return blankPlotChatRender;
     }
 
-    private void init(){
+    public void setBlankPlotChatRender(BlankPlotChartRender blankPlotChatRender) {
+        this.blankPlotChatRender = blankPlotChatRender;
+    }
+
+    /**
+     * Inicializa la escala por defecto y el listener del mouse.
+     */
+    private void init() {
         initValues(0, 10);
-        
+
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent me) {
@@ -107,15 +124,24 @@ public class BlankPlotChart extends JComponent {
         });
     }
 
-    public void initValues(double minValues, double maxValues){
+    /**
+     * Inicializa la escala con un rango de valores.
+     *
+     * @param minValues valor mínimo
+     * @param maxValues valor máximo
+     */
+    public void initValues(double minValues, double maxValues) {
         this.minValues = minValues;
         this.maxValues = maxValues;
         niceScale = new NiceScale(minValues, maxValues);
         repaint();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         if (niceScale != null) {
@@ -129,7 +155,12 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
-    public void createLine(Graphics2D g2){
+    /**
+     * Dibuja las líneas horizontales de la cuadrícula.
+     *
+     * @param g2 contexto gráfico
+     */
+    public void createLine(Graphics2D g2) {
         g2.setColor(new Color(150, 150, 150, 20));
         Insets insets = getInsets();
         double textHeight = getLabelTextHeight(g2);
@@ -141,12 +172,17 @@ public class BlankPlotChart extends JComponent {
 
         for (int i = 0; i <= niceScale.getMaxTicks(); i++) {
             int y = (int) (getHeight() - locationY);
-            g2.drawLine((int) (insets.left + textWidth + spaceText), y, (int) getWidth() - insets.right, y);
+            g2.drawLine((int) (insets.left + textWidth + spaceText), y, getWidth() - insets.right, y);
             locationY += space;
         }
     }
 
-    private void createValues(Graphics2D g2){
+    /**
+     * Dibuja los valores numéricos del eje Y.
+     *
+     * @param g2 contexto gráfico
+     */
+    private void createValues(Graphics2D g2) {
         g2.setColor(getForeground());
         Insets insets = getInsets();
         double textHeight = getLabelTextHeight(g2);
@@ -167,7 +203,12 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
-    private void createLabelText(Graphics2D g2){
+    /**
+     * Dibuja las etiquetas de texto del eje X.
+     *
+     * @param g2 contexto gráfico
+     */
+    private void createLabelText(Graphics2D g2) {
         if (labelCount > 0) {
             Insets insets = getInsets();
             double textWidth = getMaxValuesTextWidth(g2);
@@ -190,7 +231,12 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
-    private void renderSeries(Graphics2D g2){
+    /**
+     * Renderiza las series de datos usando el renderizador delegado.
+     *
+     * @param g2 contexto gráfico
+     */
+    private void renderSeries(Graphics2D g2) {
         if (blankPlotChatRender != null) {
             Insets insets = getInsets();
             double textWidth = getMaxValuesTextWidth(g2);
@@ -200,32 +246,44 @@ public class BlankPlotChart extends JComponent {
             double height = getHeight() - insets.top - insets.bottom - textHeight;
             double space = width / labelCount;
             double locationX = insets.left + textWidth + spaceText;
-            
+
             for (int i = 0; i < labelCount; i++) {
                 blankPlotChatRender.renderSeries(this, g2, getRectangle(i, height, space, locationX, insets.top), i);
             }
-            
+
             List<Path2D.Double> gra = initGra(blankPlotChatRender.getMaxLegend());
-            
+
             for (int i = 0; i < labelCount; i++) {
                 blankPlotChatRender.renderSeries(this, g2, getRectangle(i, height, space, locationX, insets.top), i, gra);
             }
-            
+
             blankPlotChatRender.renderGraphics(g2, gra);
         }
     }
 
-    private List<Path2D.Double> initGra(int size){
+    /**
+     * Crea la lista de rutas gráficas para las series.
+     *
+     * @param size cantidad de series
+     * @return lista de {@link Path2D.Double} vacías
+     */
+    private List<Path2D.Double> initGra(int size) {
         List<Path2D.Double> list = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
             list.add(new Path2D.Double());
         }
-        
+
         return list;
     }
 
-    private void mouseMove(Graphics2D g2, MouseEvent evt){
+    /**
+     * Procesa el movimiento del mouse para tooltips interactivos.
+     *
+     * @param g2  contexto gráfico
+     * @param evt evento del mouse
+     */
+    private void mouseMove(Graphics2D g2, MouseEvent evt) {
         if (blankPlotChatRender != null) {
             Insets insets = getInsets();
             double textWidth = getMaxValuesTextWidth(g2);
@@ -235,10 +293,10 @@ public class BlankPlotChart extends JComponent {
             double height = getHeight() - insets.top - insets.bottom - textHeight;
             double space = width / labelCount;
             double locationX = insets.left + textWidth + spaceText;
-            
+
             for (int i = 0; i < labelCount; i++) {
                 boolean stop = blankPlotChatRender.mouseMoving(this, evt, g2, getRectangle(i, height, space, locationX, insets.top), i);
-                
+
                 if (stop) {
                     break;
                 }
@@ -246,32 +304,50 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
-    private double getMaxValuesTextWidth(Graphics2D g2){
+    /**
+     * Calcula el ancho máximo de las etiquetas del eje Y.
+     *
+     * @param g2 contexto gráfico
+     * @return ancho máximo en píxeles
+     */
+    private double getMaxValuesTextWidth(Graphics2D g2) {
         double width = 0;
         FontMetrics ft = g2.getFontMetrics();
         double valuesCount = niceScale.getNiceMin();
-        
+
         for (int i = 0; i <= niceScale.getMaxTicks(); i++) {
             String text = format.format(valuesCount);
             Rectangle2D r2 = ft.getStringBounds(text, g2);
             double w = r2.getWidth();
-            
+
             if (w > width) {
                 width = w;
             }
-            
+
             valuesCount += niceScale.getTickSpacing();
         }
-        
+
         return width;
     }
 
-    private int getLabelTextHeight(Graphics2D g2){
+    /**
+     * Obtiene la altura del texto de una etiqueta.
+     *
+     * @param g2 contexto gráfico
+     * @return altura en píxeles
+     */
+    private int getLabelTextHeight(Graphics2D g2) {
         FontMetrics ft = g2.getFontMetrics();
         return ft.getHeight();
     }
 
-    private String getChartText(int index){
+    /**
+     * Obtiene el texto de la etiqueta para un índice.
+     *
+     * @param index índice de la categoría
+     * @return texto de la etiqueta
+     */
+    private String getChartText(int index) {
         if (blankPlotChatRender != null) {
             return blankPlotChatRender.getLabelText(index);
         } else {
@@ -279,15 +355,32 @@ public class BlankPlotChart extends JComponent {
         }
     }
 
-    public SeriesSize getRectangle(int index, double height, double space, double startX, double startY){
+    /**
+     * Calcula el rectángulo de una serie en el área de trazado.
+     *
+     * @param index  índice de la serie
+     * @param height altura del área de trazado
+     * @param space  ancho por categoría
+     * @param startX posición X inicial
+     * @param startY posición Y inicial
+     * @return área de la serie
+     */
+    public SeriesSize getRectangle(int index, double height, double space, double startX, double startY) {
         double x = startX + space * index;
         return new SeriesSize(x, startY + 1, space, height);
     }
 
-    public double getSeriesValuesOf(double values, double height){
+    /**
+     * Convierte un valor de datos a píxeles dentro del área de trazado.
+     *
+     * @param values valor del dato
+     * @param height altura disponible en píxeles
+     * @return posición en píxeles
+     */
+    public double getSeriesValuesOf(double values, double height) {
         double max = niceScale.getTickSpacing() * niceScale.getMaxTicks();
         double percentValues = values * 100d / max;
         return height * percentValues / 100d;
     }
-    
+
 }

@@ -30,6 +30,9 @@ public class ButtonAction extends JButton {
     private float alpha;
     private Color effectColor = new Color(173, 173, 173);
 
+    /**
+     * Crea un botón de acción con estilo predeterminado y efecto ripple.
+     */
     public ButtonAction() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(8, 10, 8, 10));
@@ -57,6 +60,9 @@ public class ButtonAction extends JButton {
         });
     }
 
+    /**
+     * Inicializa el temporizador para la animación del efecto ripple.
+     */
     private void initAnimator() {
         int delay = 16;
         int duration = 400;
@@ -78,14 +84,17 @@ public class ButtonAction extends JButton {
         });
     }
 
-    public void setEffectColor(Color effectColor) {
-        this.effectColor = effectColor;
-    }
-
     public Color getEffectColor() {
         return effectColor;
     }
 
+    public void setEffectColor(Color effectColor) {
+        this.effectColor = effectColor;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics g) {
         int width = getWidth();
@@ -115,6 +124,9 @@ public class ButtonAction extends JButton {
         super.paintComponent(g);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paint(Graphics g) {
         if (isSelected()) {
@@ -131,6 +143,12 @@ public class ButtonAction extends JButton {
         super.paint(g);
     }
 
+    /**
+     * Limita el valor de alfa al rango [0, 1].
+     *
+     * @param value valor a limitar
+     * @return valor limitado
+     */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;
         if (value > 1f) return 1f;

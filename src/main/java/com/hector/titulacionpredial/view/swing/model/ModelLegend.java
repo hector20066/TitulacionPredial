@@ -19,12 +19,22 @@ public class ModelLegend {
     private Color color;
     private Color colorLight;
 
+    /**
+     * Crea un modelo de leyenda con los datos especificados.
+     *
+     * @param name       nombre de la serie
+     * @param color      color principal
+     * @param colorLight color claro para gradiente
+     */
     public ModelLegend(String name, Color color, Color colorLight) {
         this.name = name;
         this.color = color;
         this.colorLight = colorLight;
     }
 
+    /**
+     * Crea un modelo de leyenda vacío.
+     */
     public ModelLegend() {
 
     }

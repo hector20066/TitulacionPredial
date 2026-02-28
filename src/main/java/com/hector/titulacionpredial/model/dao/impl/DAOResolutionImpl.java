@@ -53,12 +53,23 @@ import java.util.List;
  */
 public class DAOResolutionImpl implements DAOResolution {
 
+    /**
+     * Instancia unica del DAO (patron Singleton).
+     */
     private static DAOResolutionImpl instance;
 
+    /**
+     * Constructor privado para garantizar el patrón Singleton.
+     */
     private DAOResolutionImpl() {
 
     }
 
+    /**
+     * Obtiene la instancia unica del DAO.
+     *
+     * @return instancia Singleton de {@code DAOResolutionImpl}
+     */
     public static DAOResolutionImpl getInstance() {
         if (instance == null) {
             instance = new DAOResolutionImpl();
@@ -67,14 +78,6 @@ public class DAOResolutionImpl implements DAOResolution {
         return instance;
     }
 
-    /**
-     * Inserta una nueva resolución en la base de datos.
-     *
-     * @param dto objeto que contiene la información necesaria
-     *            para crear la resolución
-     * @throws DAOException si ocurre un error durante la operación
-     *                      de persistencia
-     */
     @Override
     public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
@@ -96,14 +99,6 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
-    /**
-     * Recupera una resolución a partir de su número.
-     *
-     * @param numResolution número de resolución a buscar
-     * @return {@link DTOResolutionDetails} con la información encontrada,
-     * o {@code null} si no existe registro asociado
-     * @throws DAOException si ocurre un error de acceso a datos
-     */
     @Override
     public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/findByCode.sql");
@@ -126,13 +121,6 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
-    /**
-     * Recupera todas las resoluciones registradas en la base de datos.
-     *
-     * @return lista de {@link DTOResolutionDetails}.
-     * Puede estar vacía si no existen registros.
-     * @throws DAOException si ocurre un error durante la consulta
-     */
     @Override
     public List<DTOResolutionDetails> findByAll() throws DAOException {
         List<DTOResolutionDetails> list = new ArrayList<>();
@@ -154,6 +142,15 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    /**
+     * Configura el DTO con los datos de la resolución obtenidos
+     * del {@link ResultSet}.
+     *
+     * @param dto objeto donde se guardarán los datos obtenidos
+     * @param rs  resultados de la consulta
+     * @throws SQLException si ocurre un error al leer los datos
+     *                      del {@code ResultSet}
+     */
     private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
         dto.setResolutionNumber(rs.getLong("num_resolution"));
@@ -166,15 +163,6 @@ public class DAOResolutionImpl implements DAOResolution {
         dto.setBeneficiaryName(rs.getString("beneficiary_name"));
     }
 
-    /**
-     * Actualiza la información de una resolución existente.
-     *
-     * @param dto objeto que contiene los datos actualizados
-     * @return {@code true} si la actualización fue exitosa
-     * @throws ResolutionNotFoundException si no existe una resolución
-     *                                     con el identificador proporcionado
-     * @throws DAOException                si ocurre un error durante la operación
-     */
     @Override
     public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
@@ -201,13 +189,6 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
-    /**
-     * Obtiene la cantidad total de resoluciones registradas.
-     *
-     * @return número total de registros
-     * @throws ResolutionNotFoundException si no existen registros
-     * @throws DAOException                si ocurre un error durante la consulta
-     */
     @Override
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");

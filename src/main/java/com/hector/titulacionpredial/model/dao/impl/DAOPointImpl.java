@@ -95,6 +95,15 @@ public class DAOPointImpl implements DAOPoint {
         }
     }
 
+    /**
+     * Configura el DTO con los datos del punto obtenidos
+     * del {@link ResultSet}.
+     *
+     * @param dto objeto donde se guardarán los datos obtenidos
+     * @param rs  resultados de la consulta
+     * @throws SQLException si ocurre un error al leer los datos
+     *                      del {@code ResultSet}
+     */
     private void executeQuery(DTOPoint dto, ResultSet rs) throws SQLException {
         dto.setNumberPoint(rs.getInt("number"));
         dto.setNorthCoordinate(rs.getDouble("north_coordinate"));

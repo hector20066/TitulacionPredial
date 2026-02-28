@@ -47,10 +47,12 @@ public class ControllerDashboard implements Observer {
      * Fachada de acceso a datos de beneficiarios.
      */
     private final BeneficiaryFacade daoBeneficiary;
+
     /**
      * Fachada de acceso a datos de predios.
      */
     private final PropertyFacade daoProperty;
+
     /**
      * Fachada de acceso a datos de resoluciones.
      */
@@ -126,6 +128,13 @@ public class ControllerDashboard implements Observer {
         dashboard.getLineChart1().start();
     }
 
+    /**
+     * Carga el número total de cada tipo de registros
+     *
+     * @param totalBeneficiaries numero total de beneficiarios registrados
+     * @param totalProperties    numero total de predios registrados.
+     * @param totalResolutions   número total de resoluciones registradas
+     */
     public void loadCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
         dashboard.updateCards(totalBeneficiaries, totalProperties, totalResolutions);
     }
@@ -140,11 +149,25 @@ public class ControllerDashboard implements Observer {
         dashboard.updateGaugeCharts(percentBeneficiaries, percentProperties);
     }
 
-    public void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
+    /**
+     * Carga los datos de los beneficiarios con relación a los predios
+     *
+     * @param withProperty    beneficiarios con predios
+     * @param withoutProperty beneficiarios sin predios
+     * @param total           total de beneficiarios
+     */
+    private void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
         dashboard.loadDataBeneficiaries(withProperty, withoutProperty, total);
     }
 
-    public void loadDataProperties(int withResolution, int withoutResolution, int total) {
+    /**
+     * Carga los datos de los predios con relacion a las resoluciones
+     *
+     * @param withResolution    predios con resolucion
+     * @param withoutResolution predios sin resolucion
+     * @param total             total de predios
+     */
+    private void loadDataProperties(int withResolution, int withoutResolution, int total) {
         dashboard.loadDataProperties(withResolution, withoutResolution, total);
     }
 

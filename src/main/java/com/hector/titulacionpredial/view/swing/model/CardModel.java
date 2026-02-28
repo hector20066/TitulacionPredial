@@ -20,6 +20,14 @@ public class CardModel {
     private String values;
     private String description;
 
+    /**
+     * Crea un modelo de tarjeta con los datos especificados.
+     *
+     * @param icon        icono de la tarjeta
+     * @param titulo      título
+     * @param valores     valor numérico
+     * @param descripcion descripción
+     */
     public CardModel(Icon icon, String titulo, String valores, String descripcion) {
         this.icon = icon;
         this.title = titulo;
@@ -27,6 +35,9 @@ public class CardModel {
         this.description = descripcion;
     }
 
+    /**
+     * Crea un modelo de tarjeta vacío.
+     */
     public CardModel() {
 
     }

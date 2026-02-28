@@ -18,38 +18,70 @@ import java.awt.*;
  */
 public class ModernScrollBarUI extends BasicScrollBarUI {
 
+    /**
+     * Grosor del indicador de desplazamiento.
+     */
     private final int THUMB_SIZE = 5;
+
+    /**
+     * Color del indicador.
+     */
     private final Color THUMB_COLOR = new Color(170, 170, 170);
+
+    /**
+     * Nivel de opacidad del indicador.
+     */
     private final float ALPHA = 0.3f;
 
+    /**
+     * Crea la UI de la barra de desplazamiento moderna.
+     */
     public ModernScrollBarUI() {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected JButton createDecreaseButton(int orientation) {
         return new InvisibleScrollBarButton();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected JButton createIncreaseButton(int orientation) {
         return new InvisibleScrollBarButton();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Dimension getMaximumThumbSize() {
         return new Dimension(0, (int) (scrollbar.getHeight() * 0.4f));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected Dimension getMinimumThumbSize() {
         return new Dimension(0, 75);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
         if (scrollbar.getVisibleAmount() != scrollbar.getMaximum()) {
@@ -70,12 +102,21 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
         }
     }
 
+    /**
+     * Botón invisible que reemplaza las flechas de desplazamiento.
+     */
     private static class InvisibleScrollBarButton extends JButton {
 
+        /**
+         * Crea el botón invisible.
+         */
         private InvisibleScrollBarButton() {
             init();
         }
 
+        /**
+         * Configura la apariencia invisible del botón.
+         */
         private void init() {
             setOpaque(false);
             setFocusable(false);
@@ -83,6 +124,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
             setBorderPainted(false);
             setBorder(BorderFactory.createEmptyBorder());
         }
+
     }
 
 }

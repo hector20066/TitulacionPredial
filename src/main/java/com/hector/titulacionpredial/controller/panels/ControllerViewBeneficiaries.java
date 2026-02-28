@@ -48,10 +48,12 @@ public class ControllerViewBeneficiaries implements Observer {
      * Vista del listado de beneficiarios.
      */
     private final ViewBeneficiaries viewBeneficiaries;
+
     /**
      * Vista del formulario de registro (destino al modificar).
      */
     private final RegisterBeneficiary registerBeneficiary;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -227,7 +229,7 @@ public class ControllerViewBeneficiaries implements Observer {
     }
 
     /**
-     * Elimina el beneficiario seleccionado previa confirmación
+     * Elimina el beneficiario seleccionado con previa confirmación
      * del usuario.
      *
      * <p>
@@ -343,7 +345,7 @@ public class ControllerViewBeneficiaries implements Observer {
      * @throws DAOException si ocurre un error en la consulta
      */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws DAOException {
-        if (isNumeric(param)) {
+        if (NumericalValidationUtils.isNumeric(param)) {
             long value = Long.parseLong(param);
 
             return (value > 100000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);
@@ -366,10 +368,6 @@ public class ControllerViewBeneficiaries implements Observer {
 
         viewBeneficiaries.getTableModel().setRowCount(0);
         viewBeneficiaries.loadData(result);
-    }
-
-    private boolean isNumeric(String value) {
-        return value.matches("\\d+");
     }
 
     /**

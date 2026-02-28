@@ -32,6 +32,7 @@ import java.util.Date;
  * @author Ing. Hector Acevedo
  * @see ModifyResolution
  * @see ResolutionFacade
+ * @see SeeResolutions
  * @since 1.0
  */
 public class ControllerModifyResolution {
@@ -40,10 +41,12 @@ public class ControllerModifyResolution {
      * Vista del formulario de modificación.
      */
     private final ModifyResolution modifyResolution;
+
     /**
      * Vista del listado de resoluciones (destino tras modificar).
      */
     private final SeeResolutions seeResolutions;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -147,7 +150,7 @@ public class ControllerModifyResolution {
      * @param executory     fecha de ejecutoria
      * @param notary        nombre de la notaría
      * @param fmi           Folio de Matrícula Inmobiliaria
-     * @param act           número de acta
+     * @param act           acta
      * @param publicWriting número de escritura pública
      */
     private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary,

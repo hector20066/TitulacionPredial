@@ -16,11 +16,20 @@ public class ModelChart {
     private String label;
     private double[] values;
 
+    /**
+     * Crea un modelo de serie con etiqueta y valores.
+     *
+     * @param label  etiqueta del eje X
+     * @param values valores de la serie
+     */
     public ModelChart(String label, double[] values) {
         this.label = label;
         this.values = values;
     }
 
+    /**
+     * Crea un modelo de serie vacío.
+     */
     public ModelChart() {
 
     }
@@ -41,6 +50,11 @@ public class ModelChart {
         this.values = values;
     }
 
+    /**
+     * Obtiene el valor máximo de la serie.
+     *
+     * @return valor máximo
+     */
     public double getMaxValues() {
         double max = 0;
 

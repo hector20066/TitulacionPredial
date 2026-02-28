@@ -32,7 +32,10 @@ import java.time.LocalDate;
 public class SeeProperties extends JPanel {
 
     DefaultTableModel model = new DefaultTableModel();
-    
+
+    /**
+     * Crea el panel de consulta de predios y configura la tabla.
+     */
     public SeeProperties() {
         initComponents();
         
@@ -231,42 +234,87 @@ public class SeeProperties extends JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de generar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para exportar a Excel.
+     *
+     * @param action listener del botón
+     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para el botón de eliminar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para el botón de buscar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para cancelar búsqueda.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
+    /**
+     * Obtiene el botón de cancelar búsqueda.
+     *
+     * @return botón de acción
+     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
-    
+
+    /**
+     * Asigna el listener de documento al campo de búsqueda.
+     *
+     * @param listen listener de cambios de documento
+     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de mouse al campo de búsqueda.
+     *
+     * @param listen listener de mouse
+     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de foco al campo de búsqueda.
+     *
+     * @param listen listener de foco
+     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
-    
+
     public DefaultTableModel getModel() {
         return model;
     }
@@ -299,6 +347,11 @@ public class SeeProperties extends JPanel {
         return txt_search;
     }
 
+    /**
+     * Carga un predio con todos sus datos en la tabla.
+     *
+     * @param dto datos detallados del predio
+     */
     public void loadData(DTOPropertyDetails dto) {
         int propertyCode = dto.getPropertyCode();
         StringBuilder beneficiaries = new StringBuilder();

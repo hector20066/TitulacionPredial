@@ -43,6 +43,7 @@ public class ControllerRegisterProperty {
      * Vista del formulario de registro de predios.
      */
     private final RegisterProperty registerProperty;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -52,10 +53,12 @@ public class ControllerRegisterProperty {
      * Fachada de acceso a datos de predios.
      */
     private final PropertyFacade daoProperty;
+
     /**
      * Fachada de acceso a datos de puntos geográficos.
      */
     private final PointFacade daoPoint;
+
     /**
      * Fachada de acceso a datos de beneficiarios.
      */
@@ -110,7 +113,7 @@ public class ControllerRegisterProperty {
             String beneficiaryCode = registerProperty.getTxt_beneficiaryCode().getText().trim().replace("F", "");
 
             if (cadastralId.isBlank() || area.isBlank()) {
-                throw new EmptyFieldException("Cedula Catastral, Area y Código del Beneficiario");
+                throw new EmptyFieldException("Cedula Catastral y Area");
             }
 
             String[] beneficiariesCode = beneficiaryCode.split(" - ");
@@ -123,6 +126,13 @@ public class ControllerRegisterProperty {
         }
     }
 
+    /**
+     * Obtiene la informacin de los cuatro puntos para las
+     * coordenadas geograficas del predio.
+     *
+     * @return lista con los puntos
+     * @throws InvalidInputException si hay datos invalidos
+     */
     private List<PointData> extractPoints() throws InvalidInputException {
         JTextField[][] fields = {
                 {registerProperty.getTxt_northCoordinate1(), registerProperty.getTxt_eastCoordinate1(), registerProperty.getTxt_distance1(), registerProperty.getTxt_hillside1()},
@@ -134,6 +144,13 @@ public class ControllerRegisterProperty {
         return getPointData(fields);
     }
 
+    /**
+     * Crear una lista con los puntos obtenidos.
+     *
+     * @param fields matriz con la informacion de los puntos.
+     * @return lista con los puntos obtenidos.
+     * @throws InvalidInputException si hay datos invalidos.
+     */
     private List<PointData> getPointData(JTextField[][] fields) throws InvalidInputException {
         List<PointData> points = new ArrayList<>();
 
@@ -158,6 +175,12 @@ public class ControllerRegisterProperty {
         return points;
     }
 
+    /**
+     * Verifica si alguno de los campos proporcionados está vacío.
+     *
+     * @param info argumentos a validar
+     * @return {@code true} si al menos un campo está en blanco
+     */
     private boolean invalidPoints(String... info) {
         for (String data : info) {
             if (data.isBlank()) {

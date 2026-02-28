@@ -176,8 +176,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     public static class Builder extends AbstractBuilder<Builder> {
 
         /**
-         * Construye un nueva instancia de {@link DTOBeneficiaryCreate
-         * }
+         * Construye un nueva instancia de {@link DTOBeneficiaryCreate}
          *
          * @return nuevo DTO configurado
          */

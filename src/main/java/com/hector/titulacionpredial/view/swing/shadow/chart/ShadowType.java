@@ -13,13 +13,13 @@ package com.hector.titulacionpredial.view.swing.shadow.chart;
  * @since 1.0
  */
 public enum ShadowType {
-    
-    CENTER, 
-    TOP_RIGHT, 
-    TOP_LEFT, 
-    BOT_RIGHT, 
-    BOT_LEFT, 
-    BOT, 
-    TOP;
-    
+
+    CENTER,
+    TOP_RIGHT,
+    TOP_LEFT,
+    BOT_RIGHT,
+    BOT_LEFT,
+    BOT,
+    TOP
+
 }

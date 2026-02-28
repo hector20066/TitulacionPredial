@@ -44,7 +44,10 @@ public class LineChart extends javax.swing.JPanel {
     private float animate;
     private String showLabel;
     private Point labelLocation = new Point();
-    
+
+    /**
+     * Crea el gráfico de líneas e inicializa la animación y el renderizador.
+     */
     public LineChart() {
         initComponents();
         
@@ -65,28 +68,28 @@ public class LineChart extends javax.swing.JPanel {
         
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChartRender() {
             @Override
-            public int getMaxLegend(){
+            public int getMaxLegend() {
                 return legends.size();
             }
 
             @Override
-            public String getLabelText(int index){
+            public String getLabelText(int index) {
                 return model.get(index).getLabel();
             }
 
             @Override
-            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index){
+            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
 
             }
 
             @Override
-            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra){
+            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
                 int ss = seriesSize / 2;
 
-                for(int i = 0; i < legends.size(); i++){
+                for(int i = 0; i < legends.size(); i++) {
                     double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight() * animate);
 
                     if(index == 0){
@@ -98,7 +101,7 @@ public class LineChart extends javax.swing.JPanel {
                     x += seriesSpace + seriesSize;
                 }
 
-                if(showLabel != null){
+                if(showLabel != null) {
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
                     Dimension s = getLabelWidth(showLabel, g2);
                     int space = 3;
@@ -114,28 +117,28 @@ public class LineChart extends javax.swing.JPanel {
             }
 
             @Override
-            public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra){
+            public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra) {
                 g2.setStroke(new BasicStroke(3f));
 
-                for(int i = 0; i < gra.size(); i++){
+                for (int i = 0; i < gra.size(); i++) {
                     g2.setPaint(new GradientPaint(0, 0, legends.get(i).getColor(), getWidth(), 0, legends.get(i).getColorLight()));
                     g2.draw(gra.get(i));
                 }
             }
             
             @Override
-            public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index){
+            public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
 
-                for(int i = 0; i < legends.size(); i++){
+                for (int i = 0; i < legends.size(); i++) {
                     double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight()) * animate;
                     int s = seriesSize / 2;
                     int sy = seriesSize / 3;
                     int[] px = {(int) (size.getX() + x), (int) (size.getX() + x + s), (int) (size.getX() + x + seriesSize), (int) (size.getX() + x + seriesSize), (int) (size.getX() + x + s), (int) (size.getX() + x)};
                     int[] py = {(int) (size.getY() + size.getHeight() - seriesValues), (int) (size.getY() + size.getHeight() - seriesValues - sy), (int) (size.getY() + size.getHeight() - seriesValues), (int) (size.getY() + size.getHeight()), (int) (size.getY() + size.getHeight() + sy), (int) (size.getY() + size.getHeight())};
 
-                    if(new Polygon(px, py, px.length).contains(evt.getPoint())){
+                    if (new Polygon(px, py, px.length).contains(evt.getPoint())) {
                         double data = model.get(index).getValues()[i];
                         showLabel = df.format(data);
                         labelLocation.setLocation((int) (size.getX() + x + s), (int) (size.getY() + size.getHeight() - seriesValues - sy));
@@ -193,7 +196,14 @@ public class LineChart extends javax.swing.JPanel {
     public JPanel getPanelLegend() {
         return panelLegend;
     }
-    
+
+    /**
+     * Agrega una leyenda de serie al gráfico.
+     *
+     * @param name   nombre de la serie
+     * @param color  color principal
+     * @param color1 color claro del gradiente
+     */
     public void addLegend(String name, Color color, Color color1){
         ModelLegend data = new ModelLegend(name, color, color1);
         legends.add(data);
@@ -202,6 +212,11 @@ public class LineChart extends javax.swing.JPanel {
         panelLegend.revalidate();
     }
 
+    /**
+     * Agrega datos de una categoría al gráfico.
+     *
+     * @param data modelo con la etiqueta y los valores
+     */
     public void addData(ModelChart data){
         model.add(data);
         blankPlotChart.setLabelCount(model.size());
@@ -212,6 +227,9 @@ public class LineChart extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Limpia todas las series, leyendas y reinicia la animación.
+     */
     public void clear(){
         animate = 0;
         showLabel = null;
@@ -224,6 +242,9 @@ public class LineChart extends javax.swing.JPanel {
         repaint();
     }
 
+    /**
+     * Inicia la animación de trazado de las líneas.
+     */
     public void start(){
         showLabel = null;
 
@@ -232,6 +253,13 @@ public class LineChart extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Calcula las dimensiones del texto del tooltip.
+     *
+     * @param text texto a medir
+     * @param g2   contexto gráfico
+     * @return dimensión del texto
+     */
     private Dimension getLabelWidth(String text, Graphics2D g2){
         FontMetrics ft = g2.getFontMetrics();
         Rectangle2D r2 = ft.getStringBounds(text, g2);

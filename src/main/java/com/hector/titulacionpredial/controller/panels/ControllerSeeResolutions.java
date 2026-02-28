@@ -49,10 +49,12 @@ public class ControllerSeeResolutions implements Observer {
      * Vista del listado de resoluciones.
      */
     private final SeeResolutions seeResolutions;
+
     /**
      * Vista del formulario de modificación de resoluciones.
      */
     private final ModifyResolution modifyResolution;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -153,7 +155,7 @@ public class ControllerSeeResolutions implements Observer {
      * @param numResolution número de resolución
      * @param notary        nombre de la notaría
      * @param fmi           Folio de Matrícula Inmobiliaria
-     * @param act           número de acta
+     * @param act           acta
      * @param publicWriting número de escritura pública
      * @return DTO con los datos configurados
      */

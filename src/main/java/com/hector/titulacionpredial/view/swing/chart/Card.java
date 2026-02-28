@@ -21,7 +21,10 @@ public class Card extends javax.swing.JPanel {
 
     private Color color1;
     private Color color2;
-    
+
+    /**
+     * Crea una tarjeta con gradiente predeterminado negro a blanco.
+     */
     public Card() {
         initComponents();
         
@@ -29,19 +32,19 @@ public class Card extends javax.swing.JPanel {
         color1 = Color.BLACK;
         color2 = Color.WHITE;
     }
-    
+
     public void setColor1(Color color1){
         this.color1 = color1;
     }
-    
+
     public void setColor2(Color color2){
         this.color2 = color2;
     }
-    
+
     public Color getColor1(){
         return color1;
     }
-    
+
     public Color getColor2(){
         return color2;
     }
@@ -96,6 +99,11 @@ public class Card extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Establece los datos de la tarjeta.
+     *
+     * @param data modelo de datos
+     */
     public void setData(CardModel data){
         jlb_icon.setIcon(data.getIcon());
         jlb_title.setText(data.getTitle());
@@ -103,6 +111,9 @@ public class Card extends javax.swing.JPanel {
         jlb_description.setText(data.getDescription());
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;

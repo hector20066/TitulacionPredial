@@ -45,10 +45,12 @@ public class ControllerSeeProperties implements Observer {
      * Vista del listado de predios.
      */
     private final SeeProperties seeProperties;
+
     /**
      * Vista del formulario de generación de resoluciones.
      */
     private final GenerateResolution generateResolution;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -81,7 +83,7 @@ public class ControllerSeeProperties implements Observer {
 
     /**
      * Conecta todos los eventos de los botones y componentes del
-     * panel de predios con sus respectivos métodos.
+     * panel de predios con sus respectivos métodos de accion.
      */
     private void connectEvents() {
         seeProperties.setControllerGenerate(e -> generateResolution());
@@ -213,7 +215,7 @@ public class ControllerSeeProperties implements Observer {
     }
 
     /**
-     * Elimina el predio seleccionado previa confirmación del usuario.
+     * Elimina el predio seleccionado con previa confirmación del usuario.
      *
      * <p>
      * Valida la selección, muestra un diálogo de confirmación
@@ -249,6 +251,7 @@ public class ControllerSeeProperties implements Observer {
         new Thread(() -> {
             try {
                 daoProperty.delete(code);
+
                 SwingUtilities.invokeLater(() -> {
                     MessageUtils.informationMessage("Se ha eliminado el registro", seeProperties);
                     subject.notifyObservers();

@@ -19,6 +19,11 @@ import javax.swing.*;
  */
 public class LegendItem extends javax.swing.JPanel {
 
+    /**
+     * Crea un elemento de leyenda con el color y nombre de la serie.
+     *
+     * @param data modelo de leyenda
+     */
     public LegendItem(ModelLegend data) {
         initComponents();
         

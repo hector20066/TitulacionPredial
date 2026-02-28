@@ -17,8 +17,8 @@ import java.awt.image.BufferedImage;
  * </p>
  *
  * @author Ing. Hector Acevedo
- * @since 1.0
  * @see ShadowBorder
+ * @since 1.0
  */
 public class PanelShadow extends JPanel {
 
@@ -27,6 +27,9 @@ public class PanelShadow extends JPanel {
     private int shadowSize = 8;
     private BufferedImage imageShadow;
 
+    /**
+     * Crea un panel con sombra exterior predeterminada.
+     */
     public PanelShadow() {
         setBackground(new Color(242, 246, 253));
         setBorder(new EmptyBorder(16, 16, 16, 16));
@@ -53,11 +56,19 @@ public class PanelShadow extends JPanel {
         return shadowSize;
     }
 
+    /**
+     * Establece el tamaño del borde de sombra.
+     *
+     * @param shadowSize tamaño de sombra
+     */
     public void setShadowSize(int shadowSize) {
         this.shadowSize = shadowSize;
         setBorder(new EmptyBorder(shadowSize, shadowSize, shadowSize, shadowSize));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -67,12 +78,18 @@ public class PanelShadow extends JPanel {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
         createShadowImage();
     }
 
+    /**
+     * Crea la imagen de sombra según el tipo configurado.
+     */
     private void createShadowImage() {
         if (shadowType == ShadowBorder.ShadowType.OUT_SHADOW) {
             imageShadow = ShadowBorder.getInstance().createShadowOut(this, shadowSize, radius);

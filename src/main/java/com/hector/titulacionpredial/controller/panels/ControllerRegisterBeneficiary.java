@@ -49,10 +49,12 @@ public class ControllerRegisterBeneficiary implements Observer {
      * Vista del formulario de registro.
      */
     private final RegisterBeneficiary registerBeneficiary;
+
     /**
      * Vista de listado de beneficiarios.
      */
     private final ViewBeneficiaries viewBeneficiaries;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -62,10 +64,12 @@ public class ControllerRegisterBeneficiary implements Observer {
      * Fachada de acceso a datos de beneficiarios.
      */
     private final BeneficiaryFacade daoBeneficiary;
+
     /**
      * Fachada de acceso a datos de cónyuges.
      */
     private final SpouseFacade daoSpouse;
+
     /**
      * Datos del cónyuge capturados desde el diálogo.
      */
@@ -206,15 +210,19 @@ public class ControllerRegisterBeneficiary implements Observer {
      * @param crossing      cruce
      * @param affectation   afectación
      */
-    private void doInBackgroundModify(int code, long phone, Department department, Municipalities municipality, MaritalStatus maritalStatus,
-                                      String neighborhood, String address, String publication, String crossing, String affectation) {
+    private void doInBackgroundModify(int code, long phone, Department department, Municipalities municipality,
+                                      MaritalStatus maritalStatus, String neighborhood, String address, String publication,
+                                      String crossing, String affectation) {
         new Thread(() -> {
             try {
                 boolean success = daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
                         crossing, publication, neighborhood, code);
 
-                if (registerBeneficiary.getNowStatus() == MaritalStatus.CASADO || registerBeneficiary.getNowStatus() == MaritalStatus.UNION_LIBRE) {
-                    if (maritalStatus == MaritalStatus.SOLTERO || maritalStatus == MaritalStatus.DIVORCIADO || maritalStatus == MaritalStatus.VIUDO) {
+                if (registerBeneficiary.getNowStatus() == MaritalStatus.CASADO
+                        || registerBeneficiary.getNowStatus() == MaritalStatus.UNION_LIBRE) {
+
+                    if (maritalStatus == MaritalStatus.SOLTERO || maritalStatus == MaritalStatus.DIVORCIADO
+                            || maritalStatus == MaritalStatus.VIUDO) {
                         daoSpouse.delete(code);
                     }
                 }
@@ -272,7 +280,7 @@ public class ControllerRegisterBeneficiary implements Observer {
         String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
 
-        validations(name, lastName, id, phone, cadastralReference, expeditionLocation, neighborhood, address);
+        validations(name, lastName, id, cadastralReference, expeditionLocation, neighborhood, address);
 
         String fullName = name + " " + lastName;
         int codeInt = Integer.parseInt(code);
@@ -296,14 +304,13 @@ public class ControllerRegisterBeneficiary implements Observer {
      * @param name               nombre del beneficiario
      * @param lastName           apellidos del beneficiario
      * @param id                 cédula de ciudadanía
-     * @param phone              teléfono de contacto
      * @param cadastralReference referencia catastral
      * @param expeditionLocation lugar de expedición
      * @param neighborhood       barrio
      * @param address            dirección
      * @throws InvalidInputException si alguna validación falla
      */
-    private void validations(String name, String lastName, String id, String phone, String cadastralReference,
+    private void validations(String name, String lastName, String id, String cadastralReference,
                              String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
 
         if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {

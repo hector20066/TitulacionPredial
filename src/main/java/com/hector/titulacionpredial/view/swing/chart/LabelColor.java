@@ -17,6 +17,9 @@ import java.awt.*;
  */
 public class LabelColor extends JLabel {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;

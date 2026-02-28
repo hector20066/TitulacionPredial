@@ -27,6 +27,15 @@ public class SpouseData extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
 
+    /**
+     * Crea un nuevo diálogo para registrar los datos del cónyuge.
+     *
+     * <p>Inicializa los componentes gráficos, conecta los eventos
+     * de los botones y configura la animación de opacidad.</p>
+     *
+     * @param parent ventana padre del diálogo
+     * @param modal  {@code true} para bloquear la ventana padre mientras se muestra
+     */
     public SpouseData(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -239,6 +248,11 @@ public class SpouseData extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Conecta los eventos de los botones guardar y cancelar.
+     *
+     * <p>Al guardar se marca como confirmado, al cancelar se descarta.</p>
+     */
     private void connectEvents() {
         btn_save.addActionListener(e -> {
             confirmed = true;
@@ -253,6 +267,12 @@ public class SpouseData extends javax.swing.JDialog {
         });
     }
 
+    /**
+     * Cierra el diálogo con una animación de desvanecimiento.
+     *
+     * <p>Detiene cualquier animación en curso antes de iniciar
+     * la animación de cierre.</p>
+     */
     private void closeMenu() {
         if (animator.isRunning()) {
             animator.stop();
@@ -262,10 +282,21 @@ public class SpouseData extends javax.swing.JDialog {
         animator.start();
     }
     
+    /**
+     * Indica si el usuario confirmó el registro del cónyuge.
+     *
+     * @return {@code true} si se presionó guardar, {@code false} si se canceló
+     */
     public boolean isConfirmed() {
         return confirmed;
     }
 
+    /**
+     * Construye y devuelve el DTO del cónyuge con los datos ingresados.
+     *
+     * @return instancia de {@link DTOSpouse} con los datos del formulario,
+     *         o {@code null} si el diálogo no fue confirmado
+     */
     public DTOSpouse getSpouse() {
         if (!confirmed) {
             return null;

@@ -112,6 +112,15 @@ public class DAOSpouseImpl implements DAOSpouse {
         }
     }
 
+    /**
+     * Configura el DTO con los datos del cónyuge obtenidos
+     * del {@link ResultSet}.
+     *
+     * @param dto objeto donde se guardarán los datos obtenidos
+     * @param rs  resultados de la consulta
+     * @throws SQLException si ocurre un error al leer los datos
+     *                      del {@code ResultSet}
+     */
     private void executeQuery(DTOSpouse dto, ResultSet rs) throws SQLException {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));

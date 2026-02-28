@@ -22,6 +22,9 @@ import java.awt.event.ActionListener;
  */
 public class RegisterProperty extends javax.swing.JPanel {
 
+    /**
+     * Crea el formulario de registro de predios con 4 paneles de puntos.
+     */
     public RegisterProperty() {
         initComponents();
         
@@ -675,38 +678,78 @@ public class RegisterProperty extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para el botón de registrar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para mostrar beneficiarios.
+     *
+     * @param action listener del botón
+     */
     public void setControllerShowBeneficiaries(ActionListener action) {
         btn_selectBeneficiary.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para ir al punto 2.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGoPoint2(ActionListener action) {
         btn_goPoint2.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para ir al punto 3.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGoPoint3(ActionListener action) {
         btn_goPoint3.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para ir al punto 4.
+     *
+     * @param action listener del botón
+     */
     public void setControllerGoPoint4(ActionListener action) {
         btn_goPoint4.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para regresar al punto 1.
+     *
+     * @param action listener del botón
+     */
     public void setControllerReturnPoint1(ActionListener action) {
         btn_returnPoint1.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para regresar al punto 2.
+     *
+     * @param action listener del botón
+     */
     public void setControllerReturnPoint2(ActionListener action) {
         btn_returnPoint2.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para regresar al punto 3.
+     *
+     * @param action listener del botón
+     */
     public void setControllerReturnPoint3(ActionListener action) {
         btn_returnPoint3.addActionListener(action);
     }
-    
+
     public ButtonBadges getBtn_goPoint2() {
         return btn_goPoint2;
     }
@@ -834,7 +877,10 @@ public class RegisterProperty extends javax.swing.JPanel {
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
-    
+
+    /**
+     * Limpia todos los campos del formulario de registro de predios.
+     */
     public void clearFields() {
         txt_cadastralId.setText("");
         txt_area.setText("");

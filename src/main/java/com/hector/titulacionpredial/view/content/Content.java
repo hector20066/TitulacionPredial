@@ -20,6 +20,9 @@ import javax.swing.*;
  */
 public class Content extends javax.swing.JFrame {
     
+    /**
+     * Crea la ventana principal e inicializa menú, cabecera y contenido.
+     */
     public Content() {
         initComponents();
 
@@ -113,6 +116,11 @@ public class Content extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el controlador para los eventos de selección del menú.
+     *
+     * @param evt listener de selección de menú
+     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }

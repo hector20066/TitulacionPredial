@@ -29,7 +29,10 @@ import java.awt.event.MouseListener;
 public class ViewBeneficiaries extends javax.swing.JPanel {
 
     DefaultTableModel tableModel = new DefaultTableModel();
-    
+
+    /**
+     * Crea el panel de consulta de beneficiarios y configura la tabla.
+     */
     public ViewBeneficiaries() {
         initComponents();
         
@@ -206,38 +209,83 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Asigna el listener para ver detalles del beneficiario.
+     *
+     * @param action listener del botón
+     */
     public void setControllerViewDetails(ActionListener action) {
         btn_seeProfile.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para exportar a Excel.
+     *
+     * @param action listener del botón
+     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para modificar beneficiario.
+     *
+     * @param action listener del botón
+     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para eliminar beneficiario.
+     *
+     * @param action listener del botón
+     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para buscar.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener para cancelar búsqueda.
+     *
+     * @param action listener del botón
+     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
-    
+
+    /**
+     * Asigna el listener de documento al campo de búsqueda.
+     *
+     * @param listen listener de cambios
+     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de mouse al campo de búsqueda.
+     *
+     * @param listen listener de mouse
+     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
-    
+
+    /**
+     * Asigna el listener de foco al campo de búsqueda.
+     *
+     * @param listen listener de foco
+     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
@@ -282,6 +330,11 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         return txt_search;
     }
 
+    /**
+     * Carga un beneficiario en la tabla.
+     *
+     * @param dto datos simplificados del beneficiario
+     */
     public void loadData(DTOBeneficiarySimpleDetails dto) {
         int code = dto.getCode();
         long id = dto.getId();

@@ -31,6 +31,7 @@ public class ControllerSearchDialog {
      * Diálogo de selección de beneficiarios.
      */
     private final SelectBeneficiary selectBeneficiary;
+
     /**
      * Fachada de acceso a datos de beneficiarios.
      */
@@ -154,6 +155,9 @@ public class ControllerSearchDialog {
         return true;
     }
 
+    /**
+     * Cargar la lista completa de los beneficiarios registrados
+     */
     public void loadUsers() {
         new Thread(() -> {
             try {

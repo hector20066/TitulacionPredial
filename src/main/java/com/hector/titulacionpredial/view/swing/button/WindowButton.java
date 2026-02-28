@@ -18,12 +18,18 @@ import java.awt.*;
  */
 public class WindowButton extends JButton {
 
+    /**
+     * Crea un botón de ventana con estilo plano.
+     */
     public WindowButton() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(6, 6, 6, 6));
         setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;

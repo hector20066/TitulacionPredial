@@ -17,7 +17,14 @@ import java.awt.*;
  */
 public class SystemColor {
 
+    /**
+     * Color verde claro principal de la aplicación ({@code #74c69d}).
+     */
     public static final Color MAIN_COLOR_1 = Color.decode("#74c69d");
+
+    /**
+     * Color verde oscuro de acento ({@code #40916c}).
+     */
     public static final Color MAIN_COLOR_2 = Color.decode("#40916c");
 
 }

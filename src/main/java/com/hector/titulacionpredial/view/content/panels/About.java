@@ -10,6 +10,9 @@ package com.hector.titulacionpredial.view.content.panels;
  */
 public class About extends javax.swing.JPanel {
 
+    /**
+     * Crea el panel «Acerca de» con la información de la aplicación.
+     */
     public About() {
         initComponents();
     }

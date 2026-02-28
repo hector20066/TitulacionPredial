@@ -46,6 +46,7 @@ public class ControllerGenerateResolution {
      * Vista del formulario de generación de resoluciones.
      */
     private final GenerateResolution generateResolution;
+
     /**
      * Sujeto del patrón Observer para notificar cambios.
      */
@@ -55,6 +56,7 @@ public class ControllerGenerateResolution {
      * Fachada de acceso a datos de resoluciones.
      */
     private final ResolutionFacade daoResolution;
+
     /**
      * Fachada de acceso a datos de beneficiarios.
      */
@@ -90,8 +92,9 @@ public class ControllerGenerateResolution {
      *
      * <p>
      * Extrae todos los campos del formulario, solicita al usuario
-     * la ruta de guardado, valida los datos obligatorios y delega
-     * la ejecución en segundo plano mediante {@link #doInBackground}.
+     * la ruta de guardado, delega la acción de validación a
+     * {@link #validations(Date, Date, String, String, String, String)}
+     * delega la ejecución en segundo plano mediante {@link #doInBackground}.
      * </p>
      */
     private void generateResolution() {
@@ -112,21 +115,7 @@ public class ControllerGenerateResolution {
 
             String path = DialogUtils.selectRoute(generateResolution);
 
-            if (executory == null || notification == null) {
-                throw new EmptyFieldException("Ejecutorio y notificación");
-            }
-
-            if (path == null) {
-                throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
-            }
-
-            if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
-                throw new EmptyFieldException("N. Resolución y Nota");
-            }
-
-            if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
-                throw new InvalidNumberInputException("N. Resolución");
-            }
+            validations(executory, notification, path, resolutionNumber, notary, propertyCode);
 
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -135,6 +124,37 @@ public class ControllerGenerateResolution {
                     fmi, notary, Integer.parseInt(propertyCode), beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
+        }
+    }
+
+    /**
+     * Realiza la validación de los campos
+     *
+     * @param executory        fecha de ejecutoria.
+     * @param notification     fecha de la notificación.
+     * @param path             ruta donde se guardara el archivo.
+     * @param resolutionNumber número de la resolución
+     * @param notary           notaria
+     * @param propertyCode     codigo de la propiedad.
+     * @throws InvalidInputException excepción lanzada cuando
+     *                               se ingresan campos invalidos.
+     */
+    private void validations(Date executory, Date notification, String path, String resolutionNumber, String notary,
+                             String propertyCode) throws InvalidInputException {
+        if (executory == null || notification == null) {
+            throw new EmptyFieldException("Ejecutorio y notificación");
+        }
+
+        if (path == null) {
+            throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
+        }
+
+        if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
+            throw new EmptyFieldException("N. Resolución y Nota");
+        }
+
+        if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
+            throw new InvalidNumberInputException("N. Resolución");
         }
     }
 
@@ -160,8 +180,8 @@ public class ControllerGenerateResolution {
      *
      * @param numResolution   número de resolución
      * @param executory       fecha de ejecutoria
-     * @param act             número de acta
-     * @param publicWriting   número de escritura pública
+     * @param act             acto
+     * @param publicWriting   escritura pública
      * @param notification    fecha de notificación
      * @param fmi             Folio de Matrícula Inmobiliaria
      * @param notary          nombre de la notaría

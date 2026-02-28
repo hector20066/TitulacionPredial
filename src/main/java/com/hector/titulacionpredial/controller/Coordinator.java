@@ -51,6 +51,15 @@ public class Coordinator {
     private ModifyResolution modifyResolution;
     private About about;
 
+    /**
+     * Encargado de iniciar la app, cargando dependencias
+     * y mostrando la interfaz grafica.
+     *
+     * <p>
+     * Notifica a los observadores para que carguen la
+     * informacion necesaria al iniciar la app.
+     * </p>
+     */
     public void startApp() {
         startView();
         startDrivers();

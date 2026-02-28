@@ -8,11 +8,14 @@ import java.awt.*;
  * {@link ModernScrollBarUI} automáticamente.
  *
  * @author Ing. Hector Acevedo
- * @since 1.0
  * @see ModernScrollBarUI
+ * @since 1.0
  */
 public class ScrollBar extends JScrollBar {
 
+    /**
+     * Crea una barra de desplazamiento con estilo moderno.
+     */
     public ScrollBar() {
         setUI(new ModernScrollBarUI());
         setPreferredSize(new Dimension(5, 5));

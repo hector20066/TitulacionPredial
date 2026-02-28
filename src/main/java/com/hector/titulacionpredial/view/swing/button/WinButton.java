@@ -18,6 +18,9 @@ import javax.swing.*;
  */
 public class WinButton extends javax.swing.JPanel {
 
+    /**
+     * Crea el panel con los botones de control de ventana.
+     */
     public WinButton() {
         initComponents();
     }
@@ -60,6 +63,12 @@ public class WinButton extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Enlaza los eventos de los botones con las acciones de la ventana.
+     *
+     * @param frame ventana principal
+     * @param panel panel de contenido
+     */
     public void initEvent(JFrame frame, JPanel panel) {
         btn_exit.addActionListener((evt) -> System.exit(0));
         btn_minimize.addActionListener((evt) -> frame.setState(JFrame.ICONIFIED));

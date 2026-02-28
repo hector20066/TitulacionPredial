@@ -17,9 +17,9 @@ import java.awt.image.BufferedImage;
  * </p>
  *
  * @author Ing. Hector Acevedo
- * @since 1.0
  * @see ShadowRendererChart
  * @see ShadowType
+ * @since 1.0
  */
 public class PanelShadowCard extends JPanel {
 
@@ -29,6 +29,9 @@ public class PanelShadowCard extends JPanel {
     private Color shadowColor = new Color(48, 44, 90);
     private BufferedImage shadowImage;
 
+    /**
+     * Crea un panel con sombra tipo tarjeta centrada.
+     */
     public PanelShadowCard() {
         setOpaque(false);
     }
@@ -65,12 +68,18 @@ public class PanelShadowCard extends JPanel {
         this.shadowColor = shadowColor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         grphcs.drawImage(shadowImage, 0, 0, null);
         super.paintComponent(grphcs);
     }
 
+    /**
+     * Crea la imagen de sombra según el tipo y posición configurados.
+     */
     private void createShadow() {
         int size = shadowSize * 2;
         int x = 0;
@@ -115,6 +124,9 @@ public class PanelShadowCard extends JPanel {
         g2.dispose();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
