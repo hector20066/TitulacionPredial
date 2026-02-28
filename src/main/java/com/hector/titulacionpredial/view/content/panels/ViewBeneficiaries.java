@@ -52,7 +52,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     private void initComponents() {
 
         jpl_content = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_beneficiaries = new javax.swing.JTable();
         roundedPanel1 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
@@ -66,9 +66,9 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
 
         jpl_content.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Beneficiarios");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Beneficiarios");
 
         jtbl_beneficiaries.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jtbl_beneficiaries.setModel(new javax.swing.table.DefaultTableModel(
@@ -159,7 +159,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpl_contentLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jlb_title)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_contentLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -183,7 +183,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
             jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_contentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -355,8 +355,8 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_seeProfile;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JPanel jpl_content;
     private javax.swing.JTable jtbl_beneficiaries;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel1;

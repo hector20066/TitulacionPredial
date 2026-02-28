@@ -70,18 +70,18 @@ public class SpouseData extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
+        jlb_name = new javax.swing.JLabel();
         txt_name = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_lastName = new javax.swing.JLabel();
         txt_lastName = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jlb_id = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jlb_expeditionLocation = new javax.swing.JLabel();
         txt_expeditionLocation = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jlb_address = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jlb_phone = new javax.swing.JLabel();
         txt_phone = new javax.swing.JTextField();
         btn_save = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_cancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
@@ -92,55 +92,55 @@ public class SpouseData extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(116, 198, 157), 1, true));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Datos Del Conyuge");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_title.setText("Datos Del Conyuge");
 
-        jLabel2.setBackground(new java.awt.Color(33, 37, 41));
-        jLabel2.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel2.setText("Nombre:");
+        jlb_name.setBackground(new java.awt.Color(33, 37, 41));
+        jlb_name.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_name.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_name.setText("Nombre:");
 
         txt_name.setBackground(new java.awt.Color(255, 255, 255));
         txt_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel3.setText("Apellido:");
+        jlb_lastName.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_lastName.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_lastName.setText("Apellido:");
 
         txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
         txt_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel4.setText("Cedula:");
+        jlb_id.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_id.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_id.setText("Cedula:");
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
         txt_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Lugar Expedicion:");
+        jlb_expeditionLocation.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_expeditionLocation.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_expeditionLocation.setText("Lugar Expedicion:");
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel6.setText("Direccion:");
+        jlb_address.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_address.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_address.setText("Direccion:");
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
         txt_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Telefono:");
+        jlb_phone.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_phone.setText("Telefono:");
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -165,16 +165,16 @@ public class SpouseData extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jlb_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
+                            .addComponent(jlb_phone)
+                            .addComponent(jlb_address)
+                            .addComponent(jlb_expeditionLocation)
+                            .addComponent(jlb_name)
+                            .addComponent(jlb_lastName)
+                            .addComponent(jlb_id)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -199,29 +199,29 @@ public class SpouseData extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(jlb_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(jlb_lastName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(jlb_id)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(jLabel5)
+                .addComponent(jlb_expeditionLocation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(jlb_address)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(jlb_phone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
@@ -314,14 +314,14 @@ public class SpouseData extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_cancel;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_save;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlb_address;
+    private javax.swing.JLabel jlb_expeditionLocation;
+    private javax.swing.JLabel jlb_id;
+    private javax.swing.JLabel jlb_lastName;
+    private javax.swing.JLabel jlb_name;
+    private javax.swing.JLabel jlb_phone;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JTextField txt_address;
     private javax.swing.JTextField txt_expeditionLocation;
     private javax.swing.JTextField txt_id;

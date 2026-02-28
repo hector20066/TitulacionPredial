@@ -100,23 +100,23 @@ public class Dashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         panelShadowCard1 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlb_beneficiaries = new javax.swing.JLabel();
+        jlb_withPropertyText = new javax.swing.JLabel();
+        jlb_withoutPropertyText = new javax.swing.JLabel();
+        jlb_totalBenenficiariesText = new javax.swing.JLabel();
         jlb_totalBeneficiaries = new javax.swing.JLabel();
         jlb_withoutProperty = new javax.swing.JLabel();
         jlb_withProperty = new javax.swing.JLabel();
         gaugeChart1 = new com.hector.titulacionpredial.view.swing.chart.GaugeChart();
         panelShadowCard2 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jlb_properties = new javax.swing.JLabel();
+        jlb_withResolutionText = new javax.swing.JLabel();
+        jlb_withoutResolutionText = new javax.swing.JLabel();
+        jlb_totalPropertiesText = new javax.swing.JLabel();
         jlb_totalProperties = new javax.swing.JLabel();
         jlb_withoutResolution = new javax.swing.JLabel();
         jlb_withResolution = new javax.swing.JLabel();
@@ -125,42 +125,42 @@ public class Dashboard extends javax.swing.JPanel {
         card1 = new com.hector.titulacionpredial.view.swing.chart.Card();
         card2 = new com.hector.titulacionpredial.view.swing.chart.Card();
         card3 = new com.hector.titulacionpredial.view.swing.chart.Card();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jlb_subtitle1 = new javax.swing.JLabel();
+        jlb_subtitle2 = new javax.swing.JLabel();
         panelShadowCard3 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
         lineChart1 = new com.hector.titulacionpredial.view.swing.chart.LineChart();
-        jLabel16 = new javax.swing.JLabel();
+        jlb_subtitle3 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestionamos Urbano Rural S.A.S");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_title.setText("Gestionamos Urbano Rural S.A.S");
 
         scroll.setBorder(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(97, 97, 97));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Beneficiarios");
+        jlb_beneficiaries.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jlb_beneficiaries.setForeground(new java.awt.Color(97, 97, 97));
+        jlb_beneficiaries.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_beneficiaries.setText("Beneficiarios");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel3.setText("Con predio");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withPropertyText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withPropertyText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withPropertyText.setText("Con predio");
+        jlb_withPropertyText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel4.setText("Sin predio");
-        jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withoutPropertyText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withoutPropertyText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withoutPropertyText.setText("Sin predio");
+        jlb_withoutPropertyText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel7.setText("Total");
-        jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_totalBenenficiariesText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_totalBenenficiariesText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_totalBenenficiariesText.setText("Total");
+        jlb_totalBenenficiariesText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         jlb_totalBeneficiaries.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jlb_totalBeneficiaries.setForeground(new java.awt.Color(80, 116, 253));
@@ -191,13 +191,13 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadowCard1Layout.createSequentialGroup()
                 .addGap(0, 30, Short.MAX_VALUE)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlb_beneficiaries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(jlb_totalBenenficiariesText)
+                    .addComponent(jlb_withoutPropertyText)
+                    .addComponent(jlb_withPropertyText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlb_withProperty)
@@ -209,44 +209,44 @@ public class Dashboard extends javax.swing.JPanel {
             panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadowCard1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(jlb_beneficiaries)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelShadowCard1Layout.createSequentialGroup()
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
+                            .addComponent(jlb_withPropertyText)
                             .addComponent(jlb_withProperty))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                            .addComponent(jlb_withoutPropertyText)
                             .addComponent(jlb_withoutProperty))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
+                            .addComponent(jlb_totalBenenficiariesText)
                             .addComponent(jlb_totalBeneficiaries)))
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(97, 97, 97));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Predios");
+        jlb_properties.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jlb_properties.setForeground(new java.awt.Color(97, 97, 97));
+        jlb_properties.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_properties.setText("Predios");
 
-        jLabel10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel10.setText("Con resolucion");
-        jLabel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withResolutionText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withResolutionText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withResolutionText.setText("Con resolucion");
+        jlb_withResolutionText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel11.setText("Sin resolucion");
-        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_withoutResolutionText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_withoutResolutionText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_withoutResolutionText.setText("Sin resolucion");
+        jlb_withoutResolutionText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jLabel12.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(133, 133, 133));
-        jLabel12.setText("Total");
-        jLabel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_totalPropertiesText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_totalPropertiesText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_totalPropertiesText.setText("Total");
+        jlb_totalPropertiesText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         jlb_totalProperties.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jlb_totalProperties.setForeground(new java.awt.Color(150, 56, 248));
@@ -277,13 +277,13 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadowCard2Layout.createSequentialGroup()
                 .addGap(0, 27, Short.MAX_VALUE)
                 .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlb_properties, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gaugeChart2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
+                    .addComponent(jlb_totalPropertiesText)
+                    .addComponent(jlb_withoutResolutionText)
+                    .addComponent(jlb_withResolutionText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlb_withResolution)
@@ -295,20 +295,20 @@ public class Dashboard extends javax.swing.JPanel {
             panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadowCard2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel9)
+                .addComponent(jlb_properties)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelShadowCard2Layout.createSequentialGroup()
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                            .addComponent(jlb_withResolutionText)
                             .addComponent(jlb_withResolution))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
+                            .addComponent(jlb_withoutResolutionText)
                             .addComponent(jlb_withoutResolution))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
+                            .addComponent(jlb_totalPropertiesText)
                             .addComponent(jlb_totalProperties)))
                     .addComponent(gaugeChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -347,13 +347,13 @@ public class Dashboard extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel23.setText("Total de Registro Guardados");
+        jlb_subtitle1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_subtitle1.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_subtitle1.setText("Total de Registro Guardados");
 
-        jLabel24.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel24.setText("Porcentaje de trabajos terminados");
+        jlb_subtitle2.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jlb_subtitle2.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_subtitle2.setText("Porcentaje de trabajos terminados");
 
         javax.swing.GroupLayout panelShadowCard3Layout = new javax.swing.GroupLayout(panelShadowCard3);
         panelShadowCard3.setLayout(panelShadowCard3Layout);
@@ -372,9 +372,9 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGap(29, 29, 29))
         );
 
-        jLabel16.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel16.setText("Beneficiarios Registrados durante los ultimos meses");
+        jlb_subtitle3.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jlb_subtitle3.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_subtitle3.setText("Beneficiarios Registrados durante los ultimos meses");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -385,13 +385,13 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel23))
+                        .addComponent(jlb_subtitle1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24)
+                            .addComponent(jlb_subtitle2)
                             .addComponent(panelShadowCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)
+                            .addComponent(jlb_subtitle3)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(106, 106, 106)
                                 .addComponent(panelShadowCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,17 +403,17 @@ public class Dashboard extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel23)
+                .addComponent(jlb_subtitle1)
                 .addGap(18, 18, 18)
                 .addComponent(panelShadowCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel24)
+                .addComponent(jlb_subtitle2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelShadowCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelShadowCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
+                .addComponent(jlb_subtitle3)
                 .addGap(18, 18, 18)
                 .addComponent(panelShadowCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -427,7 +427,7 @@ public class Dashboard extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlb_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
         );
@@ -435,7 +435,7 @@ public class Dashboard extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))
         );
@@ -482,26 +482,26 @@ public class Dashboard extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.chart.Card card3;
     private com.hector.titulacionpredial.view.swing.chart.GaugeChart gaugeChart1;
     private com.hector.titulacionpredial.view.swing.chart.GaugeChart gaugeChart2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jlb_beneficiaries;
+    private javax.swing.JLabel jlb_properties;
+    private javax.swing.JLabel jlb_subtitle1;
+    private javax.swing.JLabel jlb_subtitle2;
+    private javax.swing.JLabel jlb_subtitle3;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JLabel jlb_totalBeneficiaries;
+    private javax.swing.JLabel jlb_totalBenenficiariesText;
     private javax.swing.JLabel jlb_totalProperties;
+    private javax.swing.JLabel jlb_totalPropertiesText;
     private javax.swing.JLabel jlb_withProperty;
+    private javax.swing.JLabel jlb_withPropertyText;
     private javax.swing.JLabel jlb_withResolution;
+    private javax.swing.JLabel jlb_withResolutionText;
     private javax.swing.JLabel jlb_withoutProperty;
+    private javax.swing.JLabel jlb_withoutPropertyText;
     private javax.swing.JLabel jlb_withoutResolution;
+    private javax.swing.JLabel jlb_withoutResolutionText;
     private com.hector.titulacionpredial.view.swing.chart.LineChart lineChart1;
     private com.hector.titulacionpredial.view.swing.panel.PanelShadowCard panelShadowCard1;
     private com.hector.titulacionpredial.view.swing.panel.PanelShadowCard panelShadowCard2;

@@ -78,47 +78,47 @@ public class UserProfile extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_idText = new javax.swing.JLabel();
         jlb_id = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlb_phoneText = new javax.swing.JLabel();
         jlb_phone = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jlb_addressText = new javax.swing.JLabel();
         jlb_address = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        jlb_departmentText = new javax.swing.JLabel();
         jlb_department = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jlb_municipalityText = new javax.swing.JLabel();
         jlb_municipality = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jlb_residenceData = new javax.swing.JLabel();
+        jlb_expeditionText = new javax.swing.JLabel();
         jlb_expeditionLocation = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jlb_maritalStatusText = new javax.swing.JLabel();
         jlb_maritalStatus = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel20 = new javax.swing.JLabel();
+        jlb_cadastralRefText = new javax.swing.JLabel();
         jlb_cadastralRef = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        jlb_crossingText = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_crossing = new javax.swing.JTextArea();
-        jLabel23 = new javax.swing.JLabel();
+        jlb_affectationText = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txa_affectation = new javax.swing.JTextArea();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        jlb_spouseData = new javax.swing.JLabel();
+        jlb_spouseNameText = new javax.swing.JLabel();
         txt_spouseName = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        jlb_spouseIdText = new javax.swing.JLabel();
         jlb_spouseId = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        jlb_spouseExpeditionText = new javax.swing.JLabel();
         jlb_spouseExpeditionSite = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        jlb_spouseAddressText = new javax.swing.JLabel();
         jlb_spouseAddress = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        jlb_spousePhoneText = new javax.swing.JLabel();
         jlb_phoneSpouse = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        jlb_neighborhoodText = new javax.swing.JLabel();
         jlb_neighborhood = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
+        jlb_publicationText = new javax.swing.JLabel();
         jlb_publication = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
+        jlb_codeText = new javax.swing.JLabel();
         jlb_code = new javax.swing.JLabel();
         jlb_name = new javax.swing.JLabel();
         btn_exit = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
@@ -131,61 +131,61 @@ public class UserProfile extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel3.setText("Cedula");
+        jlb_idText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_idText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_idText.setText("Cedula");
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
         jlb_id.setText("1066726477");
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Telefono");
+        jlb_phoneText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_phoneText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_phoneText.setText("Telefono");
 
         jlb_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
         jlb_phone.setText("3137762626");
 
-        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel14.setText("Direccion");
+        jlb_addressText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_addressText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_addressText.setText("Direccion");
 
         jlb_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_address.setForeground(new java.awt.Color(33, 37, 41));
         jlb_address.setText("Tr 24 16-25");
 
-        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel16.setText("Departamento");
+        jlb_departmentText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_departmentText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_departmentText.setText("Departamento");
 
         jlb_department.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_department.setForeground(new java.awt.Color(33, 37, 41));
         jlb_department.setText("Cordoba");
 
-        jLabel18.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel18.setText("Municipio");
+        jlb_municipalityText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_municipalityText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_municipalityText.setText("Municipio");
 
         jlb_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_municipality.setForeground(new java.awt.Color(33, 37, 41));
         jlb_municipality.setText("Sahagun");
 
-        jLabel13.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel13.setText("Datos de residencia");
+        jlb_residenceData.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_residenceData.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_residenceData.setText("Datos de residencia");
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel9.setText("Lugar de expedicion");
+        jlb_expeditionText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_expeditionText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_expeditionText.setText("Lugar de expedicion");
 
         jlb_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_expeditionLocation.setForeground(new java.awt.Color(33, 37, 41));
         jlb_expeditionLocation.setText("Sahagun");
 
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel11.setText("Estado Civil");
+        jlb_maritalStatusText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_maritalStatusText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_maritalStatusText.setText("Estado Civil");
 
         jlb_maritalStatus.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_maritalStatus.setForeground(new java.awt.Color(33, 37, 41));
@@ -194,17 +194,17 @@ public class UserProfile extends javax.swing.JDialog {
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel20.setText("Referencia Catastral");
+        jlb_cadastralRefText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_cadastralRefText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_cadastralRefText.setText("Referencia Catastral");
 
         jlb_cadastralRef.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_cadastralRef.setForeground(new java.awt.Color(33, 37, 41));
         jlb_cadastralRef.setText("10093794739749379343434");
 
-        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel22.setText("Cruce");
+        jlb_crossingText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_crossingText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_crossingText.setText("Cruce");
 
         txa_crossing.setEditable(false);
         txa_crossing.setColumns(20);
@@ -212,9 +212,9 @@ public class UserProfile extends javax.swing.JDialog {
         txa_crossing.setRows(5);
         jScrollPane2.setViewportView(txa_crossing);
 
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel23.setText("Afectacion");
+        jlb_affectationText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_affectationText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_affectationText.setText("Afectacion");
 
         txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
@@ -222,61 +222,61 @@ public class UserProfile extends javax.swing.JDialog {
         txa_affectation.setRows(5);
         jScrollPane3.setViewportView(txa_affectation);
 
-        jLabel24.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel24.setText("Datos del conyuge");
+        jlb_spouseData.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_spouseData.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseData.setText("Datos del conyuge");
 
-        jLabel25.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel25.setText("Nombre:");
+        jlb_spouseNameText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_spouseNameText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseNameText.setText("Nombre:");
 
         txt_spouseName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_spouseName.setForeground(new java.awt.Color(33, 37, 41));
         txt_spouseName.setText("No aplica");
 
-        jLabel27.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel27.setText("Cedula:");
+        jlb_spouseIdText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_spouseIdText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseIdText.setText("Cedula:");
 
         jlb_spouseId.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_spouseId.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spouseId.setText("No aplica");
 
-        jLabel29.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel29.setText("Lugar de expedicion:");
+        jlb_spouseExpeditionText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_spouseExpeditionText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseExpeditionText.setText("Lugar de expedicion:");
 
         jlb_spouseExpeditionSite.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_spouseExpeditionSite.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spouseExpeditionSite.setText("No aplica");
 
-        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel31.setText("Direccion:");
+        jlb_spouseAddressText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_spouseAddressText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spouseAddressText.setText("Direccion:");
 
         jlb_spouseAddress.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_spouseAddress.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spouseAddress.setText("No aplica");
 
-        jLabel33.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel33.setText("Telefono:");
+        jlb_spousePhoneText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_spousePhoneText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_spousePhoneText.setText("Telefono:");
 
         jlb_phoneSpouse.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phoneSpouse.setForeground(new java.awt.Color(33, 37, 41));
         jlb_phoneSpouse.setText("No aplica");
 
-        jLabel35.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel35.setText("Barrio");
+        jlb_neighborhoodText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_neighborhoodText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_neighborhoodText.setText("Barrio");
 
         jlb_neighborhood.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_neighborhood.setForeground(new java.awt.Color(33, 37, 41));
         jlb_neighborhood.setText("Andres Rodriguez");
 
-        jLabel37.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel37.setText("Publicacion");
+        jlb_publicationText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_publicationText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_publicationText.setText("Publicacion");
 
         jlb_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_publication.setForeground(new java.awt.Color(33, 37, 41));
@@ -293,25 +293,25 @@ public class UserProfile extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
+                                    .addComponent(jlb_expeditionText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_expeditionLocation)))
                                 .addGap(261, 261, 261)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
+                                    .addComponent(jlb_maritalStatusText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_maritalStatus))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jlb_idText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_id)))
                                 .addGap(261, 261, 261)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
+                                    .addComponent(jlb_phoneText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_phone))))))
@@ -324,8 +324,8 @@ public class UserProfile extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel35)
+                                    .addComponent(jlb_addressText)
+                                    .addComponent(jlb_neighborhoodText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +333,7 @@ public class UserProfile extends javax.swing.JDialog {
                                             .addComponent(jlb_neighborhood))))
                                 .addGap(153, 153, 153)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
+                                    .addComponent(jlb_departmentText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_department)))
@@ -342,19 +342,19 @@ public class UserProfile extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_municipality))
-                                    .addComponent(jLabel18)))
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel22)
+                                    .addComponent(jlb_municipalityText)))
+                            .addComponent(jlb_residenceData)
+                            .addComponent(jlb_crossingText)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel23)
+                            .addComponent(jlb_affectationText)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20)
+                                    .addComponent(jlb_cadastralRefText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_cadastralRef)))
@@ -363,31 +363,31 @@ public class UserProfile extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_publication))
-                                    .addComponent(jLabel37)))))
+                                    .addComponent(jlb_publicationText)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel24))
+                        .addComponent(jlb_spouseData))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
+                                .addComponent(jlb_spouseExpeditionText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jlb_spouseExpeditionSite)
                                 .addGap(154, 154, 154)
-                                .addComponent(jLabel31)
+                                .addComponent(jlb_spouseAddressText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jlb_spouseAddress))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
+                                .addComponent(jlb_spouseNameText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_spouseName)
                                 .addGap(157, 157, 157)
-                                .addComponent(jLabel27)
+                                .addComponent(jlb_spouseIdText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jlb_spouseId))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel33)
+                                .addComponent(jlb_spousePhoneText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jlb_phoneSpouse)))))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -397,70 +397,70 @@ public class UserProfile extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7))
+                    .addComponent(jlb_idText)
+                    .addComponent(jlb_phoneText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_id)
                     .addComponent(jlb_phone))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
+                    .addComponent(jlb_expeditionText)
+                    .addComponent(jlb_maritalStatusText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_expeditionLocation)
                     .addComponent(jlb_maritalStatus))
                 .addGap(37, 37, 37)
-                .addComponent(jLabel24)
+                .addComponent(jlb_spouseData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
+                    .addComponent(jlb_spouseNameText)
                     .addComponent(txt_spouseName)
-                    .addComponent(jLabel27)
+                    .addComponent(jlb_spouseIdText)
                     .addComponent(jlb_spouseId))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
+                    .addComponent(jlb_spouseExpeditionText)
                     .addComponent(jlb_spouseExpeditionSite)
-                    .addComponent(jLabel31)
+                    .addComponent(jlb_spouseAddressText)
                     .addComponent(jlb_spouseAddress))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
+                    .addComponent(jlb_spousePhoneText)
                     .addComponent(jlb_phoneSpouse))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(jLabel13)
+                .addComponent(jlb_residenceData)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel18))
+                    .addComponent(jlb_addressText)
+                    .addComponent(jlb_departmentText)
+                    .addComponent(jlb_municipalityText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_address)
                     .addComponent(jlb_department)
                     .addComponent(jlb_municipality))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel35)
+                .addComponent(jlb_neighborhoodText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlb_neighborhood)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel37))
+                    .addComponent(jlb_cadastralRefText)
+                    .addComponent(jlb_publicationText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_cadastralRef)
                     .addComponent(jlb_publication))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel22)
+                .addComponent(jlb_crossingText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jLabel23)
+                .addComponent(jlb_affectationText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105))
@@ -468,13 +468,13 @@ public class UserProfile extends javax.swing.JDialog {
 
         scroll.setViewportView(jPanel2);
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Perfil del Beneficiario");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Perfil del Beneficiario");
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Codigo:");
+        jlb_codeText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_codeText.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_codeText.setText("Codigo:");
 
         jlb_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_code.setForeground(new java.awt.Color(33, 37, 41));
@@ -500,12 +500,12 @@ public class UserProfile extends javax.swing.JDialog {
                         .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(jlb_title))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jlb_name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
+                        .addComponent(jlb_codeText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlb_code)
                         .addGap(181, 181, 181)))
@@ -519,10 +519,10 @@ public class UserProfile extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jlb_codeText)
                     .addComponent(jlb_code)
                     .addComponent(jlb_name))
                 .addGap(18, 18, 18)
@@ -611,48 +611,48 @@ public class UserProfile extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_exit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jlb_address;
+    private javax.swing.JLabel jlb_addressText;
+    private javax.swing.JLabel jlb_affectationText;
     private javax.swing.JLabel jlb_cadastralRef;
+    private javax.swing.JLabel jlb_cadastralRefText;
     private javax.swing.JLabel jlb_code;
+    private javax.swing.JLabel jlb_codeText;
+    private javax.swing.JLabel jlb_crossingText;
     private javax.swing.JLabel jlb_department;
+    private javax.swing.JLabel jlb_departmentText;
     private javax.swing.JLabel jlb_expeditionLocation;
+    private javax.swing.JLabel jlb_expeditionText;
     private javax.swing.JLabel jlb_id;
+    private javax.swing.JLabel jlb_idText;
     private javax.swing.JLabel jlb_maritalStatus;
+    private javax.swing.JLabel jlb_maritalStatusText;
     private javax.swing.JLabel jlb_municipality;
+    private javax.swing.JLabel jlb_municipalityText;
     private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel jlb_neighborhood;
+    private javax.swing.JLabel jlb_neighborhoodText;
     private javax.swing.JLabel jlb_phone;
     private javax.swing.JLabel jlb_phoneSpouse;
+    private javax.swing.JLabel jlb_phoneText;
     private javax.swing.JLabel jlb_publication;
+    private javax.swing.JLabel jlb_publicationText;
+    private javax.swing.JLabel jlb_residenceData;
     private javax.swing.JLabel jlb_spouseAddress;
+    private javax.swing.JLabel jlb_spouseAddressText;
+    private javax.swing.JLabel jlb_spouseData;
     private javax.swing.JLabel jlb_spouseExpeditionSite;
+    private javax.swing.JLabel jlb_spouseExpeditionText;
     private javax.swing.JLabel jlb_spouseId;
+    private javax.swing.JLabel jlb_spouseIdText;
+    private javax.swing.JLabel jlb_spouseNameText;
+    private javax.swing.JLabel jlb_spousePhoneText;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTextArea txa_affectation;
     private javax.swing.JTextArea txa_crossing;

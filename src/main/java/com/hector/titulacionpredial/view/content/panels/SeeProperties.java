@@ -65,7 +65,7 @@ public class SeeProperties extends JPanel {
         txt_search = new javax.swing.JTextField();
         btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_searchCancel = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
         jscp_scrollContent = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -119,9 +119,9 @@ public class SeeProperties extends JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Predios");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Predios");
 
         jscp_scrollContent.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -186,7 +186,7 @@ public class SeeProperties extends JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(jlb_title))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jscp_scrollContent, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -209,7 +209,7 @@ public class SeeProperties extends JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -449,10 +449,10 @@ public class SeeProperties extends JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_generate;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JScrollPane jscp_scrollContent;
     private javax.swing.JTable jtbl_properties;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;

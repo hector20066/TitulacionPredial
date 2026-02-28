@@ -35,76 +35,76 @@ public class ModifyResolution extends javax.swing.JPanel {
     private void initComponents() {
 
         panelShadow1 = new com.hector.titulacionpredial.view.swing.panel.PanelShadow();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
+        jlb_code = new javax.swing.JLabel();
         txt_code = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_numResolution = new javax.swing.JLabel();
         txt_numResolution = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jlb_fmi = new javax.swing.JLabel();
         txt_fmi = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jlb_act = new javax.swing.JLabel();
         txt_act = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        jlb_publicWriting = new javax.swing.JLabel();
         txt_publicWriting = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jlb_notary = new javax.swing.JLabel();
         txt_note = new javax.swing.JTextField();
         btn_modify = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jlb_executory = new javax.swing.JLabel();
+        jlb_notification = new javax.swing.JLabel();
         ftx_notification = new javax.swing.JFormattedTextField();
         ftx_executory = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Modificar Resolucion");
+        jlb_title.setBackground(new java.awt.Color(255, 255, 255));
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Modificar Resolucion");
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel7.setText("Codigo:");
+        jlb_code.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_code.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_code.setText("Codigo:");
 
         txt_code.setBackground(new java.awt.Color(242, 246, 253));
         txt_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_code.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
         txt_code.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel3.setText("Num. Resolucion:");
+        jlb_numResolution.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_numResolution.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_numResolution.setText("Num. Resolucion:");
 
         txt_numResolution.setBackground(new java.awt.Color(242, 246, 253));
         txt_numResolution.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_numResolution.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel8.setText("FMI:");
+        jlb_fmi.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_fmi.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_fmi.setText("FMI:");
 
         txt_fmi.setBackground(new java.awt.Color(242, 246, 253));
         txt_fmi.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_fmi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel9.setText("Acto:");
+        jlb_act.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_act.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_act.setText("Acto:");
 
         txt_act.setBackground(new java.awt.Color(242, 246, 253));
         txt_act.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_act.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel10.setText("Esc. Publica:");
+        jlb_publicWriting.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_publicWriting.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_publicWriting.setText("Esc. Publica:");
 
         txt_publicWriting.setBackground(new java.awt.Color(242, 246, 253));
         txt_publicWriting.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_publicWriting.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
-        jLabel11.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel11.setText("Notaria:");
+        jlb_notary.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_notary.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_notary.setText("Notaria:");
 
         txt_note.setBackground(new java.awt.Color(242, 246, 253));
         txt_note.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -116,13 +116,13 @@ public class ModifyResolution extends javax.swing.JPanel {
         btn_modify.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_modify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel6.setText("Ejecutoria:");
+        jlb_executory.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_executory.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_executory.setText("Ejecutoria:");
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 37, 41));
-        jLabel5.setText("Notificacion:");
+        jlb_notification.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
+        jlb_notification.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_notification.setText("Notificacion:");
 
         ftx_notification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
         ftx_notification.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -136,7 +136,7 @@ public class ModifyResolution extends javax.swing.JPanel {
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1))
+                .addComponent(jlb_title))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,29 +144,29 @@ public class ModifyResolution extends javax.swing.JPanel {
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
+                    .addComponent(jlb_act)
                     .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(jlb_notification)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftx_notification, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel6)
+                        .addComponent(jlb_executory)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftx_executory, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel10)
+                    .addComponent(jlb_publicWriting)
                     .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(jlb_code)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_code, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
-                        .addComponent(jLabel3)
+                        .addComponent(jlb_numResolution)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_numResolution, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(jlb_fmi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_fmi, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11)
+                    .addComponent(jlb_notary)
                     .addGroup(panelShadow1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,33 +179,33 @@ public class ModifyResolution extends javax.swing.JPanel {
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addGap(29, 29, 29)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jlb_numResolution)
                     .addComponent(txt_numResolution, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(jlb_code)
                     .addComponent(txt_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
+                    .addComponent(jlb_notification)
+                    .addComponent(jlb_executory)
                     .addComponent(ftx_notification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftx_executory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(jlb_fmi)
                     .addComponent(txt_fmi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(jlb_act)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
+                .addComponent(jlb_publicWriting)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_publicWriting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addComponent(jlb_notary)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
@@ -305,15 +305,15 @@ public class ModifyResolution extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;
     private javax.swing.JFormattedTextField ftx_executory;
     private javax.swing.JFormattedTextField ftx_notification;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jlb_act;
+    private javax.swing.JLabel jlb_code;
+    private javax.swing.JLabel jlb_executory;
+    private javax.swing.JLabel jlb_fmi;
+    private javax.swing.JLabel jlb_notary;
+    private javax.swing.JLabel jlb_notification;
+    private javax.swing.JLabel jlb_numResolution;
+    private javax.swing.JLabel jlb_publicWriting;
+    private javax.swing.JLabel jlb_title;
     private com.hector.titulacionpredial.view.swing.panel.PanelShadow panelShadow1;
     private javax.swing.JTextField txt_act;
     private javax.swing.JTextField txt_code;

@@ -54,7 +54,7 @@ public class SeeResolutions extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_resolutions = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
         roundedPanel3 = new com.hector.titulacionpredial.view.swing.panel.RoundedPanel();
         txt_search = new javax.swing.JTextField();
         btn_search = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
@@ -77,9 +77,9 @@ public class SeeResolutions extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jtbl_resolutions);
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Resoluciones");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Resoluciones");
 
         roundedPanel3.setBackground(new java.awt.Color(255, 255, 255));
         roundedPanel3.setBorderColor(new java.awt.Color(116, 198, 157));
@@ -138,7 +138,7 @@ public class SeeResolutions extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jlb_title)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 18, Short.MAX_VALUE)
@@ -158,7 +158,7 @@ public class SeeResolutions extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addGap(26, 26, 26)
                 .addComponent(roundedPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -274,8 +274,8 @@ public class SeeResolutions extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_modify;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_search;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchCancel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlb_title;
     private javax.swing.JTable jtbl_resolutions;
     private com.hector.titulacionpredial.view.swing.panel.RoundedPanel roundedPanel3;
     private javax.swing.JTextField txt_search;
