@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.i18n;
 
+import com.hector.titulacionpredial.utils.UserConfig;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -16,7 +17,7 @@ public class LanguageManager {
     private AppLanguage currentLanguage;
 
     private LanguageManager() {
-        /*String savedLanguage = UserConfig.get("app.language");
+        String savedLanguage = UserConfig.get("app.language");
         AppLanguage language = AppLanguage.ES;
 
         if (savedLanguage != null) {
@@ -29,7 +30,7 @@ public class LanguageManager {
         this.currentLanguage = language;
         Locale locale = Locale.of(language.getCode());
         this.appBundle = ResourceBundle.getBundle("i18n.app.app", locale);
-        this.messageBundle = ResourceBundle.getBundle("i18n.message.message", locale);*/
+        this.messageBundle = ResourceBundle.getBundle("i18n.message.message", locale);
     }
 
     public static LanguageManager getInstance() {
@@ -46,7 +47,7 @@ public class LanguageManager {
 
         this.appBundle = ResourceBundle.getBundle("i18n.app.app", locale);
         this.messageBundle = ResourceBundle.getBundle("i18n.message.message", locale);
-        //UserConfig.set("app.language", language.getCode());
+        UserConfig.set("app.language", language.getCode());
     }
 
     public String app(String key) {
