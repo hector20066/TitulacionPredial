@@ -64,8 +64,8 @@ public class Menu extends JPanel {
         addTitle("INFORMACIÓN");
         addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Información", "Beneficiarios", "Predios"));
         addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver registros", "Beneficiarios", "Reportes", "Resolución"));
-        /*addTitle("CONFIGURACIÓN");
-        addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));*/
+        addTitle("CONFIGURACIÓN");
+        addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));
         addTitle("SOBRE LA APP");
         addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));
     }
