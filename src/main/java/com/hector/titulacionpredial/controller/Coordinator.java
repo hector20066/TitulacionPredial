@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.controller;
 
-import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.builder.*;
 import com.hector.titulacionpredial.controller.panels.*;
 import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
 import com.hector.titulacionpredial.i18n.LanguageManager;
@@ -47,7 +47,7 @@ public class Coordinator {
     private final ConcreteLanguageSubject languageSubject = ConcreteLanguageSubject.getInstance();
 
     /**
-     * Gestor de i18n de la aplicacion
+     * Gestor de i18n de la aplicación
      */
     private final LanguageManager lang = LanguageManager.getInstance();
 
@@ -65,11 +65,11 @@ public class Coordinator {
 
     /**
      * Encargado de iniciar la app, cargando dependencias
-     * y mostrando la interfaz grafica.
+     * y mostrando la interfaz gráfica.
      *
      * <p>
      * Notifica a los observadores para que carguen la
-     * informacion necesaria al iniciar la app.
+     * información necesaria al iniciar la app.
      * </p>
      */
     public void startApp() {
@@ -132,14 +132,66 @@ public class Coordinator {
                 .withLanguageSubject(languageSubject)
                 .build();
 
-        new ControllerDashboard(dashboard, subject, languageSubject, lang);
-        new ControllerGenerateResolution(generateResolution, subject, languageSubject, lang);
-        new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject, languageSubject, lang);
-        new ControllerRegisterProperty(registerProperty, subject, languageSubject, lang);
-        new ControllerSeeProperties(seeProperties, generateResolution, subject, languageSubject, lang);
-        new ControllerSeeResolutions(seeResolutions, modifyResolution, subject, languageSubject, lang);
-        new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject, languageSubject, lang);
-        new ControllerModifyResolution(modifyResolution, seeResolutions, subject, languageSubject, lang);
+        new ControllerDashboardBuilder()
+                .withViewDashboard(dashboard)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerGenerateResolutionBuilder()
+                .withViewGenerateResolution(generateResolution)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerRegisterBeneficiaryBuilder()
+                .withViewRegisterBeneficiary(registerBeneficiary)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerRegisterPropertyBuilder()
+                .withViewRegisterProperty(registerProperty)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerSeePropertiesBuilder()
+                .withViewGenerateResolution(generateResolution)
+                .withViewSeeProperties(seeProperties)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerSeeResolutionsBuilder()
+                .withViewSeeResolutions(seeResolutions)
+                .withViewModifyResolution(modifyResolution)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerViewBeneficiariesBuilder()
+                .withViewRegisterBeneficiary(registerBeneficiary)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        new ControllerModifyResolutionBuilder()
+                .withViewModifyResolution(modifyResolution)
+                .withViewSeeResolutions(seeResolutions)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
     }
 
 }
