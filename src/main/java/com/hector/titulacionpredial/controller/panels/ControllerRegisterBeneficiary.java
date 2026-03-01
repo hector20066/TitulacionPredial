@@ -218,11 +218,11 @@ public class ControllerRegisterBeneficiary implements Observer {
                 boolean success = daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
                         crossing, publication, neighborhood, code);
 
-                if (registerBeneficiary.getNowStatus() == MaritalStatus.CASADO
-                        || registerBeneficiary.getNowStatus() == MaritalStatus.UNION_LIBRE) {
+                if (registerBeneficiary.getNowStatus() == MaritalStatus.MARRIED
+                        || registerBeneficiary.getNowStatus() == MaritalStatus.FREE_UNION) {
 
-                    if (maritalStatus == MaritalStatus.SOLTERO || maritalStatus == MaritalStatus.DIVORCIADO
-                            || maritalStatus == MaritalStatus.VIUDO) {
+                    if (maritalStatus == MaritalStatus.SINGLE || maritalStatus == MaritalStatus.DIVORCED
+                            || maritalStatus == MaritalStatus.WIDOWER) {
                         daoSpouse.delete(code);
                     }
                 }
@@ -393,7 +393,7 @@ public class ControllerRegisterBeneficiary implements Observer {
                 daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
                         affectation, phone, crossing, publication, neighborhood, expeditionLocation);
 
-                if (maritalStatus == MaritalStatus.CASADO || maritalStatus == MaritalStatus.UNION_LIBRE) {
+                if (maritalStatus == MaritalStatus.MARRIED || maritalStatus == MaritalStatus.FREE_UNION) {
                     registerSpouse(code);
                 }
 
@@ -473,7 +473,7 @@ public class ControllerRegisterBeneficiary implements Observer {
         if (registerBeneficiary.isLoading()) return;
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
-        if (selected == MaritalStatus.CASADO || selected == MaritalStatus.UNION_LIBRE) {
+        if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
 
             SpouseData dialog = new SpouseData(parentFrame, true);
