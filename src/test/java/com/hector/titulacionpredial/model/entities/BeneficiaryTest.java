@@ -194,7 +194,7 @@ class BeneficiaryTest {
             assertTrue(result.contains("10"));
             assertTrue(result.contains("ATLANTICO"));
             assertTrue(result.contains("SOLEDAD"));
-            assertTrue(result.contains("UNION_LIBRE"));
+            assertTrue(result.contains("FREE_UNION"));
         }
     }
 }

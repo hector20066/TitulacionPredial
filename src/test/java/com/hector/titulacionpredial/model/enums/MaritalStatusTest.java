@@ -57,11 +57,11 @@ class MaritalStatusTest {
     @Test
     @DisplayName("valueOf debe retornar el enum correcto")
     void valueOfShouldReturnCorrectEnum() {
-        assertEquals(MaritalStatus.SINGLE, MaritalStatus.valueOf("SOLTERO"));
-        assertEquals(MaritalStatus.MARRIED, MaritalStatus.valueOf("CASADO"));
-        assertEquals(MaritalStatus.FREE_UNION, MaritalStatus.valueOf("UNION_LIBRE"));
-        assertEquals(MaritalStatus.DIVORCED, MaritalStatus.valueOf("DIVORCIADO"));
-        assertEquals(MaritalStatus.WIDOWER, MaritalStatus.valueOf("VIUDO"));
+        assertEquals(MaritalStatus.SINGLE, MaritalStatus.valueOf("SINGLE"));
+        assertEquals(MaritalStatus.MARRIED, MaritalStatus.valueOf("MARRIED"));
+        assertEquals(MaritalStatus.FREE_UNION, MaritalStatus.valueOf("FREE_UNION"));
+        assertEquals(MaritalStatus.DIVORCED, MaritalStatus.valueOf("DIVORCED"));
+        assertEquals(MaritalStatus.WIDOWER, MaritalStatus.valueOf("WIDOWER"));
     }
 
     @Test
