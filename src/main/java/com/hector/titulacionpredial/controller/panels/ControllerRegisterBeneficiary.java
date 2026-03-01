@@ -26,6 +26,7 @@ import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
 
 import javax.swing.*;
 
@@ -136,7 +137,32 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
     @Override
     public void updateLanguage() {
+        DTORegisterBeneficiaryText dto = new DTORegisterBeneficiaryText.Builder()
+                .modifyTitle(lang.app("register.beneficiary.modify.title"))
+                .modifyBtn(lang.app("register.beneficiary.modify.btn"))
+                .addTitle(lang.app("register.beneficiary.add.title"))
+                .addBtn(lang.app("register.beneficiary.add.btn"))
+                .beneficiaryInfo(lang.app("register.beneficiary.info"))
+                .name(lang.app("register.beneficiary.name"))
+                .phone(lang.app("register.beneficiary.phone"))
+                .lastName(lang.app("register.beneficiary.lastname"))
+                .id(lang.app("register.beneficiary.id"))
+                .maritalStatus(lang.app("register.beneficiary.maritalStatus"))
+                .residenceData(lang.app("register.beneficiary.residence.data"))
+                .department(lang.app("register.beneficiary.department"))
+                .municipality(lang.app("register.beneficiary.municipality"))
+                .neighborhood(lang.app("register.beneficiary.neighborhood"))
+                .address(lang.app("register.beneficiary.address"))
+                .cadastralRef(lang.app("register.beneficiary.cadastralRef"))
+                .crossing(lang.app("register.beneficiary.crossing"))
+                .affectation(lang.app("register.beneficiary.affectation"))
+                .expeditionLocation(lang.app("register.beneficiary.expeditionLocate"))
+                .publication(lang.app("register.beneficiary.publication"))
+                .affected(lang.app("register.beneficiary.affected"))
+                .code(lang.app("register.beneficiary.code"))
+                .build();
 
+        registerBeneficiary.updateLanguage(dto);
     }
 
     /**

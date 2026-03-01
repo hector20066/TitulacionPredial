@@ -16,6 +16,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -127,7 +128,28 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTOSeePropertiesText dto = new DTOSeePropertiesText.Builder()
+                .properties(lang.app("see.properties.title"))
+                .code(lang.app("see.properties.code"))
+                .name(lang.app("see.properties.name"))
+                .id(lang.app("see.properties.id"))
+                .numResolution(lang.app("see.properties.num.resolution"))
+                .notify(lang.app("see.properties.notify"))
+                .executory(lang.app("see.properties.executory"))
+                .fmi(lang.app("see.properties.fmi"))
+                .act(lang.app("see.properties.act"))
+                .publicWriting(lang.app("see.properties.publicWriting"))
+                .notary(lang.app("see.properties.notary"))
+                .cadastralRef(lang.app("see.properties.cadastralRef"))
+                .address(lang.app("see.properties.address"))
+                .municipality(lang.app("see.properties.municipality"))
+                .search(lang.app("see.properties.search"))
+                .generateBtn(lang.app("see.properties.generate.resolution.btn"))
+                .deleteBtn(lang.app("see.properties.delete.btn"))
+                .exportExcelBtn(lang.app("see.properties.export.excel.btn"))
+                .build();
 
+        seeProperties.updateLanguage(dto);
     }
 
     /**

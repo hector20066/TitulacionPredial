@@ -16,6 +16,7 @@ import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -112,7 +113,20 @@ public class ControllerModifyResolution implements LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTOModifyResolutionText dto = new DTOModifyResolutionText.Builder()
+                .title(lang.app("modify.resolution.title"))
+                .code(lang.app("modify.resolution.code"))
+                .numResolution(lang.app("modify.resolution.number"))
+                .fmi(lang.app("modify.resolution.fmi"))
+                .act(lang.app("modify.resolution.act"))
+                .publicWriting(lang.app("modify.resolution.publicWriting"))
+                .notary(lang.app("modify.resolution.notary"))
+                .modifyBtn(lang.app("modify.resolution.btn"))
+                .executory(lang.app("modify.resolution.executory"))
+                .notification(lang.app("modify.resolution.notify"))
+                .build();
 
+        modifyResolution.updateLanguage(dto);
     }
 
     /**

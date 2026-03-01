@@ -19,6 +19,7 @@ import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionText;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -116,7 +117,35 @@ public class ControllerGenerateResolution implements LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTOGenerateResolutionText dto = new DTOGenerateResolutionText.Builder()
+                .resumeTitle(lang.app("generate.resolution.resume"))
+                .beneficiaryData(lang.app("generate.resolution.beneficiary.data"))
+                .names(lang.app("generate.resolution.names"))
+                .id(lang.app("generate.resolution.id"))
+                .address(lang.app("generate.resolution.address"))
+                .cadastralRef(lang.app("generate.resolution.cadastralRef"))
+                .municipality(lang.app("generate.resolution.municipality"))
+                .propertyInfo(lang.app("generate.resolution.property.info"))
+                .point(lang.app("generate.resolution.point.num"))
+                .northCord(lang.app("generate.resolution.north.cord"))
+                .eastCord(lang.app("generate.resolution.east.cord"))
+                .distance(lang.app("generate.resolution.distance"))
+                .hillside(lang.app("generate.resolution.hillside"))
+                .propertyCode(lang.app("generate.resolution.property.code"))
+                .area(lang.app("generate.resolution.area"))
+                .enterInfo(lang.app("generate.resolution.enter.info"))
+                .numResolution(lang.app("generate.resolution.num.resolution"))
+                .notification(lang.app("generate.resolution.notify"))
+                .executory(lang.app("generate.resolution.executory"))
+                .fmi(lang.app("generate.resolution.fmi"))
+                .act(lang.app("generate.resolution.act"))
+                .publicWriting(lang.app("generate.resolution.publicWriting"))
+                .notary(lang.app("generate.resolution.notary"))
+                .generateLabel(lang.app("generate.resolution.label"))
+                .generateBtn(lang.app("generate.resolution.btn"))
+                .build();
 
+        generateResolution.updateLanguage(dto);
     }
 
     /**

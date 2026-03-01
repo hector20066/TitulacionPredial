@@ -17,6 +17,7 @@ import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesText;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -131,7 +132,23 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
+                .title(lang.app("view.beneficiaries.title"))
+                .code(lang.app("view.beneficiaries.code"))
+                .id(lang.app("view.beneficiaries.id"))
+                .name(lang.app("view.beneficiaries.name"))
+                .phone(lang.app("view.beneficiaries.phone"))
+                .cadastralRef(lang.app("view.beneficiaries.cadastralRef"))
+                .municipality(lang.app("view.beneficiaries.municipality"))
+                .address(lang.app("view.beneficiaries.address"))
+                .search(lang.app("view.beneficiaries.search"))
+                .fullInfoBtn(lang.app("view.beneficiaries.full.info"))
+                .modifyBtn(lang.app("view.beneficiaries.modify"))
+                .deleteBtn(lang.app("view.beneficiaries.delete"))
+                .exportExcelBtn(lang.app("view.beneficiaries.export.excel"))
+                .build();
 
+        viewBeneficiaries.updateLanguage(dto);
     }
 
     /**

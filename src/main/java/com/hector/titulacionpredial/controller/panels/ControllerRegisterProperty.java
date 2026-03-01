@@ -18,6 +18,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 
 import javax.swing.*;
 import java.awt.*;
@@ -126,7 +127,23 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTORegisterPropertyText dto = new DTORegisterPropertyText.Builder()
+                .title(lang.app("register.property.title"))
+                .point(lang.app("register.property.point"))
+                .northCord(lang.app("register.property.north.cord"))
+                .eastCord(lang.app("register.property.east.cord"))
+                .distance(lang.app("register.property.distance"))
+                .hillside(lang.app("register.property.hillside"))
+                .registerBtn(lang.app("register.property.btn"))
+                .propertyInfo(lang.app("register.property.info"))
+                .cadastralId(lang.app("register.property.cadastralId"))
+                .area(lang.app("register.property.area"))
+                .pointsInfo(lang.app("register.property.points.info"))
+                .beneficiaryCode(lang.app("register.property.beneficiary.code"))
+                .searchBeneficiary(lang.app("register.property.search.beneficiary"))
+                .build();
 
+        registerProperty.updateLanguage(dto);
     }
 
     /**

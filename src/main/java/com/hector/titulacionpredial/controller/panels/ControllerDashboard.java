@@ -13,6 +13,7 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
 import com.hector.titulacionpredial.view.swing.model.ModelChart;
 
 import javax.swing.*;
@@ -183,7 +184,25 @@ public class ControllerDashboard implements Observer, LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTODashboardText dto = new DTODashboardText.Builder()
+                .beneficiaries(lang.app("dashboard.beneficiaries"))
+                .beneficiariesDesc(lang.app("dashboard.beneficiaries.desc"))
+                .properties(lang.app("dashboard.properties"))
+                .propertiesDesc(lang.app("dashboard.properties.desc"))
+                .resolutions(lang.app("dashboard.resolutions"))
+                .resolutionsDesc(lang.app("dashboard.resolutions.desc"))
+                .nameCompany(lang.app("dashboard.name.company"))
+                .withProperty(lang.app("dashboard.with.property"))
+                .withoutProperty(lang.app("dashboard.without.property"))
+                .total(lang.app("dashboard.total"))
+                .withResolution(lang.app("dashboard.with.resolution"))
+                .withoutResolution(lang.app("dashboard.without.resolution"))
+                .totalRegisters(lang.app("dashboard.total.registers"))
+                .percentWorks(lang.app("dashboard.percent.works"))
+                .registersMonth(lang.app("dashboard.beneficiaries.registers.month"))
+                .build();
 
+        dashboard.updateLanguage(dto);
     }
 
 }

@@ -18,6 +18,7 @@ import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -130,7 +131,21 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTOSeeResolutionsText dto = new DTOSeeResolutionsText.Builder()
+                .title(lang.app("see.resolutions.title"))
+                .code(lang.app("see.resolutions.code"))
+                .number(lang.app("see.resolutions.number"))
+                .notification(lang.app("see.resolutions.notify"))
+                .executory(lang.app("see.resolutions.executory"))
+                .notary(lang.app("see.resolutions.notary"))
+                .fmi(lang.app("see.resolutions.fmi"))
+                .act(lang.app("see.resolutions.act"))
+                .publicWriting(lang.app("see.resolutions.publicWriting"))
+                .search(lang.app("see.resolutions.search"))
+                .modifyBtn(lang.app("see.properties.modify"))
+                .build();
 
+        seeResolutions.updateLanguage(dto);
     }
 
     /**
