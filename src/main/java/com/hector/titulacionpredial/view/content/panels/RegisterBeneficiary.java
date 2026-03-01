@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
@@ -747,8 +748,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
      * Limpia todos los campos y restablece el formulario a modo registro.
      */
     public void clearFields() {
-        jlb_title.setText("Agregar Beneficiario");
-        btn_register.setText("AGREGAR BENEFICIARIO");
+        jlb_title.setText(LanguageManager.getInstance().app("register.beneficiary.add.title"));
+        btn_register.setText(LanguageManager.getInstance().app("register.beneficiary.add.btn"));
         txt_name.setText("");
         txt_lastName.setText("");
         txt_id.setText("");

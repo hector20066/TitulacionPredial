@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
 
 /**
@@ -10,13 +13,18 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
-public class About extends javax.swing.JPanel {
+public class About extends javax.swing.JPanel implements LanguageObserver {
+
+    private final LanguageManager languageManager;
 
     /**
      * Crea el panel «Acerca de» con la información de la aplicación.
      */
-    public About() {
+    public About(LanguageManager languageManager, LanguageSubject languageSubject) {
         initComponents();
+
+        this.languageManager = languageManager;
+        languageSubject.register(this);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -141,6 +149,22 @@ public class About extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    @Override
+    public void updateLanguage() {
+        DTOAboutText dto = new DTOAboutText.Builder()
+                .title(languageManager.app("about.title"))
+                .appInfo(languageManager.app("about.app.information"))
+                .version(languageManager.app("about.version"))
+                .releaseDate(languageManager.app("about.release.date"))
+                .creators(languageManager.app("about.creator"))
+                .creator1(languageManager.app("about.creator1"))
+                .creator2(languageManager.app("about.creator2"))
+                .moreInfo(languageManager.app("about.creators.more.info"))
+                .build();
+
+        updateLanguage(dto);
+    }
 
     public void updateLanguage(DTOAboutText texts) {
         jlb_title.setText(texts.getTitle());

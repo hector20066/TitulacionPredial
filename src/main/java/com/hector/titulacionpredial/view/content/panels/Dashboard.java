@@ -461,7 +461,6 @@ public class Dashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void updateLanguage(DTODashboardText texts) {
-        jlb_title.setText(texts.getNameCompany());
         jlb_subtitle1.setText(texts.getTotalRegisters());
         beneficiaries = texts.getBeneficiaries();
         beneficiariesDesc = texts.getBeneficiariesDesc();

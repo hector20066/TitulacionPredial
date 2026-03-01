@@ -4,6 +4,8 @@
  */
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -22,6 +24,9 @@ public class Settings extends javax.swing.JPanel {
      */
     public Settings() {
         initComponents();
+
+        rbn_spanish.setActionCommand("es");
+        rbn_english.setActionCommand("en");
     }
 
     /**
@@ -41,16 +46,29 @@ public class Settings extends javax.swing.JPanel {
         rbn_spanish = new javax.swing.JRadioButton();
         rbn_english = new javax.swing.JRadioButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_language.setBackground(new java.awt.Color(255, 255, 255));
+        btn_language.setForeground(new java.awt.Color(0, 0, 0));
         btn_language.setText("Idioma");
 
+        jpl_content.setBackground(new java.awt.Color(255, 255, 255));
         jpl_content.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
 
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(0, 0, 0));
         jlb_title.setText("Seleccione su idioma:");
 
+        rbn_spanish.setBackground(new java.awt.Color(255, 255, 255));
         btg_languages.add(rbn_spanish);
+        rbn_spanish.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        rbn_spanish.setForeground(new java.awt.Color(0, 0, 0));
         rbn_spanish.setText("Español - ES");
 
+        rbn_english.setBackground(new java.awt.Color(255, 255, 255));
         btg_languages.add(rbn_english);
+        rbn_english.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        rbn_english.setForeground(new java.awt.Color(0, 0, 0));
         rbn_english.setText("English - EN");
 
         javax.swing.GroupLayout jpl_contentLayout = new javax.swing.GroupLayout(jpl_content);
@@ -67,7 +85,7 @@ public class Settings extends javax.swing.JPanel {
                         .addGroup(jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbn_english)
                             .addComponent(rbn_spanish))))
-                .addContainerGap(640, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
         jpl_contentLayout.setVerticalGroup(
             jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +96,7 @@ public class Settings extends javax.swing.JPanel {
                 .addComponent(rbn_spanish)
                 .addGap(18, 18, 18)
                 .addComponent(rbn_english)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -88,37 +106,38 @@ public class Settings extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_language, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jpl_content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jpl_content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btn_language, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(btn_language, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(517, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jpl_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void updateLanguage(DTOSettingsText texts) {
+        btn_language.setText(texts.getLanguageBtn());
+        jlb_title.setText(texts.getTitle());
+    }
 
     public void setControllerBtn_language(ActionListener action) {
         btn_language.addActionListener(action);
