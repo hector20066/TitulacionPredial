@@ -13,7 +13,6 @@ public class DTODashboardText {
     private final String propertiesDesc;
     private final String resolutions;
     private final String resolutionsDesc;
-    private final String nameCompany;
     private final String withProperty;
     private final String withoutProperty;
     private final String withResolution;
@@ -30,7 +29,6 @@ public class DTODashboardText {
         this.propertiesDesc = builder.propertiesDesc;
         this.resolutions = builder.resolutions;
         this.resolutionsDesc = builder.resolutionsDesc;
-        this.nameCompany = builder.nameCompany;
         this.withProperty = builder.withProperty;
         this.withoutProperty = builder.withoutProperty;
         this.withResolution = builder.withResolution;
@@ -63,10 +61,6 @@ public class DTODashboardText {
 
     public String getResolutionsDesc() {
         return resolutionsDesc;
-    }
-
-    public String getNameCompany() {
-        return nameCompany;
     }
 
     public String getWithProperty() {
@@ -109,7 +103,6 @@ public class DTODashboardText {
         private String propertiesDesc;
         private String resolutions;
         private String resolutionsDesc;
-        private String nameCompany;
         private String withProperty;
         private String withoutProperty;
         private String withResolution;
@@ -146,11 +139,6 @@ public class DTODashboardText {
 
         public Builder resolutionsDesc(String resolutionsDesc) {
             this.resolutionsDesc = resolutionsDesc;
-            return this;
-        }
-
-        public Builder nameCompany(String nameCompany) {
-            this.nameCompany = nameCompany;
             return this;
         }
 
