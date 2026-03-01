@@ -7,6 +7,7 @@ import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.i18n.*;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
@@ -25,23 +26,28 @@ import java.util.Locale;
  * Controlador del panel Dashboard.
  *
  * <p>
- * Implementa {@link Observer} para actualizar automáticamente
- * las estadísticas del dashboard cuando se producen cambios
- * en los datos del sistema. Carga tarjetas resumen, gráficos
- * de línea con tendencia mensual y gráficos de porcentaje.
+ * Implementa {@link Observer} y {@link LanguageObserver} para actualizar
+ * automáticamente el panel del Dashboard cuando se producen cambios
+ * en los datos o en el idioma de la aplicación.
  * </p>
  *
  * @author Ing. Hector Acevedo
  * @see Dashboard
  * @see Observer
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerDashboard implements Observer {
+public class ControllerDashboard implements Observer, LanguageObserver {
 
     /**
      * Vista del dashboard.
      */
     private final Dashboard dashboard;
+
+    /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
 
     /**
      * Fachada de acceso a datos de beneficiarios.
@@ -61,17 +67,21 @@ public class ControllerDashboard implements Observer {
     /**
      * Crea el controlador y lo registra como observador.
      *
-     * @param dashboard vista del dashboard
-     * @param subject   sujeto para registro del observador
+     * @param dashboard       vista del dashboard
+     * @param subject         sujeto para registro del observador
+     * @param languageSubject sujeto para notificar cambios de idioma
+     * @param lang            acceso al gestor de los idiomas
      */
-    public ControllerDashboard(Dashboard dashboard, Subject subject) {
+    public ControllerDashboard(Dashboard dashboard, Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.dashboard = dashboard;
+        this.lang = lang;
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.daoResolution = new ResolutionImplFacade();
 
         subject.register(this);
+        languageSubject.register(this);
     }
 
     @Override
@@ -169,6 +179,11 @@ public class ControllerDashboard implements Observer {
      */
     private void loadDataProperties(int withResolution, int withoutResolution, int total) {
         dashboard.loadDataProperties(withResolution, withoutResolution, total);
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
 }

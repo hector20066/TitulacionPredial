@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.controller.builder;
 
 import com.hector.titulacionpredial.controller.ControllerContent;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
@@ -29,6 +32,8 @@ public class ControllerContentBuilder {
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
     private Subject subject;
+    private LanguageSubject languageSubject;
+    private LanguageManager lang;
     private About about;
 
     public ControllerContentBuilder withViewContent(Content content) {
@@ -68,6 +73,16 @@ public class ControllerContentBuilder {
 
     public ControllerContentBuilder withSubject(Subject subject) {
         this.subject = subject;
+        return this;
+    }
+
+    public ControllerContentBuilder withLanguageSubject(LanguageSubject languageSubject) {
+        this.languageSubject = languageSubject;
+        return this;
+    }
+
+    public ControllerContentBuilder withLanguageManager(LanguageManager lang) {
+        this.lang = lang;
         return this;
     }
 
@@ -115,6 +130,14 @@ public class ControllerContentBuilder {
 
     public Subject getSubject() {
         return subject;
+    }
+
+    public LanguageSubject getLanguageSubject() {
+        return languageSubject;
+    }
+
+    public LanguageManager getLang() {
+        return lang;
     }
 
     public About getAbout() {

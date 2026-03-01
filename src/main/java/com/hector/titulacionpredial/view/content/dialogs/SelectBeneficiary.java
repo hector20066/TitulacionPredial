@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
-import com.hector.titulacionpredial.controller.ControllerSearchDialog;
+import com.hector.titulacionpredial.controller.ControllerSelectDialog;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSelectBeneficiaryText;
@@ -31,7 +31,7 @@ import java.util.List;
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
- * @see ControllerSearchDialog
+ * @see ControllerSelectDialog
  */
 public class SelectBeneficiary extends javax.swing.JDialog {
 
@@ -45,7 +45,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private boolean show = true;
     DefaultTableModel model = new DefaultTableModel();
 
-    private final ControllerSearchDialog controllerSearchDialog;
+    private final ControllerSelectDialog controllerSearchDialog;
 
     /**
      * Crea un nuevo diálogo de selección de beneficiario.
@@ -60,7 +60,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.controllerSearchDialog =  new ControllerSearchDialog(this);
+        this.controllerSearchDialog =  new ControllerSelectDialog(this);
 
         String[] titles = {code, name, id, cadastralRef};
         model.setColumnIdentifiers(titles);

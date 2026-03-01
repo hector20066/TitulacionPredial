@@ -11,6 +11,9 @@ import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.SpouseImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
@@ -31,10 +34,11 @@ import javax.swing.*;
  *
  * <p>
  * Implementa {@link Observer} para actualizar el código
- * secuencial del próximo beneficiario. Gestiona las
- * validaciones de los datos del formulario, el registro
- * y la modificación de beneficiarios, incluyendo la
- * gestión del cónyuge cuando el estado civil lo requiere.
+ * secuencial del próximo beneficiario y {@link LanguageObserver}
+ * para actualizar la interfaz cuado se realiza un cambio de idioma.
+ * Gestiona las validaciones de los datos del formulario, el registro
+ * y la modificación de beneficiarios, incluyendo la gestión del
+ * cónyuge cuando el estado civil lo requiere.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -43,7 +47,7 @@ import javax.swing.*;
  * @see SpouseFacade
  * @since 1.0
  */
-public class ControllerRegisterBeneficiary implements Observer {
+public class ControllerRegisterBeneficiary implements Observer, LanguageObserver {
 
     /**
      * Vista del formulario de registro.
@@ -59,6 +63,11 @@ public class ControllerRegisterBeneficiary implements Observer {
      * Sujeto del patrón Observer para notificar cambios.
      */
     private final Subject subject;
+
+    /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
 
     /**
      * Fachada de acceso a datos de beneficiarios.
@@ -82,11 +91,17 @@ public class ControllerRegisterBeneficiary implements Observer {
      * @param registerBeneficiary vista del formulario
      * @param viewBeneficiaries   vista de listado
      * @param subject             sujeto para registro del observador
+     * @param languageSubject     sujeto para notificar cambios de idioma
+     * @param lang                acceso al gestor de los idiomas
      */
-    public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary, ViewBeneficiaries viewBeneficiaries, Subject subject) {
+    public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary, ViewBeneficiaries viewBeneficiaries,
+                                         Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.registerBeneficiary = registerBeneficiary;
         this.viewBeneficiaries = viewBeneficiaries;
         this.subject = subject;
+        this.lang = lang;
+
+        languageSubject.register(this);
 
         this.subject.register(this);
 
@@ -117,6 +132,11 @@ public class ControllerRegisterBeneficiary implements Observer {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
             }
         }).start();
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

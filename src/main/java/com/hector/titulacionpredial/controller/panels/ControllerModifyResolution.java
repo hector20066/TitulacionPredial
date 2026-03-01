@@ -7,6 +7,9 @@ import com.hector.titulacionpredial.exception.validation.InvalidNumberInputExcep
 import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
@@ -23,6 +26,18 @@ import java.util.Date;
  * Controlador del panel de modificación de resoluciones.
  *
  * <p>
+ * Implementa {@link LanguageObserver} como observador concreto
+ * del patrón Observer, permitiendo que la vista se actualice
+ * automáticamente cuando el {@link LanguageSubject} notifica
+ * un cambio de idioma.
+ * </p>
+ *
+ * <p>
+ * Utiliza {@link LanguageManager} para acceder a los recursos
+ * internacionalizados mediante claves de texto.
+ * </p>
+ *
+ * <p>
  * Gestiona la validación de los datos del formulario y
  * la actualización de la resolución en la base de datos.
  * Al completar la modificación, navega de regreso al
@@ -33,9 +48,10 @@ import java.util.Date;
  * @see ModifyResolution
  * @see ResolutionFacade
  * @see SeeResolutions
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerModifyResolution {
+public class ControllerModifyResolution implements LanguageObserver {
 
     /**
      * Vista del formulario de modificación.
@@ -53,21 +69,33 @@ public class ControllerModifyResolution {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Fachada de acceso a datos de resoluciones.
      */
     private final ResolutionFacade daoResolution;
 
     /**
-     * Crea el controlador y conecta los eventos del formulario.
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del formulario.
      *
      * @param modifyResolution vista del formulario de modificación
      * @param seeResolutions   vista de listado de resoluciones
      * @param subject          sujeto para notificación de cambios
+     * @param languageSubject  sujeto para notificar cambios de idioma
+     * @param lang             acceso al gestor de los idiomas
      */
-    public ControllerModifyResolution(ModifyResolution modifyResolution, SeeResolutions seeResolutions, Subject subject) {
+    public ControllerModifyResolution(ModifyResolution modifyResolution, SeeResolutions seeResolutions, Subject subject,
+                                      LanguageSubject languageSubject, LanguageManager lang) {
         this.modifyResolution = modifyResolution;
         this.seeResolutions = seeResolutions;
         this.subject = subject;
+        this.lang = lang;
+
+        languageSubject.register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 
@@ -80,6 +108,11 @@ public class ControllerModifyResolution {
      */
     private void connectEvents() {
         modifyResolution.setControllerModify(e -> modifyResolution());
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

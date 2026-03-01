@@ -10,6 +10,9 @@ import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.PointFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
@@ -25,6 +28,18 @@ import java.util.List;
  * Controlador del panel de registro de predios.
  *
  * <p>
+ * Implementa {@link LanguageObserver} como observador concreto
+ * del patrón Observer, permitiendo que la vista se actualice
+ * automáticamente cuando el {@link LanguageSubject} notifica
+ * un cambio de idioma.
+ * </p>
+ *
+ * <p>
+ * Utiliza {@link LanguageManager} para acceder a los recursos
+ * internacionalizados mediante claves de texto.
+ * </p>
+ *
+ * <p>
  * Gestiona la validación del formulario, el registro del predio
  * con sus cuatro puntos geográficos y la asociación con
  * beneficiarios seleccionados. Utiliza un {@link CardLayout}
@@ -35,9 +50,10 @@ import java.util.List;
  * @see RegisterProperty
  * @see PropertyFacade
  * @see PointFacade
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerRegisterProperty {
+public class ControllerRegisterProperty implements LanguageObserver {
 
     /**
      * Vista del formulario de registro de predios.
@@ -48,6 +64,11 @@ public class ControllerRegisterProperty {
      * Sujeto del patrón Observer para notificar cambios.
      */
     private final Subject subject;
+
+    /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
 
     /**
      * Fachada de acceso a datos de predios.
@@ -65,14 +86,21 @@ public class ControllerRegisterProperty {
     private final BeneficiaryFacade daoBeneficiary;
 
     /**
-     * Crea el controlador y conecta los eventos del formulario.
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del formulario.
      *
      * @param registerProperty vista del formulario
      * @param subject          sujeto para notificación de cambios
+     * @param languageSubject  sujeto para notificar cambios de idioma
+     * @param lang             acceso al gestor de los idiomas
      */
-    public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject) {
+    public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject, LanguageSubject languageSubject,
+                                      LanguageManager lang) {
         this.registerProperty = registerProperty;
         this.subject = subject;
+        this.lang = lang;
+
+        languageSubject.register(this);
 
         this.daoProperty = new PropertyImplFacade();
         this.daoPoint = new PointImplFacade();
@@ -94,6 +122,11 @@ public class ControllerRegisterProperty {
         registerProperty.setControllerReturnPoint2(e -> actionPrevious());
         registerProperty.setControllerReturnPoint3(e -> actionPrevious());
         registerProperty.setControllerShowBeneficiaries(e -> showBeneficiaries());
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

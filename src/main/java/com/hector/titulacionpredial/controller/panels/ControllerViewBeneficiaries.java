@@ -5,6 +5,9 @@ import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundEx
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
@@ -30,19 +33,24 @@ import java.util.concurrent.ExecutionException;
  *
  * <p>
  * Implementa {@link Observer} para actualizar la tabla de
- * beneficiarios cuando se producen cambios. Ofrece funcionalidades
- * de búsqueda (por cédula, código o nombre), eliminación,
- * modificación, visualización de perfil detallado y exportación
- * a Excel.
+ * beneficiarios cuando se producen cambios y {@link LanguageObserver}
+ * para actualizar la vista cuando se cambia el idioma de la aplicación.
+ * </p>
+ *
+ * <p>
+ * Ofrece funcionalidades de búsqueda (por cédula, código o nombre),
+ * eliminación, modificación, visualización de perfil detallado y
+ * exportación a Excel.
  * </p>
  *
  * @author Ing. Hector Acevedo
  * @see ViewBeneficiaries
  * @see BeneficiaryFacade
  * @see GenerateExcelBeneficiary
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerViewBeneficiaries implements Observer {
+public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
     /**
      * Vista del listado de beneficiarios.
@@ -60,6 +68,11 @@ public class ControllerViewBeneficiaries implements Observer {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Fachada de acceso a datos de beneficiarios.
      */
     private final BeneficiaryFacade daoBeneficiary;
@@ -71,13 +84,18 @@ public class ControllerViewBeneficiaries implements Observer {
      * @param viewBeneficiaries   vista del listado
      * @param registerBeneficiary vista del formulario de registro
      * @param subject             sujeto para registro del observador
+     * @param languageSubject     sujeto para notificar cambios de idioma
+     * @param lang                acceso al gestor de los idiomas
      */
-    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, RegisterBeneficiary registerBeneficiary, Subject subject) {
+    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, RegisterBeneficiary registerBeneficiary,
+                                       Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.viewBeneficiaries = viewBeneficiaries;
         this.registerBeneficiary = registerBeneficiary;
         this.subject = subject;
+        this.lang = lang;
 
         this.subject.register(this);
+        languageSubject.register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
 
@@ -109,6 +127,11 @@ public class ControllerViewBeneficiaries implements Observer {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
             }
         }).start();
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

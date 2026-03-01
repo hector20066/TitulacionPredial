@@ -6,6 +6,9 @@ import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
@@ -33,17 +36,23 @@ import java.util.Locale;
  *
  * <p>
  * Implementa {@link Observer} para actualizar la tabla de
- * resoluciones cuando se producen cambios. Ofrece funcionalidades
- * de búsqueda por número de resolución, filtrado en tiempo real
- * y navegación hacia el formulario de modificación.
+ * resoluciones cuando se producen cambios y {@link LanguageObserver}
+ * para actualizar la vista cuando se cambia el idioma de la aplicación.
+ * </p>
+ *
+ * <p>
+ * Ofrece funcionalidades de búsqueda por número de resolución,
+ * filtrado en tiempo real y navegación hacia el formulario de
+ * modificación.
  * </p>
  *
  * @author Ing. Hector Acevedo
  * @see SeeResolutions
  * @see ResolutionFacade
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerSeeResolutions implements Observer {
+public class ControllerSeeResolutions implements Observer, LanguageObserver {
 
     /**
      * Vista del listado de resoluciones.
@@ -61,6 +70,11 @@ public class ControllerSeeResolutions implements Observer {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Fachada de acceso a datos de resoluciones.
      */
     private final ResolutionFacade daoResolution;
@@ -72,13 +86,18 @@ public class ControllerSeeResolutions implements Observer {
      * @param seeResolutions   vista del listado de resoluciones
      * @param modifyResolution vista del formulario de modificación
      * @param subject          sujeto para registro del observador
+     * @param languageSubject sujeto para notificar cambios de idioma
+     * @param lang            acceso al gestor de los idiomas
      */
-    public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject) {
+    public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject,
+                                    LanguageSubject languageSubject, LanguageManager lang) {
         this.seeResolutions = seeResolutions;
         this.modifyResolution = modifyResolution;
         this.subject = subject;
+        this.lang = lang;
 
         this.subject.register(this);
+        languageSubject.register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 
@@ -107,6 +126,11 @@ public class ControllerSeeResolutions implements Observer {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeResolutions));
             }
         }).start();
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

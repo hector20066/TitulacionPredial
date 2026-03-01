@@ -8,6 +8,9 @@ import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
@@ -35,12 +38,25 @@ import java.util.concurrent.Callable;
  * {@link GenerateResolutionUtils}.
  * </p>
  *
+ * <p>
+ * Implementa {@link LanguageObserver} como observador concreto
+ * del patrón Observer, permitiendo que la vista se actualice
+ * automáticamente cuando el {@link LanguageSubject} notifica
+ * un cambio de idioma.
+ * </p>
+ *
+ * <p>
+ * Utiliza {@link LanguageManager} para acceder a los recursos
+ * internacionalizados mediante claves de texto.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @see GenerateResolution
  * @see GenerateResolutionUtils
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerGenerateResolution {
+public class ControllerGenerateResolution implements LanguageObserver {
 
     /**
      * Vista del formulario de generación de resoluciones.
@@ -53,6 +69,11 @@ public class ControllerGenerateResolution {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Fachada de acceso a datos de resoluciones.
      */
     private final ResolutionFacade daoResolution;
@@ -63,14 +84,21 @@ public class ControllerGenerateResolution {
     private final BeneficiaryFacade daoBeneficiary;
 
     /**
-     * Crea el controlador y conecta los eventos del formulario.
+     * Crea el controlador, lo registra como observador
+     * y conecta los eventos del formulario.
      *
      * @param generateResolution vista del formulario
      * @param subject            sujeto para notificación de cambios
+     * @param languageSubject    sujeto para notificar cambios de idioma
+     * @param lang               acceso al gestor de idiomas.
      */
-    public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject) {
+    public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject, LanguageSubject languageSubject,
+                                        LanguageManager lang) {
         this.generateResolution = generateResolution;
         this.subject = subject;
+        this.lang = lang;
+
+        languageSubject.register(this);
 
         this.daoResolution = new ResolutionImplFacade();
         this.daoBeneficiary = new BeneficiaryImplFacade();
@@ -84,6 +112,11 @@ public class ControllerGenerateResolution {
      */
     private void connectEvents() {
         generateResolution.setControllerGenerate(e -> generateResolution());
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

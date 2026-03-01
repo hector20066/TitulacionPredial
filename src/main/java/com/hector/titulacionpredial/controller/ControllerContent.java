@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
@@ -16,12 +19,20 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * cuando se requiere actualizar los datos.
  * </p>
  *
+ * <p>
+ * Implementa {@link LanguageObserver} como observador concreto
+ * del patrón Observer, permitiendo que la vista se actualice
+ * automáticamente cuando el {@link LanguageSubject} notifica
+ * un cambio de idioma.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @see ControllerContentBuilder
  * @see NavigatorUtils
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerContent {
+public class ControllerContent implements LanguageObserver {
 
     /**
      * Vista principal del contenido.
@@ -69,6 +80,11 @@ public class ControllerContent {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Crea el controlador a partir de un builder que contiene
      * todas las vistas y dependencias necesarias.
      *
@@ -84,6 +100,9 @@ public class ControllerContent {
         this.seeResolutions = builder.getSeeResolutions();
         this.about = builder.getAbout();
         this.subject = builder.getSubject();
+        this.lang = builder.getLang();
+
+        builder.getLanguageSubject().register(this);
 
         connectEvents();
     }
@@ -134,6 +153,11 @@ public class ControllerContent {
             }
             case 3 -> NavigatorUtils.showForms(about);
         }
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
 }

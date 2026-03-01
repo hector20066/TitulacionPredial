@@ -5,6 +5,9 @@ import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundExcep
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -27,19 +30,24 @@ import java.util.List;
  * Controlador del panel de visualización de predios.
  *
  * <p>
- * Implementa {@link Observer} para actualizar la tabla de
- * predios cuando se producen cambios. Ofrece funcionalidades
- * de búsqueda, eliminación, exportación a Excel y navegación
- * hacia el formulario de generación de resoluciones.
+ * Implementa {@link Observer} para actualizar la tabla de predios
+ * cuando se producen cambios y {@link LanguageObserver} para actualizar
+ * la vista cuando se cambia el idioma de la aplicación.
+ * </p>
+ *
+ * <p>
+ * Ofrece funcionalidades de búsqueda, eliminación, exportación
+ * a Excel y navegación hacia el formulario de generación de resoluciones.
  * </p>
  *
  * @author Ing. Hector Acevedo
  * @see SeeProperties
  * @see PropertyFacade
  * @see GenerateExcel
+ * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerSeeProperties implements Observer {
+public class ControllerSeeProperties implements Observer, LanguageObserver {
 
     /**
      * Vista del listado de predios.
@@ -57,6 +65,11 @@ public class ControllerSeeProperties implements Observer {
     private final Subject subject;
 
     /**
+     * Acceso al gestor de los idiomas.
+     */
+    private final LanguageManager lang;
+
+    /**
      * Fachada de acceso a datos de predios.
      */
     private final PropertyFacade daoProperty;
@@ -68,13 +81,18 @@ public class ControllerSeeProperties implements Observer {
      * @param seeProperties      vista del listado de predios
      * @param generateResolution vista de generación de resoluciones
      * @param subject            sujeto para registro del observador
+     * @param languageSubject    sujeto para notificar cambios de idioma
+     * @param lang               acceso al gestor de los idiomas
      */
-    public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution, Subject subject) {
+    public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution, Subject subject,
+                                   LanguageSubject languageSubject, LanguageManager lang) {
         this.seeProperties = seeProperties;
         this.generateResolution = generateResolution;
         this.subject = subject;
+        this.lang = lang;
 
         this.subject.register(this);
+        languageSubject.register(this);
 
         this.daoProperty = new PropertyImplFacade();
 
@@ -105,6 +123,11 @@ public class ControllerSeeProperties implements Observer {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeProperties));
             }
         }).start();
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     /**

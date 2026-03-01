@@ -2,6 +2,8 @@ package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
 import com.hector.titulacionpredial.controller.panels.*;
+import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
@@ -38,6 +40,16 @@ public class Coordinator {
      * Sujeto concreto del patrón Observer (Singleton).
      */
     private final ConcreteSubject subject = ConcreteSubject.getInstance();
+
+    /**
+     * Sujeto concreto del patron Observer para el sistema i18n
+     */
+    private final ConcreteLanguageSubject languageSubject = ConcreteLanguageSubject.getInstance();
+
+    /**
+     * Gestor de i18n de la aplicacion
+     */
+    private final LanguageManager lang = LanguageManager.getInstance();
 
     // Views
     private Content content;
@@ -116,16 +128,18 @@ public class Coordinator {
                 .withViewSeeResolutions(seeResolutions)
                 .withSubject(subject)
                 .withViewAbout(about)
+                .withLanguageManager(lang)
+                .withLanguageSubject(languageSubject)
                 .build();
 
-        new ControllerDashboard(dashboard, subject);
-        new ControllerGenerateResolution(generateResolution, subject);
-        new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject);
-        new ControllerRegisterProperty(registerProperty, subject);
-        new ControllerSeeProperties(seeProperties, generateResolution, subject);
-        new ControllerSeeResolutions(seeResolutions, modifyResolution, subject);
-        new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject);
-        new ControllerModifyResolution(modifyResolution, seeResolutions, subject);
+        new ControllerDashboard(dashboard, subject, languageSubject, lang);
+        new ControllerGenerateResolution(generateResolution, subject, languageSubject, lang);
+        new ControllerRegisterBeneficiary(registerBeneficiary, viewBeneficiaries, subject, languageSubject, lang);
+        new ControllerRegisterProperty(registerProperty, subject, languageSubject, lang);
+        new ControllerSeeProperties(seeProperties, generateResolution, subject, languageSubject, lang);
+        new ControllerSeeResolutions(seeResolutions, modifyResolution, subject, languageSubject, lang);
+        new ControllerViewBeneficiaries(viewBeneficiaries, registerBeneficiary, subject, languageSubject, lang);
+        new ControllerModifyResolution(modifyResolution, seeResolutions, subject, languageSubject, lang);
     }
 
 }

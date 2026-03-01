@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
  * @see BeneficiaryFacade
  * @since 1.0
  */
-public class ControllerSearchDialog {
+public class ControllerSelectDialog {
 
     /**
      * Diálogo de selección de beneficiarios.
@@ -42,7 +42,7 @@ public class ControllerSearchDialog {
      *
      * @param selectBeneficiary diálogo de selección
      */
-    public ControllerSearchDialog(SelectBeneficiary selectBeneficiary) {
+    public ControllerSelectDialog(SelectBeneficiary selectBeneficiary) {
         this.selectBeneficiary = selectBeneficiary;
         this.daoBeneficiary = new BeneficiaryImplFacade();
     }
