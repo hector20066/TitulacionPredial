@@ -142,7 +142,7 @@ public class About extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOAboutText texts) {
+    public void updateLanguage(DTOAboutText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_subtitle1.setText(texts.getAppInfo());
         jlb_version.setText(texts.getVersion());

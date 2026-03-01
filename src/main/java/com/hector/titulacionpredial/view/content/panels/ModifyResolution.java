@@ -232,7 +232,7 @@ public class ModifyResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOModifyResolutionText texts) {
+    public void updateLanguage(DTOModifyResolutionText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_code.setText(texts.getCode());
         jlb_numResolution.setText(texts.getNumResolution());

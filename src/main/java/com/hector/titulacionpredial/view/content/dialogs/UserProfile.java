@@ -547,7 +547,7 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOUserProfileText texts) {
+    public void updateLanguage(DTOUserProfileText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_codeText.setText(texts.getCode());
         jlb_idText.setText(texts.getId());

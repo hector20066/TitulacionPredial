@@ -218,7 +218,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOViewBeneficiariesText texts) {
+    public void updateLanguage(DTOViewBeneficiariesText texts) {
         jlb_title.setText(texts.getTitle());
         code = texts.getCode();
         name = texts.getName();

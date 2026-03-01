@@ -249,7 +249,7 @@ public class SpouseData extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOSpouseDataText texts) {
+    public void updateLanguage(DTOSpouseDataText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_name.setText(texts.getSpouseName());
         jlb_lastName.setText(texts.getSpouseLastName());

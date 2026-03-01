@@ -679,7 +679,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTORegisterPropertyText texts) {
+    public void updateLanguage(DTORegisterPropertyText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_propertyInfo.setText(texts.getPropertyInfo());
         jlb_cadastralId.setText(texts.getCadastralId());

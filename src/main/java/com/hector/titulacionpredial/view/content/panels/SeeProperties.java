@@ -249,7 +249,7 @@ public class SeeProperties extends JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOSeePropertiesText texts) {
+    public void updateLanguage(DTOSeePropertiesText texts) {
         jlb_title.setText(texts.getProperties());
         code = texts.getCode();
         name = texts.getName();

@@ -510,7 +510,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTORegisterBeneficiaryText texts) {
+    public void updateLanguage(DTORegisterBeneficiaryText texts) {
         jlb_title.setText(texts.getAddTitle());
         jlb_beneficiaryInfo.setText(texts.getBeneficiaryInfo());
         jlb_name.setText(texts.getName());

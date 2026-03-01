@@ -779,7 +779,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOGenerateResolutionText texts) {
+    public void updateLanguage(DTOGenerateResolutionText texts) {
         jlb_title.setText(texts.getGenerateLabel());
         jlb_resume.setText(texts.getResumeTitle());
         jlb_beneficiaryData.setText(texts.getBeneficiaryData());

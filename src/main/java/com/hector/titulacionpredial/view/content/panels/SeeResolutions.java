@@ -179,7 +179,7 @@ public class SeeResolutions extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateLanguage(DTOSeeResolutionsText texts) {
+    public void updateLanguage(DTOSeeResolutionsText texts) {
         jlb_title.setText(texts.getTitle());
         code = texts.getCode();
         number = texts.getNumber();
