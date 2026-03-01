@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
@@ -13,7 +14,6 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
@@ -89,20 +89,15 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del formulario.
      *
-     * @param registerBeneficiary vista del formulario
-     * @param viewBeneficiaries   vista de listado
-     * @param subject             sujeto para registro del observador
-     * @param languageSubject     sujeto para notificar cambios de idioma
-     * @param lang                acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerRegisterBeneficiary(RegisterBeneficiary registerBeneficiary, ViewBeneficiaries viewBeneficiaries,
-                                         Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
-        this.registerBeneficiary = registerBeneficiary;
-        this.viewBeneficiaries = viewBeneficiaries;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerRegisterBeneficiary(ControllerRegisterBeneficiaryBuilder builder) {
+        this.registerBeneficiary = builder.getRegisterBeneficiary();
+        this.viewBeneficiaries = builder.getViewBeneficiaries();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.subject.register(this);
 

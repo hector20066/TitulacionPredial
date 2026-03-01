@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerSeePropertiesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -7,7 +8,6 @@ import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -79,21 +79,16 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
-     * @param seeProperties      vista del listado de predios
-     * @param generateResolution vista de generación de resoluciones
-     * @param subject            sujeto para registro del observador
-     * @param languageSubject    sujeto para notificar cambios de idioma
-     * @param lang               acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerSeeProperties(SeeProperties seeProperties, GenerateResolution generateResolution, Subject subject,
-                                   LanguageSubject languageSubject, LanguageManager lang) {
-        this.seeProperties = seeProperties;
-        this.generateResolution = generateResolution;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerSeeProperties(ControllerSeePropertiesBuilder builder) {
+        this.seeProperties = builder.getSeeProperties();
+        this.generateResolution = builder.getGenerateResolution();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
         this.subject.register(this);
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoProperty = new PropertyImplFacade();
 

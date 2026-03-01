@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerModifyResolutionBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -83,20 +84,15 @@ public class ControllerModifyResolution implements LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del formulario.
      *
-     * @param modifyResolution vista del formulario de modificación
-     * @param seeResolutions   vista de listado de resoluciones
-     * @param subject          sujeto para notificación de cambios
-     * @param languageSubject  sujeto para notificar cambios de idioma
-     * @param lang             acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerModifyResolution(ModifyResolution modifyResolution, SeeResolutions seeResolutions, Subject subject,
-                                      LanguageSubject languageSubject, LanguageManager lang) {
-        this.modifyResolution = modifyResolution;
-        this.seeResolutions = seeResolutions;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerModifyResolution(ControllerModifyResolutionBuilder builder) {
+        this.modifyResolution = builder.getModifyResolution();
+        this.seeResolutions = builder.getSeeResolutions();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 

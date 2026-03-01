@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerGenerateResolutionBuilder;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -88,18 +89,14 @@ public class ControllerGenerateResolution implements LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del formulario.
      *
-     * @param generateResolution vista del formulario
-     * @param subject            sujeto para notificación de cambios
-     * @param languageSubject    sujeto para notificar cambios de idioma
-     * @param lang               acceso al gestor de idiomas.
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerGenerateResolution(GenerateResolution generateResolution, Subject subject, LanguageSubject languageSubject,
-                                        LanguageManager lang) {
-        this.generateResolution = generateResolution;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerGenerateResolution(ControllerGenerateResolutionBuilder builder) {
+        this.generateResolution = builder.getGenerateResolution();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoResolution = new ResolutionImplFacade();
         this.daoBeneficiary = new BeneficiaryImplFacade();

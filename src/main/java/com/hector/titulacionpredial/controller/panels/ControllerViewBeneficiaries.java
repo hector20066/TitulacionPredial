@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -7,7 +8,6 @@ import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
@@ -82,21 +82,16 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
-     * @param viewBeneficiaries   vista del listado
-     * @param registerBeneficiary vista del formulario de registro
-     * @param subject             sujeto para registro del observador
-     * @param languageSubject     sujeto para notificar cambios de idioma
-     * @param lang                acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerViewBeneficiaries(ViewBeneficiaries viewBeneficiaries, RegisterBeneficiary registerBeneficiary,
-                                       Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
-        this.viewBeneficiaries = viewBeneficiaries;
-        this.registerBeneficiary = registerBeneficiary;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerViewBeneficiaries(ControllerViewBeneficiariesBuilder builder) {
+        this.viewBeneficiaries = builder.getViewBeneficiaries();
+        this.registerBeneficiary = builder.getRegisterBeneficiary();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
         this.subject.register(this);
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
 

@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerDashboardBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
@@ -10,7 +11,6 @@ import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.i18n.*;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
 import com.hector.titulacionpredial.observer.Observer;
-import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
@@ -68,21 +68,18 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     /**
      * Crea el controlador y lo registra como observador.
      *
-     * @param dashboard       vista del dashboard
-     * @param subject         sujeto para registro del observador
-     * @param languageSubject sujeto para notificar cambios de idioma
-     * @param lang            acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerDashboard(Dashboard dashboard, Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
-        this.dashboard = dashboard;
-        this.lang = lang;
+    public ControllerDashboard(ControllerDashboardBuilder builder) {
+        this.dashboard = builder.getDashboard();
+        this.lang = builder.getLang();
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.daoResolution = new ResolutionImplFacade();
 
-        subject.register(this);
-        languageSubject.register(this);
+        builder.getSubject().register(this);
+        builder.getLanguageSubject().register(this);
     }
 
     @Override

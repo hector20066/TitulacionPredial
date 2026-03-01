@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -90,18 +91,14 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del formulario.
      *
-     * @param registerProperty vista del formulario
-     * @param subject          sujeto para notificación de cambios
-     * @param languageSubject  sujeto para notificar cambios de idioma
-     * @param lang             acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerRegisterProperty(RegisterProperty registerProperty, Subject subject, LanguageSubject languageSubject,
-                                      LanguageManager lang) {
-        this.registerProperty = registerProperty;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerRegisterProperty(ControllerRegisterPropertyBuilder builder) {
+        this.registerProperty = builder.getRegisterProperty();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoProperty = new PropertyImplFacade();
         this.daoPoint = new PointImplFacade();

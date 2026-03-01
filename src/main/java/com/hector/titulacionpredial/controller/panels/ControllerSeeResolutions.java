@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerSeeResolutionsBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -8,7 +9,6 @@ import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
@@ -84,21 +84,16 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
-     * @param seeResolutions   vista del listado de resoluciones
-     * @param modifyResolution vista del formulario de modificación
-     * @param subject          sujeto para registro del observador
-     * @param languageSubject sujeto para notificar cambios de idioma
-     * @param lang            acceso al gestor de los idiomas
+     * @param builder constructor con las vistas configuradas
      */
-    public ControllerSeeResolutions(SeeResolutions seeResolutions, ModifyResolution modifyResolution, Subject subject,
-                                    LanguageSubject languageSubject, LanguageManager lang) {
-        this.seeResolutions = seeResolutions;
-        this.modifyResolution = modifyResolution;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerSeeResolutions(ControllerSeeResolutionsBuilder builder) {
+        this.seeResolutions = builder.getSeeResolutions();
+        this.modifyResolution = builder.getModifyResolution();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
         this.subject.register(this);
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoResolution = new ResolutionImplFacade();
 
