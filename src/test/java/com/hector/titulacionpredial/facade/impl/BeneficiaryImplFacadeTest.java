@@ -58,7 +58,7 @@ class BeneficiaryImplFacadeTest {
         doNothing().when(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));
 
         facade.add(123456L, "Juan Pérez", Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Calle 1", "REF-001", MaritalStatus.SOLTERO, "Afectación",
+                "Calle 1", "REF-001", MaritalStatus.SINGLE, "Afectación",
                 3001234567L, "Cruce", "Publicación", "Barrio Centro", "Barranquilla");
 
         verify(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));
@@ -71,7 +71,7 @@ class BeneficiaryImplFacadeTest {
 
         assertThrows(DAOException.class, () ->
                 facade.add(123456L, "Juan", Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                        "Dir", "REF", MaritalStatus.SOLTERO, "Afect",
+                        "Dir", "REF", MaritalStatus.SINGLE, "Afect",
                         300L, "Cruce", "Pub", "Barrio", "Loc"));
     }
 
@@ -177,7 +177,7 @@ class BeneficiaryImplFacadeTest {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenReturn(true);
 
         boolean result = facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Calle 2", MaritalStatus.CASADO, "Afectación 2",
+                "Calle 2", MaritalStatus.MARRIED, "Afectación 2",
                 3009876543L, "Cruce 2", "Pub 2", "Barrio Norte", 1);
 
         assertTrue(result);
@@ -190,7 +190,7 @@ class BeneficiaryImplFacadeTest {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenReturn(false);
 
         boolean result = facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Dir", MaritalStatus.SOLTERO, "Afect",
+                "Dir", MaritalStatus.SINGLE, "Afect",
                 300L, "Cruce", "Pub", "Barrio", 1);
 
         assertFalse(result);
@@ -305,7 +305,7 @@ class BeneficiaryImplFacadeTest {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenThrow(new DAOException("Error"));
         assertThrows(DAOException.class, () ->
                 facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                        "Dir", MaritalStatus.SOLTERO, "Afect",
+                        "Dir", MaritalStatus.SINGLE, "Afect",
                         300L, "Cruce", "Pub", "Barrio", 1));
     }
 }

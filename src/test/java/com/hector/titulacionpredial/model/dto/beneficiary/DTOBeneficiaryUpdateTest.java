@@ -26,7 +26,7 @@ class DTOBeneficiaryUpdateTest {
                 .department(Department.ANTIOQUIA)
                 .municipality(Municipalities.MEDELLIN)
                 .address("Calle 80")
-                .maritalStatus(MaritalStatus.SOLTERO)
+                .maritalStatus(MaritalStatus.SINGLE)
                 .affectation("Ninguna")
                 .phone(3001234567L)
                 .crossing("Cruce B")
@@ -38,7 +38,7 @@ class DTOBeneficiaryUpdateTest {
         assertEquals(Department.ANTIOQUIA, dto.getDepartment());
         assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
         assertEquals("Calle 80", dto.getAddress());
-        assertEquals(MaritalStatus.SOLTERO, dto.getMaritalStatus());
+        assertEquals(MaritalStatus.SINGLE, dto.getMaritalStatus());
         assertEquals("Ninguna", dto.getAffectation());
         assertEquals(3001234567L, dto.getPhone());
         assertEquals("Cruce B", dto.getCrossing());

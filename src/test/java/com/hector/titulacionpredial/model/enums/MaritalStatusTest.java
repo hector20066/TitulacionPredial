@@ -19,31 +19,31 @@ class MaritalStatusTest {
     @Test
     @DisplayName("SOLTERO debe tener el valor 'Soltero'")
     void solteroShouldHaveCorrectValue() {
-        assertEquals("Soltero", MaritalStatus.SOLTERO.getValue());
+        assertEquals("Soltero", MaritalStatus.SINGLE.getValue());
     }
 
     @Test
     @DisplayName("CASADO debe tener el valor 'Casado'")
     void casadoShouldHaveCorrectValue() {
-        assertEquals("Casado", MaritalStatus.CASADO.getValue());
+        assertEquals("Casado", MaritalStatus.MARRIED.getValue());
     }
 
     @Test
     @DisplayName("UNION_LIBRE debe tener el valor 'Union Libre'")
     void unionLibreShouldHaveCorrectValue() {
-        assertEquals("Union Libre", MaritalStatus.UNION_LIBRE.getValue());
+        assertEquals("Union Libre", MaritalStatus.FREE_UNION.getValue());
     }
 
     @Test
     @DisplayName("DIVORCIADO debe tener el valor 'Divorciado'")
     void divorciadoShouldHaveCorrectValue() {
-        assertEquals("Divorciado", MaritalStatus.DIVORCIADO.getValue());
+        assertEquals("Divorciado", MaritalStatus.DIVORCED.getValue());
     }
 
     @Test
     @DisplayName("VIUDO debe tener el valor 'Viudo'")
     void viudoShouldHaveCorrectValue() {
-        assertEquals("Viudo", MaritalStatus.VIUDO.getValue());
+        assertEquals("Viudo", MaritalStatus.WIDOWER.getValue());
     }
 
     @ParameterizedTest
@@ -57,11 +57,11 @@ class MaritalStatusTest {
     @Test
     @DisplayName("valueOf debe retornar el enum correcto")
     void valueOfShouldReturnCorrectEnum() {
-        assertEquals(MaritalStatus.SOLTERO, MaritalStatus.valueOf("SOLTERO"));
-        assertEquals(MaritalStatus.CASADO, MaritalStatus.valueOf("CASADO"));
-        assertEquals(MaritalStatus.UNION_LIBRE, MaritalStatus.valueOf("UNION_LIBRE"));
-        assertEquals(MaritalStatus.DIVORCIADO, MaritalStatus.valueOf("DIVORCIADO"));
-        assertEquals(MaritalStatus.VIUDO, MaritalStatus.valueOf("VIUDO"));
+        assertEquals(MaritalStatus.SINGLE, MaritalStatus.valueOf("SOLTERO"));
+        assertEquals(MaritalStatus.MARRIED, MaritalStatus.valueOf("CASADO"));
+        assertEquals(MaritalStatus.FREE_UNION, MaritalStatus.valueOf("UNION_LIBRE"));
+        assertEquals(MaritalStatus.DIVORCED, MaritalStatus.valueOf("DIVORCIADO"));
+        assertEquals(MaritalStatus.WIDOWER, MaritalStatus.valueOf("VIUDO"));
     }
 
     @Test

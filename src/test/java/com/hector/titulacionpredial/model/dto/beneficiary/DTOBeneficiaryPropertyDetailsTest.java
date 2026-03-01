@@ -69,11 +69,11 @@ class DTOBeneficiaryPropertyDetailsTest {
     void shouldInheritBeneficiaryFields() {
         DTOBeneficiaryPropertyDetails dto = new DTOBeneficiaryPropertyDetails();
         dto.setDepartment(Department.ATLANTICO);
-        dto.setMaritalStatus(MaritalStatus.CASADO);
+        dto.setMaritalStatus(MaritalStatus.MARRIED);
         dto.setNeighborhood("Centro");
 
         assertEquals(Department.ATLANTICO, dto.getDepartment());
-        assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+        assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
         assertEquals("Centro", dto.getNeighborhood());
     }
 }

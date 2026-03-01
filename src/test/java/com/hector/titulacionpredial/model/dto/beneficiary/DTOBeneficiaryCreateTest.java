@@ -104,7 +104,7 @@ class DTOBeneficiaryCreateTest {
                     .municipality(Municipalities.BARRANQUILLA)
                     .address("Calle 50 #20-30")
                     .phone(3001234567L)
-                    .maritalStatus(MaritalStatus.CASADO)
+                    .maritalStatus(MaritalStatus.MARRIED)
                     .neighborhood("Centro")
                     .crossing("Cruce Norte")
                     .publication("Pub-001")
@@ -117,7 +117,7 @@ class DTOBeneficiaryCreateTest {
             assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
             assertEquals("Calle 50 #20-30", dto.getAddress());
             assertEquals(3001234567L, dto.getPhone());
-            assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
             assertEquals("Centro", dto.getNeighborhood());
             assertEquals("Cruce Norte", dto.getCrossing());
             assertEquals("Pub-001", dto.getPublication());
@@ -163,7 +163,7 @@ class DTOBeneficiaryCreateTest {
             DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate();
             dto.setDepartment(Department.BOLIVAR);
             dto.setMunicipality(Municipalities.CARTAGENA);
-            dto.setMaritalStatus(MaritalStatus.VIUDO);
+            dto.setMaritalStatus(MaritalStatus.WIDOWER);
             dto.setNeighborhood("Manga");
             dto.setCrossing("Cruce Sur");
             dto.setPublication("Pub-X");
@@ -171,7 +171,7 @@ class DTOBeneficiaryCreateTest {
 
             assertEquals(Department.BOLIVAR, dto.getDepartment());
             assertEquals(Municipalities.CARTAGENA, dto.getMunicipality());
-            assertEquals(MaritalStatus.VIUDO, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.WIDOWER, dto.getMaritalStatus());
             assertEquals("Manga", dto.getNeighborhood());
             assertEquals("Cruce Sur", dto.getCrossing());
             assertEquals("Pub-X", dto.getPublication());

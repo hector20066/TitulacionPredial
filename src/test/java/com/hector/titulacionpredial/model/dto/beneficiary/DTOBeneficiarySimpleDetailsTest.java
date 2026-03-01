@@ -47,7 +47,7 @@ class DTOBeneficiarySimpleDetailsTest {
                 .cadastralReference("CAD-001")
                 .department(Department.ATLANTICO)
                 .municipality(Municipalities.BARRANQUILLA)
-                .maritalStatus(MaritalStatus.CASADO)
+                .maritalStatus(MaritalStatus.MARRIED)
                 .build();
 
         assertEquals(1, dto.getCode());
@@ -56,7 +56,7 @@ class DTOBeneficiarySimpleDetailsTest {
         assertEquals("CAD-001", dto.getCadastralReference());
         assertEquals(Department.ATLANTICO, dto.getDepartment());
         assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
-        assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+        assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
     }
 
     @Test
@@ -68,7 +68,7 @@ class DTOBeneficiarySimpleDetailsTest {
                 .fullName("Inherited Test")
                 .department(Department.BOLIVAR)
                 .municipality(Municipalities.CARTAGENA)
-                .maritalStatus(MaritalStatus.VIUDO)
+                .maritalStatus(MaritalStatus.WIDOWER)
                 .address("Calle Heredada 10")
                 .phone(3109876543L)
                 .neighborhood("Manga")
@@ -82,7 +82,7 @@ class DTOBeneficiarySimpleDetailsTest {
         assertEquals("Inherited Test", dto.getFullName());
         assertEquals(Department.BOLIVAR, dto.getDepartment());
         assertEquals(Municipalities.CARTAGENA, dto.getMunicipality());
-        assertEquals(MaritalStatus.VIUDO, dto.getMaritalStatus());
+        assertEquals(MaritalStatus.WIDOWER, dto.getMaritalStatus());
         assertEquals("Calle Heredada 10", dto.getAddress());
         assertEquals(3109876543L, dto.getPhone());
         assertEquals("Manga", dto.getNeighborhood());

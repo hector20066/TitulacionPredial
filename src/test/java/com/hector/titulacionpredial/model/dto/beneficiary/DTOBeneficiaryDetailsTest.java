@@ -151,7 +151,7 @@ class DTOBeneficiaryDetailsTest {
                     .municipality(Municipalities.BARRANQUILLA)
                     .address("Calle 72")
                     .phone(3001111111L)
-                    .maritalStatus(MaritalStatus.CASADO)
+                    .maritalStatus(MaritalStatus.MARRIED)
                     .neighborhood("El Prado")
                     .crossing("Cruce A")
                     .publication("Pub-001")
@@ -162,7 +162,7 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
             assertEquals("Calle 72", dto.getAddress());
             assertEquals(3001111111L, dto.getPhone());
-            assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
             assertEquals("El Prado", dto.getNeighborhood());
             assertEquals("Cruce A", dto.getCrossing());
             assertEquals("Pub-001", dto.getPublication());
@@ -189,7 +189,7 @@ class DTOBeneficiaryDetailsTest {
                     // De DTOBeneficiary
                     .department(Department.ANTIOQUIA)
                     .municipality(Municipalities.MEDELLIN)
-                    .maritalStatus(MaritalStatus.UNION_LIBRE)
+                    .maritalStatus(MaritalStatus.FREE_UNION)
                     .neighborhood("Barrio Test")
                     .crossing("Cruce Test")
                     .publication("Pub Test")
@@ -213,7 +213,7 @@ class DTOBeneficiaryDetailsTest {
             assertEquals("CAD-123", dto.getCadastralReference());
             assertEquals(Department.ANTIOQUIA, dto.getDepartment());
             assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
-            assertEquals(MaritalStatus.UNION_LIBRE, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.FREE_UNION, dto.getMaritalStatus());
             assertEquals("Barrio Test", dto.getNeighborhood());
             assertEquals("Cruce Test", dto.getCrossing());
             assertEquals("Pub Test", dto.getPublication());

@@ -45,7 +45,7 @@ class BeneficiaryTest {
                     .department(Department.ATLANTICO)
                     .municipality(Municipalities.BARRANQUILLA)
                     .cadastralReference("REF-001")
-                    .maritalStatus(MaritalStatus.CASADO)
+                    .maritalStatus(MaritalStatus.MARRIED)
                     .affectation("Ninguna")
                     .crossing("Cruce A")
                     .publication("Pub-001")
@@ -61,7 +61,7 @@ class BeneficiaryTest {
             assertEquals(Department.ATLANTICO, beneficiary.getDepartment());
             assertEquals(Municipalities.BARRANQUILLA, beneficiary.getMunicipality());
             assertEquals("REF-001", beneficiary.getCadastralReference());
-            assertEquals(MaritalStatus.CASADO, beneficiary.getMaritalStatus());
+            assertEquals(MaritalStatus.MARRIED, beneficiary.getMaritalStatus());
             assertEquals("Ninguna", beneficiary.getAffectation());
             assertEquals("Cruce A", beneficiary.getCrossing());
             assertEquals("Pub-001", beneficiary.getPublication());
@@ -127,8 +127,8 @@ class BeneficiaryTest {
         @DisplayName("setMaritalStatus y getMaritalStatus deben funcionar correctamente")
         void setAndGetMaritalStatusShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setMaritalStatus(MaritalStatus.SOLTERO);
-            assertEquals(MaritalStatus.SOLTERO, b.getMaritalStatus());
+            b.setMaritalStatus(MaritalStatus.SINGLE);
+            assertEquals(MaritalStatus.SINGLE, b.getMaritalStatus());
         }
 
         @Test
@@ -185,7 +185,7 @@ class BeneficiaryTest {
                     .code(10)
                     .department(Department.ATLANTICO)
                     .municipality(Municipalities.SOLEDAD)
-                    .maritalStatus(MaritalStatus.UNION_LIBRE)
+                    .maritalStatus(MaritalStatus.FREE_UNION)
                     .build();
 
             String result = beneficiary.toString();
