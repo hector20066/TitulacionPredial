@@ -80,8 +80,8 @@ class DTOBeneficiaryTest {
         @DisplayName("setMaritalStatus y getMaritalStatus deben funcionar")
         void setAndGetMaritalStatusShouldWork() {
             DTOBeneficiary dto = new DTOBeneficiary();
-            dto.setMaritalStatus(MaritalStatus.CASADO);
-            assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+            dto.setMaritalStatus(MaritalStatus.MARRIED);
+            assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
         }
 
         @Test
@@ -108,7 +108,7 @@ class DTOBeneficiaryTest {
                     .phone(3001234567L)
                     .crossing("Cruce Norte")
                     .publication("Pub-2025")
-                    .maritalStatus(MaritalStatus.CASADO)
+                    .maritalStatus(MaritalStatus.MARRIED)
                     .affectation("Ninguna")
                     .build();
 
@@ -119,7 +119,7 @@ class DTOBeneficiaryTest {
             assertEquals(3001234567L, dto.getPhone());
             assertEquals("Cruce Norte", dto.getCrossing());
             assertEquals("Pub-2025", dto.getPublication());
-            assertEquals(MaritalStatus.CASADO, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
             assertEquals("Ninguna", dto.getAffectation());
         }
 
@@ -128,11 +128,11 @@ class DTOBeneficiaryTest {
         void builderWithPartialFieldsShouldWork() {
             DTOBeneficiary dto = new DTOBeneficiary.Builder<>()
                     .department(Department.BOLIVAR)
-                    .maritalStatus(MaritalStatus.SOLTERO)
+                    .maritalStatus(MaritalStatus.SINGLE)
                     .build();
 
             assertEquals(Department.BOLIVAR, dto.getDepartment());
-            assertEquals(MaritalStatus.SOLTERO, dto.getMaritalStatus());
+            assertEquals(MaritalStatus.SINGLE, dto.getMaritalStatus());
             assertNull(dto.getMunicipality());
             assertNull(dto.getNeighborhood());
             assertNull(dto.getAddress());
