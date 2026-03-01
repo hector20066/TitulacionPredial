@@ -70,6 +70,11 @@ public class ControllerContent implements LanguageObserver {
     private final SeeResolutions seeResolutions;
 
     /**
+     * Panel de visualización de ajustes.
+     */
+    private final Settings settings;
+
+    /**
      * Panel de información «Acerca de».
      */
     private final About about;
@@ -98,6 +103,7 @@ public class ControllerContent implements LanguageObserver {
         this.viewBeneficiaries = builder.getViewBeneficiaries();
         this.seeProperties = builder.getSeeProperties();
         this.seeResolutions = builder.getSeeResolutions();
+        this.settings = builder.getSettings();
         this.about = builder.getAbout();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
@@ -151,7 +157,8 @@ public class ControllerContent implements LanguageObserver {
                     case 3 -> NavigatorUtils.showForms(seeResolutions);
                 }
             }
-            case 3 -> NavigatorUtils.showForms(about);
+            case 3 -> NavigatorUtils.showForms(settings);
+            case 4 -> NavigatorUtils.showForms(about);
         }
     }
 

@@ -188,7 +188,6 @@ public class ControllerDashboard implements Observer, LanguageObserver {
                 .propertiesDesc(lang.app("dashboard.properties.desc"))
                 .resolutions(lang.app("dashboard.resolutions"))
                 .resolutionsDesc(lang.app("dashboard.resolutions.desc"))
-                .nameCompany(lang.app("dashboard.name.company"))
                 .withProperty(lang.app("dashboard.with.property"))
                 .withoutProperty(lang.app("dashboard.without.property"))
                 .total(lang.app("dashboard.total"))

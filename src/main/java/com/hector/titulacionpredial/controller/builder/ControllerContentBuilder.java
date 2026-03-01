@@ -31,6 +31,7 @@ public class ControllerContentBuilder {
     private ViewBeneficiaries viewBeneficiaries;
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
+    private Settings settings;
     private Subject subject;
     private LanguageSubject languageSubject;
     private LanguageManager lang;
@@ -68,6 +69,11 @@ public class ControllerContentBuilder {
 
     public ControllerContentBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
+        return this;
+    }
+
+    public ControllerContentBuilder withViewSettings(Settings settings) {
+        this.settings = settings;
         return this;
     }
 
@@ -126,6 +132,10 @@ public class ControllerContentBuilder {
 
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
+    }
+
+    public Settings getSettings() {
+        return settings;
     }
 
     public Subject getSubject() {

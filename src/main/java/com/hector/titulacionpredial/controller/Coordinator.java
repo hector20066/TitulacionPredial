@@ -2,10 +2,12 @@ package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.controller.builder.*;
 import com.hector.titulacionpredial.controller.panels.*;
+import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -61,7 +63,10 @@ public class Coordinator {
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
     private ModifyResolution modifyResolution;
+    private Settings settings;
     private About about;
+
+    private ControllerSettings controllerSettings;
 
     /**
      * Encargado de iniciar la app, cargando dependencias
@@ -75,6 +80,7 @@ public class Coordinator {
     public void startApp() {
         startView();
         startDrivers();
+        loadLanguage();
         subject.notifyObservers();
 
         java.awt.EventQueue.invokeLater(() -> {
@@ -83,6 +89,14 @@ public class Coordinator {
             content.setResizable(false);
             NavigatorUtils.showForms(dashboard);
         });
+    }
+
+    private void loadLanguage() {
+        String language = UserConfig.get("app.language");
+        lang.setLanguage(AppLanguage.valueOf(language.toUpperCase()));
+        languageSubject.notifyObserver();
+
+        controllerSettings.selectLanguageRadio(language);
     }
 
     /**
@@ -104,7 +118,8 @@ public class Coordinator {
         seeProperties = new SeeProperties();
         seeResolutions = new SeeResolutions();
         modifyResolution = new ModifyResolution();
-        about = new About();
+        settings = new Settings();
+        about = new About(lang, languageSubject);
     }
 
     /**
@@ -126,6 +141,7 @@ public class Coordinator {
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)
+                .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
                 .withLanguageManager(lang)
@@ -189,6 +205,12 @@ public class Coordinator {
                 .withViewModifyResolution(modifyResolution)
                 .withViewSeeResolutions(seeResolutions)
                 .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .withLanguageManager(lang)
+                .build();
+
+        controllerSettings = new ControllerSettingsBuilder()
+                .withViewSettings(settings)
                 .withLanguageSubject(languageSubject)
                 .withLanguageManager(lang)
                 .build();
