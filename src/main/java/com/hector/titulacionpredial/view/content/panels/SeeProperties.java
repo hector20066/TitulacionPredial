@@ -268,6 +268,21 @@ public class SeeProperties extends JPanel {
         btn_generate.setText(texts.getGenerateBtn());
         btn_exportToExcel.setText(texts.getExportExcelBtn());
         btn_delete.setText(texts.getDeleteBtn());
+
+        jtbl_properties.getColumnModel().getColumn(0).setHeaderValue(code);
+        jtbl_properties.getColumnModel().getColumn(1).setHeaderValue(name);
+        jtbl_properties.getColumnModel().getColumn(2).setHeaderValue(id);
+        jtbl_properties.getColumnModel().getColumn(3).setHeaderValue(numResolution);
+        jtbl_properties.getColumnModel().getColumn(4).setHeaderValue(notification);
+        jtbl_properties.getColumnModel().getColumn(5).setHeaderValue(executory);
+        jtbl_properties.getColumnModel().getColumn(6).setHeaderValue(fmi);
+        jtbl_properties.getColumnModel().getColumn(7).setHeaderValue(act);
+        jtbl_properties.getColumnModel().getColumn(8).setHeaderValue(publicWriting);
+        jtbl_properties.getColumnModel().getColumn(9).setHeaderValue(notary);
+        jtbl_properties.getColumnModel().getColumn(10).setHeaderValue(cadastralRef);
+        jtbl_properties.getColumnModel().getColumn(11).setHeaderValue(address);
+        jtbl_properties.getColumnModel().getColumn(12).setHeaderValue(municipality);
+        jtbl_properties.getTableHeader().repaint();
     }
 
     /**

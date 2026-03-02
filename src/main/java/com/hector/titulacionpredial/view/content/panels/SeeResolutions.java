@@ -191,6 +191,16 @@ public class SeeResolutions extends javax.swing.JPanel {
         publicWriting = texts.getPublicWriting();
         txt_search.setText(texts.getSearch());
         btn_modify.setText(texts.getModifyBtn());
+
+        jtbl_resolutions.getColumnModel().getColumn(0).setHeaderValue(code);
+        jtbl_resolutions.getColumnModel().getColumn(1).setHeaderValue(number);
+        jtbl_resolutions.getColumnModel().getColumn(2).setHeaderValue(notification);
+        jtbl_resolutions.getColumnModel().getColumn(3).setHeaderValue(executory);
+        jtbl_resolutions.getColumnModel().getColumn(4).setHeaderValue(notary);
+        jtbl_resolutions.getColumnModel().getColumn(5).setHeaderValue(fmi);
+        jtbl_resolutions.getColumnModel().getColumn(6).setHeaderValue(act);
+        jtbl_resolutions.getColumnModel().getColumn(7).setHeaderValue(publicWriting);
+        jtbl_resolutions.getTableHeader().repaint();
     }
 
     /**
