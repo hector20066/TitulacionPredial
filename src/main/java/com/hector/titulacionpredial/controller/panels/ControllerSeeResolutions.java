@@ -1,5 +1,18 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Locale;
+
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.controller.builder.ControllerSeeResolutionsBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
@@ -19,18 +32,6 @@ import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Controlador del panel de visualización de resoluciones.
@@ -81,6 +82,12 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     private final ResolutionFacade daoResolution;
 
     /**
+     * Texto placeholder actual del campo de búsqueda,
+     * actualizado dinámicamente según el idioma activo.
+     */
+    private String searchPlaceholder;
+
+    /**
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
@@ -96,6 +103,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoResolution = new ResolutionImplFacade();
+        this.searchPlaceholder = lang.app("see.resolutions.search");
 
         connectEvents();
     }
@@ -140,6 +148,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
                 .modifyBtn(lang.app("see.properties.modify"))
                 .build();
 
+        searchPlaceholder = lang.app("see.resolutions.search");
         seeResolutions.updateLanguage(dto);
     }
 
@@ -216,7 +225,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
         try {
             String numResolutionText = seeResolutions.getTxt_search().getText().trim();
 
-            if (numResolutionText.isBlank() || numResolutionText.equalsIgnoreCase("Buscar")) {
+            if (numResolutionText.isBlank() || numResolutionText.equalsIgnoreCase(searchPlaceholder)) {
                 throw new InvalidInputException("Debe ingresar el numero de la resolución para realizar la búsqueda");
             }
 
@@ -266,17 +275,17 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
         seeResolutions.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), "Buscar");
+                FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
         });
     }
@@ -290,7 +299,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
             @Override
             public void focusLost(FocusEvent e) {
                 if (seeResolutions.getTxt_search().getText().isBlank()) {
-                    seeResolutions.getTxt_search().setText("Buscar");
+                    seeResolutions.getTxt_search().setText(searchPlaceholder);
                 }
             }
         });
@@ -298,7 +307,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
         seeResolutions.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (seeResolutions.getTxt_search().getText().equals("Buscar")) {
+                if (seeResolutions.getTxt_search().getText().equals(searchPlaceholder)) {
                     seeResolutions.getTxt_search().setText("");
                 }
             }
@@ -310,7 +319,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
      * recarga todas las resoluciones.
      */
     private void cancelSearch() {
-        seeResolutions.getTxt_search().setText("Buscar");
+        seeResolutions.getTxt_search().setText(searchPlaceholder);
         seeResolutions.getBtn_searchCancel().setVisible(false);
         seeResolutions.getBtn_search().setVisible(true);
         subject.notifyObservers();

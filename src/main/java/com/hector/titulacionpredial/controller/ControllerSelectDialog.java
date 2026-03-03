@@ -1,14 +1,16 @@
 package com.hector.titulacionpredial.controller;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
-
-import javax.swing.*;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Controlador del diálogo de búsqueda de beneficiarios.
@@ -86,7 +88,9 @@ public class ControllerSelectDialog {
      * @return {@code true} si el parámetro es nulo, vacío o es el placeholder
      */
     private boolean isInvalidParam(String param) {
-        return param == null || param.isBlank() || param.equalsIgnoreCase("Buscar");
+        return param == null || param.isBlank()
+                || param.equalsIgnoreCase("Buscar")
+                || param.equalsIgnoreCase("Search");
     }
 
     /**

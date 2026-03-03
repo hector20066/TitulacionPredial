@@ -1,5 +1,17 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
@@ -13,21 +25,16 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.GenerateExcelBeneficiary;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesText;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Controlador del panel de visualización de beneficiarios.
@@ -79,6 +86,12 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private final BeneficiaryFacade daoBeneficiary;
 
     /**
+     * Texto placeholder actual del campo de búsqueda,
+     * actualizado dinámicamente según el idioma activo.
+     */
+    private String searchPlaceholder;
+
+    /**
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
@@ -94,6 +107,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
+        this.searchPlaceholder = lang.app("view.beneficiaries.search");
 
         connectEvents();
     }
@@ -143,6 +157,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 .exportExcelBtn(lang.app("view.beneficiaries.export.excel"))
                 .build();
 
+        searchPlaceholder = lang.app("view.beneficiaries.search");
         viewBeneficiaries.updateLanguage(dto);
     }
 
@@ -343,7 +358,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     private boolean isValid(String param) {
-        return !(param.isBlank() || param.equalsIgnoreCase("Buscar"));
+        return !(param.isBlank() || param.equalsIgnoreCase(searchPlaceholder));
     }
 
     /**
@@ -425,17 +440,17 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), "Buscar");
+                FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
         });
     }
@@ -449,7 +464,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             @Override
             public void focusLost(FocusEvent e) {
                 if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
-                    viewBeneficiaries.getTxt_search().setText("Buscar");
+                    viewBeneficiaries.getTxt_search().setText(searchPlaceholder);
                 }
             }
         });
@@ -457,7 +472,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         viewBeneficiaries.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (viewBeneficiaries.getTxt_search().getText().equals("Buscar")) {
+                if (viewBeneficiaries.getTxt_search().getText().equals(searchPlaceholder)) {
                     viewBeneficiaries.getTxt_search().setText("");
                 }
             }
@@ -469,7 +484,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      * recarga todos los beneficiarios.
      */
     private void cancelSearch() {
-        viewBeneficiaries.getTxt_search().setText("Buscar");
+        viewBeneficiaries.getTxt_search().setText(searchPlaceholder);
         viewBeneficiaries.getBtn_searchCancel().setVisible(false);
         viewBeneficiaries.getBtn_search().setVisible(true);
         subject.notifyObservers();

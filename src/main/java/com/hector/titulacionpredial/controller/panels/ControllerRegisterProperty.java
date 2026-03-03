@@ -1,5 +1,12 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
@@ -20,11 +27,6 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controlador del panel de registro de predios.
@@ -391,7 +393,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private void resetUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_selectBeneficiary().setEnabled(true);
-        registerProperty.getBtn_selectBeneficiary().setText("Buscar Beneficiario");
+        registerProperty.getBtn_selectBeneficiary().setText(lang.app("register.property.search.beneficiary"));
     }
 
     /**

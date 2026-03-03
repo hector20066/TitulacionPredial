@@ -1,23 +1,26 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
-import com.hector.titulacionpredial.controller.ControllerSelectDialog;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.utils.FilterUtils;
-import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSelectBeneficiaryText;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTarget;
-import org.jdesktop.animation.timing.TimingTargetAdapter;
-
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import com.hector.titulacionpredial.controller.ControllerSelectDialog;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSelectBeneficiaryText;
 
 /**
  * Diálogo modal para seleccionar un beneficiario
@@ -44,6 +47,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
     DefaultTableModel model = new DefaultTableModel();
+    private String searchPlaceholder = "Buscar";
 
     private final ControllerSelectDialog controllerSearchDialog;
 
@@ -251,7 +255,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         name = texts.getBeneficiaryName();
         id = texts.getBeneficiaryId();
         cadastralRef = texts.getBeneficiaryCadastralRef();
-        txt_search.setText(texts.getSearch());
+        searchPlaceholder = texts.getSearch();
+        txt_search.setText(searchPlaceholder);
     }
 
     /**
@@ -276,7 +281,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         });
 
         btn_searchCancel.addActionListener(e -> {
-            txt_search.setText("Buscar");
+            txt_search.setText(searchPlaceholder);
             btn_searchCancel.setVisible(false);
             btn_search.setVisible(true);
             controllerSearchDialog.loadUsers();
@@ -307,17 +312,17 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         txt_search.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, searchPlaceholder);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, searchPlaceholder);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, "Buscar");
+                FilterUtils.filterTable(txt_search, jtbl_beneficiaries, searchPlaceholder);
             }
         });
     }
@@ -331,7 +336,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
             @Override
             public void focusLost(FocusEvent e) {
                 if (txt_search.getText().isBlank()) {
-                    txt_search.setText("Buscar");
+                    txt_search.setText(searchPlaceholder);
                 }
             }
         });
@@ -345,7 +350,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         txt_search.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (txt_search.getText().equals("Buscar")) {
+                if (txt_search.getText().equals(searchPlaceholder)) {
                     txt_search.setText("");
                 }
             }

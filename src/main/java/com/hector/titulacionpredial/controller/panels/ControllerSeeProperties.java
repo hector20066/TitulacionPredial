@@ -1,5 +1,15 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.controller.builder.ControllerSeePropertiesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -13,19 +23,14 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.GenerateExcel;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
 /**
  * Controlador del panel de visualización de predios.
@@ -76,6 +81,12 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     private final PropertyFacade daoProperty;
 
     /**
+     * Texto placeholder actual del campo de búsqueda,
+     * actualizado dinámicamente según el idioma activo.
+     */
+    private String searchPlaceholder;
+
+    /**
      * Crea el controlador, lo registra como observador
      * y conecta los eventos del panel.
      *
@@ -91,6 +102,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoProperty = new PropertyImplFacade();
+        this.searchPlaceholder = lang.app("see.properties.search");
 
         connectEvents();
     }
@@ -144,6 +156,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 .exportExcelBtn(lang.app("see.properties.export.excel.btn"))
                 .build();
 
+        searchPlaceholder = lang.app("see.properties.search");
         seeProperties.updateLanguage(dto);
     }
 
@@ -314,7 +327,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         try {
             String searchText = seeProperties.getTxt_search().getText().trim();
 
-            if (searchText.isBlank() || searchText.equalsIgnoreCase("Buscar")) {
+            if (searchText.isBlank() || searchText.equalsIgnoreCase(searchPlaceholder)) {
                 throw new InvalidInputException("Por favor ingrese la cedula catastral para realizar la búsqueda");
             }
 
@@ -360,17 +373,17 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         seeProperties.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), "Buscar");
+                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), "Buscar");
+                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), "Buscar");
+                FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
         });
     }
@@ -384,7 +397,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
             @Override
             public void focusLost(FocusEvent e) {
                 if (seeProperties.getTxt_search().getText().isBlank()) {
-                    seeProperties.getTxt_search().setText("Buscar");
+                    seeProperties.getTxt_search().setText(searchPlaceholder);
                 }
             }
         });
@@ -392,7 +405,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         seeProperties.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (seeProperties.getTxt_search().getText().equals("Buscar")) {
+                if (seeProperties.getTxt_search().getText().equals(searchPlaceholder)) {
                     seeProperties.getTxt_search().setText("");
                 }
             }
@@ -404,7 +417,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      * recarga todos los predios.
      */
     private void cancelSearch() {
-        seeProperties.getTxt_search().setText("Buscar");
+        seeProperties.getTxt_search().setText(searchPlaceholder);
         seeProperties.getBtn_searchCancel().setVisible(false);
         seeProperties.getBtn_search().setVisible(true);
         subject.notifyObservers();
