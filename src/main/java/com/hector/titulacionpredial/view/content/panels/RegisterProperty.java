@@ -687,10 +687,10 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_beneficiaryCode.setText(texts.getBeneficiaryCode());
         btn_selectBeneficiary.setText(texts.getSearchBeneficiary());
         jlb_pointInfo.setText(texts.getPointsInfo());
-        jlb_point1.setText(texts.getPoint());
-        jlb_point2.setText(texts.getPoint());
-        jlb_point3.setText(texts.getPoint());
-        jlb_point4.setText(texts.getPoint());
+        jlb_point1.setText(texts.getPoint() + "1");
+        jlb_point2.setText(texts.getPoint() + "2");
+        jlb_point3.setText(texts.getPoint() + "3");
+        jlb_point4.setText(texts.getPoint() + "4");
         jlb_north1.setText(texts.getNorthCord());
         jlb_north2.setText(texts.getNorthCord());
         jlb_north3.setText(texts.getNorthCord());
