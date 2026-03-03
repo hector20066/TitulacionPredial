@@ -107,7 +107,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
-        this.searchPlaceholder = lang.app("view.beneficiaries.search");
+        this.searchPlaceholder = lang.app("controller.view.beneficiaries.search");
 
         connectEvents();
     }
@@ -157,7 +157,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 .exportExcelBtn(lang.app("view.beneficiaries.export.excel"))
                 .build();
 
-        searchPlaceholder = lang.app("view.beneficiaries.search");
+        searchPlaceholder = lang.app("controller.view.beneficiaries.search");
         viewBeneficiaries.updateLanguage(dto);
     }
 
@@ -194,7 +194,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      */
     private void prepareUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(false);
-        viewBeneficiaries.getBtn_seeProfile().setText("Buscando Información...");
+        viewBeneficiaries.getBtn_seeProfile().setText(lang.app("controller.view.beneficiaries.searching.info"));
     }
 
     /**
@@ -214,6 +214,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                     dialog.loadBeneficiary(dto);
 
                     dialog.setLocationRelativeTo(viewBeneficiaries);
+                    dialog.updateLanguage();
                     dialog.setVisible(true);
 
                     resetUI();
@@ -229,7 +230,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      */
     private void resetUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(true);
-        viewBeneficiaries.getBtn_seeProfile().setText("Ver Información Completa");
+        viewBeneficiaries.getBtn_seeProfile().setText(lang.app("controller.view.beneficiaries.full.info"));
     }
 
     /**

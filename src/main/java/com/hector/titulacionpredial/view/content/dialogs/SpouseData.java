@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSpouseDataText;
 import org.jdesktop.animation.timing.Animator;
@@ -27,6 +28,8 @@ public class SpouseData extends javax.swing.JDialog {
     private boolean confirmed = false;
     private final Animator animator;
     private boolean show = true;
+
+    private final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Crea un nuevo diálogo para registrar los datos del cónyuge.
@@ -249,16 +252,16 @@ public class SpouseData extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void updateLanguage(DTOSpouseDataText texts) {
-        jlb_title.setText(texts.getTitle());
-        jlb_name.setText(texts.getSpouseName());
-        jlb_lastName.setText(texts.getSpouseLastName());
-        jlb_id.setText(texts.getSpouseId());
-        jlb_expeditionLocation.setText(texts.getSpouseExpeditionLocation());
-        jlb_address.setText(texts.getSpouseAddress());
-        jlb_phone.setText(texts.getSpousePhone());
-        btn_save.setText(texts.getBtnSave());
-        btn_cancel.setText(texts.getBtnCancel());
+    public void updateLanguage() {
+        jlb_title.setText(lang.app("spouse.data.title"));
+        jlb_name.setText(lang.app("spouse.data.name"));
+        jlb_lastName.setText(lang.app("spouse.data.lastname"));
+        jlb_id.setText(lang.app("spouse.data.id"));
+        jlb_expeditionLocation.setText(lang.app("spouse.data.expeditionLocation"));
+        jlb_address.setText(lang.app("spouse.data.address"));
+        jlb_phone.setText(lang.app("spouse.data.phone"));
+        btn_save.setText(lang.app("spouse.data.save.btn"));
+        btn_cancel.setText(lang.app("spouse.data.cancel.btn"));
     }
 
     /**

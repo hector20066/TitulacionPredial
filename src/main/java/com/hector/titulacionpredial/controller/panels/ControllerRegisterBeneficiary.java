@@ -393,7 +393,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * y mostrando texto de carga.
      */
     private void prepareUI() {
-        registerBeneficiary.getBtn_register().setText("Registrando Beneficiario...");
+        registerBeneficiary.getBtn_register().setText(lang.app("controller.register.beneficiary.registering"));
         registerBeneficiary.getBtn_register().setEnabled(false);
     }
 
@@ -477,7 +477,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void resetUI() {
         registerBeneficiary.getBtn_register().setEnabled(true);
-        registerBeneficiary.getBtn_register().setText("AGREGAR BENEFICIARIO");
+        registerBeneficiary.getBtn_register().setText(lang.app("controller.register.beneficiary.add"));
         registerBeneficiary.clearFields();
     }
 
@@ -519,6 +519,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
             SpouseData dialog = new SpouseData(parentFrame, true);
             dialog.setLocationRelativeTo(registerBeneficiary);
+            dialog.updateLanguage();
             dialog.setVisible(true);
 
             if (dialog.isConfirmed()) {

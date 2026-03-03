@@ -8,6 +8,7 @@ import javax.swing.SwingWorker;
 
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
@@ -38,6 +39,8 @@ public class ControllerSelectDialog {
      * Fachada de acceso a datos de beneficiarios.
      */
     private final BeneficiaryFacade daoBeneficiary;
+
+    private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**
      * Crea el controlador asociado al diálogo indicado.
@@ -168,7 +171,7 @@ public class ControllerSelectDialog {
                 List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
                 SwingUtilities.invokeLater(() -> selectBeneficiary.loadBeneficiaries(listBeneficiaries));
             } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Error. " + e.getMessage(), null));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage( lang.app("controller.search.dialog.error") + " " + e.getMessage(), null));
             }
         }).start();
     }

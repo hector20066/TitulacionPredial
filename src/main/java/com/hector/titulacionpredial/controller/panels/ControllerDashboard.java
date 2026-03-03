@@ -12,6 +12,7 @@ import com.hector.titulacionpredial.i18n.*;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
 import com.hector.titulacionpredial.view.swing.model.ModelChart;
@@ -129,7 +130,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
         dashboard.getLineChart1().addLegend(lang.app("controller.dashboard.beneficiaries.registers"), new Color(149, 213, 178), new Color(45, 106, 79));
 
         list.forEach(dto -> {
-            String nombreMes = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of("es"));
+            String nombreMes = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of(UserConfig.get("app.language")));
             dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.total()}));
         });
 

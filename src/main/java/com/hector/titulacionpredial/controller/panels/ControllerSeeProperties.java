@@ -102,7 +102,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoProperty = new PropertyImplFacade();
-        this.searchPlaceholder = lang.app("see.properties.search");
+        this.searchPlaceholder = lang.app("controller.see.property.search");
 
         connectEvents();
     }
@@ -156,7 +156,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 .exportExcelBtn(lang.app("see.properties.export.excel.btn"))
                 .build();
 
-        searchPlaceholder = lang.app("see.properties.search");
+        searchPlaceholder = lang.app("controller.see.property.search");
         seeProperties.updateLanguage(dto);
     }
 

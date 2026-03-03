@@ -245,7 +245,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * y mostrando texto de carga.
      */
     private void prepareUI() {
-        registerProperty.getBtn_register().setText("Registrando Información...");
+        registerProperty.getBtn_register().setText(lang.app("controller.register.property.registering"));
         registerProperty.getBtn_register().setEnabled(false);
     }
 
@@ -308,7 +308,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * del formulario.
      */
     private void resetUI() {
-        registerProperty.getBtn_register().setText("REGISTRAR PREDIO");
+        registerProperty.getBtn_register().setText(lang.app("controller.register.property.register"));
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.clearFields();
     }
@@ -360,7 +360,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private void prepareUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_selectBeneficiary().setEnabled(false);
-        registerProperty.getBtn_selectBeneficiary().setText("Buscando Beneficiarios...");
+        registerProperty.getBtn_selectBeneficiary().setText(lang.app("controller.register.property.searching.beneficiary"));
     }
 
     /**
@@ -375,6 +375,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
         dialog.loadBeneficiaries(dto);
         dialog.setLocationRelativeTo(registerProperty);
+        dialog.updateLanguage();
         dialog.setVisible(true);
 
         resetUILoadBeneficiaries();
@@ -393,7 +394,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private void resetUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_selectBeneficiary().setEnabled(true);
-        registerProperty.getBtn_selectBeneficiary().setText(lang.app("register.property.search.beneficiary"));
+        registerProperty.getBtn_selectBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
     }
 
     /**

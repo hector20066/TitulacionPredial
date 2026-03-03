@@ -13,6 +13,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -50,6 +51,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private String searchPlaceholder = "Buscar";
 
     private final ControllerSelectDialog controllerSearchDialog;
+
+    private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**
      * Crea un nuevo diálogo de selección de beneficiario.
@@ -249,14 +252,22 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void updateLanguage(DTOSelectBeneficiaryText texts) {
-        jlb_title.setText(texts.getTitle());
-        code = texts.getBeneficiaryCode();
-        name = texts.getBeneficiaryName();
-        id = texts.getBeneficiaryId();
-        cadastralRef = texts.getBeneficiaryCadastralRef();
-        searchPlaceholder = texts.getSearch();
+    public void updateLanguage() {
+        jlb_title.setText(lang.app("select.beneficiary.title"));
+        code = lang.app("select.beneficiary.code");
+        name = lang.app("select.beneficiary.name");
+        id = lang.app("select.beneficiary.id");
+        cadastralRef = lang.app("select.beneficiary.cadastralRef");
+        searchPlaceholder = lang.app("select.beneficiary.search");
         txt_search.setText(searchPlaceholder);
+        btn_select.setText(lang.app("select.beneficiary.select.btn"));
+        btn_cancel.setText(lang.app("select.beneficiary.cancel.btn"));
+
+        jtbl_beneficiaries.getColumnModel().getColumn(0).setHeaderValue(code);
+        jtbl_beneficiaries.getColumnModel().getColumn(1).setHeaderValue(name);
+        jtbl_beneficiaries.getColumnModel().getColumn(2).setHeaderValue(id);
+        jtbl_beneficiaries.getColumnModel().getColumn(3).setHeaderValue(cadastralRef);
+        jtbl_beneficiaries.getTableHeader().repaint();
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
 import com.hector.titulacionpredial.view.swing.scroll.ScrollBar;
 import net.miginfocom.swing.MigLayout;
@@ -32,6 +33,8 @@ public class Menu extends JPanel {
     private JPanel panelMenu;
     private int index = -1;
 
+    private final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea el menú lateral con los componentes predeterminados.
      */
@@ -59,15 +62,15 @@ public class Menu extends JPanel {
      * Agrega las opciones de menú predeterminadas.
      */
     public void addComponents() {
-        addTitle("PRINCIPAL");
-        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));
-        addTitle("INFORMACIÓN");
-        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Información", "Beneficiarios", "Predios"));
-        addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver registros", "Beneficiarios", "Reportes", "Resolución"));
-        addTitle("CONFIGURACIÓN");
-        addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));
-        addTitle("SOBRE LA APP");
-        addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));
+        addTitle(lang.app("menu.main"));
+        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", lang.app("menu.main.dashboard")));
+        addTitle(lang.app("menu.info"));
+        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", lang.app("menu.info.register"), lang.app("menu.info.register.beneficiary"), lang.app("menu.info.register.property")));
+        addMenuItem(new ModelMenuItem("image/book-open-text.svg", lang.app("menu.info.see"), lang.app("menu.info.see.beneficiaries"), lang.app("menu.info.see.properties"), lang.app("menu.info.see.resolution")));
+        addTitle(lang.app("menu.configuration.title"));
+        addMenuItem(new ModelMenuItem("image/settings-2.svg", lang.app("menu.configuration.settings")));
+        addTitle(lang.app("menu.about"));
+        addMenuItem(new ModelMenuItem("image/info.svg", lang.app("menu.about.desc")));
     }
 
     /**

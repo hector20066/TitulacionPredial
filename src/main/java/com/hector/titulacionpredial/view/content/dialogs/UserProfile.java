@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOUserProfileText;
 import org.jdesktop.animation.timing.Animator;
@@ -25,6 +26,8 @@ public class UserProfile extends javax.swing.JDialog {
 
     private final Animator animator;
     private boolean show = true;
+
+    private LanguageManager lang =  LanguageManager.getInstance();
 
     /**
      * Crea un nuevo diálogo para visualizar el perfil de un beneficiario.
@@ -547,29 +550,29 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void updateLanguage(DTOUserProfileText texts) {
-        jlb_title.setText(texts.getTitle());
-        jlb_codeText.setText(texts.getCode());
-        jlb_idText.setText(texts.getId());
-        jlb_phoneText.setText(texts.getPhone());
-        jlb_addressText.setText(texts.getAddress());
-        jlb_departmentText.setText(texts.getDepartment());
-        jlb_municipalityText.setText(texts.getMunicipality());
-        jlb_neighborhoodText.setText(texts.getNeighborhood());
-        jlb_residenceData.setText(texts.getResidenceData());
-        jlb_expeditionText.setText(texts.getExpeditionLocation());
-        jlb_maritalStatusText.setText(texts.getMaritalStatus());
-        jlb_cadastralRefText.setText(texts.getCadastralRef());
-        jlb_crossingText.setText(texts.getCrossing());
-        jlb_affectationText.setText(texts.getAffectation());
-        jlb_publicationText.setText(texts.getPublication());
-        jlb_spouseData.setText(texts.getSpouseData());
-        jlb_spouseNameText.setText(texts.getSpouseName());
-        jlb_spouseIdText.setText(texts.getSpouseId());
-        jlb_spouseExpeditionText.setText(texts.getSpouseExpeditionLocation());
-        jlb_spouseAddressText.setText(texts.getSpouseAddress());
-        jlb_spousePhoneText.setText(texts.getSpousePhone());
-        btn_exit.setText(texts.getBtnExit());
+    public void updateLanguage() {
+        jlb_title.setText(lang.app("user.profile.title"));
+        jlb_codeText.setText(lang.app("user.profile.code"));
+        jlb_idText.setText(lang.app("user.profile.id"));
+        jlb_phoneText.setText(lang.app("user.profile.phone"));
+        jlb_addressText.setText(lang.app("user.profile.address"));
+        jlb_departmentText.setText(lang.app("user.profile.department"));
+        jlb_municipalityText.setText(lang.app("user.profile.municipality"));
+        jlb_neighborhoodText.setText(lang.app("user.profile.neighborhood"));
+        jlb_residenceData.setText(lang.app("user.profile.residence.data"));
+        jlb_expeditionText.setText(lang.app("user.profile.expeditionLocation"));
+        jlb_maritalStatusText.setText(lang.app("user.profile.maritalStatus"));
+        jlb_cadastralRefText.setText(lang.app("user.profile.cadastralRef"));
+        jlb_crossingText.setText(lang.app("user.profile.crossing"));
+        jlb_affectationText.setText(lang.app("user.profile.affectation"));
+        jlb_publicationText.setText(lang.app("user.profile.publication"));
+        jlb_spouseData.setText(lang.app("user.profile.spouse.data"));
+        jlb_spouseNameText.setText(lang.app("user.profile.spouse.name"));
+        jlb_spouseIdText.setText(lang.app("user.profile.spouse.id"));
+        jlb_spouseExpeditionText.setText(lang.app("user.profile.spouse.expeditionLocation"));
+        jlb_spouseAddressText.setText(lang.app("user.profile.spouse.address"));
+        jlb_spousePhoneText.setText(lang.app("user.profile.spouse.phone"));
+        btn_exit.setText(lang.app("user.profile.exit.btn"));
     }
 
     /**
@@ -622,11 +625,11 @@ public class UserProfile extends javax.swing.JDialog {
         txa_affectation.setText(beneficiary.getAffectation());
 
         if (beneficiary.getFullNameSpouse() == null) {
-            jlb_spouseName.setText("No aplica");
-            jlb_spouseId.setText("No aplica");
-            jlb_spouseExpeditionSite.setText("No aplica");
-            jlb_spouseAddress.setText("No aplica");
-            jlb_phoneSpouse.setText("No aplica");
+            jlb_spouseName.setText(lang.app("user.profile.not.apply"));
+            jlb_spouseId.setText(lang.app("user.profile.not.apply"));
+            jlb_spouseExpeditionSite.setText(lang.app("user.profile.not.apply"));
+            jlb_spouseAddress.setText(lang.app("user.profile.not.apply"));
+            jlb_phoneSpouse.setText(lang.app("user.profile.not.apply"));
         } else {
             jlb_spouseName.setText(beneficiary.getFullNameSpouse());
             jlb_spouseId.setText(String.valueOf(beneficiary.getIdSpouse()));
