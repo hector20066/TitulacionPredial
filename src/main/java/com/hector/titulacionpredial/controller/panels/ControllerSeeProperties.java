@@ -175,7 +175,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
             int selectedRow = seeProperties.getJtbl_properties().getSelectedRow();
 
             if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1) {
-                throw new Exception("Por favor seleccione una fila para generar la resolución");
+                throw new Exception(lang.message("exception.property.select.row"));
             }
 
             int propertyCode = (int) seeProperties.getJtbl_properties().getValueAt(selectedRow, 0);
@@ -256,8 +256,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
             if (path == null) return;
 
-            DialogUtils.executeWithDialog(seeProperties, "Exportando reporte, por favor espere...",
-                    "Reporte exportado exitosamente", () -> {
+            DialogUtils.executeWithDialog(seeProperties, lang.message("dialog.exporting.report"),
+                    lang.message("dialog.exported.report"), () -> {
                         List<DTOPropertyDetails> allProperties = daoProperty.findByAllForExport();
                         GenerateExcel.export(allProperties, path);
                         return null;
@@ -278,11 +278,11 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     private void deleteProperty() {
         try {
             if (seeProperties.getJtbl_properties().getSelectedRowCount() != 1) {
-                throw new InvalidInputException("Por favor seleccione una fila para eliminar");
+                throw new InvalidInputException(lang.message("invalid.input.property.delete.row"));
             }
 
             int code = (int) seeProperties.getJtbl_properties().getValueAt(seeProperties.getJtbl_properties().getSelectedRow(), 0);
-            int option = MessageUtils.confirmDialog("¿Estas seguro que deseas eliminar la información de este predio?", seeProperties);
+            int option = MessageUtils.confirmDialog(lang.message("message.property.confirmation.delete"), seeProperties);
 
             if (option != MessageUtils.yesOption()) {
                 return;
@@ -306,7 +306,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 daoProperty.delete(code);
 
                 SwingUtilities.invokeLater(() -> {
-                    MessageUtils.informationMessage("Se ha eliminado el registro", seeProperties);
+                    MessageUtils.informationMessage(lang.message("message.property.delete"), seeProperties);
                     subject.notifyObservers();
                 });
             } catch (DAOException e) {
@@ -328,7 +328,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
             String searchText = seeProperties.getTxt_search().getText().trim();
 
             if (searchText.isBlank() || searchText.equalsIgnoreCase(searchPlaceholder)) {
-                throw new InvalidInputException("Por favor ingrese la cedula catastral para realizar la búsqueda");
+                throw new InvalidInputException(lang.message("invalid.input.property.cadastral.id"));
             }
 
             seeProperties.getBtn_searchCancel().setVisible(true);

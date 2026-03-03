@@ -162,7 +162,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
             String beneficiaryCode = registerProperty.getTxt_beneficiaryCode().getText().trim().replace("F", "");
 
             if (cadastralId.isBlank() || area.isBlank()) {
-                throw new EmptyFieldException("Cedula Catastral y Area");
+                throw new EmptyFieldException(lang.message("empty.property.id.area"));
             }
 
             String[] beneficiariesCode = beneficiaryCode.split(" - ");
@@ -210,7 +210,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
             String hillside = fields[i][3].getText().trim();
 
             if (invalidPoints(north, east, distance, hillside)) {
-                throw new EmptyFieldException("del punto " + (i + 1));
+                throw new EmptyFieldException(lang.message("empty.property.point") + " " + (i + 1));
             }
 
             north = north.replace(",", ".");
@@ -268,7 +268,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         new Thread(() -> {
             try {
                 if (daoProperty.findByCode(cadastralId) != null) {
-                    throw new PersistenceException("El predio con cedula catastral '" + cadastralId + "' ya se encuentra registrado");
+                    throw new PersistenceException(lang.message("persistence.property.exist1") + " '" + cadastralId + "' " + lang.message("persistence.property.exist2"));
                 }
 
                 int propertyCode = daoProperty.add(cadastralId, area);
@@ -298,7 +298,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * observadores y restablece la interfaz.
      */
     private void runInvokeLater() {
-        MessageUtils.informationMessage("Se ha registrado la información correctamente", registerProperty);
+        MessageUtils.informationMessage(lang.message("message.property.register"), registerProperty);
         subject.notifyObservers();
         resetUI();
     }

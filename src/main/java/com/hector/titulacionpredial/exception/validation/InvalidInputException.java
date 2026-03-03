@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.validation;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción base para errores de validación de entrada
  * en los formularios de la aplicación.
@@ -19,12 +21,14 @@ package com.hector.titulacionpredial.exception.validation;
  */
 public class InvalidInputException extends Exception {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con el mensaje genérico
      * «Campo invalido».
      */
     public InvalidInputException() {
-        super("Campo invalido");
+        super(lang.message("invalid.input.message"));
     }
 
     /**

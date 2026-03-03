@@ -166,7 +166,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
             int selectedRow = seeResolutions.getJtbl_resolutions().getSelectedRow();
 
             if (seeResolutions.getJtbl_resolutions().getSelectedRowCount() != 1) {
-                throw new Exception("Debe seleccionar una resolución para modificarla");
+                throw new Exception(lang.message("exception.resolution.select"));
             }
 
             int code = (int) seeResolutions.getJtbl_resolutions().getValueAt(selectedRow, 0);
@@ -226,11 +226,11 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
             String numResolutionText = seeResolutions.getTxt_search().getText().trim();
 
             if (numResolutionText.isBlank() || numResolutionText.equalsIgnoreCase(searchPlaceholder)) {
-                throw new InvalidInputException("Debe ingresar el numero de la resolución para realizar la búsqueda");
+                throw new InvalidInputException(lang.message("invalid.input.resolution.number"));
             }
 
             if (!NumericalValidationUtils.isNumeric(numResolutionText)) {
-                throw new InvalidNumberInputException("de Búsqueda");
+                throw new InvalidNumberInputException(lang.message("invalid.number.property.search"));
             }
 
             seeResolutions.getBtn_searchCancel().setVisible(true);

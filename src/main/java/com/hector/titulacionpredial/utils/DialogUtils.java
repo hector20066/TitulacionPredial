@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -14,6 +16,8 @@ import java.util.concurrent.Callable;
  * @since 1.0
  */
 public class DialogUtils {
+
+    private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Constructor privado para evitar instanciación.
@@ -32,7 +36,7 @@ public class DialogUtils {
     public static JDialog createLoadDialog(JComponent parent, String message) {
         Window parentWindow = SwingUtilities.getWindowAncestor(parent);
 
-        JDialog dialog = new JDialog(parentWindow, "Procesando", Dialog.ModalityType.APPLICATION_MODAL);
+        JDialog dialog = new JDialog(parentWindow, lang.message("dialog.utils.processing"), Dialog.ModalityType.APPLICATION_MODAL);
         dialog.setSize(350, 120);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setResizable(false);
@@ -114,7 +118,7 @@ public class DialogUtils {
                     }
                 } catch (Exception e) {
                     String msg = (e.getCause() != null) ? e.getCause().getMessage() : e.getMessage();
-                    MessageUtils.errorMessage("Ha ocurrido un error.\nError: " + msg, parent);
+                    MessageUtils.errorMessage(lang.message("dialog.utils.error1") + "\n" + lang.message("dialog.utils.error2") + " " + msg, parent);
                 }
             }
         };
@@ -140,7 +144,7 @@ public class DialogUtils {
             File selectedDirectory = fileChooser.getSelectedFile();
 
             if (selectedDirectory == null || selectedDirectory.getAbsolutePath().isEmpty()) {
-                MessageUtils.errorMessage("Error al seleccionar la carpeta", parent);
+                MessageUtils.errorMessage(lang.message("dialog.utils.error.select.folder"), parent);
                 return null;
             } else {
                 return selectedDirectory.getAbsolutePath();

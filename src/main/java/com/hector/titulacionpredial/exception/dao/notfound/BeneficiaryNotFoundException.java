@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.exception.dao.notfound;
 
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Excepción lanzada cuando no se encuentran registros de
@@ -17,11 +18,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
  */
 public class BeneficiaryNotFoundException extends DataNotFoundException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public BeneficiaryNotFoundException() {
-        super("No se han encontrado registros de Beneficiarios");
+        super(lang.message("not.found.beneficiary"));
     }
 
     /**
@@ -31,7 +34,7 @@ public class BeneficiaryNotFoundException extends DataNotFoundException {
      * @param param parámetro de búsqueda utilizado
      */
     public BeneficiaryNotFoundException(String param) {
-        super("No se han encontrado registros para el parámetro de búsqueda '" + param + "'");
+        super(lang.message("not.found.beneficiary.find") + " '" + param + "'");
     }
 
     /**

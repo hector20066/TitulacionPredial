@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -63,6 +65,8 @@ public class UserConfig {
      */
     private static final Properties properties = new Properties();
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     private static final Path CONFIG_DIR = Paths.get(System.getProperty("user.home"), ".titulacionpredial");
     private static final Path CONFIG_FILE = CONFIG_DIR.resolve("application.properties");
 
@@ -70,7 +74,7 @@ public class UserConfig {
         try {
             init();
         } catch (IOException e) {
-            throw new RuntimeException("No se pudo inicializar la configuración del usuario");
+            throw new RuntimeException(lang.message("user.config.init.error"));
         }
     }
 
@@ -100,7 +104,7 @@ public class UserConfig {
             properties.setProperty("app.language", "es");
 
             try (OutputStream outputStream = Files.newOutputStream(CONFIG_FILE)) {
-                properties.store(outputStream, "Configuración del usuario");
+                properties.store(outputStream, lang.message("user.config"));
             }
 
             return;
@@ -136,9 +140,9 @@ public class UserConfig {
         properties.setProperty(key, value);
 
         try (OutputStream outputStream = Files.newOutputStream(CONFIG_FILE)) {
-            properties.store(outputStream, "Configuration actualizada");
+            properties.store(outputStream, lang.message("user.config.update"));
         } catch (IOException e) {
-            throw new RuntimeException("No se pudo guardar la configuración del usuario");
+            throw new RuntimeException(lang.message("user.config.save.error"));
         }
     }
 

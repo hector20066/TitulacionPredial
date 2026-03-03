@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.model.dao.impl;
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -29,6 +30,8 @@ import java.sql.SQLException;
  * @since 1.0
  */
 public class DAOPointImpl implements DAOPoint {
+
+    private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Instancia única del DAO (patrón Singleton).
@@ -69,7 +72,7 @@ public class DAOPointImpl implements DAOPoint {
             st.setInt(6, dto.getPropertyCode());
             st.executeUpdate();
         } catch (SQLException e) {
-            throw new PointPersistenceException("No fue posible guardar la información del punto", e);
+            throw new PointPersistenceException(lang.message("persistence.point.register"), e);
         }
     }
 
@@ -91,7 +94,7 @@ public class DAOPointImpl implements DAOPoint {
                 return dto;
             }
         } catch (SQLException e) {
-            throw new PointPersistenceException("Error al recuperar la información del punto de la propiedad con código: " + propertyCode, e);
+            throw new PointPersistenceException(lang.message("persistence.point.info.property.code") + " " + propertyCode, e);
         }
     }
 

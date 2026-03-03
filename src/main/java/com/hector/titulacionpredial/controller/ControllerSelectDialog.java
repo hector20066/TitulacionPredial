@@ -54,7 +54,7 @@ public class ControllerSelectDialog {
 
     public void searchBeneficiary(String param) {
         if (isInvalidParam(param)) {
-            MessageUtils.errorMessage("Debe ingresar el número de cédula, código o nombre", null);
+            MessageUtils.errorMessage(lang.message("message.beneficiary.enter.params"), null);
             return;
         }
 
@@ -70,7 +70,7 @@ public class ControllerSelectDialog {
                     DTOBeneficiarySimpleDetails dto = get();
 
                     if (dto == null) {
-                        MessageUtils.errorMessage("No se encontraron registros para: \"" + param + "\"", null);
+                        MessageUtils.errorMessage(lang.message("message.beneficiary.not.find") + " \"" + param + "\"", null);
                         return;
                     }
 

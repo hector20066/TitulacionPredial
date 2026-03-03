@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.validation;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción lanzada cuando un campo que espera un valor
  * numérico recibe una entrada no numérica.
@@ -14,6 +16,8 @@ package com.hector.titulacionpredial.exception.validation;
  */
 public class InvalidNumberInputException extends InvalidInputException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción indicando qué campo requiere
      * un valor numérico.
@@ -21,7 +25,7 @@ public class InvalidNumberInputException extends InvalidInputException {
      * @param fieldName nombre del campo con valor inválido
      */
     public InvalidNumberInputException(String fieldName) {
-        super("El campo '" + fieldName + "' debe tener un valor numérico.");
+        super(lang.message("invalid.number.message1") + " '" + fieldName + "' " + lang.message("invalid.number.message2"));
     }
 
     /**

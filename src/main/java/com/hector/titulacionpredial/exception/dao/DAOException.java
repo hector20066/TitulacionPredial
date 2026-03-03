@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.dao;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción base para todos los errores que ocurren en la
  * capa de acceso a datos (DAO) del sistema.
@@ -23,12 +25,14 @@ package com.hector.titulacionpredial.exception.dao;
  */
 public class DAOException extends Exception {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico de error
      * en la capa de persistencia.
      */
     public DAOException() {
-        super("Ha ocurrido un error en la capa de persistencia del sistema");
+        super(lang.message("dao.message.error"));
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.validation;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción lanzada cuando el valor ingresado en un campo
  * supera la longitud máxima permitida.
@@ -14,6 +16,8 @@ package com.hector.titulacionpredial.exception.validation;
  */
 public class MaxLengthExceededException extends InvalidInputException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción indicando qué campo superó la longitud
      * máxima y cuál es ese límite.
@@ -22,7 +26,7 @@ public class MaxLengthExceededException extends InvalidInputException {
      * @param maximumValue cantidad máxima de caracteres permitidos
      */
     public MaxLengthExceededException(String fieldName, String maximumValue) {
-        super("El campo '" + fieldName + "' debe tener un valor máximo de " + maximumValue + " caracteres");
+        super(lang.message("max.length.message1") + " '" + fieldName + "' " + lang.message("max.length.message2") + " " + maximumValue + " " + lang.message("max.length.message3"));
     }
 
     /**

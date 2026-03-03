@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.dao;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción que indica un error durante una operación de
  * persistencia (inserción, actualización o eliminación)
@@ -17,11 +19,13 @@ package com.hector.titulacionpredial.exception.dao;
  */
 public class PersistenceException extends DAOException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public PersistenceException() {
-        super("Error en la capa de persistencia.");
+        super(lang.message("persistence.message"));
     }
 
     /**

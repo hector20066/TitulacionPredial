@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.exception.dao.notfound;
 
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Excepción lanzada cuando no se encuentran registros de
@@ -17,11 +18,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
  */
 public class ResolutionNotFoundException extends DataNotFoundException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public ResolutionNotFoundException() {
-        super("No se han encontrado registros de Resoluciones");
+        super(lang.message("not.found.resolution"));
     }
 
     /**
@@ -31,7 +34,7 @@ public class ResolutionNotFoundException extends DataNotFoundException {
      * @param param número de resolución buscado
      */
     public ResolutionNotFoundException(String param) {
-        super("No se encontraron registros de Resoluciones con el numero '" + param + "'");
+        super(lang.message("not.found.resolution.find") + " '" + param + "'");
     }
 
     /**

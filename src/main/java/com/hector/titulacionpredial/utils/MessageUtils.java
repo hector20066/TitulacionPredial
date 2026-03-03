@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import javax.swing.*;
 
 /**
@@ -17,6 +19,8 @@ import javax.swing.*;
  */
 public class MessageUtils {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Muestra un mensaje de información.
      *
@@ -24,7 +28,7 @@ public class MessageUtils {
      * @param container componente padre del diálogo
      */
     public static void informationMessage(String message, JComponent container) {
-        JOptionPane.showMessageDialog(container, message, "Información", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.information"), JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -34,7 +38,7 @@ public class MessageUtils {
      * @param container componente padre del diálogo
      */
     public static void errorMessage(String message, JComponent container) {
-        JOptionPane.showMessageDialog(container, message, "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.error"), JOptionPane.ERROR_MESSAGE);
     }
 
     /**
@@ -44,7 +48,7 @@ public class MessageUtils {
      * @param container componente padre del diálogo
      */
     public static void warningMessage(String message, JComponent container) {
-        JOptionPane.showMessageDialog(container, message, "Advertencia", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.warning"), JOptionPane.WARNING_MESSAGE);
     }
 
     /**
@@ -54,7 +58,7 @@ public class MessageUtils {
      * @param container componente padre del diálogo
      */
     public static void plainMessage(String message, JComponent container) {
-        JOptionPane.showMessageDialog(container, message, "Info", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.info"), JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
@@ -66,7 +70,7 @@ public class MessageUtils {
      * {@link JOptionPane#NO_OPTION} en caso contrario
      */
     public static int confirmDialog(String message, JComponent container) {
-        return JOptionPane.showConfirmDialog(container, message, "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        return JOptionPane.showConfirmDialog(container, message, lang.message("message.utils.confirmation"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.dao;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción que indica que no se encontraron registros
  * en la base de datos para una consulta determinada.
@@ -16,11 +18,13 @@ package com.hector.titulacionpredial.exception.dao;
  */
 public class DataNotFoundException extends DAOException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public DataNotFoundException() {
-        super("No se han encontrado registros");
+        super(lang.message("data.not.found"));
     }
 
     /**

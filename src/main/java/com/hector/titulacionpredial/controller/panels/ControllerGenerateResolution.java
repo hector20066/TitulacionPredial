@@ -201,19 +201,19 @@ public class ControllerGenerateResolution implements LanguageObserver {
     private void validations(Date executory, Date notification, String path, String resolutionNumber, String notary,
                              String propertyCode) throws InvalidInputException {
         if (executory == null || notification == null) {
-            throw new EmptyFieldException("Ejecutorio y notificación");
+            throw new EmptyFieldException(lang.message("empty.resolution.executory.and.notify"));
         }
 
         if (path == null) {
-            throw new InvalidInputException("Debe seleccionar la ruta para guardar el archivo.");
+            throw new InvalidInputException(lang.message("invalid.input.resolution.select.route"));
         }
 
         if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
-            throw new EmptyFieldException("N. Resolución y Nota");
+            throw new EmptyFieldException(lang.message("empty.resolution.number.notary"));
         }
 
         if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
-            throw new InvalidNumberInputException("N. Resolución");
+            throw new InvalidNumberInputException(lang.message("invalid.number.property.number"));
         }
     }
 
@@ -223,8 +223,8 @@ public class ControllerGenerateResolution implements LanguageObserver {
      * @param task tarea a ejecutar en segundo plano
      */
     private void executeWithDialog(Callable<Void> task) {
-        DialogUtils.executeWithDialog(generateResolution, "Generando documento, por favor espere...",
-                "Se ha generado la resolución.", task, subject::notifyObservers);
+        DialogUtils.executeWithDialog(generateResolution, lang.message("dialog.resolution.generating"),
+                lang.message("dialog.resolution.generate"), task, subject::notifyObservers);
     }
 
     /**
@@ -257,7 +257,7 @@ public class ControllerGenerateResolution implements LanguageObserver {
                                 String idBeneficiaries, String address, String cadastralId, String area, String path) {
         executeWithDialog(() -> {
             if (daoResolution.findByCode((int) numResolution) != null) {
-                throw new PersistenceException("Ya existe un registro con este numero de resolución en la base de datos");
+                throw new PersistenceException(lang.message("persistence.resolution.exist"));
             }
 
             List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = new ArrayList<>();

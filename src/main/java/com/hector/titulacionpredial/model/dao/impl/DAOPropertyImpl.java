@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
@@ -41,6 +42,8 @@ public class DAOPropertyImpl implements DAOProperty {
      */
     private static DAOPropertyImpl instance;
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Constructor privado para garantizar el patrón Singleton.
      */
@@ -73,18 +76,18 @@ public class DAOPropertyImpl implements DAOProperty {
             int affectedRows = st.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new PropertyNotFoundException("Error al crear la propiedad, no hay filas afectadas.");
+                throw new PropertyNotFoundException(lang.message("not.found.property.rows"));
             }
 
             try (ResultSet generatedKeys = st.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 } else {
-                    throw new PropertyNotFoundException("Error al crear la propiedad, no se obtuvo ninguna identificación.");
+                    throw new PropertyNotFoundException(lang.message("not.found.property.id"));
                 }
             }
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("No fue posible guardar la información de la propiedad.", e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.register"), e);
         }
     }
 
@@ -105,8 +108,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             return properties.values().stream().findFirst().orElse(null);
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información del predio con cedula catastral: "
-                    + cadastralId, e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.id") + " " + cadastralId, e);
         }
     }
 
@@ -149,7 +151,7 @@ public class DAOPropertyImpl implements DAOProperty {
             return new ArrayList<>(properties.values());
         } catch (SQLException e) {
             throw new PropertyPersistenceException(
-                    "Error al recuperar la información de los predios", e);
+                    lang.message("persistence.property.info.all"), e);
         }
     }
 
@@ -339,7 +341,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 throw new PropertyNotFoundException(String.valueOf(code));
             }
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información del predio con código: " + code, e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.code") + " " + code, e);
         }
     }
 
@@ -352,12 +354,12 @@ public class DAOPropertyImpl implements DAOProperty {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                throw new PropertyNotFoundException("No hay registros para contar");
+                throw new PropertyNotFoundException(lang.message("not.found.count"));
             }
 
             return rs.getInt("total_records");
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.all"), e);
         }
     }
 
@@ -370,12 +372,12 @@ public class DAOPropertyImpl implements DAOProperty {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                throw new PropertyNotFoundException("No se han encontrado registros de predios.");
+                throw new PropertyNotFoundException(lang.message("property.not.found"));
             }
 
             return rs.getInt("percent");
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.all"), e);
         }
     }
 
@@ -388,12 +390,12 @@ public class DAOPropertyImpl implements DAOProperty {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                throw new PropertyNotFoundException("No se han encontrado registros de predios.");
+                throw new PropertyNotFoundException(lang.message("property.not.found"));
             }
 
             return rs.getInt("properties_with_resolution");
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("Error al recuperar la información de los predios.", e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.all"), e);
         }
     }
 

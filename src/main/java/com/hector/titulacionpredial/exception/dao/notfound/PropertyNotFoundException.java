@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.exception.dao.notfound;
 
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Excepción lanzada cuando no se encuentran registros de
@@ -17,11 +18,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
  */
 public class PropertyNotFoundException extends DataNotFoundException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public PropertyNotFoundException() {
-        super("No se han encontrado registros de Predios");
+        super(lang.message("property.not.found"));
     }
 
     /**
@@ -31,7 +34,7 @@ public class PropertyNotFoundException extends DataNotFoundException {
      * @param param cédula catastral utilizada en la búsqueda
      */
     public PropertyNotFoundException(String param) {
-        super("No se han encontrado Predios asociados a la cedula catastral '" + param + "'");
+        super(lang.message("not.found.property.find") + " '" + param + "'");
     }
 
     /**

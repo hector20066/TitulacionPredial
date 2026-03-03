@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
@@ -33,6 +34,8 @@ import java.util.List;
  * @since 1.0
  */
 public class DAOBeneficiaryImpl implements DAOBeneficiary {
+
+    private final LanguageManager  lang = LanguageManager.getInstance();
 
     /**
      * Instancia única del DAO (patrón Singleton).
@@ -68,7 +71,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             statementDetails(st, dto);
             st.executeUpdate();
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No fue posible guardar la información del beneficiario", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"), e);
         }
     }
 
@@ -107,7 +110,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return executeResultSet(st);
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con código: " + code, e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.code") + " " + code, e);
         }
     }
 
@@ -121,7 +124,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return executeResultSet(st);
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con cedula: " + id, e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.id") + " " + id, e);
         }
     }
 
@@ -135,7 +138,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return executeResultSet(st);
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información del beneficiario con nombre: " + name, e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.name") + " " + name, e);
         }
     }
 
@@ -157,7 +160,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             executeSimpleQuery(dto, rs);
             return dto;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se ha podido recuperar la información", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info"), e);
         }
     }
 
@@ -180,7 +183,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 return list;
             }
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información de beneficiarios del municipio de " + municipality, e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.municipality") + " " + municipality, e);
         }
     }
 
@@ -218,7 +221,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return list;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.all"), e);
         }
     }
 
@@ -256,7 +259,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 return executeQuery(rs);
             }
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.all"), e);
         }
     }
 
@@ -291,7 +294,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return list;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al recuperar la información de los beneficiarios para exportar", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.export"), e);
         }
     }
 
@@ -336,12 +339,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             statementDetailsUpdate(st, dto);
 
             if (st.executeUpdate() == 0) {
-                throw new BeneficiaryNotFoundException("No se ha encontrado el beneficiario a modificar.");
+                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
             }
 
             return true;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al acceder a la información del beneficiario a modificar.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.modify"), e);
         }
     }
 
@@ -376,12 +379,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             st.setInt(2, dto.getBeneficiaryCode());
 
             if (st.executeUpdate() == 0) {
-                throw new BeneficiaryNotFoundException("No se ha encontrado el beneficiario a modificar.");
+                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
             }
 
             return true;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("Error al acceder a la información del beneficiario a modificar.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.modify"), e);
         }
     }
 
@@ -410,12 +413,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                throw new BeneficiaryNotFoundException("No hay registros para contar");
+                throw new BeneficiaryNotFoundException(lang.message("not.found.count"));
             }
 
             return rs.getInt("total_records");
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
         }
     }
 
@@ -433,7 +436,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return rs.getInt("last_code");
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
         }
     }
 
@@ -456,7 +459,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return result;
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
         }
     }
 
@@ -474,7 +477,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return rs.getInt("beneficiaries_with_property");
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
         }
     }
 
@@ -492,7 +495,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             return rs.getInt("percent");
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException("No se pudo acceder a los registros de beneficiarios.", e);
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
         }
     }
 

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -24,15 +26,17 @@ public class AppConfig {
      */
     private static final Properties properties = new Properties();
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     static {
         try (InputStream file = AppConfig.class.getClassLoader().getResourceAsStream("config/application.properties")) {
             if (file == null) {
-                throw new RuntimeException("No se encontró el archivo de configuración");
+                throw new RuntimeException(lang.message("app.config.not.found.file"));
             }
 
             properties.load(file);
         } catch (Exception e) {
-            throw new RuntimeException("No se puede cargar la aplicación");
+            throw new RuntimeException(lang.message("app.config.no.charge.app"));
         }
     }
 

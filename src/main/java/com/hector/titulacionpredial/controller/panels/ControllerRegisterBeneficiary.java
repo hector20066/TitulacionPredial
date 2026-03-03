@@ -184,11 +184,11 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             String code = registerBeneficiary.getTxt_followingCode().getText().trim();
 
             if (phone.length() > 10) {
-                throw new MaxLengthExceededException("Teléfono", "10");
+                throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
             }
 
             if (!NumericalValidationUtils.isNumeric(phone)) {
-                throw new InvalidNumberInputException("Teléfono");
+                throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
             }
 
             if (registerBeneficiary.isModify()) {
@@ -221,7 +221,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                         String crossing, String affectation) throws InvalidInputException {
 
         if (isInvalidData(neighborhood, address)) {
-            throw new EmptyFieldException("Barrio y Dirección");
+            throw new EmptyFieldException(lang.message("empty.beneficiary.neighborhood.address"));
         }
 
         int codeLong = Integer.parseInt(code);
@@ -287,12 +287,12 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void runInvokeLaterModify(boolean success) {
         if (success) {
-            MessageUtils.informationMessage("Se ha modificado la información del beneficiario.", registerBeneficiary);
+            MessageUtils.informationMessage(lang.message("message.beneficiary.modify"), registerBeneficiary);
             subject.notifyObservers();
             NavigatorUtils.showForms(viewBeneficiaries);
             registerBeneficiary.clearFields();
         } else {
-            MessageUtils.errorMessage("Ha ocurrido un inconveniente. Por favor inténtelo nuevamente.", registerBeneficiary);
+            MessageUtils.errorMessage(lang.message("message.beneficiary.error.modify"), registerBeneficiary);
         }
     }
 
@@ -355,20 +355,19 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                              String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
 
         if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
-            throw new EmptyFieldException("Nombre, Apellido, Cedula, Lugar de Expedición, Barrio, Dirección "
-                    + "y Referencia Catastral");
+            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
         }
 
         if (lastName.split(" ").length < 2) {
-            throw new InvalidInputException("Por favor ingrese los dos Apellidos del beneficiario");
+            throw new InvalidInputException(lang.message("invalid.input.beneficiary.lastnames"));
         }
 
         if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(cadastralReference)) {
-            throw new InvalidNumberInputException("Cedula y Referencia Catastral");
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id.cadastralRef"));
         }
 
         if (id.length() > 10) {
-            throw new MaxLengthExceededException("Cedula", "10");
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
         }
     }
 
@@ -428,7 +427,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
-                    throw new PersistenceException("Este usuario ya se encuentra registrado.");
+                    throw new PersistenceException(lang.message("persistence.beneficiary.exist"));
                 }
 
                 daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
@@ -454,7 +453,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void registerSpouse(int beneficiaryCode) throws DAOException {
         if (dtoSpouse == null) {
-            throw new DataNotFoundException("No se han encontrado registros del conjugue.");
+            throw new DataNotFoundException(lang.message("not.found.spouse.data"));
         }
 
         daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(), dtoSpouse.getAddress(),
@@ -467,7 +466,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void runInvokeLater() {
         resetUI();
-        MessageUtils.informationMessage("Se ha registrado la información del beneficiario en la base de datos", registerBeneficiary);
+        MessageUtils.informationMessage(lang.message("message.beneficiary.register"), registerBeneficiary);
         subject.notifyObservers();
     }
 

@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.exception.dao.notfound;
 
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Excepción lanzada cuando no se encuentran registros de
@@ -17,11 +18,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
  */
 public class SpouseNotFoundException extends DataNotFoundException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción con un mensaje genérico.
      */
     public SpouseNotFoundException() {
-        super("No se han encontrado registros de cónyuges");
+        super(lang.message("not.found.spouse"));
     }
 
     /**
@@ -31,7 +34,7 @@ public class SpouseNotFoundException extends DataNotFoundException {
      * @param param código del beneficiario
      */
     public SpouseNotFoundException(String param) {
-        super("No se han encontrado registros para el Beneficiario con código '" + param + "'");
+        super(lang.message("not.found.spouse.beneficiary") + " '" + param + "'");
     }
 
     /**

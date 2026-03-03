@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
@@ -58,6 +59,8 @@ public class DAOResolutionImpl implements DAOResolution {
      */
     private static DAOResolutionImpl instance;
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Constructor privado para garantizar el patrón Singleton.
      */
@@ -95,7 +98,7 @@ public class DAOResolutionImpl implements DAOResolution {
             st.setInt(9, dto.getPropertyCode());
             st.executeUpdate();
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("No fue posible guardar la información de la resolución", e);
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), e);
         }
     }
 
@@ -117,7 +120,7 @@ public class DAOResolutionImpl implements DAOResolution {
                 return dto;
             }
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero " + numResolution, e);
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.number") + " " + numResolution, e);
         }
     }
 
@@ -138,7 +141,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
             return list;
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("Error al recuperar la información de las resoluciones.", e);
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.all"), e);
         }
     }
 
@@ -184,7 +187,7 @@ public class DAOResolutionImpl implements DAOResolution {
 
             return true;
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("Error al recuperar la información de la resolución con numero"
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.number") + " "
                     + dto.getResolutionNumber(), e);
         }
     }
@@ -198,12 +201,12 @@ public class DAOResolutionImpl implements DAOResolution {
              ResultSet rs = st.executeQuery()) {
 
             if (!rs.next()) {
-                throw new ResolutionNotFoundException("No hay registros para contar");
+                throw new ResolutionNotFoundException(lang.message("not.found.count"));
             }
 
             return rs.getInt("total_records");
         } catch (SQLException e) {
-            throw new ResolutionPersistenceException("Error al recuperar la información de las resoluciones.", e);
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.all"), e);
         }
     }
 

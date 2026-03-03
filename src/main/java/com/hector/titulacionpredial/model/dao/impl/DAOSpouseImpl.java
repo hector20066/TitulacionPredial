@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.SpousePersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.utils.SQLRepository;
@@ -35,6 +36,8 @@ public class DAOSpouseImpl implements DAOSpouse {
      * Instancia única del DAO (patrón Singleton).
      */
     private static DAOSpouseImpl instance;
+
+    private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Constructor privado para garantizar el patrón Singleton.
@@ -70,7 +73,7 @@ public class DAOSpouseImpl implements DAOSpouse {
             st.setInt(6, dto.getBeneficiaryCode());
             st.executeUpdate();
         } catch (SQLException e) {
-            throw new SpousePersistenceException("No fue posible guardar la información del cónyuge;", e);
+            throw new SpousePersistenceException(lang.message("persistence.spouse.register"), e);
         }
     }
 
@@ -92,7 +95,7 @@ public class DAOSpouseImpl implements DAOSpouse {
                 return dto;
             }
         } catch (SQLException e) {
-            throw new SpousePersistenceException("Error al recuperar la información del cónyuge con cedula " + id, e);
+            throw new SpousePersistenceException(lang.message("persistence.spouse.info.id") + " " + id, e);
         }
     }
 
@@ -108,7 +111,7 @@ public class DAOSpouseImpl implements DAOSpouse {
                 throw new SpouseNotFoundException(String.valueOf(id));
             }
         } catch (SQLException e) {
-            throw new SpousePersistenceException("Error al recuperar la información del cónyuge", e);
+            throw new SpousePersistenceException(lang.message("persistence.spouse.info"), e);
         }
     }
 

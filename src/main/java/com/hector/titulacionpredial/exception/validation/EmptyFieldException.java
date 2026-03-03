@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.exception.validation;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 /**
  * Excepción lanzada cuando uno o más campos obligatorios
  * del formulario se encuentran vacíos.
@@ -14,13 +16,15 @@ package com.hector.titulacionpredial.exception.validation;
  */
 public class EmptyFieldException extends InvalidInputException {
 
+    private static final LanguageManager lang = LanguageManager.getInstance();
+
     /**
      * Crea una excepción indicando qué campos están vacíos.
      *
      * @param fieldName nombre(s) del campo o campos vacíos
      */
     public EmptyFieldException(String fieldName) {
-        super("Los campos '" + fieldName + "' no pueden estar vacíos.");
+        super(lang.message("empty.field.message1") + " '" + fieldName + "' " + lang.message("empty.field.message2"));
     }
 
     /**

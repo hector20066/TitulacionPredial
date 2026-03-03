@@ -147,15 +147,15 @@ public class ControllerModifyResolution implements LanguageObserver {
             String publicWriting = modifyResolution.getTxt_publicWriting().getText().trim();
 
             if (isInvalidData(numResolution, notary, fmi)) {
-                throw new EmptyFieldException("Num. Resolución, Notaria y FMI");
+                throw new EmptyFieldException(lang.message("empty.resolution.number.notary.fmi"));
             }
 
             if (!NumericalValidationUtils.isNumeric(numResolution)) {
-                throw new InvalidNumberInputException("Num. Resolución");
+                throw new InvalidNumberInputException(lang.message("invalid.number.property.number"));
             }
 
             if (fmi.length() > 20) {
-                throw new MaxLengthExceededException("FMI", "20");
+                throw new MaxLengthExceededException(lang.message("max.length.resolution.fmi"), "20");
             }
 
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -221,11 +221,11 @@ public class ControllerModifyResolution implements LanguageObserver {
      */
     private void runInvokeLater(boolean success) {
         if (success) {
-            MessageUtils.informationMessage("Se ha modificado la información de la resolución", modifyResolution);
+            MessageUtils.informationMessage(lang.message("message.resolution.modify"), modifyResolution);
             subject.notifyObservers();
             NavigatorUtils.showForms(seeResolutions);
         } else {
-            MessageUtils.errorMessage("No se pudo modificar. Inténtelo nuevamente.", modifyResolution);
+            MessageUtils.errorMessage(lang.message("message.resolution.error.modify"), modifyResolution);
         }
     }
 

@@ -176,7 +176,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (selectedRow == -1) {
-                throw new InvalidInputException("Debe seleccionar un beneficiario para ver su información");
+                throw new InvalidInputException(lang.message("invalid.input.beneficiary.view.info"));
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
@@ -242,7 +242,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (selectedRow == -1) {
-                throw new InvalidInputException("Debe seleccionar un beneficiario para ver su información");
+                throw new InvalidInputException(lang.message("invalid.input.beneficiary.view.info"));
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
@@ -293,11 +293,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             int selectedRow = viewBeneficiaries.getJtbl_beneficiaries().getSelectedRow();
 
             if (viewBeneficiaries.getJtbl_beneficiaries().getSelectedRowCount() != 1) {
-                throw new InvalidInputException("Debe seleccionar el beneficiario que desea eliminar");
+                throw new InvalidInputException(lang.message("invalid.input.beneficiary.delete"));
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
-            int option = MessageUtils.confirmDialog("¿Estas seguro que deseas eliminar este beneficiario?", viewBeneficiaries);
+            int option = MessageUtils.confirmDialog(lang.message("message.beneficiary.confirmation.delete"), viewBeneficiaries);
 
             if (option != MessageUtils.yesOption()) {
                 return;
@@ -320,7 +320,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             try {
                 daoBeneficiary.delete(code);
                 SwingUtilities.invokeLater(() -> {
-                    MessageUtils.informationMessage("Se ha eliminado el registro del beneficiario", viewBeneficiaries);
+                    MessageUtils.informationMessage(lang.message("message.beneficiary.delete"), viewBeneficiaries);
                     subject.notifyObservers();
                 });
             } catch (DAOException e) {
@@ -343,7 +343,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         String param = getSearchParam();
 
         if (!isValid(param)) {
-            MessageUtils.warningMessage("Debe ingresar un criterio de búsqueda", viewBeneficiaries);
+            MessageUtils.warningMessage(lang.message("message.beneficiary.enter.search"), viewBeneficiaries);
             return;
         }
 
@@ -379,7 +379,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 try {
                     handleResult(get(), param);
                 } catch (DAOException | InterruptedException | ExecutionException e) {
-                    MessageUtils.errorMessage("Error al buscar beneficiario", viewBeneficiaries);
+                    MessageUtils.errorMessage(lang.message("message.beneficiary.search.error"), viewBeneficiaries);
                 } finally {
                     lockUI(true);
                 }
@@ -516,8 +516,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
             if (path == null) return;
 
-            DialogUtils.executeWithDialog(viewBeneficiaries, "Exportando reporte, por favor espere...",
-                    "Reporte exportado exitosamente", () -> {
+            DialogUtils.executeWithDialog(viewBeneficiaries, lang.message("dialog.exporting.report"),
+                    lang.message("dialog.exported.report"), () -> {
                         List<DTOBeneficiaryCreate> allBeneficiaries = daoBeneficiary.findAllForExport();
                         GenerateExcelBeneficiary.export(allBeneficiaries, path);
                         return null;
