@@ -126,7 +126,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
      */
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
         dashboard.getLineChart1().clear();
-        dashboard.getLineChart1().addLegend("Beneficiarios Registrados", new Color(149, 213, 178), new Color(45, 106, 79));
+        dashboard.getLineChart1().addLegend(lang.app("controller.dashboard.beneficiaries.registers"), new Color(149, 213, 178), new Color(45, 106, 79));
 
         list.forEach(dto -> {
             String nombreMes = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of("es"));
