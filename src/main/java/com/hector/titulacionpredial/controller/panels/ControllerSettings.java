@@ -41,6 +41,7 @@ public class ControllerSettings implements LanguageObserver {
         this.languageSubject = builder.getLanguageSubject();
 
         builder.getLanguageSubject().register(this);
+        
         connectEvents();
     }
 
@@ -48,7 +49,7 @@ public class ControllerSettings implements LanguageObserver {
      * Conecta los eventos de los radio buttons de idioma
      * con el método {@link #changeLanguage()}.
      */
-    public void connectEvents() {
+    private void connectEvents() {
         Enumeration<AbstractButton> buttons = settings.getBtg_languages().getElements();
 
         while (buttons.hasMoreElements()) {
