@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
 import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
 import com.hector.titulacionpredial.view.swing.scroll.ScrollBar;
 import net.miginfocom.swing.MigLayout;
@@ -35,6 +36,21 @@ public class Menu extends JPanel {
 
     private final LanguageManager lang = LanguageManager.getInstance();
 
+    private String main = "PRINCIPAL";
+    private String dashboard = "Dashboard";
+    private String info = "INFORMACIÓN";
+    private String register = "Registrar Informacion";
+    private String registerBeneficiary = "Beneficiarios";
+    private String registerProperty = "Predios";
+    private String see = "Ver Registros";
+    private String seeBeneficiaries = "Beneficiarios";
+    private String seeResolutions = "Resolucion";
+    private String seeProperties = "Predios";
+    private String settingsTitle = "CONFIGURACION";
+    private String settings = "Ajustes";
+    private String aboutTitle = "SOBRE LA APP";
+    private String about = "Acerca De";
+
     /**
      * Crea el menú lateral con los componentes predeterminados.
      */
@@ -58,19 +74,36 @@ public class Menu extends JPanel {
         rebuildMenu();
     }
 
+    private void setText(DTOMenuText dto) {
+        main = dto.getMainTitle();
+        dashboard = dto.getDashboard();
+        info = dto.getInfo();
+        register = dto.getRegisterInfo();
+        registerBeneficiary = dto.getRegisterBeneficiaries();
+        registerProperty = dto.getRegisterProperties();
+        see = dto.getSee();
+        seeBeneficiaries = dto.getSeeBeneficiaries();
+        seeResolutions = dto.getSeeResolutions();
+        seeProperties = dto.getSeeProperties();
+        settingsTitle = dto.getConfiguration();
+        settings = dto.getSettings();
+        aboutTitle = dto.getAboutApp();
+        about = dto.getAbout();
+    }
+
     /**
      * Agrega las opciones de menú predeterminadas.
      */
     public void addComponents() {
-        addTitle(lang.app("menu.main"));
-        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", lang.app("menu.main.dashboard")));
-        addTitle(lang.app("menu.info"));
-        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", lang.app("menu.info.register"), lang.app("menu.info.register.beneficiary"), lang.app("menu.info.register.property")));
-        addMenuItem(new ModelMenuItem("image/book-open-text.svg", lang.app("menu.info.see"), lang.app("menu.info.see.beneficiaries"), lang.app("menu.info.see.properties"), lang.app("menu.info.see.resolution")));
-        addTitle(lang.app("menu.configuration.title"));
-        addMenuItem(new ModelMenuItem("image/settings-2.svg", lang.app("menu.configuration.settings")));
-        addTitle(lang.app("menu.about"));
-        addMenuItem(new ModelMenuItem("image/info.svg", lang.app("menu.about.desc")));
+        addTitle(main);
+        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", dashboard));
+        addTitle(info);
+        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", register, registerBeneficiary, registerProperty));
+        addMenuItem(new ModelMenuItem("image/book-open-text.svg", see, seeBeneficiaries, seeProperties, seeResolutions));
+        addTitle(settingsTitle);
+        addMenuItem(new ModelMenuItem("image/settings-2.svg", settings));
+        addTitle(lang.app(aboutTitle));
+        addMenuItem(new ModelMenuItem("image/info.svg", about));
     }
 
     /**
