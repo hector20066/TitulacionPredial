@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content;
 
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
+import com.hector.titulacionpredial.view.swing.menu.Menu;
 
 import javax.swing.*;
 
@@ -127,6 +128,10 @@ public class Content extends javax.swing.JFrame {
 
     public static JPanel getJpl_content() {
         return jpl_content;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

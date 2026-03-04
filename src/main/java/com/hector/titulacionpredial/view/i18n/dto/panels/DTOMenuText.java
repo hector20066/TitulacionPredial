@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.view.i18n.dto.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
+
 /**
  *
  * @author hectoracevedo
@@ -136,7 +138,7 @@ public class DTOMenuText {
             return this;
         }
 
-        public Builder registerProperties() {
+        public Builder registerProperties(String registerProperties) {
             this.registerProperties = registerProperties;
             return this;
         }

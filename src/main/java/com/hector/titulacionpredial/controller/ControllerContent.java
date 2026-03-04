@@ -8,6 +8,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 
 /**
  * Controlador principal del contenido de la aplicación.
@@ -164,7 +165,24 @@ public class ControllerContent implements LanguageObserver {
 
     @Override
     public void updateLanguage() {
-
+        DTOMenuText dto = new DTOMenuText.Builder()
+                .mainTitle(lang.app("menu.main"))
+                .dashboard(lang.app("menu.main.dashboard"))
+                .info(lang.app("menu.info"))
+                .registerInfo(lang.app("menu.info.register"))
+                .registerBeneficiaries(lang.app("menu.info.register.beneficiary"))
+                .registerProperties(lang.app("menu.info.register.property"))
+                .see(lang.app("menu.info.see"))
+                .seeBeneficiaries(lang.app("menu.info.see.beneficiaries"))
+                .seeProperties(lang.app("menu.info.see.properties"))
+                .seeResolutions(lang.app("menu.info.see.resolution"))
+                .configuration(lang.app("menu.configuration.title"))
+                .settings(lang.app("menu.configuration.settings"))
+                .aboutApp(lang.app("menu.about"))
+                .about(lang.app("menu.about.desc"))
+                .build();
+        
+        content.getMenu().setText(dto);
     }
 
 }
