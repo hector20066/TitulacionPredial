@@ -43,38 +43,104 @@ Una vez se inicia el programa quien este a cargo de su uso puede:
 
 ```text
 TitulacionPredial/
-├── .mvn/                                      # Configuración interna de Maven
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com.hector.titulacionpredial/
-│   │   │       ├── app/                       # Punto de arranque de la aplicación
-│   │   │       ├── builder.controller/        # Builder para controladores
-│   │   │       ├── controller/                # Controladores 
-│   │   │       ├── database/                  # Conexión y manejo de base de datos
-│   │   │       ├── facade/                    # Fachadas del sistema
-│   │   │       │   ├── impl/                  # Implementaciones
-│   │   │       │   └── interfaces/            # Interfaces
-│   │   │       ├── model/
-│   │   │       │   ├── dao/                   # Data Access Objects
-│   │   │       │   ├── dto/                   # Data Transfer Objects
-│   │   │       │   ├── entities/              # Entidades del dominio
-│   │   │       │   └── enums/                 # Enumeraciones
-│   │   │       ├── observer/                  # Patrón Observer
-│   │   │       ├── utils/                     # Utilidades generales
-│   │   │       └── view/
-│   │   │           ├── component/             # Componentes visuales
-│   │   │           ├── content/               # Contenido visual
-│   │   │           └── swing/                 # Componentes Swing
-│   │   └── resources/
-│   │       ├── config/                        # Archivos de configuración
-│   │       └── image/                         # Recursos gráficos
-│   └── test/                                  # Pruebas del sistema (pendiente)
-│
-├── target/                       # Archivos compilados por Maven
-├── pom.xml                       # Configuración del proyecto Maven
-├── README.md                     # Documentación del proyecto
-└── CHANGELOG.md                  # Historial de cambios
+├── CHANGELOG.md
+├── DATABASE.sql
+├── pom.xml
+├── README.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── hector
+│   │   │           └── titulacionpredial
+│   │   │               ├── app
+│   │   │               │   └── Main.java
+│   │   │               ├── controller
+│   │   │               │   ├── builder
+│   │   │               │   └── panels
+│   │   │               ├── database
+│   │   │               ├── exception
+│   │   │               │   ├── dao
+│   │   │               │   │   ├── notfound
+│   │   │               │   │   └── persistence
+│   │   │               │   └── validation
+│   │   │               ├── facade
+│   │   │               │   ├── impl
+│   │   │               │   └── interfaces
+│   │   │               ├── i18n
+│   │   │               ├── model
+│   │   │               │   ├── dao
+│   │   │               │   │   ├── impl
+│   │   │               │   │   └── interfaces
+│   │   │               │   ├── dto
+│   │   │               │   │   ├── beneficiary
+│   │   │               │   │   ├── property
+│   │   │               │   │   └── resolution
+│   │   │               │   ├── entities
+│   │   │               │   └── enums
+│   │   │               ├── observer
+│   │   │               ├── utils
+│   │   │               └── view
+│   │   │                   ├── component
+│   │   │                   ├── content
+│   │   │                   │   ├── dialogs
+│   │   │                   │   └── panels
+│   │   │                   ├── i18n
+│   │   │                   │   └── dto
+│   │   │                   │       ├── dialogs
+│   │   │                   │       └── panels
+│   │   │                   └── swing
+│   │   │                       ├── button
+│   │   │                       ├── chart
+│   │   │                       │   └── blankchart
+│   │   │                       ├── menu
+│   │   │                       ├── model
+│   │   │                       ├── panel
+│   │   │                       ├── scroll
+│   │   │                       ├── shadow
+│   │   │                       │   ├── chart
+│   │   │                       └── system
+│   │   └── resources
+│   │       ├── config
+│   │       ├── i18n
+│   │       │   ├── app
+│   │       │   └── message
+│   │       ├── image
+│   │       ├── resolution
+│   │       │   └── MINUTA - RES FISCALES.docx
+│   │       └── sql
+│   │           ├── beneficiary
+│   │           ├── point
+│   │           ├── property
+│   │           ├── resolution
+│   │           └── spouse
+│   └── test
+│       └── java
+│           └── com
+│               └── hector
+│                   └── titulacionpredial
+│                       ├── exception
+│                       │   ├── dao
+│                       │   └── validation
+│                       ├── facade
+│                       │   └── impl
+│                       ├── model
+│                       │   ├── dto
+│                       │   │   ├── beneficiary
+│                       │   │   ├── property
+│                       │   │   └── resolution
+│                       │   ├── entities
+│                       │   └── enums
+│                       ├── observer
+│                       ├── utils
+│                       └── view
+│                           └── swing
+│                               ├── chart
+│                               ├── menu
+│                               ├── model
+│                               └── shadow
+└── target
+    └── TitulacionPredial-1.0.0.jar
 
 
 ```
@@ -82,11 +148,11 @@ TitulacionPredial/
 
 ##  Objetivo
 
-Facilitar la gestion de informacion de beneficiarios inscritos en el programa, evitando conflictos con el manejo de grandes cantidades de datos haciendo uso de arhivos excel masivos.
+Facilitar la gestion de información de beneficiarios inscritos en el programa, evitando conflictos con el manejo de grandes cantidades de datos haciendo uso de arhivos excel masivos.
 
-Automatizar procesos como la generacion de una resolucion, evitando que quien este a cargo de su uso no deba editar una platilla manualmente, 
+Automatizar procesos como la generación de una resolución, evitando que quien este a cargo de su uso no deba editar una platilla manualmente, 
 tambien puede exportar un archivo excel con todos los registros de la base de datos para llevar el control de la cantidad de beneficiarios que se tienen actualmente en el sistema y asi
-tener un mejor orden de la informacion.
+tener un mejor orden de la información.
 
 
 --- 
