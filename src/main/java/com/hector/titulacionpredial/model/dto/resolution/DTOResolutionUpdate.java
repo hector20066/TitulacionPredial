@@ -51,10 +51,20 @@ public class DTOResolutionUpdate extends DTOResolution {
         this.code = builder.code;
     }
 
+    /**
+     * Obtiene el código de la resolución.
+     *
+     * @return código de la resolución
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código de la resolución.
+     *
+     * @param code código de la resolución
+     */
     public void setCode(int code) {
         this.code = code;
     }

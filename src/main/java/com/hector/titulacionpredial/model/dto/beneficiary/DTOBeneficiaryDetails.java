@@ -61,58 +61,128 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         this.spouseBeneficiaryCode = builder.spouseBeneficiaryCode;
     }
 
+    /**
+     * Obtiene el código del beneficiario.
+     *
+     * @return código del beneficiario
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código del beneficiario.
+     *
+     * @param code código del beneficiario
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene la cédula del cónyuge.
+     *
+     * @return cédula del cónyuge
+     */
     public long getIdSpouse() {
         return idSpouse;
     }
 
+    /**
+     * Establece la cédula del cónyuge.
+     *
+     * @param idSpouse cédula del cónyuge
+     */
     public void setIdSpouse(long idSpouse) {
         this.idSpouse = idSpouse;
     }
 
+    /**
+     * Obtiene el nombre completo del cónyuge.
+     *
+     * @return nombre completo del cónyuge
+     */
     public String getFullNameSpouse() {
         return fullNameSpouse;
     }
 
+    /**
+     * Establece el nombre completo del cónyuge.
+     *
+     * @param fullNameSpouse nombre completo del cónyuge
+     */
     public void setFullNameSpouse(String fullNameSpouse) {
         this.fullNameSpouse = fullNameSpouse;
     }
 
+    /**
+     * Obtiene el lugar de expedición del cónyuge.
+     *
+     * @return lugar de expedición del cónyuge
+     */
     public String getExpeditionLocationSpouse() {
         return expeditionLocationSpouse;
     }
 
+    /**
+     * Establece el lugar de expedición del cónyuge.
+     *
+     * @param expeditionLocationSpouse lugar de expedición del cónyuge
+     */
     public void setExpeditionLocationSpouse(String expeditionLocationSpouse) {
         this.expeditionLocationSpouse = expeditionLocationSpouse;
     }
 
+    /**
+     * Obtiene la dirección del cónyuge.
+     *
+     * @return dirección del cónyuge
+     */
     public String getAddressSpouse() {
         return addressSpouse;
     }
 
+    /**
+     * Establece la dirección del cónyuge.
+     *
+     * @param addressSpouse dirección del cónyuge
+     */
     public void setAddressSpouse(String addressSpouse) {
         this.addressSpouse = addressSpouse;
     }
 
+    /**
+     * Obtiene el teléfono del cónyuge.
+     *
+     * @return teléfono del cónyuge
+     */
     public long getPhoneSpouse() {
         return phoneSpouse;
     }
 
+    /**
+     * Establece el teléfono del cónyuge.
+     *
+     * @param phoneSpouse teléfono del cónyuge
+     */
     public void setPhoneSpouse(long phoneSpouse) {
         this.phoneSpouse = phoneSpouse;
     }
 
+    /**
+     * Obtiene el código de beneficiario asociado al cónyuge.
+     *
+     * @return código de beneficiario del cónyuge
+     */
     public int getSpouseBeneficiaryCode() {
         return spouseBeneficiaryCode;
     }
 
+    /**
+     * Establece el código de beneficiario asociado al cónyuge.
+     *
+     * @param spouseBeneficiaryCode código de beneficiario del cónyuge
+     */
     public void setSpouseBeneficiaryCode(int spouseBeneficiaryCode) {
         this.spouseBeneficiaryCode = spouseBeneficiaryCode;
     }

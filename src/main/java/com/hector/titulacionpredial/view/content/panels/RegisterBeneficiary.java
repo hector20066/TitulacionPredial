@@ -85,18 +85,38 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         });
     }
 
+    /**
+     * Establece si el formulario está en modo modificación.
+     *
+     * @param modify {@code true} para modo modificación
+     */
     public void setModify(boolean modify) {
         this.modify = modify;
     }
 
+    /**
+     * Indica si el formulario está en modo modificación.
+     *
+     * @return {@code true} si está en modo modificación
+     */
     public boolean isModify() {
         return modify;
     }
 
+    /**
+     * Establece el estado civil actual del beneficiario.
+     *
+     * @param nowStatus estado civil seleccionado
+     */
     public void setNowStatus(MaritalStatus nowStatus) {
         this.nowStatus = nowStatus;
     }
 
+    /**
+     * Obtiene el estado civil actual del beneficiario.
+     *
+     * @return estado civil seleccionado
+     */
     public MaritalStatus getNowStatus() {
         return nowStatus;
     }
@@ -511,6 +531,11 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel según el idioma seleccionado.
+     *
+     * @param texts DTO con los textos traducidos
+     */
     public void updateLanguage(DTORegisterBeneficiaryText texts) {
         jlb_title.setText(texts.getAddTitle());
         jlb_beneficiaryInfo.setText(texts.getBeneficiaryInfo());
@@ -570,78 +595,173 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbx_affectation.addActionListener(action);
     }
 
+    /**
+     * Obtiene el componente botón de registrar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
 
+    /**
+     * Obtiene el componente checkbox de afectación predial.
+     *
+     * @return componente {@link JCheckBox}
+     */
     public JCheckBox getCbx_affectation() {
         return cbx_affectation;
     }
 
+    /**
+     * Obtiene el componente combo de departamento.
+     *
+     * @return componente {@link JComboBox}
+     */
     public JComboBox<Department> getCbo_department() {
         return cbo_department;
     }
 
+    /**
+     * Obtiene el componente combo de estado civil.
+     *
+     * @return componente {@link JComboBox}
+     */
     public JComboBox<MaritalStatus> getCbo_maritalStatus() {
         return cbo_maritalStatus;
     }
 
+    /**
+     * Obtiene el componente combo de municipio.
+     *
+     * @return componente {@link JComboBox}
+     */
     public JComboBox<Municipalities> getCbo_municipality() {
         return cbo_municipality;
     }
 
+    /**
+     * Obtiene el componente scroll del formulario.
+     *
+     * @return componente {@link JScrollPane}
+     */
     public JScrollPane getJscp_info() {
         return jscp_info;
     }
 
+    /**
+     * Obtiene el componente área de texto de afectación.
+     *
+     * @return componente {@link JTextArea}
+     */
     public JTextArea getTxa_affectation() {
         return txa_affectation;
     }
 
+    /**
+     * Obtiene el componente área de texto de cruce.
+     *
+     * @return componente {@link JTextArea}
+     */
     public JTextArea getTxa_crossing() {
         return txa_crossing;
     }
 
+    /**
+     * Obtiene el componente campo de texto de dirección.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_address() {
         return txt_address;
     }
 
+    /**
+     * Obtiene el componente campo de texto de referencia catastral.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
+    /**
+     * Obtiene el componente campo de texto del lugar de expedición.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_expeditionLocation() {
         return txt_expeditionLocation;
     }
 
+    /**
+     * Obtiene el componente campo de texto del código de seguimiento.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_followingCode() {
         return txt_followingCode;
     }
 
+    /**
+     * Obtiene el componente campo de texto del barrio.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_neighborhood() {
         return txt_neighborhood;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la cédula.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_id() {
         return txt_id;
     }
 
+    /**
+     * Obtiene el componente campo de texto del apellido.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_lastName() {
         return txt_lastName;
     }
 
+    /**
+     * Obtiene el componente campo de texto del nombre.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_name() {
         return txt_name;
     }
 
+    /**
+     * Obtiene el componente campo de texto del teléfono.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_phone() {
         return txt_phone;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la publicación.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_publication() {
         return txt_publication;
     }
 
+    /**
+     * Carga el código de seguimiento en el campo correspondiente.
+     *
+     * @param code código de seguimiento a mostrar
+     */
     public void loadFollowingCode(int code) {
         txt_followingCode.setText(String.valueOf(code));
     }

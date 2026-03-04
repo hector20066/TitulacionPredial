@@ -91,6 +91,15 @@ public class Coordinator {
         });
     }
 
+    /**
+     * Carga el idioma de la aplicación desde la configuración del usuario.
+     *
+     * <p>
+     * Obtiene el idioma almacenado en las preferencias del usuario,
+     * lo aplica al gestor de idiomas y notifica a los observadores
+     * de cambio de idioma para actualizar la interfaz gráfica.
+     * </p>
+     */
     private void loadLanguage() {
         String language = UserConfig.get("app.language");
         lang.setLanguage(AppLanguage.valueOf(language.toUpperCase()));

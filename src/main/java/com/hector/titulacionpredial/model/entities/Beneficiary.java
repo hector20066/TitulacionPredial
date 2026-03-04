@@ -72,82 +72,182 @@ public class Beneficiary extends Person {
         this.spouse = builder.spouse;
     }
 
+    /**
+     * Obtiene el código interno del beneficiario.
+     *
+     * @return código interno
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código interno del beneficiario.
+     *
+     * @param code código interno
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene el departamento asociado al beneficiario.
+     *
+     * @return departamento asociado
+     */
     public Department getDepartment() {
         return department;
     }
 
+    /**
+     * Establece el departamento asociado al beneficiario.
+     *
+     * @param department departamento asociado
+     */
     public void setDepartment(Department department) {
         this.department = department;
     }
 
+    /**
+     * Obtiene el municipio asociado al beneficiario.
+     *
+     * @return municipio asociado
+     */
     public Municipalities getMunicipality() {
         return municipality;
     }
 
+    /**
+     * Establece el municipio asociado al beneficiario.
+     *
+     * @param municipality municipio asociado
+     */
     public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
+    /**
+     * Obtiene la referencia catastral del beneficiario.
+     *
+     * @return referencia catastral
+     */
     public String getCadastralReference() {
         return cadastralReference;
     }
 
+    /**
+     * Establece la referencia catastral del beneficiario.
+     *
+     * @param cadastralReference referencia catastral
+     */
     public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }
 
+    /**
+     * Obtiene el estado civil del beneficiario.
+     *
+     * @return estado civil
+     */
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
+    /**
+     * Establece el estado civil del beneficiario.
+     *
+     * @param maritalStatus estado civil del beneficiario
+     */
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
+    /**
+     * Obtiene la información de afectación predial.
+     *
+     * @return información de afectación
+     */
     public String getAffectation() {
         return affectation;
     }
 
+    /**
+     * Establece la información de afectación predial.
+     *
+     * @param affectation información de afectación
+     */
     public void setAffectation(String affectation) {
         this.affectation = affectation;
     }
 
+    /**
+     * Obtiene la información de cruce del beneficiario.
+     *
+     * @return información de cruce
+     */
     public String getCrossing() {
         return crossing;
     }
 
+    /**
+     * Establece la información de cruce del beneficiario.
+     *
+     * @param crossing información de cruce
+     */
     public void setCrossing(String crossing) {
         this.crossing = crossing;
     }
 
+    /**
+     * Obtiene la información de publicación del beneficiario.
+     *
+     * @return información de publicación
+     */
     public String getPublication() {
         return publication;
     }
 
+    /**
+     * Establece la información de publicación del beneficiario.
+     *
+     * @param publication información de publicación
+     */
     public void setPublication(String publication) {
         this.publication = publication;
     }
 
+    /**
+     * Obtiene el barrio de residencia del beneficiario.
+     *
+     * @return barrio de residencia
+     */
     public String getNeighborhood() {
         return neighborhood;
     }
 
+    /**
+     * Establece el barrio de residencia del beneficiario.
+     *
+     * @param neighborhood barrio de residencia
+     */
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
     }
 
+    /**
+     * Obtiene el cónyuge del beneficiario.
+     *
+     * @return entidad cónyuge
+     */
     public Spouse getSpouse() {
         return spouse;
     }
 
+    /**
+     * Establece el cónyuge del beneficiario.
+     *
+     * @param spouse entidad cónyuge
+     */
     public void setSpouse(Spouse spouse) {
         this.spouse = spouse;
     }

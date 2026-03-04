@@ -73,34 +73,74 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.cadastralReference = builder.cadastralReference;
     }
 
+    /**
+     * Obtiene la cédula única del beneficiario.
+     *
+     * @return cédula del beneficiario
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * Establece la cédula única del beneficiario.
+     *
+     * @param id cédula del beneficiario
+     */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     * Obtiene el nombre completo del beneficiario.
+     *
+     * @return nombre completo del beneficiario
+     */
     public String getFullName() {
         return fullName;
     }
 
+    /**
+     * Establece el nombre completo del beneficiario.
+     *
+     * @param fullName nombre completo del beneficiario
+     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**
+     * Obtiene el lugar de expedición.
+     *
+     * @return lugar de expedición
+     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    /**
+     * Establece el lugar de expedición.
+     *
+     * @param expeditionLocation lugar de expedición
+     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
+    /**
+     * Obtiene la referencia catastral.
+     *
+     * @return referencia catastral
+     */
     public String getCadastralReference() {
         return cadastralReference;
     }
 
+    /**
+     * Establece la referencia catastral.
+     *
+     * @param cadastralReference referencia catastral
+     */
     public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }

@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
+ * Panel de configuración de la aplicación que permite al usuario
+ * seleccionar el idioma de la interfaz.
  *
  * @author juanpablobohorquezguerra
  */
@@ -134,43 +136,93 @@ public class Settings extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel de configuración con las traducciones proporcionadas.
+     *
+     * @param texts DTO con los textos traducidos de configuración
+     */
     public void updateLanguage(DTOSettingsText texts) {
         btn_language.setText(texts.getLanguageBtn());
         jlb_title.setText(texts.getTitle());
     }
 
+    /**
+     * Asigna el controlador de acción al botón de idioma.
+     *
+     * @param action listener que maneja el evento de clic
+     */
     public void setControllerBtn_language(ActionListener action) {
         btn_language.addActionListener(action);
     } 
     
+    /**
+     * Asigna el controlador de acción al radio button de idioma español.
+     *
+     * @param action listener que maneja la selección del idioma español
+     */
     public void setControllerSpanishLanguage(ActionListener action) {
         rbn_spanish.addActionListener(action);
     }
     
+    /**
+     * Asigna el controlador de acción al radio button de idioma inglés.
+     *
+     * @param action listener que maneja la selección del idioma inglés
+     */
     public void setControllerEnglishLanguage(ActionListener action) {
         rbn_english.addActionListener(action);
     }
     
+    /**
+     * Obtiene el botón de acción de idioma.
+     *
+     * @return botón de idioma
+     */
     public ButtonAction getBtn_language() {
         return btn_language;
     }
     
+    /**
+     * Obtiene el radio button de selección de idioma español.
+     *
+     * @return radio button de español
+     */
     public JRadioButton getRbn_spanish() {
         return rbn_spanish;
     }
     
+    /**
+     * Obtiene el radio button de selección de idioma inglés.
+     *
+     * @return radio button de inglés
+     */
     public JRadioButton getRbn_english() {
         return rbn_english;
     }
     
+    /**
+     * Obtiene la etiqueta de título del panel de configuración.
+     *
+     * @return etiqueta de título
+     */
     public JLabel getJlb_title() {
         return jlb_title;
     }
     
+    /**
+     * Obtiene el grupo de botones que agrupa los radio buttons de idioma.
+     *
+     * @return grupo de botones de idioma
+     */
     public ButtonGroup getBtg_languages() {
         return btg_languages;
     }
     
+    /**
+     * Obtiene el panel de contenido interno de la configuración.
+     *
+     * @return panel de contenido
+     */
     public JPanel getJpl_content() {
         return jpl_content;
     }

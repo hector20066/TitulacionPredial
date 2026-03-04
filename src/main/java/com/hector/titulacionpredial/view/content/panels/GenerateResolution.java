@@ -779,6 +779,11 @@ public class GenerateResolution extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel según el idioma seleccionado.
+     *
+     * @param texts DTO con los textos traducidos
+     */
     public void updateLanguage(DTOGenerateResolutionText texts) {
         jlb_title.setText(texts.getGenerateLabel());
         jlb_resume.setText(texts.getResumeTitle());
@@ -831,126 +836,281 @@ public class GenerateResolution extends javax.swing.JPanel {
         btn_generate.addActionListener(action);
     }
 
+    /**
+     * Obtiene el componente botón de generar resolución.
+     *
+     * @return componente {@link ButtonAction} de generar resolución
+     */
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
+    /**
+     * Obtiene el componente campo de texto del acto.
+     *
+     * @return componente {@link JTextField} de acto
+     */
     public JTextField getTxt_act() {
         return txt_act;
     }
 
+    /**
+     * Obtiene el componente campo de fecha de ejecutoria.
+     *
+     * @return componente {@link JFormattedTextField} de ejecutoria
+     */
     public JFormattedTextField getFtx_executory() {
         return ftx_executory;
     }
 
+    /**
+     * Obtiene el componente campo de fecha de notificación.
+     *
+     * @return componente {@link JFormattedTextField} de notificación
+     */
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
 
+    /**
+     * Obtiene el componente campo de texto del código del predio.
+     *
+     * @return componente {@link JTextField} de código del predio
+     */
     public JTextField getTxt_propertyCode() {
         return txt_propertyCode;
     }
 
+    /**
+     * Obtiene el componente campo de texto del área.
+     *
+     * @return componente {@link JTextField} de área
+     */
     public JTextField getTxt_area() {
         return txt_area;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la dirección del beneficiario.
+     *
+     * @return componente {@link JTextField} de dirección del beneficiario
+     */
     public JTextField getTxt_addressBeneficiary() {
         return txt_addressBeneficiary;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la referencia catastral.
+     *
+     * @return componente {@link JTextField} de referencia catastral
+     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la distancia del punto 1.
+     *
+     * @return componente {@link JTextField} de distancia del punto 1
+     */
     public JTextField getTxt_distance1() {
         return txt_distance1;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la distancia del punto 2.
+     *
+     * @return componente {@link JTextField} de distancia del punto 2
+     */
     public JTextField getTxt_distance2() {
         return txt_distance2;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la distancia del punto 3.
+     *
+     * @return componente {@link JTextField} de distancia del punto 3
+     */
     public JTextField getTxt_distance3() {
         return txt_distance3;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la distancia del punto 4.
+     *
+     * @return componente {@link JTextField} de distancia del punto 4
+     */
     public JTextField getTxt_distance4() {
         return txt_distance4;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada este del punto 1.
+     *
+     * @return componente {@link JTextField} de coordenada este del punto 1
+     */
     public JTextField getTxt_eastCoordinate1() {
         return txt_eastCoordinate1;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada este del punto 2.
+     *
+     * @return componente {@link JTextField} de coordenada este del punto 2
+     */
     public JTextField getTxt_eastCoordinate2() {
         return txt_eastCoordinate2;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada este del punto 3.
+     *
+     * @return componente {@link JTextField} de coordenada este del punto 3
+     */
     public JTextField getTxt_eastCoordinate3() {
         return txt_eastCoordinate3;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada este del punto 4.
+     *
+     * @return componente {@link JTextField} de coordenada este del punto 4
+     */
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
     }
 
+    /**
+     * Obtiene el componente campo de texto del FMI.
+     *
+     * @return componente {@link JTextField} de FMI
+     */
     public JTextField getTxt_fmi() {
         return txt_fmi;
     }
 
+    /**
+     * Obtiene el componente campo de texto del colindero del punto 1.
+     *
+     * @return componente {@link JTextField} de colindero del punto 1
+     */
     public JTextField getTxt_hillside1() {
         return txt_hillside1;
     }
 
+    /**
+     * Obtiene el componente campo de texto del colindero del punto 2.
+     *
+     * @return componente {@link JTextField} de colindero del punto 2
+     */
     public JTextField getTxt_hillside2() {
         return txt_hillside2;
     }
 
+    /**
+     * Obtiene el componente campo de texto del colindero del punto 3.
+     *
+     * @return componente {@link JTextField} de colindero del punto 3
+     */
     public JTextField getTxt_hillside3() {
         return txt_hillside3;
     }
 
+    /**
+     * Obtiene el componente campo de texto del colindero del punto 4.
+     *
+     * @return componente {@link JTextField} de colindero del punto 4
+     */
     public JTextField getTxt_hillside4() {
         return txt_hillside4;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la cédula del beneficiario.
+     *
+     * @return componente {@link JTextField} de cédula del beneficiario
+     */
     public JTextField getTxt_idBeneficiary() {
         return txt_idBeneficiary;
     }
 
+    /**
+     * Obtiene el componente campo de texto del nombre del beneficiario.
+     *
+     * @return componente {@link JTextField} de nombre del beneficiario
+     */
     public JTextField getTxt_nameBeneficiary() {
         return txt_nameBeneficiary;
     }
 
+    /**
+     * Obtiene el componente campo de texto del municipio.
+     *
+     * @return componente {@link JTextField} de municipio
+     */
     public JTextField getTxt_municipality() {
         return txt_municipality;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada norte del punto 1.
+     *
+     * @return componente {@link JTextField} de coordenada norte del punto 1
+     */
     public JTextField getTxt_northCoordinate1() {
         return txt_northCoordinate1;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada norte del punto 2.
+     *
+     * @return componente {@link JTextField} de coordenada norte del punto 2
+     */
     public JTextField getTxt_northCoordinate2() {
         return txt_northCoordinate2;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada norte del punto 3.
+     *
+     * @return componente {@link JTextField} de coordenada norte del punto 3
+     */
     public JTextField getTxt_northCoordinate3() {
         return txt_northCoordinate3;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la coordenada norte del punto 4.
+     *
+     * @return componente {@link JTextField} de coordenada norte del punto 4
+     */
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la notaría.
+     *
+     * @return componente {@link JTextField} de notaría
+     */
     public JTextField getTxt_note() {
         return txt_note;
     }
 
+    /**
+     * Obtiene el componente campo de texto del número de resolución.
+     *
+     * @return componente {@link JTextField} de número de resolución
+     */
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
 
+    /**
+     * Obtiene el componente campo de texto de la escritura pública.
+     *
+     * @return componente {@link JTextField} de escritura pública
+     */
     public JTextField getTxt_publicWriting() {
         return txt_publicWriting;
     }

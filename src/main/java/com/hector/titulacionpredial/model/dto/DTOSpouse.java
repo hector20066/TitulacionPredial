@@ -58,34 +58,74 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
+    /**
+     * Obtiene el identificador del cónyuge.
+     *
+     * @return cédula del cónyuge
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * Establece el identificador del cónyuge.
+     *
+     * @param id cédula del cónyuge
+     */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     * Obtiene el nombre completo del cónyuge.
+     *
+     * @return nombre completo
+     */
     public String getFullName() {
         return fullName;
     }
 
+    /**
+     * Establece el nombre completo del cónyuge.
+     *
+     * @param fullName nombre completo
+     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**
+     * Obtiene el lugar de expedición del documento.
+     *
+     * @return lugar de expedición
+     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    /**
+     * Establece el lugar de expedición del documento.
+     *
+     * @param expeditionLocation lugar de expedición
+     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
+    /**
+     * Obtiene el código del beneficiario asociado.
+     *
+     * @return código del beneficiario
+     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
+    /**
+     * Establece el código del beneficiario asociado.
+     *
+     * @param beneficiaryCode código del beneficiario
+     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }

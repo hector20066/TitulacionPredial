@@ -460,6 +460,11 @@ public class Dashboard extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del tablero de control con las traducciones proporcionadas.
+     *
+     * @param texts DTO con los textos traducidos del dashboard
+     */
     public void updateLanguage(DTODashboardText texts) {
         jlb_subtitle1.setText(texts.getTotalRegisters());
         beneficiaries = texts.getBeneficiaries();
@@ -480,26 +485,56 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_subtitle3.setText(texts.getRegistersMonth());
     }
 
+    /**
+     * Obtiene la tarjeta de resumen de beneficiarios.
+     *
+     * @return tarjeta de beneficiarios
+     */
     public Card getCard1() {
         return card1;
     }
 
+    /**
+     * Obtiene la tarjeta de resumen de predios.
+     *
+     * @return tarjeta de predios
+     */
     public Card getCard2() {
         return card2;
     }
 
+    /**
+     * Obtiene la tarjeta de resumen de resoluciones.
+     *
+     * @return tarjeta de resoluciones
+     */
     public Card getCard3() {
         return card3;
     }
 
+    /**
+     * Obtiene el gráfico de calibre de beneficiarios.
+     *
+     * @return gráfico de calibre de beneficiarios
+     */
     public GaugeChart getGaugeChart1() {
         return gaugeChart1;
     }
 
+    /**
+     * Obtiene el gráfico de calibre de predios.
+     *
+     * @return gráfico de calibre de predios
+     */
     public GaugeChart getGaugeChart2() {
         return gaugeChart2;
     }
 
+    /**
+     * Obtiene el gráfico de líneas de beneficiarios registrados por mes.
+     *
+     * @return gráfico de líneas
+     */
     public LineChart getLineChart1() {
         return lineChart1;
     }

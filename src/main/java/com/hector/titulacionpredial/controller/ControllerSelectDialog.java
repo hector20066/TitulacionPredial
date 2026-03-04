@@ -52,6 +52,17 @@ public class ControllerSelectDialog {
         this.daoBeneficiary = new BeneficiaryImplFacade();
     }
 
+    /**
+     * Busca un beneficiario de forma asíncrona según el parámetro proporcionado.
+     *
+     * <p>
+     * La búsqueda se ejecuta en un hilo secundario mediante {@link SwingWorker}.
+     * Si el parámetro es numérico, busca por cédula o código; de lo contrario,
+     * busca por nombre.
+     * </p>
+     *
+     * @param param criterio de búsqueda (cédula, código o nombre del beneficiario)
+     */
     public void searchBeneficiary(String param) {
         if (isInvalidParam(param)) {
             MessageUtils.errorMessage(lang.message("message.beneficiary.enter.params"), null);

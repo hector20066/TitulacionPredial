@@ -47,18 +47,38 @@ public class DTOBeneficiaryPropertyUpdate {
         this.propertyCode = propertyCode;
     }
 
+    /**
+     * Obtiene el código del beneficiario.
+     *
+     * @return código del beneficiario
+     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
+    /**
+     * Establece el código del beneficiario.
+     *
+     * @param beneficiaryCode código del beneficiario
+     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }
 
+    /**
+     * Obtiene el código de la propiedad.
+     *
+     * @return código de la propiedad
+     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**
+     * Establece el código de la propiedad.
+     *
+     * @param propertyCode código de la propiedad
+     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }

@@ -249,6 +249,11 @@ public class SeeProperties extends JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel según el idioma seleccionado.
+     *
+     * @param texts DTO con los textos traducidos
+     */
     public void updateLanguage(DTOSeePropertiesText texts) {
         jlb_title.setText(texts.getProperties());
         code = texts.getCode();
@@ -366,34 +371,74 @@ public class SeeProperties extends JPanel {
         txt_search.addFocusListener(listen);
     }
 
+    /**
+     * Obtiene el modelo de datos de la tabla de predios.
+     *
+     * @return componente {@link DefaultTableModel}
+     */
     public DefaultTableModel getModel() {
         return model;
     }
 
+    /**
+     * Obtiene el componente botón de eliminar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_delete() {
         return btn_delete;
     }
 
+    /**
+     * Obtiene el componente botón de generar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
+    /**
+     * Obtiene el componente botón de buscar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
+    /**
+     * Obtiene el componente scroll del contenido de predios.
+     *
+     * @return componente {@link JScrollPane}
+     */
     public JScrollPane getJscp_scrollContent() {
         return jscp_scrollContent;
     }
 
+    /**
+     * Obtiene el componente tabla de predios.
+     *
+     * @return componente {@link JTable}
+     */
     public JTable getJtbl_properties() {
         return jtbl_properties;
     }
 
+    /**
+     * Obtiene el componente panel redondeado de búsqueda.
+     *
+     * @return componente {@link RoundedPanel}
+     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
+    /**
+     * Obtiene el componente campo de texto de búsqueda.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_search() {
         return txt_search;
     }

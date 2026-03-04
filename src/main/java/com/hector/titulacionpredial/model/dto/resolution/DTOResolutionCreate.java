@@ -53,14 +53,29 @@ public class DTOResolutionCreate extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
+    /**
+     * Obtiene el código del predio asociado.
+     *
+     * @return código del predio
+     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**
+     * Establece el código del predio asociado.
+     *
+     * @param propertyCode código del predio
+     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
+    /**
+     * Obtiene el nombre del beneficiario.
+     *
+     * @return nombre completo del beneficiario
+     */
     public String getBeneficiaryName() {
         return beneficiaryName;
     }

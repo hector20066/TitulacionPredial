@@ -54,18 +54,38 @@ public class DTOProperty {
         this.area = area;
     }
 
+    /**
+     * Obtiene la referencia catastral del predio.
+     *
+     * @return cédula catastral del predio
+     */
     public String getCadastralId() {
         return cadastralId;
     }
 
+    /**
+     * Establece la referencia catastral del predio.
+     *
+     * @param cadastralId cédula catastral del predio
+     */
     public void setCadastralId(String cadastralId) {
         this.cadastralId = cadastralId;
     }
 
+    /**
+     * Obtiene el área del predio.
+     *
+     * @return área del predio
+     */
     public Double getArea() {
         return area;
     }
 
+    /**
+     * Establece el área del predio.
+     *
+     * @param area área del predio
+     */
     public void setArea(Double area) {
         this.area = area;
     }

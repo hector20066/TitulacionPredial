@@ -53,18 +53,38 @@ public class DTOResolutionDetails extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
+    /**
+     * Obtiene el código de la resolución.
+     *
+     * @return código de la resolución
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código de la resolución.
+     *
+     * @param code código de la resolución
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene el nombre del beneficiario.
+     *
+     * @return nombre completo del beneficiario
+     */
     public String getBeneficiaryName() {
         return beneficiaryName;
     }
 
+    /**
+     * Establece el nombre del beneficiario.
+     *
+     * @param beneficiaryName nombre completo del beneficiario
+     */
     public void setBeneficiaryName(String beneficiaryName) {
         this.beneficiaryName = beneficiaryName;
     }

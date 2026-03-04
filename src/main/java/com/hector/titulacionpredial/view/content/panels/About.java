@@ -166,6 +166,11 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
         updateLanguage(dto);
     }
 
+    /**
+     * Actualiza los textos del panel «Acerca de» con las traducciones proporcionadas.
+     *
+     * @param texts DTO con los textos traducidos del panel
+     */
     public void updateLanguage(DTOAboutText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_subtitle1.setText(texts.getAppInfo());

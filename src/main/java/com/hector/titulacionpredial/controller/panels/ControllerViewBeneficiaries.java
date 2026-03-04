@@ -354,10 +354,24 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         executeSearchAsync(param);
     }
 
+    /**
+     * Obtiene el texto de búsqueda ingresado por el usuario,
+     * eliminando los espacios en blanco al inicio y al final.
+     *
+     * @return parámetro de búsqueda limpio
+     */
     private String getSearchParam() {
         return viewBeneficiaries.getTxt_search().getText().trim();
     }
 
+    /**
+     * Valida que el parámetro de búsqueda no esté vacío
+     * ni sea igual al texto placeholder.
+     *
+     * @param param texto a validar
+     * @return {@code true} si el parámetro es válido para buscar,
+     *         {@code false} en caso contrario
+     */
     private boolean isValid(String param) {
         return !(param.isBlank() || param.equalsIgnoreCase(searchPlaceholder));
     }

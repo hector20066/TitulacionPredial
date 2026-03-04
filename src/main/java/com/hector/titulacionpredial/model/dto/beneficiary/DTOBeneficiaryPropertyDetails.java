@@ -55,18 +55,38 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
         setAddress(address);
     }
 
+    /**
+     * Establece el código único del beneficiario.
+     *
+     * @param code código del beneficiario
+     */
     public void setCode(long code) {
         this.id = code;
     }
 
+    /**
+     * Obtiene el nombre completo del beneficiario.
+     *
+     * @return nombre completo del beneficiario
+     */
     public String getFullName() {
         return fullName;
     }
 
+    /**
+     * Establece el nombre completo del beneficiario.
+     *
+     * @param fullName nombre completo del beneficiario
+     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**
+     * Obtiene la cédula única del beneficiario.
+     *
+     * @return cédula del beneficiario
+     */
     public long getId() {
         return id;
     }

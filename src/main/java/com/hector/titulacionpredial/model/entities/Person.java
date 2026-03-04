@@ -54,42 +54,92 @@ public class Person {
         this.phone = builder.phone;
     }
 
+    /**
+     * Obtiene el identificador único de la persona.
+     *
+     * @return identificador único
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * Establece el identificador único de la persona.
+     *
+     * @param id identificador único
+     */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     * Obtiene el nombre completo de la persona.
+     *
+     * @return nombre completo
+     */
     public String getFullName() {
         return fullName;
     }
 
+    /**
+     * Establece el nombre completo de la persona.
+     *
+     * @param fullName nombre completo
+     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**
+     * Obtiene la dirección de residencia de la persona.
+     *
+     * @return dirección de residencia
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Establece la dirección de residencia de la persona.
+     *
+     * @param address dirección de residencia
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * Obtiene el lugar de expedición del documento de identidad.
+     *
+     * @return lugar de expedición
+     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    /**
+     * Establece el lugar de expedición del documento de identidad.
+     *
+     * @param expeditionLocation lugar de expedición
+     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
+    /**
+     * Obtiene el número telefónico de contacto de la persona.
+     *
+     * @return número telefónico
+     */
     public long getPhone() {
         return phone;
     }
 
+    /**
+     * Establece el número telefónico de contacto de la persona.
+     *
+     * @param phone número telefónico
+     */
     public void setPhone(long phone) {
         this.phone = phone;
     }

@@ -179,6 +179,11 @@ public class SeeResolutions extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel según el idioma seleccionado.
+     *
+     * @param texts DTO con los textos traducidos
+     */
     public void updateLanguage(DTOSeeResolutionsText texts) {
         jlb_title.setText(texts.getTitle());
         code = texts.getCode();
@@ -257,30 +262,65 @@ public class SeeResolutions extends javax.swing.JPanel {
         txt_search.addFocusListener(listen);
     }
 
+    /**
+     * Obtiene el modelo de datos de la tabla de resoluciones.
+     *
+     * @return componente {@link DefaultTableModel}
+     */
     public DefaultTableModel getModel() {
         return model;
     }
 
+    /**
+     * Obtiene el componente botón de modificar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
+    /**
+     * Obtiene el componente botón de buscar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
+    /**
+     * Obtiene el componente botón de cancelar búsqueda.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
+    /**
+     * Obtiene el componente tabla de resoluciones.
+     *
+     * @return componente {@link JTable}
+     */
     public JTable getJtbl_resolutions() {
         return jtbl_resolutions;
     }
 
+    /**
+     * Obtiene el componente panel redondeado de búsqueda.
+     *
+     * @return componente {@link RoundedPanel}
+     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
+    /**
+     * Obtiene el componente campo de texto de búsqueda.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_search() {
         return txt_search;
     }

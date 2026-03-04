@@ -99,6 +99,17 @@ public class GenerateResolutionUtils {
         template.close();
     }
 
+    /**
+     * Construye el texto de los beneficiarios para la plantilla de resolución.
+     *
+     * <p>
+     * Si todos los beneficiarios comparten el mismo estado civil, este se
+     * agrega al final; de lo contrario se incluye junto a cada beneficiario.
+     * </p>
+     *
+     * @param sb                {@link StringBuilder} donde se acumula el texto generado
+     * @param beneficiariesList lista de beneficiarios con sus datos
+     */
     private static void defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         String identifyingText = " identificad(o)(a) con cedula de ciudadanía N° ";
 
@@ -129,6 +140,12 @@ public class GenerateResolutionUtils {
         }
     }
 
+    /**
+     * Verifica la cantidad de estados civiles distintos entre los beneficiarios.
+     *
+     * @param beneficiariesList lista de beneficiarios a evaluar
+     * @return cantidad de estados civiles distintos encontrados
+     */
     private static int verifyMaritalStatus(List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         Map<MaritalStatus, String> status = new HashMap<>();
 

@@ -51,10 +51,20 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
         this.code = builder.code;
     }
 
+    /**
+     * Obtiene el código del beneficiario.
+     *
+     * @return código del beneficiario
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código del beneficiario.
+     *
+     * @param code código del beneficiario
+     */
     public void setCode(int code) {
         this.code = code;
     }

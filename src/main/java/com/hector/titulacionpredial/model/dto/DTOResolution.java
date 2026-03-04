@@ -86,58 +86,128 @@ public class DTOResolution {
         this.notary = builder.notary;
     }
 
+    /**
+     * Obtiene el número único de la resolución.
+     *
+     * @return número de la resolución
+     */
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
+    /**
+     * Establece el número único de la resolución.
+     *
+     * @param resolutionNumber número de la resolución
+     */
     public void setResolutionNumber(long resolutionNumber) {
         this.resolutionNumber = resolutionNumber;
     }
 
+    /**
+     * Obtiene la fecha de la ejecutoria.
+     *
+     * @return fecha de la ejecutoria
+     */
     public LocalDate getExecutory() {
         return executory;
     }
 
+    /**
+     * Establece la fecha de la ejecutoria.
+     *
+     * @param executory fecha de la ejecutoria
+     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
+    /**
+     * Obtiene la descripción del proceso.
+     *
+     * @return descripción del proceso
+     */
     public String getAct() {
         return act;
     }
 
+    /**
+     * Establece la descripción del proceso.
+     *
+     * @param act descripción del proceso
+     */
     public void setAct(String act) {
         this.act = act;
     }
 
+    /**
+     * Obtiene la escritura pública.
+     *
+     * @return escritura pública
+     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    /**
+     * Establece la escritura pública.
+     *
+     * @param publicWriting escritura pública
+     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
+    /**
+     * Obtiene la fecha en la que se genera la resolución.
+     *
+     * @return fecha de notificación de la resolución
+     */
     public LocalDate getNotification() {
         return notification;
     }
 
+    /**
+     * Establece la fecha en la que se genera la resolución.
+     *
+     * @param notification fecha de notificación de la resolución
+     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
+    /**
+     * Obtiene el Folio de Matrícula Inmobiliaria.
+     *
+     * @return Folio de Matrícula Inmobiliaria
+     */
     public String getFmi() {
         return fmi;
     }
 
+    /**
+     * Establece el Folio de Matrícula Inmobiliaria.
+     *
+     * @param fmi Folio de Matrícula Inmobiliaria
+     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
+    /**
+     * Obtiene la notaría donde se ejecuta la resolución.
+     *
+     * @return notaría de la resolución
+     */
     public String getNotary() {
         return notary;
     }
 
+    /**
+     * Establece la notaría donde se ejecuta la resolución.
+     *
+     * @param notary notaría de la resolución
+     */
     public void setNotary(String notary) {
         this.notary = notary;
     }

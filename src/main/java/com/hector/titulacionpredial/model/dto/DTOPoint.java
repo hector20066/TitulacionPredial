@@ -83,50 +83,110 @@ public class DTOPoint {
         this.propertyCode = builder.propertyCode;
     }
 
+    /**
+     * Obtiene el número del punto asociado.
+     *
+     * @return número del punto
+     */
     public int getNumberPoint() {
         return numberPoint;
     }
 
+    /**
+     * Establece el número del punto asociado.
+     *
+     * @param numberPoint número del punto
+     */
     public void setNumberPoint(int numberPoint) {
         this.numberPoint = numberPoint;
     }
 
+    /**
+     * Obtiene la coordenada norte.
+     *
+     * @return valor de la coordenada norte
+     */
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
+    /**
+     * Establece la coordenada norte.
+     *
+     * @param northCoordinate valor de la coordenada norte
+     */
     public void setNorthCoordinate(Double northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
+    /**
+     * Obtiene la coordenada este.
+     *
+     * @return valor de la coordenada este
+     */
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
+    /**
+     * Establece la coordenada este.
+     *
+     * @param eastCoordinate valor de la coordenada este
+     */
     public void setEastCoordinate(Double eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
+    /**
+     * Obtiene la distancia con respecto al siguiente punto.
+     *
+     * @return distancia al siguiente punto
+     */
     public Double getDistance() {
         return distance;
     }
 
+    /**
+     * Establece la distancia con respecto al siguiente punto.
+     *
+     * @param distance distancia al siguiente punto
+     */
     public void setDistance(Double distance) {
         this.distance = distance;
     }
 
+    /**
+     * Obtiene los datos del lindero vecino al punto.
+     *
+     * @return datos del lindero vecino
+     */
     public String getHillside() {
         return hillside;
     }
 
+    /**
+     * Establece los datos del lindero vecino al punto.
+     *
+     * @param hillside datos del lindero vecino
+     */
     public void setHillside(String hillside) {
         this.hillside = hillside;
     }
 
+    /**
+     * Obtiene el código de {@code Property}.
+     *
+     * @return código del predio asociado
+     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**
+     * Establece el código de {@code Property}.
+     *
+     * @param propertyCode código del predio asociado
+     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }

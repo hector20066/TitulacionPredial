@@ -67,42 +67,92 @@ public class Property {
         this.points = builder.points;
     }
 
+    /**
+     * Obtiene el código único del predio.
+     *
+     * @return código único
+     */
     public long getCode() {
         return code;
     }
 
+    /**
+     * Establece el código único del predio.
+     *
+     * @param code código único
+     */
     public void setCode(long code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene la cédula catastral del predio.
+     *
+     * @return cédula catastral
+     */
     public String getCadastralId() {
         return cadastralId;
     }
 
+    /**
+     * Establece la cédula catastral del predio.
+     *
+     * @param cadastralId cédula catastral
+     */
     public void setCadastralId(String cadastralId) {
         this.cadastralId = cadastralId;
     }
 
+    /**
+     * Obtiene el área del predio en metros cuadrados.
+     *
+     * @return área en metros cuadrados
+     */
     public Double getArea() {
         return area;
     }
 
+    /**
+     * Establece el área del predio en metros cuadrados.
+     *
+     * @param area área en metros cuadrados
+     */
     public void setArea(Double area) {
         this.area = area;
     }
 
+    /**
+     * Obtiene la lista de beneficiarios asociados al predio.
+     *
+     * @return lista de beneficiarios asociados
+     */
     public List<Beneficiary> getBeneficiaries() {
         return beneficiaries;
     }
 
+    /**
+     * Establece la lista de beneficiarios asociados al predio.
+     *
+     * @param beneficiaries lista de beneficiarios asociados
+     */
     public void setBeneficiaries(List<Beneficiary> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
+    /**
+     * Obtiene los puntos geográficos que definen los límites del predio.
+     *
+     * @return arreglo de puntos geográficos
+     */
     public Point[] getPoints() {
         return points;
     }
 
+    /**
+     * Establece los puntos geográficos que definen los límites del predio.
+     *
+     * @param points arreglo de puntos geográficos
+     */
     public void setPoints(Point[] points) {
         this.points = points;
     }

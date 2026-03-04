@@ -93,58 +93,128 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = builder.affectation;
     }
 
+    /**
+     * Obtiene el departamento asociado al beneficiario.
+     *
+     * @return departamento del beneficiario
+     */
     public Department getDepartment() {
         return department;
     }
 
+    /**
+     * Establece el departamento asociado al beneficiario.
+     *
+     * @param department departamento del beneficiario
+     */
     public void setDepartment(Department department) {
         this.department = department;
     }
 
+    /**
+     * Obtiene el municipio asociado al beneficiario.
+     *
+     * @return municipio del beneficiario
+     */
     public Municipalities getMunicipality() {
         return municipality;
     }
 
+    /**
+     * Establece el municipio asociado al beneficiario.
+     *
+     * @param municipality municipio del beneficiario
+     */
     public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
+    /**
+     * Obtiene el barrio o sector de residencia.
+     *
+     * @return barrio de residencia
+     */
     public String getNeighborhood() {
         return neighborhood;
     }
 
+    /**
+     * Establece el barrio o sector de residencia.
+     *
+     * @param neighborhood barrio de residencia
+     */
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
     }
 
+    /**
+     * Obtiene la información sobre cruces administrativos.
+     *
+     * @return información de cruces administrativos
+     */
     public String getCrossing() {
         return crossing;
     }
 
+    /**
+     * Establece la información sobre cruces administrativos.
+     *
+     * @param crossing información de cruces administrativos
+     */
     public void setCrossing(String crossing) {
         this.crossing = crossing;
     }
 
+    /**
+     * Obtiene la información relacionada con publicaciones oficiales.
+     *
+     * @return información de publicaciones oficiales
+     */
     public String getPublication() {
         return publication;
     }
 
+    /**
+     * Establece la información relacionada con publicaciones oficiales.
+     *
+     * @param publication información de publicaciones oficiales
+     */
     public void setPublication(String publication) {
         this.publication = publication;
     }
 
+    /**
+     * Obtiene el estado civil del beneficiario.
+     *
+     * @return estado civil del beneficiario
+     */
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
+    /**
+     * Establece el estado civil del beneficiario.
+     *
+     * @param maritalStatus estado civil del beneficiario
+     */
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
+    /**
+     * Obtiene la información sobre afectaciones jurídicas.
+     *
+     * @return información de afectaciones jurídicas
+     */
     public String getAffectation() {
         return affectation;
     }
 
+    /**
+     * Establece la información sobre afectaciones jurídicas.
+     *
+     * @param affectation información de afectaciones jurídicas
+     */
     public void setAffectation(String affectation) {
         this.affectation = affectation;
     }

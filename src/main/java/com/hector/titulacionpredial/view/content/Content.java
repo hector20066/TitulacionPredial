@@ -126,10 +126,20 @@ public class Content extends javax.swing.JFrame {
         menu.addEvent(evt);
     }
 
+    /**
+     * Obtiene el panel de contenido dinámico donde se cargan los formularios.
+     *
+     * @return panel de contenido principal
+     */
     public static JPanel getJpl_content() {
         return jpl_content;
     }
 
+    /**
+     * Obtiene el componente de menú lateral de la ventana.
+     *
+     * @return instancia del menú lateral
+     */
     public Menu getMenu() {
         return menu;
     }

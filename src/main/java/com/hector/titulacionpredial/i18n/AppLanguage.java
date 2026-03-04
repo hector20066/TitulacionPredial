@@ -31,6 +31,11 @@ public enum AppLanguage {
         this.code = code;
     }
 
+    /**
+     * Obtiene el código del idioma.
+     *
+     * @return identificador del idioma
+     */
     public String getCode() {
         return code;
     }

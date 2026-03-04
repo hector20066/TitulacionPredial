@@ -82,82 +82,182 @@ public class DTOPropertyDetails extends DTOProperty {
         this.notary = builder.notary;
     }
 
+    /**
+     * Obtiene el código del predio.
+     *
+     * @return código del predio
+     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**
+     * Establece el código del predio.
+     *
+     * @param propertyCode código del predio
+     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
+    /**
+     * Obtiene la lista de beneficiarios asociados al predio.
+     *
+     * @return lista de beneficiarios
+     */
     public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
         return beneficiaries;
     }
 
+    /**
+     * Establece la lista de beneficiarios asociados al predio.
+     *
+     * @param beneficiaries lista de beneficiarios
+     */
     public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
+    /**
+     * Obtiene la lista de puntos geográficos que definen la geometría del predio.
+     *
+     * @return lista de coordenadas
+     */
     public List<DTOPoint> getPoints() {
         return points;
     }
 
+    /**
+     * Establece la lista de puntos geográficos que definen la geometría del predio.
+     *
+     * @param points lista de coordenadas
+     */
     public void setPoints(List<DTOPoint> points) {
         this.points = points;
     }
 
+    /**
+     * Obtiene el número de resolución.
+     *
+     * @return número de resolución
+     */
     public long getNumResolution() {
         return numResolution;
     }
 
+    /**
+     * Establece el número de resolución.
+     *
+     * @param numResolution número de resolución
+     */
     public void setNumResolution(long numResolution) {
         this.numResolution = numResolution;
     }
 
+    /**
+     * Obtiene la fecha de notificación.
+     *
+     * @return fecha de notificación
+     */
     public LocalDate getNotification() {
         return notification;
     }
 
+    /**
+     * Establece la fecha de notificación.
+     *
+     * @param notification fecha de notificación
+     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
+    /**
+     * Obtiene la fecha de ejecutoria.
+     *
+     * @return fecha de ejecutoria
+     */
     public LocalDate getExecutory() {
         return executory;
     }
 
+    /**
+     * Establece la fecha de ejecutoria.
+     *
+     * @param executory fecha de ejecutoria
+     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
+    /**
+     * Obtiene el Folio de Matrícula Inmobiliaria.
+     *
+     * @return número FMI
+     */
     public String getFmi() {
         return fmi;
     }
 
+    /**
+     * Establece el Folio de Matrícula Inmobiliaria.
+     *
+     * @param fmi número FMI
+     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
+    /**
+     * Obtiene el número de acta.
+     *
+     * @return número de acta
+     */
     public String getAct() {
         return act;
     }
 
+    /**
+     * Establece el número de acta.
+     *
+     * @param act número de acta
+     */
     public void setAct(String act) {
         this.act = act;
     }
 
+    /**
+     * Obtiene el número de escritura pública.
+     *
+     * @return número de escritura pública
+     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    /**
+     * Establece el número de escritura pública.
+     *
+     * @param publicWriting número de escritura pública
+     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
+    /**
+     * Obtiene la notaría.
+     *
+     * @return nombre de la notaría
+     */
     public String getNotary() {
         return notary;
     }
 
+    /**
+     * Establece la notaría.
+     *
+     * @param notary nombre de la notaría
+     */
     public void setNotary(String notary) {
         this.notary = notary;
     }

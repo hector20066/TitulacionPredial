@@ -76,82 +76,182 @@ public class Resolution {
         this.beneficiary = builder.beneficiary;
     }
 
+    /**
+     * Obtiene el código único de la resolución.
+     *
+     * @return código único
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código único de la resolución.
+     *
+     * @param code código único
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene el número de la resolución.
+     *
+     * @return número de la resolución
+     */
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
+    /**
+     * Establece el número de la resolución.
+     *
+     * @param resolutionNumber número de la resolución
+     */
     public void setResolutionNumber(long resolutionNumber) {
         this.resolutionNumber = resolutionNumber;
     }
 
+    /**
+     * Obtiene la fecha de notificación de la resolución.
+     *
+     * @return fecha de notificación
+     */
     public LocalDate getNotification() {
         return notification;
     }
 
+    /**
+     * Establece la fecha de notificación de la resolución.
+     *
+     * @param notification fecha de notificación
+     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
+    /**
+     * Obtiene la fecha de ejecutoria de la resolución.
+     *
+     * @return fecha de ejecutoria
+     */
     public LocalDate getExecutory() {
         return executory;
     }
 
+    /**
+     * Establece la fecha de ejecutoria de la resolución.
+     *
+     * @param executory fecha de ejecutoria
+     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
+    /**
+     * Obtiene el folio de matrícula inmobiliaria.
+     *
+     * @return folio de matrícula inmobiliaria
+     */
     public String getFmi() {
         return fmi;
     }
 
+    /**
+     * Establece el folio de matrícula inmobiliaria.
+     *
+     * @param fmi folio de matrícula inmobiliaria
+     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
+    /**
+     * Obtiene la descripción del acta asociada.
+     *
+     * @return descripción del acta
+     */
     public String getAct() {
         return act;
     }
 
+    /**
+     * Establece la descripción del acta asociada.
+     *
+     * @param act descripción del acta
+     */
     public void setAct(String act) {
         this.act = act;
     }
 
+    /**
+     * Obtiene la escritura pública de la resolución.
+     *
+     * @return escritura pública
+     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    /**
+     * Establece la escritura pública de la resolución.
+     *
+     * @param publicWriting escritura pública
+     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
+    /**
+     * Obtiene el nombre de la notaría asociada.
+     *
+     * @return nombre de la notaría
+     */
     public String getNotary() {
         return notary;
     }
 
+    /**
+     * Establece el nombre de la notaría asociada.
+     *
+     * @param notary nombre de la notaría
+     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
 
+    /**
+     * Obtiene el predio asociado a la resolución.
+     *
+     * @return predio vinculado
+     */
     public Property getProperty() {
         return property;
     }
 
+    /**
+     * Establece el predio asociado a la resolución.
+     *
+     * @param property predio vinculado
+     */
     public void setProperty(Property property) {
         this.property = property;
     }
 
+    /**
+     * Obtiene el beneficiario asociado a la resolución.
+     *
+     * @return beneficiario vinculado
+     */
     public Beneficiary getBeneficiary() {
         return beneficiary;
     }
 
+    /**
+     * Establece el beneficiario asociado a la resolución.
+     *
+     * @param beneficiary beneficiario vinculado
+     */
     public void setBeneficiary(Beneficiary beneficiary) {
         this.beneficiary = beneficiary;
     }

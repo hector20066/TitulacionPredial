@@ -218,6 +218,11 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Actualiza los textos del panel según el idioma seleccionado.
+     *
+     * @param texts DTO con los textos traducidos
+     */
     public void updateLanguage(DTOViewBeneficiariesText texts) {
         jlb_title.setText(texts.getTitle());
         code = texts.getCode();
@@ -324,42 +329,92 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         txt_search.addFocusListener(listen);
     }
 
+    /**
+     * Obtiene el modelo de datos de la tabla de beneficiarios.
+     *
+     * @return componente {@link DefaultTableModel}
+     */
     public DefaultTableModel getTableModel() {
         return tableModel;
     }
 
+    /**
+     * Obtiene el componente botón de eliminar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_delete() {
         return btn_delete;
     }
 
+    /**
+     * Obtiene el componente botón de modificar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
+    /**
+     * Obtiene el componente botón de buscar.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
+    /**
+     * Obtiene el componente botón de ver perfil completo.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_seeProfile() {
         return btn_seeProfile;
     }
 
+    /**
+     * Obtiene el componente botón de cancelar búsqueda.
+     *
+     * @return componente {@link ButtonAction}
+     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
+    /**
+     * Obtiene el componente panel de contenido principal.
+     *
+     * @return componente {@link JPanel}
+     */
     public JPanel getJpl_content() {
         return jpl_content;
     }
 
+    /**
+     * Obtiene el componente tabla de beneficiarios.
+     *
+     * @return componente {@link JTable}
+     */
     public JTable getJtbl_beneficiaries() {
         return jtbl_beneficiaries;
     }
 
+    /**
+     * Obtiene el componente panel redondeado de búsqueda.
+     *
+     * @return componente {@link RoundedPanel}
+     */
     public RoundedPanel getRoundedPanel1() {
         return roundedPanel1;
     }
 
+    /**
+     * Obtiene el componente campo de texto de búsqueda.
+     *
+     * @return componente {@link JTextField}
+     */
     public JTextField getTxt_search() {
         return txt_search;
     }

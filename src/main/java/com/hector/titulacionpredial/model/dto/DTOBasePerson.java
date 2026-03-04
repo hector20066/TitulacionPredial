@@ -55,18 +55,38 @@ public class DTOBasePerson {
         this.phone = phone;
     }
 
+    /**
+     * Obtiene la dirección asociada a la persona.
+     *
+     * @return dirección de la persona
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Establece la dirección asociada a la persona.
+     *
+     * @param address dirección de la persona
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * Obtiene el número telefónico de contacto.
+     *
+     * @return número telefónico
+     */
     public long getPhone() {
         return phone;
     }
 
+    /**
+     * Establece el número telefónico de contacto.
+     *
+     * @param phone número telefónico
+     */
     public void setPhone(long phone) {
         this.phone = phone;
     }

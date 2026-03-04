@@ -58,50 +58,110 @@ public class Point {
         this.hillside = builder.hillside;
     }
 
+    /**
+     * Obtiene el código único del punto.
+     *
+     * @return código único
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * Establece el código único del punto.
+     *
+     * @param code código único
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * Obtiene el número secuencial del punto.
+     *
+     * @return número secuencial del punto
+     */
     public int getNumberPoint() {
         return numberPoint;
     }
 
+    /**
+     * Establece el número secuencial del punto.
+     *
+     * @param numberPoint número secuencial del punto
+     */
     public void setNumberPoint(int numberPoint) {
         this.numberPoint = numberPoint;
     }
 
+    /**
+     * Obtiene la coordenada norte del punto.
+     *
+     * @return coordenada norte
+     */
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
+    /**
+     * Establece la coordenada norte del punto.
+     *
+     * @param northCoordinate coordenada norte
+     */
     public void setNorthCoordinate(Double northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
+    /**
+     * Obtiene la coordenada este del punto.
+     *
+     * @return coordenada este
+     */
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
+    /**
+     * Establece la coordenada este del punto.
+     *
+     * @param eastCoordinate coordenada este
+     */
     public void setEastCoordinate(Double eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
+    /**
+     * Obtiene la distancia al siguiente punto en metros.
+     *
+     * @return distancia en metros
+     */
     public Double getDistance() {
         return distance;
     }
 
+    /**
+     * Establece la distancia al siguiente punto en metros.
+     *
+     * @param distance distancia en metros
+     */
     public void setDistance(Double distance) {
         this.distance = distance;
     }
 
+    /**
+     * Obtiene la descripción del lindero asociado al punto.
+     *
+     * @return descripción del lindero
+     */
     public String getHillside() {
         return hillside;
     }
 
+    /**
+     * Establece la descripción del lindero asociado al punto.
+     *
+     * @param hillside descripción del lindero
+     */
     public void setHillside(String hillside) {
         this.hillside = hillside;
     }
