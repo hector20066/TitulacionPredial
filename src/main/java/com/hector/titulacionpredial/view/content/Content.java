@@ -44,7 +44,6 @@ public class Content extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jpl_body.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,7 +81,7 @@ public class Content extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/layout-dashboard.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/loge-app.png"))); // NOI18N
 
         javax.swing.GroupLayout jpl_bodyLayout = new javax.swing.GroupLayout(jpl_body);
         jpl_body.setLayout(jpl_bodyLayout);
