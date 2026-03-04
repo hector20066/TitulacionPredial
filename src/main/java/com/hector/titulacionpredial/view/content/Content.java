@@ -43,12 +43,12 @@ public class Content extends javax.swing.JFrame {
         head = new com.hector.titulacionpredial.view.component.Head();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
 
         jpl_body.setBackground(new java.awt.Color(255, 255, 255));
 
         jpl_menu.setBackground(new java.awt.Color(255, 255, 255));
-        jpl_menu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(64, 145, 108)));
 
         menu.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
 
@@ -67,6 +67,7 @@ public class Content extends javax.swing.JFrame {
         );
 
         jpl_content.setBackground(new java.awt.Color(255, 255, 255));
+        jpl_content.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(64, 145, 108)));
 
         javax.swing.GroupLayout jpl_contentLayout = new javax.swing.GroupLayout(jpl_content);
         jpl_content.setLayout(jpl_contentLayout);
@@ -117,11 +118,11 @@ public class Content extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpl_body, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpl_body, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpl_body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpl_body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
