@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.util.Enumeration;
+
+import javax.swing.AbstractButton;
+
 import com.hector.titulacionpredial.controller.builder.ControllerSettingsBuilder;
 import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.LanguageManager;
@@ -7,9 +11,6 @@ import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
-
-import javax.swing.*;
-import java.util.Enumeration;
 
 
 /**

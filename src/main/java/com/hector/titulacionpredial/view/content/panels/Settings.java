@@ -4,14 +4,15 @@
  */
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
-import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 /**
  * Panel de configuración de la aplicación que permite al usuario

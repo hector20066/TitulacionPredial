@@ -4,7 +4,7 @@ import com.hector.titulacionpredial.controller.panels.ControllerRegisterProperty
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 
 /**
  * Builder para la construcción de instancias de {@link ControllerRegisterProperty}.

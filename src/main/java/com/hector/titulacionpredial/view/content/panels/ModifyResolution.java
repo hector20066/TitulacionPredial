@@ -1,15 +1,17 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
-import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 /**
  * Formulario para la modificación de una resolución existente.

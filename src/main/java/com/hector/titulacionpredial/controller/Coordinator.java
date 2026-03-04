@@ -1,7 +1,16 @@
 package com.hector.titulacionpredial.controller;
 
-import com.hector.titulacionpredial.controller.builder.*;
-import com.hector.titulacionpredial.controller.panels.*;
+import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerDashboardBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerGenerateResolutionBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerModifyResolutionBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerSeePropertiesBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerSeeResolutionsBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerSettingsBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
+import com.hector.titulacionpredial.controller.panels.ControllerSettings;
 import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
 import com.hector.titulacionpredial.i18n.LanguageManager;
@@ -9,7 +18,16 @@ import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.Content;
-import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.content.panels.About;
+import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
+import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
+import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
+import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
+import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.content.panels.Settings;
+import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
  * Coordinador principal de la aplicación.

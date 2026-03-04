@@ -1,9 +1,9 @@
 package com.hector.titulacionpredial.view.content;
 
+import javax.swing.JPanel;
+
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import com.hector.titulacionpredial.view.swing.menu.Menu;
-
-import javax.swing.*;
 
 /**
  * Ventana principal ({@code JFrame}) de la aplicación

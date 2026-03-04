@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.view.i18n.dto.panels;
 
-import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
-
 /**
  * DTO que encapsula los textos internacionalizados para el panel de menú principal.
  *
