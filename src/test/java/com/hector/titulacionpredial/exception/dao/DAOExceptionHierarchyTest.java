@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,16 @@ import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceEx
 import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException;
 import com.hector.titulacionpredial.exception.dao.persistence.ResolutionPersistenceException;
 import com.hector.titulacionpredial.exception.dao.persistence.SpousePersistenceException;
+import com.hector.titulacionpredial.i18n.AppLanguage;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 @DisplayName("DAO Exception Hierarchy Tests")
 class DAOExceptionHierarchyTest {
+
+    @BeforeAll
+    static void setup() {
+        LanguageManager.getInstance().setLanguage(AppLanguage.ES);
+    }
 
     // ===================== DAOException =====================
 

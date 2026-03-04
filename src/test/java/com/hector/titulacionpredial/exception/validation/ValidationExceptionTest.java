@@ -1,13 +1,23 @@
 package com.hector.titulacionpredial.exception.validation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.i18n.AppLanguage;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 @DisplayName("Validation Exception Tests")
 class ValidationExceptionTest {
+
+    @BeforeAll
+    static void setup() {
+        LanguageManager.getInstance().setLanguage(AppLanguage.ES);
+    }
 
     @Nested
     @DisplayName("InvalidInputException Tests")
