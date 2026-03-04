@@ -86,6 +86,8 @@ public class Menu extends JPanel {
         settings = dto.getSettings();
         aboutTitle = dto.getAboutApp();
         about = dto.getAbout();
+
+        rebuildMenu();
     }
 
     /**

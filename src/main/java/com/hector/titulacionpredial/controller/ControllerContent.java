@@ -181,7 +181,7 @@ public class ControllerContent implements LanguageObserver {
                 .aboutApp(lang.app("menu.about"))
                 .about(lang.app("menu.about.desc"))
                 .build();
-        
+
         content.getMenu().setText(dto);
     }
 
