@@ -1,6 +1,5 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
 import com.hector.titulacionpredial.view.swing.scroll.ScrollBar;
@@ -33,8 +32,6 @@ public class Menu extends JPanel {
     private MigLayout menuLayout;
     private JPanel panelMenu;
     private int index = -1;
-
-    private final LanguageManager lang = LanguageManager.getInstance();
 
     private String main = "PRINCIPAL";
     private String dashboard = "Dashboard";
@@ -74,7 +71,7 @@ public class Menu extends JPanel {
         rebuildMenu();
     }
 
-    private void setText(DTOMenuText dto) {
+    public void setText(DTOMenuText dto) {
         main = dto.getMainTitle();
         dashboard = dto.getDashboard();
         info = dto.getInfo();
@@ -102,7 +99,7 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem("image/book-open-text.svg", see, seeBeneficiaries, seeProperties, seeResolutions));
         addTitle(settingsTitle);
         addMenuItem(new ModelMenuItem("image/settings-2.svg", settings));
-        addTitle(lang.app(aboutTitle));
+        addTitle(aboutTitle);
         addMenuItem(new ModelMenuItem("image/info.svg", about));
     }
 
