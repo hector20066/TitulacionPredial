@@ -7,20 +7,20 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Clase de arranque de la aplicación Titulación Predial.
+ * Application Start-up Class Land Titling
  *
  * <p>
- * Se encarga de:
+ * Is in charge of:
  * </p>
  * <ul>
- *     <li>Configurar el Look & Feel global mediante {@link FlatIntelliJLaf}.</li>
- *     <li>Personalizar propiedades visuales del {@link UIManager}.</li>
- *     <li>Inicializar el flujo principal delegando el control al {@link Coordinator}.</li>
+ *     <li>Configure the global Look & Feel using {@link FlatIntelliJLaf}.</li>
+ *     <li>Customize visual properties of {@link UIManager}.</li>
+ *     <li>Initialize the main flow by delegating control to {@link Coordinator}.</li>
  * </ul>
  *
  * <p>
- * Esta clase no contiene lógica de negocio. Su única responsabilidad
- * es la configuración inicial y el bootstrap del sistema.
+ * This class contains no business logic. Its sole responsibility is the initial
+ * configuration and bootstrapping of the system.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -29,16 +29,16 @@ import java.awt.*;
 public class Main {
 
     /**
-     * Punto de entrada oficial de la aplicación.
+     * Official application entry point
      *
      * <p>
-     * Inicializa la configuración visual del sistema y delega la
-     * creación e inicialización de dependencias al {@link Coordinator}.
+     * Initializes the system's visual configuration and delegates the
+     * creation and initialization of dependencies to{@link Coordinator}.
      * </p>
      *
-     * @param args argumentos de línea de comandos (no utilizados actualmente)
-     * @throws RuntimeException sí ocurre un error durante la inicialización
-     *                          del entorno gráfico o del coordinador.
+     * @param args command line arguments (not currently used)
+     * @throws RuntimeException if an error occurs during the initialization
+     *                          of the graphical environment or the coordinator.
      */
     static void main(String[] args) {
         try {
