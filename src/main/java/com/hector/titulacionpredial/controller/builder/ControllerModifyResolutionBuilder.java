@@ -8,10 +8,12 @@ import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 /**
- * Builder para la construcción de instancias de {@link ControllerModifyResolution}.
+ * Builder for building instances of {@link ControllerModifyResolution}.
  *
- * <p>Centraliza la inyección de dependencias necesarias para la configuración
- * del controlador mediante un patrón de diseño Builder.</p>
+ * <p>
+ * Centralize the injection of dependencies necessary for
+ * controller configuration using the Builder design pattern.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -25,10 +27,10 @@ public class ControllerModifyResolutionBuilder {
     private LanguageManager lang;
 
     /**
-     * Asigna la vista del panel de modificación de resoluciones.
+     * Assign the resolution modification panel view.
      *
-     * @param modifyResolution vista de modificación de resoluciones
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param modifyResolution view of resolution modification
+     * @return instance of the builder for fluid chaining
      */
     public ControllerModifyResolutionBuilder withViewModifyResolution(ModifyResolution modifyResolution) {
         this.modifyResolution = modifyResolution;
@@ -36,10 +38,10 @@ public class ControllerModifyResolutionBuilder {
     }
 
     /**
-     * Asigna la vista del panel de consulta de resoluciones.
+     * Assign the resolutions query panel view.
      *
-     * @param seeResolutions vista de consulta de resoluciones
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param seeResolutions resolutions query view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerModifyResolutionBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
@@ -47,10 +49,10 @@ public class ControllerModifyResolutionBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para notificaciones de datos.
+     * Assign the Observer pattern subject for data notifications.
      *
-     * @param subject sujeto concreto del patrón Observer
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param subject specific subject of the Observer pattern.
+     * @return instance of the builder for fluid chaining
      */
     public ControllerModifyResolutionBuilder withSubject(Subject subject) {
         this.subject = subject;
@@ -58,10 +60,11 @@ public class ControllerModifyResolutionBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the
+     * language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerModifyResolutionBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -69,10 +72,10 @@ public class ControllerModifyResolutionBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager.
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerModifyResolutionBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -80,55 +83,30 @@ public class ControllerModifyResolutionBuilder {
     }
 
     /**
-     * Construye e inicializa una nueva instancia de {@link ControllerModifyResolution}.
+     * Builder and initialize a new instance of {@link ControllerModifyResolution}.
      *
-     * @return nueva instancia configurada de {@link ControllerModifyResolution}
+     * @return new configured instance of {@link ControllerModifyResolution}
      */
     public ControllerModifyResolution build() {
         return new ControllerModifyResolution(this);
     }
 
-    /**
-     * Obtiene la vista de modificación de resoluciones.
-     *
-     * @return vista de modificación de resoluciones
-     */
     public ModifyResolution getModifyResolution() {
         return modifyResolution;
     }
 
-    /**
-     * Obtiene la vista de consulta de resoluciones.
-     *
-     * @return vista de consulta de resoluciones
-     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
-    /**
-     * Obtiene el sujeto del patrón Observer.
-     *
-     * @return sujeto concreto del patrón Observer
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
     public LanguageManager getLang() {
         return lang;
     }

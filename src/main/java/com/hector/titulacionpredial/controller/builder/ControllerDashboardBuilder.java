@@ -7,10 +7,12 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
 /**
- * Builder para la construcción de instancias de {@link ControllerDashboard}.
+ * Builder for building instances of {@link ControllerDashboard}.
  *
- * <p>Centraliza la inyección de dependencias necesarias para la configuración
- * del controlador mediante un patrón de diseño Builder.</p>
+ * <p>
+ * Centralize the injection of dependencies necessary for
+ * controller configuration using a Builder design pattern.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -23,10 +25,10 @@ public class ControllerDashboardBuilder {
     private LanguageManager lang;
 
     /**
-     * Asigna la vista del panel de inicio (dashboard).
+     * Assign the home panel (dashboard) view.
      *
-     * @param dashboard vista del dashboard
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param dashboard dashboard view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerDashboardBuilder withViewDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
@@ -34,10 +36,10 @@ public class ControllerDashboardBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para notificaciones de datos.
+     * Assign the Observer pattern subject for data notifications.
      *
-     * @param subject sujeto concreto del patrón Observer
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param subject specific subject  of the Observer pattern
+     * @return instance of the builder for fluid chaining
      */
     public ControllerDashboardBuilder withSubject(Subject subject) {
         this.subject = subject;
@@ -45,10 +47,11 @@ public class ControllerDashboardBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the
+     * language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerDashboardBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -56,10 +59,10 @@ public class ControllerDashboardBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager.
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerDashboardBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -67,46 +70,26 @@ public class ControllerDashboardBuilder {
     }
 
     /**
-     * Construye e inicializa una nueva instancia de {@link ControllerDashboard}.
+     * Build and initialize a new instance of {@link ControllerDashboard}.
      *
-     * @return nueva instancia configurada de {@link ControllerDashboard}
+     * @return new configured instance of {@link ControllerDashboard}
      */
     public ControllerDashboard build() {
         return new ControllerDashboard(this);
     }
 
-    /**
-     * Obtiene la vista del dashboard.
-     *
-     * @return vista del dashboard
-     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
-    /**
-     * Obtiene el sujeto del patrón Observer.
-     *
-     * @return sujeto concreto del patrón Observer
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
     public LanguageManager getLang() {
         return lang;
     }

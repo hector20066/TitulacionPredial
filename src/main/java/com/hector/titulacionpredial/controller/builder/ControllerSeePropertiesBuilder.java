@@ -8,10 +8,12 @@ import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 
 /**
- * Builder para la construcción de instancias de {@link ControllerSeeProperties}.
+ * Builder for building instances of {@link ControllerSeeProperties}.
  *
- * <p>Centraliza la inyección de dependencias necesarias para la configuración
- * del controlador mediante un patrón de diseño Builder.</p>
+ * <p>
+ * Centralize the injection of dependencies necessary for controller
+ * configuration using a Builder design pattern.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -25,10 +27,10 @@ public class ControllerSeePropertiesBuilder {
     private LanguageManager lang;
 
     /**
-     * Asigna la vista del panel de generación de resoluciones.
+     * Assign the resolution generation panel view.
      *
-     * @param generateResolution vista de generación de resoluciones
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param generateResolution resolution generation view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSeePropertiesBuilder withViewGenerateResolution(GenerateResolution generateResolution) {
         this.generateResolution = generateResolution;
@@ -36,10 +38,10 @@ public class ControllerSeePropertiesBuilder {
     }
 
     /**
-     * Asigna la vista del panel de consulta de predios.
+     * Assign the property query panel view.
      *
-     * @param seeProperties vista de consulta de predios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param seeProperties property search view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSeePropertiesBuilder withViewSeeProperties(SeeProperties seeProperties) {
         this.seeProperties = seeProperties;
@@ -47,10 +49,10 @@ public class ControllerSeePropertiesBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para notificaciones de datos.
+     * Assign the Observer pattern subject for data notifications.
      *
-     * @param subject sujeto concreto del patrón Observer
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param subject specific subject of the Observer pattern
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSeePropertiesBuilder withSubject(Subject subject) {
         this.subject = subject;
@@ -58,10 +60,10 @@ public class ControllerSeePropertiesBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSeePropertiesBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -69,10 +71,10 @@ public class ControllerSeePropertiesBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager.
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSeePropertiesBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -80,55 +82,30 @@ public class ControllerSeePropertiesBuilder {
     }
 
     /**
-     * Construye e inicializa una nueva instancia de {@link ControllerSeeProperties}.
+     * Build and initialize a new instance of {@link ControllerSeeProperties}.
      *
-     * @return nueva instancia configurada de {@link ControllerSeeProperties}
+     * @return new configured instance of {@link ControllerSeeProperties}
      */
     public ControllerSeeProperties build() {
         return new ControllerSeeProperties(this);
     }
 
-    /**
-     * Obtiene la vista de generación de resoluciones.
-     *
-     * @return vista de generación de resoluciones
-     */
     public GenerateResolution getGenerateResolution() {
         return generateResolution;
     }
 
-    /**
-     * Obtiene la vista de consulta de predios.
-     *
-     * @return vista de consulta de predios
-     */
     public SeeProperties getSeeProperties() {
         return seeProperties;
     }
 
-    /**
-     * Obtiene el sujeto del patrón Observer.
-     *
-     * @return sujeto concreto del patrón Observer
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
     public LanguageManager getLang() {
         return lang;
     }

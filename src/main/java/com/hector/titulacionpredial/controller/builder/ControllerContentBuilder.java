@@ -15,13 +15,13 @@ import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
- * Builder para construir el {@link ControllerContent} con
- * todas sus vistas y dependencias.
+ * Builder to build the {@link ControllerContent} with
+ * all its views and dependencies.
  *
  * <p>
- * Permite configurar de forma fluida cada panel de la
- * aplicación antes de crear el controlador principal
- * del contenido mediante el método {@link #build()}.
+ * It allows you tu smoothly configure each panel of the
+ * application before creating the main content controller
+ * using the {@link #build()} method.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -44,10 +44,10 @@ public class ControllerContentBuilder {
     private About about;
 
     /**
-     * Asigna la vista principal del contenido de la aplicación.
+     * Assigns the main view of the application content.
      *
-     * @param content vista principal del contenido
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param content Main view of the content
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewContent(Content content) {
         this.content = content;
@@ -55,10 +55,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de inicio (dashboard).
+     * Assigns the home panel (dashboard) view.
      *
-     * @param dashboard vista del dashboard
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param dashboard dashboard view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
@@ -66,10 +66,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de registro de beneficiarios.
+     * Assign the view of the beneficiary registration panel.
      *
-     * @param registerBeneficiary vista de registro de beneficiarios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param registerBeneficiary beneficiary registration view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
         this.registerBeneficiary = registerBeneficiary;
@@ -77,10 +77,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de registro de predios.
+     * Assign the property registration panel view.
      *
-     * @param registerProperty vista de registro de predios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param registerProperty property registration view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewRegisterProperty(RegisterProperty registerProperty) {
         this.registerProperty = registerProperty;
@@ -88,10 +88,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de visualización de beneficiarios.
+     * Assign the view of the beneficiary display panel.
      *
-     * @param viewBeneficiaries vista de visualización de beneficiarios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param viewBeneficiaries beneficiary display view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
         this.viewBeneficiaries = viewBeneficiaries;
@@ -99,10 +99,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de consulta de predios.
+     * Assign the property query panel view
      *
-     * @param seeProperties vista de consulta de predios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param seeProperties property search view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewSeeProperties(SeeProperties seeProperties) {
         this.seeProperties = seeProperties;
@@ -110,10 +110,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de consulta de resoluciones.
+     * Assign the resolutions query panel view
      *
-     * @param seeResolutions vista de consulta de resoluciones
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param seeResolutions resolutions query view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
@@ -121,10 +121,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel de configuración.
+     * Assign the configuration panel view.
      *
-     * @param settings vista de configuración
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param settings configuration view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewSettings(Settings settings) {
         this.settings = settings;
@@ -132,10 +132,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para notificaciones de datos.
+     * Assign the Observer pattern subject for data notifications.
      *
-     * @param subject sujeto concreto del patrón Observer
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param subject specific subject of the Observer pattern
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withSubject(Subject subject) {
         this.subject = subject;
@@ -143,10 +143,11 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the
+     * language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -154,10 +155,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -165,10 +166,10 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Asigna la vista del panel «Acerca de».
+     * Assign the view of the «About» panel.
      *
-     * @param about vista del panel Acerca de
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param about view of the About panel
+     * @return instance of the builder for fluid chaining
      */
     public ControllerContentBuilder withViewAbout(About about) {
         this.about = about;
@@ -176,118 +177,58 @@ public class ControllerContentBuilder {
     }
 
     /**
-     * Construye una nueva instancia de {@link ControllerContent}
+     * Build a new instance of {@link ControllerContent}
      *
-     * @return nuevo DTO configurado
+     * @return new DTO configured
      */
     public ControllerContent build() {
         return new ControllerContent(this);
     }
 
-    /**
-     * Obtiene la vista principal del contenido.
-     *
-     * @return vista principal del contenido
-     */
     public Content getContent() {
         return content;
     }
 
-    /**
-     * Obtiene la vista del dashboard.
-     *
-     * @return vista del dashboard
-     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
-    /**
-     * Obtiene la vista de registro de beneficiarios.
-     *
-     * @return vista de registro de beneficiarios
-     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
-    /**
-     * Obtiene la vista de registro de predios.
-     *
-     * @return vista de registro de predios
-     */
     public RegisterProperty getRegisterProperty() {
         return registerProperty;
     }
 
-    /**
-     * Obtiene la vista de visualización de beneficiarios.
-     *
-     * @return vista de visualización de beneficiarios
-     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
-    /**
-     * Obtiene la vista de consulta de predios.
-     *
-     * @return vista de consulta de predios
-     */
     public SeeProperties getSeeProperties() {
         return seeProperties;
     }
 
-    /**
-     * Obtiene la vista de consulta de resoluciones.
-     *
-     * @return vista de consulta de resoluciones
-     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
-    /**
-     * Obtiene la vista de configuración.
-     *
-     * @return vista de configuración
-     */
     public Settings getSettings() {
         return settings;
     }
 
-    /**
-     * Obtiene el sujeto del patrón Observer.
-     *
-     * @return sujeto concreto del patrón Observer
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
     public LanguageManager getLang() {
         return lang;
     }
 
-    /**
-     * Obtiene la vista del panel «Acerca de».
-     *
-     * @return vista del panel Acerca de
-     */
     public About getAbout() {
         return about;
     }
