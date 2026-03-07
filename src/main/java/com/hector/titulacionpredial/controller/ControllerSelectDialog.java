@@ -14,13 +14,12 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 
 /**
- * Controlador del diálogo de búsqueda de beneficiarios.
+ * Beneficiary search dialog controller.
  *
  * <p>
- * Permite buscar beneficiarios por cédula, código o nombre
- * de forma asíncrona usando {@link SwingWorker}. Se utiliza
- * en el diálogo {@link SelectBeneficiary} para seleccionar
- * un beneficiario existente.
+ * It allows you to search for beneficiaries by ID number, code, or
+ * name asynchronously using {@link SwingWorker}. It is used in the
+ * {@link SelectBeneficiary} dialog to select an existing beneficiary.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -30,22 +29,15 @@ import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
  */
 public class ControllerSelectDialog {
 
-    /**
-     * Diálogo de selección de beneficiarios.
-     */
     private final SelectBeneficiary selectBeneficiary;
 
-    /**
-     * Fachada de acceso a datos de beneficiarios.
-     */
     private final BeneficiaryFacade daoBeneficiary;
-
     private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**
-     * Crea el controlador asociado al diálogo indicado.
+     * Create the controller associated with the specified dialog.
      *
-     * @param selectBeneficiary diálogo de selección
+     * @param selectBeneficiary selection dialogue
      */
     public ControllerSelectDialog(SelectBeneficiary selectBeneficiary) {
         this.selectBeneficiary = selectBeneficiary;
@@ -53,15 +45,15 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Busca un beneficiario de forma asíncrona según el parámetro proporcionado.
+     * Search for a beneficiary asynchronously based on the provided parameter.
      *
      * <p>
-     * La búsqueda se ejecuta en un hilo secundario mediante {@link SwingWorker}.
-     * Si el parámetro es numérico, busca por cédula o código; de lo contrario,
-     * busca por nombre.
+     * The search is executed in a secondary thread using {@link SwingWorker}.
+     * If the parameter is numeric, it searches by ID number or code; otherwise,
+     * it searches by name.
      * </p>
      *
-     * @param param criterio de búsqueda (cédula, código o nombre del beneficiario)
+     * @param param search criteria (ID number, code or beneficiary name)
      */
     public void searchBeneficiary(String param) {
         if (isInvalidParam(param)) {
@@ -96,10 +88,10 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Verifica si el parámetro de búsqueda es inválido.
+     * Check if the search parameter is invalid.
      *
-     * @param param texto ingresado por el usuario
-     * @return {@code true} si el parámetro es nulo, vacío o es el placeholder
+     * @param param text entered by the user
+     * @return {@code true} if the parameter is null, empty, or is the placeholder
      */
     private boolean isInvalidParam(String param) {
         return param == null || param.isBlank()
@@ -108,16 +100,16 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Resuelve la búsqueda del beneficiario según el tipo de parámetro.
+     * Resolve the beneficiary search according to the parameter type.
      *
      * <p>
-     * Si el parámetro es numérico, busca por cédula o código;
-     * de lo contrario, busca por nombre.
+     * If the parameter is numeric, search by ID number or code,
+     * otherwise, search by name.
      * </p>
      *
-     * @param param criterio de búsqueda
-     * @return DTO con los datos del beneficiario encontrado, o {@code null}
-     * @throws Exception si ocurre un error en la consulta
+     * @param param search criteria
+     * @return DTO with the beneficiary's data found, or {@code null}
+     * @throws Exception if an error occurs in the query
      */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws Exception {
         if (isNumeric(param)) {
@@ -128,16 +120,16 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Busca un beneficiario por valor numérico (cédula o código).
+     * Search for a beneficiary by numerical value (ID or code).
      *
      * <p>
-     * Si el valor numérico es mayor o igual a 100.000, se interpreta
-     * como número de cédula; de lo contrario, como código interno.
+     * If the numerical value is greater than or equal to 100,000,
+     * it is interpreted as an ID number; otherwise, as an internal code.
      * </p>
      *
-     * @param value cadena numérica con el valor de búsqueda
-     * @return DTO con los datos del beneficiario encontrado, o {@code null}
-     * @throws Exception si ocurre un error en la consulta
+     * @param value numeric string with the search value
+     * @return DTO with the beneficiary's data found, or {@code null}
+     * @throws Exception if an error occurs in the query
      */
     private DTOBeneficiarySimpleDetails searchByNumericValue(String value) throws Exception {
         long numericValue = Long.parseLong(value);
@@ -150,20 +142,20 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Determina si el valor corresponde a un número de documento.
+     * Determine if the value corresponds to a document number.
      *
-     * @param value valor numérico a evaluar
-     * @return {@code true} si es mayor o igual a 100.000
+     * @param value numerical value to be evaluated
+     * @return {@code true} if it is greater than or equal to 100,000
      */
     private boolean isDocumentNumber(long value) {
         return value >= 100000;
     }
 
     /**
-     * Verifica si una cadena contiene únicamente dígitos.
+     * Check if a string contains only digits.
      *
-     * @param value cadena a validar
-     * @return {@code true} si todos los caracteres son dígitos
+     * @param value string to validate
+     * @return {@code true} if all characters are digits
      */
     private boolean isNumeric(String value) {
         for (char c : value.toCharArray()) {
@@ -174,7 +166,7 @@ public class ControllerSelectDialog {
     }
 
     /**
-     * Cargar la lista completa de los beneficiarios registrados
+     * Upload the complete list of registered beneficiaries
      */
     public void loadUsers() {
         new Thread(() -> {

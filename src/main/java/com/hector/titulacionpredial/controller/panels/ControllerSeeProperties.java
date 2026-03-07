@@ -33,17 +33,17 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
 
 /**
- * Controlador del panel de visualización de predios.
+ * Property display panel controller.
  *
  * <p>
- * Implementa {@link Observer} para actualizar la tabla de predios
- * cuando se producen cambios y {@link LanguageObserver} para actualizar
- * la vista cuando se cambia el idioma de la aplicación.
+ * Implement {@link Observer} to update the property table when
+ * changes occur and {@link LanguageObserver} to update the view
+ * when the application language changes.
  * </p>
  *
  * <p>
- * Ofrece funcionalidades de búsqueda, eliminación, exportación
- * a Excel y navegación hacia el formulario de generación de resoluciones.
+ * It offers functionalities for searching, deleting, exporting
+ * to Excel, and navigating to the resolution generation form.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -55,42 +55,19 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
  */
 public class ControllerSeeProperties implements Observer, LanguageObserver {
 
-    /**
-     * Vista del listado de predios.
-     */
     private final SeeProperties seeProperties;
-
-    /**
-     * Vista del formulario de generación de resoluciones.
-     */
     private final GenerateResolution generateResolution;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
 
-    /**
-     * Fachada de acceso a datos de predios.
-     */
     private final PropertyFacade daoProperty;
-
-    /**
-     * Texto placeholder actual del campo de búsqueda,
-     * actualizado dinámicamente según el idioma activo.
-     */
     private String searchPlaceholder;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del panel.
+     * Create the controller, register it as an observer,
+     * and connect the panel events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerSeeProperties(ControllerSeePropertiesBuilder builder) {
         this.seeProperties = builder.getSeeProperties();
@@ -108,8 +85,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Conecta todos los eventos de los botones y componentes del
-     * panel de predios con sus respectivos métodos de accion.
+     * Connect all events of the buttons and components of the
+     * property panel with their respective action methods.
      */
     private void connectEvents() {
         seeProperties.setControllerGenerate(e -> generateResolution());
@@ -161,13 +138,13 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Extrae los datos del predio seleccionado y navega al
-     * formulario de generación de resoluciones con los datos precargados.
+     * Extract the data from the selected property and navigate
+     * to the resolution generation form with the preloaded data.
      *
      * <p>
-     * Obtiene del predio seleccionado: código del predio, nombre del
-     * beneficiario, cédula, dirección, municipio, coordenadas de los
-     * cuatro puntos geográficos y área.
+     * It obtains from the selected property: property code,
+     * beneficiary name, ID number, address, municipality,
+     * coordinates of the four geographic points and area.
      * </p>
      */
     private void generateResolution() {
@@ -223,14 +200,14 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Construye un DTO con los datos básicos del beneficiario
-     * para el formulario de generación de resoluciones.
+     * Create a DTO with the beneficiary's basic data for the
+     * resolution generation form.
      *
-     * @param nameBeneficiary    nombre completo del beneficiario
-     * @param address            dirección del predio
-     * @param municipalities     municipio del predio
-     * @param cadastralReference referencia catastral
-     * @return DTO con los datos configurados
+     * @param nameBeneficiary    full name of the beneficiary
+     * @param address            property address
+     * @param municipalities     municipality of the property
+     * @param cadastralReference cadastral reference
+     * @return DTO with configured data
      */
     private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address,
                                                                Municipalities municipalities, String cadastralReference) {
@@ -243,11 +220,11 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Exporta la información de todos los predios a un archivo Excel.
+     * Export the information for all properties to an Excel file.
      *
      * <p>
-     * Solicita al usuario la ruta de guardado y ejecuta la
-     * exportación en segundo plano mostrando un diálogo de carga.
+     * It prompts the user for the save path and executes the
+     * export in the background, displaying a loading dialog.
      * </p>
      */
     private void exportToExcel() {
@@ -268,11 +245,11 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Elimina el predio seleccionado con previa confirmación del usuario.
+     * Delete the selected property with prior user confirmation.
      *
      * <p>
-     * Valida la selección, muestra un diálogo de confirmación
-     * y ejecuta la eliminación en segundo plano si el usuario acepta.
+     * Validate the selection, display a confirmation dialog, and
+     * execute the deletion in the background if the user accepts.
      * </p>
      */
     private void deleteProperty() {
@@ -295,10 +272,10 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Ejecuta la eliminación del predio en un hilo de fondo
-     * y notifica a los observadores al completar.
+     * Execute the deletion of the property in a background thread
+     * and notify observers upon completion.
      *
-     * @param code código del predio a eliminar
+     * @param code code of the property to be eliminated
      */
     private void runDelete(int code) {
         new Thread(() -> {
@@ -316,11 +293,11 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Inicia la búsqueda del predio por cédula catastral.
+     * Start the search for the property using the cadastral certificate.
      *
      * <p>
-     * Valida que el criterio no esté vacío, actualiza la visibilidad
-     * de los botones y ejecuta la consulta en segundo plano.
+     * Validate that the criteria are not empty, update the visibility of
+     * the buttons, and run the query in the background.
      * </p>
      */
     private void searchProperty() {
@@ -341,10 +318,10 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Busca el predio por cédula catastral en un hilo de fondo
-     * y muestra el resultado en la tabla.
+     * Search for the property by cadastral certificate in a background
+     * thread and display the result in the table.
      *
-     * @param searchText cédula catastral a buscar
+     * @param searchText cadastral certificate to be found
      */
     private void doInBackground(String searchText) {
         new Thread(() -> {
@@ -366,8 +343,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Registra el {@link DocumentListener} en el campo de búsqueda
-     * para filtrar la tabla en tiempo real.
+     * Register the {@link DocumentListener} in the search field to
+     * filter the table in real time.
      */
     private void documentListeners() {
         seeProperties.setControllerTxt_searchDocument(new DocumentListener() {
@@ -389,8 +366,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Configura los listeners de foco y clic del campo de búsqueda
-     * para gestionar el texto placeholder «Buscar».
+     * Configure the focus and click listeners for the search field
+     * to handle the "Search" placeholder text.
      */
     private void listenerSearch() {
         seeProperties.setControllerTxt_searchFocus(new FocusAdapter() {
@@ -413,8 +390,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Cancela la búsqueda activa, restaura el placeholder y
-     * recarga todos los predios.
+     * Cancels active search, restores placeholder, and reloads
+     * all properties.
      */
     private void cancelSearch() {
         seeProperties.getTxt_search().setText(searchPlaceholder);
@@ -424,9 +401,9 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     /**
-     * Carga la lista de predios en la tabla de la vista.
+     * Load the list of properties into the view table.
      *
-     * @param listProperties lista de DTOs de predios a mostrar
+     * @param listProperties List of property data to display
      */
     private void loadData(List<DTOPropertyDetails> listProperties) {
         seeProperties.getModel().setRowCount(0);

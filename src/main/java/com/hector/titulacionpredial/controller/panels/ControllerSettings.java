@@ -12,13 +12,14 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
 
-
 /**
- * Controlador del panel de configuración de la aplicación.
+ * Application settings panel controller.
  *
- * <p>Gestiona la lógica de cambio de idioma y preferencias del usuario,
- * conectando las acciones de la vista {@link Settings} con el sistema
- * de internacionalización.</p>
+ * <p>
+ * Manages the logic for changing the user's language and preferences,
+ * connecting the actions of the {@link Settings} view with the
+ * internationalization system.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -30,10 +31,10 @@ public class ControllerSettings implements LanguageObserver {
     private final LanguageManager lang;
 
     /**
-     * Crea el controlador de configuración, inicializa las dependencias
-     * y se registra como observador de idioma.
+     * Create the configuration controller, initialize dependencies,
+     * and register as a language observer.
      *
-     * @param builder constructor con las vistas y dependencias configuradas
+     * @param builder constructor with configured views and dependencies
      */
     public ControllerSettings(ControllerSettingsBuilder builder) {
         this.settings = builder.getSettings();
@@ -46,8 +47,8 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Conecta los eventos de los radio buttons de idioma
-     * con el método {@link #changeLanguage()}.
+     * Connect the language radio button events with the
+     * {@link #changeLanguage()} method.
      */
     private void connectEvents() {
         Enumeration<AbstractButton> buttons = settings.getBtg_languages().getElements();
@@ -67,15 +68,8 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Muestra el panel de configuración en la vista principal.
-     */
-    public void showPanel() {
-
-    }
-
-    /**
-     * Cambia el idioma de la aplicación según el radio button
-     * seleccionado en el grupo de idiomas.
+     * Change the application language according to the radio
+     * button selected in the language group.
      */
     public void changeLanguage() {
         if (settings.getBtg_languages().getSelection() != null) {
@@ -85,10 +79,11 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Cambia el idioma de la aplicación al código indicado
-     * y notifica a todos los observadores registrados.
+     * Change the application language to the specified code
+     * and notify all registered observers.
      *
-     * @param languageCode código del idioma en mayúsculas (por ejemplo {@code "ES"} o {@code "EN"})
+     * @param languageCode language code in uppercase
+     *                     (for example {@code "ES"} or {@code "EN"})
      */
     public void changeLanguage(String languageCode) {
         lang.setLanguage(AppLanguage.valueOf(languageCode));
@@ -96,10 +91,10 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Selecciona visualmente el radio button que corresponde
-     * al código de idioma proporcionado.
+     * Visually select the radio button that corresponds
+     * to the provided language code.
      *
-     * @param languageCode código del idioma a seleccionar
+     * @param languageCode language code to select
      */
     public void selectLanguageRadio(String languageCode) {
         Enumeration<AbstractButton> buttons = settings.getBtg_languages().getElements();
@@ -115,8 +110,8 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Establece el idioma español si el radio button correspondiente
-     * está seleccionado y notifica a los observadores.
+     * Set the language to Spanish if the corresponding
+     * radio button is selected and notify observers.
      */
     public void selectSpanishLanguage() {
         if (settings.getRbn_spanish().isSelected()) {
@@ -126,8 +121,8 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     /**
-     * Establece el idioma inglés si el radio button correspondiente
-     * está seleccionado y notifica a los observadores.
+     * Sets the language to English if the corresponding
+     * radio button is selected and notifies observers.
      */
     public void selectEnglishLanguage() {
         if (settings.getRbn_english().isSelected()) {

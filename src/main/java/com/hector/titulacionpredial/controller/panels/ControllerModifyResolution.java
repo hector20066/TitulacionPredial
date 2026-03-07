@@ -58,6 +58,7 @@ public class ControllerModifyResolution implements LanguageObserver {
     private final SeeResolutions seeResolutions;
     private final Subject subject;
     private final LanguageManager lang;
+
     private final ResolutionFacade daoResolution;
 
     /**

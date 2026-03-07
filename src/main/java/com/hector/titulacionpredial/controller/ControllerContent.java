@@ -11,20 +11,18 @@ import com.hector.titulacionpredial.view.content.panels.*;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 
 /**
- * Controlador principal del contenido de la aplicación.
+ * Main controller of application content.
  *
  * <p>
- * Gestiona la navegación entre los distintos paneles de la
- * interfaz gráfica a través del menú lateral. Coordina la
- * transición entre vistas y notifica al {@link Subject}
- * cuando se requiere actualizar los datos.
+ * Manage navigation between the different panels of the graphical
+ * interface through the side menu. Coordinate the transition between
+ * views and notify the {@link Subject} when data updates are required.
  * </p>
  *
  * <p>
- * Implementa {@link LanguageObserver} como observador concreto
- * del patrón Observer, permitiendo que la vista se actualice
- * automáticamente cuando el {@link LanguageSubject} notifica
- * un cambio de idioma.
+ * Implement {@link LanguageObserver} as a concrete observer of the
+ * Observer pattern, allowing the view to be automatically updated
+ * when the {@link LanguageSubject} notifies a language change.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -35,66 +33,23 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
  */
 public class ControllerContent implements LanguageObserver {
 
-    /**
-     * Vista principal del contenido.
-     */
     private final Content content;
-
-    /**
-     * Panel del dashboard.
-     */
     private final Dashboard dashboard;
-
-    /**
-     * Panel de registro de beneficiarios.
-     */
     private final RegisterBeneficiary registerBeneficiary;
-
-    /**
-     * Panel de registro de predios.
-     */
     private final RegisterProperty registerProperty;
-
-    /**
-     * Panel de visualización de beneficiarios.
-     */
     private final ViewBeneficiaries viewBeneficiaries;
-
-    /**
-     * Panel de visualización de predios.
-     */
     private final SeeProperties seeProperties;
-
-    /**
-     * Panel de visualización de resoluciones.
-     */
     private final SeeResolutions seeResolutions;
-
-    /**
-     * Panel de visualización de ajustes.
-     */
     private final Settings settings;
-
-    /**
-     * Panel de información «Acerca de».
-     */
     private final About about;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
 
     /**
-     * Crea el controlador a partir de un builder que contiene
-     * todas las vistas y dependencias necesarias.
+     * Create the controller from a builder that contains all
+     * the necessary views and dependencies.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerContent(ControllerContentBuilder builder) {
         this.content = builder.getContent();
@@ -115,24 +70,24 @@ public class ControllerContent implements LanguageObserver {
     }
 
     /**
-     * Conecta los eventos del menú lateral con la lógica
-     * de navegación del controlador.
+     * Connect the side menu events to the controller's navigation logic.
      */
     private void connectEvents() {
         content.setControllerMenu(this::selectedMenu);
     }
 
     /**
-     * Gestiona la selección del menú lateral y navega al panel correspondiente.
+     * Manage the selection from the side menu and navigate to the
+     * corresponding panel.
      *
      * <p>
-     * Según el índice del menú y submenú seleccionado, muestra
-     * el panel adecuado y notifica a los observadores cuando
-     * es necesario actualizar los datos.
+     * Based on the selected menu and submenu index, it displays
+     * the appropriate panel and notifies observers when data
+     * needs to be updated.
      * </p>
      *
-     * @param index        índice del menú principal
-     * @param indexSubMenu índice del submenú seleccionado
+     * @param index        main menu index
+     * @param indexSubMenu index of the selected submenu
      */
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {

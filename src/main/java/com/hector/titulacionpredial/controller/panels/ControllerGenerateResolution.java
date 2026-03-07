@@ -62,6 +62,7 @@ public class ControllerGenerateResolution implements LanguageObserver {
     private final GenerateResolution generateResolution;
     private final Subject subject;
     private final LanguageManager lang;
+
     private final ResolutionFacade daoResolution;
     private final BeneficiaryFacade daoBeneficiary;
 

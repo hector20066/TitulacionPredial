@@ -30,23 +30,23 @@ import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
- * Coordinador principal de la aplicación.
+ * Main coordinator of the application.
  *
  * <p>
- * Se encarga de inicializar todas las vistas y controladores
- * de la aplicación, conectarlos entre sí y arrancar la
- * interfaz gráfica. Implementa el patrón Coordinator para
- * centralizar la construcción y configuración del sistema.
+ * It handles initializing all the application's views and controllers,
+ * connecting them, and starting the graphical interface. It implements
+ * the Coordinator pattern to centralize system construction and
+ * configuration.
  * </p>
  *
  * <p>
- * Flujo de inicio:
+ * Startup flow:
  * </p>
  * <ol>
- *   <li>Crear las vistas ({@code startView})</li>
- *   <li>Crear los controladores ({@code startDrivers})</li>
- *   <li>Notificar a los observadores para cargar datos iniciales</li>
- *   <li>Mostrar la ventana principal</li>
+ *   <li>Create the views</li>
+ *   <li>Create the controllers</li>
+ *   <li>Notify observers to upload initial data</li>
+ *   <li>Show the main window</li>
  * </ol>
  *
  * @author Ing. Hector Acevedo
@@ -56,19 +56,8 @@ import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
  */
 public class Coordinator {
 
-    /**
-     * Sujeto concreto del patrón Observer (Singleton).
-     */
     private final ConcreteSubject subject = ConcreteSubject.getInstance();
-
-    /**
-     * Sujeto concreto del patron Observer para el sistema i18n
-     */
     private final ConcreteLanguageSubject languageSubject = ConcreteLanguageSubject.getInstance();
-
-    /**
-     * Gestor de i18n de la aplicación
-     */
     private final LanguageManager lang = LanguageManager.getInstance();
 
     // Views
@@ -87,12 +76,12 @@ public class Coordinator {
     private ControllerSettings controllerSettings;
 
     /**
-     * Encargado de iniciar la app, cargando dependencias
-     * y mostrando la interfaz gráfica.
+     * Responsible for starting the app, loading dependencies,
+     * and displaying the graphical interface.
      *
      * <p>
-     * Notifica a los observadores para que carguen la
-     * información necesaria al iniciar la app.
+     * Notify observers to upload the necessary information
+     * when starting the app.
      * </p>
      */
     public void startApp() {
@@ -110,12 +99,13 @@ public class Coordinator {
     }
 
     /**
-     * Carga el idioma de la aplicación desde la configuración del usuario.
+     * Load the application language from the user settings.
      *
      * <p>
-     * Obtiene el idioma almacenado en las preferencias del usuario,
-     * lo aplica al gestor de idiomas y notifica a los observadores
-     * de cambio de idioma para actualizar la interfaz gráfica.
+     * It retrieves the language stored in the user's
+     * preferences, applies it to the language manager,
+     * and notifies language change observers to update
+     * the graphical interface.
      * </p>
      */
     private void loadLanguage() {
@@ -127,12 +117,12 @@ public class Coordinator {
     }
 
     /**
-     * Inicializa todas las vistas (paneles) de la aplicación.
+     * Initializes all views (panels) of the application.
      *
      * <p>
-     * Crea las instancias de cada panel que conforma la interfaz
-     * gráfica, incluyendo el dashboard, los formularios de registro,
-     * los listados y la vista «Acerca de».
+     * Create instances of each panel that makes up the
+     * graphical interface, including the dashboard,
+     * registration forms, listings, and the «About» view.
      * </p>
      */
     private void startView() {
@@ -150,13 +140,13 @@ public class Coordinator {
     }
 
     /**
-     * Inicializa y conecta todos los controladores de la aplicación.
+     * Initialize and connect all application controllers.
      *
      * <p>
-     * Construye el controlador principal del contenido mediante
-     * {@link ControllerContentBuilder} y crea los controladores
-     * de cada panel, inyectando las vistas y el sujeto del
-     * patrón Observer correspondiente.
+     * Build the main content controller using
+     * {@link ControllerContentBuilder} and create the
+     * controllers for each panel, injecting the views
+     * and subject of the corresponding Observer pattern.
      * </p>
      */
     private void startDrivers() {

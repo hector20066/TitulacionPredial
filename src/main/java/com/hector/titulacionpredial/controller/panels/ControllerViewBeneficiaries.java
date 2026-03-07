@@ -37,18 +37,17 @@ import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesText;
 
 /**
- * Controlador del panel de visualización de beneficiarios.
+ * Beneficiary display panel controller.
  *
  * <p>
- * Implementa {@link Observer} para actualizar la tabla de
- * beneficiarios cuando se producen cambios y {@link LanguageObserver}
- * para actualizar la vista cuando se cambia el idioma de la aplicación.
+ * Implement {@link Observer} to update the beneficiary table when
+ * changes occur and {@link LanguageObserver} to update the view
+ * when the application language changes.
  * </p>
  *
  * <p>
- * Ofrece funcionalidades de búsqueda (por cédula, código o nombre),
- * eliminación, modificación, visualización de perfil detallado y
- * exportación a Excel.
+ * It offers functionalities for searching (by ID number, code or name),
+ * deletion, modification, viewing of detailed profile and export to Excel.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -60,42 +59,19 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesTex
  */
 public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
-    /**
-     * Vista del listado de beneficiarios.
-     */
     private final ViewBeneficiaries viewBeneficiaries;
-
-    /**
-     * Vista del formulario de registro (destino al modificar).
-     */
     private final RegisterBeneficiary registerBeneficiary;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
 
-    /**
-     * Fachada de acceso a datos de beneficiarios.
-     */
     private final BeneficiaryFacade daoBeneficiary;
-
-    /**
-     * Texto placeholder actual del campo de búsqueda,
-     * actualizado dinámicamente según el idioma activo.
-     */
     private String searchPlaceholder;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del panel.
+     * Create the controller, register it as an observer, and
+     * connect the panel events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerViewBeneficiaries(ControllerViewBeneficiariesBuilder builder) {
         this.viewBeneficiaries = builder.getViewBeneficiaries();
@@ -113,8 +89,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Conecta todos los eventos de los botones y componentes
-     * del panel de beneficiarios con sus respectivos métodos.
+     * Connect all events of the buttons and components of the
+     * beneficiary panel with their respective methods.
      */
     private void connectEvents() {
         viewBeneficiaries.setControllerViewDetails(e -> showDetails());
@@ -162,13 +138,13 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Muestra el perfil detallado del beneficiario seleccionado
-     * en un diálogo modal.
+     * Displays the detailed profile of the selected beneficiary
+     * in a modal dialog.
      *
      * <p>
-     * Valida que se haya seleccionado una fila en la tabla,
-     * deshabilita el botón temporalmente y carga los datos
-     * completos del beneficiario en segundo plano.
+     * It validates that a row has been selected in the table,
+     * temporarily disables the button, and loads the complete
+     * beneficiary data in the background.
      * </p>
      */
     private void showDetails() {
@@ -189,8 +165,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Prepara la interfaz deshabilitando el botón de ver perfil
-     * y mostrando texto de carga.
+     * Prepare the interface by disabling the view profile
+     * button and displaying upload text.
      */
     private void prepareUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(false);
@@ -198,10 +174,10 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Consulta los datos completos del beneficiario en segundo plano
-     * y muestra el diálogo de perfil.
+     * View the beneficiary's full details in the background
+     * and display the profile dialog.
      *
-     * @param code código del beneficiario a consultar
+     * @param code beneficiary code to consult
      */
     private void doInBackground(int code) {
         new Thread(() -> {
@@ -220,13 +196,16 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                     resetUI();
                 });
             } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries);
+                    resetUI();
+                });
             }
         }).start();
     }
 
     /**
-     * Restablece el botón de ver perfil a su estado original.
+     * Resets the view profile button to its original state.
      */
     private void resetUI() {
         viewBeneficiaries.getBtn_seeProfile().setEnabled(true);
@@ -234,8 +213,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Navega al formulario de registro con los datos del beneficiario
-     * seleccionado cargados para su modificación.
+     * Navigate to the registration form with the selected
+     * beneficiary's data loaded for modification.
      */
     private void modifyBeneficiary() {
         try {
@@ -253,10 +232,10 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Carga los datos del beneficiario a modificar en segundo plano
-     * y navega al formulario de registro.
+     * Load the beneficiary's data to be modified in the
+     * background and navigate to the registration form.
      *
-     * @param code código del beneficiario a modificar
+     * @param code beneficiary code to be modified
      */
     private void doInBackgroundModify(int code) {
         new Thread(() -> {
@@ -280,12 +259,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Elimina el beneficiario seleccionado con previa confirmación
-     * del usuario.
+     * Remove the selected beneficiary with prior user confirmation.
      *
      * <p>
-     * Valida la selección, muestra un diálogo de confirmación
-     * y ejecuta la eliminación en segundo plano si el usuario acepta.
+     * Validate the selection, display a confirmation dialog, and
+     * execute the deletion in the background if the user accepts.
      * </p>
      */
     private void deleteBeneficiary() {
@@ -310,10 +288,10 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Ejecuta la eliminación del beneficiario en un hilo de fondo
-     * y notifica a los observadores al completar.
+     * Execute the beneficiary removal in a background thread and
+     * notify observers upon completion.
      *
-     * @param code código del beneficiario a eliminar
+     * @param code beneficiary code to be removed
      */
     private void runDelete(int code) {
         new Thread(() -> {
@@ -330,13 +308,12 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Inicia la búsqueda del beneficiario con el criterio ingresado
-     * en el campo de texto.
+     * Start the search for the beneficiary using the criteria entered
+     * in the text field.
      *
      * <p>
-     * Valida que el criterio no esté vacío, actualiza la visibilidad
-     * de los botones de búsqueda/cancelar y ejecuta la consulta
-     * de forma asíncrona.
+     * It validates that the criteria are not empty, updates the visibility
+     * of the search/cancel buttons, and executes the query asynchronously.
      * </p>
      */
     private void search() {
@@ -355,31 +332,31 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Obtiene el texto de búsqueda ingresado por el usuario,
-     * eliminando los espacios en blanco al inicio y al final.
+     * It retrieves the search text entered by the user, removing
+     * leading and trailing spaces.
      *
-     * @return parámetro de búsqueda limpio
+     * @return clean search parameter
      */
     private String getSearchParam() {
         return viewBeneficiaries.getTxt_search().getText().trim();
     }
 
     /**
-     * Valida que el parámetro de búsqueda no esté vacío
-     * ni sea igual al texto placeholder.
+     * Validate that the search parameter is not empty or equal
+     * to the placeholder text.
      *
-     * @param param texto a validar
-     * @return {@code true} si el parámetro es válido para buscar,
-     *         {@code false} en caso contrario
+     * @param param text to validate
+     * @return {@code true} if the parameter is valid for searching,
+     *         {@code false} otherwise
      */
     private boolean isValid(String param) {
         return !(param.isBlank() || param.equalsIgnoreCase(searchPlaceholder));
     }
 
     /**
-     * Ejecuta la búsqueda asincrónica usando {@link SwingWorker}.
+     * Perform the asynchronous search using {@link SwingWorker}.
      *
-     * @param param criterio de búsqueda
+     * @param param search criteria
      */
     private void executeSearchAsync(String param) {
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
@@ -402,12 +379,12 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Determina el tipo de búsqueda según el parámetro y
-     * consulta la fachada correspondiente.
+     * Determine the search type according to the parameter and
+     * view the corresponding facade.
      *
-     * @param param criterio de búsqueda
-     * @return DTO del beneficiario encontrado, o {@code null}
-     * @throws DAOException si ocurre un error en la consulta
+     * @param param search criteria
+     * @return DTO of the beneficiary found, or {@code null}
+     * @throws DAOException if an error occurs in the query
      */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws DAOException {
         if (NumericalValidationUtils.isNumeric(param)) {
@@ -420,11 +397,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Procesa el resultado de la búsqueda y lo muestra en la tabla.
+     * It processes the search result and displays it in the table.
      *
-     * @param result DTO del beneficiario encontrado
-     * @param param  criterio original de búsqueda
-     * @throws DAOException si no se encontró ningún registro
+     * @param result DTO of the beneficiary found
+     * @param param  original search criteria
+     * @throws DAOException if no record was found
      */
     private void handleResult(DTOBeneficiarySimpleDetails result, String param) throws DAOException {
         if (result == null) {
@@ -436,10 +413,9 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Habilita o deshabilita los botones de acción durante
-     * la búsqueda.
+     * Enables or disables action buttons during search.
      *
-     * @param isBlocked {@code true} para habilitar, {@code false} para deshabilitar
+     * @param isBlocked {@code true} to enable, {@code false} to disable
      */
     private void lockUI(boolean isBlocked) {
         viewBeneficiaries.getBtn_delete().setEnabled(isBlocked);
@@ -448,8 +424,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Registra el {@link DocumentListener} en el campo de búsqueda
-     * para filtrar la tabla en tiempo real mientras el usuario escribe.
+     * Register the {@link DocumentListener} in the search field to
+     * filter the table in real time as the user types.
      */
     private void documentListeners() {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
@@ -471,8 +447,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Configura los listeners de foco y clic del campo de búsqueda
-     * para gestionar el texto placeholder «Buscar».
+     * Configure the focus and click listeners for the search field
+     * to handle the "Search" placeholder text.
      */
     private void listenerSearch() {
         viewBeneficiaries.setControllerTxt_searchFocus(new FocusAdapter() {
@@ -495,8 +471,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Cancela la búsqueda activa, restaura el placeholder y
-     * recarga todos los beneficiarios.
+     * Cancel active search, restore placeholder, and reload
+     * all beneficiaries.
      */
     private void cancelSearch() {
         viewBeneficiaries.getTxt_search().setText(searchPlaceholder);
@@ -506,9 +482,9 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Carga la lista de beneficiarios en la tabla de la vista.
+     * Load the list of beneficiaries into the view table.
      *
-     * @param listBeneficiaries lista de DTOs a mostrar
+     * @param listBeneficiaries list of DATA to display
      */
     private void loadData(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         viewBeneficiaries.getTableModel().setRowCount(0);
@@ -516,12 +492,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     /**
-     * Exporta la información de todos los beneficiarios a un
-     * archivo Excel.
+     * Export the information of all beneficiaries to an Excel file.
      *
      * <p>
-     * Solicita al usuario la ruta de guardado y ejecuta la
-     * exportación en segundo plano mostrando un diálogo de carga.
+     * It prompts the user for the save path and executes the export
+     * in the background, displaying a loading dialog.
      * </p>
      */
     private void exportToExcel() {

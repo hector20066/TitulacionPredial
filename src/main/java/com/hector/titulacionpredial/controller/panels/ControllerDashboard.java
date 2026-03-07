@@ -43,6 +43,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
 
     private final Dashboard dashboard;
     private final LanguageManager lang;
+
     private final BeneficiaryFacade daoBeneficiary;
     private final PropertyFacade daoProperty;
     private final ResolutionFacade daoResolution;

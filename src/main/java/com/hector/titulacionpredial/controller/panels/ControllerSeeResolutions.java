@@ -34,18 +34,17 @@ import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
 
 /**
- * Controlador del panel de visualización de resoluciones.
+ * Resolution display panel controller.
  *
  * <p>
- * Implementa {@link Observer} para actualizar la tabla de
- * resoluciones cuando se producen cambios y {@link LanguageObserver}
- * para actualizar la vista cuando se cambia el idioma de la aplicación.
+ * Implement {@link Observer} to update the resolutions table
+ * when changes occur and {@link LanguageObserver} to update
+ * the view when the application language changes.
  * </p>
  *
  * <p>
- * Ofrece funcionalidades de búsqueda por número de resolución,
- * filtrado en tiempo real y navegación hacia el formulario de
- * modificación.
+ * It offers functionalities for searching by resolution number,
+ * real-time filtering, and navigation to the modification form.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -56,42 +55,19 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
  */
 public class ControllerSeeResolutions implements Observer, LanguageObserver {
 
-    /**
-     * Vista del listado de resoluciones.
-     */
     private final SeeResolutions seeResolutions;
-
-    /**
-     * Vista del formulario de modificación de resoluciones.
-     */
     private final ModifyResolution modifyResolution;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
 
-    /**
-     * Fachada de acceso a datos de resoluciones.
-     */
     private final ResolutionFacade daoResolution;
-
-    /**
-     * Texto placeholder actual del campo de búsqueda,
-     * actualizado dinámicamente según el idioma activo.
-     */
     private String searchPlaceholder;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del panel.
+     * Create the controller, register it as an observer, and
+     * connect the panel events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerSeeResolutions(ControllerSeeResolutionsBuilder builder) {
         this.seeResolutions = builder.getSeeResolutions();
@@ -109,8 +85,8 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Conecta todos los eventos de los botones y componentes del
-     * panel de resoluciones con sus respectivos métodos.
+     * Connect all events of the buttons and components of
+     * the resolutions panel with their respective methods.
      */
     private void connectEvents() {
         seeResolutions.setControllerModify(e -> modify());
@@ -153,12 +129,12 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Extrae los datos de la resolución seleccionada, los carga
-     * en el formulario de modificación y navega hacia él.
+     * Extract the data from the selected resolution, load it
+     * into the modification form, and navigate to it.
      *
      * <p>
-     * Formatea las fechas de notificación y ejecutoria al formato
-     * español legible antes de pasarlas al formulario.
+     * Format the notification and enforcement dates to the
+     * legible Spanish format before passing them to the form.
      * </p>
      */
     private void modify() {
@@ -192,15 +168,15 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Construye un DTO con los datos de la resolución seleccionada.
+     * Build a DTO with the data from the selected resolution.
      *
-     * @param code          código de la resolución
-     * @param numResolution número de resolución
-     * @param notary        nombre de la notaría
-     * @param fmi           Folio de Matrícula Inmobiliaria
-     * @param act           acta
-     * @param publicWriting número de escritura pública
-     * @return DTO con los datos configurados
+     * @param code          resolution code
+     * @param numResolution resolution number
+     * @param notary        name of the notary
+     * @param fmi           Real Estate Registration Folio
+     * @param act           act
+     * @param publicWriting public deed
+     * @return DTO with configured data
      */
     private DTOResolutionDetails createDTO(int code, long numResolution, String notary, String fmi, String act, String publicWriting) {
         return new DTOResolutionDetails.Builder()
@@ -214,11 +190,11 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Inicia la búsqueda de una resolución por su número.
+     * Start the search for a solution by its number.
      *
      * <p>
-     * Valida que el criterio no esté vacío y sea numérico,
-     * actualiza los botones y ejecuta la consulta en segundo plano.
+     * Validate that the criteria is not empty and is numeric,
+     * update the buttons, and run the query in the background.
      * </p>
      */
     private void searchResolution() {
@@ -243,10 +219,10 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Busca la resolución por su número en un hilo de fondo
-     * y muestra el resultado en la tabla.
+     * Search for the solution by its number in a background
+     * thread and display the result in the table.
      *
-     * @param numResolution número de resolución a buscar
+     * @param numResolution resolution number to search
      */
     private void doInBackground(int numResolution) {
         new Thread(() -> {
@@ -268,8 +244,8 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Registra el {@link DocumentListener} en el campo de búsqueda
-     * para filtrar la tabla en tiempo real.
+     * Register the {@link DocumentListener} in the search
+     * field to filter the table in real time.
      */
     private void documentListeners() {
         seeResolutions.setControllerTxt_searchDocument(new DocumentListener() {
@@ -291,8 +267,8 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Configura los listeners de foco y clic del campo de búsqueda
-     * para gestionar el texto placeholder «Buscar».
+     * Configure the focus and click listeners for the search
+     * field to handle the "Search" placeholder text.
      */
     private void listenerSearch() {
         seeResolutions.setControllerTxt_searchFocus(new FocusAdapter() {
@@ -315,8 +291,8 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Cancela la búsqueda activa, restaura el placeholder y
-     * recarga todas las resoluciones.
+     * Cancels active search, restores placeholder, and
+     * reloads all resolutions.
      */
     private void cancelSearch() {
         seeResolutions.getTxt_search().setText(searchPlaceholder);
@@ -326,9 +302,9 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     /**
-     * Carga la lista de resoluciones en la tabla de la vista.
+     * Load the list of resolutions into the view table.
      *
-     * @param listResolutions lista de DTOs de resoluciones a mostrar
+     * @param listResolutions List of resolution data to display
      */
     private void loadData(List<DTOResolutionDetails> listResolutions) {
         seeResolutions.getModel().setRowCount(0);

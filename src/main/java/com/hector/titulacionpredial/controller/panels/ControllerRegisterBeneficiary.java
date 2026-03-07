@@ -53,6 +53,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     private final ViewBeneficiaries viewBeneficiaries;
     private final Subject subject;
     private final LanguageManager lang;
+
     private final BeneficiaryFacade daoBeneficiary;
     private final SpouseFacade daoSpouse;
     private DTOSpouse dtoSpouse;

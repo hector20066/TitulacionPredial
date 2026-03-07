@@ -29,25 +29,23 @@ import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 
 /**
- * Controlador del panel de registro de predios.
+ * Property registration panel controller.
  *
  * <p>
- * Implementa {@link LanguageObserver} como observador concreto
- * del patrón Observer, permitiendo que la vista se actualice
- * automáticamente cuando el {@link LanguageSubject} notifica
- * un cambio de idioma.
+ * Implement {@link LanguageObserver} as a concrete observer of the
+ * Observer pattern, allowing the view to be automatically updated
+ * when the {@link LanguageSubject} notifies a language change.
  * </p>
  *
  * <p>
- * Utiliza {@link LanguageManager} para acceder a los recursos
- * internacionalizados mediante claves de texto.
+ * Use {@link LanguageManager} to access internationalized resources
+ * using text keys.
  * </p>
  *
  * <p>
- * Gestiona la validación del formulario, el registro del predio
- * con sus cuatro puntos geográficos y la asociación con
- * beneficiarios seleccionados. Utiliza un {@link CardLayout}
- * para navegar entre los paneles de coordenadas.
+ * Manage form validation, property registration with its four
+ * geographic points, and association with selected beneficiaries.
+ * Use a {@link CardLayout} to navigate between coordinate panels.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -59,41 +57,19 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText
  */
 public class ControllerRegisterProperty implements LanguageObserver {
 
-    /**
-     * Vista del formulario de registro de predios.
-     */
     private final RegisterProperty registerProperty;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
 
-    /**
-     * Fachada de acceso a datos de predios.
-     */
     private final PropertyFacade daoProperty;
-
-    /**
-     * Fachada de acceso a datos de puntos geográficos.
-     */
     private final PointFacade daoPoint;
-
-    /**
-     * Fachada de acceso a datos de beneficiarios.
-     */
     private final BeneficiaryFacade daoBeneficiary;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del formulario.
+     * Create the controller, register it as an observer, and
+     * connect the form events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerRegisterProperty(ControllerRegisterPropertyBuilder builder) {
         this.registerProperty = builder.getRegisterProperty();
@@ -110,8 +86,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Conecta los eventos de los botones del formulario con
-     * sus respectivos métodos de acción.
+     * Connect the form button events with their respective
+     * action methods.
      */
     private void connectEvents() {
         registerProperty.setControllerRegister(e -> register());
@@ -146,13 +122,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Valida los datos del formulario y lanza el proceso
-     * de registro del predio con sus puntos geográficos.
+     * Validate the form data and launch the property registration
+     * process with its geographic points.
      *
      * <p>
-     * Extrae la cédula catastral, área, códigos de beneficiarios
-     * y las coordenadas de los cuatro puntos, valida los
-     * campos obligatorios y delega al hilo de fondo.
+     * Extract the cadastral certificate, area, beneficiary codes
+     * and the coordinates of the four points, validate the required
+     * fields and delegate to the background thread.
      * </p>
      */
     private void register() {
@@ -176,11 +152,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Obtiene la informacin de los cuatro puntos para las
-     * coordenadas geograficas del predio.
+     * It obtains the information from the four points for the geographic
+     * coordinates of the property.
      *
-     * @return lista con los puntos
-     * @throws InvalidInputException si hay datos invalidos
+     * @return list with the points
+     * @throws InvalidInputException if there is invalid data
      */
     private List<PointData> extractPoints() throws InvalidInputException {
         JTextField[][] fields = {
@@ -194,11 +170,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Crear una lista con los puntos obtenidos.
+     *Create a list with the points obtained.
      *
-     * @param fields matriz con la informacion de los puntos.
-     * @return lista con los puntos obtenidos.
-     * @throws InvalidInputException si hay datos invalidos.
+     * @param fields matrix with the information of the points.
+     * @return list with the points obtained.
+     * @throws InvalidInputException if there is invalid data.
      */
     private List<PointData> getPointData(JTextField[][] fields) throws InvalidInputException {
         List<PointData> points = new ArrayList<>();
@@ -225,10 +201,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Verifica si alguno de los campos proporcionados está vacío.
+     * Check if any of the provided fields are empty.
      *
-     * @param info argumentos a validar
-     * @return {@code true} si al menos un campo está en blanco
+     * @param info arguments to be validated
+     * @return {@code true} if at least one field is blank
      */
     private boolean invalidPoints(String... info) {
         for (String data : info) {
@@ -241,8 +217,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Prepara la interfaz deshabilitando el botón de registro
-     * y mostrando texto de carga.
+     * Prepare the interface by disabling the registration
+     * button and displaying upload text.
      */
     private void prepareUI() {
         registerProperty.getBtn_register().setText(lang.app("controller.register.property.registering"));
@@ -250,19 +226,19 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Registra el predio, sus puntos geográficos y la asociación
-     * con los beneficiarios en un hilo de fondo.
+     * Register the property, its geographical points and the
+     * association with the beneficiaries in a background thread.
      *
      * <p>
-     * Verifica que no exista un predio duplicado con la misma
-     * cédula catastral, persiste el predio, registra cada punto
-     * y asocia los beneficiarios indicados.
+     * Verify that there is no duplicate property with the same
+     * cadastral certificate, if the property persists, register
+     * each point and associate the indicated beneficiaries.
      * </p>
      *
-     * @param cadastralId      cédula catastral del predio
-     * @param area             área del predio en metros cuadrados
-     * @param beneficiaryCodes códigos de los beneficiarios asociados
-     * @param points           lista de datos de los cuatro puntos geográficos
+     * @param cadastralId      cadastral certificate of the property
+     * @param area             area of the property in square meters
+     * @param beneficiaryCodes codes of associated beneficiaries
+     * @param points           List of data for the four geographical points
      */
     private void doInBackGround(String cadastralId, double area, String[] beneficiaryCodes, List<PointData> points) {
         new Thread(() -> {
@@ -297,8 +273,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Muestra el mensaje de registro exitoso, notifica a los
-     * observadores y restablece la interfaz.
+     * Displays the successful registration message, notifies
+     * observers, and resets the interface.
      */
     private void runInvokeLater() {
         MessageUtils.informationMessage(lang.message("message.property.register"), registerProperty);
@@ -307,12 +283,12 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Restablece el botón de registro y limpia los campos
-     * del formulario.
+     * Reset the registration button and clear the form fields.
      */
     private void resetUI() {
         resetButton();
         registerProperty.clearFields();
+        showCardFirst();
     }
 
     /**
@@ -324,8 +300,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Avanza al siguiente panel de coordenadas mediante
-     * el {@link CardLayout}.
+     * Advance to the next coordinate panel using
+     * the {@link CardLayout}.
      */
     private void actionAfter() {
         CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
@@ -333,8 +309,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Retrocede al panel de coordenadas anterior mediante
-     * el {@link CardLayout}.
+     * Go back to the previous coordinate panel
+     * using {@link CardLayout}.
      */
     private void actionPrevious() {
         CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
@@ -342,12 +318,20 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Carga la lista de beneficiarios sin predio asignado
-     * y muestra el diálogo de selección.
+     * return to the panel from the first point
+     */
+    private void showCardFirst() {
+        CardLayout card = (CardLayout) registerProperty.getJpl_contentPoints().getLayout();
+        card.show(registerProperty.getJpl_contentPoints(), "point1");
+    }
+
+    /**
+     * Load the list of beneficiaries without assigned
+     * property and display the selection dialog.
      *
      * <p>
-     * Deshabilita los botones durante la carga y los restablece
-     * al cerrar el diálogo.
+     * Disable the buttons during loading and restore
+     * them when closing the dialog.
      * </p>
      */
     private void showBeneficiaries() {
@@ -364,8 +348,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Prepara la interfaz deshabilitando botones mientras se
-     * cargan los beneficiarios.
+     * Prepare the interface by disabling buttons while
+     * the beneficiaries are being loaded.
      */
     private void prepareUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(false);
@@ -374,10 +358,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Muestra el diálogo de selección de beneficiarios y
-     * añade el código seleccionado al campo del formulario.
+     * Displays the beneficiary selection dialog and adds
+     * the selected code to the form field.
      *
-     * @param dto lista de beneficiarios disponibles para selección
+     * @param dto List of beneficiaries available for selection
      */
     private void loadInvokerDialog(List<DTOBeneficiarySimpleDetails> dto) {
         java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
@@ -398,8 +382,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Restablece los botones tras cerrar el diálogo de
-     * selección de beneficiarios.
+     * Resets the buttons after closing the beneficiary
+     * selection dialog.
      */
     private void resetUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(true);
@@ -408,14 +392,14 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Registro inmutable que encapsula los datos de un punto
-     * geográfico del predio.
+     * Immutable record that encapsulates the data of
+     * a geographic point of the property.
      *
-     * @param pointNumber número del punto (1 a 4)
-     * @param north       coordenada norte
-     * @param east        coordenada este
-     * @param distance    distancia al siguiente punto
-     * @param hillside    lindero vecino
+     * @param pointNumber point number (1 to 4)
+     * @param north       north coordinate
+     * @param east        east coordinate
+     * @param distance    distance to the next point
+     * @param hillside    neighboring boundary
      */
     private record PointData(int pointNumber, String north, String east, String distance, String hillside) {
 
