@@ -95,7 +95,7 @@ public class GenerateResolutionUtils {
         InputStream templateStream = GenerateResolution.class.getClassLoader().
                 getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
-        template.writeToFile(path + File.separator + "MINUTA - RES FISCALES.docx");
+        template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-" + cadastralId + ".docx");
         template.close();
     }
 
