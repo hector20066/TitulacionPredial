@@ -1,14 +1,12 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.event.ActionListener;
-import java.util.function.BiConsumer;
-
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
-
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.util.function.BiConsumer;
 
 /**
  * Formulario para la generación de resoluciones de titulación.

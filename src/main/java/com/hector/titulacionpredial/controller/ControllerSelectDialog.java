@@ -1,17 +1,15 @@
 package com.hector.titulacionpredial.controller;
 
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
-
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
+
+import javax.swing.*;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Beneficiary search dialog controller.

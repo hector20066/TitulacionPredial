@@ -2,7 +2,6 @@ package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
-import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSpouseDataText;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;

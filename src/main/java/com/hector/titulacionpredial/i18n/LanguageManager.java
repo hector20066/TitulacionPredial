@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.i18n;
 
 import com.hector.titulacionpredial.utils.UserConfig;
+
 import java.util.Locale;
 import java.util.ResourceBundle;
 

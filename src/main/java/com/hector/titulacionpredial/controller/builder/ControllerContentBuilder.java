@@ -5,14 +5,7 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.Content;
-import com.hector.titulacionpredial.view.content.panels.About;
-import com.hector.titulacionpredial.view.content.panels.Dashboard;
-import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
-import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
-import com.hector.titulacionpredial.view.content.panels.SeeProperties;
-import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
-import com.hector.titulacionpredial.view.content.panels.Settings;
-import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
  * Builder to build the {@link ControllerContent} with

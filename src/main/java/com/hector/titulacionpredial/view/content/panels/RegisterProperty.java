@@ -1,13 +1,11 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  * Formulario para el registro de predios con sus
