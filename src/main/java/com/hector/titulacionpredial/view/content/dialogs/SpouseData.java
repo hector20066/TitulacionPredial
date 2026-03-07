@@ -10,16 +10,16 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.awt.*;
 
 /**
- * Diálogo modal para registrar los datos del cónyuge
- * de un beneficiario.
+ * Modal dialog for registering spouse's data
+ * of a beneficiary.
  *
  * <p>
- * Se muestra cuando el estado civil del beneficiario
- * es «casado», permitiendo ingresar nombre, apellido
- * y cédula del cónyuge. Incluye animación de entrada.
+ * It is shown when the beneficiary's marital status
+ * It is «married», allowing you to enter first and last
+ * name. and spouse's ID. Includes entrance animation.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  * @see DTOSpouse
  */
@@ -32,13 +32,17 @@ public class SpouseData extends javax.swing.JDialog {
     private final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea un nuevo diálogo para registrar los datos del cónyuge.
+     * Creates a new dialog to register spouse's data.
      *
-     * <p>Inicializa los componentes gráficos, conecta los eventos
-     * de los botones y configura la animación de opacidad.</p>
+     * <p>
+     * Initializes the graphical components,
+     * connects the button events, and
+     * configures the opacity animation.
+     * </p>
      *
-     * @param parent ventana padre del diálogo
-     * @param modal  {@code true} para bloquear la ventana padre mientras se muestra
+     * @param parent dialog parent window
+     * @param modal  {@code true} to lock the parent
+     *                           window while it is displayed
      */
     public SpouseData(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

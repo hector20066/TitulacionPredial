@@ -8,15 +8,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Barra de título personalizada de la ventana principal.
+ * Custom title bar for the main window.
  *
  * <p>
- * Extiende {@link PanelShadow} e incluye los botones de control
- * de ventana (minimizar, maximizar, cerrar) y el soporte de
- * arrastre para mover la ventana.
+ * Extends {@link PanelShadow} and includes window control buttons
+ * (minimize, maximize, close) and support for dragging to move the window.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  * @see PanelShadow
  * @see WinButton
@@ -27,7 +26,7 @@ public class Head extends PanelShadow {
     int yMouse;
 
     /**
-     * Crea la barra de título con los botones de ventana.
+     * Creates the title bar with the window buttons.
      */
     public Head() {
         initComponents();
@@ -55,9 +54,9 @@ public class Head extends PanelShadow {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Configura la barra para permitir mover la ventana principal.
+     * Configures the bar to allow moving the main window.
      *
-     * @param frame ventana principal del programa.
+     @param frame main program window.
      */
     public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
@@ -80,11 +79,7 @@ public class Head extends PanelShadow {
         });
     }
     
-    /**
-     * Obtiene el botón de control de ventana.
-     *
-     * @return componente {@link WinButton}
-     */
+
     public WinButton getWinButton() {
         return winButton1;
     }

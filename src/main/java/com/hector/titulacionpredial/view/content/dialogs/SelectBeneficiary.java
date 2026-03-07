@@ -24,16 +24,15 @@ import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.view.i18n.dto.dialogs.DTOSelectBeneficiaryText;
 
 /**
- * Diálogo modal para seleccionar un beneficiario
- * desde una tabla con búsqueda integrada.
- *
+ * Modal dialog to select a beneficiary
+ * from a table with integrated search.
  * <p>
- * Utilizado al registrar predios o generar resoluciones
- * para asociar un beneficiario existente. Incluye filtrado
- * en tiempo real y animación de entrada.
+ * Used when registering properties or generating
+ * resolutions to associate an existing beneficiary.
+ * Includes real-time filtering and input animation.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  * @see ControllerSelectDialog
  */
@@ -55,13 +54,16 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**
-     * Crea un nuevo diálogo de selección de beneficiario.
+     * Creates a new beneficiary selection dialog.
      *
-     * <p>Inicializa la tabla con sus encabezados, configura el controlador
-     * de búsqueda, conecta eventos y establece la animación de opacidad.</p>
+     * <p>
+     * Initializes the table with its headers,
+     * configures the search handler, connects
+     * events, and sets the opacity animation.
+     * </p>
      *
-     * @param parent ventana padre del diálogo
-     * @param modal  {@code true} para bloquear la ventana padre mientras se muestra
+     * @param parent dialog parent window
+     * @param modal {@code true} to lock the parent window while it is displayed
      */
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -103,7 +105,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Configura el estilo visual del encabezado de la tabla de beneficiarios.
+     * Configures the visual style of the beneficiary table header.
      */
     private void tableHeader() {
         JTableHeader header = jtbl_beneficiaries.getTableHeader();
@@ -252,6 +254,9 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the «Menu» texts with the provided translations.
+     */
     public void updateLanguage() {
         jlb_title.setText(lang.app("select.beneficiary.title"));
         code = lang.app("select.beneficiary.code");
@@ -271,8 +276,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Conecta los eventos de los botones de buscar, seleccionar,
-     * cancelar y cancelar búsqueda, además de los listeners del campo de texto.
+     * Connect the events of the search, select, cancel and cancel
+     * search buttons, as well as the text field listeners.
      */
     private void connectEvents() {
         btn_search.addActionListener(e -> {
@@ -304,8 +309,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Ejecuta la búsqueda de beneficiarios por el parámetro ingresado
-     * en el campo de texto y alterna la visibilidad de los botones.
+     * Executes the search for beneficiaries using the parameter entered
+     * in the text field and toggles the visibility of the buttons.
      */
     private void searchBeneficiary() {
         btn_searchCancel.setVisible(true);
@@ -316,8 +321,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Agrega un {@link DocumentListener} al campo de búsqueda
-     * para filtrar la tabla en tiempo real.
+     * Adds a {@link DocumentListener} to the search
+     * field to filter the table in real time.
      */
     private void addDocumentListener() {
         txt_search.getDocument().addDocumentListener(new DocumentListener() {
@@ -339,8 +344,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Agrega un listener de foco al campo de búsqueda
-     * que restaura el texto placeholder al perder el foco.
+     * Adds a focus listener to the search field that
+     * restores the placeholder text when focus is lost.
      */
     private void addFocusListener() {
         txt_search.addFocusListener(new FocusAdapter() {
@@ -354,8 +359,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Agrega un listener de ratón al campo de búsqueda
-     * que limpia el texto placeholder al hacer clic.
+     * Adds a mouse listener to the search field
+     * that clears the placeholder text on click.
      */
     private void addMouseListener() {
         txt_search.addMouseListener(new MouseAdapter() {
@@ -369,10 +374,12 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Cierra el diálogo con una animación de desvanecimiento.
+     * Closes the dialogue with a fade-out animation.
      *
-     * <p>Detiene cualquier animación en curso antes de iniciar
-     * la animación de cierre.</p>
+     * <p>
+     * Stops any ongoing animations before
+     * starting the closing animation.
+     * </p>
      */
     private void closeMenu() {
         if (animator.isRunning()) {
@@ -384,9 +391,9 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Carga una lista de beneficiarios en la tabla del diálogo.
+     * Loads a list of beneficiaries into the dialog table.
      *
-     * @param listBeneficiaries lista de beneficiarios a mostrar
+     @param listBeneficiaries list of beneficiaries to display
      */
     public void loadBeneficiaries(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         model.setRowCount(0);
@@ -398,9 +405,9 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Carga un único beneficiario en la tabla del diálogo.
+     * Loads a single beneficiary into the dialog table.
      *
-     * @param dto datos del beneficiario a mostrar
+     @param dto beneficiary data to display
      */
     public void loadBeneficiary(DTOBeneficiarySimpleDetails dto) {
         model.setRowCount(0);
@@ -415,9 +422,10 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Obtiene el código del beneficiario seleccionado en la tabla.
+     * Gets the code of the selected beneficiary from the table.
      *
-     * @return código del beneficiario seleccionado, o {@code 0} si no hay selección
+     * @return the code of the selected beneficiary,
+     * or {@code 0} if there is no selection
      */
     public int codeBeneficiarySelected() {
         int code = 0;
@@ -430,9 +438,10 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     }
 
     /**
-     * Indica si el usuario confirmó la selección de un beneficiario.
+     * Indicates whether the user confirmed the selection of a beneficiary.
      *
-     * @return {@code true} si se presionó seleccionar, {@code false} si se canceló
+     * @return {@code true} if "select" was
+     * pressed, {@code false} if it was canceled.
      */
     public boolean isConfirmed() {
         return confirmed;
