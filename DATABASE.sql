@@ -43,7 +43,7 @@ CREATE TABLE spouse (
     expedition_location VARCHAR(100),
     address VARCHAR(40),
     phone BIGINT,
-    beneficiary_code,
+    beneficiary_code INT NOT NULL,
 
     CONSTRAINT fk_spouse_beneficiary
         FOREIGN KEY (beneficiary_code)
