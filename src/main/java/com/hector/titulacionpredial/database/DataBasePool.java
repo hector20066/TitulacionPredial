@@ -7,26 +7,16 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
 /**
- * Pool de conexiones a la base de datos PostgreSQL
- * basado en {@link HikariDataSource}.
+ * Pool of connections to the MySQL database based
+ * on {@link HikariDataSource}.
  *
  * <p>
- * Administra la creación y el ciclo de vida de las conexiones
- * JDBC mediante HikariCP. La configuración se carga
- * automáticamente desde {@link AppConfig} al inicializar la clase.
+ * Manage the creation and lifecycle of JDBC connections
+ * using HikariCP. The configuration is automatically
+ * loaded from {@link AppConfig} when the class is
+ * initialized.
  * </p>
- *
- * <p>
- * Parámetros del pool:
- * </p>
- * <ul>
- *   <li>{@code maximumPoolSize} – 20 conexiones máximas</li>
- *   <li>{@code minimumIdle} – 1 conexión mínima inactiva</li>
- *   <li>{@code idleTimeout} – 100 minutos</li>
- *   <li>{@code maxLifetime} – 300 minutos</li>
- * </ul>
  *
  * @author Ing. Hector Acevedo
  * @see AppConfig
@@ -36,7 +26,7 @@ import java.sql.SQLException;
 public class DataBasePool {
 
     /**
-     * Fuente de datos HikariCP configurada estáticamente.
+     * HikariCP data source statically configured.
      */
     private static final HikariDataSource dataSource;
 
@@ -59,21 +49,21 @@ public class DataBasePool {
     }
 
     /**
-     * Obtiene una conexión del pool de conexiones.
+     * Obtains a connection from the connection pool.
      *
-     * @return conexión JDBC lista para usar
-     * @throws SQLException si no se puede obtener una conexión
+     * @return JDBC connection ready to use
+     * @throws SQLException if a connection cannot be obtained
      */
     public static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
     /**
-     * Cierra el pool de conexiones y libera todos los recursos.
+     * Close the connection pool and release all resources.
      *
      * <p>
-     * Debe invocarse al finalizar la aplicación para garantizar
-     * que todas las conexiones se cierran correctamente.
+     * It must be invoked at the end of the application to
+     * ensure that all connections are closed properly.
      * </p>
      */
     public static void shutdown() {
