@@ -315,6 +315,9 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.clearFields();
     }
 
+    /**
+     * Resets the button to its default values.
+     */
     private void resetButton() {
         registerProperty.getBtn_register().setText(lang.app("controller.register.property.register"));
         registerProperty.getBtn_register().setEnabled(true);

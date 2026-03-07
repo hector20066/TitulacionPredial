@@ -105,7 +105,7 @@ public class ControllerViewBeneficiariesBuilder {
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
-    
+
     public LanguageManager getLang() {
         return lang;
     }

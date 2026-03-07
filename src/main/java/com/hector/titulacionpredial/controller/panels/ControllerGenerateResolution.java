@@ -31,25 +31,24 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
- * Controlador del panel de generación de resoluciones.
+ * Resolution generation panel controller.
  *
  * <p>
- * Gestiona la validación de los datos del formulario,
- * el registro de la resolución en la base de datos y la
- * generación del documento Word mediante
- * {@link GenerateResolutionUtils}.
+ * Manage the validation of form data, the recording of the
+ * resolution int the database, and the generation of the
+ * Word document using {@link GenerateResolutionUtils}.
  * </p>
  *
  * <p>
- * Implementa {@link LanguageObserver} como observador concreto
- * del patrón Observer, permitiendo que la vista se actualice
- * automáticamente cuando el {@link LanguageSubject} notifica
- * un cambio de idioma.
+ * Implement {@link LanguageObserver} as a concrete observer
+ * of the Observer pattern, allowing the view to be automatically
+ * updated when the {@link LanguageSubject} notifies a language
+ * change.
  * </p>
  *
  * <p>
- * Utiliza {@link LanguageManager} para acceder a los recursos
- * internacionalizados mediante claves de texto.
+ * Use {@link LanguageManager} to access internationalized resources
+ * using text keys.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -60,36 +59,17 @@ import java.util.concurrent.Callable;
  */
 public class ControllerGenerateResolution implements LanguageObserver {
 
-    /**
-     * Vista del formulario de generación de resoluciones.
-     */
     private final GenerateResolution generateResolution;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
-
-    /**
-     * Fachada de acceso a datos de resoluciones.
-     */
     private final ResolutionFacade daoResolution;
-
-    /**
-     * Fachada de acceso a datos de beneficiarios.
-     */
     private final BeneficiaryFacade daoBeneficiary;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del formulario.
+     * Create the controller, register it as an observer,
+     * and connect the form events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerGenerateResolution(ControllerGenerateResolutionBuilder builder) {
         this.generateResolution = builder.getGenerateResolution();
@@ -105,7 +85,7 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Conecta el botón de generar resolución con el método
+     * Connect the generate resolution button to the
      * {@link #generateResolution()}.
      */
     private void connectEvents() {
@@ -146,14 +126,13 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Valida los datos del formulario y lanza el proceso de
-     * generación de la resolución.
+     * Validate the form data and launch the resolution
+     * generation process.
      *
      * <p>
-     * Extrae todos los campos del formulario, solicita al usuario
-     * la ruta de guardado, delega la acción de validación a
-     * {@link #validations(Date, Date, String, String, String, String)}
-     * delega la ejecución en segundo plano mediante {@link #doInBackground}.
+     * Extract all fields from the form, ask the user for the save path, delegate
+     * the validation action to {@link #validations(Date, Date, String, String, String, String)}
+     * and delegate the background execution using {@link #doInBackground}.
      * </p>
      */
     private void generateResolution() {
@@ -187,16 +166,16 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Realiza la validación de los campos
+     * Perform field validation
      *
-     * @param executory        fecha de ejecutoria.
-     * @param notification     fecha de la notificación.
-     * @param path             ruta donde se guardara el archivo.
-     * @param resolutionNumber número de la resolución
-     * @param notary           notaria
-     * @param propertyCode     codigo de la propiedad.
-     * @throws InvalidInputException excepción lanzada cuando
-     *                               se ingresan campos invalidos.
+     * @param executory        date of execution.
+     * @param notification     date of notification.
+     * @param path             path where the file will be saved.
+     * @param resolutionNumber resolution number
+     * @param notary           name of the notary
+     * @param propertyCode     property code.
+     * @throws InvalidInputException An exception is thrown when
+     *                               invalid fields are entered.
      */
     private void validations(Date executory, Date notification, String path, String resolutionNumber, String notary,
                              String propertyCode) throws InvalidInputException {
@@ -218,9 +197,9 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Ejecuta una tarea asincrónica mostrando un diálogo de carga.
+     * Executes an asynchronous task by displaying a loading dialog.
      *
-     * @param task tarea a ejecutar en segundo plano
+     * @param task task to run in the background
      */
     private void executeWithDialog(Callable<Void> task) {
         DialogUtils.executeWithDialog(generateResolution, lang.message("dialog.resolution.generating"),
@@ -228,29 +207,29 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Registra la resolución en la base de datos y genera
-     * el documento Word en segundo plano.
+     * It records the resolution in the database and generates the
+     * Word document in the background.
      *
      * <p>
-     * Verifica que no exista una resolución duplicada, recupera
-     * los beneficiarios asociados, persiste la resolución y
-     * genera el documento mediante {@link GenerateResolutionUtils}.
+     * Verify that there is no duplicate resolution, retrieve the
+     * associated beneficiaries, persist the resolution, and generate
+     * the document using {@link GenerateResolutionUtils}.
      * </p>
      *
-     * @param numResolution   número de resolución
-     * @param executory       fecha de ejecutoria
-     * @param act             acto
-     * @param publicWriting   escritura pública
-     * @param notification    fecha de notificación
-     * @param fmi             Folio de Matrícula Inmobiliaria
-     * @param notary          nombre de la notaría
-     * @param propertyCode    código del predio
-     * @param beneficiaryName nombre del beneficiario
-     * @param idBeneficiaries cédulas de los beneficiarios separadas por " - "
-     * @param address         dirección del predio
-     * @param cadastralId     cédula catastral
-     * @param area            área del predio
-     * @param path            ruta donde se guarda el documento
+     * @param numResolution   resolution number
+     * @param executory       date of execution
+     * @param act             act
+     * @param publicWriting   public deed
+     * @param notification    notification date
+     * @param fmi             Real Estate Registration Folio
+     * @param notary          name of the notary
+     * @param propertyCode    property code
+     * @param beneficiaryName beneficiary name
+     * @param idBeneficiaries beneficiary ID cards separated by " - "
+     * @param address         property address
+     * @param cadastralId     cadastral ID
+     * @param area            area of the property
+     * @param path            path where the document is saved
      */
     private void doInBackground(int numResolution, LocalDate executory, String act, String publicWriting,
                                 LocalDate notification, String fmi, String notary, int propertyCode, String beneficiaryName,
@@ -275,23 +254,23 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     /**
-     * Genera el documento Word de la resolución con los datos
-     * del predio y los beneficiarios.
+     * Generate the Word document of the resolution with the data
+     * of the property and the beneficiaries.
      *
      * <p>
-     * Extrae las coordenadas de los cuatro puntos geográficos
-     * del formulario, construye los DTOs correspondientes y
-     * delega la generación a {@link GenerateResolutionUtils}.
+     * Extract the coordinates of the four geographic points from
+     * the form, build the corresponding DTOs and delegate the
+     * generation to {@link GenerateResolutionUtils}.
      * </p>
      *
-     * @param path              ruta de guardado del documento
-     * @param beneficiariesList lista de beneficiarios asociados
-     * @param address           dirección del predio
-     * @param cadastralId       cédula catastral
-     * @param fmi               Folio de Matrícula Inmobiliaria
-     * @param area              área del predio
-     * @param notification      fecha de notificación
-     * @throws IOException si ocurre un error al escribir el archivo
+     * @param path              document save path
+     * @param beneficiariesList list of associated beneficiaries
+     * @param address           property address
+     * @param cadastralId       cadastral certificate
+     * @param fmi               Real Estate Registration Folio
+     * @param area              area of the property
+     * @param notification      notification date
+     * @throws IOException If an error occurs while writing the file
      */
     private void generateDocument(String path, List<DTOBeneficiarySimpleDetails> beneficiariesList,
                                   String address, String cadastralId, String fmi, String area, String notification) throws IOException {

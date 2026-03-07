@@ -25,25 +25,24 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
- * Controlador del panel de modificación de resoluciones.
+ * Resolution modification panel controller.
  *
  * <p>
- * Implementa {@link LanguageObserver} como observador concreto
- * del patrón Observer, permitiendo que la vista se actualice
- * automáticamente cuando el {@link LanguageSubject} notifica
- * un cambio de idioma.
+ * Implement {@link LanguageObserver} as a concrete
+ * observer of the Observer pattern, allowing the
+ * view to be automatically updated when the
+ * {@link LanguageSubject} notifies a language change.
  * </p>
  *
  * <p>
- * Utiliza {@link LanguageManager} para acceder a los recursos
- * internacionalizados mediante claves de texto.
+ * Use {@link LanguageManager} to access internationalized
+ * resources using text keys.
  * </p>
  *
  * <p>
- * Gestiona la validación de los datos del formulario y
- * la actualización de la resolución en la base de datos.
- * Al completar la modificación, navega de regreso al
- * listado de resoluciones.
+ * Manage the validation of form data and the updating of
+ * the resolution in the database. Upon completion of the
+ * modification, navigate back to the list of resolutions.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -55,36 +54,17 @@ import java.util.Date;
  */
 public class ControllerModifyResolution implements LanguageObserver {
 
-    /**
-     * Vista del formulario de modificación.
-     */
     private final ModifyResolution modifyResolution;
-
-    /**
-     * Vista del listado de resoluciones (destino tras modificar).
-     */
     private final SeeResolutions seeResolutions;
-
-    /**
-     * Sujeto del patrón Observer para notificar cambios.
-     */
     private final Subject subject;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
-
-    /**
-     * Fachada de acceso a datos de resoluciones.
-     */
     private final ResolutionFacade daoResolution;
 
     /**
-     * Crea el controlador, lo registra como observador
-     * y conecta los eventos del formulario.
+     * Create the controller, register it as an observer,
+     * and connect the form events.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerModifyResolution(ControllerModifyResolutionBuilder builder) {
         this.modifyResolution = builder.getModifyResolution();
@@ -100,8 +80,8 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     /**
-     * Conecta el botón de modificar con el método
-     * {@link #modifyResolution()}.
+     * Connect the modify button to the {@link #modifyResolution()}
+     * method.
      */
     private void connectEvents() {
         modifyResolution.setControllerModify(e -> modifyResolution());
@@ -126,13 +106,13 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     /**
-     * Valida los datos del formulario de modificación y
-     * lanza la actualización en segundo plano.
+     * Validate the data in the modification form and launch the
+     * update in the background.
      *
      * <p>
-     * Extrae todos los campos del formulario, aplica las
-     * validaciones de campos obligatorios, formato numérico
-     * y longitud máxima antes de delegar al hilo de fondo.
+     * Extract all form fields, apply required field validations,
+     * numeric formatting, and maximum length before delegating
+     * to the background thread.
      * </p>
      */
     private void modifyResolution() {
@@ -161,6 +141,7 @@ public class ControllerModifyResolution implements LanguageObserver {
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
+            prepareUI();
             doInBackground(Integer.parseInt(code), Long.parseLong(numResolution), notificationLocalDate, executoryLocalDate,
                     notary, fmi, act, publicWriting);
         } catch (InvalidInputException e) {
@@ -169,10 +150,10 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     /**
-     * Verifica si alguno de los campos proporcionados está vacío.
+     * Check if any of the provided fields are empty.
      *
-     * @param fields campos a validar
-     * @return {@code true} si al menos un campo está en blanco
+     * @param fields fields to validate
+     * @return {@code true} if at least one field is blank
      */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
@@ -185,16 +166,25 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     /**
-     * Ejecuta la modificación de la resolución en un hilo de fondo.
+     * Prepare the graphical interface by changing the
+     * button text and disabling it.
+     */
+    private void prepareUI() {
+        modifyResolution.getBtn_modify().setText(lang.app("modify.resolution.btn.executor"));
+        modifyResolution.getBtn_modify().setEnabled(false);
+    }
+
+    /**
+     * Execute the resolution modification in a background thread.
      *
-     * @param code          código de la resolución
-     * @param numResolution nuevo número de resolución
-     * @param notification  fecha de notificación
-     * @param executory     fecha de ejecutoria
-     * @param notary        nombre de la notaría
-     * @param fmi           Folio de Matrícula Inmobiliaria
-     * @param act           acta
-     * @param publicWriting número de escritura pública
+     * @param code          resolution code
+     * @param numResolution new resolution number
+     * @param notification  notification date
+     * @param executory     date of execution
+     * @param notary        name of the notary
+     * @param fmi           Real Estate Registration Folio
+     * @param act           act
+     * @param publicWriting public deed
      */
     private void doInBackground(int code, long numResolution, LocalDate notification, LocalDate executory, String notary,
                                 String fmi, String act, String publicWriting) {
@@ -203,21 +193,24 @@ public class ControllerModifyResolution implements LanguageObserver {
                 boolean success = daoResolution.modify(code, executory, act, publicWriting, numResolution, notification, fmi, notary);
                 SwingUtilities.invokeLater(() -> runInvokeLater(success));
             } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), modifyResolution));
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), modifyResolution);
+                    resetButton();
+                });
             }
         }).start();
     }
 
     /**
-     * Actualiza la interfaz tras completar la modificación.
+     * Update the interface after completing the modification.
      *
      * <p>
-     * Si la operación fue exitosa, muestra un mensaje de confirmación,
-     * notifica a los observadores y navega al listado de resoluciones.
-     * En caso contrario, muestra un mensaje de error.
+     * If the operation was successful, it displays a confirmation
+     * message, notifies observers, and navigates to the resolutions
+     * list. Otherwise, it displays an error message.
      * </p>
      *
-     * @param success {@code true} si la modificación fue exitosa
+     * @param success {@code true} if the modification was successful
      */
     private void runInvokeLater(boolean success) {
         if (success) {
@@ -227,6 +220,14 @@ public class ControllerModifyResolution implements LanguageObserver {
         } else {
             MessageUtils.errorMessage(lang.message("message.resolution.error.modify"), modifyResolution);
         }
+    }
+
+    /**
+     * Resets the button to its default values.
+     */
+    private void resetButton() {
+        modifyResolution.getBtn_modify().setText(lang.app("modify.resolution.btn"));
+        modifyResolution.getBtn_modify().setEnabled(true);
     }
 
 }

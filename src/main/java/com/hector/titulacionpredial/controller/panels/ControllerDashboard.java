@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Controlador del panel Dashboard.
+ * Dashboard panel controller.
  *
  * <p>
- * Implementa {@link Observer} y {@link LanguageObserver} para actualizar
- * automáticamente el panel del Dashboard cuando se producen cambios
- * en los datos o en el idioma de la aplicación.
+ * Implement {@link Observer} and {@link LanguageObserver} to
+ * automatically update the Dashboard panel when changes occur
+ * in the data or the application language.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -41,35 +41,16 @@ import java.util.Locale;
  */
 public class ControllerDashboard implements Observer, LanguageObserver {
 
-    /**
-     * Vista del dashboard.
-     */
     private final Dashboard dashboard;
-
-    /**
-     * Acceso al gestor de los idiomas.
-     */
     private final LanguageManager lang;
-
-    /**
-     * Fachada de acceso a datos de beneficiarios.
-     */
     private final BeneficiaryFacade daoBeneficiary;
-
-    /**
-     * Fachada de acceso a datos de predios.
-     */
     private final PropertyFacade daoProperty;
-
-    /**
-     * Fachada de acceso a datos de resoluciones.
-     */
     private final ResolutionFacade daoResolution;
 
     /**
-     * Crea el controlador y lo registra como observador.
+     * Create the controller and register it as an observer.
      *
-     * @param builder constructor con las vistas configuradas
+     * @param builder constructor with configured views
      */
     public ControllerDashboard(ControllerDashboardBuilder builder) {
         this.dashboard = builder.getDashboard();
@@ -115,66 +96,68 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     }
 
     /**
-     * Carga los datos del gráfico de línea con la tendencia mensual
-     * de beneficiarios registrados.
+     * Load the line chart data with the monthly trend of registered
+     * beneficiaries.
      *
      * <p>
-     * Limpia el gráfico existente, configura la leyenda y agrega
-     * cada mes con su cantidad correspondiente.
+     * Clean up the existing chart, set up the legend, and add each
+     * month with its corresponding amount.
      * </p>
      *
-     * @param list lista de DTOs con la cantidad de beneficiarios por mes
+     * @param list List of data with the number of beneficiaries per month
      */
     private void loadInfo(List<DTOBeneficiariesByMonth> list) {
         dashboard.getLineChart1().clear();
-        dashboard.getLineChart1().addLegend(lang.app("controller.dashboard.beneficiaries.registers"), new Color(149, 213, 178), new Color(45, 106, 79));
+        dashboard.getLineChart1().addLegend(lang.app("controller.dashboard.beneficiaries.registers"),
+                new Color(149, 213, 178),
+                new Color(45, 106, 79));
 
         list.forEach(dto -> {
-            String nombreMes = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of(UserConfig.get("app.language")));
-            dashboard.getLineChart1().addData(new ModelChart(nombreMes, new double[]{dto.total()}));
+            String monthName = Month.of(dto.month()).getDisplayName(TextStyle.FULL, Locale.of(UserConfig.get("app.language")));
+            dashboard.getLineChart1().addData(new ModelChart(monthName, new double[]{dto.total()}));
         });
 
         dashboard.getLineChart1().start();
     }
 
     /**
-     * Carga el número total de cada tipo de registros
+     * Load the total number of each type of record
      *
-     * @param totalBeneficiaries numero total de beneficiarios registrados
-     * @param totalProperties    numero total de predios registrados.
-     * @param totalResolutions   número total de resoluciones registradas
+     * @param totalBeneficiaries total number of registered beneficiaries
+     * @param totalProperties    total number of registered properties.
+     * @param totalResolutions   total number of resolutions registered
      */
     public void loadCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
         dashboard.updateCards(totalBeneficiaries, totalProperties, totalResolutions);
     }
 
     /**
-     * Carga los porcentajes en los gráficos de medidor (gauge).
+     * Load the percentages into the gauge graphs.
      *
-     * @param percentBeneficiaries porcentaje de beneficiarios con predio
-     * @param percentProperties    porcentaje de predios con resolución
+     * @param percentBeneficiaries percentage of beneficiaries with property
+     * @param percentProperties    percentage of properties with resolution
      */
     private void loadDataPercent(int percentBeneficiaries, int percentProperties) {
         dashboard.updateGaugeCharts(percentBeneficiaries, percentProperties);
     }
 
     /**
-     * Carga los datos de los beneficiarios con relación a los predios
+     * Upload the beneficiary data related to the properties
      *
-     * @param withProperty    beneficiarios con predios
-     * @param withoutProperty beneficiarios sin predios
-     * @param total           total de beneficiarios
+     * @param withProperty    beneficiaries with properties
+     * @param withoutProperty beneficiaries without land
+     * @param total           total number of beneficiaries
      */
     private void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
         dashboard.loadDataBeneficiaries(withProperty, withoutProperty, total);
     }
 
     /**
-     * Carga los datos de los predios con relacion a las resoluciones
+     * Upload the property data in relation to the resolutions
      *
-     * @param withResolution    predios con resolucion
-     * @param withoutResolution predios sin resolucion
-     * @param total             total de predios
+     * @param withResolution    properties with resolution
+     * @param withoutResolution properties without resolution
+     * @param total             total number of properties
      */
     private void loadDataProperties(int withResolution, int withoutResolution, int total) {
         dashboard.loadDataProperties(withResolution, withoutResolution, total);
