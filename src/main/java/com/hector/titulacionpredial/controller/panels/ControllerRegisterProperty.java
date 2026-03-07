@@ -288,7 +288,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerProperty));
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), registerProperty);
+                    resetButton();
+                });
             }
         }).start();
     }
@@ -308,9 +311,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * del formulario.
      */
     private void resetUI() {
+        resetButton();
+        registerProperty.clearFields();
+    }
+
+    private void resetButton() {
         registerProperty.getBtn_register().setText(lang.app("controller.register.property.register"));
         registerProperty.getBtn_register().setEnabled(true);
-        registerProperty.clearFields();
     }
 
     /**

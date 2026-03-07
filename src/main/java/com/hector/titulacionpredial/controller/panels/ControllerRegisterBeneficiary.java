@@ -439,7 +439,10 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
+                    resetButton();
+                });
             }
         }).start();
     }
@@ -475,9 +478,13 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * del formulario.
      */
     private void resetUI() {
+        resetButton();
+        registerBeneficiary.clearFields();
+    }
+
+    private void resetButton() {
         registerBeneficiary.getBtn_register().setEnabled(true);
         registerBeneficiary.getBtn_register().setText(lang.app("controller.register.beneficiary.add"));
-        registerBeneficiary.clearFields();
     }
 
     /**
