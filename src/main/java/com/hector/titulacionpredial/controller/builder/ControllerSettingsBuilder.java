@@ -6,10 +6,12 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 
 /**
- * Builder para la construcción de instancias de {@link ControllerSettings}.
+ * Builder for building instances of {@link ControllerSettings}.
  *
- * <p>Centraliza la inyección de dependencias necesarias para la configuración
- * del controlador mediante un patrón de diseño Builder.</p>
+ * <p>
+ * Centralize the injection of dependencies necessary for controller
+ * configuration using a Builder design pattern.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -21,10 +23,10 @@ public class ControllerSettingsBuilder {
     private LanguageManager lang;
 
     /**
-     * Asigna la vista del panel de configuración.
+     * Assign the configuration panel view.
      *
-     * @param settings vista de configuración
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param settings configuration view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSettingsBuilder withViewSettings(Settings settings) {
         this.settings = settings;
@@ -32,10 +34,10 @@ public class ControllerSettingsBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSettingsBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -43,10 +45,10 @@ public class ControllerSettingsBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager.
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerSettingsBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -54,37 +56,22 @@ public class ControllerSettingsBuilder {
     }
 
     /**
-     * Construye e inicializa una nueva instancia de {@link ControllerSettings}.
+     * Build and initialize a new instance of {@link ControllerSettings}.
      *
-     * @return nueva instancia configurada de {@link ControllerSettings}
+     * @return new configured instance of {@link ControllerSettings}
      */
     public ControllerSettings build() {
         return new ControllerSettings(this);
     }
 
-    /**
-     * Obtiene la vista de configuración.
-     *
-     * @return vista de configuración
-     */
     public Settings getSettings() {
         return settings;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
     public LanguageManager getLang() {
         return lang;
     }

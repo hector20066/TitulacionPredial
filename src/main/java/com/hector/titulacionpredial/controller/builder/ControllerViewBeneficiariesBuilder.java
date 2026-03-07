@@ -8,10 +8,12 @@ import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
- * Builder para la construcción de instancias de {@link ControllerViewBeneficiaries}.
+ * Builder for building instances of {@link ControllerViewBeneficiaries}.
  *
- * <p>Centraliza la inyección de dependencias necesarias para la configuración
- * del controlador mediante un patrón de diseño Builder.</p>
+ * <p>
+ * Centralize the injection of dependencies necessary for controller
+ * configuration using a Builder design pattern.
+ * </p>
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -25,10 +27,10 @@ public class ControllerViewBeneficiariesBuilder {
     private LanguageManager lang;
 
     /**
-     * Asigna la vista del panel de registro de beneficiarios.
+     * Assign the view of the beneficiary registration panel.
      *
-     * @param registerBeneficiary vista de registro de beneficiarios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param registerBeneficiary beneficiary registration view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerViewBeneficiariesBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
         this.registerBeneficiary = registerBeneficiary;
@@ -36,10 +38,10 @@ public class ControllerViewBeneficiariesBuilder {
     }
 
     /**
-     * Asigna la vista del panel de visualización de beneficiarios.
+     * Assign the view of the beneficiary display panel.
      *
-     * @param viewBeneficiaries vista de visualización de beneficiarios
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param viewBeneficiaries beneficiary display view
+     * @return instance of the builder for fluid chaining
      */
     public ControllerViewBeneficiariesBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
         this.viewBeneficiaries = viewBeneficiaries;
@@ -47,10 +49,10 @@ public class ControllerViewBeneficiariesBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para notificaciones de datos.
+     * Assign the Observer pattern subject for data notifications.
      *
-     * @param subject sujeto concreto del patrón Observer
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param subject specific subject of the Observer pattern
+     * @return instance of the builder for fluid chaining
      */
     public ControllerViewBeneficiariesBuilder withSubject(Subject subject) {
         this.subject = subject;
@@ -58,10 +60,10 @@ public class ControllerViewBeneficiariesBuilder {
     }
 
     /**
-     * Asigna el sujeto del patrón Observer para el sistema de idiomas.
+     * Assign the subject of the Observer pattern for the language system.
      *
-     * @param languageSubject sujeto de cambio de idioma
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param languageSubject subject to language change
+     * @return instance of the builder for fluid chaining
      */
     public ControllerViewBeneficiariesBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
@@ -69,10 +71,10 @@ public class ControllerViewBeneficiariesBuilder {
     }
 
     /**
-     * Asigna el gestor de idiomas de la aplicación.
+     * Assign the application's language manager.
      *
-     * @param lang gestor de idiomas
-     * @return esta instancia del builder para encadenamiento fluido
+     * @param lang language manager
+     * @return instance of the builder for fluid chaining
      */
     public ControllerViewBeneficiariesBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
@@ -80,55 +82,30 @@ public class ControllerViewBeneficiariesBuilder {
     }
 
     /**
-     * Construye e inicializa una nueva instancia de {@link ControllerViewBeneficiaries}.
+     * Build and initialize a new instance of {@link ControllerViewBeneficiaries}.
      *
-     * @return nueva instancia configurada de {@link ControllerViewBeneficiaries}
+     * @return new configured instance of {@link ControllerViewBeneficiaries}
      */
     public ControllerViewBeneficiaries build() {
         return new ControllerViewBeneficiaries(this);
     }
 
-    /**
-     * Obtiene la vista de registro de beneficiarios.
-     *
-     * @return vista de registro de beneficiarios
-     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
-    /**
-     * Obtiene la vista de visualización de beneficiarios.
-     *
-     * @return vista de visualización de beneficiarios
-     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
-    /**
-     * Obtiene el sujeto del patrón Observer.
-     *
-     * @return sujeto concreto del patrón Observer
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Obtiene el sujeto de cambio de idioma.
-     *
-     * @return sujeto del patrón Observer para idiomas
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
-
-    /**
-     * Obtiene el gestor de idiomas.
-     *
-     * @return gestor de idiomas de la aplicación
-     */
+    
     public LanguageManager getLang() {
         return lang;
     }
