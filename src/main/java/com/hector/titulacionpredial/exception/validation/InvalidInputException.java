@@ -3,17 +3,16 @@ package com.hector.titulacionpredial.exception.validation;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción base para errores de validación de entrada
- * en los formularios de la aplicación.
+ * Base exception for input validation errors in application forms.
  *
  * <p>
- * Representa un error genérico de campo inválido.
- * Las subclases especializan el tipo de validación fallida:
+ * This represents a generic invalid field error. Subclasses
+ * specialize the type of validation failure:
  * </p>
  * <ul>
- *   <li>{@link EmptyFieldException} – campos vacíos</li>
- *   <li>{@link InvalidNumberInputException} – valor no numérico</li>
- *   <li>{@link MaxLengthExceededException} – longitud máxima excedida</li>
+ *   <li>{@link EmptyFieldException} – empty fields</li>
+ *   <li>{@link InvalidNumberInputException} – non-numeric value</li>
+ *   <li>{@link MaxLengthExceededException} – maximum length exceeded</li>
  * </ul>
  *
  * @author Ing. Hector Acevedo
@@ -24,27 +23,27 @@ public class InvalidInputException extends Exception {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con el mensaje genérico
-     * «Campo invalido».
+     * Create an exception with the generic message
+     * «Invalid field».
      */
     public InvalidInputException() {
         super(lang.message("invalid.input.message"));
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado.
+     * Create an exception with a custom message.
      *
-     * @param message descripción del error de validación
+     * @param message description of the validation error
      */
     public InvalidInputException(String message) {
         super(message);
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
+     * Create an exception with a custom message and the original cause.
      *
-     * @param message descripción del error
-     * @param cause   excepción original
+     * @param message error description
+     * @param cause   original exception
      */
     public InvalidInputException(String message, Throwable cause) {
         super(message, cause);

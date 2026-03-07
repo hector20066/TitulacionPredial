@@ -3,12 +3,12 @@ package com.hector.titulacionpredial.exception.validation;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción lanzada cuando uno o más campos obligatorios
- * del formulario se encuentran vacíos.
+ * Exception thrown when one or more required fields in
+ * the form are empty.
  *
  * <p>
- * Extiende {@link InvalidInputException} para especializar
- * la validación de campos requeridos.
+ * Extends {@link InvalidInputException} to specialize
+ * the validation of required fields.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -19,19 +19,19 @@ public class EmptyFieldException extends InvalidInputException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción indicando qué campos están vacíos.
+     * Create an exception indicating which fields are empty.
      *
-     * @param fieldName nombre(s) del campo o campos vacíos
+     * @param fieldName name(s) of the empty field or fields
      */
     public EmptyFieldException(String fieldName) {
         super(lang.message("empty.field.message1") + " '" + fieldName + "' " + lang.message("empty.field.message2"));
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
+     * Create an exception with a custom message and the original cause.
      *
-     * @param message descripción del error
-     * @param cause   excepción original
+     * @param message error description
+     * @param cause   original exception
      */
     public EmptyFieldException(String message, Throwable cause) {
         super(message, cause);

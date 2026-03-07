@@ -3,13 +3,11 @@ package com.hector.titulacionpredial.exception.dao;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción que indica un error durante una operación de
- * persistencia (inserción, actualización o eliminación)
- * en la base de datos.
+ * Exception that indicates an error during a persistence
+ * operation (insertion, update, or deletion) in the database.
  *
  * <p>
- * Extiende {@link DAOException} y sirve como clase base para
- * excepciones específicas de persistencia por entidad como
+ * It extends {@link DAOException} and serves as a base class for entity-specific persistence exceptions such as
  * {@link com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException},
  * {@link com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenceException}, etc.
  * </p>
@@ -22,26 +20,26 @@ public class PersistenceException extends DAOException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico.
+     * Create an exception with a generic message.
      */
     public PersistenceException() {
         super(lang.message("persistence.message"));
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado.
+     * Create an exception with a custom message.
      *
-     * @param message descripción del error
+     * @param message error description
      */
     public PersistenceException(String message) {
         super(message);
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
+     * Create an exception with a custom message and the original cause.
      *
-     * @param message descripción del error
-     * @param cause   excepción original
+     * @param message error description
+     * @param cause   original exception
      */
     public PersistenceException(String message, Throwable cause) {
         super(message, cause);

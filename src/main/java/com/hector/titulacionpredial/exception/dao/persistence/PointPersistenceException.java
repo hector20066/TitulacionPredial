@@ -3,13 +3,13 @@ package com.hector.titulacionpredial.exception.dao.persistence;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
 
 /**
- * Excepción lanzada cuando ocurre un error de persistencia
- * al realizar operaciones sobre la entidad {@code Point}.
+ * Exception thrown when a persistence error occurs while
+ * performing operations on the entity {@code Point}.
  *
  * <p>
- * Extiende {@link PersistenceException} para especializar
- * el manejo de errores de escritura o eliminación de puntos
- * geográficos (coordenadas) en la base de datos.
+ * Extends {@link PersistenceException} to specialize the
+ * handling of errors in writing or deleting geographic
+ * points (coordinates) in the database.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,19 +18,19 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
 public class PointPersistenceException extends PersistenceException {
 
     /**
-     * Crea una excepción con un mensaje descriptivo.
+     * Create an exception with a descriptive message.
      *
-     * @param message descripción del error de persistencia
+     * @param message description of the persistence error
      */
     public PointPersistenceException(String message) {
         super(message);
     }
 
     /**
-     * Crea una excepción con un mensaje descriptivo y la causa original.
+     * Create an exception with a descriptive message and the original cause.
      *
-     * @param message descripción del error
-     * @param cause   excepción original
+     * @param message error description
+     * @param cause   original exception
      */
     public PointPersistenceException(String message, Throwable cause) {
         super(message, cause);

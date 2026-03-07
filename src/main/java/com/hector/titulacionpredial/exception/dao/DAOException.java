@@ -3,21 +3,21 @@ package com.hector.titulacionpredial.exception.dao;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción base para todos los errores que ocurren en la
- * capa de acceso a datos (DAO) del sistema.
+ * Base exception for all errors that occur in the data
+ * access layer (DAO) of the system.
  *
  * <p>
- * Actúa como raíz de la jerarquía de excepciones del DAO,
- * permitiendo un manejo uniforme de errores relacionados
- * con la persistencia y consulta de datos.
+ * It acts as the root of the DAO exception hierarchy,
+ * allowing uniform handling of errors related to data
+ * persistence and querying.
  * </p>
  *
  * <p>
- * Las subclases especializan el tipo de error:
+ * Subclasses specialize the type of error:
  * </p>
  * <ul>
- *     <li>{@link DataNotFoundException} – cuando no se encuentran registros.</li>
- *     <li>{@link PersistenceException} – cuando falla una operación de escritura.</li>
+ *     <li>{@link DataNotFoundException} – when no records are found.</li>
+ *     <li>{@link PersistenceException} – when a write operation fails.</li>
  * </ul>
  *
  * @author Ing. Hector Acevedo
@@ -28,27 +28,28 @@ public class DAOException extends Exception {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico de error
-     * en la capa de persistencia.
+     * Create an exception with a generic error message
+     * in the persistence layer.
      */
     public DAOException() {
         super(lang.message("dao.message.error"));
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado.
+     * Create an exception with a custom message.
      *
-     * @param message descripción del error ocurrido
+     * @param message description of the error that occurred
      */
     public DAOException(String message) {
         super(message);
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
+     * Create an exception with a custom message
+     * and the original cause.
      *
-     * @param message descripción del error ocurrido
-     * @param cause   excepción original que provocó este error
+     * @param message description of the error that occurred
+     * @param cause   original exception that caused this error
      */
     public DAOException(String message, Throwable cause) {
         super(message, cause);

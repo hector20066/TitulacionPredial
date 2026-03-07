@@ -3,12 +3,11 @@ package com.hector.titulacionpredial.exception.dao;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción que indica que no se encontraron registros
- * en la base de datos para una consulta determinada.
+ * Exception indicating that no records were found in
+ * the database for a given query.
  *
  * <p>
- * Extiende {@link DAOException} y sirve como clase base para
- * excepciones específicas de entidad como
+ * It extends {@link DAOException} and serves as a base class for entity-specific exceptions such as
  * {@link com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException},
  * {@link com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException}, etc.
  * </p>
@@ -21,26 +20,26 @@ public class DataNotFoundException extends DAOException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico.
+     * Create an exception with a generic message.
      */
     public DataNotFoundException() {
         super(lang.message("data.not.found"));
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado.
+     * Create an exception with a custom message.
      *
-     * @param message descripción del error
+     * @param message error description
      */
     public DataNotFoundException(String message) {
         super(message);
     }
 
     /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
+     * Create an exception with a custom message and the original cause.
      *
-     * @param message descripción del error
-     * @param cause   excepción original
+     * @param message error description
+     * @param cause   original exception
      */
     public DataNotFoundException(String message, Throwable cause) {
         super(message, cause);

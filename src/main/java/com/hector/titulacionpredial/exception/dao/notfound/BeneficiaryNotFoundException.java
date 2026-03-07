@@ -4,13 +4,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción lanzada cuando no se encuentran registros de
- * beneficiarios en la base de datos.
+ * Exception thrown when no beneficiary records are found
+ * in the database.
  *
  * <p>
- * Extiende {@link DataNotFoundException} para especializar
- * el manejo de errores de búsqueda relacionados con la
- * entidad {@code Beneficiary}.
+ * Extends {@link DataNotFoundException} to specialize the
+ * handling of search errors related to the entity
+ * {@code Beneficiary}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -21,30 +21,20 @@ public class BeneficiaryNotFoundException extends DataNotFoundException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico.
+     * Create an exception with a generic message.
      */
     public BeneficiaryNotFoundException() {
         super(lang.message("not.found.beneficiary"));
     }
 
     /**
-     * Crea una excepción indicando el parámetro de búsqueda
-     * que no produjo resultados.
+     * Create an exception by specifying the search
+     * parameter that did not produce results.
      *
-     * @param param parámetro de búsqueda utilizado
+     * @param param search parameter used
      */
     public BeneficiaryNotFoundException(String param) {
         super(lang.message("not.found.beneficiary.find") + " '" + param + "'");
-    }
-
-    /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
-     *
-     * @param message descripción del error
-     * @param cause   excepción original
-     */
-    public BeneficiaryNotFoundException(String message, Throwable cause) {
-        super(message, cause);
     }
 
 }

@@ -4,13 +4,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción lanzada cuando no se encuentran registros de
- * cónyuges en la base de datos.
+ * Exception thrown when no spouse records are found
+ * in the database.
  *
  * <p>
- * Extiende {@link DataNotFoundException} para especializar
- * el manejo de errores de búsqueda relacionados con la
- * entidad {@code Spouse}.
+ * Extends {@link DataNotFoundException} to specialize
+ * the handling of search errors related to the
+ * {@code Spouse} entity.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -21,30 +21,20 @@ public class SpouseNotFoundException extends DataNotFoundException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico.
+     * Create an exception with a generic message.
      */
     public SpouseNotFoundException() {
         super(lang.message("not.found.spouse"));
     }
 
     /**
-     * Crea una excepción indicando el código de beneficiario
-     * cuyo cónyuge no fue encontrado.
+     * Create an exception indicating the beneficiary
+     * code whose spouse was not found.
      *
-     * @param param código del beneficiario
+     * @param param beneficiary code
      */
     public SpouseNotFoundException(String param) {
         super(lang.message("not.found.spouse.beneficiary") + " '" + param + "'");
-    }
-
-    /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
-     *
-     * @param message descripción del error
-     * @param cause   excepción original
-     */
-    public SpouseNotFoundException(String message, Throwable cause) {
-        super(message, cause);
     }
 
 }

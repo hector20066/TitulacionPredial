@@ -4,13 +4,13 @@ import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
- * Excepción lanzada cuando no se encuentran registros de
- * resoluciones en la base de datos.
+ * Exception thrown when no resolution records are found
+ * in the database.
  *
  * <p>
- * Extiende {@link DataNotFoundException} para especializar
- * el manejo de errores de búsqueda relacionados con la
- * entidad {@code Resolution}.
+ * Extends {@link DataNotFoundException} to specialize the
+ * handling of search errors related to the {@code Resolution}
+ * entity.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -21,30 +21,20 @@ public class ResolutionNotFoundException extends DataNotFoundException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Crea una excepción con un mensaje genérico.
+     * Create an exception with a generic message.
      */
     public ResolutionNotFoundException() {
         super(lang.message("not.found.resolution"));
     }
 
     /**
-     * Crea una excepción indicando el número de resolución
-     * que no produjo resultados.
+     * Create an exception indicating the resolution
+     * number that did not produce results.
      *
-     * @param param número de resolución buscado
+     * @param param resolution number sought
      */
     public ResolutionNotFoundException(String param) {
         super(lang.message("not.found.resolution.find") + " '" + param + "'");
-    }
-
-    /**
-     * Crea una excepción con un mensaje personalizado y la causa original.
-     *
-     * @param message descripción del error
-     * @param cause   excepción original
-     */
-    public ResolutionNotFoundException(String message, Throwable cause) {
-        super(message, cause);
     }
 
 }
