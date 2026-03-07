@@ -47,10 +47,13 @@ public class DataBasePool {
         config.setPassword(AppConfig.get("db.password"));
         config.setDriverClassName(AppConfig.get("db.driver"));
 
-        config.setMaximumPoolSize(20);
-        config.setMinimumIdle(1);
-        config.setIdleTimeout(6000000);
-        config.setMaxLifetime(18000000);
+        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(2);
+
+        config.setConnectionTimeout(30000);
+        config.setIdleTimeout(300000);
+        config.setMaxLifetime(600000);
+        config.setKeepaliveTime(300000);
 
         dataSource = new HikariDataSource(config);
     }
