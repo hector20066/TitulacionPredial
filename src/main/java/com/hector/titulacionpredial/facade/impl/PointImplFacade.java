@@ -7,13 +7,12 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 /**
- * Implementación de la fachada {@link PointFacade} para la
- * gestión de puntos geográficos.
+ * Implementation of the {@link PointFacade} facade for the
+ * management of geographic points.
  *
  * <p>
- * Construye los DTOs necesarios a partir de los parámetros
- * recibidos y delega las operaciones al DAO
- * {@link DAOPointImpl}.
+ * Build the necessary DATA from the received parameters and
+ * delegate the operations to the DAO {@link DAOPointImpl}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -23,14 +22,11 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  */
 public class PointImplFacade implements PointFacade {
 
-    /**
-     * DAO delegado para operaciones de puntos geográficos.
-     */
     private final DAOPoint daoPoint;
 
     /**
-     * Crea una nueva instancia obteniendo el DAO
-     * de puntos mediante su Singleton.
+     * Create a new instance by obtaining the DAO of points
+     * through your Singleton.
      */
     public PointImplFacade() {
         this.daoPoint = DAOPointImpl.getInstance();

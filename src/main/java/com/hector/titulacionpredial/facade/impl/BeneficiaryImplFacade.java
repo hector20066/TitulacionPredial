@@ -12,13 +12,12 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import java.util.List;
 
 /**
- * Implementación de la fachada {@link BeneficiaryFacade} para la
- * gestión de beneficiarios.
+ * Implementation of the {@link BeneficiaryFacade} facade
+ * for beneficiary management.
  *
  * <p>
- * Construye los DTOs necesarios a partir de los parámetros
- * recibidos y delega las operaciones al DAO
- * {@link DAOBeneficiaryImpl}.
+ * Build the necessary DATA from the received parameters and
+ * delegate the operations to the DAO {@link DAOBeneficiaryImpl}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -28,14 +27,11 @@ import java.util.List;
  */
 public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
-    /**
-     * DAO delegado para operaciones de beneficiarios.
-     */
     private final DAOBeneficiary daoBeneficiary;
 
     /**
-     * Crea una nueva instancia obteniendo el DAO
-     * de beneficiarios mediante su Singleton.
+     * Create a new instance by obtaining the beneficiary
+     * DAO through your Singleton.
      */
     public BeneficiaryImplFacade() {
         this.daoBeneficiary = DAOBeneficiaryImpl.getInstance();

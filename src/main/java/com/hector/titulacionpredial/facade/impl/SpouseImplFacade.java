@@ -7,13 +7,12 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
 /**
- * Implementación de la fachada {@link SpouseFacade} para la
- * gestión de cónyuges.
+ * Implementation of the {@link SpouseFacade} facade for
+ * spouse management.
  *
  * <p>
- * Construye los DTOs necesarios a partir de los parámetros
- * recibidos y delega las operaciones al DAO
- * {@link DAOSpouseImpl}.
+ * Build the necessary DATA from the received parameters and
+ * delegate the operations to the DAO {@link DAOSpouseImpl}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -23,14 +22,11 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
  */
 public class SpouseImplFacade implements SpouseFacade {
 
-    /**
-     * DAO delegado para operaciones de cónyuges.
-     */
     private final DAOSpouse daoSpouse;
 
     /**
-     * Crea una nueva instancia obteniendo el DAO
-     * de cónyuges mediante su Singleton.
+     * Create a new instance by obtaining the spouse DAO
+     * through your Singleton.
      */
     public SpouseImplFacade() {
         this.daoSpouse = DAOSpouseImpl.getInstance();

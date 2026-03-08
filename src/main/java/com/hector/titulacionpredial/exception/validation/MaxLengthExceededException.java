@@ -26,7 +26,8 @@ public class MaxLengthExceededException extends InvalidInputException {
      * @param maximumValue maximum number of characters allowed
      */
     public MaxLengthExceededException(String fieldName, String maximumValue) {
-        super(lang.message("max.length.message1") + " '" + fieldName + "' " + lang.message("max.length.message2") + " " + maximumValue + " " + lang.message("max.length.message3"));
+        super(lang.message("max.length.message1") + " '" + fieldName + "' " + lang.message("max.length.message2")
+                + " " + maximumValue + " " + lang.message("max.length.message3"));
     }
 
     /**

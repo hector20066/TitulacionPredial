@@ -16,14 +16,14 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import java.util.List;
 
 /**
- * Fachada que define las operaciones de alto nivel para la
- * gestión de beneficiarios en el sistema.
+ * Facade that defines the high-level operations for beneficiary
+ * management in the system.
  *
  * <p>
- * Actúa como capa intermedia entre los controladores y el DAO,
- * simplificando la construcción de DTOs y encapsulando la
- * lógica de acceso a datos. Extiende {@link IListable},
- * {@link IRemovable} e {@link ICountable}.
+ * It acts as an intermediary layer between the controllers and
+ * the DAO, simplifying DTO construction and encapsulating data
+ * access logic. It extends {@link IListable}, {@link IRemovable},
+ * and {@link ICountable}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -33,149 +33,149 @@ import java.util.List;
 public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails>, IRemovable, ICountable {
 
     /**
-     * Registra un nuevo beneficiario en el sistema.
+     * Register a new beneficiary in the system.
      *
-     * @param id                 número de cédula
-     * @param fullName           nombre completo
-     * @param department         departamento de residencia
-     * @param municipality       municipio de residencia
-     * @param address            dirección
-     * @param cadastralReference referencia catastral
-     * @param maritalStatus      estado civil
-     * @param affectation        tipo de afectación
-     * @param phone              número de teléfono
-     * @param crossing           cruce
-     * @param publication        publicación
-     * @param neighborhood       barrio
-     * @param expeditionLocation lugar de expedición del documento
-     * @throws DAOException si ocurre un error en la operación
+     * @param id                 ID number
+     * @param fullName           full name
+     * @param department         residential department
+     * @param municipality       municipality of residence
+     * @param address            address
+     * @param cadastralReference cadastral reference
+     * @param maritalStatus      marital status
+     * @param affectation        type of impairment
+     * @param phone              phone number
+     * @param crossing           crossing
+     * @param publication        publication
+     * @param neighborhood       neighborhood
+     * @param expeditionLocation place of issue of the document
+     * @throws DAOException if an error occurs during the operation
      */
     void add(long id, String fullName, Department department, Municipalities municipality, String address,
              String cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing,
              String publication, String neighborhood, String expeditionLocation) throws DAOException;
 
     /**
-     * Busca un beneficiario por su código único.
+     * Search for a beneficiary by their unique code.
      *
-     * @param code código del beneficiario
-     * @return DTO con los datos básicos
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param code beneficiary code
+     * @return DTO with basic data
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOBeneficiarySimpleDetails findByCode(int code) throws DAOException;
 
     /**
-     * Busca un beneficiario por su número de cédula.
+     * Search for a beneficiary by their ID number.
      *
-     * @param id número de cédula
-     * @return DTO con los datos básicos
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param id ID number
+     * @return DTO with basic data
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOBeneficiarySimpleDetails findById(long id) throws DAOException;
 
     /**
-     * Busca un beneficiario por su nombre completo.
+     * Search for a beneficiary by their full name.
      *
-     * @param fullName nombre del beneficiario
-     * @return DTO con los datos básicos
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param fullName beneficiary name
+     * @return DTO with basic data
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOBeneficiarySimpleDetails findByName(String fullName) throws DAOException;
 
     /**
-     * Obtiene todos los beneficiarios de un municipio.
+     * It obtains all the beneficiaries of a municipality.
      *
-     * @param municipality nombre del municipio
-     * @return lista de DTOs con los datos de los beneficiarios
-     * @throws DAOException si ocurre un error en la consulta
+     * @param municipality name of the municipality
+     * @return List of data with the beneficiaries' information
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws DAOException;
 
     /**
-     * Obtiene todos los datos de un beneficiario, incluyendo
-     * cónyuge y predio asociado.
+     * It obtains all the data of a beneficiary, including
+     * spouse and associated property.
      *
-     * @param code código del beneficiario
-     * @return DTO con datos completos
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param code beneficiary code
+     * @return DTO with complete data
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOBeneficiaryDetails findAllData(int code) throws DAOException;
 
     /**
-     * Obtiene todos los beneficiarios con formato para exportación.
+     * It obtains all beneficiaries in export format.
      *
-     * @return lista de DTOs completos
-     * @throws DAOException si ocurre un error en la consulta
+     * @return list of complete DATA
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOBeneficiaryCreate> findAllForExport() throws DAOException;
 
     /**
-     * Obtiene los beneficiarios sin predio asignado.
+     * It obtains beneficiaries without assigned property.
      *
-     * @return lista de DTOs de beneficiarios sin predio
-     * @throws DAOException si ocurre un error en la consulta
+     * @return List of beneficiary data without property
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
 
     /**
-     * Modifica los datos de un beneficiario existente.
+     * Modify the details of an existing beneficiary.
      *
-     * @param department    departamento actualizado
-     * @param municipality  municipio actualizado
-     * @param address       dirección actualizada
-     * @param maritalStatus estado civil actualizado
-     * @param affectation   afectación actualizada
-     * @param phone         teléfono actualizado
-     * @param crossing      cruce actualizado
-     * @param publication   publicación actualizada
-     * @param neighborhood  barrio actualizado
-     * @param code          código del beneficiario a modificar
-     * @return {@code true} si la modificación fue exitosa
-     * @throws DAOException si ocurre un error en la operación
+     * @param department    updated department
+     * @param municipality  updated municipality
+     * @param address       updated address
+     * @param maritalStatus updated marital status
+     * @param affectation   updated impact
+     * @param phone         updated phone number
+     * @param crossing      updated intersection
+     * @param publication   updated publication
+     * @param neighborhood  updated neighborhood
+     * @param code          beneficiary code to be modified
+     * @return {@code true} if the modification was successful
+     * @throws DAOException if an error occurs during the operation
      */
     boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
                    String affectation, long phone, String crossing, String publication, String neighborhood,
                    int code) throws DAOException;
 
     /**
-     * Asocia un predio a un beneficiario.
+     * Associate a property with a beneficiary.
      *
-     * @param code         código del beneficiario
-     * @param propertyCode código del predio a asociar
-     * @return {@code true} si la asociación fue exitosa
-     * @throws DAOException si ocurre un error en la operación
+     * @param code         beneficiary code
+     * @param propertyCode property code to be associated
+     * @return {@code true} whether the partnership was successful
+     * @throws DAOException if an error occurs during the operation
      */
     boolean modifyProperty(int code, int propertyCode) throws DAOException;
 
     /**
-     * Obtiene el último código de beneficiario registrado.
+     * Get the latest registered beneficiary code.
      *
-     * @return último código secuencial
-     * @throws DAOException si ocurre un error en la consulta
+     * @return last sequential code
+     * @throws DAOException if an error occurs in the query
      */
     int getLastCode() throws DAOException;
 
     /**
-     * Obtiene el conteo mensual de beneficiarios registrados.
+     * It obtains the monthly count of registered beneficiaries.
      *
-     * @param months cantidad de meses a consultar
-     * @return lista con el conteo por mes
-     * @throws DAOException si ocurre un error en la consulta
+     * @param months number of months to consult
+     * @return list with the count per month
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws DAOException;
 
     /**
-     * Cuenta los beneficiarios que tienen predio asociado.
+     * It counts the beneficiaries who have an associated property.
      *
-     * @return cantidad de beneficiarios con predio
-     * @throws DAOException si ocurre un error en la consulta
+     * @return number of beneficiaries with property
+     * @throws DAOException if an error occurs in the query
      */
     int countBeneficiariesWithProperty() throws DAOException;
 
     /**
-     * Calcula el porcentaje de beneficiarios con predio.
+     * Calculate the percentage of beneficiaries with property.
      *
-     * @return porcentaje (0–100)
-     * @throws DAOException si ocurre un error en la consulta
+     * @return percentage (0–100)
+     * @throws DAOException if an error occurs in the query
      */
     int percentBeneficiariesWithProperty() throws DAOException;
 
