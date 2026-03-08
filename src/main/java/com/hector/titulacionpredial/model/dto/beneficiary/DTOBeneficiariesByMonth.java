@@ -1,17 +1,18 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 /**
- * Representa la cantidad total de beneficiarios agrupados por año y mes.
+ * It represents the total number of beneficiaries grouped
+ * by year and month.
  *
  * <p>
- * Se utiliza para reportes estadísticos o consultas agregadas
- * que retornan el número de beneficiarios registrados en un
- * periodo específico.
+ * It is used for statistical reports or aggregated queries
+ * that return the number of beneficiaries registered in a
+ * specific period.
  * </p>
  *
- * @param year  año correspondiente al registro
- * @param month mes correspondiente al registro (1-12)
- * @param total cantidad total de beneficiarios en el periodo
+ * @param year  year corresponding to the record
+ * @param month month corresponding to the record (1-12)
+ * @param total total number of beneficiaries in the period
  * @author Ing. Hector Acevedo
  * @since 1.0
  */

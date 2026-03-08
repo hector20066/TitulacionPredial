@@ -3,27 +3,28 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la información
- * para actualizar los datos del beneficiario.
+ * Data Transfer Object (DTO) that contains the information
+ * to update the beneficiary's data.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentación a
- * la capa de persistencia para actualizar la información, evitando
- * exponer directamente la entidad {@code Beneficiary}.
+ * It is used to transport data from the presentation layer
+ * to the persistence layer to update information, avoiding
+ * directly exposing the {@code Beneficiary} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando información específica
- * relacionada con el código usado para identificar al beneficiario.
+ * Extends {@link DTOBeneficiary} by adding specific information
+ * related to the code used to identify the beneficiary.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its
+ * sole purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryUpdate.Builder}.
+ * It supports fluent building using the
+ * {@link DTOBeneficiaryUpdate.Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -34,70 +35,49 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
     private int code;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization
+     * or mapping frameworks.
      */
     public DTOBeneficiaryUpdate() {
         super();
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOBeneficiaryUpdate(Builder builder) {
         super(builder);
         this.code = builder.code;
     }
 
-    /**
-     * Obtiene el código del beneficiario.
-     *
-     * @return código del beneficiario
-     */
     public int getCode() {
         return code;
     }
 
-    /**
-     * Establece el código del beneficiario.
-     *
-     * @param code código del beneficiario
-     */
     public void setCode(int code) {
         this.code = code;
     }
 
     /**
-     * Builder para la construcción fluida de instancias
-     * de {@link DTOBeneficiaryUpdate}.
+     * Builder for the fluid construction of
+     * {@link DTOBeneficiaryUpdate} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
      * </p>
      */
     public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private int code;
 
-        /**
-         * Establece el código del beneficiario a actualizar.
-         *
-         * @param code código del beneficiario
-         * @return builder actual
-         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOBeneficiaryUpdate}.
-         *
-         * @return nuevo DTO configurado
-         */
         @Override
         public DTOBeneficiaryUpdate build() {
             return new DTOBeneficiaryUpdate(this);

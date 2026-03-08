@@ -1,23 +1,23 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la información para actualizar
- * los datos del beneficiario con respecto a un predio.
+ * Data Transfer Object (DTO) that contains the information to
+ * update the beneficiary's data regarding a property.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentación a
- * la capa de persistencia para actualizar la información, evitando
- * exponer directamente la entidad {@code Beneficiary}.
+ * It is used to transport data from the presentation layer to
+ * the persistence layer to update information, avoiding directly
+ * exposing the {@code Beneficiary} entity.
  * </p>
  *
  * <p>
- * Contiene el código de la propiedad la cual se ha asignado al
- * beneficiario.
+ * It contains the property code which has been assigned to the
+ * beneficiary.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules.
+ * Its sole purpose is to encapsulate data.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -29,56 +29,36 @@ public class DTOBeneficiaryPropertyUpdate {
     private int propertyCode;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOBeneficiaryPropertyUpdate() {
 
     }
 
     /**
-     * Constructor utilizado para inicializar las variables.
+     * Constructor used to initialize variables.
      *
-     * @param beneficiaryCode código del beneficiario
-     * @param propertyCode    código de la propiedad
+     * @param beneficiaryCode beneficiary code
+     * @param propertyCode    property code
      */
     public DTOBeneficiaryPropertyUpdate(int beneficiaryCode, int propertyCode) {
         this.beneficiaryCode = beneficiaryCode;
         this.propertyCode = propertyCode;
     }
 
-    /**
-     * Obtiene el código del beneficiario.
-     *
-     * @return código del beneficiario
-     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
-    /**
-     * Establece el código del beneficiario.
-     *
-     * @param beneficiaryCode código del beneficiario
-     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }
 
-    /**
-     * Obtiene el código de la propiedad.
-     *
-     * @return código de la propiedad
-     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
-    /**
-     * Establece el código de la propiedad.
-     *
-     * @param propertyCode código de la propiedad
-     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }

@@ -3,28 +3,29 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 
 /**
- * Data Transfer Object (DTO) que contiene la información
- * para registrar un beneficiario en el sistema.
+ * Data Transfer Object (DTO) that contains the information to
+ * register a beneficiary in the system.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentación
- * a la capa de persistencia para guardar la información, evitando
- * exponer directamente la entidad {@code Beneficiary}.
+ * It is used to transport data from the presentation layer to
+ * the persistence layer to save the information, avoiding
+ * directly exposing the {@code Beneficiary} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando información específica
- * relacionada con el lugar de expedición, la referencia catastral
- * y datos personales.
+ * Extend {@link DTOBeneficiary} by adding specific information
+ * related to the place of issuance, the cadastral reference, and
+ * personal data.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its
+ * sole purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link DTOBeneficiaryCreate.Builder}.
+ * It supports fluent building using the
+ * {@link DTOBeneficiaryCreate.Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -33,37 +34,37 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     /**
-     * Cédula única del beneficiario.
+     * Unique beneficiary ID card.
      */
     protected long id;
 
     /**
-     * Nombre completo del beneficiario.
+     * Full name of the beneficiary.
      */
     protected String fullName;
 
     /**
-     * Lugar de expedición.
+     * Place of issue.
      */
     protected String expeditionLocation;
 
     /**
-     * Referencia catastral.
+     * Cadastral reference.
      */
     protected String cadastralReference;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization
+     * or mapping frameworks.
      */
     public DTOBeneficiaryCreate() {
         super();
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOBeneficiaryCreate(AbstractBuilder<?> builder) {
         super(builder);
@@ -73,88 +74,48 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.cadastralReference = builder.cadastralReference;
     }
 
-    /**
-     * Obtiene la cédula única del beneficiario.
-     *
-     * @return cédula del beneficiario
-     */
     public long getId() {
         return id;
     }
 
-    /**
-     * Establece la cédula única del beneficiario.
-     *
-     * @param id cédula del beneficiario
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * Obtiene el nombre completo del beneficiario.
-     *
-     * @return nombre completo del beneficiario
-     */
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * Establece el nombre completo del beneficiario.
-     *
-     * @param fullName nombre completo del beneficiario
-     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**
-     * Obtiene el lugar de expedición.
-     *
-     * @return lugar de expedición
-     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
-    /**
-     * Establece el lugar de expedición.
-     *
-     * @param expeditionLocation lugar de expedición
-     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
-    /**
-     * Obtiene la referencia catastral.
-     *
-     * @return referencia catastral
-     */
     public String getCadastralReference() {
         return cadastralReference;
     }
 
-    /**
-     * Establece la referencia catastral.
-     *
-     * @param cadastralReference referencia catastral
-     */
     public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }
 
     /**
-     * Builder genérico para la construcción fluida de instancias
-     * de {@link DTOBeneficiaryCreate}.
+     * Generic builder for fluid building of
+     * {@link DTOBeneficiaryCreate} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes
+     * before invoking {@link #build()}.
      * </p>
      *
-     * @param <T> tipo concreto del builder
+     * @param <T> specific type of builder
      */
     public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {
 
@@ -164,10 +125,10 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         private String cadastralReference;
 
         /**
-         * Establece el id.
+         * Set the ID.
          *
-         * @param id cédula del beneficiario
-         * @return builder actual
+         * @param id beneficiary's ID
+         * @return current builder
          */
         public T id(long id) {
             this.id = id;
@@ -175,10 +136,10 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establece el nombre completo.
+         * Enter the full name.
          *
-         * @param fullName nombre completo del beneficiario
-         * @return builder actual
+         * @param fullName full name of the beneficiary
+         * @return current builder
          */
         public T fullName(String fullName) {
             this.fullName = fullName;
@@ -186,10 +147,10 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establece el lugar de expedición.
+         * Establish the place of shipment.
          *
-         * @param expeditionLocation lugar de expedición
-         * @return builder actual
+         * @param expeditionLocation place of expedition
+         * @return current builder
          */
         public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
@@ -197,10 +158,10 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         }
 
         /**
-         * Establece la referencia catastral.
+         * Establish the cadastral reference.
          *
-         * @param cadastralReference referencia catastral
-         * @return builder actual
+         * @param cadastralReference cadastral reference
+         * @return current builder
          */
         public T cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
@@ -210,15 +171,16 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     }
 
     /**
-     * Builder con implementación concreta del método {@link #build()}
-     * para la creación de la instancia de {@link DTOBeneficiaryCreate}.
+     * Builder with concrete implementation of the
+     * {@link #build()} method for creating the
+     * {@link DTOBeneficiaryCreate} instance.
      */
     public static class Builder extends AbstractBuilder<Builder> {
 
         /**
-         * Construye un nueva instancia de {@link DTOBeneficiaryCreate}
+         * Create a new instance of {@link DTOBeneficiaryCreate}
          *
-         * @return nuevo DTO configurado
+         * @return new DTO configured
          */
         @Override
         public DTOBeneficiaryCreate build() {

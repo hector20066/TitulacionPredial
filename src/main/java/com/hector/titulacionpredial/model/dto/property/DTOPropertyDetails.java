@@ -9,32 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Data Transfer Object (DTO) que representa el detalle completo
- * de un predio dentro del sistema.
+ * Data Transfer Object (DTO) that represents the complete details
+ * of a property within the system.
  *
  * <p>
- * Esta clase se utiliza para transportar información desde la
- * capa de persistencia o servicio hacia la capa de presentación,
- * encapsulando datos del predio junto con información asociada
- * como beneficiarios, puntos geográficos y datos de resolución.
+ * This class is used to transport information from the persistence
+ * or service layer to the presentation layer, encapsulating property
+ * data along with associated information such as beneficiaries,
+ * geographic points, and resolution data.
  * </p>
  *
  * <p>
- * Extiende {@link DTOProperty} agregando atributos adicionales
- * necesarios para mostrar información detallada del predio,
- * evitando exponer directamente la entidad de dominio.
+ * Extends {@link DTOProperty} by adding additional attributes needed
+ * to display detailed property information, avoiding directly exposing
+ * the domain entity.
  * </p>
  *
- * <p><strong>Incluye:</strong></p>
+ * <p><strong>Includes:</strong></p>
  * <ul>
- *     <li>Identificador interno del predio.</li>
- *     <li>Lista de beneficiarios asociados.</li>
- *     <li>Lista de puntos que definen la geometría del predio.</li>
- *     <li>Información relacionada con la resolución administrativa.</li>
+ *     <li>Internal property identifier.</li>
+ *     <li>List of associated beneficiaries.</li>
+ *     <li>List of points that define the geometry of the property.</li>
+ *     <li>Information related to the administrative resolution.</li>
  * </ul>
  *
  * <p>
- *     Es una clase mutable y soporta construcción mediante el patrón Builder.
+ * It is a mutable class and supports construction using the Builder
+ * pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -54,8 +55,8 @@ public class DTOPropertyDetails extends DTOProperty {
     private String notary;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or mapping
+     * frameworks.
      */
     public DTOPropertyDetails() {
         super();
@@ -64,9 +65,9 @@ public class DTOPropertyDetails extends DTOProperty {
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOPropertyDetails(Builder builder) {
         super(builder.cadastralId, builder.area);
@@ -82,193 +83,94 @@ public class DTOPropertyDetails extends DTOProperty {
         this.notary = builder.notary;
     }
 
-    /**
-     * Obtiene el código del predio.
-     *
-     * @return código del predio
-     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
-    /**
-     * Establece el código del predio.
-     *
-     * @param propertyCode código del predio
-     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
-    /**
-     * Obtiene la lista de beneficiarios asociados al predio.
-     *
-     * @return lista de beneficiarios
-     */
     public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
         return beneficiaries;
     }
 
-    /**
-     * Establece la lista de beneficiarios asociados al predio.
-     *
-     * @param beneficiaries lista de beneficiarios
-     */
     public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
-    /**
-     * Obtiene la lista de puntos geográficos que definen la geometría del predio.
-     *
-     * @return lista de coordenadas
-     */
     public List<DTOPoint> getPoints() {
         return points;
     }
 
-    /**
-     * Establece la lista de puntos geográficos que definen la geometría del predio.
-     *
-     * @param points lista de coordenadas
-     */
     public void setPoints(List<DTOPoint> points) {
         this.points = points;
     }
 
-    /**
-     * Obtiene el número de resolución.
-     *
-     * @return número de resolución
-     */
     public long getNumResolution() {
         return numResolution;
     }
 
-    /**
-     * Establece el número de resolución.
-     *
-     * @param numResolution número de resolución
-     */
     public void setNumResolution(long numResolution) {
         this.numResolution = numResolution;
     }
 
-    /**
-     * Obtiene la fecha de notificación.
-     *
-     * @return fecha de notificación
-     */
     public LocalDate getNotification() {
         return notification;
     }
 
-    /**
-     * Establece la fecha de notificación.
-     *
-     * @param notification fecha de notificación
-     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
-    /**
-     * Obtiene la fecha de ejecutoria.
-     *
-     * @return fecha de ejecutoria
-     */
     public LocalDate getExecutory() {
         return executory;
     }
 
-    /**
-     * Establece la fecha de ejecutoria.
-     *
-     * @param executory fecha de ejecutoria
-     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
-    /**
-     * Obtiene el Folio de Matrícula Inmobiliaria.
-     *
-     * @return número FMI
-     */
     public String getFmi() {
         return fmi;
     }
 
-    /**
-     * Establece el Folio de Matrícula Inmobiliaria.
-     *
-     * @param fmi número FMI
-     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
-    /**
-     * Obtiene el número de acta.
-     *
-     * @return número de acta
-     */
     public String getAct() {
         return act;
     }
 
-    /**
-     * Establece el número de acta.
-     *
-     * @param act número de acta
-     */
     public void setAct(String act) {
         this.act = act;
     }
 
-    /**
-     * Obtiene el número de escritura pública.
-     *
-     * @return número de escritura pública
-     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
-    /**
-     * Establece el número de escritura pública.
-     *
-     * @param publicWriting número de escritura pública
-     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
-    /**
-     * Obtiene la notaría.
-     *
-     * @return nombre de la notaría
-     */
     public String getNotary() {
         return notary;
     }
 
-    /**
-     * Establece la notaría.
-     *
-     * @param notary nombre de la notaría
-     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
 
     /**
-     * Implementación del patrón Builder para la construcción
-     * controlada e incremental de instancias de {@code DTOPropertyDetails}.
+     * Implementation of the Builder pattern for controlled and
+     * incremental construction of {@code DTOPropertyDetails}
+     * instances.
      *
      * <p>
-     * Permite crear objetos complejos de manera legible y
-     * evitando constructores con múltiples parámetros.
+     * It allows you to create complex objects in a readable way
+     * and avoids constructors with multiple parameters.
      * </p>
      *
      * <pre>
@@ -295,143 +197,66 @@ public class DTOPropertyDetails extends DTOProperty {
         private String publicWriting;
         private String notary;
 
-        /**
-         * Establece el código del predio.
-         *
-         * @param propertyCode código del predio
-         * @return builder actual
-         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
-        /**
-         * Establece el identificador catastral.
-         *
-         * @param cadastralId identificador catastral
-         * @return builder actual
-         */
         public Builder cadastralId(String cadastralId) {
             this.cadastralId = cadastralId;
             return this;
         }
 
-        /**
-         * Establece el área del predio.
-         *
-         * @param area área en metros cuadrados
-         * @return builder actual
-         */
         public Builder area(Double area) {
             this.area = area;
             return this;
         }
 
-        /**
-         * Establece la lista de beneficiarios del predio.
-         *
-         * @param beneficiaries lista de beneficiarios
-         * @return builder actual
-         */
         public Builder beneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
             this.beneficiaries = beneficiaries;
             return this;
         }
 
-        /**
-         * Establece la lista de puntos geográficos.
-         *
-         * @param points lista de coordenadas
-         * @return builder actual
-         */
         public Builder points(List<DTOPoint> points) {
             this.points = points;
             return this;
         }
 
-        /**
-         * Establece el número de resolución.
-         *
-         * @param numResolution número de resolución
-         * @return builder actual
-         */
         public Builder numResolution(long numResolution) {
             this.numResolution = numResolution;
             return this;
         }
 
-        /**
-         * Establece la fecha de notificación.
-         *
-         * @param notification fecha de notificación
-         * @return builder actual
-         */
         public Builder notification(LocalDate notification) {
             this.notification = notification;
             return this;
         }
 
-        /**
-         * Establece la fecha de ejecutoria.
-         *
-         * @param executory fecha de ejecutoria
-         * @return builder actual
-         */
         public Builder executory(LocalDate executory) {
             this.executory = executory;
             return this;
         }
 
-        /**
-         * Establece el Folio de Matrícula Inmobiliaria.
-         *
-         * @param fmi número FMI
-         * @return builder actual
-         */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
-        /**
-         * Establece el número de acta.
-         *
-         * @param act número de acta
-         * @return builder actual
-         */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
-        /**
-         * Establece el número de escritura pública.
-         *
-         * @param publicWriting número de escritura pública
-         * @return builder actual
-         */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
-        /**
-         * Establece la notaría.
-         *
-         * @param notary nombre de la notaría
-         * @return builder actual
-         */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOPropertyDetails}.
-         *
-         * @return nuevo DTO configurado
-         */
         public DTOPropertyDetails build() {
             return new DTOPropertyDetails(this);
         }

@@ -4,23 +4,23 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
- * Data Transfer Object (DTO) que contiene la información obtenida
- * de un beneficiario.
+ * Data Transfer Object (DTO) that contains the information
+ * obtained from a beneficiary.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de persistencia
- * a la capa de presentación para mostrar la información, evitando
- * exponer directamente la entidad {@code Beneficiary}.
+ * It is used to transport data from the persistence layer
+ * to the presentation layer to display the information,
+ * avoiding directly exposing the {@code Beneficiary} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBeneficiary} agregando información especial
- * relacionada con el nombre completo y la cédula del beneficiario.
+ * Extend {@link DTOBeneficiary} by adding special information
+ * related to the beneficiary's full name and ID number.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules.
+ * Its sole purpose is to encapsulate data.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -32,20 +32,20 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
     private long id;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOBeneficiaryPropertyDetails() {
         super();
     }
 
     /**
-     * Constructor usado para inicializar los parámetros de la clase.
+     * Constructor used to initialize the class parameters.
      *
-     * @param fullName     nombre completo del beneficiario
-     * @param code         código único del beneficiario
-     * @param municipality municipio de residencia del beneficiario
-     * @param address      dirección del beneficiario
+     * @param fullName     full name of the beneficiary
+     * @param code         unique beneficiary code
+     * @param municipality municipality of residence of the beneficiary
+     * @param address      beneficiary's address
      */
     public DTOBeneficiaryPropertyDetails(String fullName, long code, Municipalities municipality, String address) {
         super();
@@ -55,40 +55,19 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
         setAddress(address);
     }
 
-    /**
-     * Establece el código único del beneficiario.
-     *
-     * @param code código del beneficiario
-     */
-    public void setCode(long code) {
-        this.id = code;
-    }
-
-    /**
-     * Obtiene el nombre completo del beneficiario.
-     *
-     * @return nombre completo del beneficiario
-     */
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * Establece el nombre completo del beneficiario.
-     *
-     * @param fullName nombre completo del beneficiario
-     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**
-     * Obtiene la cédula única del beneficiario.
-     *
-     * @return cédula del beneficiario
-     */
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 }
