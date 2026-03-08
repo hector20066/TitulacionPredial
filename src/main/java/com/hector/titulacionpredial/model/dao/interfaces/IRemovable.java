@@ -3,12 +3,12 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 
 /**
- * Interfaz funcional que define la capacidad de eliminar
- * un registro de la base de datos.
+ * Functional interface that defines the ability to
+ * delete a record from the database.
  *
  * <p>
- * Los DAOs que implementen esta interfaz permitirán
- * la eliminación de registros por su código único.
+ * DAOs that implement this interface will allow the
+ * deletion of records by their unique code.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,10 +18,10 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 public interface IRemovable {
 
     /**
-     * Elimina un registro de la base de datos.
+     * Deletes a record from the database.
      *
-     * @param code código identificador del registro a eliminar
-     * @throws DAOException si ocurre un error en la operación
+     * @param code identifier code of the record to be deleted
+     * @throws DAOException if an error occurs during the operation
      */
     void delete(int code) throws DAOException;
 

@@ -3,13 +3,13 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 /**
- * Interfaz DAO para la gestión de puntos geográficos
- * (coordenadas) en la base de datos.
+ * DAO interface for managing geographic points (coordinates)
+ * in the database.
  *
  * <p>
- * Extiende {@link DAOBase} con {@link DTOPoint} como tipo tanto
- * de creación como de consulta, proporcionando las operaciones
- * básicas de inserción y búsqueda por código.
+ * Extends {@link DAOBase} with {@link DTOPoint} as both a
+ * creation and query type, providing basic code insert and
+ * search operations.
  * </p>
  *
  * @author Ing. Hector Acevedo

@@ -5,15 +5,15 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import java.util.List;
 
 /**
- * Interfaz funcional que define la capacidad de listar
- * todos los registros de una entidad.
+ * Functional interface that defines the ability to list
+ * all records of an entity.
  *
  * <p>
- * Los DAOs que implementen esta interfaz podrán obtener
- * una lista completa de registros de su entidad.
+ * DAOs that implement this interface will be able to
+ * obtain a complete list of records for their entity.
  * </p>
  *
- * @param <T> tipo del DTO que representa cada registro
+ * @param <T> type of DTO that each record represents
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -21,10 +21,10 @@ import java.util.List;
 public interface IListable<T> {
 
     /**
-     * Obtiene todos los registros de la entidad.
+     * It retrieves all the entity's records.
      *
-     * @return lista de DTOs con los datos de cada registro
-     * @throws DAOException si ocurre un error en la consulta
+     * @return List of DTOs with the data for each record
+     * @throws DAOException if an error occurs in the query
      */
     List<T> findByAll() throws DAOException;
 

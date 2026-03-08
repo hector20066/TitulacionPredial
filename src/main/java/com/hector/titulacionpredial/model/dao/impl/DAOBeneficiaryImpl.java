@@ -18,13 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementación del DAO para la gestión de beneficiarios
- * en la base de datos PostgreSQL.
+ * Implementation of the DAO for beneficiary management in the PostgreSQL database.
  *
  * <p>
- * Utiliza el patrón Singleton para garantizar una única instancia.
- * Las consultas SQL se obtienen desde {@link SQLRepository} y la
- * conexión a la base de datos mediante {@link DataBasePool}.
+ * It uses the Singleton pattern to ensure a single instance. SQL queries are
+ * obtained from {@link SQLRepository} and the database connection is made via
+ * {@link DataBasePool}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -36,23 +35,19 @@ import java.util.List;
 public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
     private final LanguageManager  lang = LanguageManager.getInstance();
-
-    /**
-     * Instancia única del DAO (patrón Singleton).
-     */
     private static DAOBeneficiaryImpl instance;
 
     /**
-     * Constructor privado para garantizar el patrón Singleton.
+     * Private builder to guarantee the Singleton pattern.
      */
     private DAOBeneficiaryImpl() {
 
     }
 
     /**
-     * Obtiene la instancia única del DAO.
+     * Obtain the single instance of the DAO.
      *
-     * @return instancia Singleton de {@code DAOBeneficiaryImpl}
+     * @return Singleton instance of {@code DAOBeneficiaryImpl}
      */
     public static DAOBeneficiaryImpl getInstance() {
         if (instance == null) {
@@ -76,12 +71,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Preparar objeto PrepateStatement con los datos de la transaccion.
+     * Prepare PreparedStatement object with transaction data.
      *
-     * @param st  objeto PrepareStatement
-     * @param dto objeto DTO con datos del beneficiario
-     * @throws SQLException si ocurre una excepcion al realizar
-     *                      la operacion.
+     * @param st  PrepareStatement object
+     * @param dto DTO object with beneficiary data
+     * @throws SQLException if an exception occurs while
+     *                      performing the operation.
      */
     private void statementDetails(PreparedStatement st, DTOBeneficiaryCreate dto) throws SQLException {
         st.setLong(1, dto.getId());
@@ -143,12 +138,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Obtener datos de la consulta a traves {@link ResultSet} y crear el objeto DTO
-     * pasando el resultado a {@link #executeSimpleQuery(DTOBeneficiarySimpleDetails, ResultSet)}.
+     * Get query data through {@link ResultSet} and create the DTO object by passing the
+     * result to {@link #executeSimpleQuery(DTOBeneficiarySimpleDetails, ResultSet)}.
      *
-     * @param st objeto con los datos de la consulta
-     * @return objeto DTO con los datos del Beneficiario.
-     * @throws DAOException se lanza cuando hay errores al realizar la operacion.
+     * @param st object with the query data
+     * @return DTO object with the Beneficiary's data.
+     * @throws DAOException It is triggered when there are errors while performing the operation.
      */
     private DTOBeneficiarySimpleDetails executeResultSet(PreparedStatement st) throws DAOException {
         try (ResultSet rs = st.executeQuery()) {
@@ -200,11 +195,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Realizar consulta a la base de datos para obtener los datos de la entidad.
+     * Perform a query to the database to obtain the entity's data.
      *
-     * @param sql consulta SQL a realizar.
-     * @return lista con información de los beneficiarios.
-     * @throws DAOException se lanza cuando falla la operacion.
+     * @param sql SQL query to be performed.
+     * @return list with information of the beneficiaries.
+     * @throws DAOException It is launched when the operation fails.
      */
     private List<DTOBeneficiarySimpleDetails> executeFindAllWithoutProperty(String sql) throws DAOException {
         try (Connection connection = DataBasePool.getConnection();
@@ -226,11 +221,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Preparar objecto {@link PreparedStatement} para la consulta.
+     * Prepare object {@link PreparedStatement} for the query.
      *
-     * @param dto objeto DTO a configurar.
-     * @param rs  resultados de la consulta.
-     * @throws SQLException se lanza cuando hay fallos con la base de datos..
+     * @param dto DTO object to be configured.
+     * @param rs  results of the consultation.
+     * @throws SQLException It is launched when there are errors with the database.
      */
     private void executeSimpleQuery(DTOBeneficiarySimpleDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
@@ -289,6 +284,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                         .neighborhood(rs.getString("neighborhood"))
                         .expeditionLocation(rs.getString("expedition_location"))
                         .build();
+
                 list.add(dto);
             }
 
@@ -299,12 +295,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Crear objeto DTO con los resultados de la consulta
+     * Create a DTO object with the query results
      *
-     * @param rs objeto con los resultados de la consulta
-     * @return objecto DTO con los datos del Beneficiario
-     * @throws SQLException exception lanzada si hay fallos con la base
-     *                      de datos.
+     * @param rs object with the results of the query
+     * @return DTO object with the Beneficiary's data
+     * @throws SQLException exception thrown if there are database errors.
      */
     private DTOBeneficiaryDetails executeQuery(ResultSet rs) throws SQLException {
         return new DTOBeneficiaryDetails.Builder()
@@ -349,12 +344,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Configurar objeto {@link PreparedStatement} con los datos a modificar.
+     * Configure object {@link PreparedStatement} with the data to be modified.
      *
-     * @param st  objeto {@code PreparedStatement}
-     * @param dto objeto DTO con los datos del beneficiario
-     * @throws SQLException excepcion lanzada cuando hay problemas
-     *                      con la base de datos.
+     * @param st  object {@code PreparedStatement}
+     * @param dto DTO object with beneficiary data
+     * @throws SQLException exception thrown when there are problems with the database.
      */
     private void statementDetailsUpdate(PreparedStatement st, DTOBeneficiaryUpdate dto) throws SQLException {
         st.setString(1, String.valueOf(dto.getDepartment()));

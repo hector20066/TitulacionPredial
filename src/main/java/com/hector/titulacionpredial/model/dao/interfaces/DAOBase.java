@@ -3,35 +3,35 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 
 /**
- * Interfaz base que define las operaciones fundamentales de acceso
- * a datos para todas las entidades del sistema.
+ * Basic interface that defines the fundamental data access operations
+ * for all entities in the system.
  *
  * <p>
- * Establece el contrato mínimo que debe cumplir cada DAO:
- * insertar un nuevo registro y buscar por código.
+ * It establishes the minimum contract that each DAO must fulfill:
+ * insert a new record and search by code.
  * </p>
  *
- * @param <C> tipo del DTO utilizado para la creación del registro
- * @param <D> tipo del DTO devuelto como resultado de la consulta
+ * @param <C> type of DTO used for record creation
+ * @param <D> type of DTO returned as a result of the query
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public interface DAOBase<C, D> {
 
     /**
-     * Inserta un nuevo registro en la base de datos.
+     * Insert a new record into the database.
      *
-     * @param dto objeto con los datos a insertar
-     * @throws DAOException si ocurre un error en la operación
+     * @param dto object with the data to be inserted
+     * @throws DAOException if an error occurs during the operation
      */
     void add(C dto) throws DAOException;
 
     /**
-     * Busca un registro por su código único.
+     * Search for a record by its unique code.
      *
-     * @param code código identificador del registro
-     * @return DTO con los datos del registro encontrado
-     * @throws DAOException si ocurre un error o no se encuentra el registro
+     * @param code record identifier code
+     * @return DTO with the data from the found record
+     * @throws DAOException if an error occurs or the record is not found
      */
     D findByCode(int code) throws DAOException;
 

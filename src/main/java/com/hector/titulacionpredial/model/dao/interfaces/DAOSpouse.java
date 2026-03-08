@@ -3,12 +3,12 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
 /**
- * Interfaz DAO para la gestión de cónyuges en la base de datos.
+ * DAO interface for managing spouses in the database.
  *
  * <p>
- * Extiende {@link DAOBase} con {@link DTOSpouse} como tipo de
- * creación y consulta, e {@link IRemovable} para permitir la
- * eliminación de registros.
+ * Extends {@link DAOBase} with {@link DTOSpouse} as
+ * the creation and query type, and {@link IRemovable}
+ * to allow record deletion.
  * </p>
  *
  * @author Ing. Hector Acevedo

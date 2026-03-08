@@ -14,13 +14,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Implementación del DAO para la gestión de puntos geográficos
- * (coordenadas) en la base de datos PostgreSQL.
+ * Implementation of the DAO for the management of geographic points
+ * (coordinates) in the MySQL database.
  *
  * <p>
- * Utiliza el patrón Singleton para garantizar una única instancia.
- * Las consultas SQL se obtienen desde {@link SQLRepository} y la
- * conexión a la base de datos mediante {@link DataBasePool}.
+ * It uses the Singleton pattern to ensure a single instance. SQL
+ * queries are obtained from {@link SQLRepository} and the database
+ * connection is made via {@link DataBasePool}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -32,23 +32,19 @@ import java.sql.SQLException;
 public class DAOPointImpl implements DAOPoint {
 
     private static final LanguageManager lang = LanguageManager.getInstance();
-
-    /**
-     * Instancia única del DAO (patrón Singleton).
-     */
     private static DAOPointImpl instance;
 
     /**
-     * Constructor privado para garantizar el patrón Singleton.
+     * Private builder to guarantee the Singleton pattern.
      */
     private DAOPointImpl() {
 
     }
 
     /**
-     * Obtiene la instancia única del DAO.
+     * Obtain the single instance of the DAO.
      *
-     * @return instancia Singleton de {@code DAOPointImpl}
+     * @return Singleton instance of {@code DAOPointImpl}
      */
     public static DAOPointImpl getInstance() {
         if (instance == null) {
@@ -99,13 +95,12 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     /**
-     * Configura el DTO con los datos del punto obtenidos
-     * del {@link ResultSet}.
+     * Configure the DTO with the point data obtained from the {@link ResultSet}.
      *
-     * @param dto objeto donde se guardarán los datos obtenidos
-     * @param rs  resultados de la consulta
-     * @throws SQLException si ocurre un error al leer los datos
-     *                      del {@code ResultSet}
+     * @param dto object where the obtained data will be stored
+     * @param rs  query results
+     * @throws SQLException If an error occurs while reading the data
+     * from the {@code ResultSet}
      */
     private void executeQuery(DTOPoint dto, ResultSet rs) throws SQLException {
         dto.setNumberPoint(rs.getInt("number"));

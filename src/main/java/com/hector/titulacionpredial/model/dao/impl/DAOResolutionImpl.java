@@ -16,37 +16,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementación concreta de {@link DAOResolution} que gestiona
- * las operaciones de persistencia relacionadas con resoluciones.
+ * Concrete implementation of {@link DAOResolution} that manages
+ * resolution-related persistence operations.
  *
  * <p>
- * Esta clase pertenece a la capa de acceso a datos (DAO) y es
- * responsable de ejecutar operaciones CRUD contra la base de datos
- * utilizando JDBC y sentencias SQL externas obtenidas desde
- * {@link SQLRepository}.
+ * This class belongs to the data access layer (DAO) and is
+ * responsible for executing CRUD operations against the database
+ * using JDBC and external SQL statements obtained from {@link SQLRepository}.
  * </p>
  *
  * <p>
- * Las conexiones son obtenidas mediante {@link DataBasePool},
- * garantizando el uso de un pool de conexiones para mejorar
- * el rendimiento y la gestión de recursos.
+ * Connections are obtained using {@link DataBasePool}, ensuring the use
+ * of a connection pool to improve performance and resource management.
  * </p>
  *
  * <p>
- * Implementa el patrón Singleton para asegurar una única instancia
- * compartida dentro del contexto de la aplicación.
+ * Implement the Singleton pattern to ensure a single shared instance
+ * within the application context.
  * </p>
  *
- * <p><strong>Manejo de errores:</strong></p>
+ * <p><strong>Error handling:</strong></p>
  * <ul>
- *     <li>Lanza {@link ResolutionPersistenceException} ante errores SQL.</li>
- *     <li>Lanza {@link ResolutionNotFoundException} cuando no se encuentran registros esperados.</li>
- *     <li>Propaga {@link DAOException} como contrato general de la capa DAO.</li>
+ *     <li>Throws {@link ResolutionPersistenceException} on SQL errors.</li>
+ *     <li>Throws {@link ResolutionNotFoundException} when no expected records are found.</li>
+ *     <li>Propagate {@link DAOException} as a general contract of the DAO layer.</li>
  * </ul>
  *
  * <p>
- * Esta clase no contiene lógica de negocio; únicamente realiza
- * operaciones de acceso a datos.
+ * This class does not contain business logic; it only performs data access operations.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -54,24 +51,21 @@ import java.util.List;
  */
 public class DAOResolutionImpl implements DAOResolution {
 
-    /**
-     * Instancia unica del DAO (patron Singleton).
-     */
     private static DAOResolutionImpl instance;
 
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Constructor privado para garantizar el patrón Singleton.
+     * Private builder to guarantee the Singleton pattern.
      */
     private DAOResolutionImpl() {
 
     }
 
     /**
-     * Obtiene la instancia unica del DAO.
+     * Obtain the single instance of the DAO.
      *
-     * @return instancia Singleton de {@code DAOResolutionImpl}
+     * @return Singleton instance of {@code DAOResolutionImpl}
      */
     public static DAOResolutionImpl getInstance() {
         if (instance == null) {
@@ -146,13 +140,13 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     /**
-     * Configura el DTO con los datos de la resolución obtenidos
-     * del {@link ResultSet}.
+     * Configure the DTO with the resolution data obtained from
+     * the {@link ResultSet}.
      *
-     * @param dto objeto donde se guardarán los datos obtenidos
-     * @param rs  resultados de la consulta
-     * @throws SQLException si ocurre un error al leer los datos
-     *                      del {@code ResultSet}
+     * @param dto object where the obtained data will be stored
+     * @param rs  query results
+     * @throws SQLException If an error occurs while reading the
+     *                      data from the {@code ResultSet}
      */
     private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));

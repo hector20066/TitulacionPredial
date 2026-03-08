@@ -5,12 +5,12 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 
 /**
- * Interfaz DAO para la gestión de resoluciones en la base de datos.
+ * DAO interface for managing resolutions in the database.
  *
  * <p>
- * Extiende las interfaces base para ofrecer operaciones de
- * creación, búsqueda por código, listado, modificación y conteo
- * sobre la entidad {@code Resolution}.
+ * Extends the base interfaces to provide creation, code
+ * search, listing, modification, and counting operations
+ * on the {@code Resolution} entity.
  * </p>
  *
  * @author Ing. Hector Acevedo

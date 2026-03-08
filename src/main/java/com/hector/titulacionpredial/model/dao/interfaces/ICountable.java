@@ -3,12 +3,13 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 
 /**
- * Interfaz funcional que define la capacidad de contar
- * registros en la base de datos.
+ * Functional interface that defines the ability to count
+ * records in the database.
  *
  * <p>
- * Los DAOs que implementen esta interfaz podrán obtener
- * el total de registros de su entidad correspondiente.
+ * DAOs that implement this interface will be able to
+ * obtain the total number of records for their corresponding
+ * entity.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,10 +19,10 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 public interface ICountable {
 
     /**
-     * Cuenta el número total de registros.
+     * Count the total number of records.
      *
-     * @return cantidad de registros existentes
-     * @throws DAOException si ocurre un error en la consulta
+     * @return number of existing records
+     * @throws DAOException if an error occurs in the query
      */
     int countRecords() throws DAOException;
 

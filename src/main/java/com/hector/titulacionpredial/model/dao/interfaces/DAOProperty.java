@@ -7,13 +7,13 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import java.util.List;
 
 /**
- * Interfaz DAO para la gestión de predios en la base de datos.
+ * DAO interface for managing properties in the database.
  *
  * <p>
- * A diferencia de los demás DAOs, no extiende {@link DAOBase}
- * directamente porque el método {@code add} retorna el código
- * del predio insertado. Incluye operaciones de listado,
- * eliminación, conteo y estadísticas.
+ * Unlike other DAOs, it does not directly extend {@link DAOBase}
+ * because the {@code add} method returns the code of the inserted
+ * property. It includes listing, deletion, counting, and statistics
+ * operations.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -27,45 +27,45 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
         ICountable {
 
     /**
-     * Inserta un nuevo predio en la base de datos.
+     * Insert a new property into the database.
      *
-     * @param dto objeto con los datos del predio a registrar
-     * @return código del predio recién insertado
-     * @throws DAOException si ocurre un error en la operación
+     * @param dto object with the data of the property to be registered
+     * @return code of the newly inserted property
+     * @throws DAOException if an error occurs during the operation
      */
     int add(DTOPropertyCreate dto) throws DAOException;
 
     /**
-     * Busca un predio por su cédula catastral.
+     * Search for a property using its cadastral certificate.
      *
-     * @param cadastralId cédula catastral del predio
-     * @return DTO con los datos detallados del predio
-     * @throws DAOException si ocurre un error o no se encuentra el registro
+     * @param cadastralId cadastral certificate of the property
+     * @return DTO with detailed property information
+     * @throws DAOException if an error occurs or the record is not found
      */
     DTOPropertyDetails findByCode(String cadastralId) throws DAOException;
 
     /**
-     * Obtiene todos los predios con formato para exportación.
+     * It obtains all properties in export format.
      *
-     * @return lista de DTOs con datos completos de cada predio
-     * @throws DAOException si ocurre un error en la consulta
+     * @return List of DTOs with complete data for each property
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
 
     /**
-     * Calcula el porcentaje de predios que tienen
-     * una resolución asociada respecto al total.
+     * Calculate the percentage of properties that have an
+     * associated resolution with respect to the total.
      *
-     * @return porcentaje de predios con resolución (0–100)
-     * @throws DAOException si ocurre un error en la consulta
+     * @return Percentage of properties with resolution (0–100)
+     * @throws DAOException if an error occurs in the query
      */
     int percentPropertiesWithResolutions() throws DAOException;
 
     /**
-     * Cuenta los predios que tienen una resolución asociada.
+     * It counts the properties that have an associated resolution.
      *
-     * @return cantidad de predios con resolución
-     * @throws DAOException si ocurre un error en la consulta
+     * @return number of properties with resolution
+     * @throws DAOException if an error occurs in the query
      */
     int countPropertyWithResolution() throws DAOException;
 

@@ -3,15 +3,15 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 
 /**
- * Interfaz funcional que define la capacidad de modificar
- * un registro existente en la base de datos.
+ * Functional interface that defines the ability to
+ * modify an existing record in the database.
  *
  * <p>
- * Los DAOs que implementen esta interfaz permitirán
- * actualizar los datos de un registro ya almacenado.
+ * DAOs that implement this interface will allow updating
+ * the data of an already stored record.
  * </p>
  *
- * @param <T> tipo del DTO con los datos a actualizar
+ * @param <T> DTO type with the data to be updated
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -19,11 +19,11 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 public interface IModifiable<T> {
 
     /**
-     * Modifica un registro existente con los datos proporcionados.
+     * Modify an existing record with the provided data.
      *
-     * @param dto objeto con los datos actualizados
-     * @return {@code true} si la modificación fue exitosa
-     * @throws DAOException si ocurre un error en la operación
+     * @param dto object with updated data
+     * @return {@code true} if the modification was successful
+     * @throws DAOException if an error occurs during the operation
      */
     boolean modify(T dto) throws DAOException;
 
