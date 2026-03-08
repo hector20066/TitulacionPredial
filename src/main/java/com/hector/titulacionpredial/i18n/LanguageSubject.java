@@ -1,13 +1,13 @@
 package com.hector.titulacionpredial.i18n;
 
 /**
- * Interfaz que define el contrato del sujeto observable
- * dentro del patron Observer del sistema i18n.
+ * Interface that defines the contract of the observable subject within
+ * the Observer pattern of the i18n system.
  *
  * <p>
- * Permite registrar, eliminar y notificar a los {@link LanguageObserver}
- * suscritos ante cambios de estado en el sistema, reaccionando cada
- * vez que se cambie el idioma de la aplicacion.
+ * It allows you to register, delete, and notify subscribed
+ * {@link LanguageObserver} about changes in system status,
+ * reacting every time the application language changes.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,22 +18,21 @@ package com.hector.titulacionpredial.i18n;
 public interface LanguageSubject {
 
     /**
-     * Registra un observador para recibir notificaciones.
+     * Register an observer to receive notifications.
      *
-     * @param observer observador a registrar.
+     * @param observer observer to record.
      */
     void register(LanguageObserver observer);
 
     /**
-     * Eliminar un observador previamente registrado.
+     * Remove a previously registered observer.
      *
-     * @param observer observador a eliminar.
+     * @param observer observer to be removed.
      */
     void remove(LanguageObserver observer);
 
     /**
-     * Notifica a todos los observadores registrados
-     * sobre un cambio de estado.
+     * Notify all registered observers about a status change.
      */
     void notifyObserver();
 

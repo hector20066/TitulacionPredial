@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementacion concreta del patrong Observer que actua como sujeto
- * observable centralizado del sistema.
+ * Concrete implementation of the Observer pattern that acts as the
+ * centralized observable subject of the system.
  *
  * <p>
- * Utiliza el patron Singleton para garantizar una unica instancia
- * compartida por todos los componentes de la aplicacion.
+ * Use the Singleton pattern to ensure a single instance shared by
+ * all application components.
  * </p>
  *
  * <p>
- * Gestiona una lista interna de {@link LanguageObserver} y permite
- * notificarlos de forma masiva cuando ocurre un cambio en el
- * idioma de la aplicacion.
+ * It manages an internal list of {@link LanguageObserver} and allows
+ * for mass notification when a change occurs in the application's language.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -25,22 +24,15 @@ import java.util.List;
  */
 public class ConcreteLanguageSubject implements LanguageSubject {
 
-    /**
-     * Lista de Observadores registrados.
-     */
     private final List<LanguageObserver> observers;
-
-    /**
-     * Instancia unica del sujeto concreto (Singleton).
-     */
     private static ConcreteLanguageSubject instance;
 
     /**
-     * Constructor privado para evitar instanciacion externa y
-     * garantizar el patron Singleton.
+     * Private constructor to avoid external instantiation and guarantee
+     * the Singleton pattern.
      *
      * <p>
-     * Crea la instancia de la lista de observadores.
+     * Create the observer list instance.
      * </p>
      */
     private ConcreteLanguageSubject() {
@@ -48,15 +40,15 @@ public class ConcreteLanguageSubject implements LanguageSubject {
     }
 
     /**
-     * Obtiene la instancia unica de {@link ConcreteLanguageSubject}
+     * Gets the unique instance of {@link ConcreteLanguageSubject}
      *
      * <p>
-     * Si la instancia no existe, la crea. Este metodo no es Thread-safe
-     * por diseño, ya que se ejecuta en el hilo principal de la aplicacion
-     * Swing.
+     * If the instance does not exist, it creates it. This method is not
+     * thread-safe by design, as it runs on the main thread of the Swing
+     * application.
      * </p>
      *
-     * @return instancia unica del sujeto concreto
+     * @return single instance of the specific subject
      */
     public static ConcreteLanguageSubject getInstance() {
         if (instance == null) {

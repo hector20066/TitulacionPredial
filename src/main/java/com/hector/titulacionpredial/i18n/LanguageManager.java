@@ -6,38 +6,37 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * Gestor centralizado de internacionalización (i18n) de la aplicación.
+ * Centralized internationalization manager (i18n) of the application.
  *
  * <p>
- * Esta clase implementa el patrón Singleton para garantizar una única
- * instancia encargada de administrar el idioma activo del sistema.
- * Se encarga de:
+ * This class implements the Singleton pattern to ensure a single instance
+ * is responsible for managing the system's active language. It handles:
  * </p>
  *
  * <ul>
- *     <li>Cargar los {@link ResourceBundle} correspondientes al idioma seleccionado.</li>
- *     <li>Persistir la preferencia de idioma del usuario mediante {@link UserConfig}.</li>
- *     <li>Proveer acceso a los textos de interfaz (app) y mensajes del sistema (message).</li>
+ *     <li>Load the {@link ResourceBundle} corresponding to the selected language.</li>
+ *     <li>Persist the user's language preference using {@link UserConfig}.</li>
+ *     <li>Provide access to interface texts (app) and system messages (message).</li>
  * </ul>
  *
  * <p>
- * El idioma inicial se obtiene desde la configuración persistida bajo la clave
- * <code>app.language</code>. Si no existe o es inválido, se utiliza español (ES)
- * como idioma por defecto.
+ * The initial language is obtained from the configuration persisted under the key
+ * <code>app.language</code>. If it does not exist or is invalid, Spanish (ES) is used
+ * as the default language.
  * </p>
  *
  * <p>
- * Esta clase actúa como punto único de acceso para la obtención de textos
- * internacionalizados, evitando que las vistas o controladores gestionen
- * directamente {@link ResourceBundle}, lo cual favorece el desacoplamiento.
+ * This class acts as a single point of access for obtaining internationalized texts,
+ * preventing views or controllers from directly managing {@link ResourceBundle}, which
+ * promotes decoupling.
  * </p>
  *
- * <p><b>Uso recomendado:</b></p>
+ * <p><b>Recommended use:</b></p>
  *
  * <pre>
- * LanguageManager lm = LanguageManager.getInstance();
- * String title = lm.app("window.title");
- * String error = lm.message("error.connection");
+ * LanguageManager lang = LanguageManager.getInstance();
+ * String title = lang.app("window.title");
+ * String error = lang.message("error.connection");
  * </pre>
  *
  * @author Ing. Hector Acevedo
@@ -45,37 +44,17 @@ import java.util.ResourceBundle;
  */
 public class LanguageManager {
 
-    /**
-     * Instancia única del gestor de idioma.
-     *
-     * <p>
-     * Se inicializa de manera perezosa la primera vez que se invoca
-     * {@link #getInstance()}.
-     * </p>
-     */
     private static LanguageManager instance;
-
-    /**
-     * Bundle que contiene los textos de la interfaz gráfica.
-     */
     private ResourceBundle appBundle;
-
-    /**
-     * Bundle que contiene los mensajes del sistema.
-     */
     private ResourceBundle messageBundle;
-
-    /**
-     * Idioma actualmente activo en la aplicación.
-     */
     private AppLanguage currentLanguage;
 
     /**
-     * Constructor privado para evitar instanciación externa.
+     * Private builder to avoid external instantiation.
      *
      * <p>
-     * Realiza la carga inicial del idioma desde la configuración
-     * persistida y prepara los ResourceBundle correspondientes.
+     * Perform the initial language load from the persisted configuration and
+     * prepare the corresponding ResourceBundles.
      * </p>
      */
     private LanguageManager() {
@@ -96,15 +75,15 @@ public class LanguageManager {
     }
 
     /**
-     * Obtiene la instancia unica de {@link LanguageManager}
+     * Gets the unique instance of {@link LanguageManager}
      *
      * <p>
-     * Si la instancia no existe, la crea. Este metodo no es Thread-safe
-     * por diseño, ya que se ejecuta en el hilo principal de la aplicacion
-     * Swing.
+     * If the instance does not exist, it creates it. This method is not
+     * thread-safe by design, as it runs on the main thread of the Swing
+     * application.
      * </p>
      *
-     * @return instancia unica del sujeto concreto
+     * @return single instance of the specific subject
      */
     public static LanguageManager getInstance() {
         if (instance == null) {
@@ -115,19 +94,19 @@ public class LanguageManager {
     }
 
     /**
-     * Cambia el idioma activo de la aplicación.
+     * Change the active language of the application.
      *
      * <p>
-     * Este método:
+     * This method:
      * </p>
      *
      * <ul>
-     *     <li>Actualiza el idioma actual.</li>
-     *     <li>Recarga los ResourceBundle correspondientes.</li>
-     *     <li>Persiste la nueva configuración en {@link UserConfig}.</li>
+     *     <li>Update the current language.</li>
+     *     <li>Reload the corresponding ResourceBundle.</li>
+     *     <li>The new configuration persists in {@link UserConfig}.</li>
      * </ul>
      *
-     * @param language nuevo idioma a establecer
+     * @param language new language to set
      */
     public void setLanguage(AppLanguage language) {
         this.currentLanguage = language;
@@ -139,31 +118,31 @@ public class LanguageManager {
     }
 
     /**
-     * Obtiene un texto localizado del bundle de interfaz.
+     * Gets localized text from the interface bundle.
      *
-     * @param key clave del recurso
-     * @return texto localizado asociado a la clave
-     * @throws java.util.MissingResourceException si la clave no existe
+     * @param key resource key
+     * @return text located associated with the key
+     * @throws java.util.MissingResourceException if the key does not exist
      */
     public String app(String key) {
         return appBundle.getString(key);
     }
 
     /**
-     * Obtiene un mensaje localizado del bundle de mensajes del sistema.
+     * Retrieves a localized message from the system message bundle.
      *
-     * @param key clave del recurso
-     * @return mensaje localizado asociado a la clave
-     * @throws java.util.MissingResourceException si la clave no existe
+     * @param key resource key
+     * @return message located associated with the key
+     * @throws java.util.MissingResourceException if the key does not exist
      */
     public String message(String key) {
         return messageBundle.getString(key);
     }
 
     /**
-     * Retorna el idioma actualmente activo.
+     * Returns to the currently active language.
      *
-     * @return idioma actual
+     * @return current language
      */
     public AppLanguage getCurrentLanguage() {
         return currentLanguage;

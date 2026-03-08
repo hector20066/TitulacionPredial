@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.i18n;
 
 /**
- * Enumeracion que representa los idiomas disponibles
- * dentro de la aplicacion.
+ * List representing the languages available within
+ * the application.
  *
  * <p>
- * Define los idiomas disponibles que tendra la aplicacion,
- * los cuales se usaran para seleccionar el idioma
+ * Define the available languages that the application
+ * will have, which will be used to select the language.
  * </p>
  *
  * @author hectoracevedo
@@ -16,25 +16,21 @@ public enum AppLanguage {
     ES("es"),
     EN("en");
 
-    /**
-     * Código del idioma
-     */
     private final String code;
 
     /**
-     * Constructor usado para indicar el
-     * código del idioma.
+     * Constructor used to indicate the language code.
      *
-     * @param code identificador del idioma
+     * @param code language identifier
      */
     AppLanguage(String code) {
         this.code = code;
     }
 
     /**
-     * Obtiene el código del idioma.
+     * Get the language code.
      *
-     * @return identificador del idioma
+     * @return language identifier
      */
     public String getCode() {
         return code;
