@@ -59,7 +59,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
      * </p>
      *
      * @param parent dialog parent window
-     * @param modal {@code true} to lock the parent window while it is displayed
+     * @param modal  {@code true} to lock the parent  window
+     *                           while it is displayed
      */
     public SelectBeneficiary(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -389,7 +390,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     /**
      * Loads a list of beneficiaries into the dialog table.
      *
-     @param listBeneficiaries list of beneficiaries to display
+     * @param listBeneficiaries list of beneficiaries to display
      */
     public void loadBeneficiaries(List<DTOBeneficiarySimpleDetails> listBeneficiaries) {
         model.setRowCount(0);
@@ -403,7 +404,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     /**
      * Loads a single beneficiary into the dialog table.
      *
-     @param dto beneficiary data to display
+     * @param dto beneficiary data to display
      */
     public void loadBeneficiary(DTOBeneficiarySimpleDetails dto) {
         model.setRowCount(0);
@@ -421,7 +422,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
      * Gets the code of the selected beneficiary from the table.
      *
      * @return the code of the selected beneficiary,
-     * or {@code 0} if there is no selection
+     *         or {@code 0} if there is no selection
      */
     public int codeBeneficiarySelected() {
         int code = 0;
@@ -436,8 +437,8 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     /**
      * Indicates whether the user confirmed the selection of a beneficiary.
      *
-     * @return {@code true} if "select" was
-     * pressed, {@code false} if it was canceled.
+     * @return {@code true} if "select" was pressed,
+     *         {@code false} if it was canceled.
      */
     public boolean isConfirmed() {
         return confirmed;

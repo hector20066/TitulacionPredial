@@ -8,23 +8,21 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
- * Formulario para el registro de predios con sus
- * coordenadas geográficas.
+ * Form for registering properties with their geographic coordinates.
  *
  * <p>
- * Utiliza un {@code CardLayout} para organizar la entrada
- * de hasta 4 puntos geográficos (Norte, Este, distancia y
- * ladera). Incluye campos para cédula catastral, área y
- * código del beneficiario asociado.
+ * Uses a {@code CardLayout} to organize the entry of up to 4 geographic
+ * points (North, East, distance, and slope). Includes fields for
+ * cadastral number, area, and associated beneficiary code.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class RegisterProperty extends javax.swing.JPanel {
 
     /**
-     * Crea el formulario de registro de predios con 4 paneles de puntos.
+     * Create the property registration form with 4 dot panels.
      */
     public RegisterProperty() {
         initComponents();
@@ -680,9 +678,9 @@ public class RegisterProperty extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Updates the panel text according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with the translated text
      */
     public void updateLanguage(DTORegisterPropertyText texts) {
         jlb_title.setText(texts.getTitle());
@@ -715,368 +713,168 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_register.setText(texts.getRegisterBtn());
     }
 
-    /**
-     * Asigna el listener para el botón de registrar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para mostrar beneficiarios.
-     *
-     * @param action listener del botón
-     */
     public void setControllerShowBeneficiaries(ActionListener action) {
         btn_selectBeneficiary.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para ir al punto 2.
-     *
-     * @param action listener del botón
-     */
     public void setControllerGoPoint2(ActionListener action) {
         btn_goPoint2.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para ir al punto 3.
-     *
-     * @param action listener del botón
-     */
     public void setControllerGoPoint3(ActionListener action) {
         btn_goPoint3.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para ir al punto 4.
-     *
-     * @param action listener del botón
-     */
     public void setControllerGoPoint4(ActionListener action) {
         btn_goPoint4.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para regresar al punto 1.
-     *
-     * @param action listener del botón
-     */
     public void setControllerReturnPoint1(ActionListener action) {
         btn_returnPoint1.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para regresar al punto 2.
-     *
-     * @param action listener del botón
-     */
     public void setControllerReturnPoint2(ActionListener action) {
         btn_returnPoint2.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para regresar al punto 3.
-     *
-     * @param action listener del botón
-     */
     public void setControllerReturnPoint3(ActionListener action) {
         btn_returnPoint3.addActionListener(action);
     }
 
-    /**
-     * Obtiene el componente botón para ir al punto 2.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_goPoint2() {
         return btn_goPoint2;
     }
 
-    /**
-     * Obtiene el componente botón para ir al punto 3.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_goPoint3() {
         return btn_goPoint3;
     }
 
-    /**
-     * Obtiene el componente botón para ir al punto 4.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_goPoint4() {
         return btn_goPoint4;
     }
 
-    /**
-     * Obtiene el componente botón de registrar predio.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
 
-    /**
-     * Obtiene el componente botón para regresar al punto 1.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_returnPoint1() {
         return btn_returnPoint1;
     }
 
-    /**
-     * Obtiene el componente botón para regresar al punto 2.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_returnPoint2() {
         return btn_returnPoint2;
     }
 
-    /**
-     * Obtiene el componente botón para regresar al punto 3.
-     *
-     * @return componente {@link ButtonBadges}
-     */
     public ButtonBadges getBtn_returnPoint3() {
         return btn_returnPoint3;
     }
 
-    /**
-     * Obtiene el componente botón para seleccionar beneficiario.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_selectBeneficiary() {
         return btn_selectBeneficiary;
     }
 
-    /**
-     * Obtiene el componente panel contenedor de los puntos geográficos.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_contentPoints() {
         return jpl_contentPoints;
     }
 
-    /**
-     * Obtiene el componente panel del punto 1.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_point1() {
         return jpl_point1;
     }
 
-    /**
-     * Obtiene el componente panel del punto 2.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_point2() {
         return jpl_point2;
     }
 
-    /**
-     * Obtiene el componente panel del punto 3.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_point3() {
         return jpl_point3;
     }
 
-    /**
-     * Obtiene el componente panel del punto 4.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_point4() {
         return jpl_point4;
     }
 
-    /**
-     * Obtiene el componente campo de texto del área del predio.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_area() {
         return txt_area;
     }
 
-    /**
-     * Obtiene el componente campo de texto del código de beneficiario.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_beneficiaryCode() {
         return txt_beneficiaryCode;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la cédula catastral.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_cadastralId() {
         return txt_cadastralId;
     }
 
-    /**
-     * Obtiene el componente campo de texto de distancia del punto 1.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_distance1() {
         return txt_distance1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de distancia del punto 2.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_distance2() {
         return txt_distance2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de distancia del punto 3.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_distance3() {
         return txt_distance3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de distancia del punto 4.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_distance4() {
         return txt_distance4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada este del punto 1.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_eastCoordinate1() {
         return txt_eastCoordinate1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada este del punto 2.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_eastCoordinate2() {
         return txt_eastCoordinate2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada este del punto 3.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_eastCoordinate3() {
         return txt_eastCoordinate3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada este del punto 4.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de colindero del punto 1.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_hillside1() {
         return txt_hillside1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de colindero del punto 2.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_hillside2() {
         return txt_hillside2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de colindero del punto 3.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_hillside3() {
         return txt_hillside3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de colindero del punto 4.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_hillside4() {
         return txt_hillside4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada norte del punto 1.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_northCoordinate1() {
         return txt_northCoordinate1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada norte del punto 2.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_northCoordinate2() {
         return txt_northCoordinate2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada norte del punto 3.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_northCoordinate3() {
         return txt_northCoordinate3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de coordenada norte del punto 4.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
 
     /**
-     * Limpia todos los campos del formulario de registro de predios.
+     * Clear all fields of the property registration form.
      */
     public void clearFields() {
         txt_cadastralId.setText("");

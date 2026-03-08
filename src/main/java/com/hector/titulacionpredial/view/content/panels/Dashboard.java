@@ -8,15 +8,15 @@ import com.hector.titulacionpredial.view.swing.chart.LineChart;
 import com.hector.titulacionpredial.view.swing.model.CardModel;
 
 /**
- * Panel principal del tablero de control (Dashboard).
+ * Main Dashboard Panel
  *
  * <p>
- * Presenta tarjetas de resumen ({@link Card}), gráficos de calibre
- * ({@link GaugeChart}) y gráficos de líneas ({@link LineChart})
- * con estadísticas de beneficiarios, predios y resoluciones.
+ * Displays summary cards ({@link Card}), gauge charts
+ * ({@link GaugeChart}), and line charts ({@link LineChart})
+ * with statistics on beneficiaries, properties, and resolutions.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  * @see Card
  * @see GaugeChart
@@ -32,7 +32,7 @@ public class Dashboard extends javax.swing.JPanel {
     private String resolutionsDesc = "Resoluciones hechas";
 
     /**
-     * Crea el panel del tablero e inicializa los componentes gráficos.
+     * Create the dashboard panel and initialize the graphical components.
      */
     public Dashboard() {
         initComponents();
@@ -41,11 +41,11 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     /**
-     * Actualiza las tarjetas de resumen con los totales indicados.
+     * Updates the summary cards with the indicated totals.
      *
-     * @param totalBeneficiaries total de beneficiarios
-     * @param totalProperties    total de predios
-     * @param totalResolutions   total de resoluciones
+     @param totalBeneficiaries total number of beneficiaries
+     @param totalProperties    total number of properties
+     @param totalResolutions   total number of resolutions
      */
     public void updateCards(int totalBeneficiaries, int totalProperties, int totalResolutions) {
         card1.setData(new CardModel(
@@ -68,10 +68,10 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     /**
-     * Anima los medidores semicirculares con los porcentajes.
+     * Animate the semicircular gauges with the percentages.
      *
-     * @param percentBeneficiaries porcentaje de beneficiarios
-     * @param percentProperties    porcentaje de predios
+     @param percentBeneficiaries percentage of beneficiaries
+     @param percentProperties    percentage of properties
      */
     public void updateGaugeCharts(int percentBeneficiaries, int percentProperties) {
         gaugeChart1.setValueWithAnimation(percentBeneficiaries);
@@ -79,11 +79,11 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     /**
-     * Carga los datos estadísticos de beneficiarios.
+     * Loads beneficiary statistics.
      *
-     * @param withProperty    cantidad con predio asignado
-     * @param withoutProperty cantidad sin predio asignado
-     * @param total           total de beneficiarios
+     * @param withProperty    quantity with assigned property
+     * @param withoutProperty quantity without assigned property
+     * @param total           total number of beneficiaries
      */
     public void loadDataBeneficiaries(int withProperty, int withoutProperty, int total) {
         jlb_withProperty.setText("# " + withProperty);
@@ -92,11 +92,11 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     /**
-     * Carga los datos estadísticos de predios.
+     * Loads property statistics.
      *
-     * @param withResolution    cantidad con resolución
-     * @param withoutResolution cantidad sin resolución
-     * @param total             total de predios
+     * @param withResolution    Number with resolution
+     * @param withoutResolution Number without resolution
+     * @param total             Total number of properties
      */
     public void loadDataProperties(int withResolution, int withoutResolution, int total) {
         jlb_withResolution.setText("# " + withResolution);
@@ -461,9 +461,9 @@ public class Dashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del tablero de control con las traducciones proporcionadas.
+     * Updates the dashboard texts with the provided translations.
      *
-     * @param texts DTO con los textos traducidos del dashboard
+     * @param texts DTO with the translated dashboard texts
      */
     public void updateLanguage(DTODashboardText texts) {
         jlb_subtitle1.setText(texts.getTotalRegisters());
@@ -485,56 +485,26 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_subtitle3.setText(texts.getRegistersMonth());
     }
 
-    /**
-     * Obtiene la tarjeta de resumen de beneficiarios.
-     *
-     * @return tarjeta de beneficiarios
-     */
     public Card getCard1() {
         return card1;
     }
 
-    /**
-     * Obtiene la tarjeta de resumen de predios.
-     *
-     * @return tarjeta de predios
-     */
     public Card getCard2() {
         return card2;
     }
 
-    /**
-     * Obtiene la tarjeta de resumen de resoluciones.
-     *
-     * @return tarjeta de resoluciones
-     */
     public Card getCard3() {
         return card3;
     }
 
-    /**
-     * Obtiene el gráfico de calibre de beneficiarios.
-     *
-     * @return gráfico de calibre de beneficiarios
-     */
     public GaugeChart getGaugeChart1() {
         return gaugeChart1;
     }
 
-    /**
-     * Obtiene el gráfico de calibre de predios.
-     *
-     * @return gráfico de calibre de predios
-     */
     public GaugeChart getGaugeChart2() {
         return gaugeChart2;
     }
 
-    /**
-     * Obtiene el gráfico de líneas de beneficiarios registrados por mes.
-     *
-     * @return gráfico de líneas
-     */
     public LineChart getLineChart1() {
         return lineChart1;
     }

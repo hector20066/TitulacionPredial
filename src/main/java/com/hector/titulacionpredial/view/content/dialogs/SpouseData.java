@@ -255,6 +255,9 @@ public class SpouseData extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the «SpouseData» texts with the provided translations.
+     */
     public void updateLanguage() {
         jlb_title.setText(lang.app("spouse.data.title"));
         jlb_name.setText(lang.app("spouse.data.name"));
@@ -268,9 +271,12 @@ public class SpouseData extends javax.swing.JDialog {
     }
 
     /**
-     * Conecta los eventos de los botones guardar y cancelar.
+     * Connects the events of the save and cancel buttons.
      *
-     * <p>Al guardar se marca como confirmado, al cancelar se descarta.</p>
+     * <p>
+     * When saving, it's marked as confirmed;
+     * when canceling, it's discarded.
+     * </p>
      */
     private void connectEvents() {
         btn_save.addActionListener(e -> {
@@ -287,10 +293,12 @@ public class SpouseData extends javax.swing.JDialog {
     }
 
     /**
-     * Cierra el diálogo con una animación de desvanecimiento.
+     * Closes the dialogue with a fade-out animation.
      *
-     * <p>Detiene cualquier animación en curso antes de iniciar
-     * la animación de cierre.</p>
+     * <p>
+     * Stops any ongoing animation before
+     * starting the closing animation.
+     * </p>
      */
     private void closeMenu() {
         if (animator.isRunning()) {
@@ -300,11 +308,12 @@ public class SpouseData extends javax.swing.JDialog {
         show = false;
         animator.start();
     }
-    
+
     /**
-     * Indica si el usuario confirmó el registro del cónyuge.
+     * Indicates whether the user confirmed the spouse's registration.
      *
-     * @return {@code true} si se presionó guardar, {@code false} si se canceló
+     * @return {@code true} if save was pressed,
+     * {@code false} if it was canceled
      */
     public boolean isConfirmed() {
         return confirmed;

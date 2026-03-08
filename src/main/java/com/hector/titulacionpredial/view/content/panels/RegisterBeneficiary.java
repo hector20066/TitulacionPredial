@@ -13,15 +13,15 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
- * Formulario para el registro y modificación de beneficiarios.
+ * Form for registering and modifying beneficiaries.
  *
  * <p>
- * Incluye campos para nombre, apellido, cédula, departamento,
- * municipio, estado civil, afectación predial y código de seguimiento.
- * Soporta modo de creación y modo de edición (modificación).
+ * Includes fields for first name, last name, ID number, department,
+ * municipality, marital status, property tax assessment, and tracking
+ * code. Supports creation mode and edit (modification) mode.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {
@@ -30,7 +30,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private MaritalStatus nowStatus;
 
     /**
-     * Crea el formulario de registro de beneficiarios y configura los combos y áreas de texto.
+     * Create the beneficiary registration form and configure the dropdown menus and text areas.
      */
     public RegisterBeneficiary() {
         initComponents();
@@ -85,38 +85,18 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         });
     }
 
-    /**
-     * Establece si el formulario está en modo modificación.
-     *
-     * @param modify {@code true} para modo modificación
-     */
     public void setModify(boolean modify) {
         this.modify = modify;
     }
 
-    /**
-     * Indica si el formulario está en modo modificación.
-     *
-     * @return {@code true} si está en modo modificación
-     */
     public boolean isModify() {
         return modify;
     }
 
-    /**
-     * Establece el estado civil actual del beneficiario.
-     *
-     * @param nowStatus estado civil seleccionado
-     */
     public void setNowStatus(MaritalStatus nowStatus) {
         this.nowStatus = nowStatus;
     }
 
-    /**
-     * Obtiene el estado civil actual del beneficiario.
-     *
-     * @return estado civil seleccionado
-     */
     public MaritalStatus getNowStatus() {
         return nowStatus;
     }
@@ -532,9 +512,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Updates the panel text according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with the translated text
      */
     public void updateLanguage(DTORegisterBeneficiaryText texts) {
         jlb_title.setText(texts.getAddTitle());
@@ -559,229 +539,113 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         btn_register.setText(texts.getAddBtn());
     }
 
-    /**
-     * Asigna el listener para el botón de registro.
-     *
-     * @param action listener del botón
-     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el combo de departamento.
-     *
-     * @param action listener del combo
-     */
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el combo de estado civil.
-     *
-     * @param action listener del combo
-     */
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el checkbox de afectación.
-     *
-     * @param action listener del checkbox
-     */
     public void setControllerCbx_affectation(ActionListener action) {
         cbx_affectation.addActionListener(action);
     }
 
-    /**
-     * Obtiene el componente botón de registrar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
 
-    /**
-     * Obtiene el componente checkbox de afectación predial.
-     *
-     * @return componente {@link JCheckBox}
-     */
     public JCheckBox getCbx_affectation() {
         return cbx_affectation;
     }
 
-    /**
-     * Obtiene el componente combo de departamento.
-     *
-     * @return componente {@link JComboBox}
-     */
     public JComboBox<Department> getCbo_department() {
         return cbo_department;
     }
 
-    /**
-     * Obtiene el componente combo de estado civil.
-     *
-     * @return componente {@link JComboBox}
-     */
     public JComboBox<MaritalStatus> getCbo_maritalStatus() {
         return cbo_maritalStatus;
     }
 
-    /**
-     * Obtiene el componente combo de municipio.
-     *
-     * @return componente {@link JComboBox}
-     */
     public JComboBox<Municipalities> getCbo_municipality() {
         return cbo_municipality;
     }
 
-    /**
-     * Obtiene el componente scroll del formulario.
-     *
-     * @return componente {@link JScrollPane}
-     */
     public JScrollPane getJscp_info() {
         return jscp_info;
     }
 
-    /**
-     * Obtiene el componente área de texto de afectación.
-     *
-     * @return componente {@link JTextArea}
-     */
     public JTextArea getTxa_affectation() {
         return txa_affectation;
     }
 
-    /**
-     * Obtiene el componente área de texto de cruce.
-     *
-     * @return componente {@link JTextArea}
-     */
     public JTextArea getTxa_crossing() {
         return txa_crossing;
     }
 
-    /**
-     * Obtiene el componente campo de texto de dirección.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_address() {
         return txt_address;
     }
 
-    /**
-     * Obtiene el componente campo de texto de referencia catastral.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
-    /**
-     * Obtiene el componente campo de texto del lugar de expedición.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_expeditionLocation() {
         return txt_expeditionLocation;
     }
 
-    /**
-     * Obtiene el componente campo de texto del código de seguimiento.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_followingCode() {
         return txt_followingCode;
     }
 
-    /**
-     * Obtiene el componente campo de texto del barrio.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_neighborhood() {
         return txt_neighborhood;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la cédula.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_id() {
         return txt_id;
     }
 
-    /**
-     * Obtiene el componente campo de texto del apellido.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_lastName() {
         return txt_lastName;
     }
 
-    /**
-     * Obtiene el componente campo de texto del nombre.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_name() {
         return txt_name;
     }
 
-    /**
-     * Obtiene el componente campo de texto del teléfono.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_phone() {
         return txt_phone;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la publicación.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_publication() {
         return txt_publication;
     }
 
     /**
-     * Carga el código de seguimiento en el campo correspondiente.
+     * Load the tracking code in the corresponding field.
      *
-     * @param code código de seguimiento a mostrar
+     @param code tracking code to display
      */
     public void loadFollowingCode(int code) {
         txt_followingCode.setText(String.valueOf(code));
     }
 
-    /** Indica si se están cargando datos en el formulario. */
     public boolean isLoading = false;
 
-    /**
-     * Indica si los datos se están cargando.
-     *
-     * @return {@code true} si está cargando
-     */
     public boolean isLoading() {
         return isLoading;
     }
 
     /**
-     * Carga los datos del beneficiario para modificación.
+     * Load the beneficiary data for modification.
      *
-     * @param dto datos detallados del beneficiario
+     * @param dto detailed beneficiary data
      */
     public void loadDataModify(DTOBeneficiaryDetails dto) {
         isLoading = true;
@@ -816,7 +680,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }
 
     /**
-     * Restablece los campos a modo editable después de una modificación.
+     * Resets fields to editable mode after a modification.
      */
     public void resetUI() {
         txt_name.setEditable(true);
@@ -828,9 +692,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }
 
     /**
-     * Divide un nombre completo en nombre y apellido.
+     * Split a full name into first and last name.
      *
-     * @param fullName nombre completo
+     * @param fullName full name
      */
     private void validateName(String fullName) {
         if (fullName == null || fullName.trim().isEmpty()) {
@@ -865,7 +729,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }
     
     /**
-     * Limpia todos los campos y restablece el formulario a modo registro.
+     * Clear all fields and reset the form to registration mode.
      */
     public void clearFields() {
         jlb_title.setText(LanguageManager.getInstance().app("register.beneficiary.add.title"));

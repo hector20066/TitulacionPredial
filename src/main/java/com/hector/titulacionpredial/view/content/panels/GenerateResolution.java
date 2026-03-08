@@ -9,22 +9,22 @@ import java.awt.event.ActionListener;
 import java.util.function.BiConsumer;
 
 /**
- * Formulario para la generación de resoluciones de titulación.
+ * Form for generating title resolutions.
  *
  * <p>
- * Presenta un resumen con los datos del beneficiario, predio
- * y coordenadas (solo lectura) junto con campos editables para
- * número de resolución, notificación, ejecutoria, FMI, acta,
- * escritura pública y observaciones.
+ * Presents a summary with the beneficiary's data, property
+ * details, and coordinates (read-only) along with editable
+ * fields for: resolution number, notification, enforcement,
+ * FMI, minutes,public deed, and observations.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class GenerateResolution extends javax.swing.JPanel {
 
     /**
-     * Crea el formulario de generación de resoluciones.
+     * Create the resolution generation form.
      */
     public GenerateResolution() {
         initComponents();
@@ -780,9 +780,9 @@ public class GenerateResolution extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Updates the panel text according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with the translated text
      */
     public void updateLanguage(DTOGenerateResolutionText texts) {
         jlb_title.setText(texts.getGenerateLabel());
@@ -827,305 +827,145 @@ public class GenerateResolution extends javax.swing.JPanel {
         btn_generate.setText(texts.getGenerateBtn());
     }
 
-    /**
-     * Asigna el listener para el botón de generar resolución.
-     *
-     * @param action listener del botón
-     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
 
-    /**
-     * Obtiene el componente botón de generar resolución.
-     *
-     * @return componente {@link ButtonAction} de generar resolución
-     */
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
-    /**
-     * Obtiene el componente campo de texto del acto.
-     *
-     * @return componente {@link JTextField} de acto
-     */
     public JTextField getTxt_act() {
         return txt_act;
     }
 
-    /**
-     * Obtiene el componente campo de fecha de ejecutoria.
-     *
-     * @return componente {@link JFormattedTextField} de ejecutoria
-     */
     public JFormattedTextField getFtx_executory() {
         return ftx_executory;
     }
 
-    /**
-     * Obtiene el componente campo de fecha de notificación.
-     *
-     * @return componente {@link JFormattedTextField} de notificación
-     */
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
 
-    /**
-     * Obtiene el componente campo de texto del código del predio.
-     *
-     * @return componente {@link JTextField} de código del predio
-     */
     public JTextField getTxt_propertyCode() {
         return txt_propertyCode;
     }
 
-    /**
-     * Obtiene el componente campo de texto del área.
-     *
-     * @return componente {@link JTextField} de área
-     */
     public JTextField getTxt_area() {
         return txt_area;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la dirección del beneficiario.
-     *
-     * @return componente {@link JTextField} de dirección del beneficiario
-     */
     public JTextField getTxt_addressBeneficiary() {
         return txt_addressBeneficiary;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la referencia catastral.
-     *
-     * @return componente {@link JTextField} de referencia catastral
-     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la distancia del punto 1.
-     *
-     * @return componente {@link JTextField} de distancia del punto 1
-     */
     public JTextField getTxt_distance1() {
         return txt_distance1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la distancia del punto 2.
-     *
-     * @return componente {@link JTextField} de distancia del punto 2
-     */
     public JTextField getTxt_distance2() {
         return txt_distance2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la distancia del punto 3.
-     *
-     * @return componente {@link JTextField} de distancia del punto 3
-     */
     public JTextField getTxt_distance3() {
         return txt_distance3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la distancia del punto 4.
-     *
-     * @return componente {@link JTextField} de distancia del punto 4
-     */
     public JTextField getTxt_distance4() {
         return txt_distance4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada este del punto 1.
-     *
-     * @return componente {@link JTextField} de coordenada este del punto 1
-     */
     public JTextField getTxt_eastCoordinate1() {
         return txt_eastCoordinate1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada este del punto 2.
-     *
-     * @return componente {@link JTextField} de coordenada este del punto 2
-     */
     public JTextField getTxt_eastCoordinate2() {
         return txt_eastCoordinate2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada este del punto 3.
-     *
-     * @return componente {@link JTextField} de coordenada este del punto 3
-     */
     public JTextField getTxt_eastCoordinate3() {
         return txt_eastCoordinate3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada este del punto 4.
-     *
-     * @return componente {@link JTextField} de coordenada este del punto 4
-     */
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
     }
 
-    /**
-     * Obtiene el componente campo de texto del FMI.
-     *
-     * @return componente {@link JTextField} de FMI
-     */
     public JTextField getTxt_fmi() {
         return txt_fmi;
     }
 
-    /**
-     * Obtiene el componente campo de texto del colindero del punto 1.
-     *
-     * @return componente {@link JTextField} de colindero del punto 1
-     */
     public JTextField getTxt_hillside1() {
         return txt_hillside1;
     }
 
-    /**
-     * Obtiene el componente campo de texto del colindero del punto 2.
-     *
-     * @return componente {@link JTextField} de colindero del punto 2
-     */
     public JTextField getTxt_hillside2() {
         return txt_hillside2;
     }
 
-    /**
-     * Obtiene el componente campo de texto del colindero del punto 3.
-     *
-     * @return componente {@link JTextField} de colindero del punto 3
-     */
     public JTextField getTxt_hillside3() {
         return txt_hillside3;
     }
 
-    /**
-     * Obtiene el componente campo de texto del colindero del punto 4.
-     *
-     * @return componente {@link JTextField} de colindero del punto 4
-     */
     public JTextField getTxt_hillside4() {
         return txt_hillside4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la cédula del beneficiario.
-     *
-     * @return componente {@link JTextField} de cédula del beneficiario
-     */
     public JTextField getTxt_idBeneficiary() {
         return txt_idBeneficiary;
     }
 
-    /**
-     * Obtiene el componente campo de texto del nombre del beneficiario.
-     *
-     * @return componente {@link JTextField} de nombre del beneficiario
-     */
     public JTextField getTxt_nameBeneficiary() {
         return txt_nameBeneficiary;
     }
 
-    /**
-     * Obtiene el componente campo de texto del municipio.
-     *
-     * @return componente {@link JTextField} de municipio
-     */
     public JTextField getTxt_municipality() {
         return txt_municipality;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada norte del punto 1.
-     *
-     * @return componente {@link JTextField} de coordenada norte del punto 1
-     */
     public JTextField getTxt_northCoordinate1() {
         return txt_northCoordinate1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada norte del punto 2.
-     *
-     * @return componente {@link JTextField} de coordenada norte del punto 2
-     */
     public JTextField getTxt_northCoordinate2() {
         return txt_northCoordinate2;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada norte del punto 3.
-     *
-     * @return componente {@link JTextField} de coordenada norte del punto 3
-     */
     public JTextField getTxt_northCoordinate3() {
         return txt_northCoordinate3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la coordenada norte del punto 4.
-     *
-     * @return componente {@link JTextField} de coordenada norte del punto 4
-     */
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la notaría.
-     *
-     * @return componente {@link JTextField} de notaría
-     */
     public JTextField getTxt_note() {
         return txt_note;
     }
 
-    /**
-     * Obtiene el componente campo de texto del número de resolución.
-     *
-     * @return componente {@link JTextField} de número de resolución
-     */
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la escritura pública.
-     *
-     * @return componente {@link JTextField} de escritura pública
-     */
     public JTextField getTxt_publicWriting() {
         return txt_publicWriting;
     }
 
     /**
-     * Carga los datos del predio y beneficiario en los campos del formulario.
+     * Load the property and beneficiary data into the form fields.
      *
-     * @param area             área del predio
-     * @param point1           coordenadas del punto 1 (norte, este, distancia, ladera)
-     * @param point2           coordenadas del punto 2
-     * @param point3           coordenadas del punto 3
-     * @param point4           coordenadas del punto 4
-     * @param dtoProperty      código del predio
-     * @param dtoBeneficiary   datos del beneficiario
-     * @param beneficiariesId  cédulas de los beneficiarios
+     @param area            Property area
+     @param point1          Coordinates of point 1 (north, east, distance, slope)
+     @param point2          Coordinates of point 2
+     @param point3          Coordinates of point 3
+     @param point4          Coordinates of point 4
+     @param dtoProperty     Property code
+     @param dtoBeneficiary  Beneficiary data
+     @param beneficiariesId Beneficiary ID numbers
      */
     public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
         BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
@@ -1164,7 +1004,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     }
 
     /**
-     * Limpia los campos editables del formulario de resolución.
+     * Clear the editable fields of the resolution form.
      */
     public void clearFields() {
         txt_numResolution.setText("");

@@ -6,11 +6,10 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
 
 /**
- * Panel «Acerca de» que muestra la información de la aplicación,
- * versión, créditos del equipo de desarrollo y enlace
- * al sitio web de HLDevWorks.
+ * «About» panel displaying application information, version,
+ * development team credits, and a link to the HLDevWorks website.
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class About extends javax.swing.JPanel implements LanguageObserver {
@@ -18,7 +17,7 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
     private final LanguageManager languageManager;
 
     /**
-     * Crea el panel «Acerca de» con la información de la aplicación.
+     * Creates the «About» panel with the application's information.
      */
     public About(LanguageManager languageManager, LanguageSubject languageSubject) {
         initComponents();
@@ -167,9 +166,9 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
     }
 
     /**
-     * Actualiza los textos del panel «Acerca de» con las traducciones proporcionadas.
+     * Updates the text in the «About» panel with the provided translations.
      *
-     * @param texts DTO con los textos traducidos del panel
+     * @param texts DTO with the translated text from the panel
      */
     public void updateLanguage(DTOAboutText texts) {
         jlb_title.setText(texts.getTitle());

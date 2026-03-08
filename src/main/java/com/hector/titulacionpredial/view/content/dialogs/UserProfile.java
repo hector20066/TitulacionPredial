@@ -9,16 +9,14 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.awt.*;
 
 /**
- * Diálogo modal para visualizar el perfil detallado
- * de un beneficiario.
- *
+ * Modal dialog to view the detailed profile of a beneficiary.
  * <p>
- * Muestra la información personal del beneficiario en un
- * diálogo animado con transición de entrada y salida
- * utilizando la librería TimingFramework.
+ * Displays the beneficiary's personal information
+ * in an animated dialog with entrance and exit
+ * transitions using the TimingFramework library.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class UserProfile extends javax.swing.JDialog {
@@ -29,14 +27,17 @@ public class UserProfile extends javax.swing.JDialog {
     private LanguageManager lang =  LanguageManager.getInstance();
 
     /**
-     * Crea un nuevo diálogo para visualizar el perfil de un beneficiario.
+     * Creates a new dialog to display a beneficiary's profile.
      *
-     * <p>Inicializa los componentes gráficos, configura el scroll,
-     * habilita el ajuste de línea en las áreas de texto y establece
-     * la animación de opacidad.</p>
+     * <p>
+     * Initializes the graphical components, configures
+     * the scrolling, enables line wrapping in text
+     * areas, and sets the opacity animation.
+     * </p>
      *
-     * @param parent ventana padre del diálogo
-     * @param modal  {@code true} para bloquear la ventana padre mientras se muestra
+     * @param parent parent window of the dialog
+     * @param modal  {@code true} to lock the parent window
+     *                          while it is displayed
      */
     public UserProfile(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -549,6 +550,9 @@ public class UserProfile extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the «UserProfile» texts with the provided translations.
+     */
     public void updateLanguage() {
         jlb_title.setText(lang.app("user.profile.title"));
         jlb_codeText.setText(lang.app("user.profile.code"));
@@ -575,7 +579,7 @@ public class UserProfile extends javax.swing.JDialog {
     }
 
     /**
-     * Conecta el evento del botón de salida para cerrar el diálogo.
+     * Connect the exit button event to close the dialog.
      */
     private void connectEvents() {
         btn_exit.addActionListener(e -> {
@@ -585,10 +589,12 @@ public class UserProfile extends javax.swing.JDialog {
     }
 
     /**
-     * Cierra el diálogo con una animación de desvanecimiento.
+     * Closes the dialogue with a fade-out animation.
      *
-     * <p>Detiene cualquier animación en curso antes de iniciar
-     * la animación de cierre.</p>
+     * <p>
+     * Stops any ongoing animations before
+     * starting the closing animation.
+     * </p>
      */
     private void closeMenu() {
         if (animator.isRunning()) {
@@ -598,14 +604,16 @@ public class UserProfile extends javax.swing.JDialog {
         show = false;
         animator.start();
     }
-    
+
     /**
-     * Carga los datos del beneficiario en los campos del diálogo.
+     * Enter the beneficiary's information in the dialog fields.
      *
-     * <p>Si el beneficiario no tiene cónyuge registrado, los campos
-     * correspondientes mostrarán «No aplica».</p>
+     * <p>
+     * If the beneficiary does not have a registered spouse, the
+     * fields The corresponding fields will display «Not applicable».
+     * </p>
      *
-     * @param beneficiary DTO con los datos completos del beneficiario a mostrar
+     * @param beneficiary DTO with the beneficiary's full details to be displayed
      */
     public void loadBeneficiary(DTOBeneficiaryDetails beneficiary) {
         jlb_name.setText(beneficiary.getFullName());

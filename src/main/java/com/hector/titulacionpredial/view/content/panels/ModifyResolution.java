@@ -12,21 +12,21 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Formulario para la modificación de una resolución existente.
+ * Form for modifying an existing resolution.
  *
  * <p>
- * Permite editar los campos de número de resolución,
- * notificación, ejecutoria, FMI, acta, escritura pública
- * y observaciones de una resolución previamente registrada.
+ * Allows editing the fields for resolution number, notification,
+ * enforceability, FMI, minutes, public deed, and observations of
+ * a previously registered resolution.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class ModifyResolution extends javax.swing.JPanel {
 
     /**
-     * Crea el formulario de modificación de resoluciones.
+     * Create the resolution modification form.
      */
     public ModifyResolution() {
         initComponents();
@@ -233,9 +233,9 @@ public class ModifyResolution extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Updates the panel text according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with the translated text
      */
     public void updateLanguage(DTOModifyResolutionText texts) {
         jlb_title.setText(texts.getTitle());
@@ -250,103 +250,53 @@ public class ModifyResolution extends javax.swing.JPanel {
         btn_modify.setText(texts.getModifyBtn());
     }
 
-    /**
-     * Asigna el listener para el botón de modificar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
-    /**
-     * Obtiene el componente botón de modificar resolución.
-     *
-     * @return componente {@link ButtonAction} de modificar resolución
-     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
-    /**
-     * Obtiene el componente campo de texto del acto.
-     *
-     * @return componente {@link JTextField} de acto
-     */
     public JTextField getTxt_act() {
         return txt_act;
     }
 
-    /**
-     * Obtiene el componente campo de texto del código de la resolución.
-     *
-     * @return componente {@link JTextField} de código de la resolución
-     */
     public JTextField getTxt_code() {
         return txt_code;
     }
 
-    /**
-     * Obtiene el componente campo de texto del FMI.
-     *
-     * @return componente {@link JTextField} de FMI
-     */
     public JTextField getTxt_fmi() {
         return txt_fmi;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la notaría.
-     *
-     * @return componente {@link JTextField} de notaría
-     */
     public JTextField getTxt_note() {
         return txt_note;
     }
 
-    /**
-     * Obtiene el componente campo de texto del número de resolución.
-     *
-     * @return componente {@link JTextField} de número de resolución
-     */
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
 
-    /**
-     * Obtiene el componente campo de texto de la escritura pública.
-     *
-     * @return componente {@link JTextField} de escritura pública
-     */
     public JTextField getTxt_publicWriting() {
         return txt_publicWriting;
     }
 
-    /**
-     * Obtiene el componente campo de fecha de ejecutoria.
-     *
-     * @return componente {@link JFormattedTextField} de ejecutoria
-     */
     public JFormattedTextField getFtx_executory() {
         return ftx_executory;
     }
 
-    /**
-     * Obtiene el componente campo de fecha de notificación.
-     *
-     * @return componente {@link JFormattedTextField} de notificación
-     */
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
 
     /**
-     * Carga los datos de la resolución en el formulario.
+     * Loads the resolution data into the form.
      *
-     * @param dto          datos de la resolución
-     * @param notification fecha de notificación formateada
-     * @param executory    fecha de ejecutoria formateada
-     * @throws ParseException si las fechas no se pueden parsear
+     * @param dto             resolution data
+     * @param notification    formatted notification date
+     * @param executory       formatted executory date
+     * @throws ParseException if dates cannot be parsed
      */
     public void loadData(DTOResolutionDetails dto, String notification, String executory) throws ParseException {
         txt_code.setText(String.valueOf(dto.getCode()));

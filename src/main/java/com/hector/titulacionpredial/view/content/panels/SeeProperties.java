@@ -18,16 +18,14 @@ import java.awt.event.MouseListener;
 import java.time.LocalDate;
 
 /**
- * Panel para la visualización de predios registrados
- * en formato de tabla con 30 columnas.
- *
+ * Panel for viewing registered properties in table format with 30 columns.
  * <p>
- * Muestra la información detallada de cada predio incluyendo
- * sus coordenadas geográficas (hasta 4 puntos), datos catastrales
- * y municipio. Permite buscar, generar, eliminar y exportar predios.
+ * Displays detailed information for each property, including its geographic
+ * coordinates (up to 4 points), cadastral data and municipality. Allows
+ * searching, creating, deleting, and exporting properties.
  * </p>
  *
- * @author Ing. Hector Acevedo
+ * @author Eng. Hector Acevedo
  * @since 1.0
  */
 public class SeeProperties extends JPanel {
@@ -49,7 +47,7 @@ public class SeeProperties extends JPanel {
     DefaultTableModel model = new DefaultTableModel();
 
     /**
-     * Crea el panel de consulta de predios y configura la tabla.
+     * Create the property query panel and configure the table.
      */
     public SeeProperties() {
         initComponents();
@@ -250,9 +248,10 @@ public class SeeProperties extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+
+     * Updates the panel text according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with the translated text
      */
     public void updateLanguage(DTOSeePropertiesText texts) {
         jlb_title.setText(texts.getProperties());
@@ -290,163 +289,78 @@ public class SeeProperties extends JPanel {
         jtbl_properties.getTableHeader().repaint();
     }
 
-    /**
-     * Asigna el listener para el botón de generar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para exportar a Excel.
-     *
-     * @param action listener del botón
-     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el botón de eliminar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el botón de buscar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para cancelar búsqueda.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
-    /**
-     * Obtiene el botón de cancelar búsqueda.
-     *
-     * @return botón de acción
-     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
-    /**
-     * Asigna el listener de documento al campo de búsqueda.
-     *
-     * @param listen listener de cambios de documento
-     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
-    /**
-     * Asigna el listener de mouse al campo de búsqueda.
-     *
-     * @param listen listener de mouse
-     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
-    /**
-     * Asigna el listener de foco al campo de búsqueda.
-     *
-     * @param listen listener de foco
-     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
-    /**
-     * Obtiene el modelo de datos de la tabla de predios.
-     *
-     * @return componente {@link DefaultTableModel}
-     */
     public DefaultTableModel getModel() {
         return model;
     }
 
-    /**
-     * Obtiene el componente botón de eliminar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_delete() {
         return btn_delete;
     }
 
-    /**
-     * Obtiene el componente botón de generar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
-    /**
-     * Obtiene el componente botón de buscar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
-    /**
-     * Obtiene el componente scroll del contenido de predios.
-     *
-     * @return componente {@link JScrollPane}
-     */
     public JScrollPane getJscp_scrollContent() {
         return jscp_scrollContent;
     }
 
-    /**
-     * Obtiene el componente tabla de predios.
-     *
-     * @return componente {@link JTable}
-     */
     public JTable getJtbl_properties() {
         return jtbl_properties;
     }
 
-    /**
-     * Obtiene el componente panel redondeado de búsqueda.
-     *
-     * @return componente {@link RoundedPanel}
-     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de búsqueda.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_search() {
         return txt_search;
     }
 
     /**
-     * Carga un predio con todos sus datos en la tabla.
+     * Loads a property with all its data into the table.
      *
-     * @param dto datos detallados del predio
+     * @param dto detailed property data
      */
     public void loadData(DTOPropertyDetails dto) {
         int propertyCode = dto.getPropertyCode();
