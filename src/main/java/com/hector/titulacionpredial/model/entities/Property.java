@@ -5,28 +5,28 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Entidad de dominio que representa un Predio dentro del sistema
- * de Titulación Predial.
+ * Domain entity that represents a property within the Land Titling
+ * system.
  *
  * <p>
- * Un predio constituye la unidad principal del proceso de titulación
- * y actúa como agregado raíz (Aggregate Root) dentro del modelo.
+ * A property constitutes the main unit of the titling process and
+ * acts as the Aggregate Root within the model.
  * </p>
  *
  * <p>
- * Esta entidad:
+ * This entity:
  * </p>
  * <ul>
- *     <li>Posee identidad propia mediante el atributo {@code code}.</li>
- *     <li>Contiene una colección de {@link Beneficiary} asociados.</li>
- *     <li>Define un conjunto de {@link Point} que representan los límites geográficos.</li>
- *     <li>Es mutable mediante métodos setter.</li>
- *     <li>Soporta construcción mediante el patrón {@link Builder}.</li>
+ *     <li>It has its own identity through the attribute {@code code}.</li>
+ *     <li>It contains a collection of associated {@link Beneficiary}.</li>
+ *     <li>Define a set of {@link Point} that represent the geographic boundaries.</li>
+ *     <li>It is mutable through setter methods.</li>
+ *     <li>It supports building using the {@link Builder} pattern.</li>
  * </ul>
  *
  * <p>
- * Forma parte del modelo persistente y mantiene consistencia
- * sobre sus entidades relacionadas.
+ * It is part of the persistent model and maintains consistency across
+ * its related entities.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -41,12 +41,12 @@ public class Property {
     private Point[] points;
 
     /**
-     * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos basados en reflexión.
+     * Empty constructor required for persistence frameworks or
+     * reflection-based mechanisms.
      *
      * <p>
-     * Inicializa la colección de beneficiarios y el arreglo de puntos
-     * para evitar referencias nulas.
+     * Initialize the beneficiary collection and the point array
+     * to avoid null references.
      * </p>
      */
     public Property() {
@@ -55,9 +55,9 @@ public class Property {
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia del constructor paso a paso
+     * @param builder step-by-step constructor instance
      */
     public Property(Builder builder) {
         this.code = builder.code;
@@ -67,100 +67,50 @@ public class Property {
         this.points = builder.points;
     }
 
-    /**
-     * Obtiene el código único del predio.
-     *
-     * @return código único
-     */
     public long getCode() {
         return code;
     }
 
-    /**
-     * Establece el código único del predio.
-     *
-     * @param code código único
-     */
     public void setCode(long code) {
         this.code = code;
     }
 
-    /**
-     * Obtiene la cédula catastral del predio.
-     *
-     * @return cédula catastral
-     */
     public String getCadastralId() {
         return cadastralId;
     }
 
-    /**
-     * Establece la cédula catastral del predio.
-     *
-     * @param cadastralId cédula catastral
-     */
     public void setCadastralId(String cadastralId) {
         this.cadastralId = cadastralId;
     }
 
-    /**
-     * Obtiene el área del predio en metros cuadrados.
-     *
-     * @return área en metros cuadrados
-     */
     public Double getArea() {
         return area;
     }
 
-    /**
-     * Establece el área del predio en metros cuadrados.
-     *
-     * @param area área en metros cuadrados
-     */
     public void setArea(Double area) {
         this.area = area;
     }
 
-    /**
-     * Obtiene la lista de beneficiarios asociados al predio.
-     *
-     * @return lista de beneficiarios asociados
-     */
     public List<Beneficiary> getBeneficiaries() {
         return beneficiaries;
     }
 
-    /**
-     * Establece la lista de beneficiarios asociados al predio.
-     *
-     * @param beneficiaries lista de beneficiarios asociados
-     */
     public void setBeneficiaries(List<Beneficiary> beneficiaries) {
         this.beneficiaries = beneficiaries;
     }
 
-    /**
-     * Obtiene los puntos geográficos que definen los límites del predio.
-     *
-     * @return arreglo de puntos geográficos
-     */
     public Point[] getPoints() {
         return points;
     }
 
-    /**
-     * Establece los puntos geográficos que definen los límites del predio.
-     *
-     * @param points arreglo de puntos geográficos
-     */
     public void setPoints(Point[] points) {
         this.points = points;
     }
 
     /**
-     * Representación textual de la entidad.
+     * Textual representation of the entity.
      *
-     * @return descripción formateada de los atributos principales
+     * @return formatted description of the main attributes
      */
     @Override
     public String toString() {
@@ -172,16 +122,16 @@ public class Property {
     }
 
     /**
-     * Builder para la construcción controlada de instancias de {@link Property}.
+     * Builder for controlled construction of {@link Property} instances.
      *
      * <p>
-     * Permite configurar de forma fluida los atributos del predio antes
-     * de su creación definitiva mediante {@link #build()}.
+     * It allows you to smoothly configure the property attributes before
+     * its final creation using {@link #build()}.
      * </p>
      *
      * <p>
-     * No realiza validaciones automáticas; dichas reglas deben
-     * garantizarse en la capa de servicio o agregarse explícitamente.
+     * It does not perform automatic validations such rules must be
+     * guaranteed in the service layer or added explicitly.
      * </p>
      */
     public static class Builder {
@@ -192,66 +142,31 @@ public class Property {
         private List<Beneficiary> beneficiaries;
         private Point[] points;
 
-        /**
-         * Establece el código del predio.
-         *
-         * @param code código único
-         * @return builder actual
-         */
         public Builder code(long code) {
             this.code = code;
             return this;
         }
 
-        /**
-         * Establece la cédula catastral.
-         *
-         * @param cadastralId cédula catastral
-         * @return builder actual
-         */
         public Builder cadastralId(String cadastralId) {
             this.cadastralId = cadastralId;
             return this;
         }
 
-        /**
-         * Establece el área del predio.
-         *
-         * @param area área en metros cuadrados
-         * @return builder actual
-         */
         public Builder area(Double area) {
             this.area = area;
             return this;
         }
 
-        /**
-         * Establece la lista de beneficiarios.
-         *
-         * @param beneficiaries lista de beneficiarios asociados
-         * @return builder actual
-         */
         public Builder beneficiaries(List<Beneficiary> beneficiaries) {
             this.beneficiaries = beneficiaries;
             return this;
         }
 
-        /**
-         * Establece los puntos geográficos del predio.
-         *
-         * @param points arreglo de puntos
-         * @return builder actual
-         */
         public Builder points(Point[] points) {
             this.points = points;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link Property}.
-         *
-         * @return nuevo predio construido
-         */
         public Property build() {
             return new Property(this);
         }

@@ -1,26 +1,26 @@
 package com.hector.titulacionpredial.model.entities;
 
 /**
- * Entidad base que representa una persona dentro del dominio
- * del sistema de Titulación Predial.
+ * Base entity that represents a person within the domain of the
+ * Land Titling system.
  *
  * <p>
- * Define los atributos comunes que deben poseer las entidades
- * que representen actores del sistema (por ejemplo, beneficiarios,
+ *Define the common attributes that entities representing actors
+ * in the system must possess.
  * </p>
  *
  * <p>
- * Esta clase:
+ * This class:
  * </p>
  * <ul>
- *     <li>Posee identidad propia mediante el atributo {@code id}.</li>
- *     <li>Es mutable a través de métodos setter.</li>
- *     <li>Soporta construcción mediante el patrón {@link Builder}.</li>
+ *     <li>It has its own identity through the {@code id} attribute.</li>
+ *     <li>It is mutable through setter methods.</li>
+ *     <li>It supports building using the {@link Builder} pattern.</li>
  * </ul>
  *
  * <p>
- * Puede extenderse para especializar distintos tipos de personas
- * dentro del modelo de dominio.
+ * It can be extended to specialize different types of people
+ * within the domain model.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -35,16 +35,17 @@ public class Person {
     protected long phone;
 
     /**
-     * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos de reflexión.
+     * Empty constructor required for persistence frameworks or
+     * reflection mechanisms.
      */
     public Person() {
+
     }
 
     /**
-     * Constructor protegido utilizado por el patrón Builder.
+     * Protected constructor used by the Builder pattern.
      *
-     * @param builder instancia del constructor paso a paso
+     * @param builder step-by-step constructor instance
      */
     protected Person(Builder<?> builder) {
         this.id = builder.id;
@@ -54,100 +55,50 @@ public class Person {
         this.phone = builder.phone;
     }
 
-    /**
-     * Obtiene el identificador único de la persona.
-     *
-     * @return identificador único
-     */
     public long getId() {
         return id;
     }
 
-    /**
-     * Establece el identificador único de la persona.
-     *
-     * @param id identificador único
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * Obtiene el nombre completo de la persona.
-     *
-     * @return nombre completo
-     */
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * Establece el nombre completo de la persona.
-     *
-     * @param fullName nombre completo
-     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**
-     * Obtiene la dirección de residencia de la persona.
-     *
-     * @return dirección de residencia
-     */
     public String getAddress() {
         return address;
     }
 
-    /**
-     * Establece la dirección de residencia de la persona.
-     *
-     * @param address dirección de residencia
-     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /**
-     * Obtiene el lugar de expedición del documento de identidad.
-     *
-     * @return lugar de expedición
-     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
-    /**
-     * Establece el lugar de expedición del documento de identidad.
-     *
-     * @param expeditionLocation lugar de expedición
-     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
-    /**
-     * Obtiene el número telefónico de contacto de la persona.
-     *
-     * @return número telefónico
-     */
     public long getPhone() {
         return phone;
     }
 
-    /**
-     * Establece el número telefónico de contacto de la persona.
-     *
-     * @param phone número telefónico
-     */
     public void setPhone(long phone) {
         this.phone = phone;
     }
 
     /**
-     * Representación textual de la entidad.
+     * Textual representation of the entity.
      *
-     * @return descripción formateada de los atributos principales
+     * @return formatted description of the main attributes
      */
     @Override
     public String toString() {
@@ -159,16 +110,16 @@ public class Person {
     }
 
     /**
-     * Implementación genérica del patrón Builder para permitir
-     * la construcción fluida y segura de instancias de {@link Person}
-     * y sus subclases.
+     * Generic implementation of the Builder pattern to allow
+     * the smooth and secure construction of {@link Person}
+     * instances and their subclasses.
      *
      * <p>
-     * Utiliza el patrón "self type generics" para soportar herencia
-     * sin perder el tipo concreto en las subclases.
+     * Use the "self type generics" pattern to support inheritance
+     * without losing the concrete type in subclasses.
      * </p>
      *
-     * @param <T> tipo concreto del builder extendido
+     * @param <T> specific type of extended builder
      */
     public static class Builder<T extends Builder<T>> {
 
@@ -179,9 +130,9 @@ public class Person {
         private long phone;
 
         /**
-         * Devuelve la instancia concreta del builder.
+         * Returns the concrete instance of the builder.
          *
-         * @return instancia tipada del builder
+         * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
         protected T self() {
@@ -189,10 +140,10 @@ public class Person {
         }
 
         /**
-         * Establece el identificador.
+         * Set the identifier.
          *
-         * @param id identificador único
-         * @return builder actual
+         * @param id unique identifier
+         * @return current builder
          */
         public T id(long id) {
             this.id = id;
@@ -200,10 +151,10 @@ public class Person {
         }
 
         /**
-         * Establece el nombre completo.
+         * Enter the full name.
          *
-         * @param fullName nombre completo
-         * @return builder actual
+         * @param fullName full name
+         * @return current builder
          */
         public T fullName(String fullName) {
             this.fullName = fullName;
@@ -211,10 +162,10 @@ public class Person {
         }
 
         /**
-         * Establece la dirección.
+         * Set the direction.
          *
-         * @param address dirección de residencia
-         * @return builder actual
+         * @param address residential address
+         * @return current builder
          */
         public T address(String address) {
             this.address = address;
@@ -222,10 +173,10 @@ public class Person {
         }
 
         /**
-         * Establece el lugar de expedición.
+         * Establish the place of shipment.
          *
-         * @param expeditionLocation ciudad o lugar de expedición
-         * @return builder actual
+         * @param expeditionLocation city or place of shipment
+         * @return current builder
          */
         public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
@@ -233,10 +184,10 @@ public class Person {
         }
 
         /**
-         * Establece el número telefónico.
+         * Enter the phone number.
          *
-         * @param phone número de contacto
-         * @return builder actual
+         * @param phone contact number
+         * @return current builder
          */
         public T phone(long phone) {
             this.phone = phone;
@@ -244,9 +195,9 @@ public class Person {
         }
 
         /**
-         * Construye una nueva instancia de {@link Person}.
+         * Create a new instance of {@link Person}.
          *
-         * @return nueva persona construida
+         * @return new person constructed
          */
         public Person build() {
             return new Person(this);

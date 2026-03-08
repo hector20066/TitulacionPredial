@@ -1,27 +1,27 @@
 package com.hector.titulacionpredial.model.entities;
 
 /**
- * Entidad que representa una coordenada geográfica asociada
- * a un {@link Property}.
+ * Entity that represents a geographic coordinate associated
+ * with a {@link Property}.
  *
  * <p>
- * Define un punto que forma parte de los límites del predio,
- * incluyendo sus coordenadas y datos complementarios.
+ * Define a point that is part of the boundaries of the property,
+ * including its coordinates and additional data.
  * </p>
  *
  * <p>
- * Esta clase:
+ * This class:
  * </p>
  * <ul>
- *     <li>Posee identidad propia mediante el atributo {@code code}.</li>
- *     <li>Contiene coordenadas norte y este.</li>
- *     <li>Puede incluir información adicional como distancia y linderos.</li>
- *     <li>Es mutable mediante métodos setter.</li>
- *     <li>Soporta construcción mediante el patrón {@link Builder}.</li>
+ *     <li>It has its own identity through the attribute {@code code}.</li>
+ *     <li>It contains north and east coordinates.</li>
+ *     <li>It may include additional information such as distance and boundaries.</li>
+ *     <li>It is mutable through setter methods.</li>
+ *     <li>It supports building using the {@link Builder} pattern.</li>
  * </ul>
  *
  * <p>
- * Su ciclo de vida depende del {@link Property} al que pertenece.
+ * Its lifecycle depends on the {@link Property} it belongs to.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -37,17 +37,17 @@ public class Point {
     private String hillside;
 
     /**
-     * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos basados en reflexión.
+     * Empty constructor required for persistence frameworks or
+     * reflection-based mechanisms.
      */
     public Point() {
 
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia del constructor paso a paso
+     * @param builder step-by-step constructor instance
      */
     public Point(Builder builder) {
         this.code = builder.code;
@@ -58,118 +58,58 @@ public class Point {
         this.hillside = builder.hillside;
     }
 
-    /**
-     * Obtiene el código único del punto.
-     *
-     * @return código único
-     */
     public int getCode() {
         return code;
     }
 
-    /**
-     * Establece el código único del punto.
-     *
-     * @param code código único
-     */
     public void setCode(int code) {
         this.code = code;
     }
 
-    /**
-     * Obtiene el número secuencial del punto.
-     *
-     * @return número secuencial del punto
-     */
     public int getNumberPoint() {
         return numberPoint;
     }
 
-    /**
-     * Establece el número secuencial del punto.
-     *
-     * @param numberPoint número secuencial del punto
-     */
     public void setNumberPoint(int numberPoint) {
         this.numberPoint = numberPoint;
     }
 
-    /**
-     * Obtiene la coordenada norte del punto.
-     *
-     * @return coordenada norte
-     */
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
-    /**
-     * Establece la coordenada norte del punto.
-     *
-     * @param northCoordinate coordenada norte
-     */
     public void setNorthCoordinate(Double northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
-    /**
-     * Obtiene la coordenada este del punto.
-     *
-     * @return coordenada este
-     */
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
-    /**
-     * Establece la coordenada este del punto.
-     *
-     * @param eastCoordinate coordenada este
-     */
     public void setEastCoordinate(Double eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
-    /**
-     * Obtiene la distancia al siguiente punto en metros.
-     *
-     * @return distancia en metros
-     */
     public Double getDistance() {
         return distance;
     }
 
-    /**
-     * Establece la distancia al siguiente punto en metros.
-     *
-     * @param distance distancia en metros
-     */
     public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    /**
-     * Obtiene la descripción del lindero asociado al punto.
-     *
-     * @return descripción del lindero
-     */
     public String getHillside() {
         return hillside;
     }
 
-    /**
-     * Establece la descripción del lindero asociado al punto.
-     *
-     * @param hillside descripción del lindero
-     */
     public void setHillside(String hillside) {
         this.hillside = hillside;
     }
 
     /**
-     * Representación textual de la entidad.
+     * Textual representation of the entity.
      *
-     * @return descripción formateada de los atributos principales
+     * @return formatted description of the main attributes
      */
     @Override
     public String toString() {
@@ -182,16 +122,16 @@ public class Point {
     }
 
     /**
-     * Builder para la construcción controlada de instancias de {@link Point}.
+     * Builder for the controlled construction of {@link Point} instances.
      *
      * <p>
-     * Permite configurar de forma fluida los atributos del predio antes
-     * de su creación definitiva mediante {@link #build()}.
+     * It allows you to smoothly configure the property attributes before
+     * its final creation using {@link #build()}.
      * </p>
      *
      * <p>
-     * No realiza validaciones automáticas; dichas reglas deben
-     * garantizarse en la capa de servicio o agregarse explícitamente.
+     * It does not perform automatic validations such rules must be
+     * guaranteed in the service layer or added explicitly.
      * </p>
      */
     public static class Builder {
@@ -203,77 +143,36 @@ public class Point {
         private Double distance;
         private String hillside;
 
-        /**
-         * Establece el código del punto.
-         *
-         * @param code código único
-         * @return builder actual
-         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-        /**
-         * Establece el número de punto.
-         *
-         * @param numberPoint número secuencial del punto
-         * @return builder actual
-         */
         public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
             return this;
         }
 
-        /**
-         * Establece la coordenada norte.
-         *
-         * @param northCoordinate coordenada norte
-         * @return builder actual
-         */
         public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
-        /**
-         * Establece la coordenada este.
-         *
-         * @param eastCoordinate coordenada este
-         * @return builder actual
-         */
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }
 
-        /**
-         * Establece la distancia al siguiente punto.
-         *
-         * @param distance distancia en metros
-         * @return builder actual
-         */
         public Builder distance(Double distance) {
             this.distance = distance;
             return this;
         }
 
-        /**
-         * Establece el lindero.
-         *
-         * @param hillside descripción del lindero
-         * @return builder actual
-         */
         public Builder hillside(String hillside) {
             this.hillside = hillside;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link Point}.
-         *
-         * @return nuevo punto construido
-         */
         public Point build() {
             return new Point(this);
         }

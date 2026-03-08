@@ -1,17 +1,17 @@
 package com.hector.titulacionpredial.model.entities;
 
 /**
- * Entidad de dominio que representa un Cónyuge dentro del sistema.
+ * Domain entity that represents a Spouse within the system.
  *
  * <p>
- * Extiende {@link Person} agregando información específica
- * que debe tener el cónyuge.
- * Esta entidad forma parte del modelo de dominio y es
- * persistida en la base de datos.
+ * Extends {@link Person} by adding specific information that
+ * the spouse must have. This entity is part of the domain model
+ * and is persisted in the database.
  * </p>
+ *
  * <p>
- * La construcción de instancias se soporta mediante el patrón
- * {@link Builder}, permitiendo herencia fluida desde {@link Person.Builder}
+ * Instance building is supported by the {@link Builder} pattern,
+ * allowing fluid inheritance from {@link Person.Builder}
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,27 +20,27 @@ package com.hector.titulacionpredial.model.entities;
 public class Spouse extends Person {
 
     /**
-     * Constructor vacío requerido para frameworks de persistencia
-     * o mecanismos basados en reflexión.
+     * Empty constructor required for persistence frameworks
+     * or reflection-based mechanisms.
      */
     public Spouse() {
 
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public Spouse(Builder builder) {
         super(builder);
     }
 
     /**
-     * Devuelve una representación textual del cónyuge,
-     * incluyendo los atributos heredados.
+     * Returns a textual representation of the spouse,
+     * including inherited attributes.
      *
-     * @return descripción formateada del cónyuge
+     * @return formatted description of spouse
      */
     @Override
     public String toString() {
@@ -48,21 +48,17 @@ public class Spouse extends Person {
     }
 
     /**
-     * Builder concreto para la construcción fluida de instancias
-     * de {@link Spouse}
+     * Concrete builder for the seamless construction of
+     * {@link Spouse} instances
      *
      * <p>
-     * Extiende {@link Person.Builder} para permitir la configuración
-     * de atributos heredados y específicos en una misma cadena fluida.
+     * Extends {@link Person.Builder} to allow the
+     * configuration of both inherited and specific
+     * attributes in the same fluent string.
      * </p>
      */
     public static class Builder extends Person.Builder<Builder> {
 
-        /**
-         * Construye una instancia de {@link Spouse}
-         *
-         * @return Spouse completamente configurado
-         */
         @Override
         public Spouse build() {
             return new Spouse(this);
