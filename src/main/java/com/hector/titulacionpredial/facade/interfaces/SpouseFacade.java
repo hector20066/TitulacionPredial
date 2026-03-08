@@ -6,13 +6,13 @@ import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
 /**
- * Fachada que define las operaciones de alto nivel para la
- * gestión de cónyuges en el sistema.
+ * Facade that defines the high-level operations for managing
+ * spouses in the system.
  *
  * <p>
- * Extiende {@link IRemovable} para permitir la eliminación
- * de registros de cónyuges. Simplifica la construcción de
- * {@link DTOSpouse} y encapsula las llamadas al DAO.
+ * Extends {@link IRemovable} to allow deletion of spouse records.
+ * Simplifies the construction of {@link DTOSpouse} and encapsulates
+ * DAO calls.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -22,25 +22,25 @@ import com.hector.titulacionpredial.model.dto.DTOSpouse;
 public interface SpouseFacade extends IRemovable {
 
     /**
-     * Registra un nuevo cónyuge asociado a un beneficiario.
+     * Register a new spouse associated with a beneficiary.
      *
-     * @param id                 número de cédula del cónyuge
-     * @param fullName           nombre completo
-     * @param expeditionLocation lugar de expedición del documento
-     * @param address            dirección
-     * @param phone              número de teléfono
-     * @param beneficiaryCode    código del beneficiario asociado
-     * @throws DAOException si ocurre un error en la operación
+     * @param id                 spouse's ID number
+     * @param fullName           full name
+     * @param expeditionLocation place of issue of the document
+     * @param address            address
+     * @param phone              phone number
+     * @param beneficiaryCode    associated beneficiary code
+     * @throws DAOException if an error occurs during the operation
      */
     void add(long id, String fullName, String expeditionLocation, String address, long phone,
              int beneficiaryCode) throws DAOException;
 
     /**
-     * Busca un cónyuge por el código del beneficiario.
+     * Search for a spouse by the beneficiary code.
      *
-     * @param id código del beneficiario asociado
-     * @return DTO con los datos del cónyuge
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param id associated beneficiary code
+     * @return DTO with spouse's details
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOSpouse findByCode(int id) throws DAOException;
 

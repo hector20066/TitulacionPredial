@@ -9,13 +9,13 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import java.time.LocalDate;
 
 /**
- * Fachada que define las operaciones de alto nivel para la
- * gestión de resoluciones en el sistema.
+ * Facade that defines the high-level operations for managing
+ * resolutions in the system.
  *
  * <p>
- * Extiende {@link IListable} e {@link ICountable} para ofrecer
- * listado y conteo de resoluciones, además de operaciones
- * de creación, búsqueda y modificación.
+ * Extends {@link IListable} and {@link ICountable} to offer
+ * resolution listing and counting, in addition to create,
+ * search, and modify operations.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -25,44 +25,44 @@ import java.time.LocalDate;
 public interface ResolutionFacade extends IListable<DTOResolutionDetails>, ICountable {
 
     /**
-     * Registra una nueva resolución en el sistema.
+     * Register a new resolution in the system.
      *
-     * @param resolutionNumber número de la resolución
-     * @param notification     fecha de notificación
-     * @param executory        fecha de ejecutoria
-     * @param fmi              folio de matrícula inmobiliaria
-     * @param act              acta
-     * @param publicWriting    escritura pública
-     * @param notary           notaría
-     * @param propertyCode     código del predio asociado
-     * @param beneficiaryName  nombre del beneficiario
-     * @throws DAOException si ocurre un error en la operación
+     * @param resolutionNumber resolution number
+     * @param notification     notification date
+     * @param executory        date of execution
+     * @param fmi              real estate registration number
+     * @param act              adt
+     * @param publicWriting    public deed
+     * @param notary           notary
+     * @param propertyCode     associated property code
+     * @param beneficiaryName  beneficiary name
+     * @throws DAOException if an error occurs during the operation
      */
     void add(long resolutionNumber, LocalDate notification, LocalDate executory, String fmi, String act,
              String publicWriting, String notary, int propertyCode, String beneficiaryName) throws DAOException;
 
     /**
-     * Busca una resolución por su número.
+     * Look for a resolution by its number.
      *
-     * @param numResolution número de la resolución
-     * @return DTO con los datos detallados de la resolución
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param numResolution resolution number
+     * @return DTO with the detailed data of the resolution
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOResolutionDetails findByCode(int numResolution) throws DAOException;
 
     /**
-     * Modifica los datos de una resolución existente.
+     * Modify the data of an existing resolution.
      *
-     * @param code          código de la resolución a modificar
-     * @param executory     fecha de ejecutoria actualizada
-     * @param act           acta actualizada
-     * @param publicWriting escritura pública actualizada
-     * @param numResolution número de resolución actualizado
-     * @param notification  fecha de notificación actualizada
-     * @param fmi           FMI actualizado
-     * @param notary        notaría actualizada
-     * @return {@code true} si la modificación fue exitosa
-     * @throws DAOException si ocurre un error en la operación
+     * @param code          resolution code to be modified
+     * @param executory     updated execution date
+     * @param act           update act
+     * @param publicWriting updated public deed
+     * @param numResolution updated resolution number
+     * @param notification  updated notification date
+     * @param fmi           updated FMI
+     * @param notary        updated notary
+     * @return {@code true} if the modification was successful
+     * @throws DAOException if an error occurs during the operation
      */
     boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution,
                    LocalDate notification, String fmi, String notary) throws DAOException;

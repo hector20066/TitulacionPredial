@@ -5,12 +5,12 @@ import com.hector.titulacionpredial.facade.impl.PointImplFacade;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 /**
- * Fachada que define las operaciones de alto nivel para la
- * gestión de puntos geográficos (coordenadas) en el sistema.
+ * Facade that defines the high-level operations for the management
+ * of geographic points (coordinates) in the system.
  *
  * <p>
- * Simplifica la construcción de {@link DTOPoint} y encapsula
- * las llamadas al DAO correspondiente.
+ * Simplifies the construction of {@link DTOPoint} and encapsulates
+ * the calls to the corresponding DAO.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,25 +20,25 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
 public interface PointFacade {
 
     /**
-     * Registra un nuevo punto geográfico asociado a un predio.
+     * Register a new geographic point associated with a property.
      *
-     * @param numberPoint     número del punto
-     * @param northCoordinate coordenada norte
-     * @param eastCoordinate  coordenada este
-     * @param distance        distancia
-     * @param hillside        ladera o costado
-     * @param propertyCode    código del predio asociado
-     * @throws DAOException si ocurre un error en la operación
+     * @param numberPoint     point number
+     * @param northCoordinate north coordinate
+     * @param eastCoordinate  east coordinate
+     * @param distance        distance
+     * @param hillside        hillside
+     * @param propertyCode    associated property code
+     * @throws DAOException if an error occurs during the operation
      */
     void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside,
              int propertyCode) throws DAOException;
 
     /**
-     * Busca los puntos geográficos de un predio.
+     * Find the geographical points of a property.
      *
-     * @param propertyCode código del predio
-     * @return DTO con los datos del punto encontrado
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param propertyCode property code
+     * @return DTO with the data of the point found
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOPoint findByCode(int propertyCode) throws DAOException;
 

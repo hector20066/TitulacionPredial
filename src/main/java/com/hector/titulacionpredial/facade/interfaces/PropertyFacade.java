@@ -10,13 +10,13 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import java.util.List;
 
 /**
- * Fachada que define las operaciones de alto nivel para la
- * gestión de predios en el sistema.
+ * Facade that defines the high-level operations for property management
+ * in the system.
  *
  * <p>
- * Extiende {@link IListable}, {@link IRemovable} e {@link ICountable}
- * para ofrecer listado, eliminación y conteo de predios,
- * además de operaciones específicas como exportación y estadísticas.
+ * It extends {@link IListable}, {@link IRemovable} and {@link ICountable}
+ * to offer listing, deletion and counting of properties, in addition to
+ * specific operations such as export and statistics.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -26,45 +26,45 @@ import java.util.List;
 public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovable, ICountable {
 
     /**
-     * Registra un nuevo predio en el sistema.
+     * Register a new property in the system.
      *
-     * @param cadastralId cédula catastral del predio
-     * @param area        área del predio en metros cuadrados
-     * @return código del predio recién insertado
-     * @throws DAOException si ocurre un error en la operación
+     * @param cadastralId cadastral certificate of the property
+     * @param area        area of the property in square meters
+     * @return code of the newly inserted property
+     * @throws DAOException if an error occurs during the operation
      */
     int add(String cadastralId, Double area) throws DAOException;
 
     /**
-     * Busca un predio por su cédula catastral.
+     * Search for a property using its cadastral certificate.
      *
-     * @param cadastralId cédula catastral
-     * @return DTO con los datos detallados del predio
-     * @throws DAOException si ocurre un error o no se encuentra
+     * @param cadastralId cadastral certificate
+     * @return DTO with detailed property information
+     * @throws DAOException if an error occurs or it is not found
      */
     DTOPropertyDetails findByCode(String cadastralId) throws DAOException;
 
     /**
-     * Obtiene todos los predios con formato para exportación.
+     * It obtains all properties in export format.
      *
-     * @return lista de DTOs con datos completos
-     * @throws DAOException si ocurre un error en la consulta
+     * @return list of DATA with complete data
+     * @throws DAOException if an error occurs in the query
      */
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
 
     /**
-     * Calcula el porcentaje de predios con resolución.
+     * Calculate the percentage of properties with a resolution.
      *
-     * @return porcentaje (0–100)
-     * @throws DAOException si ocurre un error en la consulta
+     * @return percentage (0–100)
+     * @throws DAOException if an error occurs in the query
      */
     int percentPropertiesWithResolutions() throws DAOException;
 
     /**
-     * Cuenta los predios que tienen resolución asociada.
+     * It counts the properties that have an associated resolution.
      *
-     * @return cantidad de predios con resolución
-     * @throws DAOException si ocurre un error en la consulta
+     * @return number of properties with resolution
+     * @throws DAOException if an error occurs in the query
      */
     int countPropertyWithResolution() throws DAOException;
 
