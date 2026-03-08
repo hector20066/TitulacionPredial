@@ -5,28 +5,27 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
- * Data Transfer Object (DTO) que representa la información
- * de un beneficiario para operaciones de entrada o salida
- * del sistema.
+ * Data Transfer Object (DTO) that represents the information of a
+ * beneficiary for system entry or exit operations.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentación y
- * la capa de persistencia, evitando exponer directamente la entidad
- * {@code Beneficiary}.
+ * It is used to transport data between the presentation layer and
+ * the persistence layer, avoiding directly exposing the
+ * {@code Beneficiary} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBasePerson} agregando información específica
- * relacionada con ubicación, estado civil y datos administrativos.
+ * Extends {@link DTOBasePerson} by adding specific information
+ * related to location, marital status, and administrative data.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its
+ * sole purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link Builder}.
+ * It supports fluid construction using the {@link Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -35,52 +34,52 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 public class DTOBeneficiary extends DTOBasePerson {
 
     /**
-     * Departamento asociado al beneficiario.
+     * Department associated with the beneficiary.
      */
     protected Department department;
 
     /**
-     * Municipio asociado al beneficiario.
+     * Municipality associated with the beneficiary.
      */
     protected Municipalities municipality;
 
     /**
-     * Barrio o sector de residencia.
+     * Neighborhood or area of residence.
      */
     protected String neighborhood;
 
     /**
-     * Información sobre cruces administrativos.
+     * Information on administrative crossings.
      */
     protected String crossing;
 
     /**
-     * Información relacionada con publicaciones oficiales.
+     * Information related to official publications.
      */
     protected String publication;
 
     /**
-     * Estado civil del beneficiario.
+     * marital status of the beneficiary.
      */
     protected MaritalStatus maritalStatus;
 
     /**
-     * Información sobre afectaciones jurídicas.
+     * Information on legal implications.
      */
     protected String affectation;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization
+     * or mapping frameworks.
      */
     public DTOBeneficiary() {
         super();
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     protected DTOBeneficiary(Builder<?> builder) {
         super(builder.address, builder.phone);
@@ -93,142 +92,72 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = builder.affectation;
     }
 
-    /**
-     * Obtiene el departamento asociado al beneficiario.
-     *
-     * @return departamento del beneficiario
-     */
     public Department getDepartment() {
         return department;
     }
 
-    /**
-     * Establece el departamento asociado al beneficiario.
-     *
-     * @param department departamento del beneficiario
-     */
     public void setDepartment(Department department) {
         this.department = department;
     }
 
-    /**
-     * Obtiene el municipio asociado al beneficiario.
-     *
-     * @return municipio del beneficiario
-     */
     public Municipalities getMunicipality() {
         return municipality;
     }
 
-    /**
-     * Establece el municipio asociado al beneficiario.
-     *
-     * @param municipality municipio del beneficiario
-     */
     public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
-    /**
-     * Obtiene el barrio o sector de residencia.
-     *
-     * @return barrio de residencia
-     */
     public String getNeighborhood() {
         return neighborhood;
     }
 
-    /**
-     * Establece el barrio o sector de residencia.
-     *
-     * @param neighborhood barrio de residencia
-     */
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
     }
 
-    /**
-     * Obtiene la información sobre cruces administrativos.
-     *
-     * @return información de cruces administrativos
-     */
     public String getCrossing() {
         return crossing;
     }
 
-    /**
-     * Establece la información sobre cruces administrativos.
-     *
-     * @param crossing información de cruces administrativos
-     */
     public void setCrossing(String crossing) {
         this.crossing = crossing;
     }
 
-    /**
-     * Obtiene la información relacionada con publicaciones oficiales.
-     *
-     * @return información de publicaciones oficiales
-     */
     public String getPublication() {
         return publication;
     }
 
-    /**
-     * Establece la información relacionada con publicaciones oficiales.
-     *
-     * @param publication información de publicaciones oficiales
-     */
     public void setPublication(String publication) {
         this.publication = publication;
     }
 
-    /**
-     * Obtiene el estado civil del beneficiario.
-     *
-     * @return estado civil del beneficiario
-     */
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
-    /**
-     * Establece el estado civil del beneficiario.
-     *
-     * @param maritalStatus estado civil del beneficiario
-     */
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
-    /**
-     * Obtiene la información sobre afectaciones jurídicas.
-     *
-     * @return información de afectaciones jurídicas
-     */
     public String getAffectation() {
         return affectation;
     }
 
-    /**
-     * Establece la información sobre afectaciones jurídicas.
-     *
-     * @param affectation información de afectaciones jurídicas
-     */
     public void setAffectation(String affectation) {
         this.affectation = affectation;
     }
 
     /**
-     * Builder genérico para la construcción fluida de instancias
-     * de {@link DTOBeneficiary}.
+     * Generic builder for fluid building of
+     * {@link DTOBeneficiary} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes
+     * before invoking {@link #build()}.
      * </p>
      *
-     * @param <T> tipo concreto del builder
+     * @param <T> specific type of builder
      */
     public static class Builder<T extends Builder<T>> {
 
@@ -243,9 +172,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         private String affectation;
 
         /**
-         * Devuelve la instancia concreta del builder.
+         * Returns the concrete instance of the builder.
          *
-         * @return instancia tipada del builder
+         * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
         protected T self() {
@@ -253,10 +182,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el departamento.
+         * Establish the department.
          *
-         * @param department departamento asociado al beneficiario
-         * @return builder actual
+         * @param department department associated with the beneficiary
+         * @return current builder
          */
         public T department(Department department) {
             this.department = department;
@@ -264,10 +193,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el municipio.
+         * The municipality establishes this.
          *
-         * @param municipalities municipio asociado al beneficiario
-         * @return builder actual
+         * @param municipalities municipality associated with the beneficiary
+         * @return current builder
          */
         public T municipality(Municipalities municipalities) {
             this.municipality = municipalities;
@@ -275,10 +204,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el barrio.
+         * Establish the neighborhood.
          *
-         * @param neighborhood barrio de residencia
-         * @return builder actual
+         * @param neighborhood residential neighborhood
+         * @return current builder
          */
         public T neighborhood(String neighborhood) {
             this.neighborhood = neighborhood;
@@ -286,10 +215,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece la dirección.
+         * Set the direction.
          *
-         * @param address dirección del beneficiario
-         * @return builder actual
+         * @param address beneficiary's address
+         * @return current builder
          */
         public T address(String address) {
             this.address = address;
@@ -297,10 +226,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el teléfono.
+         * Set the phone.
          *
-         * @param phone teléfono del beneficiario
-         * @return builder actual
+         * @param phone beneficiary's phone number
+         * @return current builder
          */
         public T phone(long phone) {
             this.phone = phone;
@@ -308,10 +237,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el cruce.
+         * Establish the crossing.
          *
-         * @param crossing cruce del beneficiario
-         * @return builder actual
+         * @param crossing beneficiary crossing
+         * @return current builder
          */
         public T crossing(String crossing) {
             this.crossing = crossing;
@@ -319,10 +248,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece la publicación.
+         * Establish the publication.
          *
-         * @param publication publicación oficial
-         * @return builder actual
+         * @param publication official publication
+         * @return current builder
          */
         public T publication(String publication) {
             this.publication = publication;
@@ -330,10 +259,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece el estado civil.
+         * It establishes marital status.
          *
-         * @param maritalStatus estado civil del beneficiario
-         * @return builder actual
+         * @param maritalStatus marital status of the beneficiary
+         * @return current builder
          */
         public T maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
@@ -341,10 +270,10 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establece la afectación.
+         * Establish the impact.
          *
-         * @param affectation afectación del beneficiario
-         * @return builder actual
+         * @param affectation beneficiary impact
+         * @return current builder
          */
         public T affectation(String affectation) {
             this.affectation = affectation;
@@ -352,9 +281,9 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Construye una nueva instancia de {@link DTOBeneficiary}.
+         * Create a new instance of {@link DTOBeneficiary}.
          *
-         * @return nuevo DTO configurado
+         * @return new DTO configured
          */
         public DTOBeneficiary build() {
             return new DTOBeneficiary(this);

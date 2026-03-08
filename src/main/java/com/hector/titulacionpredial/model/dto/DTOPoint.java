@@ -1,29 +1,28 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
- * Data Transfer Object (DTO) base que contiene información
- * de un punto para operaciones de entrada o salida con respecto
- * a las coordenadas de {@code Property}.
+ * Data Transfer Object (DTO) base that contains information of a point
+ * for input or output operations with respect to the coordinates of
+ * {@code Property}.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentación y
- * la capa de persistencia, evitando exponer directamente la entidad
- * {@code Point}.
+ * It is used to transport data between the presentation layer and the
+ * persistence layer, avoiding directly exposing the {@code Point} entity.
  * </p>
  *
  * <p>
- * Contiene la información relacionada con la ubicación del predio,
- * manejando las coordenadas y el código de {@code Property} al cual
- * pertenece el punto.
+ * It contains information related to the location of the property,
+ * handling the coordinates and the {@code Property} code to which
+ * the point belongs.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its sole
+ * purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link Builder}.
+ * It supports fluid construction using the {@link Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -32,47 +31,47 @@ package com.hector.titulacionpredial.model.dto;
 public class DTOPoint {
 
     /**
-     * Número del punto asociado.
+     * Associated point number.
      */
     protected int numberPoint;
 
     /**
-     * Coordenada norte.
+     * North coordinate.
      */
     protected Double northCoordinate;
 
     /**
-     * Coordenada este.
+     * East coordinate.
      */
     protected Double eastCoordinate;
 
     /**
-     * Distancia con respecto al siguiente punto.
+     * Distance from the next point.
      */
     protected Double distance;
 
     /**
-     * Datos del lindero vecino al punto.
+     * Data of the neighboring boundary to the point.
      */
     protected String hillside;
 
     /**
-     * Código de {@code Property}.
+     * {@code Property} code.
      */
     protected int propertyCode;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOPoint() {
 
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOPoint(Builder builder) {
         this.numberPoint = builder.numberPoint;
@@ -83,119 +82,59 @@ public class DTOPoint {
         this.propertyCode = builder.propertyCode;
     }
 
-    /**
-     * Obtiene el número del punto asociado.
-     *
-     * @return número del punto
-     */
     public int getNumberPoint() {
         return numberPoint;
     }
 
-    /**
-     * Establece el número del punto asociado.
-     *
-     * @param numberPoint número del punto
-     */
     public void setNumberPoint(int numberPoint) {
         this.numberPoint = numberPoint;
     }
 
-    /**
-     * Obtiene la coordenada norte.
-     *
-     * @return valor de la coordenada norte
-     */
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
-    /**
-     * Establece la coordenada norte.
-     *
-     * @param northCoordinate valor de la coordenada norte
-     */
     public void setNorthCoordinate(Double northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
-    /**
-     * Obtiene la coordenada este.
-     *
-     * @return valor de la coordenada este
-     */
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
-    /**
-     * Establece la coordenada este.
-     *
-     * @param eastCoordinate valor de la coordenada este
-     */
     public void setEastCoordinate(Double eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
-    /**
-     * Obtiene la distancia con respecto al siguiente punto.
-     *
-     * @return distancia al siguiente punto
-     */
     public Double getDistance() {
         return distance;
     }
 
-    /**
-     * Establece la distancia con respecto al siguiente punto.
-     *
-     * @param distance distancia al siguiente punto
-     */
     public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    /**
-     * Obtiene los datos del lindero vecino al punto.
-     *
-     * @return datos del lindero vecino
-     */
     public String getHillside() {
         return hillside;
     }
 
-    /**
-     * Establece los datos del lindero vecino al punto.
-     *
-     * @param hillside datos del lindero vecino
-     */
     public void setHillside(String hillside) {
         this.hillside = hillside;
     }
 
-    /**
-     * Obtiene el código de {@code Property}.
-     *
-     * @return código del predio asociado
-     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
-    /**
-     * Establece el código de {@code Property}.
-     *
-     * @param propertyCode código del predio asociado
-     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
     /**
-     * Builder para la construcción fluida de instancias de {@link DTOPoint}
+     * Builder for seamless construction of {@link DTOPoint} instances
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
+     * It allows you to configure the attributes before invoking
      * {@link #build()}.
      * </p>
      */
@@ -208,77 +147,36 @@ public class DTOPoint {
         private String hillside;
         private int propertyCode;
 
-        /**
-         * Establece el número del punto.
-         *
-         * @param numberPoint número del punto
-         * @return builder actual
-         */
         public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
             return this;
         }
 
-        /**
-         * Establece la coordenada norte.
-         *
-         * @param northCoordinate valor de la coordenada norte
-         * @return builder actual
-         */
         public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
-        /**
-         * Establece la coordenada este.
-         *
-         * @param eastCoordinate valor de la coordenada este
-         * @return builder actual
-         */
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }
 
-        /**
-         * Establece la distancia al siguiente punto.
-         *
-         * @param distance distancia en metros
-         * @return builder actual
-         */
         public Builder distance(Double distance) {
             this.distance = distance;
             return this;
         }
 
-        /**
-         * Establece la información del lindero vecino.
-         *
-         * @param hillside datos del lindero
-         * @return builder actual
-         */
         public Builder hillside(String hillside) {
             this.hillside = hillside;
             return this;
         }
 
-        /**
-         * Establece el código del predio asociado.
-         *
-         * @param propertyCode código del predio
-         * @return builder actual
-         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOPoint}.
-         *
-         * @return nuevo DTO configurado
-         */
         public DTOPoint build() {
             return new DTOPoint(this);
         }

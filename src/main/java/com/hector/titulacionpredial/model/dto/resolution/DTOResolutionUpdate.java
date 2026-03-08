@@ -3,27 +3,28 @@ package com.hector.titulacionpredial.model.dto.resolution;
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
- * Data Transfer Object (DTO) que contiene la información
- * para actualizar los datos de una resolución.
+ * Data Transfer Object (DTO) that contains the information
+ * to update the data of a resolution.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de presentación a
- * la capa de persistencia para actualizar la información, evitando
- * exponer directamente la entidad {@code Resolution}.
+ * It is used to transport data from the presentation layer
+ * to the persistence layer to update information, avoiding
+ * directly exposing the {@code Resolution} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOResolution} agregando información específica
- * relacionada con el código de la resolución.
+ * Extends {@link DTOResolution} by adding specific information
+ * related to the resolution code.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules.
+ * Its sole purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link DTOResolution.Builder}.
+ * It supports fluent building using the
+ * {@link DTOResolution.Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -34,70 +35,49 @@ public class DTOResolutionUpdate extends DTOResolution {
     private int code;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOResolutionUpdate() {
         super();
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOResolutionUpdate(Builder builder) {
         super(builder);
         this.code = builder.code;
     }
 
-    /**
-     * Obtiene el código de la resolución.
-     *
-     * @return código de la resolución
-     */
     public int getCode() {
         return code;
     }
 
-    /**
-     * Establece el código de la resolución.
-     *
-     * @param code código de la resolución
-     */
     public void setCode(int code) {
         this.code = code;
     }
 
     /**
-     * Builder para la construcción fluida de instancias
-     * de {@link DTOResolutionUpdate}.
+     * Builder for the smooth construction of
+     * {@link DTOResolutionUpdate} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
      * </p>
      */
     public static class Builder extends DTOResolution.Builder<Builder> {
 
         private int code;
 
-        /**
-         * Establece el código de la resolución a actualizar.
-         *
-         * @param code código de la resolución
-         * @return builder actual
-         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOResolutionUpdate}
-         *
-         * @return nuevo DTO configurado
-         */
         @Override
         public DTOResolutionUpdate build() {
             return new DTOResolutionUpdate(this);

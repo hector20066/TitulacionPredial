@@ -3,27 +3,28 @@ package com.hector.titulacionpredial.model.dto.resolution;
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
 /**
- * Data Transfer Object (DTO) que contiene la información obtenida
- * de una resolución.
+ * Data Transfer Object (DTO) that contains the information
+ * obtained from a resolution.
  *
  * <p>
- * Se utiliza para transportar datos de la capa de persistencia
- * a la capa de presentación para mostrar la información, evitando
- * exponer directamente la entidad {@code Resolution}.
+ * It is used to transport data from the persistence layer
+ * to the presentation layer to display information, avoiding
+ * directly exposing the {@code Resolution} entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOResolution} agregando información específica
- * relacionada con el código y el nombre del beneficiario.
+ * Extend {@link DTOResolution} by adding specific information
+ * related to the code and beneficiary name.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its
+ * sole purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link DTOResolutionDetails.Builder}.
+ * It supports fluent construction using the
+ * {@link DTOResolutionDetails.Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -35,17 +36,17 @@ public class DTOResolutionDetails extends DTOResolution {
     private String beneficiaryName;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOResolutionDetails() {
         super();
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOResolutionDetails(Builder builder) {
         super(builder);
@@ -53,49 +54,29 @@ public class DTOResolutionDetails extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
-    /**
-     * Obtiene el código de la resolución.
-     *
-     * @return código de la resolución
-     */
     public int getCode() {
         return code;
     }
 
-    /**
-     * Establece el código de la resolución.
-     *
-     * @param code código de la resolución
-     */
     public void setCode(int code) {
         this.code = code;
     }
 
-    /**
-     * Obtiene el nombre del beneficiario.
-     *
-     * @return nombre completo del beneficiario
-     */
     public String getBeneficiaryName() {
         return beneficiaryName;
     }
 
-    /**
-     * Establece el nombre del beneficiario.
-     *
-     * @param beneficiaryName nombre completo del beneficiario
-     */
     public void setBeneficiaryName(String beneficiaryName) {
         this.beneficiaryName = beneficiaryName;
     }
 
     /**
-     * Builder para la construcción fluida de instancias
-     * de {@link DTOResolutionDetails}.
+     * Builder for the seamless construction of
+     * {@link DTOResolutionDetails} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
      * </p>
      */
     public static class Builder extends DTOResolution.Builder<Builder> {
@@ -103,33 +84,16 @@ public class DTOResolutionDetails extends DTOResolution {
         private int code;
         private String beneficiaryName;
 
-        /**
-         * Establece el código de la resolución.
-         *
-         * @param code código de la resolución
-         * @return builder actual
-         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-        /**
-         * Establece el nombre del beneficiario.
-         *
-         * @param beneficiaryName nombre completo del beneficiario
-         * @return builder actual
-         */
         public Builder beneficiaryName(String beneficiaryName) {
             this.beneficiaryName = beneficiaryName;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOResolutionDetails}.
-         *
-         * @return nuevo DTO configurado
-         */
         @Override
         public DTOResolutionDetails build() {
             return new DTOResolutionDetails(this);

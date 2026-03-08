@@ -1,29 +1,27 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
- * Data Transfer Object (DTO) que representa la información
- * de un cónyuge para operaciones de entrada o salida
- * del sistema.
+ * Data Transfer Object (DTO) that represents a spouse's information
+ * for system input or output operations.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentación
- * y la capa de persistencia, evitando exponer directamente la entidad
- * {@code Spouse}.
+ * It is used to transport data between the presentation layer and the
+ * persistence layer, avoiding directly exposing the {@code Spouse}
+ * entity.
  * </p>
  *
  * <p>
- * Extiende {@link DTOBasePerson} agregando información específica
- * relacionada con el lugar de expedición, el nombre completo y el
- * código de {@code Beneficiary}.
+ * Extends {@link DTOBasePerson} by adding specific information related
+ * to the place of issue, full name, and code of {@code Beneficiary}.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its sole
+ * purpose is to encapsulate data.
  * </p>
  *
  * <p>
- * Soporta construcción fluida mediante el patrón {@link Builder}.
+ * It supports fluid construction using the {@link Builder} pattern.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -37,17 +35,17 @@ public class DTOSpouse extends DTOBasePerson {
     private int beneficiaryCode;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or
+     * mapping frameworks.
      */
     public DTOSpouse() {
 
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOSpouse(Builder builder) {
         super(builder.address, builder.phone);
@@ -58,84 +56,44 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
-    /**
-     * Obtiene el identificador del cónyuge.
-     *
-     * @return cédula del cónyuge
-     */
     public long getId() {
         return id;
     }
 
-    /**
-     * Establece el identificador del cónyuge.
-     *
-     * @param id cédula del cónyuge
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * Obtiene el nombre completo del cónyuge.
-     *
-     * @return nombre completo
-     */
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * Establece el nombre completo del cónyuge.
-     *
-     * @param fullName nombre completo
-     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**
-     * Obtiene el lugar de expedición del documento.
-     *
-     * @return lugar de expedición
-     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
-    /**
-     * Establece el lugar de expedición del documento.
-     *
-     * @param expeditionLocation lugar de expedición
-     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
-    /**
-     * Obtiene el código del beneficiario asociado.
-     *
-     * @return código del beneficiario
-     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
-    /**
-     * Establece el código del beneficiario asociado.
-     *
-     * @param beneficiaryCode código del beneficiario
-     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }
 
     /**
-     * Builder para la construcción fluida de instancias de {@link DTOSpouse}
+     * Builder for seamless construction of {@link DTOSpouse} instances
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
      * </p>
      */
     public static class Builder {
@@ -147,77 +105,36 @@ public class DTOSpouse extends DTOBasePerson {
         private long phone;
         private int beneficiaryCode;
 
-        /**
-         * Establece el id del cónyuge.
-         *
-         * @param id cédula del cónyuge
-         * @return builder actual
-         */
         public Builder id(long id) {
             this.id = id;
             return this;
         }
 
-        /**
-         * Establece el nombre completo.
-         *
-         * @param fullName nombre completo del cónyuge
-         * @return builder actual
-         */
         public Builder fullName(String fullName) {
             this.fullName = fullName;
             return this;
         }
 
-        /**
-         * Establece el lugar de expedición.
-         *
-         * @param expeditionLocation lugar de expedición
-         * @return builder actual
-         */
         public Builder expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
             return this;
         }
 
-        /**
-         * Establece la dirección.
-         *
-         * @param address dirección del cónyuge
-         * @return builder actual
-         */
         public Builder address(String address) {
             this.address = address;
             return this;
         }
 
-        /**
-         * Establece el teléfono.
-         *
-         * @param phone teléfono de contacto
-         * @return builder actual
-         */
         public Builder phone(long phone) {
             this.phone = phone;
             return this;
         }
 
-        /**
-         * Establece el código del beneficiario asociado.
-         *
-         * @param beneficiaryCode código del beneficiario
-         * @return builder actual
-         */
         public Builder beneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
             return this;
         }
 
-        /**
-         * Construye una nueva instancia de {@link DTOSpouse}.
-         *
-         * @return nuevo DTO configurado
-         */
         public DTOSpouse build() {
             return new DTOSpouse(this);
         }

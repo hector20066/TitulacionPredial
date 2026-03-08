@@ -1,24 +1,22 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
- * Data Transfer Object (DTO) base que contiene información
- * común relacionada con datos personales.
+ * Data Transfer Object (DTO) base that contains common information
+ * related to personal data.
  *
  * <p>
- * Esta clase es utilizada para transportar información entre
- * capas del sistema (por ejemplo, entre la capa de presentación
- * y la capa de aplicación) sin exponer directamente las entidades
- * del dominio.
+ * This class is used to transport information between layers of the
+ * system (for example, between the presentation layer and the
+ * application layer) without directly exposing the domain entities.
  * </p>
  *
  * <p>
- * No contiene lógica de negocio y su única responsabilidad
- * es encapsular datos.
+ * It contains no business logic and its sole responsibility is to
+ * encapsulate data.
  * </p>
  *
  * <p>
- * Es mutable y está diseñada para ser utilizada como objeto
- * simple de transporte.
+ * It is mutable and designed to be used as a simple transport object.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -27,66 +25,46 @@ package com.hector.titulacionpredial.model.dto;
 public class DTOBasePerson {
 
     /**
-     * Dirección asociada a la persona.
+     * Address associated with the person.
      */
     protected String address;
 
     /**
-     * Número telefónico de contacto.
+     * Contact phone number.
      */
     protected long phone;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo automático.
+     * Empty constructor required for serialization or automatic
+     * mapping frameworks.
      */
     public DTOBasePerson() {
 
     }
 
     /**
-     * Constructor completo.
+     * Constructor to initialize parameters.
      *
-     * @param address dirección de la persona
-     * @param phone   número telefónico
+     * @param address person's address
+     * @param phone   telephone number
      */
     public DTOBasePerson(String address, long phone) {
         this.address = address;
         this.phone = phone;
     }
 
-    /**
-     * Obtiene la dirección asociada a la persona.
-     *
-     * @return dirección de la persona
-     */
     public String getAddress() {
         return address;
     }
 
-    /**
-     * Establece la dirección asociada a la persona.
-     *
-     * @param address dirección de la persona
-     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /**
-     * Obtiene el número telefónico de contacto.
-     *
-     * @return número telefónico
-     */
     public long getPhone() {
         return phone;
     }
 
-    /**
-     * Establece el número telefónico de contacto.
-     *
-     * @param phone número telefónico
-     */
     public void setPhone(long phone) {
         this.phone = phone;
     }

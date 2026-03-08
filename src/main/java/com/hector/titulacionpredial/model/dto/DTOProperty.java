@@ -1,23 +1,23 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
- * Data Transfer Object (DTO) que representa la información
- * de un Predio para operaciones de entrada o salida del sistema.
+ * Data Transfer Object (DTO) that represents the information of a
+ * Property for entry or exit operations of the system.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentación y
- * la capa de persistencia, evitando exponer directamente la entidad
- * {@code Property}
+ * It is used to transport data between the presentation layer and
+ * the persistence layer, avoiding direct exposure of the
+ * {@code Property} entity.
  * </p>
  *
  * <p>
- * Contiene la información base de un predio, como la cédula catastral
- * y el área del predio.
+ * It contains the basic information of a property, such as the
+ * cadastral certificate and the area of the property.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its
+ * sole purpose is to encapsulate data.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -26,66 +26,45 @@ package com.hector.titulacionpredial.model.dto;
 public class DTOProperty {
 
     /**
-     * Referencia catastral.
+     * Cadastral reference.
      */
     protected String cadastralId;
 
     /**
-     * Área del predio.
+     * Area of the property.
      */
     protected Double area;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo.
+     * Empty constructor required for serialization or mapping frameworks.
      */
     public DTOProperty() {
 
     }
 
     /**
-     * Constructor utilizado para inicializar las variables.
+     * Constructor used to initialize variables.
      *
-     * @param cadastralId cédula catastral del predio
-     * @param area        área del predio
+     * @param cadastralId cadastral certificate of the property
+     * @param area        area of the property
      */
     public DTOProperty(String cadastralId, Double area) {
         this.cadastralId = cadastralId;
         this.area = area;
     }
 
-    /**
-     * Obtiene la referencia catastral del predio.
-     *
-     * @return cédula catastral del predio
-     */
     public String getCadastralId() {
         return cadastralId;
     }
 
-    /**
-     * Establece la referencia catastral del predio.
-     *
-     * @param cadastralId cédula catastral del predio
-     */
     public void setCadastralId(String cadastralId) {
         this.cadastralId = cadastralId;
     }
 
-    /**
-     * Obtiene el área del predio.
-     *
-     * @return área del predio
-     */
     public Double getArea() {
         return area;
     }
 
-    /**
-     * Establece el área del predio.
-     *
-     * @param area área del predio
-     */
     public void setArea(Double area) {
         this.area = area;
     }

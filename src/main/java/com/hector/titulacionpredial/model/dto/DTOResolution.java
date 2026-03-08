@@ -3,24 +3,23 @@ package com.hector.titulacionpredial.model.dto;
 import java.time.LocalDate;
 
 /**
- * Data Transfer Object (DTO) que representa la información
- * de una resolución para operaciones de entrada o salida
- * del sistema.
+ * Data Transfer Object (DTO) that represents the information of a
+ * resolution for input or output operations of the system.
  *
  * <p>
- * Se utiliza para transportar datos entre la capa de presentación y
- * la capa de persistencia, evitando exponer directamente la entidad
- * {@code Resolution}.
+ * It is used to transport data between the presentation layer and
+ * the persistence layer, avoiding directly exposing the
+ * {@code Resolution} entity.
  * </p>
  *
  * <p>
- * Contiene la información necesaria para una resolución, como el número
- * de la resolución y la información que esta contendrá.
+ * It contains the information necessary for a resolution, such as the
+ * resolution number and the information it will contain.
  * </p>
  *
  * <p>
- * Este DTO no contiene lógica de negocio ni reglas de validación.
- * Su única responsabilidad es encapsular datos.
+ * This DTO contains no business logic or validation rules. Its sole
+ * purpose is to encapsulate data.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -29,52 +28,52 @@ import java.time.LocalDate;
 public class DTOResolution {
 
     /**
-     * Número único de la resolución.
+     * Unique resolution number.
      */
     protected long resolutionNumber;
 
     /**
-     * Fecha de la ejecutoria.
+     * Date of execution.
      */
     protected LocalDate executory;
 
     /**
-     * Descripción del proceso.
+     * Process description.
      */
     protected String act;
 
     /**
-     * Escritura pública.
+     * Public deed.
      */
     protected String publicWriting;
 
     /**
-     * Fecha en la que se genera la resolución.
+     * Date on which the resolution is generated.
      */
     protected LocalDate notification;
 
     /**
-     * Folio de Matrícula Inmobiliaria.
+     * Real Estate Registration Folio.
      */
     protected String fmi;
 
     /**
-     * Notaría donde se ejecuta la resolución.
+     * Notary where the resolution is executed.
      */
     protected String notary;
 
     /**
-     * Constructor vacío requerido para frameworks
-     * de serialización o mapeo automático.
+     * Empty constructor required for serialization or automatic
+     * mapping frameworks.
      */
     public DTOResolution() {
 
     }
 
     /**
-     * Constructor utilizado por el patrón Builder.
+     * Constructor used by the Builder pattern.
      *
-     * @param builder instancia configurada del builder
+     * @param builder configured instance of the builder
      */
     public DTOResolution(Builder<?> builder) {
         this.resolutionNumber = builder.resolutionNumber;
@@ -86,142 +85,72 @@ public class DTOResolution {
         this.notary = builder.notary;
     }
 
-    /**
-     * Obtiene el número único de la resolución.
-     *
-     * @return número de la resolución
-     */
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
-    /**
-     * Establece el número único de la resolución.
-     *
-     * @param resolutionNumber número de la resolución
-     */
     public void setResolutionNumber(long resolutionNumber) {
         this.resolutionNumber = resolutionNumber;
     }
 
-    /**
-     * Obtiene la fecha de la ejecutoria.
-     *
-     * @return fecha de la ejecutoria
-     */
     public LocalDate getExecutory() {
         return executory;
     }
 
-    /**
-     * Establece la fecha de la ejecutoria.
-     *
-     * @param executory fecha de la ejecutoria
-     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
-    /**
-     * Obtiene la descripción del proceso.
-     *
-     * @return descripción del proceso
-     */
     public String getAct() {
         return act;
     }
 
-    /**
-     * Establece la descripción del proceso.
-     *
-     * @param act descripción del proceso
-     */
     public void setAct(String act) {
         this.act = act;
     }
 
-    /**
-     * Obtiene la escritura pública.
-     *
-     * @return escritura pública
-     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
-    /**
-     * Establece la escritura pública.
-     *
-     * @param publicWriting escritura pública
-     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
-    /**
-     * Obtiene la fecha en la que se genera la resolución.
-     *
-     * @return fecha de notificación de la resolución
-     */
     public LocalDate getNotification() {
         return notification;
     }
 
-    /**
-     * Establece la fecha en la que se genera la resolución.
-     *
-     * @param notification fecha de notificación de la resolución
-     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
-    /**
-     * Obtiene el Folio de Matrícula Inmobiliaria.
-     *
-     * @return Folio de Matrícula Inmobiliaria
-     */
     public String getFmi() {
         return fmi;
     }
 
-    /**
-     * Establece el Folio de Matrícula Inmobiliaria.
-     *
-     * @param fmi Folio de Matrícula Inmobiliaria
-     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
-    /**
-     * Obtiene la notaría donde se ejecuta la resolución.
-     *
-     * @return notaría de la resolución
-     */
     public String getNotary() {
         return notary;
     }
 
-    /**
-     * Establece la notaría donde se ejecuta la resolución.
-     *
-     * @param notary notaría de la resolución
-     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
 
     /**
-     * Builder genérico para la construcción fluida de instancias
-     * de {@link DTOResolution}.
+     * Generic builder for fluid building of
+     * {@link DTOResolution} instances.
      *
      * <p>
-     * Permite configurar los atributos antes de invocar
-     * {@link #build()}.
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
      * </p>
      *
-     * @param <T> tipo concreto del builder
+     * @param <T> specific type of builder
      */
     public static class Builder<T extends Builder<T>> {
 
@@ -234,9 +163,9 @@ public class DTOResolution {
         private String notary;
 
         /**
-         * Devuelve la instancia concreta del builder.
+         * Returns the concrete instance of the builder.
          *
-         * @return instancia tipada del builder
+         * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
         protected T self() {
@@ -244,10 +173,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece el número de la resolución.
+         * State the resolution number.
          *
-         * @param resolutionNumber número de la resolución
-         * @return builder actual
+         * @param resolutionNumber resolution number
+         * @return current builder
          */
         public T resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
@@ -255,10 +184,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece la ejecutoria.
+         * It establishes the execution.
          *
-         * @param executory fecha de la ejecutoria
-         * @return builder actual
+         * @param executory date of the execution
+         * @return current builder
          */
         public T executory(LocalDate executory) {
             this.executory = executory;
@@ -266,10 +195,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece el acto.
+         * Establish the act.
          *
-         * @param act acto de la ejecutoria
-         * @return builder actual
+         * @param act act of execution
+         * @return current builder
          */
         public T act(String act) {
             this.act = act;
@@ -277,10 +206,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece la escritura pública.
+         * Establish the public deed.
          *
-         * @param publicWriting escritura pública
-         * @return builder actual
+         * @param publicWriting public deed
+         * @return current builder
          */
         public T publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
@@ -288,10 +217,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece la fecha de notificación.
+         * Set the notification date.
          *
-         * @param notification fecha de notificación
-         * @return builder actual
+         * @param notification notification date
+         * @return current builder
          */
         public T notification(LocalDate notification) {
             this.notification = notification;
@@ -299,10 +228,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece el Folio de Matrícula Inmobiliaria.
+         * Establishes the Real Estate Registration Folio.
          *
-         * @param fmi Folio de Matrícula Inmobiliaria
-         * @return builder actual
+         * @param fmi Real Estate Registration Folio
+         * @return current builder
          */
         public T fmi(String fmi) {
             this.fmi = fmi;
@@ -310,10 +239,10 @@ public class DTOResolution {
         }
 
         /**
-         * Establece la notaría.
+         * The notary establishes.
          *
-         * @param notary notaría
-         * @return builder actual
+         * @param notary notary
+         * @return current builder
          */
         public T notary(String notary) {
             this.notary = notary;
@@ -321,9 +250,9 @@ public class DTOResolution {
         }
 
         /**
-         * Construye una nueva instancia de {@link DTOResolution}.
+         * Build a new instance of {@link DTOResolution}.
          *
-         * @return nuevo DTO configurado
+         * @return new DTO configured
          */
         public DTOResolution build() {
             return new DTOResolution(this);
