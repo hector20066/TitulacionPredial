@@ -9,13 +9,12 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Botón con insignia numérica (badge) superpuesta.
+ * Button with superimposed numerical badge.
  *
  * <p>
- * Extiende {@link JButton} para mostrar un círculo con un
- * número en la esquina superior derecha, útil para indicar
- * conteos o notificaciones. Incluye efecto de animación
- * al pasar el mouse.
+ * Extends {@link JButton} to display a circle with a number
+ * in the upper right corner, useful for indicating counts or
+ * notifications. Includes a hover animation effect.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -32,7 +31,7 @@ public class ButtonBadges extends JButton {
     private int badges;
 
     /**
-     * Crea un botón con insignia con estilo predeterminado.
+     * Create a button with a default badge style.
      */
     public ButtonBadges() {
         setContentAreaFilled(false);
@@ -60,7 +59,7 @@ public class ButtonBadges extends JButton {
     }
 
     /**
-     * Inicializa el temporizador para la animación del efecto ripple.
+     * Initializes the timer for the ripple effect animation.
      */
     private void initAnimator() {
         int delay = 16;
@@ -165,10 +164,10 @@ public class ButtonBadges extends JButton {
     }
 
     /**
-     * Limita el valor de alfa al rango [0, 1].
+     * Limit the value of alpha to the range [0, 1].
      *
-     * @param value valor a limitar
-     * @return valor limitado
+     * @param value value to limit
+     * @return limited value
      */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;

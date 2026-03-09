@@ -10,12 +10,11 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- * Botón de acción personalizado con efecto ripple.
+ * Custom action button with ripple effect.
  *
  * <p>
- * Extiende {@link JButton} con esquinas redondeadas, gradiente
- * de color y un efecto visual de onda (ripple) al hacer clic.
- * Utilizado para las acciones principales de la interfaz.
+ * Extends {@link JButton} with rounded corners, a color gradient,
+ * and a ripple effect on click. Used for primary interface actions.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -31,7 +30,7 @@ public class ButtonAction extends JButton {
     private Color effectColor = new Color(173, 173, 173);
 
     /**
-     * Crea un botón de acción con estilo predeterminado y efecto ripple.
+     * Create an action button with a default style and ripple effect.
      */
     public ButtonAction() {
         setContentAreaFilled(false);
@@ -61,7 +60,7 @@ public class ButtonAction extends JButton {
     }
 
     /**
-     * Inicializa el temporizador para la animación del efecto ripple.
+     * Initializes the timer for the ripple effect animation.
      */
     private void initAnimator() {
         int delay = 16;
@@ -144,14 +143,15 @@ public class ButtonAction extends JButton {
     }
 
     /**
-     * Limita el valor de alfa al rango [0, 1].
+     * Limit the value of alpha to the range [0, 1].
      *
-     * @param value valor a limitar
-     * @return valor limitado
+     * @param value value to limit
+     * @return limited value
      */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;
         if (value > 1f) return 1f;
         return value;
     }
+
 }

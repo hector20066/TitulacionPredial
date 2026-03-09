@@ -3,13 +3,11 @@ package com.hector.titulacionpredial.view.swing.button;
 import javax.swing.*;
 
 /**
- * Panel que agrupa los botones de control de ventana
- * (minimizar, maximizar y cerrar).
+ * Panel that groups the window control buttons (minimize, maximize and close).
  *
  * <p>
- * Proporciona el método {@code initEvent(JFrame, JPanel)}
- * para enlazar los eventos de cada botón con las acciones
- * correspondientes de la ventana.
+ * It provides the {@code initEvent(JFrame, JPanel)} method to bind each button's
+ * events to the corresponding window actions.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -19,7 +17,7 @@ import javax.swing.*;
 public class WinButton extends javax.swing.JPanel {
 
     /**
-     * Crea el panel con los botones de control de ventana.
+     * Create the panel with the window control buttons.
      */
     public WinButton() {
         initComponents();
@@ -64,10 +62,10 @@ public class WinButton extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Enlaza los eventos de los botones con las acciones de la ventana.
+     * Link button events to window actions.
      *
-     * @param frame ventana principal
-     * @param panel panel de contenido
+     * @param frame main window
+     * @param panel content panel
      */
     public void initEvent(JFrame frame, JPanel panel) {
         btn_exit.addActionListener((evt) -> System.exit(0));
