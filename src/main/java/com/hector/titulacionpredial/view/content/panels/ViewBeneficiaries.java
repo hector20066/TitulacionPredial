@@ -16,12 +16,11 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 
 /**
- * Panel para la visualización y gestión de beneficiarios
- * en formato de tabla.
+ * Panel for viewing and managing beneficiaries in table format.
  *
  * <p>
- * Permite buscar, modificar, eliminar, exportar y ver
- * el perfil de los beneficiarios registrados en el sistema.
+ * It allows you to search, modify, delete, export and view the
+ * profile of beneficiaries registered in the system.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -40,7 +39,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     DefaultTableModel tableModel = new DefaultTableModel();
 
     /**
-     * Crea el panel de consulta de beneficiarios y configura la tabla.
+     * Create the beneficiary query panel and configure the table.
      */
     public ViewBeneficiaries() {
         initComponents();
@@ -219,9 +218,9 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Update the panel texts according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with translated texts
      */
     public void updateLanguage(DTOViewBeneficiariesText texts) {
         jlb_title.setText(texts.getTitle());
@@ -248,181 +247,86 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jtbl_beneficiaries.getTableHeader().repaint();
     }
 
-    /**
-     * Asigna el listener para ver detalles del beneficiario.
-     *
-     * @param action listener del botón
-     */
     public void setControllerViewDetails(ActionListener action) {
         btn_seeProfile.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para exportar a Excel.
-     *
-     * @param action listener del botón
-     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para modificar beneficiario.
-     *
-     * @param action listener del botón
-     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para eliminar beneficiario.
-     *
-     * @param action listener del botón
-     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para buscar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para cancelar búsqueda.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener de documento al campo de búsqueda.
-     *
-     * @param listen listener de cambios
-     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
-    /**
-     * Asigna el listener de mouse al campo de búsqueda.
-     *
-     * @param listen listener de mouse
-     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
-    /**
-     * Asigna el listener de foco al campo de búsqueda.
-     *
-     * @param listen listener de foco
-     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
-    /**
-     * Obtiene el modelo de datos de la tabla de beneficiarios.
-     *
-     * @return componente {@link DefaultTableModel}
-     */
     public DefaultTableModel getTableModel() {
         return tableModel;
     }
 
-    /**
-     * Obtiene el componente botón de eliminar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_delete() {
         return btn_delete;
     }
 
-    /**
-     * Obtiene el componente botón de modificar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
-    /**
-     * Obtiene el componente botón de buscar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
-    /**
-     * Obtiene el componente botón de ver perfil completo.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_seeProfile() {
         return btn_seeProfile;
     }
 
-    /**
-     * Obtiene el componente botón de cancelar búsqueda.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
-    /**
-     * Obtiene el componente panel de contenido principal.
-     *
-     * @return componente {@link JPanel}
-     */
     public JPanel getJpl_content() {
         return jpl_content;
     }
 
-    /**
-     * Obtiene el componente tabla de beneficiarios.
-     *
-     * @return componente {@link JTable}
-     */
     public JTable getJtbl_beneficiaries() {
         return jtbl_beneficiaries;
     }
 
-    /**
-     * Obtiene el componente panel redondeado de búsqueda.
-     *
-     * @return componente {@link RoundedPanel}
-     */
     public RoundedPanel getRoundedPanel1() {
         return roundedPanel1;
     }
 
-    /**
-     * Obtiene el componente campo de texto de búsqueda.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_search() {
         return txt_search;
     }
 
     /**
-     * Carga un beneficiario en la tabla.
+     * Load a beneficiary into the table.
      *
-     * @param dto datos simplificados del beneficiario
+     * @param dto simplified beneficiary data
      */
     public void loadData(DTOBeneficiarySimpleDetails dto) {
         int code = dto.getCode();

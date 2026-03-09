@@ -16,13 +16,12 @@ import java.awt.event.MouseListener;
 import java.time.LocalDate;
 
 /**
- * Panel para la visualización de resoluciones registradas
- * en formato de tabla.
+ * Panel for displaying recorded resolutions in table format.
  *
  * <p>
- * Permite buscar y modificar resoluciones existentes.
- * Muestra información como número de resolución, código
- * de predio, FMI, fechas de notificación y ejecutoria.
+ * It allows you to search for and modify existing resolutions.
+ * It displays information such as resolution number, property
+ * code, FMI, notification dates, and enforcement date.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -42,7 +41,7 @@ public class SeeResolutions extends javax.swing.JPanel {
     DefaultTableModel model = new DefaultTableModel();
 
     /**
-     * Crea el panel de consulta de resoluciones y configura la tabla.
+     * Create the resolutions query panel and configure the table.
      */
     public SeeResolutions() {
         initComponents();
@@ -180,9 +179,9 @@ public class SeeResolutions extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Actualiza los textos del panel según el idioma seleccionado.
+     * Update the panel texts according to the selected language.
      *
-     * @param texts DTO con los textos traducidos
+     * @param texts DTO with translated texts
      */
     public void updateLanguage(DTOSeeResolutionsText texts) {
         jlb_title.setText(texts.getTitle());
@@ -208,127 +207,62 @@ public class SeeResolutions extends javax.swing.JPanel {
         jtbl_resolutions.getTableHeader().repaint();
     }
 
-    /**
-     * Asigna el listener para el botón de modificar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para el botón de buscar.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener para cancelar búsqueda.
-     *
-     * @param action listener del botón
-     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
-    /**
-     * Asigna el listener de documento al campo de búsqueda.
-     *
-     * @param listen listener de cambios de documento
-     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
-    /**
-     * Asigna el listener de mouse al campo de búsqueda.
-     *
-     * @param listen listener de mouse
-     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
-    /**
-     * Asigna el listener de foco al campo de búsqueda.
-     *
-     * @param listen listener de foco
-     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
-    /**
-     * Obtiene el modelo de datos de la tabla de resoluciones.
-     *
-     * @return componente {@link DefaultTableModel}
-     */
     public DefaultTableModel getModel() {
         return model;
     }
 
-    /**
-     * Obtiene el componente botón de modificar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
-    /**
-     * Obtiene el componente botón de buscar.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
-    /**
-     * Obtiene el componente botón de cancelar búsqueda.
-     *
-     * @return componente {@link ButtonAction}
-     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
-    /**
-     * Obtiene el componente tabla de resoluciones.
-     *
-     * @return componente {@link JTable}
-     */
     public JTable getJtbl_resolutions() {
         return jtbl_resolutions;
     }
 
-    /**
-     * Obtiene el componente panel redondeado de búsqueda.
-     *
-     * @return componente {@link RoundedPanel}
-     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
-    /**
-     * Obtiene el componente campo de texto de búsqueda.
-     *
-     * @return componente {@link JTextField}
-     */
     public JTextField getTxt_search() {
         return txt_search;
     }
 
     /**
-     * Carga una resolución en la tabla.
+     * Load a resolution into the table.
      *
-     * @param dto datos de la resolución
+     * @param dto resolution data
      */
     public void loadData(DTOResolutionDetails dto) {
         int code = dto.getCode();

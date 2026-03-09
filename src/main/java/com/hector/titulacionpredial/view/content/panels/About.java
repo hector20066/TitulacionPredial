@@ -9,7 +9,7 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAboutText;
  * «About» panel displaying application information, version,
  * development team credits, and a link to the HLDevWorks website.
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class About extends javax.swing.JPanel implements LanguageObserver {

@@ -10,13 +10,14 @@ import java.awt.*;
 
 /**
  * Modal dialog to view the detailed profile of a beneficiary.
+ *
  * <p>
- * Displays the beneficiary's personal information
- * in an animated dialog with entrance and exit
- * transitions using the TimingFramework library.
+ * Displays the beneficiary's personal information in an animated
+ * dialog with entrance and exit transitions using the TimingFramework
+ * library.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class UserProfile extends javax.swing.JDialog {
@@ -31,8 +32,8 @@ public class UserProfile extends javax.swing.JDialog {
      *
      * <p>
      * Initializes the graphical components, configures
-     * the scrolling, enables line wrapping in text
-     * areas, and sets the opacity animation.
+     * the scrolling, enables line wrapping in text areas,
+     * and sets the opacity animation.
      * </p>
      *
      * @param parent parent window of the dialog
@@ -592,8 +593,8 @@ public class UserProfile extends javax.swing.JDialog {
      * Closes the dialogue with a fade-out animation.
      *
      * <p>
-     * Stops any ongoing animations before
-     * starting the closing animation.
+     * Stops any ongoing animations before starting the closing
+     * animation.
      * </p>
      */
     private void closeMenu() {

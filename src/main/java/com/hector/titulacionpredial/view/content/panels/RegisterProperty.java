@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  * cadastral number, area, and associated beneficiary code.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class RegisterProperty extends javax.swing.JPanel {

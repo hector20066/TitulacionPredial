@@ -19,13 +19,14 @@ import java.time.LocalDate;
 
 /**
  * Panel for viewing registered properties in table format with 30 columns.
+ *
  * <p>
  * Displays detailed information for each property, including its geographic
  * coordinates (up to 4 points), cadastral data and municipality. Allows
  * searching, creating, deleting, and exporting properties.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class SeeProperties extends JPanel {
@@ -450,6 +451,7 @@ public class SeeProperties extends JPanel {
                 eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2,
                 hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4,
                 distance4, hillside4, area};
+
         model.addRow(addData);
     }
 

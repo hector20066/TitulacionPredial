@@ -9,8 +9,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 import java.awt.*;
 
 /**
- * Modal dialog for registering spouse's data
- * of a beneficiary.
+ * Modal dialog for registering spouse's data of a beneficiary.
  *
  * <p>
  * It is shown when the beneficiary's marital status
@@ -18,7 +17,7 @@ import java.awt.*;
  * name. and spouse's ID. Includes entrance animation.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see DTOSpouse
  */
@@ -34,9 +33,8 @@ public class SpouseData extends javax.swing.JDialog {
      * Creates a new dialog to register spouse's data.
      *
      * <p>
-     * Initializes the graphical components,
-     * connects the button events, and
-     * configures the opacity animation.
+     * Initializes the graphical components, connects the button
+     * events, and configures the opacity animation.
      * </p>
      *
      * @param parent dialog parent window
@@ -274,8 +272,8 @@ public class SpouseData extends javax.swing.JDialog {
      * Connects the events of the save and cancel buttons.
      *
      * <p>
-     * When saving, it's marked as confirmed;
-     * when canceling, it's discarded.
+     * When saving, it's marked as confirmed; when canceling,
+     * it's discarded.
      * </p>
      */
     private void connectEvents() {
@@ -296,8 +294,8 @@ public class SpouseData extends javax.swing.JDialog {
      * Closes the dialogue with a fade-out animation.
      *
      * <p>
-     * Stops any ongoing animation before
-     * starting the closing animation.
+     * Stops any ongoing animation before starting the
+     * closing animation.
      * </p>
      */
     private void closeMenu() {
@@ -313,7 +311,7 @@ public class SpouseData extends javax.swing.JDialog {
      * Indicates whether the user confirmed the spouse's registration.
      *
      * @return {@code true} if save was pressed,
-     * {@code false} if it was canceled
+     *         {@code false} if it was canceled
      */
     public boolean isConfirmed() {
         return confirmed;

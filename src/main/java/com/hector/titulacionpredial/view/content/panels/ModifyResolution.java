@@ -20,7 +20,7 @@ import java.util.Locale;
  * a previously registered resolution.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class ModifyResolution extends javax.swing.JPanel {

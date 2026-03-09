@@ -18,7 +18,7 @@ import java.util.function.BiConsumer;
  * FMI, minutes,public deed, and observations.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class GenerateResolution extends javax.swing.JPanel {

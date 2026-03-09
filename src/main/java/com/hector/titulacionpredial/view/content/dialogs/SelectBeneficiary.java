@@ -20,15 +20,16 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 /**
- * Modal dialog to select a beneficiary
- * from a table with integrated search.
+ * Modal dialog to select a beneficiary from a table with
+ * integrated search.
+ *
  * <p>
- * Used when registering properties or generating
- * resolutions to associate an existing beneficiary.
- * Includes real-time filtering and input animation.
+ * Used when registering properties or generating resolutions
+ * to associate an existing beneficiary. Includes real-time
+ * filtering and input animation.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see ControllerSelectDialog
  */
@@ -46,7 +47,6 @@ public class SelectBeneficiary extends javax.swing.JDialog {
     private String searchPlaceholder = "Buscar";
 
     private final ControllerSelectDialog controllerSearchDialog;
-
     private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**

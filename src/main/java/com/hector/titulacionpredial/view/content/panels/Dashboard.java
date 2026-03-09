@@ -16,11 +16,11 @@ import com.hector.titulacionpredial.view.swing.model.CardModel;
  * with statistics on beneficiaries, properties, and resolutions.
  * </p>
  *
- * @author Eng. Hector Acevedo
- * @since 1.0
+ * @author Ing. Hector Acevedo
  * @see Card
  * @see GaugeChart
  * @see LineChart
+ * @since 1.0
  */
 public class Dashboard extends javax.swing.JPanel {
 

@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
  * code. Supports creation mode and edit (modification) mode.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  */
 public class RegisterBeneficiary extends javax.swing.JPanel {
@@ -30,7 +30,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private MaritalStatus nowStatus;
 
     /**
-     * Create the beneficiary registration form and configure the dropdown menus and text areas.
+     * Create the beneficiary registration form and configure the dropdown
+     * menus and text areas.
      */
     public RegisterBeneficiary() {
         initComponents();

@@ -6,14 +6,12 @@ import com.hector.titulacionpredial.view.swing.menu.Menu;
 import javax.swing.*;
 
 /**
- * Ventana principal ({@code JFrame}) de la aplicación
- * Titulación Predial.
+ * Main window ({@code JFrame}) of the Property Titling application.
  *
  * <p>
- * Contiene el menú lateral ({@link com.hector.titulacionpredial.view.swing.menu.Menu}),
- * la barra de título ({@link com.hector.titulacionpredial.view.component.Head})
- * y el panel de contenido dinámico donde se cargan los diferentes
- * formularios de la aplicación.
+ * It contains the side menu ({@link com.hector.titulacionpredial.view.swing.menu.Menu}),
+ * the title bar ({@link com.hector.titulacionpredial.view.component.Head}) and the dynamic
+ * content panel where the different forms of the application are loaded.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -22,14 +20,13 @@ import javax.swing.*;
 public class Content extends javax.swing.JFrame {
     
     /**
-     * Crea la ventana principal e inicializa menú, cabecera y contenido.
+     * Create the main window and initialize the menu, header, and content.
      */
     public Content() {
         initComponents();
 
         head.initMoving(this);
         head.getWinButton().initEvent(this, jpl_body);
-
         menu.setSelectedIndex(0, 0);
     }
 
@@ -128,29 +125,14 @@ public class Content extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Asigna el controlador para los eventos de selección del menú.
-     *
-     * @param evt listener de selección de menú
-     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }
 
-    /**
-     * Obtiene el panel de contenido dinámico donde se cargan los formularios.
-     *
-     * @return panel de contenido principal
-     */
     public static JPanel getJpl_content() {
         return jpl_content;
     }
 
-    /**
-     * Obtiene el componente de menú lateral de la ventana.
-     *
-     * @return instancia del menú lateral
-     */
     public Menu getMenu() {
         return menu;
     }
