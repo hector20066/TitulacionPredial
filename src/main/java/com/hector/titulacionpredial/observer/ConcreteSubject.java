@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementación concreta del patrón Observer que actúa como
- * sujeto observable centralizado del sistema.
+ * Concrete implementation of the Observer pattern that acts
+ * as the centralized observable subject of the system.
  *
  * <p>
- * Utiliza el patrón Singleton para garantizar una única instancia
- * compartida por todos los componentes de la aplicación.
+ * Use the Singleton pattern to ensure a single instance shared
+ * by all application components.
  * </p>
  *
  * <p>
- * Gestiona una lista interna de {@link Observer} y permite
- * notificarlos de forma masiva cuando ocurre un cambio relevante
- * en el estado del sistema (por ejemplo, registro, modificación
- * o eliminación de datos).
+ * Manage an internal list of {@link Observer} and allow you to
+ * notify them en masse when a relevant change occurs in the system
+ * state (e.g., registration, modification or deletion of data).
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -26,31 +25,24 @@ import java.util.List;
  */
 public class ConcreteSubject implements Subject {
 
-    /**
-     * Instancia única del sujeto concreto (Singleton).
-     */
     private static ConcreteSubject instance;
-
-    /**
-     * Lista de observadores registrados.
-     */
     private final List<Observer> observers = new ArrayList<>();
 
     /**
-     * Constructor privado para evitar instanciación externa
-     * y garantizar el patrón Singleton.
+     * Private constructor to avoid external instantiation and
+     * guarantee the Singleton pattern.
      */
     private ConcreteSubject() {
 
     }
 
     /**
-     * Obtiene la instancia única de {@link ConcreteSubject}.
+     * Gets the unique instance of {@link ConcreteSubject}.
      *
      * <p>
-     * Si la instancia no existe, la crea. Este método no es
-     * thread-safe por diseño, ya que se ejecuta en el hilo
-     * principal de la aplicación Swing.
+     * If the instance does not exist, it creates it. This method is
+     * not thread-safe by design, as it runs on the main thread of
+     * the Swing application.
      * </p>
      *
      * @return instancia única del sujeto concreto

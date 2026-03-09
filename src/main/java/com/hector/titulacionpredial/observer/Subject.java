@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.observer;
 
 /**
- * Interfaz que define el contrato del sujeto observable
- * dentro del patrón Observer.
+ * Interface that defines the contract of the observable subject
+ * within the Observer pattern.
  *
  * <p>
- * Permite registrar, eliminar y notificar a los {@link Observer}
- * suscritos ante cambios de estado en el sistema.
+ * It allows you to register, delete, and notify subscribed
+ * {@link Observer} about changes in system status.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -17,22 +17,21 @@ package com.hector.titulacionpredial.observer;
 public interface Subject {
 
     /**
-     * Registra un observador para recibir notificaciones.
+     * Register an observer to receive notifications.
      *
-     * @param observer observador a registrar
+     * @param observer observer to record
      */
     void register(Observer observer);
 
     /**
-     * Elimina un observador previamente registrado.
+     * Remove a previously registered observer.
      *
-     * @param observer observador a eliminar
+     * @param observer observer to be removed
      */
     void remove(Observer observer);
 
     /**
-     * Notifica a todos los observadores registrados
-     * sobre un cambio de estado.
+     * Notify all registered observers about a status change.
      */
     void notifyObservers();
 

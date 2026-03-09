@@ -1,14 +1,13 @@
 package com.hector.titulacionpredial.observer;
 
 /**
- * Interfaz funcional que define el contrato de un observador
- * dentro del patrón Observer implementado en el sistema.
+ * Functional interface that defines the contract of an observer
+ * within the Observer pattern implemented in the system.
  *
  * <p>
- * Los observadores se registran en un {@link Subject} y son
- * notificados cuando ocurre un cambio de estado relevante,
- * permitiendo la actualización reactiva de componentes como
- * paneles de dashboard, tablas y vistas.
+ * Observers register in a {@link Subject} and are notified when
+ * a relevant state change occurs, allowing reactive updating of
+ * components such as dashboard panels, tables, and views.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,8 +19,8 @@ package com.hector.titulacionpredial.observer;
 public interface Observer {
 
     /**
-     * Método invocado cuando el {@link Subject} notifica un cambio
-     * de estado a sus observadores registrados.
+     * Method invoked when the {@link Subject} notifies its registered
+     * observers of a state change.
      */
     void update();
 
