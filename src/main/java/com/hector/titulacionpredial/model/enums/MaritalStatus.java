@@ -1,18 +1,18 @@
 package com.hector.titulacionpredial.model.enums;
 
 /**
- * Enumeración que representa los estados civiles disponibles
- * dentro del sistema de Titulación Predial.
+ * List representing the civil statuses available within the
+ * Land Titling system.
  *
  * <p>
- * Define los posibles estados civiles de un {@code Beneficiary},
- * los cuales determinan si se requiere registrar información
- * del cónyuge ({@code Spouse}) durante el proceso de titulación.
+ * Defines the possible civil statuses of a {@code Beneficiary},
+ * which determine whether spouse information ({@code Spouse})
+ * needs to be registered during the titling process.
  * </p>
  *
  * <p>
- * Los estados {@code CASADO} y {@code UNION_LIBRE} implican la
- * existencia de un cónyuge asociado al beneficiario.
+ * The statuses {@code MARRIED} and {@code COMMON_UNION} imply
+ * the existence of a spouse associated with the beneficiary.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -27,23 +27,23 @@ public enum MaritalStatus {
     WIDOWER("Viudo");
 
     /**
-     * Valor legible del estado civil.
+     * Legible value of civil status.
      */
     private final String value;
 
     /**
-     * Constructor del estado civil.
+     * Civil status builder.
      *
-     * @param value representación textual del estado civil
+     * @param value textual representation of civil status
      */
     MaritalStatus(String value) {
         this.value = value;
     }
 
     /**
-     * Obtiene la representación textual del estado civil.
+     * Obtain the textual representation of the civil status.
      *
-     * @return nombre legible del estado civil
+     * @return legible name of marital status
      */
     public String getValue() {
         return value;

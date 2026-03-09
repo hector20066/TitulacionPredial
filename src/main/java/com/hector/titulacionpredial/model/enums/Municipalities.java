@@ -1,18 +1,19 @@
 package com.hector.titulacionpredial.model.enums;
 
 /**
- * Enumeración que representa los municipios de Colombia
- * dentro del sistema de Titulación Predial.
+ * List representing the municipalities of Colombia within
+ * the Land Titling system.
  *
  * <p>
- * Cada municipio almacena su nombre legible como valor asociado.
- * Los municipios están agrupados por departamento mediante
- * comentarios internos y son referenciados desde {@link Department}.
+ * Each municipality stores its human-readable name as an
+ * associated value. Municipalities are grouped by department
+ * using internal comments and are referenced from
+ * {@link Department}.
  * </p>
  *
  * <p>
- * Se utiliza para la selección geográfica de ubicación de los
- * beneficiarios y predios registrados en el sistema.
+ * It is used for the geographical selection of the location
+ * of beneficiaries and properties registered in the system.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -1119,23 +1120,23 @@ public enum Municipalities {
     SANTA_ROSALIA("Santa rosalia");
 
     /**
-     * Nombre legible del municipio.
+     * Legible name of the municipality.
      */
     private final String value;
 
     /**
-     * Constructor del municipio.
+     * Municipal builder.
      *
-     * @param value nombre legible del municipio
+     * @param value legible name of the municipality
      */
     Municipalities(String value) {
         this.value = value;
     }
 
     /**
-     * Obtiene el nombre legible del municipio.
+     * Obtain the legible name of the municipality.
      *
-     * @return nombre del municipio
+     * @return name of the municipality
      */
     public String getValue() {
         return value;

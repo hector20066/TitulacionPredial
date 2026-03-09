@@ -5,8 +5,8 @@ import java.util.List;
 import static com.hector.titulacionpredial.model.enums.Municipalities.*;
 
 /**
- * Enumeración que representa los departamentos de Colombia
- * dentro del sistema de Titulación Predial.
+ * List representing the departments of Colombia within the Land
+ * Titling system.
  *
  * <p>
  * Cada departamento contiene una lista de {@link Municipalities}
@@ -15,8 +15,8 @@ import static com.hector.titulacionpredial.model.enums.Municipalities.*;
  * </p>
  *
  * <p>
- * Incluye todos los 32 departamentos de Colombia y el Distrito
- * Capital de Bogotá.
+ * Each department contains a list of associated {@link Municipalities},
+ * allowing hierarchical selection of geographic location in the system.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -1121,20 +1121,20 @@ public enum Department {
     );
 
     /**
-     * Lista de municipios pertenecientes al departamento.
+     * List of municipalities belonging to the department.
      */
     private final List<Municipalities> municipalities;
 
     /**
-     * Nombre legible del departamento.
+     * Legible department name.
      */
     private final String value;
 
     /**
-     * Constructor del departamento.
+     * Apartment builder.
      *
-     * @param value          nombre legible del departamento
-     * @param municipalities municipios que pertenecen al departamento
+     * @param value          legible name of the department
+     * @param municipalities municipalities that belong to the department
      */
     Department(String value, Municipalities... municipalities) {
         this.value = value;
@@ -1142,18 +1142,18 @@ public enum Department {
     }
 
     /**
-     * Obtiene la lista de municipios del departamento.
+     * Obtain the list of municipalities in the department.
      *
-     * @return lista inmutable de {@link Municipalities}
+     * @return immutable list of {@link Municipalities}
      */
     public List<Municipalities> getMunicipalities() {
         return municipalities;
     }
 
     /**
-     * Obtiene el nombre legible del departamento.
+     * Get the legible name of the department.
      *
-     * @return nombre del departamento
+     * @return department name
      */
     public String getValue() {
         return value;
