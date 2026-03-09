@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.utils;
 
 /**
- * Clase utilitaria para validaciones numéricas.
+ * Utility class for numeric validations.
  *
  * <p>
- * Proporciona métodos para verificar que una cadena
- * contiene únicamente dígitos numéricos.
+ * It provides methods to verify that a string contains only
+ * numeric digits.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -14,11 +14,11 @@ package com.hector.titulacionpredial.utils;
 public class NumericalValidationUtils {
 
     /**
-     * Verifica si la cadena proporcionada contiene únicamente dígitos.
+     * Check if the provided string contains only digits.
      *
-     * @param value cadena a validar
-     * @return {@code true} si la cadena está compuesta solo por dígitos,
-     * {@code false} en caso contrario
+     * @param value string to validate
+     * @return {@code true} if the string is composed only
+     *         of digits, {@code false} otherwise
      */
     public static boolean isNumeric(String value) {
         return value.matches("\\d+");

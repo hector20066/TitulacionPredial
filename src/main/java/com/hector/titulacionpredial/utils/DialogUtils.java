@@ -8,9 +8,8 @@ import java.io.File;
 import java.util.concurrent.Callable;
 
 /**
- * Clase utilitaria para operaciones comunes con diálogos:
- * diálogos de carga, selectores de archivos y ejecución
- * de tareas en segundo plano con indicador de progreso.
+ * Utility class for common operations with dialogs: loading dialogs,
+ * file selectors, and running background tasks with a progress indicator.
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
@@ -20,18 +19,19 @@ public class DialogUtils {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
-     * Constructor privado para evitar instanciación.
+     * Private builder to avoid instantiation.
      */
     private DialogUtils() {
 
     }
 
     /**
-     * Crea un diálogo modal de carga con una barra de progreso indeterminada.
+     * Creates a loading modal dialog with an indeterminate
+     * progress bar.
      *
-     * @param parent  componente padre para centrar el diálogo
-     * @param message mensaje a mostrar (ej. «Exportando reporte, por favor espere...»)
-     * @return diálogo configurado (aún no visible)
+     * @param parent  parent component to center the dialogue
+     * @param message message to display (in. «Exporting report, please wait...»)
+     * @return dialog configured (not yet visible)
      */
     public static JDialog createLoadDialog(JComponent parent, String message) {
         Window parentWindow = SwingUtilities.getWindowAncestor(parent);
@@ -71,28 +71,29 @@ public class DialogUtils {
     }
 
     /**
-     * Ejecuta una tarea en segundo plano mostrando un diálogo de carga.
-     * Al completarse, muestra un mensaje de éxito o error.
+     * It runs a task in the background, displaying a loading dialog.
+     * Upon completion, it displays a success or error message.
      *
-     * @param parent         componente padre para posicionar el diálogo
-     * @param loadingMessage mensaje del diálogo de carga
-     * @param successMessage mensaje mostrado al completarse exitosamente
-     * @param task           tarea a ejecutar en segundo plano
+     * @param parent         parent component to position the dialogue
+     * @param loadingMessage loading dialog message
+     * @param successMessage message displayed upon successful completion
+     * @param task           task to run in the background
      */
     public static void executeWithDialog(JComponent parent, String loadingMessage, String successMessage, Callable<Void> task) {
         executeWithDialog(parent, loadingMessage, successMessage, task, null);
     }
 
     /**
-     * Ejecuta una tarea en segundo plano mostrando un diálogo de carga.
-     * Al completarse, muestra un mensaje de éxito o error, y opcionalmente
-     * ejecuta un callback.
+     * It executes a task in the background, displaying a loading dialog.
+     * Upon completion, it displays a success or error message, and
+     * optionally executes a callback.
      *
-     * @param parent         componente padre para posicionar el diálogo
-     * @param loadingMessage mensaje del diálogo de carga
-     * @param successMessage mensaje mostrado al completarse exitosamente
-     * @param task           tarea a ejecutar en segundo plano
-     * @param onSuccess      callback opcional al éxito (en EDT), puede ser {@code null}
+     * @param parent         parent component to position the dialogue
+     * @param loadingMessage loading dialog message
+     * @param successMessage message displayed upon successful completion
+     * @param task           task to run in the background
+     * @param onSuccess      Optional callback on success (in EDT), can
+     *                       be {@code null}
      */
     public static void executeWithDialog(JComponent parent, String loadingMessage, String successMessage,
                                          Callable<Void> task, Runnable onSuccess) {
@@ -128,10 +129,11 @@ public class DialogUtils {
     }
 
     /**
-     * Abre un selector de directorios y retorna la ruta seleccionada.
+     * Opens a directory selector and returns the selected path.
      *
-     * @param parent componente padre para el selector
-     * @return ruta absoluta del directorio seleccionado, o {@code null} si se cancela
+     * @param parent parent component for the selector
+     * @return Absolute path of the selected directory, or
+     *         {@code null} if canceled
      */
     public static String selectRoute(JComponent parent) {
         JFileChooser fileChooser = new JFileChooser();

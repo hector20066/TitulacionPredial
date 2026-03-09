@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Clase utilitaria para la exportación de beneficiarios a
- * un archivo Excel (.xls) usando Apache POI.
+ * Utility class for exporting beneficiaries to an Excel file
+ * (.xls) using Apache POI.
  *
  * <p>
- * Genera un reporte con los datos personales de cada
- * beneficiario registrado en el sistema.
+ * Generate a report with the personal data of each beneficiary
+ * registered in the system.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -25,11 +25,11 @@ import java.util.List;
 public class GenerateExcelBeneficiary {
 
     /**
-     * Exporta la lista de beneficiarios a un archivo Excel.
+     * Export the list of beneficiaries to an Excel file.
      *
-     * @param beneficiaries lista de DTOs con los datos de los beneficiarios
-     * @param path          ruta del directorio donde guardar el archivo
-     * @throws IOException si ocurre un error al escribir el archivo
+     * @param beneficiaries list of data with the beneficiaries' information
+     * @param path          directory path where to save the file
+     * @throws IOException If an error occurs while writing the file
      */
     public static void export(List<DTOBeneficiaryCreate> beneficiaries, String path) throws IOException {
         File archivoXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
@@ -52,6 +52,7 @@ public class GenerateExcelBeneficiary {
                 "Publicación", "Barrio", "Lugar Expedición"};
 
         Row header = sheet.createRow(0);
+
         for (int c = 0; c < titles.length; c++) {
             Cell cell = header.createCell(c);
             cell.setCellValue(titles[c]);
@@ -59,6 +60,7 @@ public class GenerateExcelBeneficiary {
         }
 
         int rowIndex = 1;
+
         for (DTOBeneficiaryCreate dto : beneficiaries) {
             Row row = sheet.createRow(rowIndex++);
 
@@ -85,6 +87,7 @@ public class GenerateExcelBeneficiary {
         try (FileOutputStream file = new FileOutputStream(archivoXLS)) {
             book.write(file);
         }
+
         book.close();
     }
 }

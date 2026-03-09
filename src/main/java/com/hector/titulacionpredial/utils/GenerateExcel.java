@@ -13,13 +13,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Clase utilitaria para la exportación de predios a
- * un archivo Excel (.xls) usando Apache POI.
+ * Utility class for exporting properties to an Excel file
+ * (.xls) using Apache POI.
  *
  * <p>
- * Genera un reporte completo con la información de cada
- * predio, incluyendo beneficiarios, resoluciones, puntos
- * geográficos y área.
+ * Generates a complete report with information for each
+ * property, including beneficiaries, resolutions, geographic
+ * points and area.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -29,11 +29,11 @@ import java.util.List;
 public class GenerateExcel {
 
     /**
-     * Exporta la lista de predios a un archivo Excel.
+     * Export the list of properties to an Excel file.
      *
-     * @param properties lista de DTOs con los datos de los predios
-     * @param path       ruta del directorio donde guardar el archivo
-     * @throws IOException si ocurre un error al escribir el archivo
+     * @param properties List of data with the property information
+     * @param path       directory path where to save the file
+     * @throws IOException If an error occurs while writing the file
      */
     public static void export(List<DTOPropertyDetails> properties, String path) throws IOException {
         File archivoXLS = new File(path + File.separator + "Reporte.xls");
@@ -57,6 +57,7 @@ public class GenerateExcel {
                 "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
 
         Row header = sheet.createRow(0);
+
         for (int c = 0; c < titles.length; c++) {
             Cell cell = header.createCell(c);
             cell.setCellValue(titles[c]);
@@ -64,6 +65,7 @@ public class GenerateExcel {
         }
 
         int rowIndex = 1;
+
         for (DTOPropertyDetails dto : properties) {
             Row row = sheet.createRow(rowIndex++);
 
@@ -178,6 +180,7 @@ public class GenerateExcel {
         try (FileOutputStream file = new FileOutputStream(archivoXLS)) {
             book.write(file);
         }
+
         book.close();
     }
 

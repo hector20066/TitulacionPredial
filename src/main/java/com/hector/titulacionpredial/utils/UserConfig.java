@@ -11,48 +11,48 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
- * Gestor de configuración persistente del usuario.
+ * Persistent user configuration manager.
  *
  * <p>
- * Esta clase proporciona un mecanismo simple para almacenar y recuperar
- * configuraciones personalizadas mediante un archivo
- * <code>application.properties</code> ubicado en el directorio del usuario.
+ * This class provides a simple mechanism for storing and retrieving
+ * custom configurations using an <code>application.properties</code>
+ * file located in the user's directory.
  * </p>
  *
- * <h2>Ubicación del archivo</h2>
+ * <h4>File location</h4>
  *
  * <pre>
  * ${user.home}/.titulacionpredial/application.properties
  * </pre>
  *
- * <h2>Características</h2>
+ * <h4>Characteristics</h4>
  *
  * <ul>
- *     <li>Crea automáticamente el directorio de configuración si no existe.</li>
- *     <li>Crea el archivo de propiedades con valores por defecto.</li>
- *     <li>Permite lectura y escritura de propiedades.</li>
+ *     <li>Automatically creates the configuration directory if it does not exist.</li>
+ *     <li>Create the properties file with default values.</li>
+ *     <li>It allows reading and writing of properties.</li>
  * </ul>
  *
- * <h2>Inicialización</h2>
+ * <h4>Initialization</h4>
  *
  * <p>
- * La configuración se inicializa automáticamente en el bloque estático
- * al cargarse la clase.
+ * The configuration is automatically initialized in the static block when
+ * the class is loaded.
  * </p>
  *
- * <h2>Persistencia</h2>
+ * <h4>Persistence</h4>
  *
  * <p>
- * Cada vez que se invoca {@link #set(String, String)}, el archivo
- * es sobrescrito con los nuevos valores.
+ * Each time {@link #set(String, String)} is invoked, the file is overwritten
+ * with the new values.
  * </p>
  *
- * <h2>Consideraciones</h2>
+ * <h4>Considerations</h4>
  *
  * <ul>
- *     <li>No es thread-safe.</li>
- *     <li>La escritura es completa (no incremental).</li>
- *     <li>Lanza RuntimeException en caso de error crítico.</li>
+ *     <li>It is not thread-safe.</li>
+ *     <li>The writing is complete (not incremental).</li>
+ *     <li>Throws RuntimeException in case of critical error.</li>
  * </ul>
  *
  * @author Ing. Hector Acevedo
@@ -61,7 +61,7 @@ import java.util.Properties;
 public class UserConfig {
 
     /**
-     * Objeto Properties que mantiene las configuraciones en memoria.
+     * Properties object that keeps the configurations in memory.
      */
     private static final Properties properties = new Properties();
 
@@ -79,21 +79,22 @@ public class UserConfig {
     }
 
     /**
-     * Inicializa la estructura de configuración.
+     * Initializes the configuration structure.
      *
      * <p>
-     * Si el archivo no existe:
+     * If the file does not exist:
      * </p>
+     *
      * <ul>
-     *     <li>Crea el directorio.</li>
-     *     <li>Crea el archivo con valores por defecto.</li>
+     *     <li>Create the directory.</li>
+     *     <li>Create the file with default values.</li>
      * </ul>
      *
      * <p>
-     * Si el archivo existe, carga sus propiedades en memoria.
+     * If the file exists, load its properties into memory.
      * </p>
      *
-     * @throws IOException si ocurre un error de lectura o escritura
+     * @throws IOException if a read or write error occurs
      */
     private static void init() throws IOException {
         if (Files.notExists(CONFIG_DIR)) {
@@ -116,25 +117,25 @@ public class UserConfig {
     }
 
     /**
-     * Obtiene el valor asociado a una clave.
+     * It retrieves the value associated with a key.
      *
-     * @param key clave de configuración
-     * @return valor asociado o null si no existe
+     * @param key configuration key
+     * @return associated value or null if it does not exist
      */
     public static String get(String key) {
         return properties.getProperty(key);
     }
 
     /**
-     * Establece o actualiza el valor de una clave.
+     * Sets or updates the value of a key.
      *
      * <p>
-     * Persiste inmediatamente los cambios en el archivo físico.
+     * It immediately persists the changes in the physical file.
      * </p>
      *
-     * @param key clave de configuración
-     * @param value valor a almacenar
-     * @throws RuntimeException si ocurre un error al guardar
+     * @param key configuration key
+     * @param value value to store
+     * @throws RuntimeException if an error occurs while saving
      */
     public static void set(String key, String value) {
         properties.setProperty(key, value);

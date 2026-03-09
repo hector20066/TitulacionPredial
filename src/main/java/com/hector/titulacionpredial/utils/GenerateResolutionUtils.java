@@ -15,14 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Clase utilitaria para la generación de documentos Word
- * de resoluciones a partir de una plantilla.
+ * Utility class for generating Word documents of resolutions
+ * from a template.
  *
  * <p>
- * Utiliza la librería POI-TL (Deepoove) para reemplazar
- * variables en una plantilla Word ({@code .docx}) con los
- * datos de los beneficiarios, puntos geográficos y demás
- * información de la resolución.
+ * Use the POI-TL library to replace variables in a Word
+ * template ({@code .docx}) with beneficiary data, geographic
+ * points, and other information from the resolution.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -32,17 +31,17 @@ import java.util.Map;
 public class GenerateResolutionUtils {
 
     /**
-     * Genera el documento Word de resolución con los datos proporcionados.
+     * Generate the Word document resolution with the provided data.
      *
-     * @param beneficiariesList lista de beneficiarios asociados
-     * @param points            lista de puntos geográficos del predio
-     * @param address           dirección del predio
-     * @param cadastralId       cédula catastral
-     * @param fmi               folio de matrícula inmobiliaria
-     * @param area              área del predio
-     * @param notificacion      fecha de notificación
-     * @param path              ruta del directorio de destino
-     * @throws IOException si ocurre un error al escribir el documento
+     * @param beneficiariesList list of associated beneficiaries
+     * @param points            list of geographical points of the property
+     * @param address           property address
+     * @param cadastralId       cadastral certificate
+     * @param fmi               real estate registration number
+     * @param area              area of the property
+     * @param notificacion      notification date
+     * @param path              destination directory path
+     * @throws IOException if an error occurs while writing the document
      */
     public static void generateResolution(List<DTOBeneficiarySimpleDetails> beneficiariesList, List<DTOPoint> points,
                                           String address, String cadastralId, String fmi, String area,
@@ -100,15 +99,16 @@ public class GenerateResolutionUtils {
     }
 
     /**
-     * Construye el texto de los beneficiarios para la plantilla de resolución.
+     * Create the text for the beneficiaries in the resolution template.
      *
      * <p>
-     * Si todos los beneficiarios comparten el mismo estado civil, este se
-     * agrega al final; de lo contrario se incluye junto a cada beneficiario.
+     * If all beneficiaries share the same marital status, it is added
+     * at the end; otherwise, it is included next to each beneficiary.
      * </p>
      *
-     * @param sb                {@link StringBuilder} donde se acumula el texto generado
-     * @param beneficiariesList lista de beneficiarios con sus datos
+     * @param sb                {@link StringBuilder} where the generated
+     *                                               text is accumulated
+     * @param beneficiariesList list of beneficiaries with their details
      */
     private static void defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         String identifyingText = " identificad(o)(a) con cedula de ciudadanía N° ";
@@ -141,10 +141,10 @@ public class GenerateResolutionUtils {
     }
 
     /**
-     * Verifica la cantidad de estados civiles distintos entre los beneficiarios.
+     * Check the number of different marital statuses among the beneficiaries.
      *
-     * @param beneficiariesList lista de beneficiarios a evaluar
-     * @return cantidad de estados civiles distintos encontrados
+     * @param beneficiariesList list of beneficiaries to be evaluated
+     * @return number of different marital statuses found
      */
     private static int verifyMaritalStatus(List<DTOBeneficiarySimpleDetails> beneficiariesList) {
         Map<MaritalStatus, String> status = new HashMap<>();
@@ -157,4 +157,5 @@ public class GenerateResolutionUtils {
 
         return status.size();
     }
+
 }

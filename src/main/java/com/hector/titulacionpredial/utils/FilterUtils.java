@@ -6,13 +6,13 @@ import javax.swing.table.TableRowSorter;
 import java.util.regex.Pattern;
 
 /**
- * Clase utilitaria para el filtrado dinámico de tablas
- * Swing ({@link JTable}) en tiempo real.
+ * Utility class for real-time dynamic filtering of
+ * Swing tables ({@link JTable}).
  *
  * <p>
- * Aplica un filtro de expresión regular insensible a
- * mayúsculas sobre el modelo de la tabla según el texto
- * ingresado en un campo de texto.
+ * Applies a case-insensitive regular expression
+ * filter to the table pattern based on the text
+ * entered in a text field.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -21,11 +21,11 @@ import java.util.regex.Pattern;
 public class FilterUtils {
 
     /**
-     * Filtra las filas de una tabla según el texto del campo.
+     * Filter the rows of a table based on the text in the field.
      *
-     * @param textField campo de texto con el criterio de búsqueda
-     * @param table     tabla a filtrar
-     * @param text      texto placeholder que se ignora
+     * @param textField text field with the search criteria
+     * @param table     table to filter
+     * @param text      placeholder text that is ignored
      */
     public static void filterTable(JTextField textField, JTable table, String text) {
         if (!textField.getText().equals(text)) {

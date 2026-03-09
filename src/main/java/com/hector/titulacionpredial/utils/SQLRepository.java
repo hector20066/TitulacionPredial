@@ -7,14 +7,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Repositorio centralizado para la carga y caché de archivos SQL
- * desde los recursos de la aplicación.
+ * Centralized repository for loading and caching SQL files
+ * from application resources.
  *
  * <p>
- * Utiliza un {@link ConcurrentHashMap} como caché en memoria
- * para evitar lecturas repetidas del classpath. La primera
- * invocación carga el archivo y las subsiguientes retornan
- * el contenido almacenado.
+ * It uses a {@link ConcurrentHashMap} as an in-memory cache
+ * to avoid repeated reads of the classpath. The first
+ * invocation loads the file, and subsequent invocations return
+ * the stored content.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -23,35 +23,36 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SQLRepository {
 
     /**
-     * Caché concurrente de consultas SQL indexadas por ruta.
+     * Concurrent cache of SQL queries indexed by path.
      */
     private static final Map<String, String> CACHE = new ConcurrentHashMap<>();
 
     /**
-     * Constructor privado para evitar instanciación (clase utilitaria).
+     * Private constructor to avoid instantiation (utility class).
      */
     private SQLRepository() {
 
     }
 
     /**
-     * Obtiene el contenido SQL asociado a la ruta indicada.
-     * Si no existe en caché, lo carga desde los recursos.
+     * It retrieves the SQL content associated with the
+     * specified path. If it is not cached, it loads it
+     * from the resources.
      *
-     * @param path ruta relativa del archivo SQL en el classpath
-     * @return contenido del archivo SQL
-     * @throws RuntimeException si el archivo no se encuentra o hay error de lectura
+     * @param path relative path of the SQL file in the classpath
+     * @return SQL file content
+     * @throws RuntimeException if the file is not found or there is a read error
      */
     public static String get(String path) {
         return CACHE.computeIfAbsent(path, SQLRepository::loadFile);
     }
 
     /**
-     * Carga el contenido de un archivo SQL desde el classpath.
+     * Load the contents of an SQL file from the classpath.
      *
-     * @param path ruta relativa del archivo SQL
-     * @return contenido del archivo como cadena UTF-8
-     * @throws RuntimeException si el archivo no existe o no puede leerse
+     * @param path relative path of the SQL file
+     * @return file content as a UTF-8 string
+     * @throws RuntimeException if the file does not exist or cannot be read
      */
     private static String loadFile(String path) {
         try (InputStream is = SQLRepository.class.getClassLoader().getResourceAsStream(path)) {
