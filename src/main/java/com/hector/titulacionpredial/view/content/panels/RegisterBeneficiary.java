@@ -29,6 +29,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private boolean modify = false;
     private MaritalStatus nowStatus;
 
+    private String jlbTitleModify = "Modificar Beneficiario";
+    private String btnModifyText = "MODIFICAR BENEFICIARIO";
+
     /**
      * Create the beneficiary registration form and configure the dropdown
      * menus and text areas.
@@ -100,6 +103,22 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     public MaritalStatus getNowStatus() {
         return nowStatus;
+    }
+
+    public String getJlbTitleModify() {
+        return jlbTitleModify;
+    }
+
+    public void setJlbTitleModify(String jlbTitleModify) {
+        this.jlbTitleModify = jlbTitleModify;
+    }
+
+    public String getBtnModifyText() {
+        return btnModifyText;
+    }
+
+    public void setBtnModifyText(String btnModifyText) {
+        this.btnModifyText = btnModifyText;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -538,6 +557,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_code.setText(texts.getCode());
         cbx_affectation.setText(texts.getAffected());
         btn_register.setText(texts.getAddBtn());
+        setBtnModifyText(texts.getModifyBtn());
+        setJlbTitleModify(texts.getModifyTitle());
     }
 
     public void setControllerRegister(ActionListener action) {
@@ -674,8 +695,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_cadastralReference.setEditable(false);
         txt_expeditionLocation.setEditable(false);
         
-        jlb_title.setText("Modificar Beneficiario");
-        btn_register.setText("MODIFICAR BENEFICIARIO");
+        jlb_title.setText(getJlbTitleModify());
+        btn_register.setText(getBtnModifyText());
 
         isLoading = false;
     }

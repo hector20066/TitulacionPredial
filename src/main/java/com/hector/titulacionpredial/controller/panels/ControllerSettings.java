@@ -108,26 +108,4 @@ public class ControllerSettings implements LanguageObserver {
         }
     }
 
-    /**
-     * Set the language to Spanish if the corresponding
-     * radio button is selected and notify observers.
-     */
-    public void selectSpanishLanguage() {
-        if (settings.getRbn_spanish().isSelected()) {
-            lang.setLanguage(AppLanguage.ES);
-            languageSubject.notifyObserver();
-        }
-    }
-
-    /**
-     * Sets the language to English if the corresponding
-     * radio button is selected and notifies observers.
-     */
-    public void selectEnglishLanguage() {
-        if (settings.getRbn_english().isSelected()) {
-            lang.setLanguage(AppLanguage.EN);
-            languageSubject.notifyObserver();
-        }
-    }
-
 }
