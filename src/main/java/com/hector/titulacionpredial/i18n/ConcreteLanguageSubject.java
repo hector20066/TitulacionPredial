@@ -24,8 +24,8 @@ import java.util.List;
  */
 public class ConcreteLanguageSubject implements LanguageSubject {
 
-    private final List<LanguageObserver> observers;
     private static ConcreteLanguageSubject instance;
+    private final List<LanguageObserver> observers;
 
     /**
      * Private constructor to avoid external instantiation and guarantee

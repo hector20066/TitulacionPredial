@@ -25,7 +25,9 @@ public interface LanguageObserver {
      * registered observers of a change in <strong>state</strong>.
      * </p>
      *
+     * <p>
      * The <strong>state</strong> refers to the app's language change.
+     * </p>
      */
     void updateLanguage();
 

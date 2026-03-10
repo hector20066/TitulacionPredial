@@ -168,7 +168,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     *Create a list with the points obtained.
+     * Create a list with the points obtained.
      *
      * @param fields matrix with the information of the points.
      * @return list with the points obtained.

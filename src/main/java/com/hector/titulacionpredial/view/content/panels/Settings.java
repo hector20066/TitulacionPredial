@@ -114,7 +114,7 @@ public class Settings extends javax.swing.JPanel {
      * @param texts DTO with translated configuration texts
      */
     public void updateLanguage(DTOSettingsText texts) {
-        jlb_title.setText(texts.getTitle());
+        jlb_title.setText(texts.title());
     }
 
     public void setControllerSpanishLanguage(ActionListener action) {

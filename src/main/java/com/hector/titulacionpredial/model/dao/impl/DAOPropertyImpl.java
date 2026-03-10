@@ -36,9 +36,8 @@ import java.util.Map;
  */
 public class DAOPropertyImpl implements DAOProperty {
 
-    private static DAOPropertyImpl instance;
-
     private static final LanguageManager lang = LanguageManager.getInstance();
+    private static DAOPropertyImpl instance;
 
     /**
      * Private builder to guarantee the Singleton pattern.

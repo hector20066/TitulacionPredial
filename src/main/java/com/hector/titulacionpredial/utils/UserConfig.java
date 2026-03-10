@@ -133,7 +133,7 @@ public class UserConfig {
      * It immediately persists the changes in the physical file.
      * </p>
      *
-     * @param key configuration key
+     * @param key   configuration key
      * @param value value to store
      * @throws RuntimeException if an error occurs while saving
      */

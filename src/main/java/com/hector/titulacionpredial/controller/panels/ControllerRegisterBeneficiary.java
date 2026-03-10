@@ -467,6 +467,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
     /**
      * Resets the button to its default values.
+     *
      * @param isModify operation to be performed
      */
     private void resetButton(boolean isModify) {

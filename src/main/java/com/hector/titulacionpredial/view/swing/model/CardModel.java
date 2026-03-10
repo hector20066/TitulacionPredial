@@ -24,8 +24,8 @@ public class CardModel {
      * Create a card template with the specified data.
      *
      * @param icon        card icon
-     * @param title      title
-     * @param values     numerical value
+     * @param title       title
+     * @param values      numerical value
      * @param description description
      */
     public CardModel(Icon icon, String title, String values, String description) {

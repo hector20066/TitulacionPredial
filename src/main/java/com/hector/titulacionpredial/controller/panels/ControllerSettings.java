@@ -41,7 +41,7 @@ public class ControllerSettings implements LanguageObserver {
         this.languageSubject = builder.getLanguageSubject();
 
         builder.getLanguageSubject().register(this);
-        
+
         connectEvents();
     }
 
@@ -61,7 +61,7 @@ public class ControllerSettings implements LanguageObserver {
     @Override
     public void updateLanguage() {
         DTOSettingsText dto = new DTOSettingsText(lang.app("settings.language.title"),
-                                                    lang.app("settings.language"));
+                lang.app("settings.language"));
 
         settings.updateLanguage(dto);
     }

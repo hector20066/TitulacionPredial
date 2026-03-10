@@ -1,6 +1,5 @@
 package com.hector.titulacionpredial.view.i18n.dto.panels;
 
-
 /**
  * DTO that encapsulates the internationalized texts for the view
  * properties panel.
@@ -233,6 +232,7 @@ public class DTOSeePropertiesText {
             this.generateBtn = generateBtn;
             return this;
         }
+
         public Builder deleteBtn(String deleteBtn) {
             this.deleteBtn = deleteBtn;
             return this;

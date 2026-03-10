@@ -5,7 +5,7 @@ package com.hector.titulacionpredial.model.entities;
  * Land Titling system.
  *
  * <p>
- *Define the common attributes that entities representing actors
+ * Define the common attributes that entities representing actors
  * in the system must possess.
  * </p>
  *

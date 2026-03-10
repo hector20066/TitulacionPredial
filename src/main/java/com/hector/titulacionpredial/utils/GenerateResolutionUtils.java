@@ -107,7 +107,7 @@ public class GenerateResolutionUtils {
      * </p>
      *
      * @param sb                {@link StringBuilder} where the generated
-     *                                               text is accumulated
+     *                          text is accumulated
      * @param beneficiariesList list of beneficiaries with their details
      */
     private static void defineTemplate(StringBuilder sb, List<DTOBeneficiarySimpleDetails> beneficiariesList) {

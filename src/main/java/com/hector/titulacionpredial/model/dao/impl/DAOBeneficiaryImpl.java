@@ -34,8 +34,8 @@ import java.util.List;
  */
 public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
-    private final LanguageManager  lang = LanguageManager.getInstance();
     private static DAOBeneficiaryImpl instance;
+    private final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Private builder to guarantee the Singleton pattern.

@@ -31,9 +31,8 @@ import java.sql.SQLException;
  */
 public class DAOSpouseImpl implements DAOSpouse {
 
-    private static DAOSpouseImpl instance;
-
     private static final LanguageManager lang = LanguageManager.getInstance();
+    private static DAOSpouseImpl instance;
 
     /**
      * Private builder to guarantee the Singleton pattern.

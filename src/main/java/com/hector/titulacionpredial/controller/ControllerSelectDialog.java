@@ -30,7 +30,7 @@ public class ControllerSelectDialog {
     private final SelectBeneficiary selectBeneficiary;
 
     private final BeneficiaryFacade daoBeneficiary;
-    private final LanguageManager lang =  LanguageManager.getInstance();
+    private final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Create the controller associated with the specified dialog.
@@ -71,7 +71,8 @@ public class ControllerSelectDialog {
                     DTOBeneficiarySimpleDetails dto = get();
 
                     if (dto == null) {
-                        MessageUtils.errorMessage(lang.message("message.beneficiary.not.find") + " \"" + param + "\"", null);
+                        MessageUtils.errorMessage(lang.message("message.beneficiary.not.find") + " \""
+                                + param + "\"", null);
                         return;
                     }
 
@@ -172,7 +173,8 @@ public class ControllerSelectDialog {
                 List<DTOBeneficiarySimpleDetails> listBeneficiaries = daoBeneficiary.findByAll();
                 SwingUtilities.invokeLater(() -> selectBeneficiary.loadBeneficiaries(listBeneficiaries));
             } catch (Exception e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage( lang.app("controller.search.dialog.error") + " " + e.getMessage(), null));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(lang.app("controller.search.dialog.error")
+                        + " " + e.getMessage(), null));
             }
         }).start();
     }

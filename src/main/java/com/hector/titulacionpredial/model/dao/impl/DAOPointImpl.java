@@ -100,7 +100,7 @@ public class DAOPointImpl implements DAOPoint {
      * @param dto object where the obtained data will be stored
      * @param rs  query results
      * @throws SQLException If an error occurs while reading the data
-     * from the {@code ResultSet}
+     *                      from the {@code ResultSet}
      */
     private void executeQuery(DTOPoint dto, ResultSet rs) throws SQLException {
         dto.setNumberPoint(rs.getInt("number"));

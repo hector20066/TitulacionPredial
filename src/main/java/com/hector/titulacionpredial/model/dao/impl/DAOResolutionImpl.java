@@ -51,9 +51,8 @@ import java.util.List;
  */
 public class DAOResolutionImpl implements DAOResolution {
 
-    private static DAOResolutionImpl instance;
-
     private static final LanguageManager lang = LanguageManager.getInstance();
+    private static DAOResolutionImpl instance;
 
     /**
      * Private builder to guarantee the Singleton pattern.

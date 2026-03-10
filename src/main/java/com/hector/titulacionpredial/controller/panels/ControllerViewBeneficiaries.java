@@ -340,7 +340,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      *
      * @param param text to validate
      * @return {@code true} if the parameter is valid for searching,
-     *         {@code false} otherwise
+     * {@code false} otherwise
      */
     private boolean isValid(String param) {
         return !(param.isBlank() || param.equalsIgnoreCase(searchPlaceholder));

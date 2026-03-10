@@ -174,7 +174,7 @@ public class DTOViewBeneficiariesText {
 
         public Builder deleteBtn(String deleteBtn) {
             this.deleteBtn = deleteBtn;
-            return  this;
+            return this;
         }
 
         public Builder exportExcelBtn(String exportExcelBtn) {
