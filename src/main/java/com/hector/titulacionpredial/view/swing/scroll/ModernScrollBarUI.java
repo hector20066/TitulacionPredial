@@ -5,12 +5,12 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
- * UI personalizada para barras de desplazamiento con estilo moderno.
+ * Custom UI for scroll bars with modern style.
  *
  * <p>
- * Muestra un indicador (thumb) delgado y translúcido sin
- * botones de flecha ni pista visible, logrando una
- * estética minimalista y plana.
+ * It features a thin, translucent indicator (thumb) with
+ * no arrow buttons or visible track, achieving a minimalist
+ * and flat aesthetic.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,23 +18,14 @@ import java.awt.*;
  */
 public class ModernScrollBarUI extends BasicScrollBarUI {
 
-    /**
-     * Grosor del indicador de desplazamiento.
-     */
     private final int THUMB_SIZE = 5;
 
-    /**
-     * Color del indicador.
-     */
     private final Color THUMB_COLOR = new Color(170, 170, 170);
 
-    /**
-     * Nivel de opacidad del indicador.
-     */
     private final float ALPHA = 0.3f;
 
     /**
-     * Crea la UI de la barra de desplazamiento moderna.
+     * Create the modern scrollbar UI.
      */
     public ModernScrollBarUI() {
 
@@ -103,19 +94,19 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
     }
 
     /**
-     * Botón invisible que reemplaza las flechas de desplazamiento.
+     * Invisible button that replaces the scroll arrows.
      */
     private static class InvisibleScrollBarButton extends JButton {
 
         /**
-         * Crea el botón invisible.
+         * Create the invisible button.
          */
         private InvisibleScrollBarButton() {
             init();
         }
 
         /**
-         * Configura la apariencia invisible del botón.
+         * Configure the invisible appearance of the button.
          */
         private void init() {
             setOpaque(false);

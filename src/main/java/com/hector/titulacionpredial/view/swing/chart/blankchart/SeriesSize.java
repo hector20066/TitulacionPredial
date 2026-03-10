@@ -1,12 +1,11 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
 /**
- * Modelo de datos que almacena el tamaño de una serie
- * del gráfico.
+ * Data model that stores the size of a chart series.
  *
  * <p>
- * Contiene la posición (startX, startY) y las dimensiones
- * (width, height) del área de cada serie para el renderizado.
+ * It contains the position (startX, startY) and dimensions
+ * (width, height) of the area of each series for rendering.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,12 +19,12 @@ public class SeriesSize {
     private double height;
 
     /**
-     * Crea un área de serie con posición y dimensiones.
+     * Create a series area with position and dimensions.
      *
-     * @param x      coordenada X
-     * @param y      coordenada Y
-     * @param width  ancho
-     * @param height alto
+     * @param x      X coordinate
+     * @param y      Y coordinate
+     * @param width  width
+     * @param height height
      */
     public SeriesSize(double x, double y, double width, double height) {
         this.x = x;
@@ -35,7 +34,7 @@ public class SeriesSize {
     }
 
     /**
-     * Crea un área de serie vacía.
+     * Create an empty series area.
      */
     public SeriesSize() {
 

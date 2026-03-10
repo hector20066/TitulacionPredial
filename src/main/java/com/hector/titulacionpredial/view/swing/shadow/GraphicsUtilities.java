@@ -10,13 +10,12 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Utilidades para manipulación de imágenes {@link BufferedImage}.
+ * Utilities for image manipulation {@link BufferedImage}.
  *
  * <p>
- * Proporciona métodos para crear imágenes compatibles con
- * la configuración gráfica del sistema, generar miniaturas
- * y acceder directamente a los píxeles del raster para
- * optimizar el rendimiento.
+ * It provides methods for creating images compatible with
+ * the system's graphics configuration, generating thumbnails,
+ * and directly accessing raster pixels to optimize performance.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -25,26 +24,26 @@ import java.net.URL;
 public class GraphicsUtilities {
 
     /**
-     * Constructor privado para evitar instanciación.
+     * Private builder to avoid instantiation.
      */
     private GraphicsUtilities() {
 
     }
 
     /**
-     * Obtiene la configuración gráfica predeterminada del sistema.
+     * It obtains the system's default graphical configuration.
      *
-     * @return configuración gráfica
+     * @return graphical configuration
      */
     private static GraphicsConfiguration getGraphicsConfiguration() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
     }
 
     /**
-     * Crea una imagen compatible con el modelo de color de la imagen fuente.
+     * Create an image compatible with the color model of the source image.
      *
-     * @param image imagen de referencia
-     * @return nueva imagen compatible
+     * @param image reference image
+     * @return new compatible image
      */
     public static BufferedImage createColorModelCompatibleImage(BufferedImage image) {
         ColorModel cm = image.getColorModel();
@@ -52,55 +51,55 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Crea una imagen compatible con las mismas dimensiones.
+     * Create a compatible image with the same dimensions.
      *
-     * @param image imagen de referencia
-     * @return nueva imagen compatible
+     * @param image reference image
+     * @return new compatible image
      */
     public static BufferedImage createCompatibleImage(BufferedImage image) {
         return createCompatibleImage(image, image.getWidth(), image.getHeight());
     }
 
     /**
-     * Crea una imagen compatible con dimensiones específicas.
+     * Create an image compatible with specific dimensions.
      *
-     * @param image  imagen de referencia
-     * @param width  ancho
-     * @param height alto
-     * @return nueva imagen compatible
+     * @param image  reference image
+     * @param width  width
+     * @param height height
+     * @return new compatible image
      */
     public static BufferedImage createCompatibleImage(BufferedImage image, int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, image.getTransparency());
     }
 
     /**
-     * Crea una imagen opaca compatible con las dimensiones dadas.
+     * Create an opaque image compatible with the given dimensions.
      *
-     * @param width  ancho
-     * @param height alto
-     * @return nueva imagen compatible
+     * @param width  width
+     * @param height height
+     * @return new compatible image
      */
     public static BufferedImage createCompatibleImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height);
     }
 
     /**
-     * Crea una imagen translúcida compatible con las dimensiones dadas.
+     * Create a translucent image compatible with the given dimensions.
      *
-     * @param width  ancho
-     * @param height alto
-     * @return nueva imagen translúcida
+     * @param width  width
+     * @param height height
+     * @return new translucent image
      */
     public static BufferedImage createCompatibleTranslucentImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
     }
 
     /**
-     * Carga una imagen desde un recurso y la convierte a formato compatible.
+     * It loads an image from a resource and converts it to a compatible format.
      *
-     * @param resource URL del recurso
-     * @return imagen compatible
-     * @throws IOException si ocurre un error al leer el recurso
+     * @param resource Resource URL
+     * @return compatible image
+     * @throws IOException if an error occurs while reading the resource
      */
     public static BufferedImage loadCompatibleImage(URL resource) throws IOException {
         BufferedImage image = ImageIO.read(resource);
@@ -108,10 +107,10 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Convierte una imagen al formato compatible con el sistema gráfico.
+     * Convert an image to a format compatible with the graphics system.
      *
-     * @param image imagen a convertir
-     * @return imagen compatible
+     * @param image image to convert
+     * @return compatible image
      */
     public static BufferedImage toCompatibleImage(BufferedImage image) {
         if (image.getColorModel().equals(getGraphicsConfiguration().getColorModel())) {
@@ -127,11 +126,11 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Crea una miniatura rápida manteniendo la proporción.
+     * Create a quick thumbnail while maintaining the proportions.
      *
-     * @param image   imagen fuente
-     * @param newSize tamaño máximo (ancho o alto)
-     * @return imagen miniatura
+     * @param image   Image source
+     * @param newSize maximum size (width or height)
+     * @return thumbnail image
      */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newSize) {
         float ratio;
@@ -164,12 +163,12 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Crea una miniatura rápida con dimensiones específicas.
+     * Create a quick thumbnail with specific dimensions.
      *
-     * @param image     imagen fuente
-     * @param newWidth  nuevo ancho
-     * @param newHeight nuevo alto
-     * @return imagen miniatura
+     * @param image     Image source
+     * @param newWidth  new width
+     * @param newHeight new high
+     * @return thumbnail image
      */
     public static BufferedImage createThumbnailFast(BufferedImage image, int newWidth, int newHeight) {
         if (newWidth >= image.getWidth() || newHeight >= image.getHeight()) {
@@ -182,12 +181,12 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Escala la imagen a las dimensiones dadas con interpolación bilineal.
+     * Scale the image to the given dimensions using bilinear interpolation.
      *
-     * @param image  imagen fuente
-     * @param width  nuevo ancho
-     * @param height nuevo alto
-     * @return imagen escalada
+     * @param image  Image source
+     * @param width  new width
+     * @param height new height
+     * @return scaled image
      */
     private static BufferedImage getBufferedImage(BufferedImage image, int width, int height) {
         BufferedImage temp = createCompatibleImage(image, width, height);
@@ -200,11 +199,11 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Crea una miniatura de alta calidad manteniendo la proporción.
+     * Create a high-quality miniature while maintaining the proportions.
      *
-     * @param image   imagen fuente
-     * @param newSize tamaño máximo (ancho o alto)
-     * @return imagen miniatura
+     * @param image   Image source
+     * @param newSize maximum size (width or height)
+     * @return thumbnail image
      */
     public static BufferedImage createThumbnail(BufferedImage image, int newSize) {
         int width = image.getWidth();
@@ -253,12 +252,12 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Crea una miniatura de alta calidad con dimensiones específicas.
+     * Create a high-quality miniature with specific dimensions.
      *
-     * @param image     imagen fuente
-     * @param newWidth  nuevo ancho
-     * @param newHeight nuevo alto
-     * @return imagen miniatura
+     * @param image     Image source
+     * @param newWidth  new width
+     * @param newHeight new height
+     * @return thumbnail image
      */
     public static BufferedImage createThumbnail(BufferedImage image, int newWidth, int newHeight) {
         int width = image.getWidth();
@@ -296,13 +295,13 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Escala progresivamente la imagen con interpolación bilineal.
+     * Scale the image progressively using bilinear interpolation.
      *
-     * @param image  imagen fuente
-     * @param width  nuevo ancho
-     * @param height nuevo alto
-     * @param thumb  imagen intermedia acumulada
-     * @return imagen escalada
+     * @param image  Image source
+     * @param width  new width
+     * @param height new height
+     * @param thumb  cumulative intermediate image
+     * @return scaled image
      */
     private static BufferedImage getBufferedImage(BufferedImage image, int width, int height, BufferedImage thumb) {
         BufferedImage temp = createCompatibleImage(image, width, height);
@@ -316,15 +315,15 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Obtiene los píxeles de una región de la imagen como un arreglo de enteros ARGB.
+     * It obtains the pixels of a region of the image as an array of ARGB integers.
      *
-     * @param img    imagen fuente
-     * @param x      coordenada X
-     * @param y      coordenada Y
-     * @param w      ancho de la región
-     * @param h      alto de la región
-     * @param pixels arreglo destino ({@code null} para crear uno nuevo)
-     * @return arreglo de píxeles ARGB
+     * @param img    Image source
+     * @param x      X coordinate
+     * @param y      Y coordinate
+     * @param w      width of the region
+     * @param h      height of the region
+     * @param pixels destination array ({@code null} to create a new one)
+     * @return ARGB pixel array
      */
     public static int[] getPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (w == 0 || h == 0) {
@@ -348,14 +347,14 @@ public class GraphicsUtilities {
     }
 
     /**
-     * Establece los píxeles en una región de la imagen.
+     * Sets the pixels in a region of the image.
      *
-     * @param img    imagen destino
-     * @param x      coordenada X
-     * @param y      coordenada Y
-     * @param w      ancho de la región
-     * @param h      alto de la región
-     * @param pixels arreglo de píxeles ARGB
+     * @param img    target image
+     * @param x      X coordinate
+     * @param y      Y coordinate
+     * @param w      width of the region
+     * @param h      height point of the region
+     * @param pixels ARGB pixel array
      */
     public static void setPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
         if (pixels == null || w == 0 || h == 0) {

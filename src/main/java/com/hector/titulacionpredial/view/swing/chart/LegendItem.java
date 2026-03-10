@@ -5,12 +5,12 @@ import com.hector.titulacionpredial.view.swing.model.ModelLegend;
 import javax.swing.*;
 
 /**
- * Elemento individual de la leyenda de un gráfico.
+ * Individual element of a chart legend.
  *
  * <p>
- * Muestra un indicador de color junto con la etiqueta
- * de la serie correspondiente. Se utiliza como componente
- * dentro de la leyenda del {@link LineChart}.
+ * Displays a color indicator along with the corresponding
+ * series label. It is used as a component within the legend
+ * of the {@link LineChart}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,9 +20,9 @@ import javax.swing.*;
 public class LegendItem extends javax.swing.JPanel {
 
     /**
-     * Crea un elemento de leyenda con el color y nombre de la serie.
+     * Create a legend element with the color and name of the series.
      *
-     * @param data modelo de leyenda
+     * @param data legend model
      */
     public LegendItem(ModelLegend data) {
         initComponents();

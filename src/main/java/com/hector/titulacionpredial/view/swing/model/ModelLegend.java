@@ -3,11 +3,11 @@ package com.hector.titulacionpredial.view.swing.model;
 import java.awt.*;
 
 /**
- * Modelo de datos para un elemento de la leyenda del gráfico.
+ * Data model for a chart legend element.
  *
  * <p>
- * Almacena el nombre de la serie, su color principal
- * y su color claro para el relleno de gradiente.
+ * Stores the series name, its main color, and its
+ * light color for the gradient fill.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -20,11 +20,11 @@ public class ModelLegend {
     private Color colorLight;
 
     /**
-     * Crea un modelo de leyenda con los datos especificados.
+     * Create a legend template with the specified data.
      *
-     * @param name       nombre de la serie
-     * @param color      color principal
-     * @param colorLight color claro para gradiente
+     * @param name       series name
+     * @param color      main color
+     * @param colorLight light color for gradient
      */
     public ModelLegend(String name, Color color, Color colorLight) {
         this.name = name;
@@ -33,13 +33,13 @@ public class ModelLegend {
     }
 
     /**
-     * Crea un modelo de leyenda vacío.
+     * Create an empty legend template.
      */
     public ModelLegend() {
 
     }
 
-    public void setNombre(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

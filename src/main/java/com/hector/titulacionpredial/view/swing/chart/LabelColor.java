@@ -4,12 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Etiqueta ({@link JLabel}) con renderizado personalizado
- * de color de fondo redondeado.
+ * Label ({@link JLabel}) with custom rendering of
+ * rounded background color.
  *
  * <p>
- * Utilizada como indicador de color en las leyendas
- * de los gráficos.
+ * Used as a color indicator in chart legends.
  * </p>
  *
  * @author Ing. Hector Acevedo

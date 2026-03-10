@@ -8,12 +8,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Panel con efecto de sombra interior y exterior.
+ * Panel with interior and exterior shadow effect.
  *
  * <p>
- * Utiliza {@link ShadowBorder} para renderizar sombras
- * alrededor del contenido del panel. Configurable en
- * radio de esquinas y tamaño de sombra.
+ * Use {@link ShadowBorder} to render shadows around
+ * the panel content. Configurable for corner radius
+ * and shadow size.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -28,7 +28,7 @@ public class PanelShadow extends JPanel {
     private BufferedImage imageShadow;
 
     /**
-     * Crea un panel con sombra exterior predeterminada.
+     * Create a panel with a default outer shadow.
      */
     public PanelShadow() {
         setBackground(new Color(242, 246, 253));
@@ -57,9 +57,9 @@ public class PanelShadow extends JPanel {
     }
 
     /**
-     * Establece el tamaño del borde de sombra.
+     * Set the size of the shadow border.
      *
-     * @param shadowSize tamaño de sombra
+     * @param shadowSize shadow size
      */
     public void setShadowSize(int shadowSize) {
         this.shadowSize = shadowSize;
@@ -88,7 +88,7 @@ public class PanelShadow extends JPanel {
     }
 
     /**
-     * Crea la imagen de sombra según el tipo configurado.
+     * Create the shadow image according to the configured type.
      */
     private void createShadowImage() {
         if (shadowType == ShadowBorder.ShadowType.OUT_SHADOW) {

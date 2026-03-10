@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.view.swing.shadow.chart;
 
 /**
- * Enumeración que define las posiciones de sombra
- * disponibles para {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}.
+ * Enumeration that defines the available shadow positions for
+ * {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}.
  *
  * <p>
- * Valores: {@code CENTER}, {@code TOP_RIGHT}, {@code TOP_LEFT},
+ * Values: {@code CENTER}, {@code TOP_RIGHT}, {@code TOP_LEFT},
  * {@code BOT_RIGHT}, {@code BOT_LEFT}, {@code BOT}, {@code TOP}.
  * </p>
  *

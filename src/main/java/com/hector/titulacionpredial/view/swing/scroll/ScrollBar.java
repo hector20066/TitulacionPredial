@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Barra de desplazamiento personalizada que aplica
- * {@link ModernScrollBarUI} automáticamente.
+ * Custom scroll bar that automatically applies {@link ModernScrollBarUI}.
  *
  * @author Ing. Hector Acevedo
  * @see ModernScrollBarUI
@@ -14,7 +13,7 @@ import java.awt.*;
 public class ScrollBar extends JScrollBar {
 
     /**
-     * Crea una barra de desplazamiento con estilo moderno.
+     * Create a scroll bar with a modern style.
      */
     public ScrollBar() {
         setUI(new ModernScrollBarUI());

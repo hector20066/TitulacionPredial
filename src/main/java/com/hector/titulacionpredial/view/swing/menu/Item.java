@@ -12,12 +12,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Elemento individual del menú lateral.
+ * Individual item in the side menu.
  *
  * <p>
- * Extiende {@link JButton} con estilo plano, icono SVG,
- * indicador de submenú y efecto de animación al pasar
- * el mouse. Cambia de color según el estado de selección.
+ * Extends {@link JButton} with flat styling, SVG icon, submenu indicator,
+ * and hover animation effect. Changes color based on selection state.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -34,10 +33,10 @@ public class Item extends JButton {
     private float alpha;
 
     /**
-     * Crea un elemento de menú.
+     * Create a menu item.
      *
-     * @param mainMenu {@code true} si es menú principal
-     * @param index    índice del elemento
+     * @param mainMenu {@code true} if it is the main menu
+     * @param index    element index
      */
     public Item(boolean mainMenu, int index) {
         this.mainMenu = mainMenu;
@@ -46,7 +45,7 @@ public class Item extends JButton {
     }
 
     /**
-     * Inicializa la apariencia, eventos del mouse y animación.
+     * Initializes appearance, mouse events, and animation.
      */
     private void init() {
         setContentAreaFilled(false);
@@ -102,7 +101,7 @@ public class Item extends JButton {
     }
 
     /**
-     * Inicia o reinicia la animación de hover.
+     * Start or restart the hover animation.
      */
     private void startAnimator() {
         if (animator.isRunning()) {
@@ -152,9 +151,9 @@ public class Item extends JButton {
     }
 
     /**
-     * Establece el icono SVG del elemento.
+     * Sets the SVG icon of the element.
      *
-     * @param icon ruta del icono SVG
+     * @param icon SVG icon path
      */
     public void setCustomIcon(String icon) {
         if (icon != null) {

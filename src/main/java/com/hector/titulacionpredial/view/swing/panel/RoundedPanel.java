@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- * Panel con esquinas redondeadas y borde opcional.
+ * Panel with rounded corners and optional border.
  *
  * <p>
- * Dibuja un fondo con {@code RoundRectangle2D} y permite
- * configurar el radio de las esquinas y el color del borde.
+ * Draw a background with {@code RoundRectangle2D} and allow
+ * you to configure the corner radius and border color.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -22,16 +22,16 @@ public class RoundedPanel extends JPanel {
     private Color borderColor = Color.BLACK;
 
     /**
-     * Crea un panel redondeado con radio predeterminado de 15px.
+     * Create a rounded panel with a default radius of 15px.
      */
     public RoundedPanel() {
         this(15);
     }
 
     /**
-     * Crea un panel redondeado con el radio especificado.
+     * Creates a rounded panel with the specified radius.
      *
-     * @param radius radio de las esquinas
+     * @param radius corner radius
      */
     public RoundedPanel(int radius) {
         super();
@@ -40,18 +40,18 @@ public class RoundedPanel extends JPanel {
     }
 
     /**
-     * Indica si el borde se dibuja.
+     * Indicates whether the border is drawn.
      *
-     * @return {@code true} si se dibuja el borde
+     * @return {@code true} if the border is drawn
      */
     public boolean isDrawBorder() {
         return drawBorder;
     }
 
     /**
-     * Establece si se dibuja el borde.
+     * Determines whether the border is drawn.
      *
-     * @param drawBorder {@code true} para dibujar el borde
+     * @param drawBorder {@code true} to draw the border
      */
     public void setDrawBorder(boolean drawBorder) {
         this.drawBorder = drawBorder;
@@ -59,9 +59,9 @@ public class RoundedPanel extends JPanel {
     }
 
     /**
-     * Establece el color del borde.
+     * Set the border color.
      *
-     * @param borderColor color del borde
+     * @param borderColor border color
      */
     public void setBorderColor(Color borderColor) {
         this.borderColor = borderColor;

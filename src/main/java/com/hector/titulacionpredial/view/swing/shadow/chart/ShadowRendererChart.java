@@ -4,12 +4,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Renderizador de sombras para componentes de gráficos.
+ * Shadow renderer for graphics components.
  *
  * <p>
- * Genera imágenes de sombra mediante desenfoque del canal alfa,
- * utilizado por {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}
- * para crear efectos visuales en las tarjetas.
+ * Generates shadow images by blurring the alpha channel, used by
+ * {@link com.hector.titulacionpredial.view.swing.panel.PanelShadowCard}
+ * to create visual effects on cards.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -22,18 +22,18 @@ public class ShadowRendererChart {
     private Color color = Color.BLACK;
 
     /**
-     * Crea un renderizador con valores predeterminados (tamaño 5, opacidad 0.5, negro).
+     * Create a renderer with default values (size 5, opacity 0.5, black).
      */
     public ShadowRendererChart() {
         this(5, 0.5f, Color.BLACK);
     }
 
     /**
-     * Crea un renderizador con los parámetros especificados.
+     * Create a renderer with the specified parameters.
      *
-     * @param size    tamaño del desenfoque
-     * @param opacity opacidad (0.0 a 1.0)
-     * @param color   color de la sombra
+     * @param size    blur size
+     * @param opacity opacity (0.0 to 1.0)
+     * @param color   shadow color
      */
     public ShadowRendererChart(final int size, final float opacity, final Color color) {
         this.size = size;
@@ -54,10 +54,10 @@ public class ShadowRendererChart {
     }
 
     /**
-     * Crea una imagen de sombra a partir de la imagen fuente.
+     * Create a shadow image from the source image.
      *
-     * @param image imagen fuente
-     * @return imagen con la sombra generada
+     * @param image Image source
+     * @return image with the generated shadow
      */
     public BufferedImage createShadow(final BufferedImage image) {
         int shadowSize = size * 2;

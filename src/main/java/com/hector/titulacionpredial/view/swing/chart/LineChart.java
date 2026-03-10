@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Componente gráfico de líneas con soporte para múltiples series.
+ * Line graphic component with support for multiple series.
  *
  * <p>
- * Dibuja series de datos como líneas suavizadas con relleno
- * de gradiente, leyenda inferior y tooltip interactivo
- * al pasar el mouse. Utiliza {@link BlankPlotChart} como
- * base para los ejes coordenados.
+ * Draw data series as smoothed lines with a gradient fill,
+ * a bottom legend, and an interactive tooltip that appears
+ * on hover. Use {@link BlankPlotChart} as the basis for the
+ * coordinate axes.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -46,7 +46,7 @@ public class LineChart extends javax.swing.JPanel {
     private Point labelLocation = new Point();
 
     /**
-     * Crea el gráfico de líneas e inicializa la animación y el renderizador.
+     * Create the line graph and initialize the animation and renderer.
      */
     public LineChart() {
         initComponents();
@@ -198,11 +198,11 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     /**
-     * Agrega una leyenda de serie al gráfico.
+     * Add a series legend to the chart.
      *
-     * @param name   nombre de la serie
-     * @param color  color principal
-     * @param color1 color claro del gradiente
+     * @param name   series name
+     * @param color  main color
+     * @param color1 light gradient color
      */
     public void addLegend(String name, Color color, Color color1){
         ModelLegend data = new ModelLegend(name, color, color1);
@@ -213,9 +213,9 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     /**
-     * Agrega datos de una categoría al gráfico.
+     * Add data from a category to the chart.
      *
-     * @param data modelo con la etiqueta y los valores
+     * @param data model with label and values
      */
     public void addData(ModelChart data){
         model.add(data);
@@ -228,7 +228,7 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     /**
-     * Limpia todas las series, leyendas y reinicia la animación.
+     * Clean up all series, legends, and restart the animation.
      */
     public void clear(){
         animate = 0;
@@ -243,7 +243,7 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     /**
-     * Inicia la animación de trazado de las líneas.
+     * Start the animation of tracing the lines.
      */
     public void start(){
         showLabel = null;
@@ -254,11 +254,11 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     /**
-     * Calcula las dimensiones del texto del tooltip.
+     * Calculate the dimensions of the tooltip text.
      *
-     * @param text texto a medir
-     * @param g2   contexto gráfico
-     * @return dimensión del texto
+     * @param text text to be measured
+     * @param g2   graphic context
+     * @return text dimension
      */
     private Dimension getLabelWidth(String text, Graphics2D g2){
         FontMetrics ft = g2.getFontMetrics();

@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.view.swing.model;
 
 /**
- * Modelo de datos para los elementos del menú lateral.
+ * Data model for side menu items.
  *
  * <p>
- * Contiene el icono SVG, el nombre del menú principal
- * y la lista de nombres de los sub-menús.
+ * It contains the SVG icon, the main menu name, and the list
+ * of sub-menu names.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,18 +18,18 @@ public class ModelMenuItem {
     private String[] subMenu;
 
     /**
-     * Crea un modelo de menú vacío.
+     * Create an empty menu template.
      */
     public ModelMenuItem() {
 
     }
 
     /**
-     * Crea un modelo de menú con los datos especificados.
+     * Create a menu template with the specified data.
      *
-     * @param icon     ruta del icono SVG
-     * @param menuName nombre del menú
-     * @param subMenu  nombres de los sub-menús
+     * @param icon     SVG icon path
+     * @param menuName menu name
+     * @param subMenu  sub-menu names
      */
     public ModelMenuItem(String icon, String menuName, String... subMenu) {
         this.icon = icon;

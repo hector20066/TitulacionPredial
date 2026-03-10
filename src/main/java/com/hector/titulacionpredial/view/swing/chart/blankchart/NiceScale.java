@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.view.swing.chart.blankchart;
 
 /**
- * Calculadora de escalas «agradables» para ejes de gráficos.
+ * Calculator of «nice» scales for graph axes.
  *
  * <p>
- * Dado un rango de valores mínimo y máximo, calcula
- * intervalos de marcas (ticks) redondeados y límites
- * de eje apropiados para una visualización legible.
+ * Given a range of minimum and maximum values,
+ * calculate rounded tick intervals and appropriate
+ * axis limits for a readable display.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -23,10 +23,10 @@ public class NiceScale {
     private double niceMax;
 
     /**
-     * Crea una escala con el rango dado.
+     * Create a scale with the given range.
      *
-     * @param min valor mínimo
-     * @param max valor máximo
+     * @param min minimum value
+     * @param max maximum value
      */
     public NiceScale(final double min, final double max) {
         this.min = min;
@@ -35,7 +35,7 @@ public class NiceScale {
     }
 
     /**
-     * Recalcula el rango, espaciado y límites del eje.
+     * Recalculate the range, spacing, and axis limits.
      */
     private void calculate() {
         range = niceNum(max - min, false);
@@ -45,11 +45,11 @@ public class NiceScale {
     }
 
     /**
-     * Encuentra el número «agradable» más cercano.
+     * Find the nearest "nice" number.
      *
-     * @param range rango a redondear
-     * @param round {@code true} para redondear, {@code false} para techo
-     * @return número redondeado
+     * @param range range to round
+     * @param round {@code true} to round, {@code false} for ceiling
+     * @return rounded number
      */
     private double niceNum(final double range, final boolean round) {
         double exponent;
@@ -93,10 +93,10 @@ public class NiceScale {
     }
 
     /**
-     * Establece el rango mínimo y máximo y recalcula.
+     * Set the minimum and maximum range and recalculate.
      *
-     * @param min valor mínimo
-     * @param max valor máximo
+     * @param min minimum value
+     * @param max maximum value
      */
     public void setMinMax(final double min, final double max) {
         this.min = min;
@@ -121,9 +121,9 @@ public class NiceScale {
     }
 
     /**
-     * Establece el número máximo de marcas y recalcula.
+     * Set the maximum number of marks and recalculate.
      *
-     * @param maxTicks cantidad máxima de marcas
+     * @param maxTicks maximum number of marks
      */
     public void setMaxTicks(final int maxTicks) {
         this.maxTicks = maxTicks;
@@ -135,9 +135,9 @@ public class NiceScale {
     }
 
     /**
-     * Establece el valor mínimo y recalcula.
+     * Set the minimum value and recalculate.
      *
-     * @param min valor mínimo
+     * @param min minimum value
      */
     public void setMin(double min) {
         this.min = min;
@@ -149,9 +149,9 @@ public class NiceScale {
     }
 
     /**
-     * Establece el valor máximo y recalcula.
+     * Set the maximum value and recalculate.
      *
-     * @param max valor máximo
+     * @param max maximum value
      */
     public void setMax(double max) {
         this.max = max;

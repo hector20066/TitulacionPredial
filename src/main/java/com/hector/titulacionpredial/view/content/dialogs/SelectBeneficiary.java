@@ -129,7 +129,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(242, 246, 253));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(116, 198, 157), 1, true));
 
         jtbl_beneficiaries.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
@@ -150,21 +150,21 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         jlb_title.setForeground(new java.awt.Color(8, 28, 21));
         jlb_title.setText("Seleccionar beneficiario");
 
-        roundedPanel.setBackground(new java.awt.Color(255, 255, 255));
+        roundedPanel.setBackground(new java.awt.Color(242, 246, 253));
         roundedPanel.setBorderColor(new java.awt.Color(116, 198, 157));
 
-        txt_search.setBackground(new java.awt.Color(255, 255, 255));
+        txt_search.setBackground(new java.awt.Color(242, 246, 253));
         txt_search.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txt_search.setForeground(new java.awt.Color(64, 145, 108));
         txt_search.setText("Buscar");
         txt_search.setBorder(null);
 
-        btn_search.setBackground(new java.awt.Color(255, 255, 255));
+        btn_search.setBackground(new java.awt.Color(242, 246, 253));
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        btn_searchCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btn_searchCancel.setBackground(new java.awt.Color(242, 246, 253));
         btn_searchCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/x.png"))); // NOI18N
         btn_searchCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_searchCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

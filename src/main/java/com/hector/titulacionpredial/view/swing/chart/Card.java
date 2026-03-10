@@ -5,12 +5,11 @@ import com.hector.titulacionpredial.view.swing.model.CardModel;
 import java.awt.*;
 
 /**
- * Tarjeta visual con fondo de gradiente para el dashboard.
+ * Visual card with gradient background for the dashboard.
  *
  * <p>
- * Muestra un icono, título y valores numéricos con un
- * fondo de gradiente personalizable. Utilizada para
- * presentar estadísticas clave en el tablero de control.
+ * Displays an icon, title, and numerical values with a
+ * customizable gradient background. Used to present key statistics on the dashboard.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -23,7 +22,7 @@ public class Card extends javax.swing.JPanel {
     private Color color2;
 
     /**
-     * Crea una tarjeta con gradiente predeterminado negro a blanco.
+     * Create a card with a default black to white gradient.
      */
     public Card() {
         initComponents();
@@ -100,9 +99,9 @@ public class Card extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Establece los datos de la tarjeta.
+     * Enter the card details.
      *
-     * @param data modelo de datos
+     * @param data data model
      */
     public void setData(CardModel data){
         jlb_icon.setIcon(data.getIcon());

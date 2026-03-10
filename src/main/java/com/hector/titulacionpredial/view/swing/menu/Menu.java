@@ -12,13 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Panel del menú lateral de navegación de la aplicación.
+ * Application navigation side menu panel.
  *
  * <p>
- * Organiza los elementos de menú ({@link MenuItem}) en una
- * lista vertical con scroll personalizado. Gestiona la
- * selección de opciones y notifica al controlador mediante
- * {@link EventMenuSelected}.
+ * Organizes menu items ({@link MenuItem}) into a vertical
+ * list with custom scrolling. Manages option selection and
+ * notifies the controller using {@link EventMenuSelected}.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -49,14 +48,14 @@ public class Menu extends JPanel {
     private String about = "Acerca De";
 
     /**
-     * Crea el menú lateral con los componentes predeterminados.
+     * Create the side menu with the default components.
      */
     public Menu() {
         init();
     }
 
     /**
-     * Inicializa el layout, scroll y panel del menú.
+     * Initializes the layout, scroll, and menu panel.
      */
     private void init() {
         setBackground(Color.white);
@@ -91,7 +90,7 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Agrega las opciones de menú predeterminadas.
+     * Add the default menu options.
      */
     public void addComponents() {
         addTitle(main);
@@ -106,9 +105,9 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Crea un scroll personalizado sin bordes.
+     * Create a custom borderless scroll.
      *
-     * @return panel de scroll
+     * @return scroll panel
      */
     private JScrollPane createScroll() {
         JScrollPane scroll = new JScrollPane();
@@ -121,9 +120,9 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Crea el panel contenedor de ítems de menú.
+     * Create the menu item container panel.
      *
-     * @return panel del menú
+     * @return menu panel
      */
     private JPanel createPanelMenu() {
         JPanel panel = new JPanel();
@@ -135,10 +134,10 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Crea un ítem de menú con sus eventos de selección.
+     * Create a menu item with its selection events.
      *
-     * @param item modelo del menú
-     * @return panel del ítem
+     * @param item menu template
+     * @return item panel
      */
     private JPanel createMenuItem(ModelMenuItem item) {
         MenuItem menuItem = new MenuItem(item, ++index, menuLayout);
@@ -154,10 +153,10 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Notifica a los listeners la selección de un menú.
+     * Notifies listeners of a menu selection.
      *
-     * @param index        índice del menú
-     * @param indexSubMenu índice del sub-menú
+     * @param index        menu index
+     * @param indexSubMenu sub-menu index
      */
     private void runEvent(int index, int indexSubMenu) {
         for (EventMenuSelected event : events) {
@@ -166,16 +165,16 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Agrega un ítem de menú al panel.
+     * Add a menu item to the panel.
      *
-     * @param menu modelo del menú
+     * @param menu menu template
      */
     public void addMenuItem(ModelMenuItem menu) {
         panelMenu.add(createMenuItem(menu), "h 35!");
     }
 
     /**
-     * Reconstruye el menú eliminando y volviendo a agregar los componentes.
+     * Rebuild the menu by removing and re-adding the components.
      */
     protected void rebuildMenu() {
         panelMenu.removeAll();
@@ -186,9 +185,9 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Agrega un título de sección al menú.
+     * Add a section title to the menu.
      *
-     * @param title texto del título
+     * @param title title text
      */
     public void addTitle(String title) {
         JLabel label = new JLabel(title);
@@ -199,24 +198,23 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Agrega un espacio vertical al menú.
+     * Add a vertical space to the menu.
      *
-     * @param size tamaño del espacio en píxeles
+     * @param size space size in pixels
      */
     public void addSpace(int size) {
         panelMenu.add(new Label(), "h " + size + "!");
     }
 
     /**
-     * Selecciona un ítem y sub-ítem del menú por índice.
+     * Select an item and sub-item from the menu by index.
      *
-     * @param index        índice del menú
-     * @param indexSubMenu índice del sub-menú
+     * @param index        menu index
+     * @param indexSubMenu sub-menu index
      */
     public void setSelectedIndex(int index, int indexSubMenu) {
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem item) {
-
                 if (item.getIndex() == index) {
                     item.setSelectedIndex(indexSubMenu);
                     runEvent(index, indexSubMenu);
@@ -227,7 +225,7 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Limpia la selección de todos los ítems del menú.
+     * Clear the selection of all menu items.
      */
     public void clearSelected() {
         for (Component com : panelMenu.getComponents()) {
@@ -238,9 +236,9 @@ public class Menu extends JPanel {
     }
 
     /**
-     * Agrega un listener de selección de menú.
+     * Add a menu selection listener.
      *
-     * @param event listener a agregar
+     * @param event listener to add
      */
     public void addEvent(EventMenuSelected event) {
         events.add(event);

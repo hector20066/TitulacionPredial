@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.view.swing.model;
 
 /**
- * Modelo de datos para una serie del gráfico de líneas.
+ * Data model for a line chart series.
  *
  * <p>
- * Contiene la etiqueta del eje X y los valores
- * correspondientes a cada serie de datos.
+ * It contains the X-axis label and the corresponding
+ * values for each data series.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -17,10 +17,10 @@ public class ModelChart {
     private double[] values;
 
     /**
-     * Crea un modelo de serie con etiqueta y valores.
+     * Create a series model with label and values.
      *
-     * @param label  etiqueta del eje X
-     * @param values valores de la serie
+     * @param label  X-axis label
+     * @param values values of the series
      */
     public ModelChart(String label, double[] values) {
         this.label = label;
@@ -28,7 +28,7 @@ public class ModelChart {
     }
 
     /**
-     * Crea un modelo de serie vacío.
+     * Create an empty series model.
      */
     public ModelChart() {
 
@@ -51,9 +51,9 @@ public class ModelChart {
     }
 
     /**
-     * Obtiene el valor máximo de la serie.
+     * It obtains the maximum value of the series.
      *
-     * @return valor máximo
+     * @return maximum value
      */
     public double getMaxValues() {
         double max = 0;

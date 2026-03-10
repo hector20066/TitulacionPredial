@@ -11,13 +11,13 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Componente gráfico de tipo medidor (gauge) semicircular.
+ * Semicircular gauge type graphic component.
  *
  * <p>
- * Dibuja un arco de progreso con gradiente de colores
- * y muestra el valor porcentual en el centro. Incluye
- * animación suave al actualizar el valor mediante
- * la librería TimingFramework.
+ * Draw a progress arc with a color gradient and display
+ * the percentage value in the center. Include smooth
+ * animation when updating the value using the TimingFramework
+ * library.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -36,7 +36,7 @@ public class GaugeChart extends JComponent {
     private float lastAnimate;
 
     /**
-     * Crea un medidor semicircular con animación.
+     * Create a semicircular meter with animation.
      */
     public GaugeChart() {
         setFont(new JLabel().getFont().deriveFont(0, 20));
@@ -78,9 +78,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Establece el primer color del gradiente.
+     * Set the first color of the gradient.
      *
-     * @param color1 primer color
+     * @param color1 first color
      */
     public void setColor1(Color color1) {
         this.color1 = color1;
@@ -92,9 +92,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Establece el segundo color del gradiente.
+     * Set the second color of the gradient.
      *
-     * @param color2 segundo color
+     * @param color2 second color
      */
     public void setColor2(Color color2) {
         this.color2 = color2;
@@ -106,9 +106,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Establece el valor del medidor sin animación.
+     * Set the meter value without animation.
      *
-     * @param value valor (se limita a 0 como mínimo)
+     * @param value value (limited to 0 minimum)
      */
     public void setValue(int value) {
         if (animator.isRunning()) {
@@ -129,9 +129,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Establece el valor máximo del medidor.
+     * Set the maximum value of the meter.
      *
-     * @param maximum valor máximo
+     * @param maximum maximum value
      */
     public void setMaximum(int maximum) {
         this.maximum = maximum;
@@ -142,8 +142,8 @@ public class GaugeChart extends JComponent {
      * {@inheritDoc}
      */
     @Override
-    public void paint(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
+    public void paint(Graphics graphics) {
+        Graphics2D g2 = (Graphics2D) graphics;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         float spaceBot = 0.15f;
         int width = getWidth();
@@ -178,6 +178,7 @@ public class GaugeChart extends JComponent {
         double start = angleStart + 7;
         double angleSize = ((double) size / 2) - gaugeSize;
         g2.setColor(new Color(200, 200, 200));
+
         for (int i = 1; i <= len; i++) {
             Point p = getLocation(start, angleSize);
             g2.fillOval(centerX + p.x - 2, centerY - p.y - 2, 4, 4);
@@ -199,16 +200,16 @@ public class GaugeChart extends JComponent {
         g2.setColor(new Color(240, 240, 240));
         g2.fillOval(centerX - 2, centerY - 2, 4, 4);
         drawText(g2, centerX, centerY, angleSize);
-        super.paint(grphcs);
+        super.paint(graphics);
     }
 
     /**
-     * Dibuja el texto porcentual centrado en el medidor.
+     * Draw the percentage text centered on the meter.
      *
-     * @param g2   contexto gráfico
-     * @param x    coordenada X central
-     * @param y    coordenada Y central
-     * @param size radio del arco
+     * @param g2   graphic context
+     * @param x    central X coordinate
+     * @param y    central Y coordinate
+     * @param size radius of the arc
      */
     private void drawText(Graphics2D g2, int x, int y, double size) {
         g2.setColor(getForeground());
@@ -222,9 +223,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Calcula el ángulo de arco correspondiente al valor actual.
+     * Calculate the arc angle corresponding to the current value.
      *
-     * @return ángulo en grados
+     * @return angle in degrees
      */
     private double getAngleOfValues() {
         double max = maximum;
@@ -238,11 +239,11 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Calcula la posición XY en la circunferencia.
+     * Calculate the XY position on the circumference.
      *
-     * @param angle ángulo en grados
+     * @param angle angle in degrees
      * @param size  radio
-     * @return punto en la circunferencia
+     * @return point on the circumference
      */
     private Point getLocation(double angle, double size) {
         double x = Math.cos(Math.toRadians(angle)) * size;
@@ -251,9 +252,9 @@ public class GaugeChart extends JComponent {
     }
 
     /**
-     * Establece el valor del medidor con animación.
+     * Set the meter value with animation.
      *
-     * @param value valor objetivo
+     * @param value target value
      */
     public void setValueWithAnimation(int value) {
         if (value < 0) {
