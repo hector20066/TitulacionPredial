@@ -7,13 +7,12 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Singleton para la creación de bordes con efecto de sombra.
+ * Singleton for creating borders with a shadow effect.
  *
  * <p>
- * Genera imágenes de sombra interior ({@code createShadowIn})
- * y exterior ({@code createShadowOut}) utilizando
- * {@link ShadowRenderer}. Define el enum {@code ShadowType}
- * para distinguir entre ambos tipos.
+ * Generates inner ({@code createShadowIn}) and outer ({@code createShadowOut})
+ * shadow images using {@link ShadowRenderer}. Defines the enum {@code ShadowType}
+ * to distinguish between the two types.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -22,22 +21,19 @@ import java.awt.image.BufferedImage;
  */
 public class ShadowBorder {
 
-    /**
-     * Instancia única del singleton.
-     */
     private static ShadowBorder instance;
 
     /**
-     * Constructor privado para evitar instanciación externa.
+     * Private builder to avoid external instantiation.
      */
     private ShadowBorder() {
 
     }
 
     /**
-     * Obtiene la instancia única de {@code ShadowBorder}.
+     * Gets the unique instance of {@code ShadowBorder}.
      *
-     * @return instancia singleton
+     * @return singleton instance
      */
     public static ShadowBorder getInstance() {
         if (instance == null) {
@@ -48,24 +44,23 @@ public class ShadowBorder {
     }
 
     /**
-     * Crea una imagen con sombra interior a partir de las dimensiones del componente.
+     * Create an image with an inner shadow based on the component's dimensions.
      *
-     * @param com    componente de referencia
-     * @param border tamaño del borde de sombra
-     * @param radius radio de las esquinas
-     * @return imagen con sombra interior
+     * @param com    reference component
+     * @param border shadow border size
+     * @param radius corner radius
+     * @return image with inner shadow
      */
     public BufferedImage createShadowIn(Component com, int border, int radius) {
         return createShadowIn(com.getWidth(), com.getHeight(), border, radius, com.getBackground());
     }
 
     /**
-     * Divide el área en una forma triangular para separar
-     * las zonas de sombra.
+     * Divide the area into a triangular shape to separate the shaded areas.
      *
-     * @param width  ancho del área
-     * @param height alto del área
-     * @return forma triangular
+     * @param width  area width
+     * @param height height area
+     * @return triangular shape
      */
     private Shape split(int width, int height) {
         Path2D.Float p = new Path2D.Float();
@@ -77,26 +72,26 @@ public class ShadowBorder {
     }
 
     /**
-     * Crea una imagen con sombra exterior a partir de las dimensiones del componente.
+     * Create an image with an outer shadow based on the component's dimensions.
      *
-     * @param com    componente de referencia
-     * @param border tamaño del borde de sombra
-     * @param radius radio de las esquinas
-     * @return imagen con sombra exterior
+     * @param com    reference component
+     * @param border shadow border size
+     * @param radius corner radius
+     * @return image with outer shadow
      */
     public BufferedImage createShadowOut(Component com, int border, int radius) {
         return createShadowOut(com.getWidth(), com.getHeight(), border, radius, com.getBackground());
     }
 
     /**
-     * Crea una imagen con sombra interior con dimensiones y color específicos.
+     * Create an image with an inner shadow with specific dimensions and color.
      *
-     * @param width  ancho de la imagen
-     * @param height alto de la imagen
-     * @param border tamaño del borde
-     * @param radius radio de las esquinas
-     * @param color  color de fondo
-     * @return imagen con sombra interior
+     * @param width  image width
+     * @param height height of the image
+     * @param border border size
+     * @param radius corner radius
+     * @param color  background color
+     * @return image with inner shadow
      */
     public BufferedImage createShadowIn(int width, int height, int border, int radius, Color color) {
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -138,14 +133,14 @@ public class ShadowBorder {
     }
 
     /**
-     * Crea una imagen con sombra exterior con dimensiones y color específicos.
+     * Create an image with an outer shadow with specific dimensions and color.
      *
-     * @param width  ancho de la imagen
-     * @param height alto de la imagen
-     * @param border tamaño del borde
-     * @param radius radio de las esquinas
-     * @param color  color de fondo
-     * @return imagen con sombra exterior
+     * @param width  image width
+     * @param height height of the image
+     * @param border border size
+     * @param radius corner radius
+     * @param color  background color
+     * @return image with outer shadow
      */
     public BufferedImage createShadowOut(int width, int height, int border, int radius, Color color) {
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -166,12 +161,12 @@ public class ShadowBorder {
     }
 
     /**
-     * Crea una imagen auxiliar a partir de un área recortada.
+     * Create an auxiliary image from a cropped area.
      *
-     * @param width  ancho de la imagen
-     * @param height alto de la imagen
-     * @param area   área a rellenar
-     * @return imagen con el área rellena
+     * @param width  image width
+     * @param height height of the image
+     * @param area   area to be filled
+     * @return image with the area filled
      */
     private BufferedImage createImage(int width, int height, Area area) {
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -183,14 +178,14 @@ public class ShadowBorder {
     }
 
     /**
-     * Crea una imagen auxiliar con un rectángulo redondeado.
+     * Create an auxiliary image with a rounded rectangle.
      *
-     * @param x      coordenada X
-     * @param y      coordenada Y
-     * @param width  ancho del rectángulo
-     * @param height alto del rectángulo
-     * @param size   radio de las esquinas
-     * @return imagen con el rectángulo relleno
+     * @param x      X coordinate
+     * @param y      Y coordinate
+     * @param width  width of the rectangle
+     * @param height height of the rectangle
+     * @param size   corner radius
+     * @return image with filled rectangle
      */
     private BufferedImage createImage(int x, int y, int width, int height, int size) {
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -202,7 +197,7 @@ public class ShadowBorder {
     }
 
     /**
-     * Enumeración que define los tipos de sombra.
+     * List that defines the types of shadow.
      */
     public enum ShadowType {
 

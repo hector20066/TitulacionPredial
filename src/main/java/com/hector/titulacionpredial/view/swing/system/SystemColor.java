@@ -3,13 +3,11 @@ package com.hector.titulacionpredial.view.swing.system;
 import java.awt.*;
 
 /**
- * Constantes de colores del sistema de diseño
- * de la aplicación.
+ * Application design system color constants.
  *
  * <p>
- * Define los colores temáticos utilizados consistentemente
- * en toda la interfaz gráfica (verde principal, colores
- * de acento, fondos, etc.).
+ * Define the theme colors used consistently throughout the graphical
+ * interface (main green, accent colors, backgrounds, etc.).
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -18,12 +16,12 @@ import java.awt.*;
 public class SystemColor {
 
     /**
-     * Color verde claro principal de la aplicación ({@code #74c69d}).
+     * Main light green color of the application ({@code #74c69d}).
      */
     public static final Color MAIN_COLOR_1 = Color.decode("#74c69d");
 
     /**
-     * Color verde oscuro de acento ({@code #40916c}).
+     * Dark green accent color ({@code #40916c}).
      */
     public static final Color MAIN_COLOR_2 = Color.decode("#40916c");
 

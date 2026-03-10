@@ -4,13 +4,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Renderizador de sombras mediante desenfoque gaussiano
- * sobre el canal alfa de una imagen.
+ * Shadow renderer using Gaussian blur on the alpha channel of an image.
  *
  * <p>
- * Genera imágenes de sombra configurables en tamaño,
- * opacidad y color. Utilizado por {@link ShadowBorder}
- * para crear efectos de sombra en los paneles.
+ * Generates shadow images configurable in size, opacity, and color.
+ * Used by {@link ShadowBorder} to create shadow effects on panels.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -24,18 +22,18 @@ public class ShadowRenderer {
     private Color color = Color.BLACK;
 
     /**
-     * Crea un renderizador con valores predeterminados (tamaño 5, opacidad 0.5, negro).
+     * Create a renderer with default values (size 5, opacity 0.5, black).
      */
     public ShadowRenderer() {
         this(5, 0.5f, Color.BLACK);
     }
 
     /**
-     * Crea un renderizador de sombra con los parámetros especificados.
+     * Create a shadow renderer with the specified parameters.
      *
-     * @param size    tamaño del desenfoque
-     * @param opacity opacidad (0.0 a 1.0)
-     * @param color   color de la sombra
+     * @param size    blur size
+     * @param opacity opacity (0.0 to 1.0)
+     * @param color   shadow color
      */
     public ShadowRenderer(final int size, final float opacity, final Color color) {
         this.size = size;
@@ -56,10 +54,10 @@ public class ShadowRenderer {
     }
 
     /**
-     * Crea una imagen de sombra a partir de la imagen fuente.
+     * Create a shadow image from the source image.
      *
-     * @param image imagen fuente
-     * @return imagen con la sombra generada
+     * @param image Image source
+     * @return image with the generated shadow
      */
     public BufferedImage createShadow(final BufferedImage image) {
         int shadowSize = size * 2;
