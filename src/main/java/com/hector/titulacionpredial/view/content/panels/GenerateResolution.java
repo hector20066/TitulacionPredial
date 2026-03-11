@@ -973,7 +973,7 @@ public class GenerateResolution extends javax.swing.JPanel {
             txt_idBeneficiary.setText(beneficiariesId);
             txt_addressBeneficiary.setText(beneficiary.getAddress());
             txt_municipality.setText(beneficiary.getMunicipality().getValue());
-            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralReference()));
+            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralRef()));
 
             txt_propertyCode.setText(String.valueOf(codeProperty));
 

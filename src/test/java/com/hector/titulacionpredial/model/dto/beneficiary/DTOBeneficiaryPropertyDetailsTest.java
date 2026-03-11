@@ -40,7 +40,7 @@ class DTOBeneficiaryPropertyDetailsTest {
     void settersAndGettersShouldWork() {
         DTOBeneficiaryPropertyDetails dto = new DTOBeneficiaryPropertyDetails();
         dto.setFullName("María García");
-        dto.setCode(999L);
+        dto.setId(999L);
 
         assertEquals("María García", dto.getFullName());
         assertEquals(999L, dto.getId());

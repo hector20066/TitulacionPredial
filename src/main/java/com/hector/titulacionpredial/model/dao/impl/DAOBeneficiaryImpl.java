@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundEx
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
@@ -64,35 +65,11 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             statementDetails(st, dto);
+            st.setDate(14, Date.valueOf(LocalDate.now()));
             st.executeUpdate();
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"), e);
         }
-    }
-
-    /**
-     * Prepare PreparedStatement object with transaction data.
-     *
-     * @param st  PrepareStatement object
-     * @param dto DTO object with beneficiary data
-     * @throws SQLException if an exception occurs while
-     *                      performing the operation.
-     */
-    private void statementDetails(PreparedStatement st, DTOBeneficiaryCreate dto) throws SQLException {
-        st.setLong(1, dto.getId());
-        st.setString(2, dto.getFullName());
-        st.setString(3, String.valueOf(dto.getDepartment()));
-        st.setString(4, String.valueOf(dto.getMunicipality()));
-        st.setString(5, dto.getAddress());
-        st.setString(6, dto.getCadastralReference());
-        st.setString(7, String.valueOf(dto.getMaritalStatus()));
-        st.setString(8, dto.getAffectation());
-        st.setLong(9, dto.getPhone());
-        st.setString(10, dto.getCrossing());
-        st.setString(11, dto.getPublication());
-        st.setString(12, dto.getNeighborhood());
-        st.setString(13, dto.getExpeditionLocation());
-        st.setDate(14, Date.valueOf(LocalDate.now()));
     }
 
     @Override
@@ -232,7 +209,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setPhone(rs.getLong("phone"));
-        dto.setCadastralReference(rs.getString("cadastral_reference"));
+        dto.setCadastralRef(rs.getString("cadastral_reference"));
         dto.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
         dto.setMaritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")));
         dto.setAddress(rs.getString("address"));
@@ -331,7 +308,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-            statementDetailsUpdate(st, dto);
+            statementDetails(st, dto);
+            st.setInt(14, dto.getCode());
 
             if (st.executeUpdate() == 0) {
                 throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
@@ -344,23 +322,27 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     /**
-     * Configure object {@link PreparedStatement} with the data to be modified.
+     * Prepare PreparedStatement object with transaction data.
      *
-     * @param st  object {@code PreparedStatement}
+     * @param st  PrepareStatement object
      * @param dto DTO object with beneficiary data
-     * @throws SQLException exception thrown when there are problems with the database.
+     * @throws SQLException if an exception occurs while
+     *                      performing the operation.
      */
-    private void statementDetailsUpdate(PreparedStatement st, DTOBeneficiaryUpdate dto) throws SQLException {
-        st.setString(1, String.valueOf(dto.getDepartment()));
-        st.setString(2, String.valueOf(dto.getMunicipality()));
-        st.setString(3, dto.getAddress());
-        st.setString(4, String.valueOf(dto.getMaritalStatus()));
-        st.setString(5, dto.getAffectation());
-        st.setLong(6, dto.getPhone());
-        st.setString(7, dto.getCrossing());
-        st.setString(8, dto.getPublication());
-        st.setString(9, dto.getNeighborhood());
-        st.setInt(10, dto.getCode());
+    private void statementDetails(PreparedStatement st, DTOBeneficiary dto) throws SQLException {
+        st.setLong(1, dto.getId());
+        st.setString(2, dto.getFullName());
+        st.setString(3, String.valueOf(dto.getDepartment()));
+        st.setString(4, String.valueOf(dto.getMunicipality()));
+        st.setString(5, dto.getAddress());
+        st.setString(6, dto.getCadastralRef());
+        st.setString(7, String.valueOf(dto.getMaritalStatus()));
+        st.setString(8, dto.getAffectation());
+        st.setLong(9, dto.getPhone());
+        st.setString(10, dto.getCrossing());
+        st.setString(11, dto.getPublication());
+        st.setString(12, dto.getNeighborhood());
+        st.setString(13, dto.getExpeditionLocation());
     }
 
     @Override

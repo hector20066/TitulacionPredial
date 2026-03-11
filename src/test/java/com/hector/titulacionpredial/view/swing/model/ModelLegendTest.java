@@ -36,7 +36,7 @@ class ModelLegendTest {
     @DisplayName("setNombre debe establecer el nombre")
     void setNombreShouldSetName() {
         ModelLegend legend = new ModelLegend();
-        legend.setNombre("Ingresos");
+        legend.setName("Ingresos");
         assertEquals("Ingresos", legend.getName());
     }
 
@@ -63,7 +63,7 @@ class ModelLegendTest {
     void shouldUpdateAllFieldsAfterCreation() {
         ModelLegend legend = new ModelLegend("Original", Color.RED, Color.PINK);
 
-        legend.setNombre("Actualizado");
+        legend.setName("Actualizado");
         legend.setColor(Color.GREEN);
         legend.setColorLight(Color.YELLOW);
 

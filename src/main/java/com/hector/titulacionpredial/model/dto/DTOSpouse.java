@@ -29,9 +29,6 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOSpouse extends DTOBasePerson {
 
-    private long id;
-    private String fullName;
-    private String expeditionLocation;
     private int beneficiaryCode;
 
     /**
@@ -48,36 +45,8 @@ public class DTOSpouse extends DTOBasePerson {
      * @param builder configured instance of the builder
      */
     public DTOSpouse(Builder builder) {
-        super(builder.address, builder.phone);
-
-        this.id = builder.id;
-        this.fullName = builder.fullName;
-        this.expeditionLocation = builder.expeditionLocation;
+        super(builder);
         this.beneficiaryCode = builder.beneficiaryCode;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getExpeditionLocation() {
-        return expeditionLocation;
-    }
-
-    public void setExpeditionLocation(String expeditionLocation) {
-        this.expeditionLocation = expeditionLocation;
     }
 
     public int getBeneficiaryCode() {
@@ -96,39 +65,9 @@ public class DTOSpouse extends DTOBasePerson {
      * invoking {@link #build()}.
      * </p>
      */
-    public static class Builder {
+    public static class Builder extends DTOBasePerson.Builder<Builder> {
 
-        private long id;
-        private String fullName;
-        private String expeditionLocation;
-        private String address;
-        private long phone;
         private int beneficiaryCode;
-
-        public Builder id(long id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder fullName(String fullName) {
-            this.fullName = fullName;
-            return this;
-        }
-
-        public Builder expeditionLocation(String expeditionLocation) {
-            this.expeditionLocation = expeditionLocation;
-            return this;
-        }
-
-        public Builder address(String address) {
-            this.address = address;
-            return this;
-        }
-
-        public Builder phone(long phone) {
-            this.phone = phone;
-            return this;
-        }
 
         public Builder beneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
