@@ -129,7 +129,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jscp_info = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jlb_beneficiaryInfo = new javax.swing.JLabel();
-        jlb_name = new javax.swing.JLabel();
+        jlb_fullName = new javax.swing.JLabel();
         txt_fullName = new javax.swing.JTextField();
         jlb_phone = new javax.swing.JLabel();
         txt_phone = new javax.swing.JTextField();
@@ -179,9 +179,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_beneficiaryInfo.setForeground(new java.awt.Color(33, 37, 41));
         jlb_beneficiaryInfo.setText("Informacion del beneficiario del sistema");
 
-        jlb_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jlb_name.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_name.setText("Nombre Completo:");
+        jlb_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_fullName.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_fullName.setText("Nombre Completo:");
 
         txt_fullName.setBackground(new java.awt.Color(255, 255, 255));
         txt_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -314,10 +314,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                         .addGap(46, 46, 46)
                                         .addComponent(jlb_maritalStatus))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jlb_name)
+                                        .addComponent(jlb_fullName)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_fullName)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbo_maritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,11 +326,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(145, 145, 145)
                                         .addComponent(jlb_id)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(83, 83, 83))))
+                                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +397,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addComponent(jlb_beneficiaryInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlb_name)
+                    .addComponent(jlb_fullName)
                     .addComponent(txt_fullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_id)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -524,7 +523,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public void updateLanguage(DTORegisterBeneficiaryText texts) {
         jlb_title.setText(texts.getAddTitle());
         jlb_beneficiaryInfo.setText(texts.getBeneficiaryInfo());
-        jlb_name.setText(texts.getName());
+        jlb_fullName.setText(texts.getFullName());
         jlb_phone.setText(texts.getPhone());
         jlb_id.setText(texts.getId());
         jlb_maritalStatus.setText(texts.getMaritalStatus());
@@ -728,10 +727,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JLabel jlb_crossing;
     private javax.swing.JLabel jlb_department;
     private javax.swing.JLabel jlb_expeditionLocation;
+    private javax.swing.JLabel jlb_fullName;
     private javax.swing.JLabel jlb_id;
     private javax.swing.JLabel jlb_maritalStatus;
     private javax.swing.JLabel jlb_municipality;
-    private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel jlb_neighborhood;
     private javax.swing.JLabel jlb_phone;
     private javax.swing.JLabel jlb_publication;

@@ -17,9 +17,8 @@ public class DTORegisterBeneficiaryText {
     private final String addTitle;
     private final String addBtn;
     private final String beneficiaryInfo;
-    private final String name;
+    private final String fullName;
     private final String phone;
-    private final String lastName;
     private final String id;
     private final String maritalStatus;
     private final String residenceData;
@@ -46,9 +45,8 @@ public class DTORegisterBeneficiaryText {
         this.addTitle = builder.addTitle;
         this.addBtn = builder.addBtn;
         this.beneficiaryInfo = builder.beneficiaryInfo;
-        this.name = builder.name;
+        this.fullName = builder.fullName;
         this.phone = builder.phone;
-        this.lastName = builder.lastName;
         this.id = builder.id;
         this.maritalStatus = builder.maritalStatus;
         this.residenceData = builder.residenceData;
@@ -85,16 +83,12 @@ public class DTORegisterBeneficiaryText {
         return beneficiaryInfo;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getPhone() {
         return phone;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public String getId() {
@@ -163,9 +157,8 @@ public class DTORegisterBeneficiaryText {
         private String addTitle;
         private String addBtn;
         private String beneficiaryInfo;
-        private String name;
+        private String fullName;
         private String phone;
-        private String lastName;
         private String id;
         private String maritalStatus;
         private String residenceData;
@@ -206,18 +199,13 @@ public class DTORegisterBeneficiaryText {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
             return this;
         }
 
         public Builder phone(String phone) {
             this.phone = phone;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
             return this;
         }
 

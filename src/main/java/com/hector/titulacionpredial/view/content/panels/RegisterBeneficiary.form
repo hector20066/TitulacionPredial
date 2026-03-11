@@ -129,13 +129,13 @@
                                                   <Component id="jlb_maritalStatus" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jlb_name" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jlb_fullName" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="txt_fullName" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="cbo_maritalStatus" min="-2" pref="209" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
@@ -144,11 +144,10 @@
                                                   <Component id="txt_expeditionLocation" min="-2" pref="186" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                                                   <Component id="jlb_id" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="txt_id" min="-2" pref="178" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -243,7 +242,7 @@
                           <Component id="jlb_beneficiaryInfo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlb_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlb_fullName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_fullName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_id" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -314,7 +313,7 @@
                     <Property name="text" type="java.lang.String" value="Informacion del beneficiario del sistema"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlb_name">
+                <Component class="javax.swing.JLabel" name="jlb_fullName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="0"/>
