@@ -41,9 +41,9 @@ public class DataBasePool {
         config.setMinimumIdle(2);
 
         config.setConnectionTimeout(30000);
-        config.setIdleTimeout(300000);
-        config.setMaxLifetime(600000);
-        config.setKeepaliveTime(300000);
+        config.setIdleTimeout(180000);
+        config.setMaxLifetime(240000);
+        config.setKeepaliveTime(120000);
 
         dataSource = new HikariDataSource(config);
     }
