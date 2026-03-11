@@ -671,7 +671,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
      */
     public void loadDataModify(DTOBeneficiaryDetails dto) {
         isLoading = true;
-
         txt_followingCode.setText(String.valueOf(dto.getCode()));
 
         String fullName = dto.getFullName().trim();
@@ -689,11 +688,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_publication.setText(dto.getPublication());
         txa_crossing.setText(dto.getCrossing());
         txa_affectation.setText(dto.getAffectation());
-        txt_name.setEditable(false);
-        txt_lastName.setEditable(false);
-        txt_id.setEditable(false);
-        txt_cadastralReference.setEditable(false);
-        txt_expeditionLocation.setEditable(false);
         
         jlb_title.setText(getJlbTitleModify());
         btn_register.setText(getBtnModifyText());
@@ -733,21 +727,21 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             return;
         }
 
-        int mitad = parts.length / 2;
+        int half = parts.length / 2;
 
-        StringBuilder nombres = new StringBuilder();
-        StringBuilder apellidos = new StringBuilder();
+        StringBuilder names = new StringBuilder();
+        StringBuilder lastNames = new StringBuilder();
 
-        for (int i = 0; i < mitad; i++) {
-            nombres.append(parts[i]).append(" ");
+        for (int i = 0; i < half; i++) {
+            names.append(parts[i]).append(" ");
         }
 
-        for (int i = mitad; i < parts.length; i++) {
-            apellidos.append(parts[i]).append(" ");
+        for (int i = half; i < parts.length; i++) {
+            lastNames.append(parts[i]).append(" ");
         }
 
-        txt_name.setText(nombres.toString().trim());
-        txt_lastName.setText(apellidos.toString().trim());
+        txt_name.setText(names.toString().trim());
+        txt_lastName.setText(lastNames.toString().trim());
     }
     
     /**
