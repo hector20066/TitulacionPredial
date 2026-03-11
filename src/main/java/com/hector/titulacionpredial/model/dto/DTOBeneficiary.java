@@ -69,6 +69,11 @@ public class DTOBeneficiary extends DTOBasePerson {
     protected String affectation;
 
     /**
+     * Cadastral reference associated with the beneficiary
+     */
+    protected String cadastralRef;
+
+    /**
      * Empty constructor required for serialization
      * or mapping frameworks.
      */
@@ -82,7 +87,7 @@ public class DTOBeneficiary extends DTOBasePerson {
      * @param builder configured instance of the builder
      */
     protected DTOBeneficiary(Builder<?> builder) {
-        super(builder.address, builder.phone);
+        super(builder);
         this.department = builder.department;
         this.municipality = builder.municipality;
         this.neighborhood = builder.neighborhood;
@@ -90,6 +95,7 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.publication = builder.publication;
         this.maritalStatus = builder.maritalStatus;
         this.affectation = builder.affectation;
+        this.cadastralRef = builder.cadastralRef;
     }
 
     public Department getDepartment() {
@@ -148,6 +154,14 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = affectation;
     }
 
+    public String getCadastralRef() {
+        return cadastralRef;
+    }
+
+    public void setCadastralRef(String cadastralRef) {
+        this.cadastralRef = cadastralRef;
+    }
+
     /**
      * Generic builder for fluid building of
      * {@link DTOBeneficiary} instances.
@@ -159,17 +173,16 @@ public class DTOBeneficiary extends DTOBasePerson {
      *
      * @param <T> specific type of builder
      */
-    public static class Builder<T extends Builder<T>> {
+    public static class Builder<T extends Builder<T>> extends DTOBasePerson.Builder<T> {
 
         private Department department;
         private Municipalities municipality;
         private String neighborhood;
-        private String address;
-        private long phone;
         private String crossing;
         private String publication;
         private MaritalStatus maritalStatus;
         private String affectation;
+        private String cadastralRef;
 
         /**
          * Returns the concrete instance of the builder.
@@ -215,28 +228,6 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Set the direction.
-         *
-         * @param address beneficiary's address
-         * @return current builder
-         */
-        public T address(String address) {
-            this.address = address;
-            return self();
-        }
-
-        /**
-         * Set the phone.
-         *
-         * @param phone beneficiary's phone number
-         * @return current builder
-         */
-        public T phone(long phone) {
-            this.phone = phone;
-            return self();
-        }
-
-        /**
          * Establish the crossing.
          *
          * @param crossing beneficiary crossing
@@ -277,6 +268,17 @@ public class DTOBeneficiary extends DTOBasePerson {
          */
         public T affectation(String affectation) {
             this.affectation = affectation;
+            return self();
+        }
+
+        /**
+         * The cadastral reference establishes this
+         *
+         * @param cadastralRef cadastral reference associated with the beneficiary
+         * @return current builder
+         */
+        public T cadastralRef(String cadastralRef) {
+            this.cadastralRef = cadastralRef;
             return self();
         }
 

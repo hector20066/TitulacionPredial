@@ -1,11 +1,16 @@
 UPDATE beneficiary
-SET department = ?,
+SET
+    id = ?,
+    full_name = ?,
+    department = ?,
     municipality = ?,
     address = ?,
+    cadastral_references = ?,
     marital_status = ?,
     affectation = ?,
     phone = ?,
     crossing = ?,
     publication = ?,
-    neighborhood = ?
+    neighborhood = ?,
+    expedition_location = ?
 WHERE code = ?;

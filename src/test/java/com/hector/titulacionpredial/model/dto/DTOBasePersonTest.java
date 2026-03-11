@@ -25,7 +25,14 @@ class DTOBasePersonTest {
         @Test
         @DisplayName("Constructor con parámetros debe asignar correctamente")
         void paramConstructorShouldWork() {
-            DTOBasePerson dto = new DTOBasePerson("Calle 10", 3001234567L);
+            DTOBasePerson dto = new DTOBasePerson.Builder()
+                    .fullName("Miguel Enrique Hoyos Ruiz")
+                    .id(1068675432L)
+                    .address("Calle 10")
+                    .phone(3001234567L)
+                    .build();
+            assertEquals("Miguel Enrique Hoyos Ruiz", dto.getFullName());
+            assertEquals(1068675432L, dto.getId());
             assertEquals("Calle 10", dto.getAddress());
             assertEquals(3001234567L, dto.getPhone());
         }

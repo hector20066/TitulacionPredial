@@ -210,7 +210,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 .fullName(nameBeneficiary)
                 .address(address)
                 .municipality(municipalities)
-                .cadastralReference(cadastralReference)
+                .cadastralRef(cadastralReference)
                 .build();
     }
 

@@ -25,6 +25,16 @@ package com.hector.titulacionpredial.model.dto;
 public class DTOBasePerson {
 
     /**
+     * Full name of the person.
+     */
+    protected String fullName;
+
+    /**
+     * ID card of the person.
+     */
+    protected long id;
+
+    /**
      * Address associated with the person.
      */
     protected String address;
@@ -35,6 +45,11 @@ public class DTOBasePerson {
     protected long phone;
 
     /**
+     * Expedition site ID card of the person
+     */
+    protected String expeditionLocation;
+
+    /**
      * Empty constructor required for serialization or automatic
      * mapping frameworks.
      */
@@ -43,14 +58,32 @@ public class DTOBasePerson {
     }
 
     /**
-     * Constructor to initialize parameters.
+     * Constructor used by the Builder pattern.
      *
-     * @param address person's address
-     * @param phone   telephone number
+     * @param builder configured instance of the builder
      */
-    public DTOBasePerson(String address, long phone) {
-        this.address = address;
-        this.phone = phone;
+    public DTOBasePerson(Builder builder) {
+        this.fullName = builder.fullName;
+        this.id = builder.id;
+        this.address = builder.address;
+        this.phone = builder.phone;
+        this.expeditionLocation = builder.expeditionLocation;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getAddress() {
@@ -67,6 +100,64 @@ public class DTOBasePerson {
 
     public void setPhone(long phone) {
         this.phone = phone;
+    }
+
+    public String getExpeditionLocation() {
+        return expeditionLocation;
+    }
+
+    public void setExpeditionLocation(String expeditionLocation) {
+        this.expeditionLocation = expeditionLocation;
+    }
+
+    public static class Builder<T extends Builder<T>> {
+
+        private String fullName;
+        private long id;
+        private String address;
+        private long phone;
+        private String expeditionLocation;
+
+        /**
+         * Returns the concrete instance of the builder.
+         *
+         * @return typed instance of the builder
+         */
+        @SuppressWarnings("unchecked")
+        protected T self() {
+            return (T) this;
+        }
+
+        public T fullName(String fullName) {
+            this.fullName = fullName;
+            return self();
+        }
+
+        public T id(long id) {
+            this.id = id;
+            return self();
+        }
+
+        public T address(String address) {
+            this.address = address;
+            return self();
+        }
+
+        public T phone(long phone) {
+            this.phone = phone;
+            return self();
+
+        }
+
+        public T expeditionLocation(String expeditionLocation) {
+            this.expeditionLocation = expeditionLocation;
+            return self();
+        }
+
+        public DTOBasePerson build() {
+            return new DTOBasePerson(this);
+        }
+
     }
 
 }

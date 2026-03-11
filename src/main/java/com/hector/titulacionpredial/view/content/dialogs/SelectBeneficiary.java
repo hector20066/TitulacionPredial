@@ -396,7 +396,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         model.setRowCount(0);
 
         listBeneficiaries.forEach(e -> {
-            Object[] data = new Object[]{e.getCode(), e.getFullName(), e.getId(), e.getCadastralReference()};
+            Object[] data = new Object[]{e.getCode(), e.getFullName(), e.getId(), e.getCadastralRef()};
             model.addRow(data);
         });
     }
@@ -412,7 +412,7 @@ public class SelectBeneficiary extends javax.swing.JDialog {
         int code = dto.getCode();
         String name = dto.getFullName();
         long id = dto.getId();
-        String cadastralReference = dto.getCadastralReference();
+        String cadastralReference = dto.getCadastralRef();
 
         Object[] data = new Object[]{code, name, id, cadastralReference};
         model.addRow(data);
