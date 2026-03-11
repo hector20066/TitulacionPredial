@@ -130,11 +130,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jlb_beneficiaryInfo = new javax.swing.JLabel();
         jlb_name = new javax.swing.JLabel();
-        txt_name = new javax.swing.JTextField();
+        txt_fullName = new javax.swing.JTextField();
         jlb_phone = new javax.swing.JLabel();
         txt_phone = new javax.swing.JTextField();
-        jlb_lastName = new javax.swing.JLabel();
-        txt_lastName = new javax.swing.JTextField();
         jlb_id = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
         jlb_maritalStatus = new javax.swing.JLabel();
@@ -183,11 +181,11 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jlb_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_name.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_name.setText("Nombre:");
+        jlb_name.setText("Nombre Completo:");
 
-        txt_name.setBackground(new java.awt.Color(255, 255, 255));
-        txt_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txt_fullName.setBackground(new java.awt.Color(255, 255, 255));
+        txt_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_fullName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
@@ -196,14 +194,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
-
-        jlb_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jlb_lastName.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_lastName.setText("Apellido:");
-
-        txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
-        txt_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
@@ -313,42 +303,34 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_name)
-                            .addComponent(jlb_phone))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jlb_lastName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlb_id)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jlb_maritalStatus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_maritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(jlb_expeditionLocation)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 23, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jlb_phone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(jlb_maritalStatus))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jlb_name)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_fullName)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbo_maritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(jlb_expeditionLocation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jlb_id)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(83, 83, 83))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +379,12 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGap(6, 6, 6)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
@@ -412,9 +399,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_name)
-                    .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlb_lastName)
-                    .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_fullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_id)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -541,7 +526,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_beneficiaryInfo.setText(texts.getBeneficiaryInfo());
         jlb_name.setText(texts.getName());
         jlb_phone.setText(texts.getPhone());
-        jlb_lastName.setText(texts.getLastName());
         jlb_id.setText(texts.getId());
         jlb_maritalStatus.setText(texts.getMaritalStatus());
         jlb_residenceData.setText(texts.getResidenceData());
@@ -633,12 +617,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return txt_id;
     }
 
-    public JTextField getTxt_lastName() {
-        return txt_lastName;
-    }
-
-    public JTextField getTxt_name() {
-        return txt_name;
+    public JTextField getTxt_fullName() {
+        return txt_fullName;
     }
 
     public JTextField getTxt_phone() {
@@ -673,9 +653,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         isLoading = true;
         txt_followingCode.setText(String.valueOf(dto.getCode()));
 
-        String fullName = dto.getFullName().trim();
-        validateName(fullName);
-
+        txt_fullName.setText(dto.getFullName());
         txt_id.setText(String.valueOf(dto.getId()));
         txt_phone.setText(String.valueOf(dto.getPhone()));
         cbo_maritalStatus.setSelectedItem(dto.getMaritalStatus());
@@ -699,49 +677,11 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
      * Resets fields to editable mode after a modification.
      */
     public void resetUI() {
-        txt_name.setEditable(true);
-        txt_lastName.setEditable(true);
+        txt_fullName.setEditable(true);
         txt_id.setEditable(true);
         txt_cadastralReference.setEditable(true);
         txt_expeditionLocation.setEditable(true);
         txa_affectation.setEditable(false);
-    }
-
-    /**
-     * Split a full name into first and last name.
-     *
-     * @param fullName full name
-     */
-    private void validateName(String fullName) {
-        if (fullName == null || fullName.trim().isEmpty()) {
-            txt_name.setText("");
-            txt_lastName.setText("");
-            return;
-        }
-
-        String[] parts = fullName.trim().split("\\s+");
-
-        if (parts.length == 1) {
-            txt_name.setText(parts[0]);
-            txt_lastName.setText("");
-            return;
-        }
-
-        int half = parts.length / 2;
-
-        StringBuilder names = new StringBuilder();
-        StringBuilder lastNames = new StringBuilder();
-
-        for (int i = 0; i < half; i++) {
-            names.append(parts[i]).append(" ");
-        }
-
-        for (int i = half; i < parts.length; i++) {
-            lastNames.append(parts[i]).append(" ");
-        }
-
-        txt_name.setText(names.toString().trim());
-        txt_lastName.setText(lastNames.toString().trim());
     }
     
     /**
@@ -750,8 +690,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public void clearFields() {
         jlb_title.setText(LanguageManager.getInstance().app("register.beneficiary.add.title"));
         btn_register.setText(LanguageManager.getInstance().app("register.beneficiary.add.btn"));
-        txt_name.setText("");
-        txt_lastName.setText("");
+        txt_fullName.setText("");
         txt_id.setText("");
         txt_phone.setText("");
         txt_expeditionLocation.setText("");
@@ -790,7 +729,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JLabel jlb_department;
     private javax.swing.JLabel jlb_expeditionLocation;
     private javax.swing.JLabel jlb_id;
-    private javax.swing.JLabel jlb_lastName;
     private javax.swing.JLabel jlb_maritalStatus;
     private javax.swing.JLabel jlb_municipality;
     private javax.swing.JLabel jlb_name;
@@ -806,9 +744,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JTextField txt_cadastralReference;
     private javax.swing.JTextField txt_expeditionLocation;
     private javax.swing.JTextField txt_followingCode;
+    private javax.swing.JTextField txt_fullName;
     private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_lastName;
-    private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_neighborhood;
     private javax.swing.JTextField txt_phone;
     private javax.swing.JTextField txt_publication;

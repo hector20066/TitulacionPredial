@@ -293,15 +293,13 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                           MaritalStatus maritalStatus, String neighborhood, String address, String publication,
                           String crossing, String affectation) throws InvalidInputException {
 
-        String name = registerBeneficiary.getTxt_name().getText().trim();
-        String lastName = registerBeneficiary.getTxt_lastName().getText().trim();
+        String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
         String id = registerBeneficiary.getTxt_id().getText().trim();
         String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
 
-        validations(name, lastName, id, cadastralReference, expeditionLocation, neighborhood, address);
+        validations(fullName, id, cadastralReference, expeditionLocation, neighborhood, address);
 
-        String fullName = name + " " + lastName;
         int codeInt = Integer.parseInt(code);
         long idLong = Long.parseLong(id);
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
@@ -320,8 +318,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * does not exceed 10 characters.
      * </p>
      *
-     * @param name               beneficiary name
-     * @param lastName           beneficiary's surname
+     * @param fullName           full name
      * @param id                 national identity card
      * @param cadastralReference cadastral reference
      * @param expeditionLocation place of expedition
@@ -329,15 +326,11 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * @param address            address
      * @throws InvalidInputException if any validation fails
      */
-    private void validations(String name, String lastName, String id, String cadastralReference,
-                             String expeditionLocation, String neighborhood, String address) throws InvalidInputException {
+    private void validations(String fullName, String id, String cadastralReference, String expeditionLocation,
+                             String neighborhood, String address) throws InvalidInputException {
 
-        if (isInvalidData(name, lastName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
+        if (isInvalidData(fullName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
             throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
-        }
-
-        if (lastName.split(" ").length < 2) {
-            throw new InvalidInputException(lang.message("invalid.input.beneficiary.lastnames"));
         }
 
         if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(cadastralReference)) {
