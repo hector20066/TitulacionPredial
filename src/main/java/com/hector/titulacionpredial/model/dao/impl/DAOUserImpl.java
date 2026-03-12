@@ -29,6 +29,11 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    public void add(DTOUserCreate dto) throws DAOException {
+
+    }
+
+    @Override
     public boolean verifyCredentials(String user, String plainPassword) throws DAOException {
         return false;
     }
@@ -36,11 +41,6 @@ public class DAOUserImpl implements DAOUser {
     @Override
     public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
         return false;
-    }
-
-    @Override
-    public void add(DTOUserCreate dto) throws DAOException {
-
     }
 
     @Override
