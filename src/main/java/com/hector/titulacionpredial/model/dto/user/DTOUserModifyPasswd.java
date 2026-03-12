@@ -11,7 +11,7 @@ public class DTOUserModifyPasswd extends DTOUser {
     private String password;
 
     public DTOUserModifyPasswd() {
-
+        super();
     }
 
     public DTOUserModifyPasswd(String password, long id) {
@@ -25,6 +25,6 @@ public class DTOUserModifyPasswd extends DTOUser {
 
     public void setPassword(String password) {
         this.password = password;
-    } 
+    }
 
 }

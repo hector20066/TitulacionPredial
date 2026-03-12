@@ -1,0 +1,1 @@
+SELECT name, id, user FROM users WHERE id = ?;
