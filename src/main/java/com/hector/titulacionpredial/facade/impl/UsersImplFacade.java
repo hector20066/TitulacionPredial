@@ -1,0 +1,67 @@
+package com.hector.titulacionpredial.facade.impl;
+
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
+import com.hector.titulacionpredial.model.dao.impl.DAOUserImpl;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOUser;
+import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
+import com.hector.titulacionpredial.model.enums.Role;
+import com.hector.titulacionpredial.model.security.BCryptEncryption;
+
+import java.util.List;
+
+/**
+ * @author Ing. Hector Acevedo
+ * @since 1.0
+ */
+public class UsersImplFacade implements UsersFacade {
+
+    private final DAOUser daoUser;
+
+    public UsersImplFacade() {
+        this.daoUser = DAOUserImpl.getInstance();
+    }
+
+    @Override
+    public void add(String name, long id, String user, String plainPassword, Role role) throws DAOException {
+        String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);
+
+        DTOUserCreate dto = new DTOUserCreate.Builder()
+                .name(name)
+                .id(id)
+                .user(user)
+                .password(hashedPassword)
+                .role(role)
+                .build();
+
+        daoUser.add(dto);
+    }
+
+    @Override
+    public DTOUserDetails findByCode(int code) throws DAOException {
+        return daoUser.findByCode(code);
+    }
+
+    @Override
+    public boolean verifyCredentials(String user, String plainPassword) throws DAOException {
+        return daoUser.verifyCredentials(user, plainPassword);
+    }
+
+    @Override
+    public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
+        return daoUser.modifyPassword(dto);
+    }
+
+    @Override
+    public List<DTOUserDetails> findByAll() throws DAOException {
+        return daoUser.findByAll();
+    }
+
+    @Override
+    public void delete(int code) throws DAOException {
+        daoUser.delete(code);
+    }
+
+}
