@@ -90,6 +90,17 @@ CREATE TABLE resolution (
             ON DELETE RESTRICT
 );
 
+-- =========================
+-- TABLA: resolution
+-- =========================
+CREATE TABLE users(
+    id INT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    user VARCHAR(20) NOT NULL UNIQUE,
+    password VARCHAR(500) NOT NULL,
+    role VARCHAR(15) NOT NULL
+);
+
 CREATE INDEX idx_beneficiary_full_name ON beneficiary(full_name);
 CREATE INDEX idx_beneficiary_municipality ON beneficiary(municipality);
 CREATE INDEX idx_property_cadastral_id ON property(cadastral_id);
