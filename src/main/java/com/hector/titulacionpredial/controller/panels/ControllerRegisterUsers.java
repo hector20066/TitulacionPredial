@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
+import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -16,6 +18,8 @@ public class ControllerRegisterUsers implements LanguageObserver {
     private final Subject subject;
     private final LanguageManager lang;
 
+    private final UsersFacade daoUsers;
+
     public ControllerRegisterUsers(RegisterUsers registerUsers, Subject subject, LanguageSubject languageSubject,
                                    LanguageManager lang) {
         this.registerUsers = registerUsers;
@@ -23,6 +27,8 @@ public class ControllerRegisterUsers implements LanguageObserver {
         this.lang = lang;
 
         languageSubject.register(this);
+
+        this.daoUsers = new UsersImplFacade();
 
         connectEvents();
     }
