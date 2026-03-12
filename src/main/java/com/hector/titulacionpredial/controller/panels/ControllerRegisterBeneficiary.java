@@ -150,7 +150,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
             String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
             String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
-            String publication = registerBeneficiary.getTxt_publication().getText().trim();
+            String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
             String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
             String code = registerBeneficiary.getTxt_followingCode().getText().trim();

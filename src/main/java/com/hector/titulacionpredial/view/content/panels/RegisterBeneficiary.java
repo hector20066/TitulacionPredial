@@ -159,8 +159,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_expeditionLocation = new javax.swing.JLabel();
         txt_expeditionLocation = new javax.swing.JTextField();
         jlb_publication = new javax.swing.JLabel();
-        txt_publication = new javax.swing.JTextField();
         cbx_affectation = new javax.swing.JCheckBox();
+        cbo_publication = new javax.swing.JComboBox<>();
         btn_register = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jlb_code = new javax.swing.JLabel();
         txt_followingCode = new javax.swing.JTextField();
@@ -288,13 +288,13 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_publication.setForeground(new java.awt.Color(33, 37, 41));
         jlb_publication.setText("Publicacion:");
 
-        txt_publication.setBackground(new java.awt.Color(255, 255, 255));
-        txt_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_publication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
-
         cbx_affectation.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         cbx_affectation.setForeground(new java.awt.Color(33, 37, 41));
         cbx_affectation.setText("Afectado");
+
+        cbo_publication.setBackground(new java.awt.Color(255, 255, 255));
+        cbo_publication.setForeground(new java.awt.Color(0, 0, 0));
+        cbo_publication.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -365,7 +365,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jlb_affectation)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jlb_crossing)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(jlb_cadastralRef)
@@ -373,8 +373,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                             .addComponent(txt_cadastralReference, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(62, 62, 62)
                                             .addComponent(jlb_publication)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txt_publication))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(cbo_publication, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGap(6, 6, 6)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -434,12 +434,12 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                     .addComponent(jlb_cadastralRef)
                     .addComponent(txt_cadastralReference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_publication)
-                    .addComponent(txt_publication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbo_publication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlb_crossing)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(cbx_affectation)
                 .addGap(18, 18, 18)
                 .addComponent(jlb_affectation)
@@ -624,8 +624,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return txt_phone;
     }
 
-    public JTextField getTxt_publication() {
-        return txt_publication;
+    public JComboBox<String> getCbo_publication() {
+        return cbo_publication;
     }
 
     /**
@@ -662,7 +662,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_neighborhood.setText(dto.getNeighborhood());
         txt_address.setText(dto.getAddress());
         txt_cadastralReference.setText(String.valueOf(dto.getCadastralReference()));
-        txt_publication.setText(dto.getPublication());
+        cbo_publication.setSelectedItem(dto.getPublication());
         txa_crossing.setText(dto.getCrossing());
         txa_affectation.setText(dto.getAffectation());
         
@@ -696,7 +696,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_neighborhood.setText("");
         txt_address.setText("");
         txt_cadastralReference.setText("");
-        txt_publication.setText("");
+        cbo_publication.setSelectedIndex(0);
         txa_crossing.setText("");
         txa_affectation.setText("");
         cbo_department.setSelectedIndex(0);
@@ -712,6 +712,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JComboBox<Department> cbo_department;
     private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
     private javax.swing.JComboBox<Municipalities> cbo_municipality;
+    private javax.swing.JComboBox<String> cbo_publication;
     private javax.swing.JCheckBox cbx_affectation;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -747,6 +748,5 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_neighborhood;
     private javax.swing.JTextField txt_phone;
-    private javax.swing.JTextField txt_publication;
     // End of variables declaration//GEN-END:variables
 }
