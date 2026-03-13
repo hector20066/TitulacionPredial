@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -16,7 +17,11 @@ public class ContentLogin extends javax.swing.JFrame {
      */
     public ContentLogin() {
         initComponents();
-        setResizable(false);
+
+        /*Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
+        Icon iconOff = new ImageIcon(getClass().getResource("/image/eye-off.png"));
+        rbn_seePasswd.setIcon(normalIcon);
+        rbn_seePasswd.setSelectedIcon(iconOff);*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,6 +38,7 @@ public class ContentLogin extends javax.swing.JFrame {
         cbo_access = new javax.swing.JComboBox<>();
         jlb_access = new javax.swing.JLabel();
         btn_login = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        rbn_seePasswd = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,25 +56,30 @@ public class ContentLogin extends javax.swing.JFrame {
         jlb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlb_title.setText("INICIAR SESION");
 
+        jlb_user.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         jlb_user.setForeground(new java.awt.Color(33, 37, 41));
         jlb_user.setText("Usuario:");
 
         txt_user.setBackground(new java.awt.Color(255, 255, 255));
         txt_user.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_user.setForeground(new java.awt.Color(33, 37, 41));
+        txt_user.setText("Ingrese el usuario");
         txt_user.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        jlb_password.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         jlb_password.setForeground(new java.awt.Color(33, 37, 41));
         jlb_password.setText("Contraseña:");
 
         jpld_password.setBackground(new java.awt.Color(255, 255, 255));
         jpld_password.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jpld_password.setForeground(new java.awt.Color(33, 37, 41));
-        jpld_password.setText("jPasswordField1");
+        jpld_password.setText("••••••••");
         jpld_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        cbo_access.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         cbo_access.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solo lectura", "Info. Sahagun", "Inf. Monteria" }));
 
+        jlb_access.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         jlb_access.setForeground(new java.awt.Color(33, 37, 41));
         jlb_access.setText("Acceso");
 
@@ -109,7 +120,8 @@ public class ContentLogin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbo_access, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)))
-                        .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(rbn_seePasswd)
+                        .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +147,9 @@ public class ContentLogin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jlb_password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbn_seePasswd))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_access, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,6 +177,26 @@ public class ContentLogin extends javax.swing.JFrame {
         btn_login.addActionListener(action);
     }
 
+    public void setControllerSeePassword(ActionListener action) {
+        rbn_seePasswd.addActionListener(action);
+    }
+
+    public void setTxt_userMouse(MouseListener listen) {
+        txt_user.addMouseListener(listen);
+    }
+
+    public void setTxt_userAction(ActionListener action) {
+        txt_user.addActionListener(action);
+    }
+
+    public void setJpld_passwordMouse(MouseListener listen) {
+        jpld_password.addMouseListener(listen);
+    }
+
+    public void setJpld_passwordAction(ActionListener action) {
+        jpld_password.addActionListener(action);
+    }
+
     public ButtonAction getBtn_login() {
         return btn_login;
     }
@@ -179,6 +213,10 @@ public class ContentLogin extends javax.swing.JFrame {
         return jpld_password;
     }
 
+    public JRadioButton getRbn_seePasswd() {
+        return rbn_seePasswd;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_login;
     private javax.swing.JComboBox<String> cbo_access;
@@ -190,6 +228,7 @@ public class ContentLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jlb_title;
     private javax.swing.JLabel jlb_user;
     private javax.swing.JPasswordField jpld_password;
+    private javax.swing.JRadioButton rbn_seePasswd;
     private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
 }

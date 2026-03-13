@@ -9,6 +9,7 @@ import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
@@ -43,6 +44,7 @@ public class Coordinator {
     private final LanguageManager lang = LanguageManager.getInstance();
 
     // Views
+    private ContentLogin login;
     private Content content;
     private Dashboard dashboard;
     private GenerateResolution generateResolution;
@@ -73,10 +75,9 @@ public class Coordinator {
         subject.notifyObservers();
 
         java.awt.EventQueue.invokeLater(() -> {
-            content.setVisible(true);
-            content.setLocationRelativeTo(null);
-            content.setResizable(false);
-            NavigatorUtils.showForms(dashboard);
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            login.setResizable(false);
         });
     }
 
@@ -108,6 +109,7 @@ public class Coordinator {
      * </p>
      */
     private void startView() {
+        login = new ContentLogin();
         content = new Content();
         dashboard = new Dashboard();
         generateResolution = new GenerateResolution();
@@ -213,6 +215,8 @@ public class Coordinator {
                 .withLanguageSubject(languageSubject)
                 .withLanguageManager(lang)
                 .build();
+
+        new ControllerLogin(login, content, dashboard);
     }
 
 }
