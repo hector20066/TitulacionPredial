@@ -204,6 +204,14 @@ public class RegisterUsers extends javax.swing.JPanel {
         return txt_user;
     }
 
+    public void clearFields() {
+        txt_id.setText("");
+        txt_user.setText("");
+        txt_fullName.setText("");
+        jpld_password.setText("");
+        cbo_role.setSelectedIndex(0);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_createAccount;
     private javax.swing.JComboBox<Role> cbo_role;

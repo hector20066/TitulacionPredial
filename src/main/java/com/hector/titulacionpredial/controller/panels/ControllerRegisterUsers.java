@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
@@ -13,6 +14,8 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
+
+import javax.swing.*;
 
 /**
  * @author Ing. Hector Acevedo
@@ -64,9 +67,10 @@ public class ControllerRegisterUsers implements LanguageObserver {
                 throw new InvalidNumberInputException("cedula");
             }
 
-            doInBackground();
+            prepareUI();
+            doInBackground(name, Long.parseLong(id), user, password, role);
         } catch (InvalidInputException e) {
-            MessageUtils.errorMessage(e.getMessage(), registerUsers);
+            MessageUtils.warningMessage(e.getMessage(), registerUsers);
         }
     }
 
@@ -80,8 +84,35 @@ public class ControllerRegisterUsers implements LanguageObserver {
         return false;
     }
 
-    private void doInBAckground() {
-        
+    private void prepareUI() {
+        registerUsers.getBtn_createAccount().setEnabled(false);
+        registerUsers.getBtn_createAccount().setText("Registrando Usuario");
+    }
+
+    private void doInBackground(String name, long id, String user, String password, Role role) {
+        new Thread(() -> {
+            try {
+                daoUsers.add(name, id, user, password, role);
+                SwingUtilities.invokeLater(this::invokeLater);
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), registerUsers);
+                    resetUI();
+                });
+            }
+        }).start();
+    }
+
+    private void invokeLater() {
+        MessageUtils.informationMessage("Se ha registrado el usuario.", registerUsers);
+        resetUI();
+        registerUsers.clearFields();
+        subject.notifyObservers();
+    }
+
+    private void resetUI() {
+        registerUsers.getBtn_createAccount().setEnabled(true);
+        registerUsers.getBtn_createAccount().setText("Crear Cuenta");
     }
 
 }
