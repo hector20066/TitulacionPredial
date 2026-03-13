@@ -98,6 +98,8 @@ public class Menu extends JPanel {
         addTitle(info);
         addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", register, registerBeneficiary, registerProperty));
         addMenuItem(new ModelMenuItem("image/book-open-text.svg", see, seeBeneficiaries, seeProperties, seeResolutions));
+        addTitle("GESTION DE USUARIOS");
+        addMenuItem(new ModelMenuItem("image/info.svg", "Usuarios", "Registrar Usuarios", "Ver Usuarios"));
         addTitle(settingsTitle);
         addMenuItem(new ModelMenuItem("image/settings-2.svg", settings));
         addTitle(aboutTitle);

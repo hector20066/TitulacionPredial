@@ -40,6 +40,8 @@ public class ControllerContent implements LanguageObserver {
     private final ViewBeneficiaries viewBeneficiaries;
     private final SeeProperties seeProperties;
     private final SeeResolutions seeResolutions;
+    private final RegisterUsers registerUsers;
+    private final ManageUsers seeUsers;
     private final Settings settings;
     private final About about;
     private final Subject subject;
@@ -59,6 +61,8 @@ public class ControllerContent implements LanguageObserver {
         this.viewBeneficiaries = builder.getViewBeneficiaries();
         this.seeProperties = builder.getSeeProperties();
         this.seeResolutions = builder.getSeeResolutions();
+        this.registerUsers = builder.getRegisterUsers();
+        this.seeUsers = builder.getManageUsers();
         this.settings = builder.getSettings();
         this.about = builder.getAbout();
         this.subject = builder.getSubject();
@@ -113,8 +117,14 @@ public class ControllerContent implements LanguageObserver {
                     case 3 -> NavigatorUtils.showForms(seeResolutions);
                 }
             }
-            case 3 -> NavigatorUtils.showForms(settings);
-            case 4 -> NavigatorUtils.showForms(about);
+            case 3 -> {
+                switch (indexSubMenu) {
+                    case 1 -> NavigatorUtils.showForms(registerUsers);
+                    case 2 -> NavigatorUtils.showForms(seeUsers);
+                }
+            }
+            case 4 -> NavigatorUtils.showForms(settings);
+            case 5 -> NavigatorUtils.showForms(about);
         }
     }
 

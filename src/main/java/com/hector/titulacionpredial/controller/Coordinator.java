@@ -1,12 +1,13 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.controller.builder.*;
+import com.hector.titulacionpredial.controller.panels.ControllerManageUsers;
+import com.hector.titulacionpredial.controller.panels.ControllerRegisterUsers;
 import com.hector.titulacionpredial.controller.panels.ControllerSettings;
 import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.observer.ConcreteSubject;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.ContentLogin;
@@ -54,6 +55,8 @@ public class Coordinator {
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
     private ModifyResolution modifyResolution;
+    private RegisterUsers registerUsers;
+    private ManageUsers manageUsers;
     private Settings settings;
     private About about;
 
@@ -119,6 +122,8 @@ public class Coordinator {
         seeProperties = new SeeProperties();
         seeResolutions = new SeeResolutions();
         modifyResolution = new ModifyResolution();
+        registerUsers = new RegisterUsers();
+        manageUsers = new ManageUsers();
         settings = new Settings();
         about = new About(lang, languageSubject);
     }
@@ -142,6 +147,8 @@ public class Coordinator {
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)
+                .withViewRegisterUsers(registerUsers)
+                .witViewManageUsers(manageUsers)
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
@@ -217,6 +224,8 @@ public class Coordinator {
                 .build();
 
         new ControllerLogin(login, content, dashboard);
+        new ControllerRegisterUsers(registerUsers, subject, languageSubject, lang);
+        new ControllerManageUsers(manageUsers, subject, languageSubject, lang);
     }
 
 }

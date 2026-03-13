@@ -30,6 +30,8 @@ public class ControllerContentBuilder {
     private ViewBeneficiaries viewBeneficiaries;
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
+    private RegisterUsers registerUsers;
+    private ManageUsers manageUsers;
     private Settings settings;
     private Subject subject;
     private LanguageSubject languageSubject;
@@ -110,6 +112,16 @@ public class ControllerContentBuilder {
      */
     public ControllerContentBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
+        return this;
+    }
+
+    public ControllerContentBuilder withViewRegisterUsers(RegisterUsers registerUsers) {
+        this.registerUsers = registerUsers;
+        return this;
+    }
+
+    public ControllerContentBuilder witViewManageUsers(ManageUsers manageUsers) {
+        this.manageUsers = manageUsers;
         return this;
     }
 
@@ -204,6 +216,14 @@ public class ControllerContentBuilder {
 
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
+    }
+
+    public RegisterUsers getRegisterUsers() {
+        return registerUsers;
+    }
+
+    public ManageUsers getManageUsers() {
+        return manageUsers;
     }
 
     public Settings getSettings() {
