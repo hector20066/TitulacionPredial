@@ -61,7 +61,11 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     @Override
     public void deleteAccount(long id, JPanel panel) {
-
+        new Thread(() -> {
+            try {
+                boolean success = daoUsers.delete(id);
+            }
+        })
     }
 
     private void loadData(List<DTOUserDetails> listUsers) {

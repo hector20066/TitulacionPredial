@@ -82,4 +82,8 @@ public class MessageUtils {
         return JOptionPane.YES_OPTION;
     }
 
+    public static String inputDialog(String message, JComponent container) {
+        return JOptionPane.showInputDialog(container, message, "Por favor ingrese la nueva contraseña", JOptionPane.PLAIN_MESSAGE);
+    }
+
 }
