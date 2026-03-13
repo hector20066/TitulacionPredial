@@ -50,7 +50,12 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
+    public boolean modifyPassword(long id, String plainPassword) throws DAOException {
+        DTOUserModifyPasswd dto = new DTOUserModifyPasswd();
+        dto.setId(id);
+        String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);
+        dto.setPassword(hashedPassword);
+
         return daoUser.modifyPassword(dto);
     }
 

@@ -1,11 +1,17 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
+import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
 
 /**
@@ -43,7 +49,39 @@ public class ControllerRegisterUsers implements LanguageObserver {
     }
 
     private void createAccount() {
+        try {
+            String name = registerUsers.getTxt_fullName().getText();
+            String id = registerUsers.getTxt_id().getText();
+            String user = registerUsers.getTxt_user().getText();
+            String password = new String(registerUsers.getJpld_password().getPassword());
+            Role role = (Role) registerUsers.getCbo_role().getSelectedItem();
 
+            if (isInvalidData(name, id, user, password)) {
+                throw new EmptyFieldException("Nombre, cedula, usuario y contraseña");
+            }
+
+            if (!NumericalValidationUtils.isNumeric(id)) {
+                throw new InvalidNumberInputException("cedula");
+            }
+
+            doInBackground();
+        } catch (InvalidInputException e) {
+            MessageUtils.errorMessage(e.getMessage(), registerUsers);
+        }
+    }
+
+    private boolean isInvalidData(String... fields) {
+        for (String field : fields) {
+            if (field.isBlank()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void doInBAckground() {
+        
     }
 
 }
