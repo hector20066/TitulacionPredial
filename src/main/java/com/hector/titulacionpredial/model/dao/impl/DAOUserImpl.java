@@ -45,7 +45,7 @@ public class DAOUserImpl implements DAOUser {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, dto.getName());
-            st.setLong(2, dto.getId());
+            st.setInt(2, dto.getId());
             st.setString(3, dto.getUser());
             st.setString(4, dto.getPassword());
             st.setString(5, String.valueOf(dto.getRole()));
@@ -83,7 +83,7 @@ public class DAOUserImpl implements DAOUser {
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, dto.getPassword());
-            st.setLong(2, dto.getId());
+            st.setInt(2, dto.getId());
 
             if (st.executeUpdate() == 0) {
                 throw new UserNotFoundException(String.valueOf(dto.getId()));
@@ -109,7 +109,7 @@ public class DAOUserImpl implements DAOUser {
                 }
 
                 DTOUserDetails dto = new DTOUserDetails();
-                dto.setId(rs.getLong("id"));
+                dto.setId(rs.getInt("id"));
                 dto.setName(rs.getString("name"));
                 dto.setUser(rs.getString("user"));
 
@@ -131,7 +131,7 @@ public class DAOUserImpl implements DAOUser {
 
             while (rs.next()) {
                 DTOUserDetails dto = new DTOUserDetails();
-                dto.setId(rs.getLong("id"));
+                dto.setId(rs.getInt("id"));
                 dto.setName(rs.getString("name"));
                 dto.setUser(rs.getString("user"));
 
@@ -150,7 +150,7 @@ public class DAOUserImpl implements DAOUser {
 
         try (Connection connection = DataBasePool.getConnection();
             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setLong(1, code);
+            st.setInt(1, code);
 
             if (st.executeUpdate() == 0) {
                 throw new UserNotFoundException(String.valueOf(code));

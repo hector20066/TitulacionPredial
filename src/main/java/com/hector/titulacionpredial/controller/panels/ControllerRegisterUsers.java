@@ -68,7 +68,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
             }
 
             prepareUI();
-            doInBackground(name, Long.parseLong(id), user, password, role);
+            doInBackground(name, Integer.parseInt(id), user, password, role);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerUsers);
         }
@@ -89,7 +89,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
         registerUsers.getBtn_createAccount().setText("Registrando Usuario");
     }
 
-    private void doInBackground(String name, long id, String user, String password, Role role) {
+    private void doInBackground(String name, int id, String user, String password, Role role) {
         new Thread(() -> {
             try {
                 daoUsers.add(name, id, user, password, role);

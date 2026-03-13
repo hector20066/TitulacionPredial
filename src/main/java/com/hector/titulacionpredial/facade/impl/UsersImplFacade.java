@@ -25,7 +25,7 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    public void add(String name, long id, String user, String plainPassword, Role role) throws DAOException {
+    public void add(String name, int id, String user, String plainPassword, Role role) throws DAOException {
         String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);
 
         DTOUserCreate dto = new DTOUserCreate.Builder()
@@ -50,7 +50,7 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    public boolean modifyPassword(long id, String plainPassword) throws DAOException {
+    public boolean modifyPassword(int id, String plainPassword) throws DAOException {
         DTOUserModifyPasswd dto = new DTOUserModifyPasswd();
         dto.setId(id);
         String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);

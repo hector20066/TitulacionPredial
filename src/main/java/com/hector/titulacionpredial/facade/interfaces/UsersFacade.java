@@ -12,9 +12,9 @@ import com.hector.titulacionpredial.model.enums.Role;
  */
 public interface UsersFacade extends IListable<DTOUserDetails>, IRemovable {
 
-    void add(String name, long id, String user, String plainPassword, Role role) throws DAOException;
+    void add(String name, int id, String user, String plainPassword, Role role) throws DAOException;
     DTOUserDetails findByCode(int code) throws DAOException;
     boolean verifyCredentials(String user, String plainPassword) throws DAOException;
-    boolean modifyPassword(long id, String plainPassword) throws DAOException;
+    boolean modifyPassword(int id, String plainPassword) throws DAOException;
 
 }
