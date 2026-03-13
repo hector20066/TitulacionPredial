@@ -62,7 +62,7 @@ public class DTOUserCreate extends DTOUser {
     public static class Builder {
 
         private String name;
-        private long id;
+        private int id;
         private String user;
         private String password;
         private Role role;
@@ -72,7 +72,7 @@ public class DTOUserCreate extends DTOUser {
             return this;
         }
 
-        public Builder id(long id) {
+        public Builder id(int id) {
             this.id = id;
             return this;
         }

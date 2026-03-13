@@ -15,7 +15,7 @@ public class DTOUserDetails extends DTOUser {
         super();
     }
 
-    public DTOUserDetails(String name, String user, long id) {
+    public DTOUserDetails(String name, String user, int id) {
         super(id);
         this.name = name;
         this.user = user;

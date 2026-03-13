@@ -6,21 +6,21 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOUser {
 
-    protected long id;
+    protected int id;
 
     public DTOUser() {
 
     }
 
-    public DTOUser(long id) {
+    public DTOUser(int id) {
         this.id = id;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
