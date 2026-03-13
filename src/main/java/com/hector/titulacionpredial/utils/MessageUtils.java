@@ -83,7 +83,7 @@ public class MessageUtils {
     }
 
     public static String inputDialog(String message, JComponent container) {
-        return JOptionPane.showInputDialog(container, message, "Por favor ingrese la nueva contraseña", JOptionPane.PLAIN_MESSAGE);
+        return JOptionPane.showInputDialog(container, message, lang.message("message.utils.changePassword"), JOptionPane.PLAIN_MESSAGE);
     }
 
 }

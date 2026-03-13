@@ -16,7 +16,7 @@ import com.hector.titulacionpredial.model.enums.Role;
 public class User {
 
     private String fullName;
-    private long id;
+    private int id;
     private String user;
     private String password;
     private Role role;
@@ -37,11 +37,11 @@ public class User {
         this.fullName = fullName;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

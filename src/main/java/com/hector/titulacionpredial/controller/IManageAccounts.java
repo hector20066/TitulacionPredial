@@ -10,6 +10,6 @@ import javax.swing.*;
 public interface IManageAccounts {
 
     void modifyAccount(DTOUserDetails account);
-    void deleteAccount(long id, JPanel panel);
+    void deleteAccount(int id, JPanel panel);
 
 }

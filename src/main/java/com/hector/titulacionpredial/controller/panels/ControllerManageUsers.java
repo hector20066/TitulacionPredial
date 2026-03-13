@@ -24,12 +24,14 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     private final ManageUsers manageUsers;
     private final LanguageManager lang;
+    private final Subject subject;
 
     private final UsersFacade daoUsers;
 
     public ControllerManageUsers(ManageUsers manageUsers, Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.manageUsers = manageUsers;
         this.lang = lang;
+        this.subject = subject;
 
         subject.register(this);
         languageSubject.register(this);
@@ -56,16 +58,44 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     @Override
     public void modifyAccount(DTOUserDetails account) {
-
+        int id = account.getId();
+        String newPassword = MessageUtils.inputDialog("Por favor ingrese la nueva contraseña", manageUsers);
+        new Thread(() -> {
+            try {
+                boolean success = daoUsers.modifyPassword(id, newPassword);
+                SwingUtilities.invokeLater(() -> {
+                    actionForSuccess(success);
+                });
+            } catch (DAOException ex) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al tratar de modificar la cuenta", manageUsers));
+            }
+        }).start();
     }
 
     @Override
-    public void deleteAccount(long id, JPanel panel) {
+    public void deleteAccount(int id, JPanel panel) {
         new Thread(() -> {
             try {
-                boolean success = daoUsers.delete(id);
+                daoUsers.delete(id);
+                SwingUtilities.invokeLater(this::actionForSuccess);
+            } catch (DAOException ex) {
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al tratar de eliminar la cuenta.\nError:" + " " + ex, manageUsers));
             }
-        })
+        }).start();
+    }
+
+    private void actionForSuccess() {
+        MessageUtils.informationMessage("Se ha eliminado la cuenta exitosamente", manageUsers);
+        subject.notifyObservers();
+    }
+
+    private void actionForSuccess(boolean success) {
+        if (success) {
+            MessageUtils.informationMessage("Se ha modificado la cuenta exitosamente", manageUsers);
+            subject.notifyObservers();
+        } else {
+            MessageUtils.errorMessage("N se ha podido modificar la cuenta", manageUsers);
+        }
     }
 
     private void loadData(List<DTOUserDetails> listUsers) {
