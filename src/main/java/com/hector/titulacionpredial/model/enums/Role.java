@@ -15,7 +15,8 @@ package com.hector.titulacionpredial.model.enums;
 public enum Role {
 
     ADMIN("Administrador"),
-    EMPLOYEE("Empleado");
+    EMPLOYEE("Empleado"),
+    NONE("Ninguno");
 
     /**
      * readable value of the role
