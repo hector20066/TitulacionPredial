@@ -1,37 +1,26 @@
 package com.hector.titulacionpredial.controller.builder;
 
-import com.hector.titulacionpredial.controller.ControllerContent;
+import com.hector.titulacionpredial.controller.ControllerContentAdmin;
+import com.hector.titulacionpredial.controller.ControllerContentUser;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.view.content.ContentAdmin;
+import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
- * Builder to build the {@link ControllerContent} with
- * all its views and dependencies.
- *
- * <p>
- * It allows you tu smoothly configure each panel of the
- * application before creating the main content controller
- * using the {@link #build()} method.
- * </p>
- *
  * @author Ing. Hector Acevedo
- * @see ControllerContent
  * @since 1.0
  */
-public class ControllerContentBuilder {
+public class ControllerContentUserBuilder {
 
-    private ContentAdmin content;
+    private ContentUser content;
     private Dashboard dashboard;
     private RegisterBeneficiary registerBeneficiary;
     private RegisterProperty registerProperty;
     private ViewBeneficiaries viewBeneficiaries;
     private SeeProperties seeProperties;
     private SeeResolutions seeResolutions;
-    private RegisterUsers registerUsers;
-    private ManageUsers manageUsers;
     private Settings settings;
     private Subject subject;
     private LanguageSubject languageSubject;
@@ -44,7 +33,7 @@ public class ControllerContentBuilder {
      * @param content Main view of the content
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewContent(ContentAdmin content) {
+    public ControllerContentUserBuilder withViewContent(ContentUser content) {
         this.content = content;
         return this;
     }
@@ -55,7 +44,7 @@ public class ControllerContentBuilder {
      * @param dashboard dashboard view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewDashboard(Dashboard dashboard) {
+    public ControllerContentUserBuilder withViewDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
         return this;
     }
@@ -66,7 +55,7 @@ public class ControllerContentBuilder {
      * @param registerBeneficiary beneficiary registration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
+    public ControllerContentUserBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
         this.registerBeneficiary = registerBeneficiary;
         return this;
     }
@@ -77,7 +66,7 @@ public class ControllerContentBuilder {
      * @param registerProperty property registration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewRegisterProperty(RegisterProperty registerProperty) {
+    public ControllerContentUserBuilder withViewRegisterProperty(RegisterProperty registerProperty) {
         this.registerProperty = registerProperty;
         return this;
     }
@@ -88,7 +77,7 @@ public class ControllerContentBuilder {
      * @param viewBeneficiaries beneficiary display view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
+    public ControllerContentUserBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
         this.viewBeneficiaries = viewBeneficiaries;
         return this;
     }
@@ -99,7 +88,7 @@ public class ControllerContentBuilder {
      * @param seeProperties property search view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSeeProperties(SeeProperties seeProperties) {
+    public ControllerContentUserBuilder withViewSeeProperties(SeeProperties seeProperties) {
         this.seeProperties = seeProperties;
         return this;
     }
@@ -110,18 +99,8 @@ public class ControllerContentBuilder {
      * @param seeResolutions resolutions query view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
+    public ControllerContentUserBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
-        return this;
-    }
-
-    public ControllerContentBuilder withViewRegisterUsers(RegisterUsers registerUsers) {
-        this.registerUsers = registerUsers;
-        return this;
-    }
-
-    public ControllerContentBuilder witViewManageUsers(ManageUsers manageUsers) {
-        this.manageUsers = manageUsers;
         return this;
     }
 
@@ -131,7 +110,7 @@ public class ControllerContentBuilder {
      * @param settings configuration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSettings(Settings settings) {
+    public ControllerContentUserBuilder withViewSettings(Settings settings) {
         this.settings = settings;
         return this;
     }
@@ -142,7 +121,7 @@ public class ControllerContentBuilder {
      * @param subject specific subject of the Observer pattern
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withSubject(Subject subject) {
+    public ControllerContentUserBuilder withSubject(Subject subject) {
         this.subject = subject;
         return this;
     }
@@ -154,7 +133,7 @@ public class ControllerContentBuilder {
      * @param languageSubject subject to language change
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withLanguageSubject(LanguageSubject languageSubject) {
+    public ControllerContentUserBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
         return this;
     }
@@ -165,7 +144,7 @@ public class ControllerContentBuilder {
      * @param lang language manager
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withLanguageManager(LanguageManager lang) {
+    public ControllerContentUserBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
         return this;
     }
@@ -176,21 +155,21 @@ public class ControllerContentBuilder {
      * @param about view of the About panel
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewAbout(About about) {
+    public ControllerContentUserBuilder withViewAbout(About about) {
         this.about = about;
         return this;
     }
 
     /**
-     * Build a new instance of {@link ControllerContent}
+     * Build a new instance of {@link ControllerContentAdmin}
      *
      * @return new DTO configured
      */
-    public ControllerContent build() {
-        return new ControllerContent(this);
+    public ControllerContentUser build() {
+        return new ControllerContentUser(this);
     }
 
-    public ContentAdmin getContent() {
+    public ContentUser getContent() {
         return content;
     }
 
@@ -216,14 +195,6 @@ public class ControllerContentBuilder {
 
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
-    }
-
-    public RegisterUsers getRegisterUsers() {
-        return registerUsers;
-    }
-
-    public ManageUsers getManageUsers() {
-        return manageUsers;
     }
 
     public Settings getSettings() {
