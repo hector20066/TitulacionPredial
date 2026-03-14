@@ -1,1 +1,1 @@
-SELECT password FROM users WHERE user = ?;
+SELECT password, role FROM users WHERE user = ?;
