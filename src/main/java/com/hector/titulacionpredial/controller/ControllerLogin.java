@@ -13,6 +13,7 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
+import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
@@ -31,16 +32,18 @@ public class ControllerLogin implements LanguageObserver {
     private final ContentLogin login;
     private final ContentAdmin contentAdmin;
     private final ContentUser contentUser;
+    private final ContentReader contentReader;
     private final Dashboard dashboard;
     private final Subject subject;
     private final LanguageManager lang;
     private Role role;
 
-    public ControllerLogin(ContentLogin login, ContentAdmin contentAdmin, ContentUser contentUser, Dashboard dashboard,
+    public ControllerLogin(ContentLogin login, ContentAdmin contentAdmin, ContentUser contentUser, ContentReader contentReader, Dashboard dashboard,
                            Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.login = login;
         this.contentAdmin = contentAdmin;
         this.contentUser = contentUser;
+        this.contentReader = contentReader;
         this.dashboard = dashboard;
         this.subject = subject;
         this.lang = lang;
@@ -183,12 +186,23 @@ public class ControllerLogin implements LanguageObserver {
     }
 
     private void startSessionUser() {
-        java.awt.EventQueue.invokeLater(() -> {
-            contentUser.setVisible(true);
-            contentUser.setLocationRelativeTo(null);
-            contentUser.setResizable(false);
-            NavigatorUtils.showForms(ContentUser.getJpl_content(), dashboard);
-        });
+        String mode = (String) login.getCbo_access().getSelectedItem();
+
+        if (mode.equalsIgnoreCase("Solo lectura")) {
+            java.awt.EventQueue.invokeLater(() -> {
+                contentReader.setVisible(true);
+                contentReader.setLocationRelativeTo(null);
+                contentReader.setResizable(false);
+                NavigatorUtils.showForms(ContentReader.getJpl_content(), dashboard);
+            });
+        } else {
+            java.awt.EventQueue.invokeLater(() -> {
+                contentUser.setVisible(true);
+                contentUser.setLocationRelativeTo(null);
+                contentUser.setResizable(false);
+                NavigatorUtils.showForms(ContentUser.getJpl_content(), dashboard);
+            });
+        }
 
         login.dispose();
     }
