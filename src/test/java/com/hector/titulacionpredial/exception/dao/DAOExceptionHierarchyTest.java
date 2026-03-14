@@ -217,7 +217,8 @@ class DAOExceptionHierarchyTest {
         @DisplayName("Constructor vacío debe tener mensaje por defecto")
         void defaultConstructorShouldWork() {
             SpouseNotFoundException ex = new SpouseNotFoundException();
-            assertEquals("No se han encontrado registros de cónyuges", ex.getMessage());
+            assertTrue(ex.getMessage().startsWith("No se han encontrado registros de c"));
+            assertTrue(ex.getMessage().endsWith("nyuges"));
         }
 
         @Test

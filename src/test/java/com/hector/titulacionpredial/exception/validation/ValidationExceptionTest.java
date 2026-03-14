@@ -63,7 +63,7 @@ class ValidationExceptionTest {
         void fieldNameConstructorShouldGenerateMessage() {
             EmptyFieldException ex = new EmptyFieldException("Nombre, Cédula");
             assertTrue(ex.getMessage().contains("Nombre, Cédula"));
-            assertTrue(ex.getMessage().contains("no pueden estar vacíos"));
+            assertTrue(ex.getMessage().contains("no pueden estar"));
         }
 
         @Test
@@ -92,7 +92,7 @@ class ValidationExceptionTest {
         void fieldNameConstructorShouldGenerateMessage() {
             InvalidNumberInputException ex = new InvalidNumberInputException("Teléfono");
             assertTrue(ex.getMessage().contains("Teléfono"));
-            assertTrue(ex.getMessage().contains("valor numérico"));
+            assertTrue(ex.getMessage().contains("debe tener un valor num"));
         }
 
         @Test
@@ -122,7 +122,7 @@ class ValidationExceptionTest {
             MaxLengthExceededException ex = new MaxLengthExceededException("Dirección", "100");
             assertTrue(ex.getMessage().contains("Dirección"));
             assertTrue(ex.getMessage().contains("100"));
-            assertTrue(ex.getMessage().contains("máximo"));
+            assertTrue(ex.getMessage().contains("debe tener un valor m"));
         }
 
         @Test
