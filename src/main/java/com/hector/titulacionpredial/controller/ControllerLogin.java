@@ -1,13 +1,21 @@
 package com.hector.titulacionpredial.controller;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
+import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.model.enums.Role;
+import com.hector.titulacionpredial.service.LoginService;
+import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.Content;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author Ing. Hector Acevedo
@@ -53,14 +61,83 @@ public class ControllerLogin {
     }
 
     private void logIn() {
-        java.awt.EventQueue.invokeLater(() -> {
-            content.setVisible(true);
-            content.setLocationRelativeTo(null);
-            content.setResizable(false);
-            NavigatorUtils.showForms(dashboard);
-        });
+        try {
+            String user = login.getTxt_user().getText().trim();
+            String passwd = new String(login.getJpld_password().getPassword());
 
-        login.dispose();
+            if (user.isBlank() || passwd.isBlank()) {
+                throw new EmptyFieldException("Usuario y Contraseña");
+            }
+
+            /*if (passwd.length() < 8) {
+                throw new InvalidInputException("La contraseña debe tener minimo 8 caracteres");
+            }*/
+
+            prepareUI();
+            executeLoginWorker(user, passwd);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), null);
+        }
+    }
+
+    private void prepareUI() {
+        login.getBtn_login().setEnabled(false);
+        login.getBtn_login().setText("Iniciando Sesion...");
+    }
+
+    private void executeLoginWorker(String user, String plainPasswd) {
+        SwingWorker<Role, Void> executor = new SwingWorker<>() {
+            @Override
+            protected Role doInBackground() throws DAOException {
+                return LoginService.getInstance().verifyCredentials(user, plainPasswd);
+            }
+
+            @Override
+            public void done() {
+                try {
+                    Role role = get();
+                    handledLoginResult(role);
+                } catch (ExecutionException e) {
+                    Throwable cause = e.getCause();
+
+                    if(cause instanceof java.sql.SQLNonTransientConnectionException
+                            || cause instanceof com.mysql.cj.jdbc.exceptions.CommunicationsException) {
+                        MessageUtils.errorMessage("No se pudo conectar con la base de datos. Intentalo mas tarde", null);
+                    }
+
+                    resetLogIn();
+                } catch (InterruptedException e) {
+                    MessageUtils.errorMessage("Se ha interrumpido el inicio de sesión.", null);
+                    resetLogIn();
+                }
+            }
+        };
+
+        executor.execute();
+    }
+
+    private void handledLoginResult(Role role) {
+        switch (role) {
+            case Role.ADMIN -> {
+                java.awt.EventQueue.invokeLater(() -> {
+                    content.setVisible(true);
+                    content.setLocationRelativeTo(null);
+                    content.setResizable(false);
+                    NavigatorUtils.showForms(dashboard);
+                });
+                login.dispose();
+            }
+            //case Role.EMPLOYEE -> ;
+            case Role.NONE -> {
+                MessageUtils.warningMessage("No se han encontrado las credenciales", null);
+                resetLogIn();
+            }
+        }
+    }
+
+    private void resetLogIn() {
+        login.getBtn_login().setEnabled(true);
+        login.getBtn_login().setText("INICIAR SESION");
     }
 
     private void mousePressedPassword() {
