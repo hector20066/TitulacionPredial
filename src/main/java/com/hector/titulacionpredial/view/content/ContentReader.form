@@ -87,13 +87,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btn_logout" pref="246" max="32767" attributes="0"/>
-                  <Component id="readingMenu1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="menu" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="readingMenu1" pref="448" max="32767" attributes="0"/>
+                      <Component id="menu" pref="448" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_logout" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -118,7 +118,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.hector.titulacionpredial.view.component.ReadingMenu" name="readingMenu1">
+            <Component class="com.hector.titulacionpredial.view.component.ReadingMenu" name="menu">
             </Component>
           </SubComponents>
         </Container>

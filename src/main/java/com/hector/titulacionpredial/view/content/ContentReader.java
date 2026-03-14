@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.view.content;
 
+import com.hector.titulacionpredial.view.component.ReadingMenu;
+import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
+import javax.swing.JPanel;
+
 /**
  *
  * @author juanpablobohorquezguerra
@@ -11,6 +15,10 @@ public class ContentReader extends javax.swing.JFrame {
      */
     public ContentReader() {
         initComponents();
+        
+        head.initMoving(this);
+        head.getWinButton().initEvent(this, jpl_body);
+        menu.setSelectedIndex(0, 0);
     }
 
     /**
@@ -25,7 +33,7 @@ public class ContentReader extends javax.swing.JFrame {
         jpl_body = new javax.swing.JPanel();
         jpl_menu = new javax.swing.JPanel();
         btn_logout = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        readingMenu1 = new com.hector.titulacionpredial.view.component.ReadingMenu();
+        menu = new com.hector.titulacionpredial.view.component.ReadingMenu();
         jpl_content = new javax.swing.JPanel();
         head = new com.hector.titulacionpredial.view.component.Head();
         jLabel1 = new javax.swing.JLabel();
@@ -47,12 +55,12 @@ public class ContentReader extends javax.swing.JFrame {
         jpl_menuLayout.setHorizontalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btn_logout, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-            .addComponent(readingMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpl_menuLayout.setVerticalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_menuLayout.createSequentialGroup()
-                .addComponent(readingMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -119,6 +127,18 @@ public class ContentReader extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setControllerMenu(EventMenuSelected evt) {
+        menu.addEvent(evt);
+    }
+
+    public static JPanel getJpl_content() {
+        return jpl_content;
+    }
+
+    public ReadingMenu getMenu() {
+        return menu;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_logout;
@@ -127,6 +147,6 @@ public class ContentReader extends javax.swing.JFrame {
     private javax.swing.JPanel jpl_body;
     private static javax.swing.JPanel jpl_content;
     private javax.swing.JPanel jpl_menu;
-    private com.hector.titulacionpredial.view.component.ReadingMenu readingMenu1;
+    private com.hector.titulacionpredial.view.component.ReadingMenu menu;
     // End of variables declaration//GEN-END:variables
 }

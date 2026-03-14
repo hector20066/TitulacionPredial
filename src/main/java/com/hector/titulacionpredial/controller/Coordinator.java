@@ -11,6 +11,7 @@ import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
+import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -49,6 +50,7 @@ public class Coordinator {
     private ContentLogin login;
     private ContentAdmin contentAdmin;
     private ContentUser contentUser;
+    private ContentReader contentReader;
     private Dashboard dashboard;
     private GenerateResolution generateResolution;
     private RegisterBeneficiary registerBeneficiary;
@@ -78,7 +80,6 @@ public class Coordinator {
         startView();
         startDrivers();
         loadLanguage();
-        subject.notifyObservers();
 
         java.awt.EventQueue.invokeLater(() -> {
             login.setVisible(true);
@@ -118,6 +119,7 @@ public class Coordinator {
         login = new ContentLogin();
         contentAdmin = new ContentAdmin();
         contentUser = new ContentUser();
+        contentReader = new ContentReader();
         dashboard = new Dashboard();
         generateResolution = new GenerateResolution();
         registerBeneficiary = new RegisterBeneficiary();
@@ -144,6 +146,7 @@ public class Coordinator {
      */
     private void startDrivers() {
         controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, dashboard, subject, languageSubject, lang);
+
         new ControllerContentAdminBuilder()
                 .withViewContent(contentAdmin)
                 .withViewDashboard(dashboard)
@@ -166,6 +169,19 @@ public class Coordinator {
                 .withViewDashboard(dashboard)
                 .withViewRegisterBeneficiary(registerBeneficiary)
                 .withViewRegisterProperty(registerProperty)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withViewSeeProperties(seeProperties)
+                .withViewSeeResolutions(seeResolutions)
+                .withViewSettings(settings)
+                .withSubject(subject)
+                .withViewAbout(about)
+                .withLanguageManager(lang)
+                .withLanguageSubject(languageSubject)
+                .build();
+
+        new ControllerContentReaderBuilder()
+                .withViewContent(contentReader)
+                .withViewDashboard(dashboard)
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)
