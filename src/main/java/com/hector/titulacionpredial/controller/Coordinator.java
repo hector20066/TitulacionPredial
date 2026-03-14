@@ -145,7 +145,7 @@ public class Coordinator {
      * </p>
      */
     private void startDrivers() {
-        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, dashboard, subject, languageSubject, lang);
+        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, contentReader, dashboard, subject, languageSubject, lang);
 
         new ControllerContentAdminBuilder()
                 .withViewContent(contentAdmin)
