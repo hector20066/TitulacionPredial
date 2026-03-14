@@ -4,6 +4,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
+import com.hector.titulacionpredial.model.enums.Role;
 
 /**
  * @author Ing. Hector Acevedo
@@ -11,7 +12,7 @@ import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
  */
 public interface DAOUser extends DAOBase<DTOUserCreate, DTOUserDetails>, IListable<DTOUserDetails>, IRemovable {
 
-    boolean verifyCredentials(String user, String plainPassword) throws DAOException;
+    Role verifyCredentials(String user, String plainPassword) throws DAOException;
     boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException;
 
 }

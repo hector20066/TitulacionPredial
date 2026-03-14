@@ -45,7 +45,7 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    public boolean verifyCredentials(String user, String plainPassword) throws DAOException {
+    public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }
 

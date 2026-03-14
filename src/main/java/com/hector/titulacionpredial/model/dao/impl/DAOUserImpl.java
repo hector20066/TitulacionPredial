@@ -8,6 +8,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOUser;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
+import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -56,7 +57,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    public boolean verifyCredentials(String user, String plainPassword) throws DAOException {
+    public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         String sql = SQLRepository.get("sql/user/verifyPassword.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -65,11 +66,16 @@ public class DAOUserImpl implements DAOUser {
 
             try (ResultSet rs = st.executeQuery()) {
                 if (!rs.next()) {
-                    throw new UserNotFoundException(user);
+                    return Role.NONE;
                 }
 
                 String hashedPassword = rs.getString("password");
-                return BCryptEncryption.verifyPassword(plainPassword, hashedPassword);
+
+                if (BCryptEncryption.verifyPassword(plainPassword, hashedPassword)) {
+                    return Role.valueOf(rs.getString("role"));
+                } else {
+                    return Role.NONE;
+                }
             }
         } catch (SQLException e) {
             throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
