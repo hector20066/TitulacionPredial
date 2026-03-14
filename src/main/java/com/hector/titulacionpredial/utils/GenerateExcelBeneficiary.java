@@ -70,7 +70,7 @@ public class GenerateExcelBeneficiary {
             row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().toString() : "");
             row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().toString() : "");
             row.createCell(col++).setCellValue(dto.getAddress() != null ? dto.getAddress() : "");
-            row.createCell(col++).setCellValue(dto.getCadastralReference() != null ? dto.getCadastralReference() : "");
+            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");
             row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().toString() : "");
             row.createCell(col++).setCellValue(dto.getAffectation() != null ? dto.getAffectation() : "");
             row.createCell(col++).setCellValue(dto.getPhone());

@@ -48,7 +48,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
                 .department(department)
                 .municipality(municipality)
                 .address(address)
-                .cadastralReference(cadastralReference)
+                .cadastralRef(cadastralReference)
                 .maritalStatus(maritalStatus)
                 .affectation(affectation)
                 .phone(phone)

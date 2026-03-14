@@ -661,7 +661,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_municipality.setSelectedItem(dto.getMunicipality());
         txt_neighborhood.setText(dto.getNeighborhood());
         txt_address.setText(dto.getAddress());
-        txt_cadastralReference.setText(String.valueOf(dto.getCadastralReference()));
+        txt_cadastralReference.setText(String.valueOf(dto.getCadastralRef()));
         cbo_publication.setSelectedItem(dto.getPublication());
         txa_crossing.setText(dto.getCrossing());
         txa_affectation.setText(dto.getAffectation());

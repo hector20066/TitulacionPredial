@@ -49,11 +49,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     protected String expeditionLocation;
 
     /**
-     * Cadastral reference.
-     */
-    protected String cadastralReference;
-
-    /**
      * Empty constructor required for serialization
      * or mapping frameworks.
      */
@@ -71,7 +66,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.id = builder.id;
         this.fullName = builder.fullName;
         this.expeditionLocation = builder.expeditionLocation;
-        this.cadastralReference = builder.cadastralReference;
     }
 
     public long getId() {
@@ -98,14 +92,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.expeditionLocation = expeditionLocation;
     }
 
-    public String getCadastralReference() {
-        return cadastralReference;
-    }
-
-    public void setCadastralReference(String cadastralReference) {
-        this.cadastralReference = cadastralReference;
-    }
-
     /**
      * Generic builder for fluid building of
      * {@link DTOBeneficiaryCreate} instances.
@@ -122,7 +108,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         private long id;
         private String fullName;
         private String expeditionLocation;
-        private String cadastralReference;
 
         /**
          * Set the ID.
@@ -154,17 +139,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
          */
         public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
-            return self();
-        }
-
-        /**
-         * Establish the cadastral reference.
-         *
-         * @param cadastralReference cadastral reference
-         * @return current builder
-         */
-        public T cadastralReference(String cadastralReference) {
-            this.cadastralReference = cadastralReference;
             return self();
         }
 

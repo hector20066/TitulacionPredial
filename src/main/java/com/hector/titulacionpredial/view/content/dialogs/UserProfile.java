@@ -627,7 +627,7 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_department.setText(beneficiary.getDepartment().name());
         jlb_municipality.setText(beneficiary.getMunicipality().name());
         jlb_neighborhood.setText(beneficiary.getNeighborhood());
-        jlb_cadastralRef.setText(String.valueOf(beneficiary.getCadastralReference()));
+        jlb_cadastralRef.setText(String.valueOf(beneficiary.getCadastralRef()));
         jlb_publication.setText(beneficiary.getPublication());
         txa_crossing.setText(beneficiary.getCrossing());
         txa_affectation.setText(beneficiary.getAffectation());
