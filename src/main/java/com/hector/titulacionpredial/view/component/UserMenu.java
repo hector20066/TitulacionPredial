@@ -21,7 +21,7 @@ public class UserMenu extends Menu {
         addTitle("INFORMACIÓN");
         addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Informacion", "Beneficiarios", "Predios"));
         addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver Registros", "Beneficiarios", "Predios", "Resolucion"));
-        addTitle("GESTION DE USUARIOS");addTitle("CONFIGURACION");
+        addTitle("CONFIGURACION");
         addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));
         addTitle("SOBRE LA APP");
         addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));

@@ -35,8 +35,8 @@ public class ContentAdmin extends javax.swing.JFrame {
 
         jpl_body = new javax.swing.JPanel();
         jpl_menu = new javax.swing.JPanel();
-        adminMenu1 = new com.hector.titulacionpredial.view.component.AdminMenu();
-        buttonAction1 = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        menu = new com.hector.titulacionpredial.view.component.AdminMenu();
+        btn_logout = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jpl_content = new javax.swing.JPanel();
         head = new com.hector.titulacionpredial.view.component.Head();
         jLabel1 = new javax.swing.JLabel();
@@ -48,21 +48,25 @@ public class ContentAdmin extends javax.swing.JFrame {
 
         jpl_menu.setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonAction1.setText("Cerrar Sesion");
+        btn_logout.setBackground(new java.awt.Color(255, 255, 255));
+        btn_logout.setForeground(new java.awt.Color(33, 37, 41));
+        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/log-out.png"))); // NOI18N
+        btn_logout.setText("  Cerrar Sesion");
+        btn_logout.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jpl_menuLayout = new javax.swing.GroupLayout(jpl_menu);
         jpl_menu.setLayout(jpl_menuLayout);
         jpl_menuLayout.setHorizontalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adminMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-            .addComponent(buttonAction1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(btn_logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpl_menuLayout.setVerticalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_menuLayout.createSequentialGroup()
-                .addComponent(adminMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(buttonAction1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jpl_content.setBackground(new java.awt.Color(255, 255, 255));
@@ -140,12 +144,12 @@ public class ContentAdmin extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.hector.titulacionpredial.view.component.AdminMenu adminMenu1;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction buttonAction1;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_logout;
     private com.hector.titulacionpredial.view.component.Head head;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jpl_body;
     private static javax.swing.JPanel jpl_content;
     private javax.swing.JPanel jpl_menu;
+    private com.hector.titulacionpredial.view.component.AdminMenu menu;
     // End of variables declaration//GEN-END:variables
 }
