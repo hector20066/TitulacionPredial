@@ -4,7 +4,7 @@ import com.hector.titulacionpredial.controller.ControllerContent;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
@@ -23,7 +23,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  */
 public class ControllerContentBuilder {
 
-    private Content content;
+    private ContentAdmin content;
     private Dashboard dashboard;
     private RegisterBeneficiary registerBeneficiary;
     private RegisterProperty registerProperty;
@@ -44,7 +44,7 @@ public class ControllerContentBuilder {
      * @param content Main view of the content
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewContent(Content content) {
+    public ControllerContentBuilder withViewContent(ContentAdmin content) {
         this.content = content;
         return this;
     }
@@ -190,7 +190,7 @@ public class ControllerContentBuilder {
         return new ControllerContent(this);
     }
 
-    public Content getContent() {
+    public ContentAdmin getContent() {
         return content;
     }
 

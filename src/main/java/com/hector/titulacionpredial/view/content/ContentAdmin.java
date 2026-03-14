@@ -17,12 +17,12 @@ import javax.swing.*;
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
-public class Content extends javax.swing.JFrame {
+public class ContentAdmin extends javax.swing.JFrame {
     
     /**
      * Create the main window and initialize the menu, header, and content.
      */
-    public Content() {
+    public ContentAdmin() {
         initComponents();
 
         head.initMoving(this);

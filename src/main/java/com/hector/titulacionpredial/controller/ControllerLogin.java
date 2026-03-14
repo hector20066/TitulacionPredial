@@ -7,7 +7,7 @@ import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.service.LoginService;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
@@ -24,10 +24,10 @@ import java.util.concurrent.ExecutionException;
 public class ControllerLogin {
 
     private final ContentLogin login;
-    private final Content content;
+    private final ContentAdmin content;
     private final Dashboard dashboard;
 
-    public ControllerLogin(ContentLogin login, Content content, Dashboard dashboard) {
+    public ControllerLogin(ContentLogin login, ContentAdmin content, Dashboard dashboard) {
         this.login = login;
         this.content = content;
         this.dashboard = dashboard;

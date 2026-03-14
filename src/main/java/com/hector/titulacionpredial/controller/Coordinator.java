@@ -9,7 +9,7 @@ import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.UserConfig;
-import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -46,7 +46,7 @@ public class Coordinator {
 
     // Views
     private ContentLogin login;
-    private Content content;
+    private ContentAdmin content;
     private Dashboard dashboard;
     private GenerateResolution generateResolution;
     private RegisterBeneficiary registerBeneficiary;
@@ -113,7 +113,7 @@ public class Coordinator {
      */
     private void startView() {
         login = new ContentLogin();
-        content = new Content();
+        content = new ContentAdmin();
         dashboard = new Dashboard();
         generateResolution = new GenerateResolution();
         registerBeneficiary = new RegisterBeneficiary();

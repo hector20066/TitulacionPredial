@@ -6,7 +6,7 @@ import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.*;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 
@@ -33,7 +33,7 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
  */
 public class ControllerContent implements LanguageObserver {
 
-    private final Content content;
+    private final ContentAdmin content;
     private final Dashboard dashboard;
     private final RegisterBeneficiary registerBeneficiary;
     private final RegisterProperty registerProperty;
@@ -147,7 +147,7 @@ public class ControllerContent implements LanguageObserver {
                 .about(lang.app("menu.about.desc"))
                 .build();
 
-        content.getMenu().setText(dto);
+        //content.getMenu().setText(dto);
     }
 
 }

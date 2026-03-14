@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.view.content.Content;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,11 +11,11 @@ import java.awt.*;
  *
  * <p>
  * It allows you to dynamically replace the content of the
- * main panel ({@link Content}) with the specified component.
+ * main panel ({@link ContentAdmin}) with the specified component.
  * </p>
  *
  * @author Ing. Hector Acevedo
- * @see Content
+ * @see ContentAdmin
  * @since 1.0
  */
 public class NavigatorUtils {
@@ -27,11 +27,11 @@ public class NavigatorUtils {
      * @param component Swing component to be displayed
      */
     public static void showForms(JComponent component) {
-        Content.getJpl_content().removeAll();
-        Content.getJpl_content().setLayout(new BorderLayout());
-        Content.getJpl_content().add(component, BorderLayout.CENTER);
-        Content.getJpl_content().revalidate();
-        Content.getJpl_content().repaint();
+        ContentAdmin.getJpl_content().removeAll();
+        ContentAdmin.getJpl_content().setLayout(new BorderLayout());
+        ContentAdmin.getJpl_content().add(component, BorderLayout.CENTER);
+        ContentAdmin.getJpl_content().revalidate();
+        ContentAdmin.getJpl_content().repaint();
     }
 
 }

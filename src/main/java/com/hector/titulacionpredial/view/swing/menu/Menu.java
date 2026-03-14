@@ -1,6 +1,5 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
 import com.hector.titulacionpredial.view.swing.scroll.ScrollBar;
 import net.miginfocom.swing.MigLayout;
