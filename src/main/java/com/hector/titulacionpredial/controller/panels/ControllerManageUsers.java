@@ -59,7 +59,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     @Override
     public void modifyAccount(DTOUserDetails account) {
         int id = account.getId();
-        String newPassword = MessageUtils.inputDialog("Por favor ingrese la nueva contraseña", manageUsers);
+        String newPassword = MessageUtils.inputDialog(lang.message("message.user.enter.newPassword"), manageUsers);
         new Thread(() -> {
             try {
                 boolean success = daoUsers.modifyPassword(id, newPassword);
@@ -67,7 +67,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
                     actionForSuccess(success);
                 });
             } catch (DAOException ex) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al tratar de modificar la cuenta", manageUsers));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(lang.message("message.user.modify.error"), manageUsers));
             }
         }).start();
     }
@@ -79,22 +79,22 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
                 daoUsers.delete(id);
                 SwingUtilities.invokeLater(this::actionForSuccess);
             } catch (DAOException ex) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage("Ha ocurrido un error al tratar de eliminar la cuenta.\nError:" + " " + ex, manageUsers));
+                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(lang.message("message.user.delete.error") + "\n" + lang.message("message.user.error") + " " + ex, manageUsers));
             }
         }).start();
     }
 
     private void actionForSuccess() {
-        MessageUtils.informationMessage("Se ha eliminado la cuenta exitosamente", manageUsers);
+        MessageUtils.informationMessage(lang.message("message.user.delete"), manageUsers);
         subject.notifyObservers();
     }
 
     private void actionForSuccess(boolean success) {
         if (success) {
-            MessageUtils.informationMessage("Se ha modificado la cuenta exitosamente", manageUsers);
+            MessageUtils.informationMessage(lang.message("message.user.modify"), manageUsers);
             subject.notifyObservers();
         } else {
-            MessageUtils.errorMessage("N se ha podido modificar la cuenta", manageUsers);
+            MessageUtils.errorMessage(lang.message("message.user.no.modify"), manageUsers);
         }
     }
 
