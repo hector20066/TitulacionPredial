@@ -34,21 +34,6 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     /**
-     * Unique beneficiary ID card.
-     */
-    protected long id;
-
-    /**
-     * Full name of the beneficiary.
-     */
-    protected String fullName;
-
-    /**
-     * Place of issue.
-     */
-    protected String expeditionLocation;
-
-    /**
      * Empty constructor required for serialization
      * or mapping frameworks.
      */
@@ -63,34 +48,8 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
      */
     public DTOBeneficiaryCreate(AbstractBuilder<?> builder) {
         super(builder);
-        this.id = builder.id;
-        this.fullName = builder.fullName;
-        this.expeditionLocation = builder.expeditionLocation;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getExpeditionLocation() {
-        return expeditionLocation;
-    }
-
-    public void setExpeditionLocation(String expeditionLocation) {
-        this.expeditionLocation = expeditionLocation;
-    }
 
     /**
      * Generic builder for fluid building of
@@ -104,43 +63,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
      * @param <T> specific type of builder
      */
     public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {
-
-        private long id;
-        private String fullName;
-        private String expeditionLocation;
-
-        /**
-         * Set the ID.
-         *
-         * @param id beneficiary's ID
-         * @return current builder
-         */
-        public T id(long id) {
-            this.id = id;
-            return self();
-        }
-
-        /**
-         * Enter the full name.
-         *
-         * @param fullName full name of the beneficiary
-         * @return current builder
-         */
-        public T fullName(String fullName) {
-            this.fullName = fullName;
-            return self();
-        }
-
-        /**
-         * Establish the place of shipment.
-         *
-         * @param expeditionLocation place of expedition
-         * @return current builder
-         */
-        public T expeditionLocation(String expeditionLocation) {
-            this.expeditionLocation = expeditionLocation;
-            return self();
-        }
 
     }
 

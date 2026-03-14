@@ -1,8 +1,6 @@
 package com.hector.titulacionpredial.model.dto;
 
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Data Transfer Object (DTO) that represents the information of a
@@ -34,29 +32,9 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 public class DTOBeneficiary extends DTOBasePerson {
 
     /**
-     * Department associated with the beneficiary.
+     * code of the beneficiaries.
      */
-    protected Department department;
-
-    /**
-     * Municipality associated with the beneficiary.
-     */
-    protected Municipalities municipality;
-
-    /**
-     * Neighborhood or area of residence.
-     */
-    protected String neighborhood;
-
-    /**
-     * Information on administrative crossings.
-     */
-    protected String crossing;
-
-    /**
-     * Information related to official publications.
-     */
-    protected String publication;
+    protected String codeBeneficiaries;
 
     /**
      * marital status of the beneficiary.
@@ -67,11 +45,6 @@ public class DTOBeneficiary extends DTOBasePerson {
      * Information on legal implications.
      */
     protected String affectation;
-
-    /**
-     * Cadastral reference associated with the beneficiary
-     */
-    protected String cadastralRef;
 
     /**
      * Empty constructor required for serialization
@@ -88,54 +61,17 @@ public class DTOBeneficiary extends DTOBasePerson {
      */
     protected DTOBeneficiary(Builder<?> builder) {
         super(builder);
-        this.department = builder.department;
-        this.municipality = builder.municipality;
-        this.neighborhood = builder.neighborhood;
-        this.crossing = builder.crossing;
-        this.publication = builder.publication;
+        this.codeBeneficiaries = builder.codeBeneficiaries;
         this.maritalStatus = builder.maritalStatus;
         this.affectation = builder.affectation;
-        this.cadastralRef = builder.cadastralRef;
     }
 
-    public Department getDepartment() {
-        return department;
+    public String getCodeBeneficiaries() {
+        return codeBeneficiaries;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Municipalities getMunicipality() {
-        return municipality;
-    }
-
-    public void setMunicipality(Municipalities municipality) {
-        this.municipality = municipality;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public String getCrossing() {
-        return crossing;
-    }
-
-    public void setCrossing(String crossing) {
-        this.crossing = crossing;
-    }
-
-    public String getPublication() {
-        return publication;
-    }
-
-    public void setPublication(String publication) {
-        this.publication = publication;
+    public void setCodeBeneficiaries(String codeBeneficiaries) {
+        this.codeBeneficiaries = codeBeneficiaries;
     }
 
     public MaritalStatus getMaritalStatus() {
@@ -154,14 +90,6 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = affectation;
     }
 
-    public String getCadastralRef() {
-        return cadastralRef;
-    }
-
-    public void setCadastralRef(String cadastralRef) {
-        this.cadastralRef = cadastralRef;
-    }
-
     /**
      * Generic builder for fluid building of
      * {@link DTOBeneficiary} instances.
@@ -175,14 +103,9 @@ public class DTOBeneficiary extends DTOBasePerson {
      */
     public static class Builder<T extends Builder<T>> extends DTOBasePerson.Builder<T> {
 
-        private Department department;
-        private Municipalities municipality;
-        private String neighborhood;
-        private String crossing;
-        private String publication;
+        private String codeBeneficiaries;
         private MaritalStatus maritalStatus;
         private String affectation;
-        private String cadastralRef;
 
         /**
          * Returns the concrete instance of the builder.
@@ -195,57 +118,13 @@ public class DTOBeneficiary extends DTOBasePerson {
         }
 
         /**
-         * Establish the department.
+         * It establishes code of the beneficiaries.
          *
-         * @param department department associated with the beneficiary
+         * @param codeBeneficiaries marital status of the beneficiary
          * @return current builder
          */
-        public T department(Department department) {
-            this.department = department;
-            return self();
-        }
-
-        /**
-         * The municipality establishes this.
-         *
-         * @param municipalities municipality associated with the beneficiary
-         * @return current builder
-         */
-        public T municipality(Municipalities municipalities) {
-            this.municipality = municipalities;
-            return self();
-        }
-
-        /**
-         * Establish the neighborhood.
-         *
-         * @param neighborhood residential neighborhood
-         * @return current builder
-         */
-        public T neighborhood(String neighborhood) {
-            this.neighborhood = neighborhood;
-            return self();
-        }
-
-        /**
-         * Establish the crossing.
-         *
-         * @param crossing beneficiary crossing
-         * @return current builder
-         */
-        public T crossing(String crossing) {
-            this.crossing = crossing;
-            return self();
-        }
-
-        /**
-         * Establish the publication.
-         *
-         * @param publication official publication
-         * @return current builder
-         */
-        public T publication(String publication) {
-            this.publication = publication;
+        public T codeBeneficiaries(String codeBeneficiaries) {
+            this.codeBeneficiaries = codeBeneficiaries;
             return self();
         }
 
@@ -268,17 +147,6 @@ public class DTOBeneficiary extends DTOBasePerson {
          */
         public T affectation(String affectation) {
             this.affectation = affectation;
-            return self();
-        }
-
-        /**
-         * The cadastral reference establishes this
-         *
-         * @param cadastralRef cadastral reference associated with the beneficiary
-         * @return current builder
-         */
-        public T cadastralRef(String cadastralRef) {
-            this.cadastralRef = cadastralRef;
             return self();
         }
 

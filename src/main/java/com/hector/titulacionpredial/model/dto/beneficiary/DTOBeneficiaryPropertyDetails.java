@@ -1,7 +1,6 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Data Transfer Object (DTO) that contains the information
@@ -28,9 +27,6 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
  */
 public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
 
-    private String fullName;
-    private long id;
-
     /**
      * Empty constructor required for serialization or
      * mapping frameworks.
@@ -40,34 +36,21 @@ public class DTOBeneficiaryPropertyDetails extends DTOBeneficiary {
     }
 
     /**
-     * Constructor used to initialize the class parameters.
+     * Constructor used by the Builder pattern.
      *
-     * @param fullName     full name of the beneficiary
-     * @param code         unique beneficiary code
-     * @param municipality municipality of residence of the beneficiary
-     * @param address      beneficiary's address
+     * @param builder configured instance of the builder
      */
-    public DTOBeneficiaryPropertyDetails(String fullName, long code, Municipalities municipality, String address) {
-        super();
-        this.fullName = fullName;
-        this.id = code;
-        setMunicipality(municipality);
-        setAddress(address);
+    public DTOBeneficiaryPropertyDetails(Builder builder) {
+        super(builder);
+
     }
 
-    public String getFullName() {
-        return fullName;
+    public static class Builder extends DTOBeneficiary.Builder<Builder> {
+
+        public DTOBeneficiaryPropertyDetails build() {
+            return new DTOBeneficiaryPropertyDetails(this);
+        }
+
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 }

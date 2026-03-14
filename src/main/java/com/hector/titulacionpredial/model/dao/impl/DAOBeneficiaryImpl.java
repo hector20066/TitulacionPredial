@@ -209,10 +209,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setPhone(rs.getLong("phone"));
-        dto.setCadastralRef(rs.getString("cadastral_reference"));
-        dto.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
         dto.setMaritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")));
-        dto.setAddress(rs.getString("address"));
     }
 
     @Override
@@ -247,18 +244,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             while (rs.next()) {
                 DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
+                        .codeBeneficiaries(rs.getString("code_beneficiaries"))
                         .id(rs.getLong("id"))
                         .fullName(rs.getString("full_name"))
-                        .department(Department.valueOf(rs.getString("department")))
-                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
-                        .address(rs.getString("address"))
-                        .cadastralRef(rs.getString("cadastral_reference"))
                         .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
                         .affectation(rs.getString("affectation"))
                         .phone(rs.getLong("phone"))
-                        .crossing(rs.getString("crossing"))
-                        .publication(rs.getString("publication"))
-                        .neighborhood(rs.getString("neighborhood"))
                         .expeditionLocation(rs.getString("expedition_location"))
                         .build();
 
@@ -280,19 +271,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
      */
     private DTOBeneficiaryDetails executeQuery(ResultSet rs) throws SQLException {
         return new DTOBeneficiaryDetails.Builder()
-                .code(rs.getInt("code"))
+                .codeBeneficiaries(rs.getString("code_beneficiaries"))
                 .id(rs.getLong("id"))
                 .fullName(rs.getString("full_name"))
-                .department(Department.valueOf(rs.getString("department")))
-                .municipality(Municipalities.valueOf(rs.getString("municipality")))
-                .address(rs.getString("address"))
-                .cadastralRef(rs.getString("cadastral_reference"))
                 .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
                 .affectation(rs.getString("affectation"))
                 .phone(rs.getLong("phone"))
-                .crossing(rs.getString("crossing"))
-                .publication(rs.getString("publication"))
-                .neighborhood(rs.getString("neighborhood"))
                 .expeditionLocation(rs.getString("expedition_location"))
                 .idSpouse(rs.getLong("spouse_id"))
                 .fullNameSpouse(rs.getString("spouse_full_name"))
@@ -332,16 +316,9 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     private void statementDetails(PreparedStatement st, DTOBeneficiary dto) throws SQLException {
         st.setLong(1, dto.getId());
         st.setString(2, dto.getFullName());
-        st.setString(3, String.valueOf(dto.getDepartment()));
-        st.setString(4, String.valueOf(dto.getMunicipality()));
-        st.setString(5, dto.getAddress());
-        st.setString(6, dto.getCadastralRef());
         st.setString(7, String.valueOf(dto.getMaritalStatus()));
         st.setString(8, dto.getAffectation());
         st.setLong(9, dto.getPhone());
-        st.setString(10, dto.getCrossing());
-        st.setString(11, dto.getPublication());
-        st.setString(12, dto.getNeighborhood());
         st.setString(13, dto.getExpeditionLocation());
     }
 

@@ -1,8 +1,6 @@
 package com.hector.titulacionpredial.model.entities;
 
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Domain entity that represents a Beneficiary within the system.
@@ -36,6 +34,7 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 public class Beneficiary extends Person {
 
     private int code;
+    private String codeBeneficiaries;
     private MaritalStatus maritalStatus;
     private String affectation;
     private Spouse spouse;
@@ -56,6 +55,7 @@ public class Beneficiary extends Person {
     protected Beneficiary(Builder builder) {
         super(builder);
         this.code = builder.code;
+        this.codeBeneficiaries = builder.codeBeneficiaries;
         this.maritalStatus = builder.maritalStatus;
         this.affectation = builder.affectation;
         this.spouse = builder.spouse;
@@ -67,6 +67,14 @@ public class Beneficiary extends Person {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getCodeBeneficiaries() {
+        return codeBeneficiaries;
+    }
+
+    public void setCodeBeneficiaries(String codeBeneficiaries) {
+        this.codeBeneficiaries = codeBeneficiaries;
     }
 
     public MaritalStatus getMaritalStatus() {
@@ -103,6 +111,7 @@ public class Beneficiary extends Person {
     public String toString() {
         return super.toString() +
                 "\nCode= " + code +
+                "\nCode Beneficiaries= " + codeBeneficiaries +
                 "\nMaritalStatus= " + maritalStatus +
                 "\nAffectation= " + affectation;
     }
@@ -120,12 +129,18 @@ public class Beneficiary extends Person {
     public static class Builder extends Person.Builder<Builder> {
 
         private int code;
+        private String codeBeneficiaries;
         private MaritalStatus maritalStatus;
         private String affectation;
         private Spouse spouse;
 
         public Builder code(int code) {
             this.code = code;
+            return this;
+        }
+
+        public Builder codeBeneficiaries(String codeBeneficiaries) {
+            this.codeBeneficiaries = codeBeneficiaries;
             return this;
         }
 

@@ -38,7 +38,7 @@ import java.util.List;
 public class Property {
 
     private long code;
-    private String cadastralId;
+    private String cadastralRef;
     private Double area;
     private Department department;
     private Municipalities municipality;
@@ -70,7 +70,7 @@ public class Property {
      */
     public Property(Builder builder) {
         this.code = builder.code;
-        this.cadastralId = builder.cadastralId;
+        this.cadastralRef = builder.cadastralRef;
         this.area = builder.area;
         this.department = builder.department;
         this.municipality = builder.municipality;
@@ -90,12 +90,12 @@ public class Property {
         this.code = code;
     }
 
-    public String getCadastralId() {
-        return cadastralId;
+    public String getCadastralRef() {
+        return cadastralRef;
     }
 
-    public void setCadastralId(String cadastralId) {
-        this.cadastralId = cadastralId;
+    public void setCadastralRef(String cadastralRef) {
+        this.cadastralRef = cadastralRef;
     }
 
     public Double getArea() {
@@ -178,7 +178,7 @@ public class Property {
     @Override
     public String toString() {
         return "Code= " + code +
-                "\nCadastral Id= " + cadastralId +
+                "\nCadastral Reference= " + cadastralRef +
                 "\nArea= " + area +
                 "\nDepartment= " + department +
                 "\nMunicipality= " + municipality +
@@ -206,7 +206,7 @@ public class Property {
     public static class Builder {
 
         private long code;
-        private String cadastralId;
+        private String cadastralRef;
         private Double area;
         private Department department;
         private Municipalities municipality;
@@ -223,7 +223,7 @@ public class Property {
         }
 
         public Builder cadastralId(String cadastralId) {
-            this.cadastralId = cadastralId;
+            this.cadastralRef = cadastralId;
             return this;
         }
 

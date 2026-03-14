@@ -270,7 +270,7 @@ public class DAOPropertyImpl implements DAOProperty {
         return new DTOBeneficiaryPropertyDetails(
                 rs.getString("beneficiary_fullname"),
                 beneficiaryCode,
-                municipality,
+                municipalityStr,
                 rs.getString("beneficiary_address")
         );
     }

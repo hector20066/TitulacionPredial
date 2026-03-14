@@ -35,11 +35,6 @@ public class DTOBasePerson {
     protected long id;
 
     /**
-     * Address associated with the person.
-     */
-    protected String address;
-
-    /**
      * Contact phone number.
      */
     protected long phone;
@@ -62,10 +57,9 @@ public class DTOBasePerson {
      *
      * @param builder configured instance of the builder
      */
-    public DTOBasePerson(Builder builder) {
+    public DTOBasePerson(Builder<?> builder) {
         this.fullName = builder.fullName;
         this.id = builder.id;
-        this.address = builder.address;
         this.phone = builder.phone;
         this.expeditionLocation = builder.expeditionLocation;
     }
@@ -84,14 +78,6 @@ public class DTOBasePerson {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public long getPhone() {
@@ -114,7 +100,6 @@ public class DTOBasePerson {
 
         private String fullName;
         private long id;
-        private String address;
         private long phone;
         private String expeditionLocation;
 
@@ -135,11 +120,6 @@ public class DTOBasePerson {
 
         public T id(long id) {
             this.id = id;
-            return self();
-        }
-
-        public T address(String address) {
-            this.address = address;
             return self();
         }
 

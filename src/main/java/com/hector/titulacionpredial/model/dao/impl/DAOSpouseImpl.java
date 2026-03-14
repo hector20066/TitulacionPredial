@@ -63,7 +63,6 @@ public class DAOSpouseImpl implements DAOSpouse {
             st.setLong(1, dto.getId());
             st.setString(2, dto.getFullName());
             st.setString(3, dto.getExpeditionLocation());
-            st.setString(4, dto.getAddress());
             st.setLong(5, dto.getPhone());
             st.setInt(6, dto.getBeneficiaryCode());
             st.executeUpdate();
@@ -123,7 +122,6 @@ public class DAOSpouseImpl implements DAOSpouse {
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setExpeditionLocation(rs.getString("expedition_location"));
-        dto.setAddress(rs.getString("address"));
         dto.setPhone(rs.getLong("phone"));
         dto.setBeneficiaryCode(rs.getInt("beneficiary_code"));
     }

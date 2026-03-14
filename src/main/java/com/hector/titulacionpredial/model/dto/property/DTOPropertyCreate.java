@@ -1,6 +1,8 @@
 package com.hector.titulacionpredial.model.dto.property;
 
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 
 /**
  * Data Transfer Object (DTO) that contains the information to
@@ -27,6 +29,8 @@ import com.hector.titulacionpredial.model.dto.DTOProperty;
  */
 public class DTOPropertyCreate extends DTOProperty {
 
+    private int code;
+
     /**
      * Empty constructor required for serialization or mapping
      * frameworks.
@@ -36,13 +40,46 @@ public class DTOPropertyCreate extends DTOProperty {
     }
 
     /**
-     * Constructor used to initialize variables.
+     * Constructor used by the Builder pattern.
      *
-     * @param cadastralId cadastral certificate of the property
-     * @param area        area of the property
+     * @param builder configured instance of the builder
      */
-    public DTOPropertyCreate(String cadastralId, Double area) {
-        super(cadastralId, area);
+    public DTOPropertyCreate(Builder builder) {
+        super(builder);
+        this.code = builder.code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    /**
+     * Builder for the fluid construction of
+     * {@link DTOBeneficiarySimpleDetails} instances.
+     *
+     * <p>
+     * It allows you to configure the attributes before
+     * invoking {@link #build()}.
+     * </p>
+     */
+    public static class Builder extends DTOProperty.Builder<Builder> {
+
+        private int code;
+
+        public Builder code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        @Override
+        public DTOPropertyCreate build() {
+            return new DTOPropertyCreate(this);
+        }
+
     }
 
 }

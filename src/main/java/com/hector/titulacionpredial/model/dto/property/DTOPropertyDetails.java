@@ -70,7 +70,7 @@ public class DTOPropertyDetails extends DTOProperty {
      * @param builder configured instance of the builder
      */
     public DTOPropertyDetails(Builder builder) {
-        super(builder.cadastralId, builder.area);
+        super(builder);
         this.propertyCode = builder.propertyCode;
         this.beneficiaries = builder.beneficiaries;
         this.points = builder.points;
@@ -182,11 +182,9 @@ public class DTOPropertyDetails extends DTOProperty {
      *      .build();
      * </pre>
      */
-    public static class Builder {
+    public static class Builder extends DTOProperty.Builder<Builder> {
 
         private int propertyCode;
-        private String cadastralId;
-        private Double area;
         private List<DTOBeneficiaryPropertyDetails> beneficiaries = new ArrayList<>();
         private List<DTOPoint> points = new ArrayList<>();
         private long numResolution;
@@ -199,16 +197,6 @@ public class DTOPropertyDetails extends DTOProperty {
 
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
-            return this;
-        }
-
-        public Builder cadastralId(String cadastralId) {
-            this.cadastralId = cadastralId;
-            return this;
-        }
-
-        public Builder area(Double area) {
-            this.area = area;
             return this;
         }
 

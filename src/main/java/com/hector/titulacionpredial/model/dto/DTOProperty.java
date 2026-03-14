@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.model.dto;
 
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.Municipalities;
+
 /**
  * Data Transfer Object (DTO) that represents the information of a
  * Property for entry or exit operations of the system.
@@ -28,12 +31,42 @@ public class DTOProperty {
     /**
      * Cadastral reference.
      */
-    protected String cadastralId;
+    protected String cadastralRef;
 
     /**
      * Area of the property.
      */
     protected Double area;
+
+    /**
+     * Department.
+     */
+    protected Department department;
+
+    /**
+     * Municipality.
+     */
+    protected Municipalities municipality;
+
+    /**
+     * Neighborhood.
+     */
+    protected String neighborhood;
+
+    /**
+     * Address.
+     */
+    protected String address;
+
+    /**
+     * Information on administrative crossings.
+     */
+    protected String crossing;
+
+    /**
+     * Information related to official publications.
+     */
+    protected String publication;
 
     /**
      * Empty constructor required for serialization or mapping frameworks.
@@ -43,22 +76,27 @@ public class DTOProperty {
     }
 
     /**
-     * Constructor used to initialize variables.
+     * Constructor used by the Builder pattern.
      *
-     * @param cadastralId cadastral certificate of the property
-     * @param area        area of the property
+     * @param builder configured instance of the builder
      */
-    public DTOProperty(String cadastralId, Double area) {
-        this.cadastralId = cadastralId;
-        this.area = area;
+    public DTOProperty(Builder<?> builder) {
+        this.cadastralRef = builder.cadastralRef;
+        this.area = builder.area;
+        this.department = builder.department;
+        this.municipality = builder.municipality;
+        this.neighborhood = builder.neighborhood;
+        this.address = builder.address;
+        this.crossing = builder.crossing;
+        this.publication = builder.publication;
     }
 
     public String getCadastralId() {
-        return cadastralId;
+        return cadastralRef;
     }
 
     public void setCadastralId(String cadastralId) {
-        this.cadastralId = cadastralId;
+        this.cadastralRef = cadastralId;
     }
 
     public Double getArea() {
@@ -67,6 +105,123 @@ public class DTOProperty {
 
     public void setArea(Double area) {
         this.area = area;
+    }
+
+    public String getCadastralRef() {
+        return cadastralRef;
+    }
+
+    public void setCadastralRef(String cadastralRef) {
+        this.cadastralRef = cadastralRef;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Municipalities getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(Municipalities municipality) {
+        this.municipality = municipality;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCrossing() {
+        return crossing;
+    }
+
+    public void setCrossing(String crossing) {
+        this.crossing = crossing;
+    }
+
+    public String getPublication() {
+        return publication;
+    }
+
+    public void setPublication(String publication) {
+        this.publication = publication;
+    }
+
+    public static class Builder<T extends Builder<T>> {
+
+        private String cadastralRef;
+        private Double area;
+        private Department department;
+        private Municipalities municipality;
+        private String neighborhood;
+        private String address;
+        private String crossing;
+        private String publication;
+
+        protected T self() {
+            return (T) this;
+        }
+
+        public T cadastralRef(String cadastralRef) {
+            this.cadastralRef = cadastralRef;
+            return self();
+        }
+
+        public T area(Double area) {
+            this.area = area;
+            return self();
+        }
+
+        public T department(Department department) {
+            this.department = department;
+            return self();
+        }
+
+        public T municipality(Municipalities municipality) {
+            this.municipality = municipality;
+            return self();
+        }
+
+        public T neighborhood(String neighborhood) {
+            this.neighborhood = neighborhood;
+            return self();
+        }
+
+        public T address(String address) {
+            this.address = address;
+            return self();
+        }
+
+        public T crossing(String crossing) {
+            this.crossing = crossing;
+            return self();
+        }
+
+        public T publication(String publication) {
+            this.publication = publication;
+            return self();
+        }
+
+        public DTOProperty build() {
+            return new DTOProperty(this);
+        }
+
     }
 
 }
