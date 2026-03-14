@@ -3,8 +3,14 @@
 -- =========================
 CREATE TABLE property (
      code INT AUTO_INCREMENT PRIMARY KEY,
-     cadastral_id VARCHAR(40) NOT NULL,
-     area DOUBLE NOT NULL
+     cadastral_reference VARCHAR(30),
+     area DOUBLE NOT NULL,
+     department VARCHAR(100),
+     municipality VARCHAR(40) NOT NULL,
+     address VARCHAR(40) NOT NULL,
+     neighborhood VARCHAR(100) NOT NULL,
+     crossing VARCHAR(500),
+     publication VARCHAR(20),
 );
 
 -- =========================
@@ -12,18 +18,12 @@ CREATE TABLE property (
 -- =========================
 CREATE TABLE beneficiary (
      code INT AUTO_INCREMENT PRIMARY KEY,
+     code_beneficiaries VARCHAR(10) NOT NULL,
      id BIGINT NOT NULL UNIQUE,
      full_name VARCHAR(150) NOT NULL,
-     department VARCHAR(100),
-     municipality VARCHAR(40) NOT NULL,
-     address VARCHAR(40) NOT NULL,
-     cadastral_reference VARCHAR(30),
      marital_status VARCHAR(15) NOT NULL,
      affectation VARCHAR(500),
      phone BIGINT NOT NULL,
-     crossing VARCHAR(500),
-     publication VARCHAR(20),
-     neighborhood VARCHAR(100) NOT NULL,
      expedition_location VARCHAR(100) NOT NULL,
      property_code INT,
      entry_date DATE,

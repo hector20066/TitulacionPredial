@@ -30,7 +30,6 @@ public class Person {
 
     protected long id;
     protected String fullName;
-    protected String address;
     protected String expeditionLocation;
     protected long phone;
 
@@ -50,7 +49,6 @@ public class Person {
     protected Person(Builder<?> builder) {
         this.id = builder.id;
         this.fullName = builder.fullName;
-        this.address = builder.address;
         this.expeditionLocation = builder.expeditionLocation;
         this.phone = builder.phone;
     }
@@ -69,14 +67,6 @@ public class Person {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getExpeditionLocation() {
@@ -104,7 +94,6 @@ public class Person {
     public String toString() {
         return "Id= " + id +
                 "\nName= " + fullName +
-                "\nAddress= " + address +
                 "\nExpedition Location= " + expeditionLocation +
                 "\nPhone=" + phone;
     }
@@ -125,7 +114,6 @@ public class Person {
 
         private long id;
         private String fullName;
-        private String address;
         private String expeditionLocation;
         private long phone;
 
@@ -158,17 +146,6 @@ public class Person {
          */
         public T fullName(String fullName) {
             this.fullName = fullName;
-            return self();
-        }
-
-        /**
-         * Set the direction.
-         *
-         * @param address residential address
-         * @return current builder
-         */
-        public T address(String address) {
-            this.address = address;
             return self();
         }
 
