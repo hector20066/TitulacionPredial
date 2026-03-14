@@ -25,27 +25,12 @@ import java.util.List;
  * @see EventMenuSelected
  * @since 1.0
  */
-public class Menu extends JPanel {
+public abstract class Menu extends JPanel {
 
     private final List<EventMenuSelected> events = new ArrayList<>();
     private MigLayout menuLayout;
     private JPanel panelMenu;
     private int index = -1;
-
-    private String main = "PRINCIPAL";
-    private String dashboard = "Dashboard";
-    private String info = "INFORMACIÓN";
-    private String register = "Registrar Informacion";
-    private String registerBeneficiary = "Beneficiarios";
-    private String registerProperty = "Predios";
-    private String see = "Ver Registros";
-    private String seeBeneficiaries = "Beneficiarios";
-    private String seeResolutions = "Resolucion";
-    private String seeProperties = "Predios";
-    private String settingsTitle = "CONFIGURACION";
-    private String settings = "Ajustes";
-    private String aboutTitle = "SOBRE LA APP";
-    private String about = "Acerca De";
 
     /**
      * Create the side menu with the default components.
@@ -66,45 +51,12 @@ public class Menu extends JPanel {
         scroll.getViewport().setOpaque(false);
         scroll.setViewportBorder(null);
         add(scroll);
-
-        rebuildMenu();
-    }
-
-    public void setText(DTOMenuText dto) {
-        main = dto.getMainTitle();
-        dashboard = dto.getDashboard();
-        info = dto.getInfo();
-        register = dto.getRegisterInfo();
-        registerBeneficiary = dto.getRegisterBeneficiaries();
-        registerProperty = dto.getRegisterProperties();
-        see = dto.getSee();
-        seeBeneficiaries = dto.getSeeBeneficiaries();
-        seeResolutions = dto.getSeeResolutions();
-        seeProperties = dto.getSeeProperties();
-        settingsTitle = dto.getConfiguration();
-        settings = dto.getSettings();
-        aboutTitle = dto.getAboutApp();
-        about = dto.getAbout();
-
-        rebuildMenu();
     }
 
     /**
      * Add the default menu options.
      */
-    public void addComponents() {
-        addTitle(main);
-        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", dashboard));
-        addTitle(info);
-        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", register, registerBeneficiary, registerProperty));
-        addMenuItem(new ModelMenuItem("image/book-open-text.svg", see, seeBeneficiaries, seeProperties, seeResolutions));
-        addTitle("GESTION DE USUARIOS");
-        addMenuItem(new ModelMenuItem("image/info.svg", "Usuarios", "Registrar Usuarios", "Ver Usuarios"));
-        addTitle(settingsTitle);
-        addMenuItem(new ModelMenuItem("image/settings-2.svg", settings));
-        addTitle(aboutTitle);
-        addMenuItem(new ModelMenuItem("image/info.svg", about));
-    }
+    public abstract void addComponents();
 
     /**
      * Create a custom borderless scroll.
