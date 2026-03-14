@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.hector.titulacionpredial.view.content;
 
 /**
@@ -29,7 +25,7 @@ public class ContentReader extends javax.swing.JFrame {
         jpl_body = new javax.swing.JPanel();
         jpl_menu = new javax.swing.JPanel();
         btn_logout = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
-        menu = new com.hector.titulacionpredial.view.component.UserMenu();
+        readingMenu1 = new com.hector.titulacionpredial.view.component.ReadingMenu();
         jpl_content = new javax.swing.JPanel();
         head = new com.hector.titulacionpredial.view.component.Head();
         jLabel1 = new javax.swing.JLabel();
@@ -51,13 +47,15 @@ public class ContentReader extends javax.swing.JFrame {
         jpl_menuLayout.setHorizontalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btn_logout, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpl_menuLayout.createSequentialGroup()
+                .addComponent(readingMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpl_menuLayout.setVerticalGroup(
             jpl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_menuLayout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(readingMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -123,40 +121,6 @@ public class ContentReader extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ContentReader.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ContentReader.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ContentReader.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ContentReader.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ContentReader().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_logout;
@@ -165,6 +129,6 @@ public class ContentReader extends javax.swing.JFrame {
     private javax.swing.JPanel jpl_body;
     private static javax.swing.JPanel jpl_content;
     private javax.swing.JPanel jpl_menu;
-    private com.hector.titulacionpredial.view.component.UserMenu menu;
+    private com.hector.titulacionpredial.view.component.ReadingMenu readingMenu1;
     // End of variables declaration//GEN-END:variables
 }
