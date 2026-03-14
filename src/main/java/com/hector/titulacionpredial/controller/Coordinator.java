@@ -63,6 +63,7 @@ public class Coordinator {
     private About about;
 
     private ControllerSettings controllerSettings;
+    private ControllerLogin controllerLogin;
 
     /**
      * Responsible for starting the app, loading dependencies,
@@ -142,6 +143,7 @@ public class Coordinator {
      * </p>
      */
     private void startDrivers() {
+        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, dashboard, subject, languageSubject, lang);
         new ControllerContentAdminBuilder()
                 .withViewContent(contentAdmin)
                 .withViewDashboard(dashboard)
@@ -189,6 +191,7 @@ public class Coordinator {
                 .build();
 
         new ControllerRegisterBeneficiaryBuilder()
+                .withControllerLogin(controllerLogin)
                 .withViewRegisterBeneficiary(registerBeneficiary)
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withSubject(subject)
@@ -204,6 +207,7 @@ public class Coordinator {
                 .build();
 
         new ControllerSeePropertiesBuilder()
+                .withControllerLogin(controllerLogin)
                 .withViewGenerateResolution(generateResolution)
                 .withViewSeeProperties(seeProperties)
                 .withSubject(subject)
@@ -212,6 +216,7 @@ public class Coordinator {
                 .build();
 
         new ControllerSeeResolutionsBuilder()
+                .withControllerLogin(controllerLogin)
                 .withViewSeeResolutions(seeResolutions)
                 .withViewModifyResolution(modifyResolution)
                 .withSubject(subject)
@@ -220,6 +225,7 @@ public class Coordinator {
                 .build();
 
         new ControllerViewBeneficiariesBuilder()
+                .withControllerLogin(controllerLogin)
                 .withViewRegisterBeneficiary(registerBeneficiary)
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withSubject(subject)
@@ -228,6 +234,7 @@ public class Coordinator {
                 .build();
 
         new ControllerModifyResolutionBuilder()
+                .withControllerLogin(controllerLogin)
                 .withViewModifyResolution(modifyResolution)
                 .withViewSeeResolutions(seeResolutions)
                 .withSubject(subject)
@@ -241,7 +248,6 @@ public class Coordinator {
                 .withLanguageManager(lang)
                 .build();
 
-        new ControllerLogin(login, contentAdmin, contentUser, dashboard, subject, languageSubject, lang);
         new ControllerRegisterUsers(registerUsers, subject, languageSubject, lang);
         new ControllerManageUsers(manageUsers, subject, languageSubject, lang);
     }
