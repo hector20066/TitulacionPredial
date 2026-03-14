@@ -21,7 +21,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * @see ControllerContentAdmin
  * @since 1.0
  */
-public class ControllerContentBuilder {
+public class ControllerContentAdminBuilder {
 
     private ContentAdmin content;
     private Dashboard dashboard;
@@ -44,7 +44,7 @@ public class ControllerContentBuilder {
      * @param content Main view of the content
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewContent(ContentAdmin content) {
+    public ControllerContentAdminBuilder withViewContent(ContentAdmin content) {
         this.content = content;
         return this;
     }
@@ -55,7 +55,7 @@ public class ControllerContentBuilder {
      * @param dashboard dashboard view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewDashboard(Dashboard dashboard) {
+    public ControllerContentAdminBuilder withViewDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
         return this;
     }
@@ -66,7 +66,7 @@ public class ControllerContentBuilder {
      * @param registerBeneficiary beneficiary registration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
+    public ControllerContentAdminBuilder withViewRegisterBeneficiary(RegisterBeneficiary registerBeneficiary) {
         this.registerBeneficiary = registerBeneficiary;
         return this;
     }
@@ -77,7 +77,7 @@ public class ControllerContentBuilder {
      * @param registerProperty property registration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewRegisterProperty(RegisterProperty registerProperty) {
+    public ControllerContentAdminBuilder withViewRegisterProperty(RegisterProperty registerProperty) {
         this.registerProperty = registerProperty;
         return this;
     }
@@ -88,7 +88,7 @@ public class ControllerContentBuilder {
      * @param viewBeneficiaries beneficiary display view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
+    public ControllerContentAdminBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
         this.viewBeneficiaries = viewBeneficiaries;
         return this;
     }
@@ -99,7 +99,7 @@ public class ControllerContentBuilder {
      * @param seeProperties property search view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSeeProperties(SeeProperties seeProperties) {
+    public ControllerContentAdminBuilder withViewSeeProperties(SeeProperties seeProperties) {
         this.seeProperties = seeProperties;
         return this;
     }
@@ -110,17 +110,17 @@ public class ControllerContentBuilder {
      * @param seeResolutions resolutions query view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
+    public ControllerContentAdminBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
         return this;
     }
 
-    public ControllerContentBuilder withViewRegisterUsers(RegisterUsers registerUsers) {
+    public ControllerContentAdminBuilder withViewRegisterUsers(RegisterUsers registerUsers) {
         this.registerUsers = registerUsers;
         return this;
     }
 
-    public ControllerContentBuilder witViewManageUsers(ManageUsers manageUsers) {
+    public ControllerContentAdminBuilder witViewManageUsers(ManageUsers manageUsers) {
         this.manageUsers = manageUsers;
         return this;
     }
@@ -131,7 +131,7 @@ public class ControllerContentBuilder {
      * @param settings configuration view
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewSettings(Settings settings) {
+    public ControllerContentAdminBuilder withViewSettings(Settings settings) {
         this.settings = settings;
         return this;
     }
@@ -142,7 +142,7 @@ public class ControllerContentBuilder {
      * @param subject specific subject of the Observer pattern
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withSubject(Subject subject) {
+    public ControllerContentAdminBuilder withSubject(Subject subject) {
         this.subject = subject;
         return this;
     }
@@ -154,7 +154,7 @@ public class ControllerContentBuilder {
      * @param languageSubject subject to language change
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withLanguageSubject(LanguageSubject languageSubject) {
+    public ControllerContentAdminBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
         return this;
     }
@@ -165,7 +165,7 @@ public class ControllerContentBuilder {
      * @param lang language manager
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withLanguageManager(LanguageManager lang) {
+    public ControllerContentAdminBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
         return this;
     }
@@ -176,7 +176,7 @@ public class ControllerContentBuilder {
      * @param about view of the About panel
      * @return instance of the builder for fluid chaining
      */
-    public ControllerContentBuilder withViewAbout(About about) {
+    public ControllerContentAdminBuilder withViewAbout(About about) {
         this.about = about;
         return this;
     }

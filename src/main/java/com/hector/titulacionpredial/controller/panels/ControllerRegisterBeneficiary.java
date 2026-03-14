@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.DataNotFoundException;
@@ -23,6 +24,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
@@ -51,6 +53,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
     private final RegisterBeneficiary registerBeneficiary;
     private final ViewBeneficiaries viewBeneficiaries;
+    private final ControllerLogin controllerLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -67,6 +70,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     public ControllerRegisterBeneficiary(ControllerRegisterBeneficiaryBuilder builder) {
         this.registerBeneficiary = builder.getRegisterBeneficiary();
         this.viewBeneficiaries = builder.getViewBeneficiaries();
+        this.controllerLogin = builder.getControllerLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -266,7 +270,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         if (success) {
             MessageUtils.informationMessage(lang.message("message.beneficiary.modify"), registerBeneficiary);
             subject.notifyObservers();
-            NavigatorUtils.showForms(viewBeneficiaries);
+            NavigatorUtils.showForms(controllerLogin.jpl_Content(), viewBeneficiaries);
             registerBeneficiary.clearFields();
         } else {
             MessageUtils.errorMessage(lang.message("message.beneficiary.error.modify"), registerBeneficiary);

@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerSeePropertiesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -14,6 +15,7 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
@@ -52,6 +54,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
     private final SeeProperties seeProperties;
     private final GenerateResolution generateResolution;
+    private final ControllerLogin controllerLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -67,6 +70,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     public ControllerSeeProperties(ControllerSeePropertiesBuilder builder) {
         this.seeProperties = builder.getSeeProperties();
         this.generateResolution = builder.getGenerateResolution();
+        this.controllerLogin = builder.getControllerLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -188,7 +192,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
             generateResolution.loadData(area, point1, point2, point3, point4, propertyCode, dtoBeneficiary, beneficiaryId);
             generateResolution.clearFields();
-            NavigatorUtils.showForms(generateResolution);
+            NavigatorUtils.showForms(controllerLogin.jpl_Content(), generateResolution);
         } catch (Exception e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);
         }

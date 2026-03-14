@@ -11,6 +11,7 @@ import com.hector.titulacionpredial.observer.ConcreteSubject;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
+import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.*;
 
 /**
@@ -34,7 +35,7 @@ import com.hector.titulacionpredial.view.content.panels.*;
  * </ol>
  *
  * @author Ing. Hector Acevedo
- * @see ControllerContentBuilder
+ * @see ControllerContentAdminBuilder
  * @see ConcreteSubject
  * @since 1.0
  */
@@ -46,7 +47,8 @@ public class Coordinator {
 
     // Views
     private ContentLogin login;
-    private ContentAdmin content;
+    private ContentAdmin contentAdmin;
+    private ContentUser contentUser;
     private Dashboard dashboard;
     private GenerateResolution generateResolution;
     private RegisterBeneficiary registerBeneficiary;
@@ -113,7 +115,8 @@ public class Coordinator {
      */
     private void startView() {
         login = new ContentLogin();
-        content = new ContentAdmin();
+        contentAdmin = new ContentAdmin();
+        contentUser = new ContentUser();
         dashboard = new Dashboard();
         generateResolution = new GenerateResolution();
         registerBeneficiary = new RegisterBeneficiary();
@@ -133,14 +136,14 @@ public class Coordinator {
      *
      * <p>
      * Build the main content controller using
-     * {@link ControllerContentBuilder} and create the
+     * {@link ControllerContentAdminBuilder} and create the
      * controllers for each panel, injecting the views
      * and subject of the corresponding Observer pattern.
      * </p>
      */
     private void startDrivers() {
-        new ControllerContentBuilder()
-                .withViewContent(content)
+        new ControllerContentAdminBuilder()
+                .withViewContent(contentAdmin)
                 .withViewDashboard(dashboard)
                 .withViewRegisterBeneficiary(registerBeneficiary)
                 .withViewRegisterProperty(registerProperty)
@@ -149,6 +152,21 @@ public class Coordinator {
                 .withViewSeeResolutions(seeResolutions)
                 .withViewRegisterUsers(registerUsers)
                 .witViewManageUsers(manageUsers)
+                .withViewSettings(settings)
+                .withSubject(subject)
+                .withViewAbout(about)
+                .withLanguageManager(lang)
+                .withLanguageSubject(languageSubject)
+                .build();
+
+        new ControllerContentUserBuilder()
+                .withViewContent(contentUser)
+                .withViewDashboard(dashboard)
+                .withViewRegisterBeneficiary(registerBeneficiary)
+                .withViewRegisterProperty(registerProperty)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withViewSeeProperties(seeProperties)
+                .withViewSeeResolutions(seeResolutions)
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
@@ -223,7 +241,7 @@ public class Coordinator {
                 .withLanguageManager(lang)
                 .build();
 
-        new ControllerLogin(login, content, dashboard);
+        new ControllerLogin(login, contentAdmin, contentUser, dashboard, subject, languageSubject, lang);
         new ControllerRegisterUsers(registerUsers, subject, languageSubject, lang);
         new ControllerManageUsers(manageUsers, subject, languageSubject, lang);
     }

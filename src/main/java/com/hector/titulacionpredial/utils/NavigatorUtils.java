@@ -24,14 +24,15 @@ public class NavigatorUtils {
      * Displays the provided component as the active form
      * in the main content panel.
      *
+     * @param componentParent swing componentParent
      * @param component Swing component to be displayed
      */
-    public static void showForms(JComponent component) {
-        ContentAdmin.getJpl_content().removeAll();
-        ContentAdmin.getJpl_content().setLayout(new BorderLayout());
-        ContentAdmin.getJpl_content().add(component, BorderLayout.CENTER);
-        ContentAdmin.getJpl_content().revalidate();
-        ContentAdmin.getJpl_content().repaint();
+    public static void showForms(JComponent componentParent, JComponent component) {
+        componentParent.removeAll();
+        componentParent.setLayout(new BorderLayout());
+        componentParent.add(component, BorderLayout.CENTER);
+        componentParent.revalidate();
+        componentParent.repaint();
     }
 
 }

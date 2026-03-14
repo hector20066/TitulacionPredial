@@ -3,12 +3,17 @@ package com.hector.titulacionpredial.controller;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.enums.Role;
+import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
+import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
 import javax.swing.*;
@@ -21,18 +26,44 @@ import java.util.concurrent.ExecutionException;
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
-public class ControllerLogin {
+public class ControllerLogin implements LanguageObserver {
 
     private final ContentLogin login;
-    private final ContentAdmin content;
+    private final ContentAdmin contentAdmin;
+    private final ContentUser contentUser;
     private final Dashboard dashboard;
+    private final Subject subject;
+    private final LanguageManager lang;
+    private Role role;
 
-    public ControllerLogin(ContentLogin login, ContentAdmin content, Dashboard dashboard) {
+    public ControllerLogin(ContentLogin login, ContentAdmin contentAdmin, ContentUser contentUser, Dashboard dashboard,
+                           Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
         this.login = login;
-        this.content = content;
+        this.contentAdmin = contentAdmin;
+        this.contentUser = contentUser;
         this.dashboard = dashboard;
+        this.subject = subject;
+        this.lang = lang;
+
+        languageSubject.register(this);
 
         connectEvents();
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public JPanel jpl_Content() {
+        if (getRole() == Role.ADMIN) {
+            return ContentAdmin.getJpl_content();
+        } else {
+            return ContentUser.getJpl_content();
+        }
     }
 
     private void connectEvents() {
@@ -58,6 +89,11 @@ public class ControllerLogin {
                 mousePressedPassword();
             }
         });
+    }
+
+    @Override
+    public void updateLanguage() {
+
     }
 
     private void logIn() {
@@ -119,20 +155,42 @@ public class ControllerLogin {
     private void handledLoginResult(Role role) {
         switch (role) {
             case Role.ADMIN -> {
-                java.awt.EventQueue.invokeLater(() -> {
-                    content.setVisible(true);
-                    content.setLocationRelativeTo(null);
-                    content.setResizable(false);
-                    NavigatorUtils.showForms(dashboard);
-                });
-                login.dispose();
+                startSessionAdmin();
+                subject.notifyObservers();
+                setRole(Role.ADMIN);
             }
-            //case Role.EMPLOYEE -> ;
+            case Role.EMPLOYEE -> {
+                startSessionUser();
+                subject.notifyObservers();
+                setRole(Role.EMPLOYEE);
+            }
             case Role.NONE -> {
                 MessageUtils.warningMessage("No se han encontrado las credenciales", null);
                 resetLogIn();
             }
         }
+    }
+
+    private void startSessionAdmin() {
+        java.awt.EventQueue.invokeLater(() -> {
+            contentAdmin.setVisible(true);
+            contentAdmin.setLocationRelativeTo(null);
+            contentAdmin.setResizable(false);
+            NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
+        });
+
+        login.dispose();
+    }
+
+    private void startSessionUser() {
+        java.awt.EventQueue.invokeLater(() -> {
+            contentUser.setVisible(true);
+            contentUser.setLocationRelativeTo(null);
+            contentUser.setResizable(false);
+            NavigatorUtils.showForms(ContentUser.getJpl_content(), dashboard);
+        });
+
+        login.dispose();
     }
 
     private void resetLogIn() {

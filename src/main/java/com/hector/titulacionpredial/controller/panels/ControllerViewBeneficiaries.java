@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
@@ -54,6 +55,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
     private final ViewBeneficiaries viewBeneficiaries;
     private final RegisterBeneficiary registerBeneficiary;
+    private final ControllerLogin controllerLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -69,6 +71,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     public ControllerViewBeneficiaries(ControllerViewBeneficiariesBuilder builder) {
         this.viewBeneficiaries = builder.getViewBeneficiaries();
         this.registerBeneficiary = builder.getRegisterBeneficiary();
+        this.controllerLogin = builder.getControllerLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -240,7 +243,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 }
 
                 SwingUtilities.invokeLater(() -> {
-                    NavigatorUtils.showForms(registerBeneficiary);
+                    NavigatorUtils.showForms(controllerLogin.jpl_Content(), registerBeneficiary);
                     registerBeneficiary.loadDataModify(dto);
                     registerBeneficiary.setModify(true);
                     registerBeneficiary.setNowStatus(dto.getMaritalStatus());

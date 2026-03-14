@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerSeeResolutionsBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
@@ -16,6 +17,7 @@ import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
@@ -56,6 +58,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
 
     private final SeeResolutions seeResolutions;
     private final ModifyResolution modifyResolution;
+    private final ControllerLogin controllerLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -71,6 +74,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     public ControllerSeeResolutions(ControllerSeeResolutionsBuilder builder) {
         this.seeResolutions = builder.getSeeResolutions();
         this.modifyResolution = builder.getModifyResolution();
+        this.controllerLogin = builder.getControllerLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -160,7 +164,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
             DTOResolutionDetails dto = createDTO(code, numResolution, notary, fmi, act, publicWriting);
 
             modifyResolution.loadData(dto, notificationString, executoryString);
-            NavigatorUtils.showForms(modifyResolution);
+            NavigatorUtils.showForms(controllerLogin.jpl_Content(), modifyResolution);
         } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), seeResolutions);
         }

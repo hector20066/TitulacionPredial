@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerModifyResolutionBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -15,6 +16,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
@@ -56,6 +58,7 @@ public class ControllerModifyResolution implements LanguageObserver {
 
     private final ModifyResolution modifyResolution;
     private final SeeResolutions seeResolutions;
+    private final ControllerLogin controllerLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -70,6 +73,7 @@ public class ControllerModifyResolution implements LanguageObserver {
     public ControllerModifyResolution(ControllerModifyResolutionBuilder builder) {
         this.modifyResolution = builder.getModifyResolution();
         this.seeResolutions = builder.getSeeResolutions();
+        this.controllerLogin = builder.getControllerLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -217,7 +221,7 @@ public class ControllerModifyResolution implements LanguageObserver {
         if (success) {
             MessageUtils.informationMessage(lang.message("message.resolution.modify"), modifyResolution);
             subject.notifyObservers();
-            NavigatorUtils.showForms(seeResolutions);
+            NavigatorUtils.showForms(controllerLogin.jpl_Content(), seeResolutions);
         } else {
             MessageUtils.errorMessage(lang.message("message.resolution.error.modify"), modifyResolution);
         }

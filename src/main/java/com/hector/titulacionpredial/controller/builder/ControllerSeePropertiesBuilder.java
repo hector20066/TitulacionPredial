@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.builder;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.panels.ControllerSeeProperties;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -22,6 +23,7 @@ public class ControllerSeePropertiesBuilder {
 
     private GenerateResolution generateResolution;
     private SeeProperties seeProperties;
+    private ControllerLogin controllerLogin;
     private Subject subject;
     private LanguageSubject languageSubject;
     private LanguageManager lang;
@@ -45,6 +47,11 @@ public class ControllerSeePropertiesBuilder {
      */
     public ControllerSeePropertiesBuilder withViewSeeProperties(SeeProperties seeProperties) {
         this.seeProperties = seeProperties;
+        return this;
+    }
+
+    public ControllerSeePropertiesBuilder withControllerLogin(ControllerLogin controllerLogin) {
+        this.controllerLogin = controllerLogin;
         return this;
     }
 
@@ -96,6 +103,10 @@ public class ControllerSeePropertiesBuilder {
 
     public SeeProperties getSeeProperties() {
         return seeProperties;
+    }
+
+    public ControllerLogin getControllerLogin() {
+        return controllerLogin;
     }
 
     public Subject getSubject() {

@@ -1,6 +1,6 @@
 package com.hector.titulacionpredial.controller;
 
-import com.hector.titulacionpredial.controller.builder.ControllerContentBuilder;
+import com.hector.titulacionpredial.controller.builder.ControllerContentAdminBuilder;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -26,12 +26,12 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
  * </p>
  *
  * @author Ing. Hector Acevedo
- * @see ControllerContentBuilder
+ * @see ControllerContentAdminBuilder
  * @see NavigatorUtils
  * @see LanguageObserver
  * @since 1.0
  */
-public class ControllerContent implements LanguageObserver {
+public class ControllerContentAdmin implements LanguageObserver {
 
     private final ContentAdmin content;
     private final Dashboard dashboard;
@@ -53,7 +53,7 @@ public class ControllerContent implements LanguageObserver {
      *
      * @param builder constructor with configured views
      */
-    public ControllerContent(ControllerContentBuilder builder) {
+    public ControllerContentAdmin(ControllerContentAdminBuilder builder) {
         this.content = builder.getContent();
         this.dashboard = builder.getDashboard();
         this.registerBeneficiary = builder.getRegisterBeneficiary();
@@ -96,35 +96,35 @@ public class ControllerContent implements LanguageObserver {
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {
             case 0 -> {
-                NavigatorUtils.showForms(dashboard);
+                NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
                 subject.notifyObservers();
             }
             case 1 -> {
                 switch (indexSubMenu) {
                     case 1 -> {
-                        NavigatorUtils.showForms(registerBeneficiary);
+                        NavigatorUtils.showForms(ContentAdmin.getJpl_content(), registerBeneficiary);
                         registerBeneficiary.clearFields();
                         subject.notifyObservers();
                         registerBeneficiary.setModify(false);
                     }
-                    case 2 -> NavigatorUtils.showForms(registerProperty);
+                    case 2 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), registerProperty);
                 }
             }
             case 2 -> {
                 switch (indexSubMenu) {
-                    case 1 -> NavigatorUtils.showForms(viewBeneficiaries);
-                    case 2 -> NavigatorUtils.showForms(seeProperties);
-                    case 3 -> NavigatorUtils.showForms(seeResolutions);
+                    case 1 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), viewBeneficiaries);
+                    case 2 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), seeProperties);
+                    case 3 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), seeResolutions);
                 }
             }
             case 3 -> {
                 switch (indexSubMenu) {
-                    case 1 -> NavigatorUtils.showForms(registerUsers);
-                    case 2 -> NavigatorUtils.showForms(seeUsers);
+                    case 1 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), registerUsers);
+                    case 2 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), seeUsers);
                 }
             }
-            case 4 -> NavigatorUtils.showForms(settings);
-            case 5 -> NavigatorUtils.showForms(about);
+            case 4 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), settings);
+            case 5 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), about);
         }
     }
 

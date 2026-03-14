@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.builder;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.panels.ControllerViewBeneficiaries;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -22,6 +23,7 @@ public class ControllerViewBeneficiariesBuilder {
 
     private RegisterBeneficiary registerBeneficiary;
     private ViewBeneficiaries viewBeneficiaries;
+    private ControllerLogin controllerLogin;
     private Subject subject;
     private LanguageSubject languageSubject;
     private LanguageManager lang;
@@ -45,6 +47,11 @@ public class ControllerViewBeneficiariesBuilder {
      */
     public ControllerViewBeneficiariesBuilder withViewBeneficiaries(ViewBeneficiaries viewBeneficiaries) {
         this.viewBeneficiaries = viewBeneficiaries;
+        return this;
+    }
+
+    public ControllerViewBeneficiariesBuilder withControllerLogin(ControllerLogin controllerLogin) {
+        this.controllerLogin = controllerLogin;
         return this;
     }
 
@@ -96,6 +103,10 @@ public class ControllerViewBeneficiariesBuilder {
 
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
+    }
+
+    public ControllerLogin getControllerLogin() {
+        return controllerLogin;
     }
 
     public Subject getSubject() {

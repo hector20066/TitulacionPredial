@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.builder;
 
+import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.panels.ControllerModifyResolution;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -22,6 +23,7 @@ public class ControllerModifyResolutionBuilder {
 
     private ModifyResolution modifyResolution;
     private SeeResolutions seeResolutions;
+    private ControllerLogin controllerLogin;
     private Subject subject;
     private LanguageSubject languageSubject;
     private LanguageManager lang;
@@ -45,6 +47,11 @@ public class ControllerModifyResolutionBuilder {
      */
     public ControllerModifyResolutionBuilder withViewSeeResolutions(SeeResolutions seeResolutions) {
         this.seeResolutions = seeResolutions;
+        return this;
+    }
+
+    public ControllerModifyResolutionBuilder withControllerLogin(ControllerLogin controllerLogin) {
+        this.controllerLogin = controllerLogin;
         return this;
     }
 
@@ -93,6 +100,10 @@ public class ControllerModifyResolutionBuilder {
 
     public ModifyResolution getModifyResolution() {
         return modifyResolution;
+    }
+
+    public ControllerLogin getControllerLogin() {
+        return controllerLogin;
     }
 
     public SeeResolutions getSeeResolutions() {
