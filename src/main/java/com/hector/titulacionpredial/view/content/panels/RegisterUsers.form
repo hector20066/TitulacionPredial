@@ -68,6 +68,8 @@
                           <Component id="jlb_password" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jpld_password" min="-2" pref="281" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rbn_seePasswd" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
@@ -105,11 +107,14 @@
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="jlb_desc2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlb_user" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_user" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlb_password" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jpld_password" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlb_user" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_user" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlb_password" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpld_password" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="rbn_seePasswd" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jlb_rol" min="-2" max="-2" attributes="0"/>
@@ -266,6 +271,13 @@
               <Font name="SansSerif" size="15" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbn_seePasswd">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/eye.png"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

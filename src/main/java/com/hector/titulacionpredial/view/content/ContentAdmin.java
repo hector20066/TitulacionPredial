@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content;
 
+import com.hector.titulacionpredial.view.component.AdminMenu;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import com.hector.titulacionpredial.view.swing.menu.Menu;
 
@@ -27,7 +28,7 @@ public class ContentAdmin extends javax.swing.JFrame {
 
         head.initMoving(this);
         head.getWinButton().initEvent(this, jpl_body);
-        //menu.setSelectedIndex(0, 0);
+        menu.setSelectedIndex(0, 0);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -132,16 +133,16 @@ public class ContentAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void setControllerMenu(EventMenuSelected evt) {
-        //menu.addEvent(evt);
+        menu.addEvent(evt);
     }
 
     public static JPanel getJpl_content() {
         return jpl_content;
     }
 
-    /*public Menu getMenu() {
+    public AdminMenu getMenu() {
         return menu;
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_logout;

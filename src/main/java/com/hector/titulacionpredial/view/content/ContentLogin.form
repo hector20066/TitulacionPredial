@@ -77,7 +77,7 @@
                               </Group>
                           </Group>
                           <Component id="rbn_seePasswd" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                          <EmptySpace pref="38" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -263,6 +263,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbn_seePasswd">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/eye.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

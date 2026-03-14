@@ -38,6 +38,7 @@ public class RegisterUsers extends javax.swing.JPanel {
         jlb_rol = new javax.swing.JLabel();
         cbo_role = new javax.swing.JComboBox<>();
         btn_createAccount = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        rbn_seePasswd = new javax.swing.JRadioButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,6 +92,8 @@ public class RegisterUsers extends javax.swing.JPanel {
         btn_createAccount.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_createAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        rbn_seePasswd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/eye.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,7 +125,9 @@ public class RegisterUsers extends javax.swing.JPanel {
                         .addGap(112, 112, 112)
                         .addComponent(jlb_password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbn_seePasswd))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,11 +156,13 @@ public class RegisterUsers extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addComponent(jlb_desc2)
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlb_user)
-                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlb_password)
-                    .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlb_user)
+                        .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlb_password)
+                        .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbn_seePasswd))
                 .addGap(35, 35, 35)
                 .addComponent(jlb_rol)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,6 +224,10 @@ public class RegisterUsers extends javax.swing.JPanel {
         return txt_user;
     }
 
+    public JRadioButton getRbn_seePasswd() {
+        return rbn_seePasswd;
+    }
+
     public void clearFields() {
         txt_id.setText("");
         txt_user.setText("");
@@ -238,6 +249,7 @@ public class RegisterUsers extends javax.swing.JPanel {
     private javax.swing.JLabel jlb_title;
     private javax.swing.JLabel jlb_user;
     private javax.swing.JPasswordField jpld_password;
+    private javax.swing.JRadioButton rbn_seePasswd;
     private javax.swing.JTextField txt_fullName;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_user;
