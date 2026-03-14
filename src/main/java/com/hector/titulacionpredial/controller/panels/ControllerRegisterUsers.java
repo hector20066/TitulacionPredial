@@ -9,11 +9,13 @@ import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
+import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 
 import javax.swing.*;
 
@@ -48,7 +50,19 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     @Override
     public void updateLanguage() {
+        DTORegisterUsersText dto = new DTORegisterUsersText.Builder()
+                .title(lang.app("register.users.title"))
+                .desc(lang.app("register.users.desc"))
+                .fullName(lang.app("register.users.fullName"))
+                .id(lang.app("register.users.id"))
+                .desc2(lang.app("register.users.desc2"))
+                .user(lang.app("register.users.user"))
+                .password(lang.app("register.users.password"))
+                .rol(lang.app("register.users.rol"))
+                .createBtn(lang.app("register.users.btn.create"))
+                .build();
 
+        registerUsers.updateLanguage(dto);
     }
 
     private void createAccount() {
@@ -60,11 +74,11 @@ public class ControllerRegisterUsers implements LanguageObserver {
             Role role = (Role) registerUsers.getCbo_role().getSelectedItem();
 
             if (isInvalidData(name, id, user, password)) {
-                throw new EmptyFieldException("Nombre, cedula, usuario y contraseña");
+                throw new EmptyFieldException(lang.message("empty.user.general"));
             }
 
             if (!NumericalValidationUtils.isNumeric(id)) {
-                throw new InvalidNumberInputException("cedula");
+                throw new InvalidNumberInputException(lang.message("empty.user.id"));
             }
 
             prepareUI();
@@ -86,7 +100,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private void prepareUI() {
         registerUsers.getBtn_createAccount().setEnabled(false);
-        registerUsers.getBtn_createAccount().setText("Registrando Usuario");
+        registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.registering"));
     }
 
     private void doInBackground(String name, int id, String user, String password, Role role) {
@@ -104,7 +118,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
     }
 
     private void invokeLater() {
-        MessageUtils.informationMessage("Se ha registrado el usuario.", registerUsers);
+        MessageUtils.informationMessage(lang.message("message.user.register"), registerUsers);
         resetUI();
         registerUsers.clearFields();
         subject.notifyObservers();
@@ -112,7 +126,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private void resetUI() {
         registerUsers.getBtn_createAccount().setEnabled(true);
-        registerUsers.getBtn_createAccount().setText("Crear Cuenta");
+        registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.create"));
     }
 
 }

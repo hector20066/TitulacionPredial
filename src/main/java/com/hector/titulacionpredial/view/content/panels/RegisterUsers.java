@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.model.enums.Role;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
@@ -23,63 +24,63 @@ public class RegisterUsers extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_title = new javax.swing.JLabel();
+        jlb_desc = new javax.swing.JLabel();
+        jlb_fullName = new javax.swing.JLabel();
         txt_fullName = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jlb_id = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jlb_desc2 = new javax.swing.JLabel();
+        jlb_user = new javax.swing.JLabel();
         txt_user = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jlb_password = new javax.swing.JLabel();
         jpld_password = new javax.swing.JPasswordField();
-        jLabel8 = new javax.swing.JLabel();
+        jlb_rol = new javax.swing.JLabel();
         cbo_role = new javax.swing.JComboBox<>();
         btn_createAccount = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel1.setText("Agregar Usuarios");
+        jlb_title.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jlb_title.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_title.setText("Agregar Usuarios");
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel2.setText("Ingrese toda la informacion de los usuarios que tendran acceso al sistema.");
+        jlb_desc.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_desc.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_desc.setText("Ingrese toda la informacion de los usuarios que tendran acceso al sistema.");
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel3.setText("Nombre Completo:");
+        jlb_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_fullName.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_fullName.setText("Nombre Completo:");
 
         txt_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel4.setText("Cedula:");
+        jlb_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_id.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_id.setText("Cedula:");
 
         txt_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel5.setText("Por favor ingrese las credenciales de acceso que tendra el nuevo usuario");
+        jlb_desc2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_desc2.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_desc2.setText("Por favor ingrese las credenciales de acceso que tendra el nuevo usuario");
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel6.setText("Usuario:");
+        jlb_user.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_user.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_user.setText("Usuario:");
 
         txt_user.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel7.setText("Contraseña:");
+        jlb_password.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_password.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_password.setText("Contraseña:");
 
         jpld_password.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jpld_password.setText("jPasswordField1");
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(8, 28, 21));
-        jLabel8.setText("Rol del Usuario:");
+        jlb_rol.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_rol.setForeground(new java.awt.Color(8, 28, 21));
+        jlb_rol.setText("Rol del Usuario:");
 
         cbo_role.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         cbo_role.setModel(new javax.swing.DefaultComboBoxModel<>(Role.values()));
@@ -98,28 +99,28 @@ public class RegisterUsers extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(jlb_title))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(jLabel3)
+                        .addComponent(jlb_fullName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_fullName, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel4)
+                        .addComponent(jlb_id)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)))
+                            .addComponent(jlb_desc2)
+                            .addComponent(jlb_desc)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jLabel6)
+                        .addComponent(jlb_user)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(112, 112, 112)
-                        .addComponent(jLabel7)
+                        .addComponent(jlb_password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -128,7 +129,7 @@ public class RegisterUsers extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(cbo_role, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8)))
+                            .addComponent(jlb_rol)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(380, 380, 380)
                         .addComponent(btn_createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -138,25 +139,25 @@ public class RegisterUsers extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlb_title)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel2)
+                .addComponent(jlb_desc)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jlb_fullName)
                     .addComponent(txt_fullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(jlb_id)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(jLabel5)
+                .addComponent(jlb_desc2)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(jlb_user)
                     .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(jlb_password)
                     .addComponent(jpld_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(jLabel8)
+                .addComponent(jlb_rol)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbo_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
@@ -175,6 +176,18 @@ public class RegisterUsers extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void updateLanguage(DTORegisterUsersText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_desc.setText(texts.getDesc());
+        jlb_fullName.setText(texts.getFullName());
+        jlb_id.setText(texts.getId());
+        jlb_desc2.setText(texts.getDesc2());
+        jlb_user.setText(texts.getUser());
+        jlb_password.setText(texts.getPassword());
+        jlb_rol.setText(texts.getRol());
+        btn_createAccount.setText(texts.getCreateBtn());
+    }
 
     public void setControllerCreate(ActionListener action) {
         btn_createAccount.addActionListener(action);
@@ -215,15 +228,15 @@ public class RegisterUsers extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_createAccount;
     private javax.swing.JComboBox<Role> cbo_role;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlb_desc;
+    private javax.swing.JLabel jlb_desc2;
+    private javax.swing.JLabel jlb_fullName;
+    private javax.swing.JLabel jlb_id;
+    private javax.swing.JLabel jlb_password;
+    private javax.swing.JLabel jlb_rol;
+    private javax.swing.JLabel jlb_title;
+    private javax.swing.JLabel jlb_user;
     private javax.swing.JPasswordField jpld_password;
     private javax.swing.JTextField txt_fullName;
     private javax.swing.JTextField txt_id;
