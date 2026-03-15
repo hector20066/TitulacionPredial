@@ -39,7 +39,6 @@ public class SpouseImplFacade implements SpouseFacade {
                 .id(id)
                 .fullName(fullName)
                 .expeditionLocation(expeditionLocation)
-                .address(address)
                 .phone(phone)
                 .beneficiaryCode(beneficiaryCode)
                 .build();

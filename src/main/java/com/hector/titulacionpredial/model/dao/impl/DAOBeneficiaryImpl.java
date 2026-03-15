@@ -341,7 +341,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, dto.getPropertyCode());
-            st.setString(2, dto.getCodeBeneficiarie()); // Code FS...
+            st.setString(2, dto.getCodeBeneficiaries());
 
             if (st.executeUpdate() == 0) {
                 throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));

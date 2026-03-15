@@ -1,6 +1,5 @@
 package com.hector.titulacionpredial.model.dto.property;
 
-import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 
@@ -29,8 +28,6 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDe
  */
 public class DTOPropertyCreate extends DTOProperty {
 
-    private int code;
-
     /**
      * Empty constructor required for serialization or mapping
      * frameworks.
@@ -46,15 +43,6 @@ public class DTOPropertyCreate extends DTOProperty {
      */
     public DTOPropertyCreate(Builder builder) {
         super(builder);
-        this.code = builder.code;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     /**
@@ -67,13 +55,6 @@ public class DTOPropertyCreate extends DTOProperty {
      * </p>
      */
     public static class Builder extends DTOProperty.Builder<Builder> {
-
-        private int code;
-
-        public Builder code(int code) {
-            this.code = code;
-            return this;
-        }
 
         @Override
         public DTOPropertyCreate build() {

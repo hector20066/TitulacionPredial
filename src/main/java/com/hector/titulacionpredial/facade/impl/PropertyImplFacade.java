@@ -6,6 +6,9 @@ import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.util.List;
 
@@ -36,7 +39,8 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public int add(String cadastralId, Double area) throws DAOException {
+    public int add(String cadastralId, Double area, String address, Department department, Municipalities municipality,
+                   String crossing, String neighborhood, String publication) throws DAOException {
         DTOPropertyCreate dto = new DTOPropertyCreate.Builder()
                 .cadastralRef(cadastralId)
                 .area(area)
@@ -46,8 +50,6 @@ public class PropertyImplFacade implements PropertyFacade {
                 .crossing(crossing)
                 .neighborhood(neighborhood)
                 .publication(publication)
-                . // The property code should not be available at the time of creation
-                // Check the DTOs
                 .build();
 
         return daoProperty.add(dto);

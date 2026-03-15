@@ -25,7 +25,7 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
  */
 public class DTOBeneficiaryPropertyUpdate {
 
-    private int beneficiaryCode;
+    private String codeBeneficiaries;
     private int propertyCode;
 
     /**
@@ -39,20 +39,20 @@ public class DTOBeneficiaryPropertyUpdate {
     /**
      * Constructor used to initialize variables.
      *
-     * @param beneficiaryCode beneficiary code
+     * @param codeBeneficiaries beneficiaries code
      * @param propertyCode    property code
      */
-    public DTOBeneficiaryPropertyUpdate(int beneficiaryCode, int propertyCode) {
-        this.beneficiaryCode = beneficiaryCode;
+    public DTOBeneficiaryPropertyUpdate(String codeBeneficiaries, int propertyCode) {
+        this.codeBeneficiaries = codeBeneficiaries;
         this.propertyCode = propertyCode;
     }
 
-    public int getBeneficiaryCode() {
-        return beneficiaryCode;
+    public String getCodeBeneficiaries() {
+        return codeBeneficiaries;
     }
 
-    public void setBeneficiaryCode(int beneficiaryCode) {
-        this.beneficiaryCode = beneficiaryCode;
+    public void setCodeBeneficiaries(String codeBeneficiaries) {
+        this.codeBeneficiaries = codeBeneficiaries;
     }
 
     public int getPropertyCode() {

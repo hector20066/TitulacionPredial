@@ -113,7 +113,6 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     @Override
     public boolean modifyProperty(String codeBeneficiaries, int propertyCode) throws DAOException {
         DTOBeneficiaryPropertyUpdate dto = new DTOBeneficiaryPropertyUpdate();
-        dto.setCodeBeneficiaries(codeBeneficiaries); // The method is missing.
         dto.setPropertyCode(propertyCode);
 
         return daoBeneficiary.modifyProperty(dto);
