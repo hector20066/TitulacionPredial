@@ -5,9 +5,7 @@ import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOBeneficiaryImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.util.List;
 
@@ -38,23 +36,16 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public void add(long id, String fullName, Department department, Municipalities municipality, String address,
-                    String cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing,
-                    String publication, String neighborhood, String expeditionLocation) throws DAOException {
+    public void add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
+                    String expeditionLocation) throws DAOException {
 
         DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
                 .id(id)
+                .codeBeneficiaries(codeBeneficiary)
                 .fullName(fullName)
-                .department(department)
-                .municipality(municipality)
-                .address(address)
-                .cadastralRef(cadastralReference)
                 .maritalStatus(maritalStatus)
                 .affectation(affectation)
                 .phone(phone)
-                .crossing(crossing)
-                .publication(publication)
-                .neighborhood(neighborhood)
                 .expeditionLocation(expeditionLocation)
                 .build();
 
@@ -102,30 +93,27 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
-                          String affectation, long phone, String crossing, String publication, String neighborhood,
-                          int code) throws DAOException {
+    public boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,
+                          long phone, int code, String expeditionLocation) throws DAOException {
 
         DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
-                .department(department)
-                .municipality(municipality)
-                .address(address)
+                .id(id)
                 .maritalStatus(maritalStatus)
                 .affectation(affectation)
                 .phone(phone)
-                .crossing(crossing)
-                .publication(publication)
-                .neighborhood(neighborhood)
                 .code(code)
+                .codeBeneficiaries(codeBeneficiaries)
+                .expeditionLocation(expeditionLocation)
+                .fullName(fullName)
                 .build();
 
         return daoBeneficiary.modify(dto);
     }
 
     @Override
-    public boolean modifyProperty(int code, int propertyCode) throws DAOException {
+    public boolean modifyProperty(String codeBeneficiaries, int propertyCode) throws DAOException {
         DTOBeneficiaryPropertyUpdate dto = new DTOBeneficiaryPropertyUpdate();
-        dto.setBeneficiaryCode(code);
+        dto.setCodeBeneficiaries(codeBeneficiaries); // The method is missing.
         dto.setPropertyCode(propertyCode);
 
         return daoBeneficiary.modifyProperty(dto);

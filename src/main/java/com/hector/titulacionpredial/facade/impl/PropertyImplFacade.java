@@ -37,9 +37,18 @@ public class PropertyImplFacade implements PropertyFacade {
 
     @Override
     public int add(String cadastralId, Double area) throws DAOException {
-        DTOPropertyCreate dto = new DTOPropertyCreate();
-        dto.setCadastralId(cadastralId);
-        dto.setArea(area);
+        DTOPropertyCreate dto = new DTOPropertyCreate.Builder()
+                .cadastralRef(cadastralId)
+                .area(area)
+                .address(address)
+                .department(department)
+                .municipality(municipality)
+                .crossing(crossing)
+                .neighborhood(neighborhood)
+                .publication(publication)
+                . // The property code should not be available at the time of creation
+                // Check the DTOs
+                .build();
 
         return daoProperty.add(dto);
     }

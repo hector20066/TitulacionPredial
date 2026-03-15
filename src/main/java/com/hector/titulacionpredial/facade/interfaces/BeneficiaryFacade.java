@@ -37,22 +37,14 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      *
      * @param id                 ID number
      * @param fullName           full name
-     * @param department         residential department
-     * @param municipality       municipality of residence
-     * @param address            address
-     * @param cadastralReference cadastral reference
      * @param maritalStatus      marital status
      * @param affectation        type of impairment
      * @param phone              phone number
-     * @param crossing           crossing
-     * @param publication        publication
-     * @param neighborhood       neighborhood
      * @param expeditionLocation place of issue of the document
      * @throws DAOException if an error occurs during the operation
      */
-    void add(long id, String fullName, Department department, Municipalities municipality, String address,
-             String cadastralReference, MaritalStatus maritalStatus, String affectation, long phone, String crossing,
-             String publication, String neighborhood, String expeditionLocation) throws DAOException;
+    void add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
+             String expeditionLocation) throws DAOException;
 
     /**
      * Search for a beneficiary by their unique code.
@@ -119,32 +111,25 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     /**
      * Modify the details of an existing beneficiary.
      *
-     * @param department    updated department
-     * @param municipality  updated municipality
-     * @param address       updated address
      * @param maritalStatus updated marital status
      * @param affectation   updated impact
      * @param phone         updated phone number
-     * @param crossing      updated intersection
-     * @param publication   updated publication
-     * @param neighborhood  updated neighborhood
      * @param code          beneficiary code to be modified
      * @return {@code true} if the modification was successful
      * @throws DAOException if an error occurs during the operation
      */
-    boolean modify(Department department, Municipalities municipality, String address, MaritalStatus maritalStatus,
-                   String affectation, long phone, String crossing, String publication, String neighborhood,
-                   int code) throws DAOException;
+    boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,
+                   long phone, int code, String expeditionLocation) throws DAOException;
 
     /**
      * Associate a property with a beneficiary.
      *
-     * @param code         beneficiary code
-     * @param propertyCode property code to be associated
+     * @param codeBeneficiaries beneficiary code
+     * @param propertyCode      property code to be associated
      * @return {@code true} whether the partnership was successful
      * @throws DAOException if an error occurs during the operation
      */
-    boolean modifyProperty(int code, int propertyCode) throws DAOException;
+    boolean modifyProperty(String codeBeneficiaries, int propertyCode) throws DAOException;
 
     /**
      * Get the latest registered beneficiary code.

@@ -64,8 +64,14 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-            statementDetails(st, dto);
-            st.setDate(14, Date.valueOf(LocalDate.now()));
+            st.setString(1, dto.getCodeBeneficiaries());
+            st.setLong(2, dto.getId());
+            st.setString(3, dto.getFullName());
+            st.setString(4, String.valueOf(dto.getMaritalStatus()));
+            st.setString(5, dto.getAffectation());
+            st.setLong(6, dto.getPhone());
+            st.setString(7, dto.getExpeditionLocation());
+            st.setDate(8, Date.valueOf(LocalDate.now()));
             st.executeUpdate();
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"), e);
@@ -292,8 +298,14 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
-            statementDetails(st, dto);
-            st.setInt(14, dto.getCode());
+            st.setString(1, dto.getCodeBeneficiaries());
+            st.setLong(2, dto.getId());
+            st.setString(3, dto.getFullName());
+            st.setString(4, String.valueOf(dto.getMaritalStatus()));
+            st.setString(5, dto.getAffectation());
+            st.setLong(6, dto.getPhone());
+            st.setString(7, dto.getExpeditionLocation());
+            st.setInt(8, dto.getCode());
 
             if (st.executeUpdate() == 0) {
                 throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
@@ -329,7 +341,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, dto.getPropertyCode());
-            st.setInt(2, dto.getBeneficiaryCode());
+            st.setString(2, dto.getCodeBeneficiarie()); // Code FS...
 
             if (st.executeUpdate() == 0) {
                 throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));

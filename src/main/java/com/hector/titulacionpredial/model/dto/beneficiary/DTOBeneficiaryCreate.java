@@ -50,7 +50,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         super(builder);
     }
 
-
     /**
      * Generic builder for fluid building of
      * {@link DTOBeneficiaryCreate} instances.
