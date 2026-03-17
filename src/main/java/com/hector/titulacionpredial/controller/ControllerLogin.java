@@ -11,6 +11,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.NetworkUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
@@ -103,6 +104,11 @@ public class ControllerLogin implements LanguageObserver {
         try {
             String user = login.getTxt_user().getText().trim();
             String passwd = new String(login.getJpld_password().getPassword());
+
+            if(!NetworkUtils.hasInternetConnection()) {
+                MessageUtils.errorMessage("No tienes conexión a internet.\nVerifica la conexión e intentalo nuevamente", null);
+                return;
+            }
 
             if (user.isBlank() || passwd.isBlank()) {
                 throw new EmptyFieldException("Usuario y Contraseña");
