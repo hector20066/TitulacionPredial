@@ -28,6 +28,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     private boolean modify = false;
     private MaritalStatus nowStatus;
+    private int modifyCode;
 
     private String jlbTitleModify = "Modificar Beneficiario";
     private String btnModifyText = "MODIFICAR BENEFICIARIO";
@@ -119,6 +120,14 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     public void setBtnModifyText(String btnModifyText) {
         this.btnModifyText = btnModifyText;
+    }
+    
+    public void setModifyCode(int modifyCode) {
+        this.modifyCode = modifyCode;
+    }
+    
+    public int getModifyCode() {
+        return modifyCode;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -458,7 +467,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         jlb_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_code.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_code.setText("Codigo: F");
+        jlb_code.setText("Codigo:");
 
         txt_followingCode.setEditable(false);
         txt_followingCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
