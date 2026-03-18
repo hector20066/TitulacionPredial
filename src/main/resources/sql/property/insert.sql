@@ -1,4 +1,9 @@
 INSERT INTO property (
-                      cadastral_id,
-                      area)
-VALUES (?, ?);
+                      cadastral_reference,
+                      department,
+                      municipality,
+                      neighborhood,
+                      address,
+                      crossign,
+                      publication)
+VALUES (?, ?, ?, ?, ?, ?, ?);
