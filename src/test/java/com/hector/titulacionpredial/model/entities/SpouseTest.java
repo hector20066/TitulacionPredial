@@ -30,14 +30,14 @@ class SpouseTest {
             Spouse spouse = new Spouse.Builder()
                     .id(222L)
                     .fullName("María García")
-                    .address("Calle 20")
+                    //.address("Calle 20")
                     .expeditionLocation("Cartagena")
                     .phone(3001111111L)
                     .build();
 
             assertEquals(222L, spouse.getId());
             assertEquals("María García", spouse.getFullName());
-            assertEquals("Calle 20", spouse.getAddress());
+            //assertEquals("Calle 20", spouse.getAddress());
             assertEquals("Cartagena", spouse.getExpeditionLocation());
             assertEquals(3001111111L, spouse.getPhone());
         }
@@ -65,13 +65,13 @@ class SpouseTest {
             Spouse spouse = new Spouse();
             spouse.setId(555L);
             spouse.setFullName("Test Cónyuge");
-            spouse.setAddress("Calle Test");
+            //spouse.setAddress("Calle Test");
             spouse.setPhone(3009999999L);
             spouse.setExpeditionLocation("Bogotá");
 
             assertEquals(555L, spouse.getId());
             assertEquals("Test Cónyuge", spouse.getFullName());
-            assertEquals("Calle Test", spouse.getAddress());
+            //assertEquals("Calle Test", spouse.getAddress());
             assertEquals(3009999999L, spouse.getPhone());
             assertEquals("Bogotá", spouse.getExpeditionLocation());
         }

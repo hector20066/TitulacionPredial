@@ -333,12 +333,12 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         long id = dto.getId();
         String fullName = dto.getFullName();
         long phone = dto.getPhone();
-        String cadastralReference = dto.getCadastralRef();
+        /*String cadastralReference = dto.getCadastralRef();
         Municipalities municipality = dto.getMunicipality();
         String address = dto.getAddress();
 
         Object[] data = new Object[]{code, id, fullName, phone, cadastralReference, municipality.getValue(), address};
-        tableModel.addRow(data);
+        tableModel.addRow(data);*/
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

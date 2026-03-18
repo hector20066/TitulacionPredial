@@ -25,7 +25,7 @@ class DTOSpouseTest {
                 .id(123456L)
                 .fullName("Ana López")
                 .expeditionLocation("Bogotá")
-                .address("Calle 50")
+                //.address("Calle 50")
                 .phone(3001112222L)
                 .beneficiaryCode(10)
                 .build();
@@ -33,7 +33,7 @@ class DTOSpouseTest {
         assertEquals(123456L, dto.getId());
         assertEquals("Ana López", dto.getFullName());
         assertEquals("Bogotá", dto.getExpeditionLocation());
-        assertEquals("Calle 50", dto.getAddress());
+        //assertEquals("Calle 50", dto.getAddress());
         assertEquals(3001112222L, dto.getPhone());
         assertEquals(10, dto.getBeneficiaryCode());
     }

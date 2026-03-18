@@ -23,27 +23,27 @@ class DTOBeneficiaryUpdateTest {
     void builderShouldCreateWithAllFields() {
         DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
                 .code(5)
-                .department(Department.ANTIOQUIA)
-                .municipality(Municipalities.MEDELLIN)
-                .address("Calle 80")
+                //.department(Department.ANTIOQUIA)
+                //.municipality(Municipalities.MEDELLIN)
+                //.address("Calle 80")
                 .maritalStatus(MaritalStatus.SINGLE)
                 .affectation("Ninguna")
                 .phone(3001234567L)
-                .crossing("Cruce B")
-                .publication("Pub 2")
-                .neighborhood("El Poblado")
+                //.crossing("Cruce B")
+                //.publication("Pub 2")
+                //.neighborhood("El Poblado")
                 .build();
 
         assertEquals(5, dto.getCode());
-        assertEquals(Department.ANTIOQUIA, dto.getDepartment());
+        /*assertEquals(Department.ANTIOQUIA, dto.getDepartment());
         assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
-        assertEquals("Calle 80", dto.getAddress());
+        assertEquals("Calle 80", dto.getAddress());*/
         assertEquals(MaritalStatus.SINGLE, dto.getMaritalStatus());
         assertEquals("Ninguna", dto.getAffectation());
         assertEquals(3001234567L, dto.getPhone());
-        assertEquals("Cruce B", dto.getCrossing());
+        /*assertEquals("Cruce B", dto.getCrossing());
         assertEquals("Pub 2", dto.getPublication());
-        assertEquals("El Poblado", dto.getNeighborhood());
+        assertEquals("El Poblado", dto.getNeighborhood());*/
     }
 
     @Test

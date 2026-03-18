@@ -65,7 +65,6 @@
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlb_phone" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlb_address" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_expeditionLocation" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_name" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jlb_lastName" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -77,7 +76,6 @@
                                       <Component id="txt_lastName" max="32767" attributes="0"/>
                                       <Component id="txt_id" max="32767" attributes="0"/>
                                       <Component id="txt_expeditionLocation" max="32767" attributes="0"/>
-                                      <Component id="txt_address" max="32767" attributes="0"/>
                                       <Component id="txt_phone" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -120,11 +118,7 @@
                   <Component id="jlb_expeditionLocation" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_expeditionLocation" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlb_address" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_address" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jlb_phone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_phone" min="-2" max="-2" attributes="0"/>
@@ -132,7 +126,7 @@
                   <Component id="btn_save" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="btn_cancel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -249,34 +243,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_expeditionLocation">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="15" style="0"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="1" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
-                </MatteColorBorder>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlb_address">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="15" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="25" red="21" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Direccion:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txt_address">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

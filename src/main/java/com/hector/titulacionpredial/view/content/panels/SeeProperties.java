@@ -378,8 +378,8 @@ public class SeeProperties extends JPanel {
         Municipalities municipalities;
 
         if (!dto.getBeneficiaries().isEmpty()) {
-            addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
-            municipalities = dto.getBeneficiaries().getFirst().getMunicipality();
+            //addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
+            //municipalities = dto.getBeneficiaries().getFirst().getMunicipality();
         } else {
             addressBeneficiary = "";
             municipalities = null;
@@ -446,13 +446,13 @@ public class SeeProperties extends JPanel {
             }
         }
 
-        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification,
+        /*Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification,
                 executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, municipalities,
                 eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2,
                 hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4,
-                distance4, hillside4, area};
+                distance4, hillside4, area};*/
 
-        model.addRow(addData);
+        //model.addRow(addData);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

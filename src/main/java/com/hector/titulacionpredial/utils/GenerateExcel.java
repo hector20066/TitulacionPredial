@@ -85,8 +85,8 @@ public class GenerateExcel {
             Municipalities municipalities;
 
             if (!dto.getBeneficiaries().isEmpty()) {
-                addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
-                municipalities = dto.getBeneficiaries().getFirst().getMunicipality();
+                //addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
+                //municipalities = dto.getBeneficiaries().getFirst().getMunicipality();
             } else {
                 addressBeneficiary = "";
                 municipalities = null;
@@ -152,8 +152,8 @@ public class GenerateExcel {
             row.createCell(col++).setCellValue(publicWriting != null ? publicWriting : "");
             row.createCell(col++).setCellValue(notary != null ? notary : "");
             row.createCell(col++).setCellValue(cadastralReference != null ? cadastralReference : "");
-            row.createCell(col++).setCellValue(addressBeneficiary != null ? addressBeneficiary : "");
-            row.createCell(col++).setCellValue(municipalities != null ? municipalities.toString() : "");
+            /*row.createCell(col++).setCellValue(addressBeneficiary != null ? addressBeneficiary : "");
+            row.createCell(col++).setCellValue(municipalities != null ? municipalities.toString() : "");*/
             row.createCell(col++).setCellValue(eastCoordinate1);
             row.createCell(col++).setCellValue(northCoordinate1);
             row.createCell(col++).setCellValue(distance1);

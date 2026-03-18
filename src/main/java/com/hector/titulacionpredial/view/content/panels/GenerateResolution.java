@@ -971,9 +971,9 @@ public class GenerateResolution extends javax.swing.JPanel {
         BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
             txt_idBeneficiary.setText(beneficiariesId);
-            txt_addressBeneficiary.setText(beneficiary.getAddress());
+            /*txt_addressBeneficiary.setText(beneficiary.getAddress());
             txt_municipality.setText(beneficiary.getMunicipality().getValue());
-            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralRef()));
+            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralRef()));*/
 
             txt_propertyCode.setText(String.valueOf(codeProperty));
 

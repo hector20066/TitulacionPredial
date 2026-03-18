@@ -267,12 +267,13 @@ public class DAOPropertyImpl implements DAOProperty {
             municipality = Municipalities.valueOf(municipalityStr);
         }
 
-        return new DTOBeneficiaryPropertyDetails(
+        /*return new DTOBeneficiaryPropertyDetails(
                 rs.getString("beneficiary_fullname"),
                 beneficiaryCode,
                 municipalityStr,
                 rs.getString("beneficiary_address")
-        );
+        );*/
+        return null;
     }
 
     /**

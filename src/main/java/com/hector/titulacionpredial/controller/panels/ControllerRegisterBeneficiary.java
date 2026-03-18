@@ -233,8 +233,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                                       String crossing, String affectation) {
         new Thread(() -> {
             try {
-                boolean success = daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
-                        crossing, publication, neighborhood, code);
+                boolean success = true/* daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
+                        crossing, publication, neighborhood, code)*/;
 
                 if (registerBeneficiary.getNowStatus() == MaritalStatus.MARRIED
                         || registerBeneficiary.getNowStatus() == MaritalStatus.FREE_UNION) {
@@ -410,8 +410,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                     throw new PersistenceException(lang.message("persistence.beneficiary.exist"));
                 }
 
-                daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
-                        affectation, phone, crossing, publication, neighborhood, expeditionLocation);
+                /*daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
+                        affectation, phone, crossing, publication, neighborhood, expeditionLocation);*/
 
                 if (maritalStatus == MaritalStatus.MARRIED || maritalStatus == MaritalStatus.FREE_UNION) {
                     registerSpouse(code);
@@ -439,8 +439,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             throw new DataNotFoundException(lang.message("not.found.spouse.data"));
         }
 
-        daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(), dtoSpouse.getAddress(),
-                dtoSpouse.getPhone(), beneficiaryCode);
+        /*daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(), dtoSpouse.getAddress(),
+                dtoSpouse.getPhone(), beneficiaryCode);*/
     }
 
     /**

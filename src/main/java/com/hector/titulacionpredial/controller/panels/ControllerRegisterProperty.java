@@ -17,7 +17,6 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.view.content.dialogs.SelectBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 
@@ -245,19 +244,19 @@ public class ControllerRegisterProperty implements LanguageObserver {
                     throw new PersistenceException(lang.message("persistence.property.exist1") + " '" + cadastralId + "' " + lang.message("persistence.property.exist2"));
                 }
 
-                int propertyCode = daoProperty.add(cadastralId, area);
+                //int propertyCode = daoProperty.add(cadastralId, area);
 
-                for (PointData p : points) {
+                /*for (PointData p : points) {
                     daoPoint.add(p.pointNumber(),
                             Double.parseDouble(p.north()),
                             Double.parseDouble(p.east()),
                             Double.parseDouble(p.distance()),
                             p.hillside(),
                             propertyCode);
-                }
+                }*/
 
                 for (String beneficiaryCode : beneficiaryCodes) {
-                    daoBeneficiary.modifyProperty(Integer.parseInt(beneficiaryCode), propertyCode);
+                    //daoBeneficiary.modifyProperty(Integer.parseInt(beneficiaryCode), propertyCode);
                 }
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
@@ -333,50 +332,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * </p>
      */
     private void showBeneficiaries() {
-        prepareUILoadBeneficiaries();
-
-        new Thread(() -> {
-            try {
-                List<DTOBeneficiarySimpleDetails> dto = daoBeneficiary.findAllWithoutProperty();
-                SwingUtilities.invokeLater(() -> loadInvokerDialog(dto));
-            } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerProperty));
-            }
-        }).start();
-    }
-
-    /**
-     * Prepare the interface by disabling buttons while
-     * the beneficiaries are being loaded.
-     */
-    private void prepareUILoadBeneficiaries() {
-        registerProperty.getBtn_register().setEnabled(false);
-        registerProperty.getBtn_selectBeneficiary().setEnabled(false);
-        registerProperty.getBtn_selectBeneficiary().setText(lang.app("controller.register.property.searching.beneficiary"));
-    }
-
-    /**
-     * Displays the beneficiary selection dialog and adds
-     * the selected code to the form field.
-     *
-     * @param dto List of beneficiaries available for selection
-     */
-    private void loadInvokerDialog(List<DTOBeneficiarySimpleDetails> dto) {
-        java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerProperty);
-
-        SelectBeneficiary dialog = new SelectBeneficiary(parentFrame, true);
-        dialog.loadBeneficiaries(dto);
-        dialog.setLocationRelativeTo(registerProperty);
-        dialog.updateLanguage();
-        dialog.setVisible(true);
-
-        resetUILoadBeneficiaries();
-
-        if (dialog.isConfirmed()) {
-            int beneficiaryCode = dialog.codeBeneficiarySelected();
-            String beneficiaryCodeStr = registerProperty.getTxt_beneficiaryCode().getText().trim();
-            registerProperty.getTxt_beneficiaryCode().setText(beneficiaryCodeStr + (beneficiaryCodeStr.isBlank() ? "" : " - ") + "F" + beneficiaryCode);
-        }
+        
     }
 
     /**

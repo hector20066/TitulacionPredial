@@ -67,16 +67,16 @@ public class GenerateExcelBeneficiary {
             int col = 0;
             row.createCell(col++).setCellValue(dto.getId());
             row.createCell(col++).setCellValue(dto.getFullName() != null ? dto.getFullName() : "");
-            row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().toString() : "");
+            /*row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().toString() : "");
             row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().toString() : "");
             row.createCell(col++).setCellValue(dto.getAddress() != null ? dto.getAddress() : "");
-            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");
+            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");*/
             row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().toString() : "");
             row.createCell(col++).setCellValue(dto.getAffectation() != null ? dto.getAffectation() : "");
             row.createCell(col++).setCellValue(dto.getPhone());
-            row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
+            /*row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
             row.createCell(col++).setCellValue(dto.getPublication() != null ? dto.getPublication() : "");
-            row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");
+            row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");*/
             row.createCell(col).setCellValue(dto.getExpeditionLocation() != null ? dto.getExpeditionLocation() : "");
         }
 

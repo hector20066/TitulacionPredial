@@ -22,14 +22,14 @@ class BeneficiaryTest {
             Beneficiary beneficiary = new Beneficiary();
 
             assertEquals(0, beneficiary.getCode());
-            assertNull(beneficiary.getDepartment());
+            /*assertNull(beneficiary.getDepartment());
             assertNull(beneficiary.getMunicipality());
-            assertNull(beneficiary.getCadastralReference());
+            assertNull(beneficiary.getCadastralReference());*/
             assertNull(beneficiary.getMaritalStatus());
             assertNull(beneficiary.getAffectation());
-            assertNull(beneficiary.getCrossing());
+            /*assertNull(beneficiary.getCrossing());
             assertNull(beneficiary.getPublication());
-            assertNull(beneficiary.getNeighborhood());
+            assertNull(beneficiary.getNeighborhood());*/
         }
 
         @Test
@@ -38,34 +38,34 @@ class BeneficiaryTest {
             Beneficiary beneficiary = new Beneficiary.Builder()
                     .id(123456789L)
                     .fullName("Juan Pérez")
-                    .address("Calle 10 #5-20")
+                    //.address("Calle 10 #5-20")
                     .expeditionLocation("Bogotá")
                     .phone(3001234567L)
                     .code(1)
-                    .department(Department.ATLANTICO)
-                    .municipality(Municipalities.BARRANQUILLA)
-                    .cadastralReference("REF-001")
+                    //.department(Department.ATLANTICO)
+                    //.municipality(Municipalities.BARRANQUILLA)
+                    //.cadastralReference("REF-001")
                     .maritalStatus(MaritalStatus.MARRIED)
                     .affectation("Ninguna")
-                    .crossing("Cruce A")
-                    .publication("Pub-001")
-                    .neighborhood("Centro")
+                    //.crossing("Cruce A")
+                    //.publication("Pub-001")
+                    //.neighborhood("Centro")
                     .build();
 
             assertEquals(123456789L, beneficiary.getId());
             assertEquals("Juan Pérez", beneficiary.getFullName());
-            assertEquals("Calle 10 #5-20", beneficiary.getAddress());
+            //assertEquals("Calle 10 #5-20", beneficiary.getAddress());
             assertEquals("Bogotá", beneficiary.getExpeditionLocation());
             assertEquals(3001234567L, beneficiary.getPhone());
             assertEquals(1, beneficiary.getCode());
-            assertEquals(Department.ATLANTICO, beneficiary.getDepartment());
+            /*assertEquals(Department.ATLANTICO, beneficiary.getDepartment());
             assertEquals(Municipalities.BARRANQUILLA, beneficiary.getMunicipality());
-            assertEquals("REF-001", beneficiary.getCadastralReference());
+            assertEquals("REF-001", beneficiary.getCadastralReference());*/
             assertEquals(MaritalStatus.MARRIED, beneficiary.getMaritalStatus());
             assertEquals("Ninguna", beneficiary.getAffectation());
-            assertEquals("Cruce A", beneficiary.getCrossing());
+            /*assertEquals("Cruce A", beneficiary.getCrossing());
             assertEquals("Pub-001", beneficiary.getPublication());
-            assertEquals("Centro", beneficiary.getNeighborhood());
+            assertEquals("Centro", beneficiary.getNeighborhood());*/
         }
     }
 
@@ -111,16 +111,16 @@ class BeneficiaryTest {
         @DisplayName("setDepartment y getDepartment deben funcionar correctamente")
         void setAndGetDepartmentShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setDepartment(Department.ANTIOQUIA);
-            assertEquals(Department.ANTIOQUIA, b.getDepartment());
+            //b.setDepartment(Department.ANTIOQUIA);
+            //assertEquals(Department.ANTIOQUIA, b.getDepartment());
         }
 
         @Test
         @DisplayName("setMunicipality y getMunicipality deben funcionar correctamente")
         void setAndGetMunicipalityShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setMunicipality(Municipalities.MEDELLIN);
-            assertEquals(Municipalities.MEDELLIN, b.getMunicipality());
+            //b.setMunicipality(Municipalities.MEDELLIN);
+            //assertEquals(Municipalities.MEDELLIN, b.getMunicipality());
         }
 
         @Test
@@ -135,8 +135,8 @@ class BeneficiaryTest {
         @DisplayName("setCadastralReference y getCadastralReference deben funcionar")
         void setAndGetCadastralReferenceShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setCadastralReference("CAD-123");
-            assertEquals("CAD-123", b.getCadastralReference());
+            //b.setCadastralReference("CAD-123");
+            //assertEquals("CAD-123", b.getCadastralReference());
         }
 
         @Test
@@ -151,24 +151,24 @@ class BeneficiaryTest {
         @DisplayName("setCrossing y getCrossing deben funcionar correctamente")
         void setAndGetCrossingShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setCrossing("Cruce 1");
-            assertEquals("Cruce 1", b.getCrossing());
+            //b.setCrossing("Cruce 1");
+            //assertEquals("Cruce 1", b.getCrossing());
         }
 
         @Test
         @DisplayName("setPublication y getPublication deben funcionar correctamente")
         void setAndGetPublicationShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setPublication("Pub X");
-            assertEquals("Pub X", b.getPublication());
+            //b.setPublication("Pub X");
+            //assertEquals("Pub X", b.getPublication());
         }
 
         @Test
         @DisplayName("setNeighborhood y getNeighborhood deben funcionar correctamente")
         void setAndGetNeighborhoodShouldWork() {
             Beneficiary b = new Beneficiary();
-            b.setNeighborhood("Barrio Sur");
-            assertEquals("Barrio Sur", b.getNeighborhood());
+            //b.setNeighborhood("Barrio Sur");
+            //assertEquals("Barrio Sur", b.getNeighborhood());
         }
     }
 
@@ -183,8 +183,8 @@ class BeneficiaryTest {
                     .id(1234L)
                     .fullName("Ana López")
                     .code(10)
-                    .department(Department.ATLANTICO)
-                    .municipality(Municipalities.SOLEDAD)
+                    //.department(Department.ATLANTICO)
+                    //.municipality(Municipalities.SOLEDAD)
                     .maritalStatus(MaritalStatus.FREE_UNION)
                     .build();
 

@@ -7,6 +7,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.util.List;
 
@@ -31,10 +32,17 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      *
      * @param cadastralId cadastral certificate of the property
      * @param area        area of the property in square meters
+     * @param address
+     * @param department
+     * @param municipality
+     * @param crossing
+     * @param neighborhood
+     * @param publication
      * @return code of the newly inserted property
      * @throws DAOException if an error occurs during the operation
      */
-    int add(String cadastralId, Double area) throws DAOException;
+    int add(String cadastralId, Double area, String address, Department department, Municipalities municipality,
+                   String crossing, String neighborhood, String publication) throws DAOException;
 
     /**
      * Search for a property using its cadastral certificate.

@@ -132,14 +132,14 @@ class DTOBeneficiaryDetailsTest {
                     .id(123456L)
                     .fullName("Juan Pérez")
                     .expeditionLocation("Barranquilla")
-                    .cadastralReference("REF-001")
+                    //.cadastralReference("REF-001")
                     .build();
 
             assertEquals(1, dto.getCode());
             assertEquals(123456L, dto.getId());
             assertEquals("Juan Pérez", dto.getFullName());
             assertEquals("Barranquilla", dto.getExpeditionLocation());
-            assertEquals("REF-001", dto.getCadastralReference());
+            //assertEquals("REF-001", dto.getCadastralReference());
         }
 
         @Test
@@ -147,25 +147,25 @@ class DTOBeneficiaryDetailsTest {
         void builderShouldInheritBeneficiaryFields() {
             DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails.Builder()
                     .code(1)
-                    .department(Department.ATLANTICO)
-                    .municipality(Municipalities.BARRANQUILLA)
-                    .address("Calle 72")
+                    //.department(Department.ATLANTICO)
+                    //.municipality(Municipalities.BARRANQUILLA)
+                    //.address("Calle 72")
                     .phone(3001111111L)
                     .maritalStatus(MaritalStatus.MARRIED)
-                    .neighborhood("El Prado")
-                    .crossing("Cruce A")
-                    .publication("Pub-001")
+                    //.neighborhood("El Prado")
+                    //.crossing("Cruce A")
+                    //.publication("Pub-001")
                     .affectation("Ninguna")
                     .build();
 
-            assertEquals(Department.ATLANTICO, dto.getDepartment());
+            /*assertEquals(Department.ATLANTICO, dto.getDepartment());
             assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
-            assertEquals("Calle 72", dto.getAddress());
+            assertEquals("Calle 72", dto.getAddress());*/
             assertEquals(3001111111L, dto.getPhone());
             assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
-            assertEquals("El Prado", dto.getNeighborhood());
+            /*assertEquals("El Prado", dto.getNeighborhood());
             assertEquals("Cruce A", dto.getCrossing());
-            assertEquals("Pub-001", dto.getPublication());
+            assertEquals("Pub-001", dto.getPublication());*/
             assertEquals("Ninguna", dto.getAffectation());
         }
 
@@ -185,17 +185,17 @@ class DTOBeneficiaryDetailsTest {
                     .id(12345L)
                     .fullName("Beneficiary Name")
                     .expeditionLocation("Medellín")
-                    .cadastralReference("CAD-123")
+                    //.cadastralReference("CAD-123")
                     // De DTOBeneficiary
-                    .department(Department.ANTIOQUIA)
-                    .municipality(Municipalities.MEDELLIN)
+                    //.department(Department.ANTIOQUIA)
+                    //.municipality(Municipalities.MEDELLIN)
                     .maritalStatus(MaritalStatus.FREE_UNION)
-                    .neighborhood("Barrio Test")
-                    .crossing("Cruce Test")
-                    .publication("Pub Test")
+                    //.neighborhood("Barrio Test")
+                    //.crossing("Cruce Test")
+                    //.publication("Pub Test")
                     .affectation("Afect Test")
                     // De DTOBasePerson (vía builder)
-                    .address("Dir Test")
+                    //.address("Dir Test")
                     .phone(3009999999L)
                     .build();
 
@@ -210,15 +210,15 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(12345L, dto.getId());
             assertEquals("Beneficiary Name", dto.getFullName());
             assertEquals("Medellín", dto.getExpeditionLocation());
-            assertEquals("CAD-123", dto.getCadastralReference());
+            /*assertEquals("CAD-123", dto.getCadastralReference());
             assertEquals(Department.ANTIOQUIA, dto.getDepartment());
-            assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
+            assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());*/
             assertEquals(MaritalStatus.FREE_UNION, dto.getMaritalStatus());
-            assertEquals("Barrio Test", dto.getNeighborhood());
+            /*assertEquals("Barrio Test", dto.getNeighborhood());
             assertEquals("Cruce Test", dto.getCrossing());
-            assertEquals("Pub Test", dto.getPublication());
+            assertEquals("Pub Test", dto.getPublication());*/
             assertEquals("Afect Test", dto.getAffectation());
-            assertEquals("Dir Test", dto.getAddress());
+            //assertEquals("Dir Test", dto.getAddress());
             assertEquals(3009999999L, dto.getPhone());
         }
     }

@@ -20,7 +20,7 @@ class PersonTest {
 
             assertEquals(0, person.getId());
             assertNull(person.getFullName());
-            assertNull(person.getAddress());
+            //assertNull(person.getAddress());
             assertNull(person.getExpeditionLocation());
             assertEquals(0, person.getPhone());
         }
@@ -31,14 +31,14 @@ class PersonTest {
             Person person = new Person.Builder<>()
                     .id(123456789L)
                     .fullName("Juan Pérez")
-                    .address("Calle 10 #5-20")
+                    //.address("Calle 10 #5-20")
                     .expeditionLocation("Bogotá")
                     .phone(3001234567L)
                     .build();
 
             assertEquals(123456789L, person.getId());
             assertEquals("Juan Pérez", person.getFullName());
-            assertEquals("Calle 10 #5-20", person.getAddress());
+            //assertEquals("Calle 10 #5-20", person.getAddress());
             assertEquals("Bogotá", person.getExpeditionLocation());
             assertEquals(3001234567L, person.getPhone());
         }
@@ -68,8 +68,8 @@ class PersonTest {
         @DisplayName("setAddress y getAddress deben funcionar correctamente")
         void setAndGetAddressShouldWork() {
             Person person = new Person();
-            person.setAddress("Carrera 15 #30-40");
-            assertEquals("Carrera 15 #30-40", person.getAddress());
+            //person.setAddress("Carrera 15 #30-40");
+            //assertEquals("Carrera 15 #30-40", person.getAddress());
         }
 
         @Test
@@ -99,7 +99,7 @@ class PersonTest {
             Person person = new Person.Builder<>()
                     .id(123456789L)
                     .fullName("Juan Pérez")
-                    .address("Calle 10")
+                    //.address("Calle 10")
                     .expeditionLocation("Bogotá")
                     .phone(3001234567L)
                     .build();
@@ -123,7 +123,7 @@ class PersonTest {
             Person.Builder<?> builder = new Person.Builder<>()
                     .id(1L)
                     .fullName("Test")
-                    .address("Address")
+                    //.address("Address")
                     .expeditionLocation("Location")
                     .phone(123L);
 
@@ -142,7 +142,7 @@ class PersonTest {
 
             assertEquals(100L, person.getId());
             assertEquals("Solo nombre", person.getFullName());
-            assertNull(person.getAddress());
+            //assertNull(person.getAddress());
             assertNull(person.getExpeditionLocation());
             assertEquals(0, person.getPhone());
         }

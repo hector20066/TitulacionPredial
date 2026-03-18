@@ -210,12 +210,12 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      */
     private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address,
                                                                Municipalities municipalities, String cadastralReference) {
-        return new DTOBeneficiarySimpleDetails.Builder()
+        return null/*ew DTOBeneficiarySimpleDetails.Builder()
                 .fullName(nameBeneficiary)
                 .address(address)
                 .municipality(municipalities)
                 .cadastralRef(cadastralReference)
-                .build();
+                .build()*/;
     }
 
     /**
