@@ -4,7 +4,7 @@
 CREATE TABLE property (
      code INT AUTO_INCREMENT PRIMARY KEY,
      cadastral_reference VARCHAR(30),
-     area DOUBLE NOT NULL,
+     area DOUBLE,
      department VARCHAR(100),
      municipality VARCHAR(40) NOT NULL,
      address VARCHAR(40) NOT NULL,
