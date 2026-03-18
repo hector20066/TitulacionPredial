@@ -33,8 +33,7 @@ public class SpouseImplFacade implements SpouseFacade {
     }
 
     @Override
-    public void add(long id, String fullName, String expeditionLocation, String address, long phone,
-                    int beneficiaryCode) throws DAOException {
+    public void add(long id, String fullName, String expeditionLocation, long phone, int beneficiaryCode) throws DAOException {
         DTOSpouse dto = new DTOSpouse.Builder()
                 .id(id)
                 .fullName(fullName)

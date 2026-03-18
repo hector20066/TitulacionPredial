@@ -43,7 +43,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @param expeditionLocation place of issue of the document
      * @throws DAOException if an error occurs during the operation
      */
-    void add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
+    int add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
              String expeditionLocation) throws DAOException;
 
     /**
@@ -119,7 +119,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @throws DAOException if an error occurs during the operation
      */
     boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,
-                   long phone, int code, String expeditionLocation) throws DAOException;
+                   long phone, String expeditionLocation, int code) throws DAOException;
 
     /**
      * Associate a property with a beneficiary.

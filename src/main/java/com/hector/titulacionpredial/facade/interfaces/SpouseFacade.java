@@ -27,13 +27,11 @@ public interface SpouseFacade extends IRemovable {
      * @param id                 spouse's ID number
      * @param fullName           full name
      * @param expeditionLocation place of issue of the document
-     * @param address            address
      * @param phone              phone number
      * @param beneficiaryCode    associated beneficiary code
      * @throws DAOException if an error occurs during the operation
      */
-    void add(long id, String fullName, String expeditionLocation, String address, long phone,
-             int beneficiaryCode) throws DAOException;
+    void add(long id, String fullName, String expeditionLocation, long phone, int beneficiaryCode) throws DAOException;
 
     /**
      * Search for a spouse by the beneficiary code.

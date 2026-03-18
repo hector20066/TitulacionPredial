@@ -39,11 +39,10 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
-    public int add(String cadastralId, Double area, String address, Department department, Municipalities municipality,
+    public int add(String cadastralId, String address, Department department, Municipalities municipality,
                    String crossing, String neighborhood, String publication) throws DAOException {
         DTOPropertyCreate dto = new DTOPropertyCreate.Builder()
                 .cadastralRef(cadastralId)
-                .area(area)
                 .address(address)
                 .department(department)
                 .municipality(municipality)

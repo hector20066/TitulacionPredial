@@ -31,7 +31,6 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      * Register a new property in the system.
      *
      * @param cadastralId cadastral certificate of the property
-     * @param area        area of the property in square meters
      * @param address
      * @param department
      * @param municipality
@@ -41,7 +40,7 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      * @return code of the newly inserted property
      * @throws DAOException if an error occurs during the operation
      */
-    int add(String cadastralId, Double area, String address, Department department, Municipalities municipality,
+    int add(String cadastralId, String address, Department department, Municipalities municipality,
                    String crossing, String neighborhood, String publication) throws DAOException;
 
     /**

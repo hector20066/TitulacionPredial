@@ -36,8 +36,8 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public void add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
-                    String expeditionLocation) throws DAOException {
+    public int add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation,
+                    long phone, String expeditionLocation) throws DAOException {
 
         DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
                 .id(id)
@@ -49,7 +49,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
                 .expeditionLocation(expeditionLocation)
                 .build();
 
-        daoBeneficiary.add(dto);
+        return daoBeneficiary.add(dto);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
     @Override
     public boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,
-                          long phone, int code, String expeditionLocation) throws DAOException {
+                          long phone, String expeditionLocation, int code) throws DAOException {
 
         DTOBeneficiaryUpdate dto = new DTOBeneficiaryUpdate.Builder()
                 .id(id)
