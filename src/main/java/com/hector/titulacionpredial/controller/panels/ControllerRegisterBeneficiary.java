@@ -10,8 +10,10 @@ import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.exception.validation.InvalidNumberInputException;
 import com.hector.titulacionpredial.exception.validation.MaxLengthExceededException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.impl.SpouseImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
@@ -58,6 +60,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     private final LanguageManager lang;
 
     private final BeneficiaryFacade daoBeneficiary;
+    private final PropertyFacade daoProperty;
     private final SpouseFacade daoSpouse;
     private DTOSpouse dtoSpouse;
 
@@ -79,6 +82,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         this.subject.register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
+        this.daoProperty = new PropertyImplFacade();
         this.daoSpouse = new SpouseImplFacade();
 
         connectEvents();
@@ -148,29 +152,20 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void registerOrModifyBeneficiary() {
         try {
+            String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
+            String id = registerBeneficiary.getTxt_id().getText().trim();
+            String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
             String phone = registerBeneficiary.getTxt_phone().getText().trim();
             MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
-            Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
-            Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
-            String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
-            String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
-            String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
-            String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
-            String code = registerBeneficiary.getTxt_followingCode().getText().trim();
+            String codeBeneficiaries = registerBeneficiary.getTxt_followingCode().getText().trim().toUpperCase();
 
-            if (phone.length() > 10) {
-                throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
-            }
-
-            if (!NumericalValidationUtils.isNumeric(phone)) {
-                throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
-            }
+            validations(fullName, id, expeditionLocation, phone, codeBeneficiaries);
 
             if (registerBeneficiary.isModify()) {
-                modify(code, phone, department, municipality, maritalStatus, neighborhood, address, publication, crossing, affectation);
+                modify(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
             } else {
-                register(code, phone, department, municipality, maritalStatus, neighborhood, address, publication, crossing, affectation);
+                register(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
             }
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
@@ -178,34 +173,62 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     }
 
     /**
+     * Validate the required fields in the registration form.
+     *
+     * <p>
+     * Verify that they are not empty, that the surname has two parts,
+     * that the ID and cadastral reference are numeric, and that the ID
+     * does not exceed 10 characters.
+     * </p>
+     *
+     * @param fullName           full name
+     * @param id                 national identity card
+     * @param expeditionLocation place of expedition
+     * @throws InvalidInputException if any validation fails
+     */
+    private void validations(String fullName, String id, String expeditionLocation, String phone,
+                             String codeBeneficiaries) throws InvalidInputException {
+        if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
+            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
+        }
+
+        if (!codeBeneficiaries.contains("F")) {
+            throw new InvalidInputException("Por favor ingrese el codigo con el formato correcto: FXXXX");
+        }
+
+        if (phone.length() > 10) {
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
+        }
+
+        if (id.length() > 10) {
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
+        }
+
+        if (!NumericalValidationUtils.isNumeric(phone)) {
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
+        }
+
+        if (!NumericalValidationUtils.isNumeric(id)) {
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id.cadastralRef"));
+        }
+    }
+
+    /**
      * Validate and prepare the data for the beneficiary modification.
      *
-     * @param code          beneficiary code
+     * @param codeBeneficiaries beneficiary code
      * @param phone         contact phone number
-     * @param department    selected department
-     * @param municipality  selected municipality
      * @param maritalStatus marital status
-     * @param neighborhood  neighborhood
-     * @param address       address
-     * @param publication   publication
-     * @param crossing      crossing
      * @param affectation   affectation
      * @throws InvalidInputException if the data is invalid
      */
-    private void modify(String code, String phone, Department department, Municipalities municipality,
-                        MaritalStatus maritalStatus, String neighborhood, String address, String publication,
-                        String crossing, String affectation) throws InvalidInputException {
-
-        if (isInvalidData(neighborhood, address)) {
-            throw new EmptyFieldException(lang.message("empty.beneficiary.neighborhood.address"));
-        }
-
-        int codeLong = Integer.parseInt(code);
+    private void modify(String fullName, String id, String expeditionLocation, String codeBeneficiaries,
+                        String phone, MaritalStatus maritalStatus, String affectation) throws InvalidInputException {
+        int modifyCode = registerBeneficiary.getModifyCode();
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
         prepareUI(true);
-        doInBackgroundModify(codeLong, phoneLong, department, municipality, maritalStatus, neighborhood, address, publication,
-                crossing, affectation);
+        doInBackgroundModify(fullName, id, expeditionLocation, codeBeneficiaries, phoneLong, maritalStatus, affectation, modifyCode);
     }
 
     /**
@@ -217,31 +240,23 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * one that does not require it.
      * </p>
      *
-     * @param code          beneficiary code
      * @param phone         contact phone number
-     * @param department    department
-     * @param municipality  municipality
      * @param maritalStatus new marital status
-     * @param neighborhood  neighborhood
-     * @param address       address
-     * @param publication   publication
-     * @param crossing      crossing
      * @param affectation   affectation
      */
-    private void doInBackgroundModify(int code, long phone, Department department, Municipalities municipality,
-                                      MaritalStatus maritalStatus, String neighborhood, String address, String publication,
-                                      String crossing, String affectation) {
+    private void doInBackgroundModify(String fullName, String id, String expeditionLocation, String codeBeneficiaries, long phone,
+                                      MaritalStatus maritalStatus, String affectation, int modifyCode) {
         new Thread(() -> {
             try {
-                boolean success = true/* daoBeneficiary.modify(department, municipality, address, maritalStatus, affectation, phone,
-                        crossing, publication, neighborhood, code)*/;
+                boolean success = daoBeneficiary.modify(Integer.parseInt(id), codeBeneficiaries, fullName, maritalStatus,
+                        affectation, phone, expeditionLocation, modifyCode);
 
                 if (registerBeneficiary.getNowStatus() == MaritalStatus.MARRIED
                         || registerBeneficiary.getNowStatus() == MaritalStatus.FREE_UNION) {
 
                     if (maritalStatus == MaritalStatus.SINGLE || maritalStatus == MaritalStatus.DIVORCED
                             || maritalStatus == MaritalStatus.WIDOWER) {
-                        daoSpouse.delete(code);
+                        daoSpouse.delete(modifyCode);
                     }
                 }
 
@@ -274,74 +289,6 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             registerBeneficiary.clearFields();
         } else {
             MessageUtils.errorMessage(lang.message("message.beneficiary.error.modify"), registerBeneficiary);
-        }
-    }
-
-    /**
-     * Validate and prepare the data for the registration of a new beneficiary.
-     *
-     * @param code          beneficiary sequential code
-     * @param phone         contact phone number
-     * @param department    selected department
-     * @param municipality  selected municipality
-     * @param maritalStatus marital status
-     * @param neighborhood  neighborhood
-     * @param address       address
-     * @param publication   publication
-     * @param crossing      crossing
-     * @param affectation   affectation
-     * @throws InvalidInputException if the data is invalid
-     */
-    private void register(String code, String phone, Department department, Municipalities municipality,
-                          MaritalStatus maritalStatus, String neighborhood, String address, String publication,
-                          String crossing, String affectation) throws InvalidInputException {
-
-        String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
-        String id = registerBeneficiary.getTxt_id().getText().trim();
-        String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
-        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
-
-        validations(fullName, id, cadastralReference, expeditionLocation, neighborhood, address);
-
-        int codeInt = Integer.parseInt(code);
-        long idLong = Long.parseLong(id);
-        long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
-
-        prepareUI(false);
-        doInBackGround(fullName, codeInt, idLong, phoneLong, department, municipality, maritalStatus, expeditionLocation,
-                neighborhood, address, cadastralReference, publication, crossing, affectation);
-    }
-
-    /**
-     * Validate the required fields in the registration form.
-     *
-     * <p>
-     * Verify that they are not empty, that the surname has two parts,
-     * that the ID and cadastral reference are numeric, and that the ID
-     * does not exceed 10 characters.
-     * </p>
-     *
-     * @param fullName           full name
-     * @param id                 national identity card
-     * @param cadastralReference cadastral reference
-     * @param expeditionLocation place of expedition
-     * @param neighborhood       neighborhood
-     * @param address            address
-     * @throws InvalidInputException if any validation fails
-     */
-    private void validations(String fullName, String id, String cadastralReference, String expeditionLocation,
-                             String neighborhood, String address) throws InvalidInputException {
-
-        if (isInvalidData(fullName, id, expeditionLocation, neighborhood, address, cadastralReference)) {
-            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
-        }
-
-        if (!NumericalValidationUtils.isNumeric(id) || !NumericalValidationUtils.isNumeric(cadastralReference)) {
-            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id.cadastralRef"));
-        }
-
-        if (id.length() > 10) {
-            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
         }
     }
 
@@ -387,31 +334,24 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * </p>
      *
      * @param fullName           full name of the beneficiary
-     * @param code               sequential code
+     * @param codeBeneficiaries  sequential code
      * @param id                 national identity card
      * @param phone              contact phone number
-     * @param department         department
-     * @param municipalities     municipality
      * @param maritalStatus      marital status
      * @param expeditionLocation place of expedition
-     * @param neighborhood       neighborhood
-     * @param address            address
-     * @param cadastralReference cadastral reference
-     * @param publication        publication
-     * @param crossing           crossing
      * @param affectation        affectation
      */
-    private void doInBackGround(String fullName, int code, long id, long phone, Department department, Municipalities municipalities,
-                                MaritalStatus maritalStatus, String expeditionLocation, String neighborhood, String address,
-                                String cadastralReference, String publication, String crossing, String affectation) {
+    private void doInBackGroundRegister(String fullName, String codeBeneficiaries, long id, long phone, MaritalStatus maritalStatus,
+                                String expeditionLocation, String affectation, String cadastralId, String address,
+                                        Department department, Municipalities municipalities, String crossing, String neighborhood, String publication) {
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
                     throw new PersistenceException(lang.message("persistence.beneficiary.exist"));
                 }
 
-                /*daoBeneficiary.add(id, fullName, department, municipalities, address, cadastralReference, maritalStatus,
-                        affectation, phone, crossing, publication, neighborhood, expeditionLocation);*/
+                int propertyCode = daoProperty.add(cadastralId, address, department, municipalities, crossing, neighborhood, publication);
+                int code = daoBeneficiary.add(codeBeneficiaries, id, fullName, maritalStatus, affectation, phone, expeditionLocation);
 
                 if (maritalStatus == MaritalStatus.MARRIED || maritalStatus == MaritalStatus.FREE_UNION) {
                     registerSpouse(code);
@@ -439,8 +379,24 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             throw new DataNotFoundException(lang.message("not.found.spouse.data"));
         }
 
-        /*daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(), dtoSpouse.getAddress(),
-                dtoSpouse.getPhone(), beneficiaryCode);*/
+        daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(),
+                dtoSpouse.getPhone(), beneficiaryCode);
+    }
+
+    private void register(String fullName, String id, String expeditionLocation, String codeBeneficiaries, String phone,
+                          MaritalStatus maritalStatus, String affectation) throws InvalidInputException {
+        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
+        Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
+        Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
+        String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
+        String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
+        String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
+        String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
+
+        prepareUI(false);
+        doInBackGroundRegister(fullName, codeBeneficiaries, Long.parseLong(id), Long.parseLong(phone), maritalStatus,
+                expeditionLocation, affectation, cadastralReference, address, department, municipality,
+                crossing, neighborhood, publication);
     }
 
     /**
