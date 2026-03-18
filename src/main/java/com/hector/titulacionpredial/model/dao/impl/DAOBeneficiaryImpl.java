@@ -13,6 +13,7 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
-    public void add(DTOBeneficiaryCreate dto) throws DAOException {
+    public int add(DTOBeneficiaryCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/insert.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -72,7 +73,20 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             st.setLong(6, dto.getPhone());
             st.setString(7, dto.getExpeditionLocation());
             st.setDate(8, Date.valueOf(LocalDate.now()));
-            st.executeUpdate();
+
+            int affectedRows = st.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new BeneficiaryNotFoundException("Error al registrar el beneficiario, no hay filas afectadas.");
+            }
+
+            try (ResultSet generatedKeys = st.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new BeneficiaryPersistenceException("No fue posible guardar la informacion del beneficiario.");
+                }
+            }
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"), e);
         }

@@ -63,8 +63,8 @@ public class DAOSpouseImpl implements DAOSpouse {
             st.setLong(1, dto.getId());
             st.setString(2, dto.getFullName());
             st.setString(3, dto.getExpeditionLocation());
-            st.setLong(5, dto.getPhone());
-            st.setInt(6, dto.getBeneficiaryCode());
+            st.setLong(4, dto.getPhone());
+            st.setInt(5, dto.getBeneficiaryCode());
             st.executeUpdate();
         } catch (SQLException e) {
             throw new SpousePersistenceException(lang.message("persistence.spouse.register"), e);

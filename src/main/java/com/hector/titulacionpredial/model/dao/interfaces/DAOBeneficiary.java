@@ -32,11 +32,27 @@ import java.util.List;
  * @see ICountable
  * @since 1.0
  */
-public interface DAOBeneficiary extends DAOBase<DTOBeneficiaryCreate, DTOBeneficiarySimpleDetails>,
-        IListable<DTOBeneficiarySimpleDetails>,
+public interface DAOBeneficiary extends IListable<DTOBeneficiarySimpleDetails>,
         IModifiable<DTOBeneficiaryUpdate>,
         IRemovable,
         ICountable {
+
+    /**
+     * Insert a new record into the database.
+     *
+     * @param dto object with the data to be inserted
+     * @throws DAOException if an error occurs during the operation
+     */
+    int add(DTOBeneficiaryCreate dto) throws DAOException;
+
+    /**
+     * Search for a record by its unique code.
+     *
+     * @param code record identifier code
+     * @return DTO with the data from the found record
+     * @throws DAOException if an error occurs or the record is not found
+     */
+    DTOBeneficiarySimpleDetails findByCode(int code) throws DAOException;
 
     /**
      * Search for a beneficiary by their ID number.
