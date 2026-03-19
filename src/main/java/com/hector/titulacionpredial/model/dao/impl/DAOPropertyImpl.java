@@ -66,7 +66,12 @@ public class DAOPropertyImpl implements DAOProperty {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, dto.getCadastralId());
-            st.setDouble(2, dto.getArea());
+            st.setString(2, String.valueOf(dto.getDepartment()));
+            st.setString(3, String.valueOf(dto.getMunicipality()));
+            st.setString(4, dto.getNeighborhood());
+            st.setString(5, dto.getAddress());
+            st.setString(6, dto.getCrossing());
+            st.setString(7, dto.getPublication());
 
             int affectedRows = st.executeUpdate();
 
