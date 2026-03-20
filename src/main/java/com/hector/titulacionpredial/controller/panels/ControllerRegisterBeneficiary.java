@@ -17,7 +17,9 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.facade.interfaces.SpouseFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.model.dto.DTOSpouseController;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -33,6 +35,8 @@ import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller of the beneficiary registration and modification panel.
@@ -62,7 +66,9 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     private final BeneficiaryFacade daoBeneficiary;
     private final PropertyFacade daoProperty;
     private final SpouseFacade daoSpouse;
-    private DTOSpouse dtoSpouse;
+
+    private List<DTOBeneficiary> listBeneficiaries;
+    private List<DTOSpouseController> listSpouses;
 
     /**
      * Create the controller, register it as an observer, and
@@ -85,6 +91,9 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         this.daoProperty = new PropertyImplFacade();
         this.daoSpouse = new SpouseImplFacade();
 
+        this.listBeneficiaries = new ArrayList<>();
+        this.listSpouses = new ArrayList<>();
+
         connectEvents();
     }
 
@@ -94,6 +103,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void connectEvents() {
         registerBeneficiary.setControllerRegister(e -> registerOrModifyBeneficiary());
+        registerBeneficiary.setControllerAddBeneficiaries(e -> addBeneficiaries());
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
         registerBeneficiary.setControllerCbx_affectation(e -> affectationSelected());
@@ -165,7 +175,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             if (registerBeneficiary.isModify()) {
                 modify(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
             } else {
-                register(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
+                register(fullName, id);
             }
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
@@ -228,7 +238,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
         prepareUI(true);
-        doInBackgroundModify(fullName, id, expeditionLocation, codeBeneficiaries, phoneLong, maritalStatus, affectation, modifyCode);
+        doInBackgroundModify(fullName, id, expeditionLocation, codeBeneficiaries, phoneLong, maritalStatus, affectation,
+                modifyCode);
     }
 
     /**
@@ -244,8 +255,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * @param maritalStatus new marital status
      * @param affectation   affectation
      */
-    private void doInBackgroundModify(String fullName, String id, String expeditionLocation, String codeBeneficiaries, long phone,
-                                      MaritalStatus maritalStatus, String affectation, int modifyCode) {
+    private void doInBackgroundModify(String fullName, String id, String expeditionLocation, String codeBeneficiaries,
+                                      long phone, MaritalStatus maritalStatus, String affectation, int modifyCode) {
         new Thread(() -> {
             try {
                 boolean success = daoBeneficiary.modify(Integer.parseInt(id), codeBeneficiaries, fullName, maritalStatus,
@@ -333,28 +344,38 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * persists and register the spouse when the civil status requires it.
      * </p>
      *
-     * @param fullName           full name of the beneficiary
-     * @param codeBeneficiaries  sequential code
-     * @param id                 national identity card
-     * @param phone              contact phone number
-     * @param maritalStatus      marital status
-     * @param expeditionLocation place of expedition
-     * @param affectation        affectation
+     * @param fullName full name of the beneficiary
      */
-    private void doInBackGroundRegister(String fullName, String codeBeneficiaries, long id, long phone, MaritalStatus maritalStatus,
-                                String expeditionLocation, String affectation, String cadastralId, String address,
-                                        Department department, Municipalities municipalities, String crossing, String neighborhood, String publication) {
+    private void doInBackGroundRegister(String fullName, long id, String cadastralId, String address,
+                                        Department department, Municipalities municipalities, String crossing,
+                                        String neighborhood, String publication) {
+
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
                     throw new PersistenceException(lang.message("persistence.beneficiary.exist"));
                 }
 
-                int propertyCode = daoProperty.add(cadastralId, address, department, municipalities, crossing, neighborhood, publication);
-                int code = daoBeneficiary.add(codeBeneficiaries, id, fullName, maritalStatus, affectation, phone, expeditionLocation);
+                if (daoProperty.findByCode(cadastralId) != null) {
+                    throw new PersistenceException(lang.message("persistence.property.exist1") + " '"
+                            + cadastralId + "' " + lang.message("persistence.property.exist2"));
+                }
 
-                if (maritalStatus == MaritalStatus.MARRIED || maritalStatus == MaritalStatus.FREE_UNION) {
-                    registerSpouse(code);
+                int propertyCode = daoProperty.add(cadastralId, address, department, municipalities, crossing,
+                        neighborhood, publication);
+
+                for (DTOBeneficiary dto : listBeneficiaries) {
+                    int codeBeneficiary = daoBeneficiary.add(dto.getCodeBeneficiaries(), dto.getId(), dto.getFullName(),
+                            dto.getMaritalStatus(), dto.getAffectation(), dto.getPhone(), dto.getExpeditionLocation(), propertyCode);
+
+                    if (dto.getMaritalStatus() == MaritalStatus.MARRIED || dto.getMaritalStatus() == MaritalStatus.FREE_UNION) {
+                        spouse: for (DTOSpouseController dtoSpouse : listSpouses) {
+                            if (dtoSpouse.getIdBeneficiary() == dto.getId()) {
+                                registerSpouse(dtoSpouse, codeBeneficiary);
+                                break spouse;
+                            }
+                        }
+                    }
                 }
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
@@ -374,17 +395,23 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * @throws DAOException if no spouse data was found or if a persistence
      *                      error occurs
      */
-    private void registerSpouse(int beneficiaryCode) throws DAOException {
-        if (dtoSpouse == null) {
+    private void registerSpouse(DTOSpouseController dto, int beneficiaryCode) throws DAOException {
+        if (listSpouses.isEmpty()) {
             throw new DataNotFoundException(lang.message("not.found.spouse.data"));
         }
+
+        DTOSpouse dtoSpouse = new DTOSpouse.Builder()
+                .id(dto.getId())
+                .fullName(dto.getFullName())
+                .expeditionLocation(dto.getExpeditionLocation())
+                .phone(dto.getPhone())
+                .build();
 
         daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(),
                 dtoSpouse.getPhone(), beneficiaryCode);
     }
 
-    private void register(String fullName, String id, String expeditionLocation, String codeBeneficiaries, String phone,
-                          MaritalStatus maritalStatus, String affectation) throws InvalidInputException {
+    private void register(String fullName, String id) throws InvalidInputException {
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
         Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
         Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
@@ -394,8 +421,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
 
         prepareUI(false);
-        doInBackGroundRegister(fullName, codeBeneficiaries, Long.parseLong(id), Long.parseLong(phone), maritalStatus,
-                expeditionLocation, affectation, cadastralReference, address, department, municipality,
+        doInBackGroundRegister(fullName, Long.parseLong(id), cadastralReference, address, department, municipality,
                 crossing, neighborhood, publication);
     }
 
@@ -432,6 +458,45 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         }
     }
 
+    private void addBeneficiaries() {
+        try {
+            String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
+            String id = registerBeneficiary.getTxt_id().getText().trim();
+            String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
+            String phone = registerBeneficiary.getTxt_phone().getText().trim();
+            MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
+            String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
+            String codeBeneficiaries = registerBeneficiary.getTxt_followingCode().getText().trim().toUpperCase();
+
+            validations(fullName, id, expeditionLocation, phone, codeBeneficiaries);
+
+            DTOBeneficiary dto = new DTOBeneficiary.ConcreteBuilder()
+                    .id(Integer.parseInt(id))
+                    .fullName(fullName)
+                    .expeditionLocation(expeditionLocation)
+                    .phone(Long.parseLong(phone))
+                    .maritalStatus(maritalStatus)
+                    .affectation(affectation)
+                    .codeBeneficiaries(codeBeneficiaries)
+                    .build();
+
+            listBeneficiaries.add(dto);
+            cleanUIAddBeneficiaries();
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
+        }
+    }
+
+    private void cleanUIAddBeneficiaries() {
+        registerBeneficiary.getTxt_fullName().setText("");
+        registerBeneficiary.getTxt_id().setText("");
+        registerBeneficiary.getTxt_expeditionLocation().setText("");
+        registerBeneficiary.getTxt_phone().setText("");
+        registerBeneficiary.getCbo_maritalStatus().setSelectedIndex(0);
+        registerBeneficiary.getTxa_affectation().setText("");
+        registerBeneficiary.getTxt_followingCode().setText("");
+    }
+
     /**
      * Update the municipality combo according to the department
      * selected by the user.
@@ -466,18 +531,19 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
         if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
+            int idBeneficiary = Integer.parseInt(registerBeneficiary.getTxt_id().getText().trim());
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
 
             SpouseData dialog = new SpouseData(parentFrame, true);
             dialog.setLocationRelativeTo(registerBeneficiary);
             dialog.updateLanguage();
+            dialog.setIdBeneficiary(idBeneficiary);
             dialog.setVisible(true);
 
             if (dialog.isConfirmed()) {
-                this.dtoSpouse = dialog.getSpouse();
+                listSpouses.add(dialog.getSpouse());
+                //this.dtoSpouse = dialog.getSpouse();
             }
-        } else {
-            this.dtoSpouse = null;
         }
     }
 
