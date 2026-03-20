@@ -105,10 +105,10 @@ public class ControllerLogin implements LanguageObserver {
             String user = login.getTxt_user().getText().trim();
             String passwd = new String(login.getJpld_password().getPassword());
 
-            if(!NetworkUtils.hasInternetConnection()) {
+            /*if(!NetworkUtils.hasInternetConnection()) {
                 MessageUtils.errorMessage("No tienes conexión a internet.\nVerifica la conexión e intentalo nuevamente", null);
                 return;
-            }
+            }*/
 
             if (user.isBlank() || passwd.isBlank()) {
                 throw new EmptyFieldException("Usuario y Contraseña");
