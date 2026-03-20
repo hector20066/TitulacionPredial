@@ -1,7 +1,7 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import com.hector.titulacionpredial.i18n.LanguageManager;
-import com.hector.titulacionpredial.model.dto.DTOSpouse;
+import com.hector.titulacionpredial.model.dto.DTOSpouseController;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -19,7 +19,6 @@ import java.awt.*;
  *
  * @author Ing. Hector Acevedo
  * @since 1.0
- * @see DTOSpouse
  */
 public class SpouseData extends javax.swing.JDialog {
 
@@ -28,6 +27,7 @@ public class SpouseData extends javax.swing.JDialog {
     private boolean show = true;
 
     private final LanguageManager lang = LanguageManager.getInstance();
+    private int idBeneficiary;
 
     /**
      * Creates a new dialog to register spouse's data.
@@ -69,6 +69,14 @@ public class SpouseData extends javax.swing.JDialog {
         animator = new Animator(200, target);
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
+    }
+
+    public void setIdBeneficiary(int idBeneficiary) {
+        this.idBeneficiary = idBeneficiary;
+    }
+
+    public int getIdBeneficiary() {
+        return idBeneficiary;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -303,19 +311,20 @@ public class SpouseData extends javax.swing.JDialog {
     /**
      * Construye y devuelve el DTO del cónyuge con los datos ingresados.
      *
-     * @return instancia de {@link DTOSpouse} con los datos del formulario,
+     * @return instancia de {@link DTOSpouseController} con los datos del formulario,
      *         o {@code null} si el diálogo no fue confirmado
      */
-    public DTOSpouse getSpouse() {
+    public DTOSpouseController getSpouse() {
         if (!confirmed) {
             return null;
         }
 
-        return new DTOSpouse.Builder()
+        return new DTOSpouseController.Builder()
                 .fullName(txt_name.getText().trim() + " " + txt_lastName.getText().trim())
                 .id(Long.parseLong(txt_id.getText().trim()))
                 .expeditionLocation(txt_expeditionLocation.getText().trim())
                 .phone(Long.parseLong(txt_phone.getText().trim()))
+                .beneficiaryCode(getIdBeneficiary())
                 .build();
     }
 
