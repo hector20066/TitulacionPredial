@@ -46,6 +46,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private void connectEvents() {
         registerUsers.setControllerCreate(e -> createAccount());
+        registerUsers.setControllerSeePassword(e -> seePassword());
     }
 
     @Override
@@ -127,6 +128,14 @@ public class ControllerRegisterUsers implements LanguageObserver {
     private void resetUI() {
         registerUsers.getBtn_createAccount().setEnabled(true);
         registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.create"));
+    }
+
+    private void seePassword() {
+        if (registerUsers.getRbn_seePasswd().isSelected()) {
+            registerUsers.getJpld_password().setEchoChar((char) 0);
+        } else {
+            registerUsers.getJpld_password().setEchoChar('•');
+        }
     }
 
 }

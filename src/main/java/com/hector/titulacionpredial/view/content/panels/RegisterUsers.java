@@ -18,6 +18,11 @@ public class RegisterUsers extends javax.swing.JPanel {
      */
     public RegisterUsers() {
         initComponents();
+        
+        Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
+        Icon iconOff = new ImageIcon(getClass().getResource("/image/eye-off.png"));
+        rbn_seePasswd.setIcon(normalIcon);
+        rbn_seePasswd.setSelectedIcon(iconOff);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,7 +82,6 @@ public class RegisterUsers extends javax.swing.JPanel {
         jlb_password.setText("Contraseña:");
 
         jpld_password.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jpld_password.setText("jPasswordField1");
 
         jlb_rol.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_rol.setForeground(new java.awt.Color(8, 28, 21));
@@ -198,6 +202,10 @@ public class RegisterUsers extends javax.swing.JPanel {
 
     public void setControllerCreate(ActionListener action) {
         btn_createAccount.addActionListener(action);
+    }
+    
+    public void setControllerSeePassword(ActionListener action) {
+        rbn_seePasswd.addActionListener(action);
     }
 
     public ButtonAction getBtn_createAccount() {

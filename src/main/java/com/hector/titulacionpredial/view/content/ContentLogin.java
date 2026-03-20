@@ -18,10 +18,10 @@ public class ContentLogin extends javax.swing.JFrame {
     public ContentLogin() {
         initComponents();
 
-        /*Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
+        Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
         Icon iconOff = new ImageIcon(getClass().getResource("/image/eye-off.png"));
         rbn_seePasswd.setIcon(normalIcon);
-        rbn_seePasswd.setSelectedIcon(iconOff);*/
+        rbn_seePasswd.setSelectedIcon(iconOff);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
