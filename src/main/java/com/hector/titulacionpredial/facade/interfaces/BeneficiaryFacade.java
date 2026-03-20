@@ -44,7 +44,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @throws DAOException if an error occurs during the operation
      */
     int add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
-             String expeditionLocation) throws DAOException;
+             String expeditionLocation, int propertyCode) throws DAOException;
 
     /**
      * Search for a beneficiary by their unique code.

@@ -37,7 +37,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
 
     @Override
     public int add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation,
-                    long phone, String expeditionLocation) throws DAOException {
+                    long phone, String expeditionLocation, int propertyCode) throws DAOException {
 
         DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
                 .id(id)
@@ -47,6 +47,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
                 .affectation(affectation)
                 .phone(phone)
                 .expeditionLocation(expeditionLocation)
+                .propertyCode(propertyCode)
                 .build();
 
         return daoBeneficiary.add(dto);
