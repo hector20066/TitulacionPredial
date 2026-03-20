@@ -72,7 +72,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             st.setString(5, dto.getAffectation());
             st.setLong(6, dto.getPhone());
             st.setString(7, dto.getExpeditionLocation());
-            st.setDate(8, Date.valueOf(LocalDate.now()));
+            st.setInt(8, dto.getPropertyCode());
+            st.setDate(9, Date.valueOf(LocalDate.now()));
 
             int affectedRows = st.executeUpdate();
 
