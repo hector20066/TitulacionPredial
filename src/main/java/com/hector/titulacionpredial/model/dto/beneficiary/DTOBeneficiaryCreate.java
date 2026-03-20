@@ -33,6 +33,8 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
  */
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
+    private int propertyCode;
+
     /**
      * Empty constructor required for serialization
      * or mapping frameworks.
@@ -48,6 +50,15 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
      */
     public DTOBeneficiaryCreate(AbstractBuilder<?> builder) {
         super(builder);
+        this.propertyCode = builder.propertyCode;
+    }
+
+    public int getPropertyCode() {
+        return propertyCode;
+    }
+
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     /**
@@ -62,6 +73,13 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
      * @param <T> specific type of builder
      */
     public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {
+
+        private int propertyCode;
+
+        public T propertyCode(int propertyCode) {
+            this.propertyCode = propertyCode;
+            return (T) this;
+        }
 
     }
 

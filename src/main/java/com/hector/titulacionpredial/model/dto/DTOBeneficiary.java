@@ -161,4 +161,8 @@ public class DTOBeneficiary extends DTOBasePerson {
 
     }
 
+    public static class ConcreteBuilder extends Builder<ConcreteBuilder> {
+
+    }
+
 }
