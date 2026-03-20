@@ -10,7 +10,7 @@ CREATE TABLE property (
      address VARCHAR(40) NOT NULL,
      neighborhood VARCHAR(100) NOT NULL,
      crossing VARCHAR(500),
-     publication VARCHAR(20),
+     publication VARCHAR(20)
 );
 
 -- =========================
@@ -91,7 +91,7 @@ CREATE TABLE resolution (
 );
 
 -- =========================
--- TABLA: resolution
+-- TABLA: users
 -- =========================
 CREATE TABLE users(
     id INT PRIMARY KEY,
@@ -102,5 +102,6 @@ CREATE TABLE users(
 );
 
 CREATE INDEX idx_beneficiary_full_name ON beneficiary(full_name);
-CREATE INDEX idx_beneficiary_municipality ON beneficiary(municipality);
-CREATE INDEX idx_property_cadastral_id ON property(cadastral_id);
+CREATE INDEX idx_beneficiary_id ON beneficiary(id);
+CREATE INDEX idx_property_cadastral_id ON property(cadastral_reference);
+CREATE INDEX idx_property_code ON property(code);
