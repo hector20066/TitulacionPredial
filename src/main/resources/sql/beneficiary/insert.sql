@@ -6,5 +6,6 @@ INSERT INTO beneficiary(
         affectation,
         phone,
         expedition_location,
+        property_code,
         entry_date)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
