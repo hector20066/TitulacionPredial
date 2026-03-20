@@ -1,10 +1,11 @@
-SELECT code,
-       id,
-       full_name,
-       phone,
-       cadastral_reference,
-       municipality,
-       marital_status,
-       address
-FROM beneficiary
-WHERE municipality = ?;
+SELECT b.code_beneficiaries,
+       b.id,
+       b.full_name,
+       b.phone,
+       p.cadastral_reference,
+       p.municipality,
+       b.marital_status,
+       p.address
+FROM beneficiary b
+JOIN property p ON b.property_code = p.code
+WHERE b.municipality = ?;

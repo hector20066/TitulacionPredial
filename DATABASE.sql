@@ -41,7 +41,6 @@ CREATE TABLE spouse (
     id BIGINT PRIMARY KEY,
     full_name VARCHAR(150),
     expedition_location VARCHAR(100),
-    address VARCHAR(40),
     phone BIGINT,
     beneficiary_code INT NOT NULL,
 
