@@ -111,14 +111,14 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
     @Override
     public void update() {
-        new Thread(() -> {
+        /*new Thread(() -> {
             try {
                 int code = daoBeneficiary.getLastCode();
                 SwingUtilities.invokeLater(() -> registerBeneficiary.loadFollowingCode(code + 1));
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
             }
-        }).start();
+        }).start();*/
     }
 
     @Override
@@ -169,8 +169,6 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
             MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
             String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
             String codeBeneficiaries = registerBeneficiary.getTxt_followingCode().getText().trim().toUpperCase();
-
-            validations(fullName, id, expeditionLocation, phone, codeBeneficiaries);
 
             if (registerBeneficiary.isModify()) {
                 modify(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
@@ -237,6 +235,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         int modifyCode = registerBeneficiary.getModifyCode();
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
+        validations(fullName, id, expeditionLocation, phone, codeBeneficiaries);
         prepareUI(true);
         doInBackgroundModify(fullName, id, expeditionLocation, codeBeneficiaries, phoneLong, maritalStatus, affectation,
                 modifyCode);
@@ -352,7 +351,8 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
         new Thread(() -> {
             try {
-                if (daoBeneficiary.findById(id) != null || daoBeneficiary.findByName(fullName) != null) {
+                if (daoBeneficiary.findById(listBeneficiaries.getFirst().getId()) != null
+                        || daoBeneficiary.findByName(listBeneficiaries.getFirst().getFullName()) != null) {
                     throw new PersistenceException(lang.message("persistence.beneficiary.exist"));
                 }
 
@@ -494,7 +494,6 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         registerBeneficiary.getTxt_phone().setText("");
         registerBeneficiary.getCbo_maritalStatus().setSelectedIndex(0);
         registerBeneficiary.getTxa_affectation().setText("");
-        registerBeneficiary.getTxt_followingCode().setText("");
     }
 
     /**

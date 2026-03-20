@@ -761,7 +761,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_followingCode">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="15" style="0"/>
             </Property>
