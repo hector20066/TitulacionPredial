@@ -1,10 +1,12 @@
 package com.hector.titulacionpredial.model.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Person Entity Tests")
 class PersonTest {
@@ -99,7 +101,6 @@ class PersonTest {
             Person person = new Person.Builder<>()
                     .id(123456789L)
                     .fullName("Juan Pérez")
-                    //.address("Calle 10")
                     .expeditionLocation("Bogotá")
                     .phone(3001234567L)
                     .build();
@@ -107,7 +108,6 @@ class PersonTest {
             String result = person.toString();
             assertTrue(result.contains("123456789"));
             assertTrue(result.contains("Juan Pérez"));
-            assertTrue(result.contains("Calle 10"));
             assertTrue(result.contains("Bogotá"));
             assertTrue(result.contains("3001234567"));
         }

@@ -1,13 +1,14 @@
 package com.hector.titulacionpredial.model.entities;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
 
 @DisplayName("Beneficiary Entity Tests")
 class BeneficiaryTest {
@@ -183,8 +184,6 @@ class BeneficiaryTest {
                     .id(1234L)
                     .fullName("Ana López")
                     .code(10)
-                    //.department(Department.ATLANTICO)
-                    //.municipality(Municipalities.SOLEDAD)
                     .maritalStatus(MaritalStatus.FREE_UNION)
                     .build();
 
@@ -192,8 +191,6 @@ class BeneficiaryTest {
             assertTrue(result.contains("1234"));
             assertTrue(result.contains("Ana López"));
             assertTrue(result.contains("10"));
-            assertTrue(result.contains("ATLANTICO"));
-            assertTrue(result.contains("SOLEDAD"));
             assertTrue(result.contains("FREE_UNION"));
         }
     }

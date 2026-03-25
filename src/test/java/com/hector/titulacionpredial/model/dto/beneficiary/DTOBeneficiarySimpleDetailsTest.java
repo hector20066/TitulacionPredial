@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiarySimpleDetails Tests")
 class DTOBeneficiarySimpleDetailsTest {
@@ -66,28 +64,18 @@ class DTOBeneficiarySimpleDetailsTest {
                 .code(2)
                 .id(555L)
                 .fullName("Inherited Test")
-                /*.department(Department.BOLIVAR)
-                .municipality(Municipalities.CARTAGENA)
-                .maritalStatus(MaritalStatus.WIDOWER)
-                .address("Calle Heredada 10")*/
                 .phone(3109876543L)
-                //.neighborhood("Manga")
-                //.crossing("Cruce Sur")
-                //.publication("Pub-Heredada")
+                .expeditionLocation("Bogotá")
+                .maritalStatus(MaritalStatus.WIDOWER)
                 .affectation("Parcial")
                 .build();
 
         assertEquals(2, dto.getCode());
         assertEquals(555L, dto.getId());
         assertEquals("Inherited Test", dto.getFullName());
-        /*assertEquals(Department.BOLIVAR, dto.getDepartment());
-        assertEquals(Municipalities.CARTAGENA, dto.getMunicipality());*/
         assertEquals(MaritalStatus.WIDOWER, dto.getMaritalStatus());
-        //assertEquals("Calle Heredada 10", dto.getAddress());
         assertEquals(3109876543L, dto.getPhone());
-        /*assertEquals("Manga", dto.getNeighborhood());
-        assertEquals("Cruce Sur", dto.getCrossing());
-        assertEquals("Pub-Heredada", dto.getPublication());*/
+        assertEquals("Bogotá", dto.getExpeditionLocation());
         assertEquals("Parcial", dto.getAffectation());
     }
 }

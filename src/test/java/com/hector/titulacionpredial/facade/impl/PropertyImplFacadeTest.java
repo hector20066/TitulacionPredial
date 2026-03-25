@@ -47,18 +47,21 @@ class PropertyImplFacadeTest {
     void addShouldCreateDTOAndDelegate() throws DAOException {
         when(daoProperty.add(any(DTOPropertyCreate.class))).thenReturn(1);
 
-        //int result = facade.add("CAD-001", 150.5);
+        int result = facade.add("CAD-001", "Calle 10 #20-30", com.hector.titulacionpredial.model.enums.Department.ATLANTICO,
+                com.hector.titulacionpredial.model.enums.Municipalities.BARRANQUILLA, "Cruce con Calle 11", "Centro", "Publicación");
 
-        //assertEquals(1, result);
+        assertEquals(1, result);
         verify(daoProperty).add(any(DTOPropertyCreate.class));
     }
 
     @Test
     @DisplayName("add debe lanzar DAOException cuando el DAO falla")
     void addShouldThrowDAOExceptionOnFailure() throws DAOException {
-        when(daoProperty.add(any(DTOPropertyCreate.class))).thenThrow(new DAOException("Error"));
+        doThrow(new DAOException("Error")).when(daoProperty).add(any(DTOPropertyCreate.class));
 
-        //assertThrows(DAOException.class, () -> facade.add("CAD-002", 200.0));
+        assertThrows(DAOException.class, () -> facade.add("CAD-002", "Calle 20 #30-40",
+                com.hector.titulacionpredial.model.enums.Department.BOLIVAR,
+                com.hector.titulacionpredial.model.enums.Municipalities.CARTAGENA, "Cruce", "Barrio", "Pub"));
     }
 
     @Test

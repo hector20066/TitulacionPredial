@@ -30,9 +30,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("BeneficiaryImplFacade Tests")
@@ -55,13 +53,13 @@ class BeneficiaryImplFacadeTest {
     @Test
     @DisplayName("add debe crear DTO y delegar al DAO")
     void addShouldDelegateToDAO() throws DAOException {
-        doNothing().when(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));
+        when(daoBeneficiary.add(any(DTOBeneficiaryCreate.class))).thenReturn(1);
 
-        /*facade.add(123456L, "Juan Pérez", Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Calle 1", "REF-001", MaritalStatus.SINGLE, "Afectación",
-                3001234567L, "Cruce", "Publicación", "Barrio Centro", "Barranquilla");
+        int result = facade.add("REF-001", 123456L, "Juan Pérez", MaritalStatus.SINGLE, "Afectación",
+                3001234567L, "Bogotá", 1);
 
-        verify(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));*/
+        assertEquals(1, result);
+        verify(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));
     }
 
     @Test
@@ -69,10 +67,9 @@ class BeneficiaryImplFacadeTest {
     void addShouldThrowDAOException() throws DAOException {
         doThrow(new DAOException("Error")).when(daoBeneficiary).add(any(DTOBeneficiaryCreate.class));
 
-        /*assertThrows(DAOException.class, () ->
-                facade.add(123456L, "Juan", Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                        "Dir", "REF", MaritalStatus.SINGLE, "Afect",
-                        300L, "Cruce", "Pub", "Barrio", "Loc"));*/
+        assertThrows(DAOException.class, () ->
+                facade.add("REF-002", 654321L, "Jane Pérez", MaritalStatus.MARRIED, "Afect",
+                        3001234568L, "Medellín", 2));
     }
 
     @Test
@@ -176,11 +173,10 @@ class BeneficiaryImplFacadeTest {
     void modifyShouldCreateDTOAndDelegate() throws DAOException {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenReturn(true);
 
-        /*boolean result = facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Calle 2", MaritalStatus.MARRIED, "Afectación 2",
-                3009876543L, "Cruce 2", "Pub 2", "Barrio Norte", 1);
+        boolean result = facade.modify(123456L, "REF-001", "Juan Pérez", MaritalStatus.MARRIED, "Afectación 2",
+                3009876543L, "Bogotá", 1);
 
-        assertTrue(result);*/
+        assertTrue(result);
         verify(daoBeneficiary).modify(any(DTOBeneficiaryUpdate.class));
     }
 
@@ -189,11 +185,10 @@ class BeneficiaryImplFacadeTest {
     void modifyShouldReturnFalseWhenDAOReturnsFalse() throws DAOException {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenReturn(false);
 
-        /*boolean result = facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                "Dir", MaritalStatus.SINGLE, "Afect",
-                300L, "Cruce", "Pub", "Barrio", 1);
+        boolean result = facade.modify(654321L, "REF-002", "Jane Pérez", MaritalStatus.SINGLE, "Afect",
+                3001234568L, "Medellín", 2);
 
-        assertFalse(result);*/
+        assertFalse(result);
     }
 
     @Test
@@ -201,9 +196,9 @@ class BeneficiaryImplFacadeTest {
     void modifyPropertyShouldDelegate() throws DAOException {
         when(daoBeneficiary.modifyProperty(any(DTOBeneficiaryPropertyUpdate.class))).thenReturn(true);
 
-        //boolean result = facade.modifyProperty(1, 10);
+        boolean result = facade.modifyProperty("REF-001", 10);
 
-        //assertTrue(result);
+        assertTrue(result);
         verify(daoBeneficiary).modifyProperty(any(DTOBeneficiaryPropertyUpdate.class));
     }
 
@@ -303,9 +298,8 @@ class BeneficiaryImplFacadeTest {
     @DisplayName("modify debe propagar DAOException")
     void modifyShouldPropagateDAOException() throws DAOException {
         when(daoBeneficiary.modify(any(DTOBeneficiaryUpdate.class))).thenThrow(new DAOException("Error"));
-        /*assertThrows(DAOException.class, () ->
-                facade.modify(Department.ATLANTICO, Municipalities.BARRANQUILLA,
-                        "Dir", MaritalStatus.SINGLE, "Afect",
-                        300L, "Cruce", "Pub", "Barrio", 1));*/
+        assertThrows(DAOException.class, () ->
+                facade.modify(123456L, "REF-001", "Juan Pérez", MaritalStatus.SINGLE, "Afect",
+                        3001234567L, "Bogotá", 1));
     }
 }

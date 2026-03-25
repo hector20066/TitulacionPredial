@@ -1,21 +1,25 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
-import com.hector.titulacionpredial.model.dto.DTOSpouse;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
+import com.hector.titulacionpredial.model.dto.DTOSpouse;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("SpouseImplFacade Tests")
@@ -39,7 +43,7 @@ class SpouseImplFacadeTest {
     void addShouldCreateDTOAndDelegate() throws DAOException {
         doNothing().when(daoSpouse).add(any(DTOSpouse.class));
 
-        facade.add(987654L, "María García", "Bogotá", "Calle 10", 3001112233L, 1);
+        facade.add(987654L, "María García", "Bogotá", 3001112233L, 1);
 
         verify(daoSpouse).add(any(DTOSpouse.class));
     }
@@ -50,7 +54,7 @@ class SpouseImplFacadeTest {
         doThrow(new DAOException("Error")).when(daoSpouse).add(any(DTOSpouse.class));
 
         assertThrows(DAOException.class, () ->
-                facade.add(123L, "Nombre", "Lugar", "Dir", 300L, 1));
+                facade.add(123L, "Nombre", "Lugar", 300L, 1));
     }
 
     @Test
