@@ -1,3 +1,9 @@
+-- Create The DataBase
+CREATE DATABASE if NOT EXISTS titulacion_predial;
+
+-- Use the DataBase
+USE titulacion_predial;
+
 -- =========================
 -- TABLA: property
 -- =========================
