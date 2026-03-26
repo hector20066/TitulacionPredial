@@ -114,9 +114,9 @@ public class ControllerLogin implements LanguageObserver {
                 throw new EmptyFieldException("Usuario y Contraseña");
             }
 
-            /*if (passwd.length() < 8) {
+            if (passwd.length() < 8) {
                 throw new InvalidInputException("La contraseña debe tener minimo 8 caracteres");
-            }*/
+            }
 
             prepareUI();
             executeLoginWorker(user, passwd);
