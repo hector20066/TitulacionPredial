@@ -162,18 +162,10 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      */
     private void registerOrModifyBeneficiary() {
         try {
-            String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
-            String id = registerBeneficiary.getTxt_id().getText().trim();
-            String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
-            String phone = registerBeneficiary.getTxt_phone().getText().trim();
-            MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
-            String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
-            String codeBeneficiaries = registerBeneficiary.getTxt_followingCode().getText().trim().toUpperCase();
-
             if (registerBeneficiary.isModify()) {
-                modify(fullName, id, expeditionLocation, codeBeneficiaries, phone, maritalStatus, affectation);
+                modify();
             } else {
-                register(fullName, id);
+                register();
             }
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
@@ -224,14 +216,16 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
     /**
      * Validate and prepare the data for the beneficiary modification.
      *
-     * @param codeBeneficiaries beneficiary code
-     * @param phone         contact phone number
-     * @param maritalStatus marital status
-     * @param affectation   affectation
      * @throws InvalidInputException if the data is invalid
      */
-    private void modify(String fullName, String id, String expeditionLocation, String codeBeneficiaries,
-                        String phone, MaritalStatus maritalStatus, String affectation) throws InvalidInputException {
+    private void modify() throws InvalidInputException {
+        String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
+        String id = registerBeneficiary.getTxt_id().getText().trim();
+        String expeditionLocation = registerBeneficiary.getTxt_expeditionLocation().getText().trim();
+        String phone = registerBeneficiary.getTxt_phone().getText().trim();
+        MaritalStatus maritalStatus = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
+        String affectation = registerBeneficiary.getTxa_affectation().getText().trim();
+        String codeBeneficiaries = registerBeneficiary.getTxt_followingCode().getText().trim().toUpperCase();
         int modifyCode = registerBeneficiary.getModifyCode();
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
@@ -343,11 +337,11 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
      * persists and register the spouse when the civil status requires it.
      * </p>
      *
-     * @param fullName full name of the beneficiary
+     *
      */
-    private void doInBackGroundRegister(String fullName, long id, String cadastralId, String address,
-                                        Department department, Municipalities municipalities, String crossing,
-                                        String neighborhood, String publication) {
+    private void doInBackGroundRegister(String cadastralId, String address, Department department,
+                                        Municipalities municipalities, String crossing, String neighborhood,
+                                        String publication) {
 
         new Thread(() -> {
             try {
@@ -411,7 +405,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                 dtoSpouse.getPhone(), beneficiaryCode);
     }
 
-    private void register(String fullName, String id) throws InvalidInputException {
+    private void register() throws InvalidInputException {
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
         Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
         Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
@@ -421,7 +415,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
 
         prepareUI(false);
-        doInBackGroundRegister(fullName, Long.parseLong(id), cadastralReference, address, department, municipality,
+        doInBackGroundRegister(cadastralReference, address, department, municipality,
                 crossing, neighborhood, publication);
     }
 

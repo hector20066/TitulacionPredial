@@ -62,6 +62,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private final PointFacade daoPoint;
     private final BeneficiaryFacade daoBeneficiary;
 
+    private int propertyCode;
+
     /**
      * Create the controller, register it as an observer, and
      * connect the form events.
@@ -132,17 +134,15 @@ public class ControllerRegisterProperty implements LanguageObserver {
         try {
             String cadastralId = registerProperty.getTxt_cadastralId().getText().trim();
             String area = registerProperty.getTxt_area().getText().trim();
-            String beneficiaryCode = registerProperty.getTxt_beneficiaryCode().getText().trim().replace("F", "");
 
             if (cadastralId.isBlank() || area.isBlank()) {
                 throw new EmptyFieldException(lang.message("empty.property.id.area"));
             }
 
-            String[] beneficiariesCode = beneficiaryCode.split(" - ");
             List<PointData> points = extractPoints();
 
             prepareUI();
-            doInBackGround(cadastralId, Double.parseDouble(area.replace(",", ".")), beneficiariesCode, points);
+            doInBackGround(cadastralId, Double.parseDouble(area.replace(",", ".")), points);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerProperty);
         }
@@ -234,32 +234,27 @@ public class ControllerRegisterProperty implements LanguageObserver {
      *
      * @param cadastralId      cadastral certificate of the property
      * @param area             area of the property in square meters
-     * @param beneficiaryCodes codes of associated beneficiaries
      * @param points           List of data for the four geographical points
      */
-    private void doInBackGround(String cadastralId, double area, String[] beneficiaryCodes, List<PointData> points) {
+    private void doInBackGround(String cadastralId, double area, List<PointData> points) {
         new Thread(() -> {
             try {
-                if (daoProperty.findByCode(cadastralId) != null) {
-                    throw new PersistenceException(lang.message("persistence.property.exist1") + " '" + cadastralId + "' " + lang.message("persistence.property.exist2"));
+                if (daoProperty.findByCode(cadastralId) == null) {
+                    throw new PersistenceException("No se ha encontrado el predio con este numero de referencia.");
                 }
 
-                //int propertyCode = daoProperty.add(cadastralId, area);
+                boolean success = daoProperty.modify(cadastralId, area);
 
-                /*for (PointData p : points) {
+                for (PointData p : points) {
                     daoPoint.add(p.pointNumber(),
                             Double.parseDouble(p.north()),
                             Double.parseDouble(p.east()),
                             Double.parseDouble(p.distance()),
                             p.hillside(),
-                            propertyCode);
-                }*/
-
-                for (String beneficiaryCode : beneficiaryCodes) {
-                    //daoBeneficiary.modifyProperty(Integer.parseInt(beneficiaryCode), propertyCode);
+                            this.propertyCode);
                 }
 
-                SwingUtilities.invokeLater(this::runInvokeLater);
+                SwingUtilities.invokeLater(() -> runInvokeLater(success));
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> {
                     MessageUtils.errorMessage(e.getMessage(), registerProperty);
@@ -273,10 +268,14 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Displays the successful registration message, notifies
      * observers, and resets the interface.
      */
-    private void runInvokeLater() {
-        MessageUtils.informationMessage(lang.message("message.property.register"), registerProperty);
-        subject.notifyObservers();
-        resetUI();
+    private void runInvokeLater(boolean success) {
+        if (success) {
+            MessageUtils.informationMessage("Se ha registrado el predio.", registerProperty);
+            subject.notifyObservers();
+            resetUI();
+        } else {
+            MessageUtils.errorMessage("No se ha podido registrar el predio.", registerProperty);
+        }
     }
 
     /**
@@ -354,6 +353,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setText("Buscando...");
+        this.propertyCode = 0;
     }
 
     private void doInBackGroundSearch(String beneficiariesCode) {
@@ -364,6 +364,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 SwingUtilities.invokeLater(() -> {
                     registerProperty.getTxt_cadastralId().setText(dto.getCadastral_reference());
                     registerProperty.getTxt_address().setText(dto.getAddress());
+                    this.propertyCode = dto.getCode();
 
                     resetUILoadBeneficiaries();
                 });
@@ -384,6 +385,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
+        this.propertyCode = 0;
     }
 
     /**

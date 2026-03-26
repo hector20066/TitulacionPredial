@@ -60,6 +60,8 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      */
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
 
+    boolean modify(String cadastralReference, double area) throws DAOException;
+
     /**
      * Calculate the percentage of properties with a resolution.
      *
