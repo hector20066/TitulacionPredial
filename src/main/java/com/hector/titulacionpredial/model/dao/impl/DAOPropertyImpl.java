@@ -10,6 +10,7 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -326,6 +327,24 @@ public class DAOPropertyImpl implements DAOProperty {
                 .hillside(rs.getString("hillside"))
                 .propertyCode(propertyCode)
                 .build();
+    }
+
+    public boolean modify(DTOPropertyUpdate dto) throws DAOException {
+        String sql = SQLRepository.get("sql/property/modify.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setDouble(1, dto.getArea());
+            st.setString(2, dto.getCadastralRef());
+
+            if (st.executeUpdate() == 0) {
+                throw new PropertyNotFoundException();
+            }
+
+            return true;
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException("No se encontro");
+        }
     }
 
     @Override

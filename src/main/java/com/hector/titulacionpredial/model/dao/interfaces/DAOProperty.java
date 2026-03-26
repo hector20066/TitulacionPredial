@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 
 import java.util.List;
 
@@ -24,7 +25,8 @@ import java.util.List;
  */
 public interface DAOProperty extends IListable<DTOPropertyDetails>,
         IRemovable,
-        ICountable {
+        ICountable,
+        IModifiable<DTOPropertyUpdate> {
 
     /**
      * Insert a new property into the database.

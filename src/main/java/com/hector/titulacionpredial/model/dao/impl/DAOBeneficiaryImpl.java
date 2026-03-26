@@ -201,7 +201,8 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
                 return new DTOBeneficiariesCode(
                         rs.getString("cadastral_reference"),
-                        rs.getString("address")
+                        rs.getString("address"),
+                        rs.getInt("code")
                 );
             }
         } catch (SQLException e) {
