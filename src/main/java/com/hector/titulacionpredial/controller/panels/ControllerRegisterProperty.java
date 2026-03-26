@@ -16,12 +16,14 @@ import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.ImportExcel;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +99,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.setControllerReturnPoint2(e -> actionPrevious());
         registerProperty.setControllerReturnPoint3(e -> actionPrevious());
         registerProperty.setControllerSearchBeneficiaries(e -> searchBeneficiaries());
+        registerProperty.setControllerImportExcelData(e -> importExcelData());
     }
 
     @Override
@@ -386,6 +389,54 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_searchBeneficiary().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
         this.propertyCode = 0;
+    }
+
+    private void importExcelData() {
+        JFileChooser fileChooser = new JFileChooser();
+
+        int option = fileChooser.showOpenDialog(registerProperty);
+
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+
+            String name = file.getName().toLowerCase();
+            if (!name.endsWith(".xlsx") && !name.endsWith(".xls")) {
+                JOptionPane.showMessageDialog(registerProperty,
+                        "Solo se permiten archivos Excel (.xlsx o .xls)",
+                        "Archivo inválido", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            ImportExcel reader = new ImportExcel();
+            List<List<String>> data = reader.readExcel(file.getAbsolutePath());
+
+            loadInFields(data);
+        }
+    }
+
+    private void loadInFields(List<List<String>> data) {
+        if (data.size() > 0) {
+            List<String> fila = data.get(0);
+
+            registerProperty.getTxt_eastCoordinate1().setText(fila.size() > 0 ? fila.get(0) : "");
+            registerProperty.getTxt_northCoordinate1().setText(fila.size() > 1 ? fila.get(1) : "");
+            registerProperty.getTxt_distance1().setText(fila.size() > 2 ? fila.get(2) : "");
+            registerProperty.getTxt_hillside1().setText(fila.size() > 3 ? fila.get(3) : "");
+            registerProperty.getTxt_eastCoordinate2().setText(fila.size() > 4 ? fila.get(4) : "");
+            registerProperty.getTxt_northCoordinate2().setText(fila.size() > 5 ? fila.get(5) : "");
+            registerProperty.getTxt_distance2().setText(fila.size() > 6 ? fila.get(6) : "");
+            registerProperty.getTxt_hillside2().setText(fila.size() > 7 ? fila.get(7) : "");
+            registerProperty.getTxt_eastCoordinate3().setText(fila.size() > 8 ? fila.get(8) : "");
+            registerProperty.getTxt_northCoordinate3().setText(fila.size() > 9 ? fila.get(9) : "");
+            registerProperty.getTxt_distance3().setText(fila.size() > 10 ? fila.get(10) : "");
+            registerProperty.getTxt_hillside3().setText(fila.size() > 11 ? fila.get(11) : "");
+            registerProperty.getTxt_eastCoordinate4().setText(fila.size() > 12 ? fila.get(12) : "");
+            registerProperty.getTxt_northCoordinate4().setText(fila.size() > 13 ? fila.get(13) : "");
+            registerProperty.getTxt_distance4().setText(fila.size() > 14 ? fila.get(14) : "");
+            registerProperty.getTxt_hillside4().setText(fila.size() > 15 ? fila.get(15) : "");
+            registerProperty.getTxt_area().setText(fila.size() > 16 ? fila.get(16) : "");
+
+        }
     }
 
     /**

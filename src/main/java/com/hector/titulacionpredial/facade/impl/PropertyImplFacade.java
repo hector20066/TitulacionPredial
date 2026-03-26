@@ -70,6 +70,11 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
+    public boolean modify(String cadastralReference, double area) throws DAOException {
+        return true;
+    }
+
+    @Override
     public void delete(int code) throws DAOException {
         daoProperty.delete(code);
     }

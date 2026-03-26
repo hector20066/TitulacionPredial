@@ -97,6 +97,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_searchBeneficiaries = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jLabel1 = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
+        btn_importExcelData = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -601,6 +602,12 @@ public class RegisterProperty extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(33, 37, 41));
         jLabel1.setText("Direccion:");
 
+        btn_importExcelData.setBackground(new java.awt.Color(149, 213, 178));
+        btn_importExcelData.setForeground(new java.awt.Color(0, 0, 0));
+        btn_importExcelData.setText("Importar Datos de Excel");
+        btn_importExcelData.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_importExcelData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -616,12 +623,6 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addGap(56, 56, 56)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jlb_beneficiaryCode)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jlb_cadastralId)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_cadastralId, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -630,18 +631,28 @@ public class RegisterProperty extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jlb_beneficiaryCode)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(46, 46, 46)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_importExcelData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jlb_title))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlb_pointInfo)
-                                    .addComponent(jlb_propertyInfo))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(jlb_propertyInfo)
+                                    .addComponent(jlb_pointInfo))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -667,10 +678,15 @@ public class RegisterProperty extends javax.swing.JPanel {
                     .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btn_importExcelData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
                 .addComponent(jlb_pointInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -690,7 +706,6 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     /**
      * Updates the panel text according to the selected language.
      *
@@ -733,6 +748,9 @@ public class RegisterProperty extends javax.swing.JPanel {
 
     public void setControllerSearchBeneficiaries(ActionListener action) {
         btn_searchBeneficiaries.addActionListener(action);
+    }
+    public void setControllerImportExcelData(ActionListener action) {
+        btn_importExcelData.addActionListener(action);
     }
 
     public void setControllerGoPoint2(ActionListener action) {
@@ -789,6 +807,10 @@ public class RegisterProperty extends javax.swing.JPanel {
 
     public ButtonAction getBtn_searchBeneficiary() {
         return btn_searchBeneficiaries;
+    }
+
+    public ButtonAction getBtn_importExcelData() {
+        return btn_importExcelData;
     }
 
     public JPanel getJpl_contentPoints() {
@@ -920,6 +942,7 @@ public class RegisterProperty extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_goPoint2;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_goPoint3;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_goPoint4;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_importExcelData;
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_register;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint1;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint2;
