@@ -4,14 +4,16 @@ public class DTOBeneficiariesCode {
 
     private String cadastral_reference;
     private String address;
+    private int code;
 
     public DTOBeneficiariesCode() {
 
     }
 
-    public DTOBeneficiariesCode(String cadastral_reference, String address) {
+    public DTOBeneficiariesCode(String cadastral_reference, String address, int code) {
         this.cadastral_reference = cadastral_reference;
         this.address = address;
+        this.code = code;
     }
 
     public String getCadastral_reference() {
@@ -30,4 +32,12 @@ public class DTOBeneficiariesCode {
         this.address = address;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+    
 }
