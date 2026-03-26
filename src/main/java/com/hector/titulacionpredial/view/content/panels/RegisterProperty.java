@@ -94,7 +94,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_pointInfo = new javax.swing.JLabel();
         jlb_beneficiaryCode = new javax.swing.JLabel();
         txt_beneficiaryCode = new javax.swing.JTextField();
-        btn_selectBeneficiary = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
+        btn_searchBeneficiaries = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -589,11 +589,11 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
-        btn_selectBeneficiary.setBackground(new java.awt.Color(149, 213, 178));
-        btn_selectBeneficiary.setForeground(new java.awt.Color(33, 37, 41));
-        btn_selectBeneficiary.setText("Buscar Beneficiario");
-        btn_selectBeneficiary.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        btn_selectBeneficiary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_searchBeneficiaries.setBackground(new java.awt.Color(149, 213, 178));
+        btn_searchBeneficiaries.setForeground(new java.awt.Color(33, 37, 41));
+        btn_searchBeneficiaries.setText("Buscar Beneficiario");
+        btn_searchBeneficiaries.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btn_searchBeneficiaries.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -614,7 +614,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(46, 46, 46)
-                                        .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jlb_cadastralId)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -655,7 +655,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_beneficiaryCode)
                     .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_selectBeneficiary, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jlb_pointInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -688,7 +688,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_cadastralId.setText(texts.getCadastralId());
         jlb_area.setText(texts.getArea());
         jlb_beneficiaryCode.setText(texts.getBeneficiaryCode());
-        btn_selectBeneficiary.setText(texts.getSearchBeneficiary());
+        btn_searchBeneficiaries.setText(texts.getSearchBeneficiary());
         jlb_pointInfo.setText(texts.getPointsInfo());
         jlb_point1.setText(texts.getPoint() + " 1");
         jlb_point2.setText(texts.getPoint() + " 2");
@@ -717,8 +717,8 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_register.addActionListener(action);
     }
 
-    public void setControllerShowBeneficiaries(ActionListener action) {
-        btn_selectBeneficiary.addActionListener(action);
+    public void setControllerSearchBeneficiaries(ActionListener action) {
+        btn_searchBeneficiaries.addActionListener(action);
     }
 
     public void setControllerGoPoint2(ActionListener action) {
@@ -773,8 +773,8 @@ public class RegisterProperty extends javax.swing.JPanel {
         return btn_returnPoint3;
     }
 
-    public ButtonAction getBtn_selectBeneficiary() {
-        return btn_selectBeneficiary;
+    public ButtonAction getBtn_searchBeneficiary() {
+        return btn_searchBeneficiaries;
     }
 
     public JPanel getJpl_contentPoints() {
@@ -906,7 +906,7 @@ public class RegisterProperty extends javax.swing.JPanel {
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint1;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint2;
     private com.hector.titulacionpredial.view.swing.button.ButtonBadges btn_returnPoint3;
-    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_selectBeneficiary;
+    private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_searchBeneficiaries;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jlb_area;
     private javax.swing.JLabel jlb_beneficiaryCode;
