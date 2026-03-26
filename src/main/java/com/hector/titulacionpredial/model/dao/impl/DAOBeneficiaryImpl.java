@@ -187,9 +187,26 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
-    public List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException {
-        String sql = SQLRepository.get("sql/beneficiary/findAllWithoutProperty.sql");
-        return executeFindAllWithoutProperty(sql);
+    public DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException {
+        String sql = SQLRepository.get("sql/beneficiary/findByBeneficiariesCode.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setString(1, beneficiariesCode);
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    throw new BeneficiaryNotFoundException();
+                }
+
+                return new DTOBeneficiariesCode(
+                        rs.getString("cadastral_reference"),
+                        rs.getString("address")
+                );
+            }
+        } catch (SQLException e) {
+            throw new BeneficiaryPersistenceException();
+        }
     }
 
     /**

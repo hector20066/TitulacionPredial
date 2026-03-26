@@ -14,7 +14,6 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
@@ -94,7 +93,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.setControllerReturnPoint1(e -> actionPrevious());
         registerProperty.setControllerReturnPoint2(e -> actionPrevious());
         registerProperty.setControllerReturnPoint3(e -> actionPrevious());
-        registerProperty.setControllerShowBeneficiaries(e -> showBeneficiaries());
+        registerProperty.setControllerSearchBeneficiaries(e -> searchBeneficiaries());
     }
 
     @Override
@@ -331,7 +330,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * them when closing the dialog.
      * </p>
      */
-    private void showBeneficiaries() {
+    private void searchBeneficiaries() {
         
     }
 
@@ -341,8 +340,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
      */
     private void resetUILoadBeneficiaries() {
         registerProperty.getBtn_register().setEnabled(true);
-        registerProperty.getBtn_selectBeneficiary().setEnabled(true);
-        registerProperty.getBtn_selectBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
+        registerProperty.getBtn_searchBeneficiary().setEnabled(true);
+        registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
     }
 
     /**

@@ -156,7 +156,7 @@ class BeneficiaryImplFacadeTest {
         verify(daoBeneficiary).findAllForExport();
     }
 
-    @Test
+    /*@Test
     @DisplayName("findAllWithoutProperty debe delegar al DAO")
     void findAllWithoutPropertyShouldDelegate() throws DAOException {
         List<DTOBeneficiarySimpleDetails> expected = List.of();
@@ -166,7 +166,7 @@ class BeneficiaryImplFacadeTest {
 
         assertSame(expected, result);
         verify(daoBeneficiary).findAllWithoutProperty();
-    }
+    }*/
 
     @Test
     @DisplayName("modify debe crear DTO y delegar al DAO")

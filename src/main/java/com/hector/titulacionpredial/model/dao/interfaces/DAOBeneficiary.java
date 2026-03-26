@@ -99,13 +99,7 @@ public interface DAOBeneficiary extends IListable<DTOBeneficiarySimpleDetails>,
      */
     List<DTOBeneficiaryCreate> findAllForExport() throws DAOException;
 
-    /**
-     * It obtains the beneficiaries who do not yet have an assigned property.
-     *
-     * @return List of DTOs of beneficiaries without property
-     * @throws DAOException if an error occurs in the query
-     */
-    List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
+    DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException;
 
     /**
      * It modifies the relationship between a beneficiary and their property.

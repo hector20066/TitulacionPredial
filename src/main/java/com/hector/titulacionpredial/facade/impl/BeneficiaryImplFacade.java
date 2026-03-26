@@ -89,8 +89,8 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException {
-        return daoBeneficiary.findAllWithoutProperty();
+    public DTOBeneficiariesCode findAllWithoutProperty(String beneficiariesCode) throws DAOException {
+        return daoBeneficiary.findByBeneficiariesCode(beneficiariesCode);
     }
 
     @Override

@@ -5,10 +5,7 @@ import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -100,13 +97,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      */
     List<DTOBeneficiaryCreate> findAllForExport() throws DAOException;
 
-    /**
-     * It obtains beneficiaries without assigned property.
-     *
-     * @return List of beneficiary data without property
-     * @throws DAOException if an error occurs in the query
-     */
-    List<DTOBeneficiarySimpleDetails> findAllWithoutProperty() throws DAOException;
+    DTOBeneficiariesCode findAllWithoutProperty(String beneficiariesCode) throws DAOException;
 
     /**
      * Modify the details of an existing beneficiary.
