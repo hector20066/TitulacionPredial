@@ -14,6 +14,7 @@ import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
@@ -331,7 +332,48 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * </p>
      */
     private void searchBeneficiaries() {
-        
+        try {
+            String beneficiariesCode = registerProperty.getTxt_beneficiaryCode().getText().trim();
+
+            if (beneficiariesCode.isBlank()) {
+                throw new EmptyFieldException("código de los beneficiarios");
+            }
+
+            if (beneficiariesCode.contains("F")) {
+                throw new InvalidInputException("código de los beneficiarios");
+            }
+
+            prepareUISearch();
+            doInBackGroundSearch(beneficiariesCode);
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), registerProperty);
+        }
+    }
+
+    private void prepareUISearch() {
+        registerProperty.getBtn_register().setEnabled(false);
+        registerProperty.getBtn_searchBeneficiary().setEnabled(false);
+        registerProperty.getBtn_searchBeneficiary().setText("Buscando...");
+    }
+
+    private void doInBackGroundSearch(String beneficiariesCode) {
+        new Thread(() -> {
+            try {
+                DTOBeneficiariesCode dto = daoBeneficiary.findByBeneficiariesCode(beneficiariesCode);
+
+                SwingUtilities.invokeLater(() -> {
+                    registerProperty.getTxt_cadastralId().setText(dto.getCadastral_reference());
+                    registerProperty.getTxt_address().setText(dto.getAddress());
+
+                    resetUILoadBeneficiaries();
+                });
+            } catch (DAOException e) {
+                SwingUtilities.invokeLater(() -> {
+                    MessageUtils.errorMessage(e.getMessage(), registerProperty);
+                    resetUILoadBeneficiaries();
+                });
+            }
+        }).start();
     }
 
     /**
