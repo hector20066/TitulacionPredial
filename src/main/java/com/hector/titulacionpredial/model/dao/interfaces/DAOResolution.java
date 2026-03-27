@@ -1,8 +1,12 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
+import java.util.List;
+
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * DAO interface for managing resolutions in the database.
@@ -24,5 +28,14 @@ public interface DAOResolution extends DAOBase<DTOResolutionCreate, DTOResolutio
         IListable<DTOResolutionDetails>,
         IModifiable<DTOResolutionUpdate>,
         ICountable {
+
+    /**
+     * It obtains all resolutions for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return List of resolutions from the selected municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    List<DTOResolutionDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
 }

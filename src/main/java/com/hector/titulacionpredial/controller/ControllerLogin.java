@@ -1,28 +1,31 @@
 package com.hector.titulacionpredial.controller;
 
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.JPanel;
+import javax.swing.SwingWorker;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.utils.NetworkUtils;
+import com.hector.titulacionpredial.utils.SessionManager;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.concurrent.ExecutionException;
 
 /**
  * @author Ing. Hector Acevedo
@@ -193,6 +196,13 @@ public class ControllerLogin implements LanguageObserver {
 
     private void startSessionUser() {
         String mode = (String) login.getCbo_access().getSelectedItem();
+        
+        // Extract municipality from selection and store in session
+        Municipalities municipality = extractMunicipalityFromMode(mode);
+
+        if (municipality != null) {
+            SessionManager.getInstance().setMunicipality(municipality);
+        }
 
         if (mode.equalsIgnoreCase("Solo lectura")) {
             java.awt.EventQueue.invokeLater(() -> {
@@ -211,6 +221,20 @@ public class ControllerLogin implements LanguageObserver {
         }
 
         login.dispose();
+    }
+    
+    /**
+     * Extract the municipality from the selected access mode.
+     *
+     * @param mode the selected access mode from the ComboBox
+     * @return the corresponding {@link Municipalities} enum, or null if unrestricted
+     */
+    private Municipalities extractMunicipalityFromMode(String mode) {
+        return switch (mode) {
+            case "Info. Sahagun" -> Municipalities.SAHAGUN;
+            case "Inf. Monteria" -> Municipalities.MONTERIA;
+            default -> null; // "Solo lectura" returns null (unrestricted access)
+        };
     }
 
     private void resetLogIn() {

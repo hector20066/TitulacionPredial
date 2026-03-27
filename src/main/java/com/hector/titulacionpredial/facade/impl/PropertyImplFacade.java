@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
@@ -7,10 +9,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-
-import java.util.List;
 
 /**
  * Implementation of the {@link PropertyFacade} facade for
@@ -67,6 +66,11 @@ public class PropertyImplFacade implements PropertyFacade {
     @Override
     public List<DTOPropertyDetails> findByAllForExport() throws DAOException {
         return daoProperty.findByAllForExport();
+    }
+
+    @Override
+    public List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException {
+        return daoProperty.findByMunicipality(municipality);
     }
 
     @Override

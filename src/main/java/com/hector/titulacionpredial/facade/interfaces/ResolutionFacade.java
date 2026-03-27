@@ -1,12 +1,14 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-
-import java.time.LocalDate;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Facade that defines the high-level operations for managing
@@ -49,6 +51,15 @@ public interface ResolutionFacade extends IListable<DTOResolutionDetails>, ICoun
      * @throws DAOException if an error occurs or it is not found
      */
     DTOResolutionDetails findByCode(int numResolution) throws DAOException;
+
+    /**
+     * It obtains all resolutions for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return list of resolutions from the selected municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    List<DTOResolutionDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
     /**
      * Modify the data of an existing resolution.

@@ -21,5 +21,5 @@ FROM property p
          JOIN point pt ON pt.property_code = p.code
          LEFT JOIN beneficiary b ON b.property_code = p.code
          LEFT JOIN resolution r ON r.property_code = p.code
-WHERE p.cadastral_id = ?
+WHERE p.cadastral_reference = ?
 ORDER BY pt.number;

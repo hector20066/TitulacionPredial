@@ -1,5 +1,18 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Locale;
+
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerSeeResolutionsBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -11,28 +24,17 @@ import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.FilterUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
-import com.hector.titulacionpredial.view.content.ContentAdmin;
+import com.hector.titulacionpredial.utils.SessionManager;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Resolution display panel controller.
@@ -103,7 +105,10 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     public void update() {
         new Thread(() -> {
             try {
-                List<DTOResolutionDetails> listResolutions = daoResolution.findByAll();
+                Municipalities municipality = SessionManager.getInstance().getMunicipality();
+                List<DTOResolutionDetails> listResolutions = (municipality != null)
+                    ? daoResolution.findByMunicipality(municipality)
+                    : daoResolution.findByAll();
                 SwingUtilities.invokeLater(() -> loadData(listResolutions));
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), seeResolutions));

@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
@@ -8,8 +10,6 @@ import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-
-import java.util.List;
 
 /**
  * Facade that defines the high-level operations for property management
@@ -59,6 +59,15 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      * @throws DAOException if an error occurs in the query
      */
     List<DTOPropertyDetails> findByAllForExport() throws DAOException;
+
+    /**
+     * It obtains all properties for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return list of properties from the selected municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
     boolean modify(String cadastralReference, double area) throws DAOException;
 

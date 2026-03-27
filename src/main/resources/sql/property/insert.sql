@@ -4,6 +4,6 @@ INSERT INTO property (
                       municipality,
                       neighborhood,
                       address,
-                      crossign,
+                      crossing,
                       publication)
 VALUES (?, ?, ?, ?, ?, ?, ?);

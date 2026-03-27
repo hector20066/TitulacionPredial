@@ -1,5 +1,16 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -13,12 +24,6 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Implementation of the DAO for property management in the MySQL database.
@@ -102,7 +107,7 @@ public class DAOPropertyImpl implements DAOProperty {
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
-                while (rs.next()) {
+                if (rs.next()) {
                     processRow(rs, properties);
                 }
             }
@@ -123,6 +128,28 @@ public class DAOPropertyImpl implements DAOProperty {
     public List<DTOPropertyDetails> findByAllForExport() throws DAOException {
         String sql = SQLRepository.get("sql/property/findByAllExport.sql");
         return getDtoPropertyDetails(sql);
+    }
+
+    @Override
+    public List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException {
+        String sql = SQLRepository.get("sql/property/findByMunicipality.sql");
+        Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
+
+        try (Connection conn = DataBasePool.getConnection();
+             PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setString(1, String.valueOf(municipality));
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    processRow(rs, properties);
+                }
+            }
+
+            return new ArrayList<>(properties.values());
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException(
+                    lang.message("persistence.property.info.municipality") + " " + municipality, e);
+        }
     }
 
     /**

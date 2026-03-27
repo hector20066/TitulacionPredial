@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOResolutionImpl;
@@ -7,9 +10,7 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
-
-import java.time.LocalDate;
-import java.util.List;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Implementation of the {@link ResolutionFacade} facade
@@ -64,6 +65,11 @@ public class ResolutionImplFacade implements ResolutionFacade {
     @Override
     public List<DTOResolutionDetails> findByAll() throws DAOException {
         return daoResolution.findByAll();
+    }
+
+    @Override
+    public List<DTOResolutionDetails> findByMunicipality(Municipalities municipality) throws DAOException {
+        return daoResolution.findByMunicipality(municipality);
     }
 
     @Override

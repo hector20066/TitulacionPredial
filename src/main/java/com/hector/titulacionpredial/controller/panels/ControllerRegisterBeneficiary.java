@@ -374,6 +374,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (DAOException e) {
+                e.printStackTrace();
                 SwingUtilities.invokeLater(() -> {
                     MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
                     resetButton(false);
@@ -405,7 +406,7 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
                 dtoSpouse.getPhone(), beneficiaryCode);
     }
 
-    private void register() throws InvalidInputException {
+    private void register() {
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
         Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
         Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();

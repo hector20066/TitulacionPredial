@@ -1,5 +1,13 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
@@ -9,11 +17,8 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOResolution;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Concrete implementation of {@link DAOResolution} that manages
@@ -135,6 +140,30 @@ public class DAOResolutionImpl implements DAOResolution {
             return list;
         } catch (SQLException e) {
             throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.all"), e);
+        }
+    }
+
+    @Override
+    public List<DTOResolutionDetails> findByMunicipality(Municipalities municipality) throws DAOException {
+        List<DTOResolutionDetails> list = new ArrayList<>();
+        String sql = SQLRepository.get("sql/resolution/findByMunicipality.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setString(1, String.valueOf(municipality));
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    DTOResolutionDetails dto = new DTOResolutionDetails();
+                    executeQuery(dto, rs);
+                    list.add(dto);
+                }
+
+                return list;
+            }
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException(
+                    lang.message("persistence.resolution.info.municipality") + " " + municipality, e);
         }
     }
 
