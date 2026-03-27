@@ -5,6 +5,7 @@ import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import com.hector.titulacionpredial.view.swing.menu.Menu;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  * Main window ({@code JFrame}) of the Property Titling application.
@@ -131,6 +132,10 @@ public class ContentAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void setControllerLogout(ActionListener action) {
+        btn_logout.addActionListener(action);
+    }
 
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);

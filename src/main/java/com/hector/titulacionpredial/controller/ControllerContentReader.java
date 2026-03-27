@@ -46,6 +46,7 @@ public class ControllerContentReader implements LanguageObserver {
      */
     private void connectEvents() {
         contentReader.setControllerMenu(this::selectedMenu);
+        contentReader.setControllerLogout(e -> logout());
     }
 
     private void selectedMenu(int index, int indexSubMenu) {
@@ -77,6 +78,11 @@ public class ControllerContentReader implements LanguageObserver {
         seeProperties.getBtn_delete().setVisible(false);
         seeProperties.getBtn_generate().setVisible(false);
         seeResolutions.getBtn_modify().setVisible(false);
+    }
+
+    private void logout() {
+        contentReader.setVisible(false);
+        contentReader.dispose();
     }
 
 }
