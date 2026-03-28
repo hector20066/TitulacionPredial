@@ -160,6 +160,7 @@ public class Coordinator {
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
+                .withViewLogin(login)
                 .withLanguageManager(lang)
                 .withLanguageSubject(languageSubject)
                 .build();
@@ -175,6 +176,7 @@ public class Coordinator {
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
+                .withViewLogin(login)
                 .withLanguageManager(lang)
                 .withLanguageSubject(languageSubject)
                 .build();
@@ -188,6 +190,7 @@ public class Coordinator {
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)
+                .withViewLogin(login)
                 .withLanguageManager(lang)
                 .withLanguageSubject(languageSubject)
                 .build();

@@ -133,7 +133,7 @@ public class ContentAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setControllerLogout(ActionListener action) {
+    public void setControllerLogout(ActionListener action) {
         btn_logout.addActionListener(action);
     }
 

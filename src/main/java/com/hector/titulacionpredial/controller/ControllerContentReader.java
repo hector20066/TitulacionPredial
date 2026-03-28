@@ -5,6 +5,7 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.*;
@@ -22,6 +23,7 @@ public class ControllerContentReader implements LanguageObserver {
     private final SeeResolutions seeResolutions;
     private final Settings settings;
     private final About about;
+    private final ContentLogin contentLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -33,6 +35,7 @@ public class ControllerContentReader implements LanguageObserver {
         this.seeResolutions = builder.getSeeResolutions();
         this.settings = builder.getSettings();
         this.about = builder.getAbout();
+        this.contentLogin = builder.getContentLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -81,6 +84,11 @@ public class ControllerContentReader implements LanguageObserver {
     }
 
     private void logout() {
+        this.contentLogin.setVisible(true);
+        this.contentLogin.setResizable(false);
+        this.contentLogin.setLocationRelativeTo(null);
+        this.contentLogin.getBtn_login().setEnabled(true);
+        this.contentLogin.getBtn_login().setText("INICIAR SESION");
         contentReader.setVisible(false);
         contentReader.dispose();
     }

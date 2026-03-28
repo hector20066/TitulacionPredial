@@ -7,6 +7,7 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
+import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.panels.*;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 
@@ -44,6 +45,7 @@ public class ControllerContentAdmin implements LanguageObserver {
     private final ManageUsers seeUsers;
     private final Settings settings;
     private final About about;
+    private final ContentLogin contentLogin;
     private final Subject subject;
     private final LanguageManager lang;
 
@@ -65,6 +67,7 @@ public class ControllerContentAdmin implements LanguageObserver {
         this.seeUsers = builder.getManageUsers();
         this.settings = builder.getSettings();
         this.about = builder.getAbout();
+        this.contentLogin = builder.getContentLogin();
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
@@ -78,6 +81,7 @@ public class ControllerContentAdmin implements LanguageObserver {
      */
     private void connectEvents() {
         content.setControllerMenu(this::selectedMenu);
+        content.setControllerLogout(e -> logout());
     }
 
     /**
@@ -148,6 +152,16 @@ public class ControllerContentAdmin implements LanguageObserver {
                 .build();
 
         //content.getMenu().setText(dto);
+    }
+
+    private void logout() {
+        this.contentLogin.setVisible(true);
+        this.contentLogin.setResizable(false);
+        this.contentLogin.setLocationRelativeTo(null);
+        this.contentLogin.getBtn_login().setEnabled(true);
+        this.contentLogin.getBtn_login().setText("INICIAR SESION");
+        this.content.setVisible(false);
+        this.content.dispose();
     }
 
 }

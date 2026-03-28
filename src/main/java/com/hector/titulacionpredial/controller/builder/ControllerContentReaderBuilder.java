@@ -5,6 +5,7 @@ import com.hector.titulacionpredial.controller.ControllerContentReader;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.panels.*;
 
@@ -20,6 +21,7 @@ public class ControllerContentReaderBuilder {
     private LanguageSubject languageSubject;
     private LanguageManager lang;
     private About about;
+    private ContentLogin contentLogin;
 
     /**
      * Assigns the main view of the application content.
@@ -133,6 +135,17 @@ public class ControllerContentReaderBuilder {
     }
 
     /**
+     * Assign the view of the «ContentLogin».
+     *
+     * @param contentLogin view of the Login
+     * @return instance of the builder for fluid chaining
+     */
+    public ControllerContentReaderBuilder withViewLogin(ContentLogin contentLogin) {
+        this.contentLogin = contentLogin;
+        return this;
+    }
+
+    /**
      * Build a new instance of {@link ControllerContentAdmin}
      *
      * @return new DTO configured
@@ -179,6 +192,10 @@ public class ControllerContentReaderBuilder {
 
     public About getAbout() {
         return about;
+    }
+
+    public ContentLogin getContentLogin() {
+        return contentLogin;
     }
 
 }

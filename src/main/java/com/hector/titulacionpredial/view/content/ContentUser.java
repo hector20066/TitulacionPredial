@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.view.content;
 import com.hector.titulacionpredial.view.component.UserMenu;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -124,6 +125,10 @@ public class ContentUser extends javax.swing.JFrame {
     
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
+    }
+
+    public void setControllerLogout(ActionListener action) {
+        btn_logout.addActionListener(action);
     }
 
     public UserMenu getMenu() {
