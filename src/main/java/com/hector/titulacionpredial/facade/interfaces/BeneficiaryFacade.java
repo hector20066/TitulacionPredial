@@ -77,7 +77,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @return List of data with the beneficiaries' information
      * @throws DAOException if an error occurs in the query
      */
-    List<DTOBeneficiarySimpleDetails> findAllByMunicipality(String municipality) throws DAOException;
+    List<DTOBeneficiarySimpleDetails> findAllByMunicipality(Municipalities municipality) throws DAOException;
 
     /**
      * It obtains all the data of a beneficiary, including
@@ -111,16 +111,6 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      */
     boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,
                    long phone, String expeditionLocation, int code) throws DAOException;
-
-    /**
-     * Associate a property with a beneficiary.
-     *
-     * @param codeBeneficiaries beneficiary code
-     * @param propertyCode      property code to be associated
-     * @return {@code true} whether the partnership was successful
-     * @throws DAOException if an error occurs during the operation
-     */
-    boolean modifyProperty(String codeBeneficiaries, int propertyCode) throws DAOException;
 
     /**
      * Get the latest registered beneficiary code.

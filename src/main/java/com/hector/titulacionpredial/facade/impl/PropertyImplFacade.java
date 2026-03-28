@@ -8,6 +8,7 @@ import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
@@ -75,7 +76,8 @@ public class PropertyImplFacade implements PropertyFacade {
 
     @Override
     public boolean modify(String cadastralReference, double area) throws DAOException {
-        return true;
+        DTOPropertyUpdate dto = new DTOPropertyUpdate(area, cadastralReference);
+        return daoProperty.modify(dto);
     }
 
     @Override
