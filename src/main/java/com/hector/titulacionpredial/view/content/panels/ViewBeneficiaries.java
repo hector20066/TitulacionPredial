@@ -44,7 +44,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     public ViewBeneficiaries() {
         initComponents();
         
-        String[] titles = {code, id, name, phone, cadastralRef, municipality, address};
+        String[] titles = {code, "Código de Identificación", id, name, phone, cadastralRef, municipality, address};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
         
@@ -330,15 +330,16 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
      */
     public void loadData(DTOBeneficiarySimpleDetails dto) {
         int code = dto.getCode();
+        String beneficiariesCode = dto.getCodeBeneficiaries();
         long id = dto.getId();
         String fullName = dto.getFullName();
         long phone = dto.getPhone();
-        /*String cadastralReference = dto.getCadastralRef();
-        Municipalities municipality = dto.getMunicipality();
+        String cadastralReference = dto.getCadastralReference();
+        Municipalities municipality = dto.getMunicipalities();
         String address = dto.getAddress();
 
-        Object[] data = new Object[]{code, id, fullName, phone, cadastralReference, municipality.getValue(), address};
-        tableModel.addRow(data);*/
+        Object[] data = new Object[]{code, beneficiariesCode, id, fullName, phone, cadastralReference, municipality.getValue(), address};
+        tableModel.addRow(data);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
