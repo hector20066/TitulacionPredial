@@ -1,13 +1,14 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.model.enums.Municipalities;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @DisplayName("DTOBeneficiaryDetails Tests")
 class DTOBeneficiaryDetailsTest {
@@ -147,25 +148,17 @@ class DTOBeneficiaryDetailsTest {
         void builderShouldInheritBeneficiaryFields() {
             DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails.Builder()
                     .code(1)
-                    //.department(Department.ATLANTICO)
-                    //.municipality(Municipalities.BARRANQUILLA)
-                    //.address("Calle 72")
+                    .municipality(Municipalities.BARRANQUILLA)
+                    .address("Calle 72")
                     .phone(3001111111L)
                     .maritalStatus(MaritalStatus.MARRIED)
-                    //.neighborhood("El Prado")
-                    //.crossing("Cruce A")
-                    //.publication("Pub-001")
                     .affectation("Ninguna")
                     .build();
 
-            /*assertEquals(Department.ATLANTICO, dto.getDepartment());
             assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
-            assertEquals("Calle 72", dto.getAddress());*/
+            assertEquals("Calle 72", dto.getAddress());
             assertEquals(3001111111L, dto.getPhone());
             assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
-            /*assertEquals("El Prado", dto.getNeighborhood());
-            assertEquals("Cruce A", dto.getCrossing());
-            assertEquals("Pub-001", dto.getPublication());*/
             assertEquals("Ninguna", dto.getAffectation());
         }
 
@@ -175,6 +168,13 @@ class DTOBeneficiaryDetailsTest {
             DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails.Builder()
                     // Propios de DTOBeneficiaryDetails
                     .code(99)
+                    .department(com.hector.titulacionpredial.model.enums.Department.ANTIOQUIA)
+                    .municipality(Municipalities.MEDELLIN)
+                    .address("Calle 50")
+                    .cadastralRef("CAD-123")
+                    .crossing("Cruce Test")
+                    .publication("Pub Test")
+                    .neighborhood("Barrio Test")
                     .idSpouse(777L)
                     .fullNameSpouse("Spouse Name")
                     .expeditionLocationSpouse("Bogotá")
@@ -185,22 +185,23 @@ class DTOBeneficiaryDetailsTest {
                     .id(12345L)
                     .fullName("Beneficiary Name")
                     .expeditionLocation("Medellín")
-                    //.cadastralReference("CAD-123")
                     // De DTOBeneficiary
-                    //.department(Department.ANTIOQUIA)
-                    //.municipality(Municipalities.MEDELLIN)
+                    .codeBeneficiaries("BEN-001")
                     .maritalStatus(MaritalStatus.FREE_UNION)
-                    //.neighborhood("Barrio Test")
-                    //.crossing("Cruce Test")
-                    //.publication("Pub Test")
                     .affectation("Afect Test")
-                    // De DTOBasePerson (vía builder)
-                    //.address("Dir Test")
+                    // De DTOBasePerson
                     .phone(3009999999L)
                     .build();
 
             // Verificar todos los niveles
             assertEquals(99, dto.getCode());
+            assertEquals(com.hector.titulacionpredial.model.enums.Department.ANTIOQUIA, dto.getDepartment());
+            assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());
+            assertEquals("Calle 50", dto.getAddress());
+            assertEquals("CAD-123", dto.getCadastralRef());
+            assertEquals("Cruce Test", dto.getCrossing());
+            assertEquals("Pub Test", dto.getPublication());
+            assertEquals("Barrio Test", dto.getNeighborhood());
             assertEquals(777L, dto.getIdSpouse());
             assertEquals("Spouse Name", dto.getFullNameSpouse());
             assertEquals("Bogotá", dto.getExpeditionLocationSpouse());
@@ -210,15 +211,9 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(12345L, dto.getId());
             assertEquals("Beneficiary Name", dto.getFullName());
             assertEquals("Medellín", dto.getExpeditionLocation());
-            /*assertEquals("CAD-123", dto.getCadastralReference());
-            assertEquals(Department.ANTIOQUIA, dto.getDepartment());
-            assertEquals(Municipalities.MEDELLIN, dto.getMunicipality());*/
+            assertEquals("BEN-001", dto.getCodeBeneficiaries());
             assertEquals(MaritalStatus.FREE_UNION, dto.getMaritalStatus());
-            /*assertEquals("Barrio Test", dto.getNeighborhood());
-            assertEquals("Cruce Test", dto.getCrossing());
-            assertEquals("Pub Test", dto.getPublication());*/
             assertEquals("Afect Test", dto.getAffectation());
-            //assertEquals("Dir Test", dto.getAddress());
             assertEquals(3009999999L, dto.getPhone());
         }
     }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
-import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
@@ -26,7 +25,8 @@ class DTOBeneficiaryCreateTest {
             assertEquals(0, dto.getId());
             assertNull(dto.getFullName());
             assertNull(dto.getExpeditionLocation());
-            //assertNull(dto.getCadastralReference());
+            assertNull(dto.getCadastralRef());
+            assertNull(dto.getAddress());
         }
 
         @Test
@@ -100,27 +100,21 @@ class DTOBeneficiaryCreateTest {
             DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
                     .id(111L)
                     .fullName("Test")
-                    //.department(Department.ATLANTICO)
-                    //.municipality(Municipalities.BARRANQUILLA)
-                    //.address("Calle 50 #20-30")
+                    .cadastralRef("CAD-REF-001")
+                    .municipality(Municipalities.BARRANQUILLA)
+                    .address("Calle 50 #20-30")
                     .phone(3001234567L)
                     .maritalStatus(MaritalStatus.MARRIED)
-                    //.neighborhood("Centro")
-                    //.crossing("Cruce Norte")
-                    //.publication("Pub-001")
                     .affectation("Ninguna")
                     .build();
 
             assertEquals(111L, dto.getId());
             assertEquals("Test", dto.getFullName());
-            /*assertEquals(Department.ATLANTICO, dto.getDepartment());
+            assertEquals("CAD-REF-001", dto.getCadastralRef());
             assertEquals(Municipalities.BARRANQUILLA, dto.getMunicipality());
-            assertEquals("Calle 50 #20-30", dto.getAddress());*/
+            assertEquals("Calle 50 #20-30", dto.getAddress());
             assertEquals(3001234567L, dto.getPhone());
             assertEquals(MaritalStatus.MARRIED, dto.getMaritalStatus());
-            /*assertEquals("Centro", dto.getNeighborhood());
-            assertEquals("Cruce Norte", dto.getCrossing());
-            assertEquals("Pub-001", dto.getPublication());*/
             assertEquals("Ninguna", dto.getAffectation());
         }
 
@@ -135,9 +129,9 @@ class DTOBeneficiaryCreateTest {
             assertEquals(1L, dto.getId());
             assertEquals("Mínimo", dto.getFullName());
             assertNull(dto.getExpeditionLocation());
-            /*assertNull(dto.getCadastralReference());
-            assertNull(dto.getDepartment());
-            assertNull(dto.getMunicipality());*/
+            assertNull(dto.getCadastralRef());
+            assertNull(dto.getMunicipality());
+            assertNull(dto.getAddress());
             assertEquals(0L, dto.getPhone());
         }
     }

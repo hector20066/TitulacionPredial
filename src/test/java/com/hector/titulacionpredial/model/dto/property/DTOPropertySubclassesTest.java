@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.DTOProperty;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 
 @DisplayName("DTOPropertyCreate & DTOPropertyDetails Tests")
 class DTOPropertySubclassesTest {
@@ -37,9 +36,7 @@ class DTOPropertySubclassesTest {
     @DisplayName("DTOPropertyDetails constructor vacío debe inicializar listas")
     void detailsDefaultConstructorShouldInitializeLists() {
         DTOPropertyDetails dto = new DTOPropertyDetails();
-        assertNotNull(dto.getBeneficiaries());
         assertNotNull(dto.getPoints());
-        assertTrue(dto.getBeneficiaries().isEmpty());
         assertTrue(dto.getPoints().isEmpty());
     }
 
@@ -48,14 +45,14 @@ class DTOPropertySubclassesTest {
     void detailsBuilderShouldBuildWithAllFields() {
         LocalDate notifDate = LocalDate.of(2025, 1, 15);
         LocalDate execDate = LocalDate.of(2025, 2, 15);
-        List<DTOBeneficiaryPropertyDetails> beneficiaries = new ArrayList<>();
         List<DTOPoint> points = new ArrayList<>();
 
         DTOPropertyDetails dto = new DTOPropertyDetails.Builder()
                 .propertyCode(1)
                 .cadastralRef("CAD-100")
                 .area(500.0)
-                .beneficiaries(beneficiaries)
+                .beneficiariesIds("1000332, 2134")
+                .beneficiariesName("hector, juan")
                 .points(points)
                 .numResolution(12345L)
                 .notification(notifDate)
@@ -69,6 +66,8 @@ class DTOPropertySubclassesTest {
         assertEquals(1, dto.getPropertyCode());
         assertEquals("CAD-100", dto.getCadastralId());
         assertEquals(500.0, dto.getArea());
+        assertEquals("1000332, 2134", dto.getBeneficiariesIds());
+        assertEquals("hector, juan", dto.getBeneficiariesName());
         assertEquals(12345L, dto.getNumResolution());
         assertEquals(notifDate, dto.getNotification());
         assertEquals(execDate, dto.getExecutory());
@@ -84,12 +83,7 @@ class DTOPropertySubclassesTest {
         DTOPropertyDetails dto = new DTOPropertyDetails();
         LocalDate notifDate = LocalDate.of(2025, 3, 1);
         LocalDate execDate = LocalDate.of(2025, 4, 1);
-        List<DTOBeneficiaryPropertyDetails> beneficiaries = List.of(
-                new DTOBeneficiaryPropertyDetails.Builder()
-                        .fullName("Test")
-                        .id(1L)
-                        .build());
-        List<DTOPoint> points = List.of(new DTOPoint());
+        List<DTOPoint> points = new ArrayList<>();
 
         dto.setPropertyCode(42);
         dto.setNumResolution(999L);
@@ -99,7 +93,8 @@ class DTOPropertySubclassesTest {
         dto.setNotary("Notaría Test");
         dto.setNotification(notifDate);
         dto.setExecutory(execDate);
-        dto.setBeneficiaries(beneficiaries);
+        dto.setBeneficiariesIds("5000, 6000");
+        dto.setBeneficiariesName("Ana, Carlos");
         dto.setPoints(points);
 
         assertEquals(42, dto.getPropertyCode());
@@ -110,27 +105,27 @@ class DTOPropertySubclassesTest {
         assertEquals("Notaría Test", dto.getNotary());
         assertEquals(notifDate, dto.getNotification());
         assertEquals(execDate, dto.getExecutory());
-        assertEquals(1, dto.getBeneficiaries().size());
-        assertEquals(1, dto.getPoints().size());
+        assertEquals("5000, 6000", dto.getBeneficiariesIds());
+        assertEquals("Ana, Carlos", dto.getBeneficiariesName());
+        assertTrue(dto.getPoints().isEmpty());
     }
 
     @Test
-    @DisplayName("DTOPropertyDetails Builder debe verificar beneficiaries y points")
-    void detailsBuilderShouldVerifyListFields() {
-        DTOBeneficiaryPropertyDetails ben = new DTOBeneficiaryPropertyDetails.Builder()
-                .fullName("Juan")
-                .id(100L)
-                .build();
+    @DisplayName("DTOPropertyDetails Builder debe verificar puntos")
+    void detailsBuilderShouldVerifyPointsField() {
         DTOPoint point = new DTOPoint();
+        List<DTOPoint> points = new ArrayList<>();
+        points.add(point);
 
         DTOPropertyDetails dto = new DTOPropertyDetails.Builder()
                 .propertyCode(5)
-                .beneficiaries(List.of(ben))
-                .points(List.of(point))
+                .beneficiariesIds("100")
+                .beneficiariesName("Juan")
+                .points(points)
                 .build();
 
-        assertEquals(1, dto.getBeneficiaries().size());
-        assertEquals("Juan", dto.getBeneficiaries().get(0).getFullName());
+        assertEquals("100", dto.getBeneficiariesIds());
+        assertEquals("Juan", dto.getBeneficiariesName());
         assertEquals(1, dto.getPoints().size());
     }
 }
