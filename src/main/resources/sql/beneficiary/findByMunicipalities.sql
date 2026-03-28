@@ -1,5 +1,5 @@
 SELECT
-    b.code
+    b.code,
     b.code_beneficiaries,
     b.id,
     b.full_name,
@@ -10,4 +10,4 @@ SELECT
     p.address
 FROM beneficiary b
 JOIN property p ON b.property_code = p.code
-WHERE b.municipality = ?;
+WHERE p.municipality = ?;

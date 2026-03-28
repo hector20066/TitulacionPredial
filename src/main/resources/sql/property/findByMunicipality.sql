@@ -1,5 +1,6 @@
 SELECT
-    b.code_beneficiaries AS property_code,
+    p.code,
+    b.code_beneficiaries,
     p.cadastral_reference,
     p.area,
     GROUP_CONCAT(DISTINCT b.id ORDER BY b.full_name SEPARATOR ', ') AS beneficiary_code,

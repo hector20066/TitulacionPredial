@@ -1,5 +1,5 @@
 SELECT
-    b.code
+    b.code,
     b.code_beneficiaries,
     b.id,
     b.full_name,

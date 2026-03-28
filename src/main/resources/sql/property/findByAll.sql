@@ -1,4 +1,5 @@
 SELECT
+    p.code,
     b.code_beneficiaries,
     p.cadastral_reference,
     p.area,
@@ -25,7 +26,8 @@ FROM (SELECT code
          JOIN point pt ON pt.property_code = p.code
          LEFT JOIN beneficiary b ON b.property_code = p.code
          LEFT JOIN resolution r ON r.property_code = p.code
-GROUP BY b.code_beneficiaries,
+GROUP BY p.code,
+         b.code_beneficiaries,
          p.cadastral_reference,
          p.area,
          p.municipality,
