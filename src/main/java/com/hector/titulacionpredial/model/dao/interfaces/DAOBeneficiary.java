@@ -102,15 +102,6 @@ public interface DAOBeneficiary extends IListable<DTOBeneficiarySimpleDetails>,
     DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException;
 
     /**
-     * It modifies the relationship between a beneficiary and their property.
-     *
-     * @param dto object with the data of the beneficiary-property association
-     * @return {@code true} if the modification was successful
-     * @throws DAOException if an error occurs during the operation
-     */
-    boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws DAOException;
-
-    /**
      * Get the latest registered beneficiary code.
      *
      * @return last sequential code of the beneficiary

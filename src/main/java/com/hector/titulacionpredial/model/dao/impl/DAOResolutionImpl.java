@@ -71,7 +71,7 @@ public class DAOResolutionImpl implements DAOResolution {
      *
      * @return Singleton instance of {@code DAOResolutionImpl}
      */
-    public static DAOResolutionImpl getInstance() {
+    public static synchronized DAOResolutionImpl getInstance() {
         if (instance == null) {
             instance = new DAOResolutionImpl();
         }

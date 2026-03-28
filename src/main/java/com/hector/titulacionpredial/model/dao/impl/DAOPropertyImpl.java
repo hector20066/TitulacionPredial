@@ -56,7 +56,7 @@ public class DAOPropertyImpl implements DAOProperty {
      *
      * @return Singleton instance of {@code DAOPropertyImpl}
      */
-    public static DAOPropertyImpl getInstance() {
+    public static synchronized DAOPropertyImpl getInstance() {
         if (instance == null) {
             instance = new DAOPropertyImpl();
         }
@@ -106,9 +106,11 @@ public class DAOPropertyImpl implements DAOProperty {
             st.setString(1, cadastralId);
 
             try (ResultSet rs = st.executeQuery()) {
-                if (rs.next()) {
-                    processRow(rs, properties);
+                if (!rs.next()) {
+                    return null;
                 }
+
+                processRow(rs, properties);
             }
 
             return properties.values().stream().findFirst().orElse(null);
@@ -137,6 +139,7 @@ public class DAOPropertyImpl implements DAOProperty {
         try (Connection conn = DataBasePool.getConnection();
              PreparedStatement st = conn.prepareStatement(sql)) {
             st.setString(1, String.valueOf(municipality));
+            st.setString(2, String.valueOf(municipality));
 
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
@@ -146,8 +149,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             return new ArrayList<>(properties.values());
         } catch (SQLException e) {
-            throw new PropertyPersistenceException(
-                    lang.message("persistence.property.info.municipality") + " " + municipality, e);
+            throw new PropertyPersistenceException("No se han encontrado registros para el municipio de " + municipality, e);
         }
     }
 
@@ -197,7 +199,7 @@ public class DAOPropertyImpl implements DAOProperty {
      * @throws SQLException if an error occurs while reading the data
      */
     private void processRow(ResultSet rs, Map<Integer, DTOPropertyDetails> properties) throws SQLException {
-        int propertyCode = rs.getInt("property_code");
+        int propertyCode = rs.getInt("code");
 
         DTOPropertyDetails property = properties.get(propertyCode);
 
@@ -256,7 +258,7 @@ public class DAOPropertyImpl implements DAOProperty {
     private DTOPropertyDetails createDTOPropertyDetails(ResultSet rs) throws SQLException {
         DTOPropertyDetails property = new DTOPropertyDetails();
 
-        property.setPropertyCode(rs.getInt("property_code"));
+        property.setPropertyCode(rs.getInt("code"));
         property.setCadastralId(rs.getString("cadastral_reference"));
         property.setArea(rs.getDouble("area"));
         property.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
@@ -321,13 +323,9 @@ public class DAOPropertyImpl implements DAOProperty {
             st.setDouble(1, dto.getArea());
             st.setString(2, dto.getCadastralRef());
 
-            if (st.executeUpdate() == 0) {
-                throw new PropertyNotFoundException();
-            }
-
-            return true;
+            return st.executeUpdate() != 0;
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("No se encontro");
+            throw new PropertyPersistenceException("No se encontró");
         }
     }
 

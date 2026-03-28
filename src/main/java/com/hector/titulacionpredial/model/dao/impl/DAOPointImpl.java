@@ -1,5 +1,10 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
@@ -7,11 +12,6 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Implementation of the DAO for the management of geographic points
@@ -46,7 +46,7 @@ public class DAOPointImpl implements DAOPoint {
      *
      * @return Singleton instance of {@code DAOPointImpl}
      */
-    public static DAOPointImpl getInstance() {
+    public static synchronized DAOPointImpl getInstance() {
         if (instance == null) {
             instance = new DAOPointImpl();
         }

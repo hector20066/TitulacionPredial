@@ -1,5 +1,10 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
@@ -8,11 +13,6 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Implementation of the DAO for spouse management in the MySQL database.
@@ -46,7 +46,7 @@ public class DAOSpouseImpl implements DAOSpouse {
      *
      * @return Singleton instance of {@code DAOSpouseImpl}
      */
-    public static DAOSpouseImpl getInstance() {
+    public static synchronized DAOSpouseImpl getInstance() {
         if (instance == null) {
             instance = new DAOSpouseImpl();
         }

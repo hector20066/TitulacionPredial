@@ -61,7 +61,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
      *
      * @return Singleton instance of {@code DAOBeneficiaryImpl}
      */
-    public static DAOBeneficiaryImpl getInstance() {
+    public static synchronized DAOBeneficiaryImpl getInstance() {
         if (instance == null) {
             instance = new DAOBeneficiaryImpl();
         }
@@ -206,7 +206,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
 
             try (ResultSet rs = st.executeQuery()) {
                 if (!rs.next()) {
-                    throw new BeneficiaryNotFoundException();
+                    throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.code") + ": " + beneficiariesCode);
                 }
 
                 return new DTOBeneficiariesCode(
@@ -216,7 +216,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 );
             }
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException();
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.code") + ": " + beneficiariesCode, e);
         }
     }
 
@@ -255,10 +255,13 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
      */
     private void executeSimpleQuery(DTOBeneficiarySimpleDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
+        dto.setCodeBeneficiaries(rs.getString("code_beneficiaries"));
         dto.setId(rs.getLong("id"));
         dto.setFullName(rs.getString("full_name"));
         dto.setPhone(rs.getLong("phone"));
-        dto.setMaritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")));
+        dto.setCadastralReference(rs.getString("cadastral_reference"));
+        dto.setMunicipalities(Municipalities.valueOf(rs.getString("municipality")));
+        dto.setAddress(rs.getString("address"));
     }
 
     @Override
@@ -368,42 +371,6 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         }
     }
 
-    /**
-     * Prepare PreparedStatement object with transaction data.
-     *
-     * @param st  PrepareStatement object
-     * @param dto DTO object with beneficiary data
-     * @throws SQLException if an exception occurs while
-     *                      performing the operation.
-     */
-    private void statementDetails(PreparedStatement st, DTOBeneficiary dto) throws SQLException {
-        st.setLong(1, dto.getId());
-        st.setString(2, dto.getFullName());
-        st.setString(7, String.valueOf(dto.getMaritalStatus()));
-        st.setString(8, dto.getAffectation());
-        st.setLong(9, dto.getPhone());
-        st.setString(13, dto.getExpeditionLocation());
-    }
-
-    @Override
-    public boolean modifyProperty(DTOBeneficiaryPropertyUpdate dto) throws DAOException {
-        String sql = SQLRepository.get("sql/beneficiary/modifyProperty.sql");
-
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, dto.getPropertyCode());
-            st.setString(2, dto.getCodeBeneficiaries());
-
-            if (st.executeUpdate() == 0) {
-                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
-            }
-
-            return true;
-        } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.modify"), e);
-        }
-    }
-
     @Override
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/delete.sql");
@@ -416,7 +383,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 throw new BeneficiaryNotFoundException(String.valueOf(code));
             }
         } catch (SQLException e) {
-            throw new BeneficiaryPersistenceException();
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.delete"), e);
         }
     }
 
