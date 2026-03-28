@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Data Transfer Object (DTO) that contains a summary of the
@@ -34,6 +35,9 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
 
     private int code;
+    private String cadastralReference;
+    private String address;
+    private Municipalities municipalities;
 
     /**
      * Empty constructor required for serialization or
@@ -59,6 +63,30 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getCadastralReference() {
+        return cadastralReference;
+    }
+
+    public void setCadastralReference(String cadastralReference) {
+        this.cadastralReference = cadastralReference;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Municipalities getMunicipalities() {
+        return municipalities;
+    }
+
+    public void setMunicipalities(Municipalities municipalities) {
+        this.municipalities = municipalities;
     }
 
     /**
