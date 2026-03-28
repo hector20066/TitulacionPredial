@@ -53,7 +53,7 @@ public class SeeProperties extends JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {code, name, id, numResolution, notification,
+        String[] titles = {code, "Código Beneficiarios", name, id, numResolution, notification,
                 executory, fmi, act, publicWriting, notary, cadastralRef, address, municipality,
                 "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS",
                 "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
@@ -255,7 +255,7 @@ public class SeeProperties extends JPanel {
      * @param texts DTO with the translated text
      */
     public void updateLanguage(DTOSeePropertiesText texts) {
-        jlb_title.setText(texts.getProperties());
+        /*jlb_title.setText(texts.getProperties());
         code = texts.getCode();
         name = texts.getName();
         id = texts.getId();
@@ -287,7 +287,7 @@ public class SeeProperties extends JPanel {
         jtbl_properties.getColumnModel().getColumn(10).setHeaderValue(cadastralRef);
         jtbl_properties.getColumnModel().getColumn(11).setHeaderValue(address);
         jtbl_properties.getColumnModel().getColumn(12).setHeaderValue(municipality);
-        jtbl_properties.getTableHeader().repaint();
+        jtbl_properties.getTableHeader().repaint();*/
     }
 
     public void setControllerGenerate(ActionListener action) {
@@ -365,11 +365,10 @@ public class SeeProperties extends JPanel {
      */
     public void loadData(DTOPropertyDetails dto) {
         int propertyCode = dto.getPropertyCode();
-
+        String codeBeneficiaries = dto.getCodeBeneficiaries();
         String beneficiariesName = dto.getBeneficiariesName();
         String addressBeneficiary = dto.getAddress();;
         Municipalities municipalities = dto.getMunicipality();
-
         String beneficiaryId = dto.getBeneficiariesIds();
 
         long resolutionNumber = dto.getNumResolution();
@@ -431,7 +430,7 @@ public class SeeProperties extends JPanel {
             }
         }
 
-        Object[] addData = new Object[]{propertyCode, beneficiariesName, beneficiaryId, resolutionNumber, notification,
+        Object[] addData = new Object[]{propertyCode, codeBeneficiaries, beneficiariesName, beneficiaryId, resolutionNumber, notification,
                 executory, fmi, act, publicWriting, notary, cadastralReference, addressBeneficiary, municipalities,
                 eastCoordinate1, northCoordinate1, distance1, hillside1, eastCoordinate2, northCoordinate2, distance2,
                 hillside2, eastCoordinate3, northCoordinate3, distance3, hillside3, eastCoordinate4, northCoordinate4,

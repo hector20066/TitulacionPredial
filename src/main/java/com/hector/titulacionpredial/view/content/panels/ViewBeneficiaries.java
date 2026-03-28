@@ -223,7 +223,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
      * @param texts DTO with translated texts
      */
     public void updateLanguage(DTOViewBeneficiariesText texts) {
-        jlb_title.setText(texts.getTitle());
+        /*jlb_title.setText(texts.getTitle());
         code = texts.getCode();
         id = texts.getId();
         name = texts.getName();
@@ -244,7 +244,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jtbl_beneficiaries.getColumnModel().getColumn(4).setHeaderValue(cadastralRef);
         jtbl_beneficiaries.getColumnModel().getColumn(5).setHeaderValue(municipality);
         jtbl_beneficiaries.getColumnModel().getColumn(6).setHeaderValue(address);
-        jtbl_beneficiaries.getTableHeader().repaint();
+        jtbl_beneficiaries.getTableHeader().repaint();*/
     }
 
     public void setControllerViewDetails(ActionListener action) {
