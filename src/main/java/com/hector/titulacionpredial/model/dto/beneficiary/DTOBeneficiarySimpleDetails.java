@@ -55,6 +55,9 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
     public DTOBeneficiarySimpleDetails(Builder builder) {
         super(builder);
         this.code = builder.code;
+        this.cadastralReference = builder.cadastralReference;
+        this.address = builder.address;
+        this.municipalities = builder.municipalities;
     }
 
     public int getCode() {
@@ -101,9 +104,27 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
     public static class Builder extends DTOBeneficiary.Builder<Builder> {
 
         private int code;
+        private String cadastralReference;
+        private String address;
+        private Municipalities municipalities;
 
         public Builder code(int code) {
             this.code = code;
+            return this;
+        }
+
+        public Builder cadastralReference(String cadastralReference) {
+            this.cadastralReference = cadastralReference;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder municipalities(Municipalities municipalities) {
+            this.municipalities = municipalities;
             return this;
         }
 

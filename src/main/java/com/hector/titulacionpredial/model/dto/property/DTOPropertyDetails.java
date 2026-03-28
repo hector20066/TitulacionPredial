@@ -1,12 +1,11 @@
 package com.hector.titulacionpredial.model.dto.property;
 
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
 
 /**
  * Data Transfer Object (DTO) that represents the complete details
@@ -28,7 +27,7 @@ import java.util.List;
  * <p><strong>Includes:</strong></p>
  * <ul>
  *     <li>Internal property identifier.</li>
- *     <li>List of associated beneficiaries.</li>
+ *     <li>Concatenated beneficiary IDs and names.</li>
  *     <li>List of points that define the geometry of the property.</li>
  *     <li>Information related to the administrative resolution.</li>
  * </ul>
@@ -44,7 +43,9 @@ import java.util.List;
 public class DTOPropertyDetails extends DTOProperty {
 
     private int propertyCode;
-    private List<DTOBeneficiaryPropertyDetails> beneficiaries;
+    private String codeBeneficiaries;
+    private String beneficiariesIds;
+    private String beneficiariesName;
     private List<DTOPoint> points;
     private long numResolution;
     private LocalDate notification;
@@ -60,7 +61,6 @@ public class DTOPropertyDetails extends DTOProperty {
      */
     public DTOPropertyDetails() {
         super();
-        this.beneficiaries = new ArrayList<>();
         this.points = new ArrayList<>();
     }
 
@@ -72,7 +72,9 @@ public class DTOPropertyDetails extends DTOProperty {
     public DTOPropertyDetails(Builder builder) {
         super(builder);
         this.propertyCode = builder.propertyCode;
-        this.beneficiaries = builder.beneficiaries;
+        this.codeBeneficiaries = builder.codeBeneficiaries;
+        this.beneficiariesIds = builder.beneficiariesIds;
+        this.beneficiariesName = builder.beneficiariesName;
         this.points = builder.points;
         this.numResolution = builder.numResolution;
         this.notification = builder.notification;
@@ -91,12 +93,28 @@ public class DTOPropertyDetails extends DTOProperty {
         this.propertyCode = propertyCode;
     }
 
-    public List<DTOBeneficiaryPropertyDetails> getBeneficiaries() {
-        return beneficiaries;
+    public String getCodeBeneficiaries() {
+        return codeBeneficiaries;
     }
 
-    public void setBeneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
-        this.beneficiaries = beneficiaries;
+    public void setCodeBeneficiaries(String codeBeneficiaries) {
+        this.codeBeneficiaries = codeBeneficiaries;
+    }
+
+    public String getBeneficiariesIds() {
+        return beneficiariesIds;
+    }
+
+    public void setBeneficiariesIds(String beneficiariesIds) {
+        this.beneficiariesIds = beneficiariesIds;
+    }
+
+    public String getBeneficiariesName() {
+        return beneficiariesName;
+    }
+
+    public void setBeneficiariesName(String beneficiariesName) {
+        this.beneficiariesName = beneficiariesName;
     }
 
     public List<DTOPoint> getPoints() {
@@ -185,7 +203,9 @@ public class DTOPropertyDetails extends DTOProperty {
     public static class Builder extends DTOProperty.Builder<Builder> {
 
         private int propertyCode;
-        private List<DTOBeneficiaryPropertyDetails> beneficiaries = new ArrayList<>();
+        private String codeBeneficiaries;
+        private String beneficiariesIds;
+        private String beneficiariesName;
         private List<DTOPoint> points = new ArrayList<>();
         private long numResolution;
         private LocalDate notification;
@@ -200,8 +220,18 @@ public class DTOPropertyDetails extends DTOProperty {
             return this;
         }
 
-        public Builder beneficiaries(List<DTOBeneficiaryPropertyDetails> beneficiaries) {
-            this.beneficiaries = beneficiaries;
+        public Builder beneficiariesIds(String beneficiariesIds) {
+            this.beneficiariesIds = beneficiariesIds;
+            return this;
+        }
+
+        public Builder codeBeneficiaries(String codeBeneficiaries) {
+            this.codeBeneficiaries = codeBeneficiaries;
+            return this;
+        }
+
+        public Builder beneficiariesName(String beneficiariesName) {
+            this.beneficiariesName = beneficiariesName;
             return this;
         }
 

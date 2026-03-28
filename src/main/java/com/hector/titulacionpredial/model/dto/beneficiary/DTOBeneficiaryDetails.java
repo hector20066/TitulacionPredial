@@ -1,5 +1,8 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.Municipalities;
+
 /**
  * Data Transfer Object (DTO) that contains the information obtained
  * from a beneficiary.
@@ -31,6 +34,13 @@ package com.hector.titulacionpredial.model.dto.beneficiary;
 public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
 
     private int code;
+    private Department department;
+    private Municipalities municipality;
+    private String address;
+    private String cadastralRef;
+    private String crossing;
+    private String publication;
+    private String neighborhood;
     private long idSpouse;
     private String fullNameSpouse;
     private String expeditionLocationSpouse;
@@ -54,6 +64,13 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
     public DTOBeneficiaryDetails(Builder builder) {
         super(builder);
         this.code = builder.code;
+        this.department = builder.department;
+        this.municipality = builder.municipality;
+        this.address = builder.address;
+        this.cadastralRef = builder.cadastralRef;
+        this.crossing = builder.crossing;
+        this.publication = builder.publication;
+        this.neighborhood = builder.neighborhood;
         this.idSpouse = builder.idSpouse;
         this.fullNameSpouse = builder.fullNameSpouse;
         this.expeditionLocationSpouse = builder.expeditionLocationSpouse;
@@ -68,6 +85,62 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Municipalities getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(Municipalities municipality) {
+        this.municipality = municipality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCadastralRef() {
+        return cadastralRef;
+    }
+
+    public void setCadastralRef(String cadastralRef) {
+        this.cadastralRef = cadastralRef;
+    }
+
+    public String getCrossing() {
+        return crossing;
+    }
+
+    public void setCrossing(String crossing) {
+        this.crossing = crossing;
+    }
+
+    public String getPublication() {
+        return publication;
+    }
+
+    public void setPublication(String publication) {
+        this.publication = publication;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
     }
 
     public long getIdSpouse() {
@@ -130,6 +203,13 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
     public static class Builder extends DTOBeneficiaryCreate.AbstractBuilder<Builder> {
 
         private int code;
+        private Department department;
+        private Municipalities municipality;
+        private String address;
+        private String cadastralRef;
+        private String crossing;
+        private String publication;
+        private String neighborhood;
         private long idSpouse;
         private String fullNameSpouse;
         private String expeditionLocationSpouse;
@@ -139,6 +219,41 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
 
         public Builder code(int code) {
             this.code = code;
+            return this;
+        }
+
+        public Builder department(Department department) {
+            this.department = department;
+            return this;
+        }
+
+        public Builder municipality(Municipalities municipality) {
+            this.municipality = municipality;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder cadastralRef(String cadastralRef) {
+            this.cadastralRef = cadastralRef;
+            return this;
+        }
+
+        public Builder crossing(String crossing) {
+            this.crossing = crossing;
+            return this;
+        }
+
+        public Builder publication(String publication) {
+            this.publication = publication;
+            return this;
+        }
+
+        public Builder neighborhood(String neighborhood) {
+            this.neighborhood = neighborhood;
             return this;
         }
 

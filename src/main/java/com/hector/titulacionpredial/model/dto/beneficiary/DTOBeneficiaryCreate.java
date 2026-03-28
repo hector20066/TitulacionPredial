@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.model.dto.beneficiary;
 
 import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Data Transfer Object (DTO) that contains the information to
@@ -34,6 +35,9 @@ import com.hector.titulacionpredial.model.dto.DTOBeneficiary;
 public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     private int propertyCode;
+    private String cadastralRef;
+    private Municipalities municipality;
+    private String address;
 
     /**
      * Empty constructor required for serialization
@@ -51,6 +55,9 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     public DTOBeneficiaryCreate(AbstractBuilder<?> builder) {
         super(builder);
         this.propertyCode = builder.propertyCode;
+        this.cadastralRef = builder.cadastralRef;
+        this.municipality = builder.municipality;
+        this.address = builder.address;
     }
 
     public int getPropertyCode() {
@@ -59,6 +66,30 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
 
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
+    }
+
+    public String getCadastralRef() {
+        return cadastralRef;
+    }
+
+    public void setCadastralRef(String cadastralRef) {
+        this.cadastralRef = cadastralRef;
+    }
+
+    public Municipalities getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(Municipalities municipality) {
+        this.municipality = municipality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
@@ -75,9 +106,27 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
     public abstract static class AbstractBuilder<T extends AbstractBuilder<T>> extends DTOBeneficiary.Builder<T> {
 
         private int propertyCode;
+        private String cadastralRef;
+        private Municipalities municipality;
+        private String address;
 
         public T propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
+            return (T) this;
+        }
+
+        public T cadastralRef(String cadastralRef) {
+            this.cadastralRef = cadastralRef;
+            return (T) this;
+        }
+
+        public T municipality(Municipalities municipality) {
+            this.municipality = municipality;
+            return (T) this;
+        }
+
+        public T address(String address) {
+            this.address = address;
             return (T) this;
         }
 
