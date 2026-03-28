@@ -175,11 +175,11 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private void validations(String fullName, String id, String expeditionLocation, String phone,
                              String codeBeneficiaries) throws InvalidInputException {
         if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
-            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
+            throw new EmptyFieldException("Nombre, Cedula, Lugar de expedición y Código");
         }
 
         if (!codeBeneficiaries.contains("F")) {
-            throw new InvalidInputException("Por favor ingrese el codigo con el formato correcto: FXXXX");
+            throw new InvalidInputException("Por favor ingrese el código con el formato correcto: FXXXX");
         }
 
         if (phone.length() > 10) {
@@ -511,18 +511,26 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
         if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
-            int idBeneficiary = Integer.parseInt(registerBeneficiary.getTxt_id().getText().trim());
+            String idBeneficiary = registerBeneficiary.getTxt_id().getText().trim();
+
+            if (idBeneficiary.isBlank()) {
+                MessageUtils.warningMessage("Por favor ingrese el numero de cedula del Beneficiario.", registerBeneficiary);
+            }
+
+            if (!NumericalValidationUtils.isNumeric(idBeneficiary)) {
+                MessageUtils.warningMessage("La cedula solo puede tener valores numericos.", registerBeneficiary);
+            }
+
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
 
             SpouseData dialog = new SpouseData(parentFrame, true);
             dialog.setLocationRelativeTo(registerBeneficiary);
             dialog.updateLanguage();
-            dialog.setIdBeneficiary(idBeneficiary);
+            dialog.setIdBeneficiary(Integer.parseInt(idBeneficiary));
             dialog.setVisible(true);
 
             if (dialog.isConfirmed()) {
                 listSpouses.add(dialog.getSpouse());
-                //this.dtoSpouse = dialog.getSpouse();
             }
         }
     }

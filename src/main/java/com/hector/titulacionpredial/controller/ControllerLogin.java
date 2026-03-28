@@ -175,7 +175,6 @@ public class ControllerLogin implements LanguageObserver {
             }
             case Role.EMPLOYEE -> {
                 startSessionUser();
-                subject.notifyObservers();
                 setRole(Role.EMPLOYEE);
             }
             case Role.NONE -> {
@@ -221,6 +220,7 @@ public class ControllerLogin implements LanguageObserver {
             });
         }
 
+        subject.notifyObservers();
         login.dispose();
     }
     

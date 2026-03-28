@@ -38,7 +38,7 @@ public class ControllerRegisterUsersBuilder {
     }
 
     public ControllerRegisterUsers build() {
-        return new ControllerManageUsers(this);
+        return new ControllerRegisterUsers(this);
     }
 
     public RegisterUsers getRegisterUsers() {

@@ -114,7 +114,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             try {
                 Municipalities municipality = SessionManager.getInstance().getMunicipality();
                 List<DTOBeneficiarySimpleDetails> listBeneficiaries = (municipality != null)
-                    ? daoBeneficiary.findAllByMunicipality(municipality.getValue())
+                    ? daoBeneficiary.findAllByMunicipality(municipality)
                     : daoBeneficiary.findByAll();
                 SwingUtilities.invokeLater(() -> loadData(listBeneficiaries));
             } catch (DAOException e) {

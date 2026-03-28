@@ -1,5 +1,15 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.CardLayout;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
@@ -20,12 +30,6 @@ import com.hector.titulacionpredial.utils.ImportExcel;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Property registration panel controller.
@@ -288,6 +292,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         resetButton();
         registerProperty.clearFields();
         showCardFirst();
+        this.propertyCode = 0;  // Reiniciar solo después de registro exitoso
     }
 
     /**
@@ -335,13 +340,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
      */
     private void searchBeneficiaries() {
         try {
-            String beneficiariesCode = registerProperty.getTxt_beneficiaryCode().getText().trim();
+            String beneficiariesCode = registerProperty.getTxt_beneficiaryCode().getText().trim().toUpperCase();
 
             if (beneficiariesCode.isBlank()) {
                 throw new EmptyFieldException("código de los beneficiarios");
             }
 
-            if (beneficiariesCode.contains("F")) {
+            if (!beneficiariesCode.contains("F")) {
                 throw new InvalidInputException("código de los beneficiarios");
             }
 
@@ -388,7 +393,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
-        this.propertyCode = 0;
+        // NOTA: NO reiniciar propertyCode aquí, debe retener su valor para el registro
     }
 
     private void importExcelData() {
