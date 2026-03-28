@@ -70,27 +70,12 @@ public class GenerateExcel {
             Row row = sheet.createRow(rowIndex++);
 
             int propertyCode = dto.getPropertyCode();
-            StringBuilder beneficiaries = new StringBuilder();
-            StringBuilder idBeneficiaries = new StringBuilder();
 
-            dto.getBeneficiaries().forEach(beneficiary -> {
-                beneficiaries.append(beneficiary.getFullName()).append(" - ");
-                idBeneficiaries.append(beneficiary.getId()).append(" - ");
-            });
+            String beneficiariesName = dto.getBeneficiariesName();
+            String addressBeneficiary = dto.getAddress();;
+            Municipalities municipalities = dto.getMunicipality();
 
-            String beneficiariesName = beneficiaries.toString();
-            String beneficiaryId = idBeneficiaries.toString();
-
-            String addressBeneficiary;
-            Municipalities municipalities;
-
-            if (!dto.getBeneficiaries().isEmpty()) {
-                //addressBeneficiary = dto.getBeneficiaries().getFirst().getAddress();
-                //municipalities = dto.getBeneficiaries().getFirst().getMunicipality();
-            } else {
-                addressBeneficiary = "";
-                municipalities = null;
-            }
+            String beneficiaryId = dto.getBeneficiariesIds();
 
             long resolutionNumber = dto.getNumResolution();
             LocalDate notification = dto.getNotification();
@@ -152,8 +137,8 @@ public class GenerateExcel {
             row.createCell(col++).setCellValue(publicWriting != null ? publicWriting : "");
             row.createCell(col++).setCellValue(notary != null ? notary : "");
             row.createCell(col++).setCellValue(cadastralReference != null ? cadastralReference : "");
-            /*row.createCell(col++).setCellValue(addressBeneficiary != null ? addressBeneficiary : "");
-            row.createCell(col++).setCellValue(municipalities != null ? municipalities.toString() : "");*/
+            row.createCell(col++).setCellValue(addressBeneficiary != null ? addressBeneficiary : "");
+            row.createCell(col++).setCellValue(municipalities != null ? municipalities.toString() : "");
             row.createCell(col++).setCellValue(eastCoordinate1);
             row.createCell(col++).setCellValue(northCoordinate1);
             row.createCell(col++).setCellValue(distance1);
