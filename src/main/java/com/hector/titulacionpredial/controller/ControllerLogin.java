@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 
+import com.hector.titulacionpredial.controller.builder.ControllerLoginBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -43,18 +44,17 @@ public class ControllerLogin implements LanguageObserver {
     private final ControllerContentReader controllerContentReader;
     private Role role;
 
-    public ControllerLogin(ContentLogin login, ContentAdmin contentAdmin, ContentUser contentUser, ContentReader contentReader, Dashboard dashboard,
-                           Subject subject, LanguageSubject languageSubject, LanguageManager lang, ControllerContentReader controllerContentReader) {
-        this.login = login;
-        this.contentAdmin = contentAdmin;
-        this.contentUser = contentUser;
-        this.contentReader = contentReader;
-        this.dashboard = dashboard;
-        this.subject = subject;
-        this.lang = lang;
-        this.controllerContentReader = controllerContentReader;
+    public ControllerLogin(ControllerLoginBuilder builder) {
+        this.login = builder.getLogin();
+        this.contentAdmin = builder.getContentAdmin();
+        this.contentUser = builder.getContentUser();
+        this.contentReader = builder.getContentReader();
+        this.dashboard = builder.getDashboard();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
+        this.controllerContentReader = builder.getControllerContentReader();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         connectEvents();
     }

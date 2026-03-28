@@ -159,8 +159,17 @@ public class Coordinator {
                 .withLanguageSubject(languageSubject)
                 .build();
 
-        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, contentReader, dashboard, subject,
-                languageSubject, lang, controllerContentReader);
+        controllerLogin = new ControllerLoginBuilder()
+                .withViewLogin(login)
+                .withContentAdmin(contentAdmin)
+                .withContentUser(contentUser)
+                .withContentReader(contentReader)
+                .withDashboard(dashboard)
+                .withSubject(subject)
+                .withLanguageManager(lang)
+                .withControllerContentReader(controllerContentReader)
+                .withLanguageSubject(languageSubject)
+                .build();
 
         new ControllerContentAdminBuilder()
                 .withViewContent(contentAdmin)
@@ -268,8 +277,21 @@ public class Coordinator {
                 .withLanguageManager(lang)
                 .build();
 
-        new ControllerRegisterUsers(registerUsers, subject, languageSubject, lang);
-        new ControllerManageUsers(manageUsers, subject, languageSubject, lang);
+        new ControllerRegisterUsersBuilder()
+                .withViewRegisterUsers(registerUsers)
+                .withLanguageManager(lang)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .build();
+
+
+        new ControllerManageUsersBuilder()
+                .withViewManageUsers(manageUsers)
+                .withLanguageManager(lang)
+                .withSubject(subject)
+                .withLanguageSubject(languageSubject)
+                .build();
+
     }
 
 }

@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.controller.IManageAccounts;
+import com.hector.titulacionpredial.controller.builder.ControllerManageUsersBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
@@ -28,13 +29,13 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     private final UsersFacade daoUsers;
 
-    public ControllerManageUsers(ManageUsers manageUsers, Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
-        this.manageUsers = manageUsers;
-        this.lang = lang;
-        this.subject = subject;
+    public ControllerManageUsers(ControllerManageUsersBuilder builder) {
+        this.manageUsers = builder.getManageUsers();
+        this.lang = builder.getLang();
+        this.subject = builder.getSubject();
 
-        subject.register(this);
-        languageSubject.register(this);
+        builder.getSubject().register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoUsers = new UsersImplFacade();
     }

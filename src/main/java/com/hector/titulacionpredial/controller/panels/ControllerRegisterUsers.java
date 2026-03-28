@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import com.hector.titulacionpredial.controller.builder.ControllerRegisterUsersBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -31,13 +32,12 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private final UsersFacade daoUsers;
 
-    public ControllerRegisterUsers(RegisterUsers registerUsers, Subject subject, LanguageSubject languageSubject,
-                                   LanguageManager lang) {
-        this.registerUsers = registerUsers;
-        this.subject = subject;
-        this.lang = lang;
+    public ControllerRegisterUsers(ControllerRegisterUsersBuilder builder) {
+        this.registerUsers = builder.getRegisterUsers();
+        this.subject = builder.getSubject();
+        this.lang = builder.getLang();
 
-        languageSubject.register(this);
+        builder.getLanguageSubject().register(this);
 
         this.daoUsers = new UsersImplFacade();
 
