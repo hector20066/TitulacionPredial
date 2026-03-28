@@ -24,7 +24,9 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 /**
@@ -318,6 +320,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
      */
     private DTOBeneficiaryDetails executeQuery(ResultSet rs) throws SQLException {
         return new DTOBeneficiaryDetails.Builder()
+                .code(rs.getInt("code"))
                 .codeBeneficiaries(rs.getString("code_beneficiaries"))
                 .id(rs.getLong("id"))
                 .fullName(rs.getString("full_name"))
@@ -325,11 +328,18 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 .affectation(rs.getString("affectation"))
                 .phone(rs.getLong("phone"))
                 .expeditionLocation(rs.getString("expedition_location"))
+                .department(Department.valueOf(rs.getString("department")))
+                .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                .address(rs.getString("address"))
+                .cadastralRef(rs.getString("cadastral_reference"))
+                .crossing(rs.getString("crossing"))
+                .publication(rs.getString("publication"))
+                .neighborhood(rs.getString("neighborhood"))
                 .idSpouse(rs.getLong("spouse_id"))
                 .fullNameSpouse(rs.getString("spouse_full_name"))
                 .expeditionLocationSpouse(rs.getString("spouse_expedition_location"))
-                .addressSpouse(rs.getString("spouse_address"))
                 .phoneSpouse(rs.getLong("spouse_phone"))
+                .addressSpouse(rs.getString("spouse_address"))
                 .build();
     }
 

@@ -18,7 +18,6 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
@@ -212,21 +211,16 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     /**
-     * Add a beneficiary to the property if it has not already been registered.
+     * Add beneficiaries to the property from concatenated strings.
      *
      * @param rs       current row of the query result
-     * @param property DTO of the property to which the beneficiary will be added
+     * @param property DTO of the property to which beneficiaries will be added
      * @throws SQLException if an error occurs while reading the data
      */
     private void addBeneficiaryIfNecessary(ResultSet rs, DTOPropertyDetails property) throws SQLException {
-        Integer beneficiaryCode = rs.getObject("beneficiary_code", Integer.class);
-
-        if (beneficiaryCode != null && !verifyBeneficiaryExist(property, beneficiaryCode)) {
-            DTOBeneficiaryPropertyDetails beneficiary =
-                    createDtoBeneficiaryPropertyDetails(rs, beneficiaryCode);
-
-            property.getBeneficiaries().add(beneficiary);
-        }
+        property.setCodeBeneficiaries(rs.getString("code_beneficiaries"));
+        property.setBeneficiariesIds(rs.getString("beneficiary_code"));
+        property.setBeneficiariesName(rs.getString("beneficiary_fullname"));
     }
 
     /**
@@ -263,8 +257,10 @@ public class DAOPropertyImpl implements DAOProperty {
         DTOPropertyDetails property = new DTOPropertyDetails();
 
         property.setPropertyCode(rs.getInt("property_code"));
-        property.setCadastralId(rs.getString("cadastral_id"));
+        property.setCadastralId(rs.getString("cadastral_reference"));
         property.setArea(rs.getDouble("area"));
+        property.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
+        property.setAddress(rs.getString("address"));
 
         long numResolution = rs.getLong("num_resolution");
         property.setNumResolution(rs.wasNull() ? 0 : numResolution);
@@ -281,45 +277,6 @@ public class DAOPropertyImpl implements DAOProperty {
         property.setNotary(rs.getString("notary"));
 
         return property;
-    }
-
-    /**
-     * Create a {@link DTOBeneficiaryPropertyDetails} object from the
-     * current row of the {@link ResultSet}.
-     *
-     * @param rs              current row of the query result
-     * @param beneficiaryCode beneficiary code
-     * @return DTO with the beneficiary's data associated with the property
-     * @throws SQLException if an error occurs while reading the data
-     */
-    private DTOBeneficiaryPropertyDetails createDtoBeneficiaryPropertyDetails(ResultSet rs, int beneficiaryCode) throws SQLException {
-        String municipalityStr = rs.getString("beneficiary_municipality");
-        Municipalities municipality = null;
-
-        if (municipalityStr != null) {
-            municipality = Municipalities.valueOf(municipalityStr);
-        }
-
-        /*return new DTOBeneficiaryPropertyDetails(
-                rs.getString("beneficiary_fullname"),
-                beneficiaryCode,
-                municipalityStr,
-                rs.getString("beneficiary_address")
-        );*/
-        return null;
-    }
-
-    /**
-     * Check if a beneficiary has already been added to the property.
-     *
-     * @param property        DTO of the property to be verified
-     * @param beneficiaryCode beneficiary code to search
-     * @return {@code true} if the beneficiary already exists on the list
-     */
-    private boolean verifyBeneficiaryExist(DTOPropertyDetails property, int beneficiaryCode) {
-        return property.getBeneficiaries()
-                .stream()
-                .anyMatch(b -> b.getId() == beneficiaryCode);
     }
 
     /**
