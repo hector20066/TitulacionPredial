@@ -40,10 +40,11 @@ public class ControllerLogin implements LanguageObserver {
     private final Dashboard dashboard;
     private final Subject subject;
     private final LanguageManager lang;
+    private final ControllerContentReader controllerContentReader;
     private Role role;
 
     public ControllerLogin(ContentLogin login, ContentAdmin contentAdmin, ContentUser contentUser, ContentReader contentReader, Dashboard dashboard,
-                           Subject subject, LanguageSubject languageSubject, LanguageManager lang) {
+                           Subject subject, LanguageSubject languageSubject, LanguageManager lang, ControllerContentReader controllerContentReader) {
         this.login = login;
         this.contentAdmin = contentAdmin;
         this.contentUser = contentUser;
@@ -51,6 +52,7 @@ public class ControllerLogin implements LanguageObserver {
         this.dashboard = dashboard;
         this.subject = subject;
         this.lang = lang;
+        this.controllerContentReader = controllerContentReader;
 
         languageSubject.register(this);
 
@@ -196,8 +198,6 @@ public class ControllerLogin implements LanguageObserver {
 
     private void startSessionUser() {
         String mode = (String) login.getCbo_access().getSelectedItem();
-        
-        // Extract municipality from selection and store in session
         Municipalities municipality = extractMunicipalityFromMode(mode);
 
         if (municipality != null) {
@@ -209,6 +209,7 @@ public class ControllerLogin implements LanguageObserver {
                 contentReader.setVisible(true);
                 contentReader.setLocationRelativeTo(null);
                 contentReader.setResizable(false);
+                controllerContentReader.hideButtons();
                 NavigatorUtils.showForms(ContentReader.getJpl_content(), dashboard);
             });
         } else {
@@ -233,7 +234,7 @@ public class ControllerLogin implements LanguageObserver {
         return switch (mode) {
             case "Info. Sahagun" -> Municipalities.SAHAGUN;
             case "Inf. Monteria" -> Municipalities.MONTERIA;
-            default -> null; // "Solo lectura" returns null (unrestricted access)
+            default -> null;
         };
     }
 

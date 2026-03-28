@@ -145,7 +145,22 @@ public class Coordinator {
      * </p>
      */
     private void startDrivers() {
-        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, contentReader, dashboard, subject, languageSubject, lang);
+        ControllerContentReader controllerContentReader = new ControllerContentReaderBuilder()
+                .withViewContent(contentReader)
+                .withViewDashboard(dashboard)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withViewSeeProperties(seeProperties)
+                .withViewSeeResolutions(seeResolutions)
+                .withViewSettings(settings)
+                .withSubject(subject)
+                .withViewAbout(about)
+                .withViewLogin(login)
+                .withLanguageManager(lang)
+                .withLanguageSubject(languageSubject)
+                .build();
+
+        controllerLogin = new ControllerLogin(login, contentAdmin, contentUser, contentReader, dashboard, subject,
+                languageSubject, lang, controllerContentReader);
 
         new ControllerContentAdminBuilder()
                 .withViewContent(contentAdmin)
@@ -170,20 +185,6 @@ public class Coordinator {
                 .withViewDashboard(dashboard)
                 .withViewRegisterBeneficiary(registerBeneficiary)
                 .withViewRegisterProperty(registerProperty)
-                .withViewBeneficiaries(viewBeneficiaries)
-                .withViewSeeProperties(seeProperties)
-                .withViewSeeResolutions(seeResolutions)
-                .withViewSettings(settings)
-                .withSubject(subject)
-                .withViewAbout(about)
-                .withViewLogin(login)
-                .withLanguageManager(lang)
-                .withLanguageSubject(languageSubject)
-                .build();
-
-        new ControllerContentReaderBuilder()
-                .withViewContent(contentReader)
-                .withViewDashboard(dashboard)
                 .withViewBeneficiaries(viewBeneficiaries)
                 .withViewSeeProperties(seeProperties)
                 .withViewSeeResolutions(seeResolutions)

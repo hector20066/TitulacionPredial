@@ -75,6 +75,14 @@ public class ControllerContentReader implements LanguageObserver {
 
     }
 
+    public void hideButtons() {
+        viewBeneficiaries.getBtn_delete().setVisible(false);
+        viewBeneficiaries.getBtn_modify().setVisible(false);
+        seeProperties.getBtn_delete().setVisible(false);
+        seeProperties.getBtn_generate().setVisible(false);
+        seeResolutions.getBtn_modify().setVisible(false);
+    }
+
     public void prepareUI() {
         viewBeneficiaries.getBtn_delete().setVisible(false);
         viewBeneficiaries.getBtn_modify().setVisible(false);
