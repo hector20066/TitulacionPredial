@@ -55,7 +55,7 @@ import java.util.List;
  * @see SpouseFacade
  * @since 1.0
  */
-public class ControllerRegisterBeneficiary implements Observer, LanguageObserver {
+public class ControllerRegisterBeneficiary implements LanguageObserver {
 
     private final RegisterBeneficiary registerBeneficiary;
     private final ViewBeneficiaries viewBeneficiaries;
@@ -85,8 +85,6 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
 
         builder.getLanguageSubject().register(this);
 
-        this.subject.register(this);
-
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.daoSpouse = new SpouseImplFacade();
@@ -107,18 +105,6 @@ public class ControllerRegisterBeneficiary implements Observer, LanguageObserver
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
         registerBeneficiary.setControllerCbx_affectation(e -> affectationSelected());
-    }
-
-    @Override
-    public void update() {
-        /*new Thread(() -> {
-            try {
-                int code = daoBeneficiary.getLastCode();
-                SwingUtilities.invokeLater(() -> registerBeneficiary.loadFollowingCode(code + 1));
-            } catch (DAOException e) {
-                SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), registerBeneficiary));
-            }
-        }).start();*/
     }
 
     @Override
