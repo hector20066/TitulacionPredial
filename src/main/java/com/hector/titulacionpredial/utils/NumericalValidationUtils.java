@@ -21,6 +21,9 @@ public class NumericalValidationUtils {
      *         of digits, {@code false} otherwise
      */
     public static boolean isNumeric(String value) {
+        if (value == null || value.isEmpty()) {
+            return false;
+        }
         return value.matches("\\d+");
     }
 
