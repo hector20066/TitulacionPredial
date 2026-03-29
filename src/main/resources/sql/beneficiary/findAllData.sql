@@ -16,9 +16,8 @@ SELECT b.code,
        s.id AS spouse_id,
        s.full_name AS spouse_full_name,
        s.expedition_location AS spouse_expedition_location,
-       s.phone AS spouse_phone,
-       s.address AS spouse_address
+       s.phone AS spouse_phone
 FROM beneficiary b
 JOIN property p ON b.property_code = p.code
-JOIN spouse s ON b.code = s.beneficiary_code
+LEFT JOIN spouse s ON b.code = s.beneficiary_code
 WHERE b.code = ?;
