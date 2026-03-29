@@ -529,25 +529,25 @@ public class UserProfile extends javax.swing.JDialog {
      */
     public void loadBeneficiary(DTOBeneficiaryDetails beneficiary) {
         jlb_name.setText(beneficiary.getFullName());
-        jlb_code.setText("F" + beneficiary.getCode());
+        jlb_code.setText(beneficiary.getCodeBeneficiaries());
         jlb_id.setText(String.valueOf(beneficiary.getId()));
         jlb_phone.setText(String.valueOf(beneficiary.getPhone()));
         jlb_expeditionLocation.setText(beneficiary.getExpeditionLocation());
         jlb_maritalStatus.setText(beneficiary.getMaritalStatus().name());
-        //jlb_cadastralRef.setText(String.valueOf(beneficiary.getCadastralRef()));
+        jlb_cadastralRef.setText(String.valueOf(beneficiary.getCadastralRef()));
         txa_affectation.setText(beneficiary.getAffectation());
+        txa_crossing.setText(beneficiary.getCrossing());
+        jlb_publication.setText(beneficiary.getPublication());
 
         if (beneficiary.getFullNameSpouse() == null) {
             jlb_spouseName.setText(lang.app("user.profile.not.apply"));
             jlb_spouseId.setText(lang.app("user.profile.not.apply"));
             jlb_spouseExpeditionSite.setText(lang.app("user.profile.not.apply"));
-            jlb_spouseAddress.setText(lang.app("user.profile.not.apply"));
             jlb_phoneSpouse.setText(lang.app("user.profile.not.apply"));
         } else {
             jlb_spouseName.setText(beneficiary.getFullNameSpouse());
             jlb_spouseId.setText(String.valueOf(beneficiary.getIdSpouse()));
             jlb_spouseExpeditionSite.setText(beneficiary.getExpeditionLocationSpouse());
-            jlb_spouseAddress.setText(beneficiary.getAddressSpouse());
             jlb_phoneSpouse.setText(String.valueOf(beneficiary.getPhoneSpouse()));
         }
     }

@@ -963,19 +963,19 @@ public class GenerateResolution extends javax.swing.JPanel {
      @param point2          Coordinates of point 2
      @param point3          Coordinates of point 3
      @param point4          Coordinates of point 4
-     @param dtoProperty     Property code
+     @param codeBeneficiaries     Property code
      @param dtoBeneficiary  Beneficiary data
      @param beneficiariesId Beneficiary ID numbers
      */
-    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, int dtoProperty, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
-        BiConsumer<Integer, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
+    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, String codeBeneficiaries, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
+        BiConsumer<String, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
             txt_idBeneficiary.setText(beneficiariesId);
-            /*txt_addressBeneficiary.setText(beneficiary.getAddress());
-            txt_municipality.setText(beneficiary.getMunicipality().getValue());
-            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralRef()));*/
+            txt_addressBeneficiary.setText(beneficiary.getAddress());
+            txt_municipality.setText(beneficiary.getMunicipalities().getValue());
+            txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralReference()));
 
-            txt_propertyCode.setText(String.valueOf(codeProperty));
+            txt_propertyCode.setText(codeProperty);
 
             txt_northCoordinate1.setText(point1[0]);
             txt_eastCoordinate1.setText(point1[1]);
@@ -1000,7 +1000,7 @@ public class GenerateResolution extends javax.swing.JPanel {
             txt_area.setText(String.valueOf(area));
         };
 
-        consumer.accept(dtoProperty, dtoBeneficiary);
+        consumer.accept(codeBeneficiaries, dtoBeneficiary);
     }
 
     /**

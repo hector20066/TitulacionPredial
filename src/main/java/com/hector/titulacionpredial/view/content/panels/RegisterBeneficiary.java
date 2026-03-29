@@ -702,6 +702,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
      * Clear all fields and reset the form to registration mode.
      */
     public void clearFields() {
+        txt_followingCode.setText("");
         jlb_title.setText(LanguageManager.getInstance().app("register.beneficiary.add.title"));
         btn_register.setText(LanguageManager.getInstance().app("register.beneficiary.add.btn"));
         txt_fullName.setText("");
