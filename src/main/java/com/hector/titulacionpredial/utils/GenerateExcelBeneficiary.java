@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 
@@ -31,7 +32,7 @@ public class GenerateExcelBeneficiary {
      * @param path          directory path where to save the file
      * @throws IOException If an error occurs while writing the file
      */
-    public static void export(List<DTOBeneficiaryCreate> beneficiaries, String path) throws IOException {
+    public static void export(List<DTOBeneficiaryDetails> beneficiaries, String path) throws IOException {
         File archivoXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
         Workbook book = new HSSFWorkbook();
 
@@ -47,7 +48,7 @@ public class GenerateExcelBeneficiary {
         Sheet sheet = book.createSheet("Reporte Beneficiarios");
         sheet.setDisplayGridlines(true);
 
-        String[] titles = {"Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
+        String[] titles = {"Codigo", "Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
                 "Ref. Catastral", "Estado Civil", "Afectación", "Teléfono", "Cruce",
                 "Publicación", "Barrio", "Lugar Expedición"};
 
@@ -61,22 +62,23 @@ public class GenerateExcelBeneficiary {
 
         int rowIndex = 1;
 
-        for (DTOBeneficiaryCreate dto : beneficiaries) {
+        for (DTOBeneficiaryDetails dto : beneficiaries) {
             Row row = sheet.createRow(rowIndex++);
 
             int col = 0;
+            row.createCell(col++).setCellValue(dto.getCodeBeneficiaries());
             row.createCell(col++).setCellValue(dto.getId());
             row.createCell(col++).setCellValue(dto.getFullName() != null ? dto.getFullName() : "");
-            /*row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().toString() : "");
-            row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().toString() : "");
+            row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().getValue() : "");
+            row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().getValue() : "");
             row.createCell(col++).setCellValue(dto.getAddress() != null ? dto.getAddress() : "");
-            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");*/
-            row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().toString() : "");
+            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");
+            row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().getValue() : "");
             row.createCell(col++).setCellValue(dto.getAffectation() != null ? dto.getAffectation() : "");
             row.createCell(col++).setCellValue(dto.getPhone());
-            /*row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
+            row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
             row.createCell(col++).setCellValue(dto.getPublication() != null ? dto.getPublication() : "");
-            row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");*/
+            row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");
             row.createCell(col).setCellValue(dto.getExpeditionLocation() != null ? dto.getExpeditionLocation() : "");
         }
 

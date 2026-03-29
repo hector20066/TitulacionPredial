@@ -69,12 +69,10 @@ public class GenerateExcel {
         for (DTOPropertyDetails dto : properties) {
             Row row = sheet.createRow(rowIndex++);
 
-            int propertyCode = dto.getPropertyCode();
-
+            String codeBeneficiaries = dto.getCodeBeneficiaries();
             String beneficiariesName = dto.getBeneficiariesName();
-            String addressBeneficiary = dto.getAddress();;
+            String addressBeneficiary = dto.getAddress();
             Municipalities municipalities = dto.getMunicipality();
-
             String beneficiaryId = dto.getBeneficiariesIds();
 
             long resolutionNumber = dto.getNumResolution();
@@ -126,7 +124,7 @@ public class GenerateExcel {
             }
 
             int col = 0;
-            row.createCell(col++).setCellValue(propertyCode);
+            row.createCell(col++).setCellValue(codeBeneficiaries);
             row.createCell(col++).setCellValue(beneficiariesName);
             row.createCell(col++).setCellValue(beneficiaryId);
             row.createCell(col++).setCellValue(resolutionNumber);
@@ -138,7 +136,7 @@ public class GenerateExcel {
             row.createCell(col++).setCellValue(notary != null ? notary : "");
             row.createCell(col++).setCellValue(cadastralReference != null ? cadastralReference : "");
             row.createCell(col++).setCellValue(addressBeneficiary != null ? addressBeneficiary : "");
-            row.createCell(col++).setCellValue(municipalities != null ? municipalities.toString() : "");
+            row.createCell(col++).setCellValue(municipalities != null ? municipalities.getValue() : "");
             row.createCell(col++).setCellValue(eastCoordinate1);
             row.createCell(col++).setCellValue(northCoordinate1);
             row.createCell(col++).setCellValue(distance1);
