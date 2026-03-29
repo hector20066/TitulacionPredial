@@ -515,7 +515,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
             DialogUtils.executeWithDialog(viewBeneficiaries, lang.message("dialog.exporting.report"),
                     lang.message("dialog.exported.report"), () -> {
-                        List<DTOBeneficiaryCreate> allBeneficiaries = daoBeneficiary.findAllForExport();
+                        List<DTOBeneficiaryDetails> allBeneficiaries = daoBeneficiary.findAllForExport();
                         GenerateExcelBeneficiary.export(allBeneficiaries, path);
                         return null;
                     });

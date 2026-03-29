@@ -95,7 +95,7 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      * @return list of complete DATA
      * @throws DAOException if an error occurs in the query
      */
-    List<DTOBeneficiaryCreate> findAllForExport() throws DAOException;
+    List<DTOBeneficiaryDetails> findAllForExport() throws DAOException;
 
     DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException;
 

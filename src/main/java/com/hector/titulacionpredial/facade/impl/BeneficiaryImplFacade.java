@@ -91,7 +91,7 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    public List<DTOBeneficiaryCreate> findAllForExport() throws DAOException {
+    public List<DTOBeneficiaryDetails> findAllForExport() throws DAOException {
         return daoBeneficiary.findAllForExport();
     }
 

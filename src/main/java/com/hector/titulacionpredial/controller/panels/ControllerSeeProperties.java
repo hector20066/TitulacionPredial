@@ -26,7 +26,7 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.DialogUtils;
 import com.hector.titulacionpredial.utils.FilterUtils;
-import com.hector.titulacionpredial.utils.GenerateExcel;
+import com.hector.titulacionpredial.utils.GenerateExcelProperty;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.SessionManager;
@@ -51,7 +51,7 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeePropertiesText;
  * @author Ing. Hector Acevedo
  * @see SeeProperties
  * @see PropertyFacade
- * @see GenerateExcel
+ * @see GenerateExcelProperty
  * @see LanguageObserver
  * @since 1.0
  */
@@ -162,43 +162,43 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 throw new Exception(lang.message("exception.property.select.row"));
             }
 
-            int propertyCode = (int) seeProperties.getJtbl_properties().getValueAt(selectedRow, 0);
-            String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
-            String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
-            String address = seeProperties.getJtbl_properties().getValueAt(selectedRow, 11).toString();
-            Municipalities municipalities = Municipalities.valueOf(seeProperties.getJtbl_properties().getValueAt(selectedRow, 12).toString());
-            String cadastralReference = seeProperties.getJtbl_properties().getValueAt(selectedRow, 10).toString();
+            String codeBeneficiaries = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
+            String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
+            String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 3).toString();
+            String address = seeProperties.getJtbl_properties().getValueAt(selectedRow, 12).toString();
+            Municipalities municipalities = Municipalities.valueOf(seeProperties.getJtbl_properties().getValueAt(selectedRow, 13).toString());
+            String cadastralReference = seeProperties.getJtbl_properties().getValueAt(selectedRow, 11).toString();
 
-            double eastCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 13);
-            double northCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 14);
-            double distance1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 15);
-            String hillside1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 16).toString();
+            double eastCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 14);
+            double northCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 15);
+            double distance1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 16);
+            String hillside1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 17).toString();
 
-            double eastCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 17);
-            double northCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 18);
-            double distance2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 19);
-            String hillside2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 20).toString();
+            double eastCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 18);
+            double northCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 19);
+            double distance2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 20);
+            String hillside2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 21).toString();
 
-            double eastCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 21);
-            double northCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 22);
-            double distance3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 23);
-            String hillside3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 24).toString();
+            double eastCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 22);
+            double northCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 23);
+            double distance3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 24);
+            String hillside3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 25).toString();
 
-            double eastCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 25);
-            double northCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 26);
-            double distance4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 27);
-            String hillside4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 28).toString();
+            double eastCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 26);
+            double northCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 27);
+            double distance4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 28);
+            String hillside4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 29).toString();
 
             String[] point1 = {String.valueOf(northCoordinate1), String.valueOf(eastCoordinate1), String.valueOf(distance1), hillside1};
             String[] point2 = {String.valueOf(northCoordinate2), String.valueOf(eastCoordinate2), String.valueOf(distance2), hillside2};
             String[] point3 = {String.valueOf(northCoordinate3), String.valueOf(eastCoordinate3), String.valueOf(distance3), hillside3};
             String[] point4 = {String.valueOf(northCoordinate4), String.valueOf(eastCoordinate4), String.valueOf(distance4), hillside4};
 
-            double area = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 29);
+            double area = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 30);
 
             DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, address, municipalities, cadastralReference);
 
-            generateResolution.loadData(area, point1, point2, point3, point4, propertyCode, dtoBeneficiary, beneficiaryId);
+            generateResolution.loadData(area, point1, point2, point3, point4, codeBeneficiaries, dtoBeneficiary, beneficiaryId);
             generateResolution.clearFields();
             NavigatorUtils.showForms(controllerLogin.jpl_Content(), generateResolution);
         } catch (Exception e) {
@@ -218,12 +218,12 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      */
     private DTOBeneficiarySimpleDetails createDTOBeneficiaries(String nameBeneficiary, String address,
                                                                Municipalities municipalities, String cadastralReference) {
-        return null/*ew DTOBeneficiarySimpleDetails.Builder()
+        return new DTOBeneficiarySimpleDetails.Builder()
                 .fullName(nameBeneficiary)
                 .address(address)
-                .municipality(municipalities)
-                .cadastralRef(cadastralReference)
-                .build()*/;
+                .municipalities(municipalities)
+                .cadastralReference(cadastralReference)
+                .build();
     }
 
     /**
@@ -243,7 +243,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
             DialogUtils.executeWithDialog(seeProperties, lang.message("dialog.exporting.report"),
                     lang.message("dialog.exported.report"), () -> {
                         List<DTOPropertyDetails> allProperties = daoProperty.findByAllForExport();
-                        GenerateExcel.export(allProperties, path);
+                        GenerateExcelProperty.export(allProperties, path);
                         return null;
                     });
         } catch (Exception e) {

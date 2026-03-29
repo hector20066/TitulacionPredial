@@ -67,8 +67,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private final PropertyFacade daoProperty;
     private final SpouseFacade daoSpouse;
 
-    private List<DTOBeneficiary> listBeneficiaries;
-    private List<DTOSpouseController> listSpouses;
+    private final List<DTOBeneficiary> listBeneficiaries;
+    private final List<DTOSpouseController> listSpouses;
 
     /**
      * Create the controller, register it as an observer, and
@@ -414,6 +414,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         resetUI();
         MessageUtils.informationMessage(lang.message("message.beneficiary.register"), registerBeneficiary);
         subject.notifyObservers();
+        this.listBeneficiaries.clear();
+        this.listSpouses.clear();
     }
 
     /**
@@ -510,15 +512,19 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         if (registerBeneficiary.isLoading()) return;
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
+        String affectationMarriedOrFreeUnion = "De conformidad con los articulos 1, 2 y 12 de la ley 258 de 1996, " +
+                "modificada por la ley 854 de 2003, el predio cedido, se afecta a vivienda familiar.";
+
         if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
             String idBeneficiary = registerBeneficiary.getTxt_id().getText().trim();
+            registerBeneficiary.getTxa_affectation().setText(affectationMarriedOrFreeUnion);
 
             if (idBeneficiary.isBlank()) {
                 MessageUtils.warningMessage("Por favor ingrese el numero de cedula del Beneficiario.", registerBeneficiary);
             }
 
             if (!NumericalValidationUtils.isNumeric(idBeneficiary)) {
-                MessageUtils.warningMessage("La cedula solo puede tener valores numericos.", registerBeneficiary);
+                MessageUtils.warningMessage("La cedula solo puede tener valores numéricos.", registerBeneficiary);
             }
 
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
