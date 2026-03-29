@@ -26,7 +26,7 @@ import java.util.List;
  * @see DTOPropertyDetails
  * @since 1.0
  */
-public class GenerateExcel {
+public class GenerateExcelProperty {
 
     /**
      * Export the list of properties to an Excel file.
