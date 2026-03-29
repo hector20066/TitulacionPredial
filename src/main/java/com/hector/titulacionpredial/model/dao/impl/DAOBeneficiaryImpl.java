@@ -88,14 +88,14 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             int affectedRows = st.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new BeneficiaryNotFoundException("Error al registrar el beneficiario, no hay filas afectadas.");
+                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.register"));
             }
 
             try (ResultSet generatedKeys = st.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 } else {
-                    throw new BeneficiaryPersistenceException("No fue posible guardar la informacion del beneficiario.");
+                    throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"));
                 }
             }
         } catch (SQLException e) {

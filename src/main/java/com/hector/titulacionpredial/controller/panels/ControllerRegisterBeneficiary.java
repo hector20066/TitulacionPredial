@@ -175,11 +175,11 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private void validations(String fullName, String id, String expeditionLocation, String phone,
                              String codeBeneficiaries) throws InvalidInputException {
         if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
-            throw new EmptyFieldException("Nombre, Cedula, Lugar de expedición y Código");
+            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
         }
 
         if (!codeBeneficiaries.contains("F")) {
-            throw new InvalidInputException("Por favor ingrese el código con el formato correcto: FXXXX");
+            throw new InvalidInputException(lang.message("invalid.input.beneficiary.code"));
         }
 
         if (phone.length() > 10) {
@@ -195,7 +195,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
 
         if (!NumericalValidationUtils.isNumeric(id)) {
-            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id.cadastralRef"));
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id"));
         }
     }
 
@@ -512,19 +512,18 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         if (registerBeneficiary.isLoading()) return;
         MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
-        String affectationMarriedOrFreeUnion = "De conformidad con los articulos 1, 2 y 12 de la ley 258 de 1996, " +
-                "modificada por la ley 854 de 2003, el predio cedido, se afecta a vivienda familiar.";
+        String affectationMarriedOrFreeUnion = lang.app("register.beneficiary.affectation.desc");
 
         if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
             String idBeneficiary = registerBeneficiary.getTxt_id().getText().trim();
             registerBeneficiary.getTxa_affectation().setText(affectationMarriedOrFreeUnion);
 
             if (idBeneficiary.isBlank()) {
-                MessageUtils.warningMessage("Por favor ingrese el numero de cedula del Beneficiario.", registerBeneficiary);
+                MessageUtils.warningMessage(lang.message("message.beneficiary.enter.id"), registerBeneficiary);
             }
 
             if (!NumericalValidationUtils.isNumeric(idBeneficiary)) {
-                MessageUtils.warningMessage("La cedula solo puede tener valores numéricos.", registerBeneficiary);
+                MessageUtils.warningMessage(lang.message("message.beneficiary.invalid.id"), registerBeneficiary);
             }
 
             java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);

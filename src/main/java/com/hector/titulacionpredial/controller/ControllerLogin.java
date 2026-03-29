@@ -111,16 +111,17 @@ public class ControllerLogin implements LanguageObserver {
             String passwd = new String(login.getJpld_password().getPassword());
 
             /*if(!NetworkUtils.hasInternetConnection()) {
-                MessageUtils.errorMessage("No tienes conexión a internet.\nVerifica la conexión e intentalo nuevamente", null);
+                MessageUtils.errorMessage(lang.message("message.login.error.connection1") + "\n" +
+                        lang.message("message.login.error.connection2"), null);
                 return;
             }*/
 
             if (user.isBlank() || passwd.isBlank()) {
-                throw new EmptyFieldException("Usuario y Contraseña");
+                throw new EmptyFieldException(lang.message("empty.user.password"));
             }
 
             if (passwd.length() < 8) {
-                throw new InvalidInputException("La contraseña debe tener minimo 8 caracteres");
+                throw new InvalidInputException(lang.message("invalid.input.password"));
             }
 
             prepareUI();
@@ -132,7 +133,7 @@ public class ControllerLogin implements LanguageObserver {
 
     private void prepareUI() {
         login.getBtn_login().setEnabled(false);
-        login.getBtn_login().setText("Iniciando Sesion...");
+        login.getBtn_login().setText(lang.app("controller.login.init"));
     }
 
     private void executeLoginWorker(String user, String plainPasswd) {
@@ -152,12 +153,12 @@ public class ControllerLogin implements LanguageObserver {
 
                     if(cause instanceof java.sql.SQLNonTransientConnectionException
                             || cause instanceof com.mysql.cj.jdbc.exceptions.CommunicationsException) {
-                        MessageUtils.errorMessage("No se pudo conectar con la base de datos. Intentalo mas tarde", null);
+                        MessageUtils.errorMessage(lang.message("message.error.connect.db"), null);
                     }
 
                     resetLogIn();
                 } catch (InterruptedException e) {
-                    MessageUtils.errorMessage("Se ha interrumpido el inicio de sesión.", null);
+                    MessageUtils.errorMessage(lang.message("message.abort.login"), null);
                     resetLogIn();
                 }
             }
@@ -178,7 +179,7 @@ public class ControllerLogin implements LanguageObserver {
                 setRole(Role.EMPLOYEE);
             }
             case Role.NONE -> {
-                MessageUtils.warningMessage("No se han encontrado las credenciales", null);
+                MessageUtils.warningMessage(lang.message("message.not.found.credentials"), null);
                 resetLogIn();
             }
         }
@@ -240,12 +241,12 @@ public class ControllerLogin implements LanguageObserver {
 
     private void resetLogIn() {
         login.getBtn_login().setEnabled(true);
-        login.getBtn_login().setText("INICIAR SESION");
+        login.getBtn_login().setText(lang.app("controller.content.login"));
     }
 
     private void mousePressedPassword() {
         if (login.getTxt_user().getText().isBlank()) {
-            login.getTxt_user().setText("Ingrese el usuario");
+            login.getTxt_user().setText(lang.app("controller.login.enter.user"));
             login.getTxt_user().setForeground(Color.gray);
         }
 
@@ -256,7 +257,7 @@ public class ControllerLogin implements LanguageObserver {
     }
 
     private void mousePressedUser() {
-        if (login.getTxt_user().getText().equals("Ingrese el usuario")) {
+        if (login.getTxt_user().getText().equals(lang.app("controller.login.enter.user"))) {
             login.getTxt_user().setText("");
             login.getTxt_user().setForeground(new Color(37,106,208));
         }

@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import org.apache.poi.ss.usermodel.*;
 
 import javax.swing.*;
@@ -13,6 +14,8 @@ import java.util.List;
  * @author Ing. Hector Acevedo
  */
 public class ImportExcel {
+
+    private static final LanguageManager lang = LanguageManager.getInstance();
 
     public ImportExcel() {
 
@@ -45,7 +48,7 @@ public class ImportExcel {
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null,
-                    "Error al leer el archivo Excel:\n" + e.getMessage(),"Error",
+                     lang.message("message.import.error") + "\n" + e.getMessage(),"Error",
                     JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }

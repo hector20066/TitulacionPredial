@@ -35,6 +35,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     private String cadastralRef = "Ref. Catastral";
     private String municipality = "Municipio";
     private String address = "Dirección";
+    private String codeIdentification = "Código de Identificación";
 
     DefaultTableModel tableModel = new DefaultTableModel();
 
@@ -44,7 +45,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     public ViewBeneficiaries() {
         initComponents();
         
-        String[] titles = {code, "Código de Identificación", id, name, phone, cadastralRef, municipality, address};
+        String[] titles = {code, codeIdentification, id, name, phone, cadastralRef, municipality, address};
         tableModel.setColumnIdentifiers(titles);
         jtbl_beneficiaries.setModel(tableModel);
         
@@ -223,8 +224,9 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
      * @param texts DTO with translated texts
      */
     public void updateLanguage(DTOViewBeneficiariesText texts) {
-        /*jlb_title.setText(texts.getTitle());
+        jlb_title.setText(texts.getTitle());
         code = texts.getCode();
+        codeIdentification = texts.getCodeIdentification();
         id = texts.getId();
         name = texts.getName();
         phone = texts.getPhone();
@@ -238,13 +240,14 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         btn_exportToExcel.setText(texts.getExportExcelBtn());
 
         jtbl_beneficiaries.getColumnModel().getColumn(0).setHeaderValue(code);
-        jtbl_beneficiaries.getColumnModel().getColumn(1).setHeaderValue(id);
-        jtbl_beneficiaries.getColumnModel().getColumn(2).setHeaderValue(name);
-        jtbl_beneficiaries.getColumnModel().getColumn(3).setHeaderValue(phone);
-        jtbl_beneficiaries.getColumnModel().getColumn(4).setHeaderValue(cadastralRef);
-        jtbl_beneficiaries.getColumnModel().getColumn(5).setHeaderValue(municipality);
-        jtbl_beneficiaries.getColumnModel().getColumn(6).setHeaderValue(address);
-        jtbl_beneficiaries.getTableHeader().repaint();*/
+        jtbl_beneficiaries.getColumnModel().getColumn(1).setHeaderValue(codeIdentification);
+        jtbl_beneficiaries.getColumnModel().getColumn(2).setHeaderValue(id);
+        jtbl_beneficiaries.getColumnModel().getColumn(3).setHeaderValue(name);
+        jtbl_beneficiaries.getColumnModel().getColumn(4).setHeaderValue(phone);
+        jtbl_beneficiaries.getColumnModel().getColumn(5).setHeaderValue(cadastralRef);
+        jtbl_beneficiaries.getColumnModel().getColumn(6).setHeaderValue(municipality);
+        jtbl_beneficiaries.getColumnModel().getColumn(7).setHeaderValue(address);
+        jtbl_beneficiaries.getTableHeader().repaint();
     }
 
     public void setControllerViewDetails(ActionListener action) {

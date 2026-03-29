@@ -44,6 +44,7 @@ public class SeeProperties extends JPanel {
     private String cadastralRef = "Ref. Catastral";
     private String address = "Dirección";
     private String municipality = "Municipio";
+    private String codeBeneficiaries = "Código Beneficiarios";
 
     DefaultTableModel model = new DefaultTableModel();
 
@@ -53,7 +54,7 @@ public class SeeProperties extends JPanel {
     public SeeProperties() {
         initComponents();
         
-        String[] titles = {code, "Código Beneficiarios", name, id, numResolution, notification,
+        String[] titles = {code, codeBeneficiaries, name, id, numResolution, notification,
                 executory, fmi, act, publicWriting, notary, cadastralRef, address, municipality,
                 "MCORE1", "MCORN1", "MDISN", "MCOLN", "MCORE2", "MCORN2", "MDISE", "MCOLE", "MCORE3", "MCORN3", "MDISS",
                 "MCOLS", "MCORE4", "MCORN4", "MDISO", "MLINDO", "AMAT"};
@@ -255,8 +256,9 @@ public class SeeProperties extends JPanel {
      * @param texts DTO with the translated text
      */
     public void updateLanguage(DTOSeePropertiesText texts) {
-        /*jlb_title.setText(texts.getProperties());
+        jlb_title.setText(texts.getProperties());
         code = texts.getCode();
+        codeBeneficiaries = texts.getCodeBeneficiaries();
         name = texts.getName();
         id = texts.getId();
         numResolution = texts.getNumResolution();
@@ -275,19 +277,20 @@ public class SeeProperties extends JPanel {
         btn_delete.setText(texts.getDeleteBtn());
 
         jtbl_properties.getColumnModel().getColumn(0).setHeaderValue(code);
-        jtbl_properties.getColumnModel().getColumn(1).setHeaderValue(name);
-        jtbl_properties.getColumnModel().getColumn(2).setHeaderValue(id);
-        jtbl_properties.getColumnModel().getColumn(3).setHeaderValue(numResolution);
-        jtbl_properties.getColumnModel().getColumn(4).setHeaderValue(notification);
-        jtbl_properties.getColumnModel().getColumn(5).setHeaderValue(executory);
-        jtbl_properties.getColumnModel().getColumn(6).setHeaderValue(fmi);
-        jtbl_properties.getColumnModel().getColumn(7).setHeaderValue(act);
-        jtbl_properties.getColumnModel().getColumn(8).setHeaderValue(publicWriting);
-        jtbl_properties.getColumnModel().getColumn(9).setHeaderValue(notary);
-        jtbl_properties.getColumnModel().getColumn(10).setHeaderValue(cadastralRef);
-        jtbl_properties.getColumnModel().getColumn(11).setHeaderValue(address);
-        jtbl_properties.getColumnModel().getColumn(12).setHeaderValue(municipality);
-        jtbl_properties.getTableHeader().repaint();*/
+        jtbl_properties.getColumnModel().getColumn(1).setHeaderValue(codeBeneficiaries);
+        jtbl_properties.getColumnModel().getColumn(2).setHeaderValue(name);
+        jtbl_properties.getColumnModel().getColumn(3).setHeaderValue(id);
+        jtbl_properties.getColumnModel().getColumn(4).setHeaderValue(numResolution);
+        jtbl_properties.getColumnModel().getColumn(5).setHeaderValue(notification);
+        jtbl_properties.getColumnModel().getColumn(6).setHeaderValue(executory);
+        jtbl_properties.getColumnModel().getColumn(7).setHeaderValue(fmi);
+        jtbl_properties.getColumnModel().getColumn(8).setHeaderValue(act);
+        jtbl_properties.getColumnModel().getColumn(9).setHeaderValue(publicWriting);
+        jtbl_properties.getColumnModel().getColumn(10).setHeaderValue(notary);
+        jtbl_properties.getColumnModel().getColumn(11).setHeaderValue(cadastralRef);
+        jtbl_properties.getColumnModel().getColumn(12).setHeaderValue(address);
+        jtbl_properties.getColumnModel().getColumn(13).setHeaderValue(municipality);
+        jtbl_properties.getTableHeader().repaint();
     }
 
     public void setControllerGenerate(ActionListener action) {

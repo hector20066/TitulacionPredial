@@ -19,7 +19,7 @@ public class AdminMenu extends Menu {
         addTitle("PRINCIPAL");
         addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));
         addTitle("INFORMACIÓN");
-        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Informacion", "Beneficiarios", "Predios"));
+        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Información", "Beneficiarios", "Predios"));
         addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver Registros", "Beneficiarios", "Predios", "Resolucion"));
         addTitle("GESTION DE USUARIOS");
         addMenuItem(new ModelMenuItem("image/info.svg", "Usuarios", "Registrar Usuarios", "Ver Usuarios"));

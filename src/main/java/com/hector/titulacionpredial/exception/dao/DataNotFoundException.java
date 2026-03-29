@@ -17,7 +17,7 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
  */
 public class DataNotFoundException extends DAOException {
 
-    private static final LanguageManager lang = LanguageManager.getInstance();
+    public static final LanguageManager lang = LanguageManager.getInstance();
 
     /**
      * Create an exception with a generic message.

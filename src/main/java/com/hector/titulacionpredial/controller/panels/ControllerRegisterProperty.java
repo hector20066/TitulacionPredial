@@ -247,7 +247,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         new Thread(() -> {
             try {
                 if (daoProperty.findByCode(cadastralId) == null) {
-                    throw new PersistenceException("No se ha encontrado el predio con este numero de referencia.");
+                    throw new PersistenceException(lang.message("persistence.property.not.found"));
                 }
 
                 boolean success = daoProperty.modify(cadastralId, area);
@@ -277,11 +277,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
      */
     private void runInvokeLater(boolean success) {
         if (success) {
-            MessageUtils.informationMessage("Se ha registrado el predio.", registerProperty);
+            MessageUtils.informationMessage(lang.message("message.property.register"), registerProperty);
             subject.notifyObservers();
             resetUI();
         } else {
-            MessageUtils.errorMessage("No se ha podido registrar el predio.", registerProperty);
+            MessageUtils.errorMessage(lang.message("message.property.register.error"), registerProperty);
         }
     }
 
@@ -343,11 +343,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
             String beneficiariesCode = registerProperty.getTxt_beneficiaryCode().getText().trim().toUpperCase();
 
             if (beneficiariesCode.isBlank()) {
-                throw new EmptyFieldException("código de los beneficiarios");
+                throw new EmptyFieldException(lang.message("empty.beneficiaries.code"));
             }
 
             if (!beneficiariesCode.contains("F")) {
-                throw new InvalidInputException("código de los beneficiarios");
+                throw new InvalidInputException(lang.message("empty.beneficiaries.code"));
             }
 
             prepareUISearch();
@@ -360,7 +360,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private void prepareUISearch() {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setEnabled(false);
-        registerProperty.getBtn_searchBeneficiary().setText("Buscando...");
+        registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.searching"));
         this.propertyCode = 0;
     }
 
@@ -407,8 +407,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
             String name = file.getName().toLowerCase();
             if (!name.endsWith(".xlsx") && !name.endsWith(".xls")) {
                 JOptionPane.showMessageDialog(registerProperty,
-                        "Solo se permiten archivos Excel (.xlsx o .xls)",
-                        "Archivo inválido", JOptionPane.WARNING_MESSAGE);
+                        lang.message("message.property.import"),
+                        lang.message("message.property.import.invalid.file"), JOptionPane.WARNING_MESSAGE);
                 return;
             }
 

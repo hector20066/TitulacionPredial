@@ -149,7 +149,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             return new ArrayList<>(properties.values());
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("No se han encontrado registros para el municipio de " + municipality, e);
+            throw new PropertyPersistenceException(lang.message("persistence.property.not.found.municipality") + " " + municipality, e);
         }
     }
 
@@ -325,7 +325,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             return st.executeUpdate() != 0;
         } catch (SQLException e) {
-            throw new PropertyPersistenceException("No se encontró");
+            throw new PropertyPersistenceException(lang.message("persistence.property.not"));
         }
     }
 

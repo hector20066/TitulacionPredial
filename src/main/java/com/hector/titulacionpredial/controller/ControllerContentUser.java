@@ -112,7 +112,7 @@ public class ControllerContentUser implements LanguageObserver {
         this.contentLogin.setResizable(false);
         this.contentLogin.setLocationRelativeTo(null);
         this.contentLogin.getBtn_login().setEnabled(true);
-        this.contentLogin.getBtn_login().setText("INICIAR SESION");
+        this.contentLogin.getBtn_login().setText(lang.app("controller.content.login"));
         contentUser.setVisible(false);
         contentUser.dispose();
     }

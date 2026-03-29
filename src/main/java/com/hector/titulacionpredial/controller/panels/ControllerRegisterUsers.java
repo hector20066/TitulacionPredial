@@ -83,7 +83,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
             }
 
             if (password.length() < 8) {
-                throw new InvalidInputException("La contraseña debe tener mas de 8 caracteres.");
+                throw new InvalidInputException(lang.message("invalid.input.password"));
             }
 
             prepareUI();

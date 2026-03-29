@@ -24,7 +24,7 @@ public class EmptyFieldException extends InvalidInputException {
      * @param fieldName name(s) of the empty field or fields
      */
     public EmptyFieldException(String fieldName) {
-        super("El campo " + " '" + fieldName + "' " + "No puede estar vacío");
+        super(lang.message("empty.field.message1") + " '" + fieldName + "' " + lang.message("empty.field.message2"));
     }
 
     /**

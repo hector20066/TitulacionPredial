@@ -13,6 +13,7 @@ package com.hector.titulacionpredial.view.i18n.dto.panels;
 public class DTOSeePropertiesText {
 
     private final String code;
+    private final String codeBeneficiaries;
     private final String name;
     private final String id;
     private final String numResolution;
@@ -38,6 +39,7 @@ public class DTOSeePropertiesText {
      */
     public DTOSeePropertiesText(Builder builder) {
         this.code = builder.code;
+        this.codeBeneficiaries = builder.codeBeneficiaries;
         this.name = builder.name;
         this.id = builder.id;
         this.numResolution = builder.numResolution;
@@ -59,6 +61,10 @@ public class DTOSeePropertiesText {
 
     public String getCode() {
         return code;
+    }
+
+    public String getCodeBeneficiaries() {
+        return codeBeneficiaries;
     }
 
     public String getName() {
@@ -135,6 +141,7 @@ public class DTOSeePropertiesText {
     public static class Builder {
 
         private String code;
+        private String codeBeneficiaries;
         private String name;
         private String id;
         private String numResolution;
@@ -155,6 +162,11 @@ public class DTOSeePropertiesText {
 
         public Builder code(String code) {
             this.code = code;
+            return this;
+        }
+
+        public Builder codeBeneficiaries(String codeBeneficiaries) {
+            this.codeBeneficiaries = codeBeneficiaries;
             return this;
         }
 

@@ -12,6 +12,7 @@ package com.hector.titulacionpredial.view.i18n.dto.panels;
 public class DTOViewBeneficiariesText {
 
     private final String code;
+    private final String codeIdentification;
     private final String id;
     private final String name;
     private final String phone;
@@ -32,6 +33,7 @@ public class DTOViewBeneficiariesText {
      */
     public DTOViewBeneficiariesText(Builder builder) {
         this.code = builder.code;
+        this.codeIdentification = builder.codeIdentification;
         this.id = builder.id;
         this.name = builder.name;
         this.phone = builder.phone;
@@ -48,6 +50,10 @@ public class DTOViewBeneficiariesText {
 
     public String getCode() {
         return code;
+    }
+
+    public String getCodeIdentification() {
+        return codeIdentification;
     }
 
     public String getId() {
@@ -104,6 +110,7 @@ public class DTOViewBeneficiariesText {
     public static class Builder {
 
         private String code;
+        private String codeIdentification;
         private String id;
         private String name;
         private String phone;
@@ -119,6 +126,11 @@ public class DTOViewBeneficiariesText {
 
         public Builder code(String code) {
             this.code = code;
+            return this;
+        }
+
+        public Builder codeIdentification(String codeIdentification) {
+            this.codeIdentification = codeIdentification;
             return this;
         }
 

@@ -11,6 +11,7 @@ import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.UserNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.UserPersistenceException;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOUser;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
@@ -26,6 +27,7 @@ import com.hector.titulacionpredial.utils.SQLRepository;
 public class DAOUserImpl implements DAOUser {
 
     private static DAOUserImpl instance;
+    private static final LanguageManager lang = LanguageManager.getInstance();
 
     private DAOUserImpl() {
 
@@ -52,7 +54,7 @@ public class DAOUserImpl implements DAOUser {
             st.setString(5, String.valueOf(dto.getRole()));
             st.executeUpdate();
         } catch (SQLException e) {
-            throw new UserPersistenceException("No fue posible guardar la informacion del Usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.register"), e);
         }
     }
 
@@ -78,7 +80,7 @@ public class DAOUserImpl implements DAOUser {
                 }
             }
         } catch (SQLException e) {
-            throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.error"), e);
         }
     }
 
@@ -97,7 +99,7 @@ public class DAOUserImpl implements DAOUser {
 
             return true;
         } catch (SQLException e) {
-            throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.error"), e);
         }
     }
 
@@ -122,7 +124,7 @@ public class DAOUserImpl implements DAOUser {
                 return dto;
             }
         } catch (SQLException e) {
-            throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.error"), e);
         }
     }
 
@@ -146,7 +148,7 @@ public class DAOUserImpl implements DAOUser {
 
             return list;
         } catch (SQLException e) {
-            throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.error"), e);
         }
     }
 
@@ -162,7 +164,7 @@ public class DAOUserImpl implements DAOUser {
                 throw new UserNotFoundException(String.valueOf(code));
             }
         } catch (SQLException e) {
-            throw new UserPersistenceException("Error al recuperar la informacion del usuario", e);
+            throw new UserPersistenceException(lang.message("persistence.user.error"), e);
         }
     }
 
