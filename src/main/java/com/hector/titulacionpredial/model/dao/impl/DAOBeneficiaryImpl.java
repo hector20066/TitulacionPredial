@@ -285,24 +285,31 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
-    public List<DTOBeneficiaryCreate> findAllForExport() throws DAOException {
+    public List<DTOBeneficiaryDetails> findAllForExport() throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findAllForExport.sql");
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql);
              ResultSet rs = st.executeQuery()) {
 
-            List<DTOBeneficiaryCreate> list = new ArrayList<>();
+            List<DTOBeneficiaryDetails> list = new ArrayList<>();
 
             while (rs.next()) {
-                DTOBeneficiaryCreate dto = new DTOBeneficiaryCreate.Builder()
+                DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails.Builder()
                         .codeBeneficiaries(rs.getString("code_beneficiaries"))
                         .id(rs.getLong("id"))
                         .fullName(rs.getString("full_name"))
+                        .department(Department.valueOf(rs.getString("department")))
+                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
                         .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
+                        .address(rs.getString("address"))
+                        .cadastralRef(rs.getString("cadastral_reference"))
                         .affectation(rs.getString("affectation"))
                         .phone(rs.getLong("phone"))
                         .expeditionLocation(rs.getString("expedition_location"))
+                        .crossing(rs.getString("crossing"))
+                        .publication(rs.getString("publication"))
+                        .neighborhood(rs.getString("neighborhood"))
                         .build();
 
                 list.add(dto);
@@ -342,7 +349,6 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 .fullNameSpouse(rs.getString("spouse_full_name"))
                 .expeditionLocationSpouse(rs.getString("spouse_expedition_location"))
                 .phoneSpouse(rs.getLong("spouse_phone"))
-                .addressSpouse(rs.getString("spouse_address"))
                 .build();
     }
 
