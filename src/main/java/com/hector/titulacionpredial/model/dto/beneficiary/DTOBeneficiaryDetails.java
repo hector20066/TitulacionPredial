@@ -44,7 +44,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
     private long idSpouse;
     private String fullNameSpouse;
     private String expeditionLocationSpouse;
-    private String addressSpouse;
     private long phoneSpouse;
     private int spouseBeneficiaryCode;
 
@@ -74,7 +73,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         this.idSpouse = builder.idSpouse;
         this.fullNameSpouse = builder.fullNameSpouse;
         this.expeditionLocationSpouse = builder.expeditionLocationSpouse;
-        this.addressSpouse = builder.addressSpouse;
         this.phoneSpouse = builder.phoneSpouse;
         this.spouseBeneficiaryCode = builder.spouseBeneficiaryCode;
     }
@@ -167,14 +165,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         this.expeditionLocationSpouse = expeditionLocationSpouse;
     }
 
-    public String getAddressSpouse() {
-        return addressSpouse;
-    }
-
-    public void setAddressSpouse(String addressSpouse) {
-        this.addressSpouse = addressSpouse;
-    }
-
     public long getPhoneSpouse() {
         return phoneSpouse;
     }
@@ -213,7 +203,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         private long idSpouse;
         private String fullNameSpouse;
         private String expeditionLocationSpouse;
-        private String addressSpouse;
         private long phoneSpouse;
         private int spouseBeneficiaryCode;
 
@@ -269,11 +258,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
 
         public Builder expeditionLocationSpouse(String expeditionLocationSpouse) {
             this.expeditionLocationSpouse = expeditionLocationSpouse;
-            return this;
-        }
-
-        public Builder addressSpouse(String addressSpouse) {
-            this.addressSpouse = addressSpouse;
             return this;
         }
 
