@@ -105,6 +105,7 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -485,26 +486,32 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_subtitle3.setText(texts.getRegistersMonth());
     }
 
+    /**     * get card1.     * @return the get card1     */
     public Card getCard1() {
         return card1;
     }
 
+    /**     * get card2.     * @return the get card2     */
     public Card getCard2() {
         return card2;
     }
 
+    /**     * get card3.     * @return the get card3     */
     public Card getCard3() {
         return card3;
     }
 
+    /**     * get gauge chart1.     * @return the get gauge chart1     */
     public GaugeChart getGaugeChart1() {
         return gaugeChart1;
     }
 
+    /**     * get gauge chart2.     * @return the get gauge chart2     */
     public GaugeChart getGaugeChart2() {
         return gaugeChart2;
     }
 
+    /**     * get line chart1.     * @return the get line chart1     */
     public LineChart getLineChart1() {
         return lineChart1;
     }

@@ -24,6 +24,7 @@ public class WinButton extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         btn_minimize = new com.hector.titulacionpredial.view.swing.button.WindowButton();

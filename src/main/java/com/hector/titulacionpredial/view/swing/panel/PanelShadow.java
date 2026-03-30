@@ -36,22 +36,27 @@ public class PanelShadow extends JPanel {
         setOpaque(false);
     }
 
+    /**     * get shadow type.     * @return the get shadow type     */
     public ShadowBorder.ShadowType getShadowType() {
         return shadowType;
     }
 
+    /**     * set shadow type.     * @param shadowType the shadow type     */
     public void setShadowType(ShadowBorder.ShadowType shadowType) {
         this.shadowType = shadowType;
     }
 
+    /**     * get radius.     * @return the get radius     */
     public int getRadius() {
         return radius;
     }
 
+    /**     * set radius.     * @param radius the radius     */
     public void setRadius(int radius) {
         this.radius = radius;
     }
 
+    /**     * get shadow size.     * @return the get shadow size     */
     public int getShadowSize() {
         return shadowSize;
     }
@@ -70,6 +75,7 @@ public class PanelShadow extends JPanel {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint component.     * @param g the g     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -82,6 +88,7 @@ public class PanelShadow extends JPanel {
      * {@inheritDoc}
      */
     @Override
+    /**     * set bounds.     * @param i the i     * @param i1 the i1     * @param i2 the i2     * @param i3 the i3     */
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
         createShadowImage();

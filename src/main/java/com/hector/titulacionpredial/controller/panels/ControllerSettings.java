@@ -59,6 +59,7 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTOSettingsText dto = new DTOSettingsText(lang.app("settings.language.title"),
                 lang.app("settings.language"));

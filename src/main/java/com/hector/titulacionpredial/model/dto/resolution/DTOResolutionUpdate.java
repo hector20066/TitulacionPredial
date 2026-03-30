@@ -52,10 +52,12 @@ public class DTOResolutionUpdate extends DTOResolution {
         this.code = builder.code;
     }
 
+    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
+    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
@@ -73,12 +75,14 @@ public class DTOResolutionUpdate extends DTOResolution {
 
         private int code;
 
+    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
         @Override
+    /**     * build.     * @return the build     */
         public DTOResolutionUpdate build() {
             return new DTOResolutionUpdate(this);
         }

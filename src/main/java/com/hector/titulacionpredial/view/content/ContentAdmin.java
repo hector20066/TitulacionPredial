@@ -33,6 +33,7 @@ public class ContentAdmin extends javax.swing.JFrame {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jpl_body = new javax.swing.JPanel();
@@ -133,18 +134,22 @@ public class ContentAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**     * set controller logout.     * @param action the action     */
     public void setControllerLogout(ActionListener action) {
         btn_logout.addActionListener(action);
     }
 
+    /**     * set controller menu.     * @param evt the evt     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }
 
+    /**     * get jpl_content.     * @return the get jpl_content     */
     public static JPanel getJpl_content() {
         return jpl_content;
     }
 
+    /**     * get menu.     * @return the get menu     */
     public AdminMenu getMenu() {
         return menu;
     }

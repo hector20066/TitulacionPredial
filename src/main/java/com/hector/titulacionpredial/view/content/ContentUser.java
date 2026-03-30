@@ -23,6 +23,7 @@ public class ContentUser extends javax.swing.JFrame {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jpl_body = new javax.swing.JPanel();
@@ -123,18 +124,22 @@ public class ContentUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    /**     * set controller menu.     * @param evt the evt     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }
 
+    /**     * set controller logout.     * @param action the action     */
     public void setControllerLogout(ActionListener action) {
         btn_logout.addActionListener(action);
     }
 
+    /**     * get menu.     * @return the get menu     */
     public UserMenu getMenu() {
         return menu;
     }
     
+    /**     * get jpl_content.     * @return the get jpl_content     */
     public static JPanel getJpl_content() {
         return jpl_content;
     }

@@ -37,26 +37,32 @@ public class ModelMenuItem {
         this.subMenu = subMenu;
     }
 
+    /**     * get icon.     * @return the get icon     */
     public String getIcon() {
         return icon;
     }
 
+    /**     * set icon.     * @param icon the icon     */
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
+    /**     * get menu name.     * @return the get menu name     */
     public String getMenuName() {
         return menuName;
     }
 
+    /**     * set menu name.     * @param menuName the menu name     */
     public void setMenuName(String menuName) {
         this.menuName = menuName;
     }
 
+    /**     * get sub menu.     * @return the get sub menu     */
     public String[] getSubMenu() {
         return subMenu;
     }
 
+    /**     * set sub menu.     * @param subMenu the sub menu     */
     public void setSubMenu(String[] subMenu) {
         this.subMenu = subMenu;
     }

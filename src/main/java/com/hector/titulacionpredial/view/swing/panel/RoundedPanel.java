@@ -72,6 +72,7 @@ public class RoundedPanel extends JPanel {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 

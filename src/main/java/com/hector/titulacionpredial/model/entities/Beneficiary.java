@@ -61,42 +61,52 @@ public class Beneficiary extends Person {
         this.spouse = builder.spouse;
     }
 
+    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
+    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**     * get code beneficiaries.     * @return the get code beneficiaries     */
     public String getCodeBeneficiaries() {
         return codeBeneficiaries;
     }
 
+    /**     * set code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     */
     public void setCodeBeneficiaries(String codeBeneficiaries) {
         this.codeBeneficiaries = codeBeneficiaries;
     }
 
+    /**     * get marital status.     * @return the get marital status     */
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
+    /**     * set marital status.     * @param maritalStatus the marital status     */
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
+    /**     * get affectation.     * @return the get affectation     */
     public String getAffectation() {
         return affectation;
     }
 
+    /**     * set affectation.     * @param affectation the affectation     */
     public void setAffectation(String affectation) {
         this.affectation = affectation;
     }
 
+    /**     * get spouse.     * @return the get spouse     */
     public Spouse getSpouse() {
         return spouse;
     }
 
+    /**     * set spouse.     * @param spouse the spouse     */
     public void setSpouse(Spouse spouse) {
         this.spouse = spouse;
     }
@@ -108,6 +118,7 @@ public class Beneficiary extends Person {
      * @return formatted description of the beneficiary
      */
     @Override
+    /**     * to string.     * @return the to string     */
     public String toString() {
         return super.toString() +
                 "\nCode= " + code +
@@ -134,32 +145,38 @@ public class Beneficiary extends Person {
         private String affectation;
         private Spouse spouse;
 
+    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+    /**     * code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     * @return the code beneficiaries     */
         public Builder codeBeneficiaries(String codeBeneficiaries) {
             this.codeBeneficiaries = codeBeneficiaries;
             return this;
         }
 
+    /**     * marital status.     * @param maritalStatus the marital status     * @return the marital status     */
         public Builder maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
             return this;
         }
 
+    /**     * affectation.     * @param affectation the affectation     * @return the affectation     */
         public Builder affectation(String affectation) {
             this.affectation = affectation;
             return this;
         }
 
+    /**     * spouse.     * @param spouse the spouse     * @return the spouse     */
         public Builder spouse(Spouse spouse) {
             this.spouse = spouse;
             return this;
         }
 
         @Override
+    /**     * build.     * @return the build     */
         public Beneficiary build() {
             return new Beneficiary(this);
         }

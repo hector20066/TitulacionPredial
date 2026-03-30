@@ -16,42 +16,51 @@ public class ControllerManageUsersBuilder {
     private Subject subject;
     private LanguageSubject languageSubject;
 
+    /**     * with view manage users.     * @param manageUsers the manage users     * @return the with view manage users     */
     public ControllerManageUsersBuilder withViewManageUsers(ManageUsers manageUsers) {
         this.manageUsers = manageUsers;
         return this;
     }
 
+    /**     * with language manager.     * @param lang the lang     * @return the with language manager     */
     public ControllerManageUsersBuilder withLanguageManager(LanguageManager lang) {
         this.lang = lang;
         return this;
     }
 
+    /**     * with subject.     * @param subject the subject     * @return the with subject     */
     public ControllerManageUsersBuilder withSubject(Subject subject) {
         this.subject = subject;
         return this;
     }
 
+    /**     * with language subject.     * @param languageSubject the language subject     * @return the with language subject     */
     public ControllerManageUsersBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
         return this;
     }
 
+    /**     * build.     * @return the build     */
     public ControllerManageUsers build() {
         return new ControllerManageUsers(this);
     }
 
+    /**     * get manage users.     * @return the get manage users     */
     public ManageUsers getManageUsers() {
         return manageUsers;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }

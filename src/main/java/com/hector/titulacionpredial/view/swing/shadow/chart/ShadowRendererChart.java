@@ -41,14 +41,17 @@ public class ShadowRendererChart {
         this.color = color;
     }
 
+    /**     * get color.     * @return the get color     */
     public Color getColor() {
         return color;
     }
 
+    /**     * get opacity.     * @return the get opacity     */
     public float getOpacity() {
         return opacity;
     }
 
+    /**     * get size.     * @return the get size     */
     public int getSize() {
         return size;
     }

@@ -70,6 +70,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * add.     * @param dto the dto     * @return the add     */
     public int add(DTOBeneficiaryCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/insert.sql");
 
@@ -104,6 +105,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOBeneficiarySimpleDetails findByCode(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findByCode.sql");
 
@@ -118,6 +120,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * find by id.     * @param id the id     * @return the find by id     */
     public DTOBeneficiarySimpleDetails findById(long id) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findById.sql");
 
@@ -132,6 +135,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * find by name.     * @param name the name     * @return the find by name     */
     public DTOBeneficiarySimpleDetails findByName(String name) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findByName.sql");
 
@@ -197,6 +201,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * find by beneficiaries code.     * @param beneficiariesCode the beneficiaries code     * @return the find by beneficiaries code     */
     public DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findByBeneficiariesCode.sql");
 
@@ -265,6 +270,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * find all data.     * @param code the code     * @return the find all data     */
     public DTOBeneficiaryDetails findAllData(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/findAllData.sql");
 
@@ -353,6 +359,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * modify.     * @param dto the dto     * @return the modify     */
     public boolean modify(DTOBeneficiaryUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/modify.sql");
 
@@ -378,6 +385,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/delete.sql");
 
@@ -394,6 +402,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/countRecords.sql");
 
@@ -412,6 +421,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * get last code.     * @return the get last code     */
     public int getLastCode() throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/getLastCode.sql");
 
@@ -453,6 +463,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * count beneficiaries with property.     * @return the count beneficiaries with property     */
     public int countBeneficiariesWithProperty() throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/countBeneficiariesWithProperty.sql");
 
@@ -471,6 +482,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     }
 
     @Override
+    /**     * percent beneficiaries with property.     * @return the percent beneficiaries with property     */
     public int percentBeneficiariesWithProperty() throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/percenBeneficiariesWithProperty.sql");
 

@@ -82,6 +82,7 @@ public class MessageUtils {
         return JOptionPane.YES_OPTION;
     }
 
+    /**     * input dialog.     * @param message the message     * @param container the container     * @return the input dialog     */
     public static String inputDialog(String message, JComponent container) {
         return JOptionPane.showInputDialog(container, message, lang.message("message.utils.changePassword"), JOptionPane.PLAIN_MESSAGE);
     }

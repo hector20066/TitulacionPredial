@@ -90,47 +90,58 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         });
     }
 
+    /**     * set modify.     * @param modify the modify     */
     public void setModify(boolean modify) {
         this.modify = modify;
     }
 
+    /**     * is modify.     * @return the is modify     */
     public boolean isModify() {
         return modify;
     }
 
+    /**     * set now status.     * @param nowStatus the now status     */
     public void setNowStatus(MaritalStatus nowStatus) {
         this.nowStatus = nowStatus;
     }
 
+    /**     * get now status.     * @return the get now status     */
     public MaritalStatus getNowStatus() {
         return nowStatus;
     }
 
+    /**     * get jlb title modify.     * @return the get jlb title modify     */
     public String getJlbTitleModify() {
         return jlbTitleModify;
     }
 
+    /**     * set jlb title modify.     * @param jlbTitleModify the jlb title modify     */
     public void setJlbTitleModify(String jlbTitleModify) {
         this.jlbTitleModify = jlbTitleModify;
     }
 
+    /**     * get btn modify text.     * @return the get btn modify text     */
     public String getBtnModifyText() {
         return btnModifyText;
     }
 
+    /**     * set btn modify text.     * @param btnModifyText the btn modify text     */
     public void setBtnModifyText(String btnModifyText) {
         this.btnModifyText = btnModifyText;
     }
     
+    /**     * set modify code.     * @param modifyCode the modify code     */
     public void setModifyCode(int modifyCode) {
         this.modifyCode = modifyCode;
     }
     
+    /**     * get modify code.     * @return the get modify code     */
     public int getModifyCode() {
         return modifyCode;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -562,30 +573,37 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         setJlbTitleModify(texts.getModifyTitle());
     }
 
+    /**     * set controller register.     * @param action the action     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
     
+    /**     * set controller add beneficiaries.     * @param action the action     */
     public void setControllerAddBeneficiaries(ActionListener action) {
         btn_addBeneficiaries.addActionListener(action);
     }
 
+    /**     * set controller cbo_department.     * @param action the action     */
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
 
+    /**     * set controller cbo_marital status.     * @param action the action     */
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
 
+    /**     * set controller cbx_affectation.     * @param action the action     */
     public void setControllerCbx_affectation(ActionListener action) {
         cbx_affectation.addActionListener(action);
     }
 
+    /**     * get btn_register.     * @return the get btn_register     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
 
+    /**     * get cbx_affectation.     * @return the get cbx_affectation     */
     public JCheckBox getCbx_affectation() {
         return cbx_affectation;
     }
@@ -602,46 +620,57 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return cbo_municipality;
     }
 
+    /**     * get jscp_info.     * @return the get jscp_info     */
     public JScrollPane getJscp_info() {
         return jscp_info;
     }
 
+    /**     * get txa_affectation.     * @return the get txa_affectation     */
     public JTextArea getTxa_affectation() {
         return txa_affectation;
     }
 
+    /**     * get txa_crossing.     * @return the get txa_crossing     */
     public JTextArea getTxa_crossing() {
         return txa_crossing;
     }
 
+    /**     * get txt_address.     * @return the get txt_address     */
     public JTextField getTxt_address() {
         return txt_address;
     }
 
+    /**     * get txt_cadastral reference.     * @return the get txt_cadastral reference     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
+    /**     * get txt_expedition location.     * @return the get txt_expedition location     */
     public JTextField getTxt_expeditionLocation() {
         return txt_expeditionLocation;
     }
 
+    /**     * get txt_following code.     * @return the get txt_following code     */
     public JTextField getTxt_followingCode() {
         return txt_followingCode;
     }
 
+    /**     * get txt_neighborhood.     * @return the get txt_neighborhood     */
     public JTextField getTxt_neighborhood() {
         return txt_neighborhood;
     }
 
+    /**     * get txt_id.     * @return the get txt_id     */
     public JTextField getTxt_id() {
         return txt_id;
     }
 
+    /**     * get txt_full name.     * @return the get txt_full name     */
     public JTextField getTxt_fullName() {
         return txt_fullName;
     }
 
+    /**     * get txt_phone.     * @return the get txt_phone     */
     public JTextField getTxt_phone() {
         return txt_phone;
     }
@@ -661,6 +690,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     public boolean isLoading = false;
 
+    /**     * is loading.     * @return the is loading     */
     public boolean isLoading() {
         return isLoading;
     }

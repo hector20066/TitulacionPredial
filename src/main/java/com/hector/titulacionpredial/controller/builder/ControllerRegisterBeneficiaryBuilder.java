@@ -50,6 +50,7 @@ public class ControllerRegisterBeneficiaryBuilder {
         return this;
     }
 
+    /**     * with controller login.     * @param controllerLogin the controller login     * @return the with controller login     */
     public ControllerRegisterBeneficiaryBuilder withControllerLogin(ControllerLogin controllerLogin) {
         this.controllerLogin = controllerLogin;
         return this;
@@ -98,26 +99,32 @@ public class ControllerRegisterBeneficiaryBuilder {
         return new ControllerRegisterBeneficiary(this);
     }
 
+    /**     * get register beneficiary.     * @return the get register beneficiary     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
+    /**     * get view beneficiaries.     * @return the get view beneficiaries     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
+    /**     * get controller login.     * @return the get controller login     */
     public ControllerLogin getControllerLogin() {
         return controllerLogin;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

@@ -17,6 +17,7 @@ public class ImportExcel {
 
     private static final LanguageManager lang = LanguageManager.getInstance();
 
+    /**     * import excel.     * @return the import excel     */
     public ImportExcel() {
 
     }

@@ -108,6 +108,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTORegisterBeneficiaryText dto = new DTORegisterBeneficiaryText.Builder()
                 .modifyTitle(lang.app("register.beneficiary.modify.title"))
@@ -241,6 +242,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
+    /**     * register.     */
     private void register() {
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
         Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
@@ -383,6 +385,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
+    /**     * add beneficiaries.     */
     private void addBeneficiaries() {
         try {
             String fullName = registerBeneficiary.getTxt_fullName().getText().trim();
@@ -469,6 +472,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         return false;
     }
 
+    /**     * clean ui add beneficiaries.     */
     private void cleanUIAddBeneficiaries() {
         registerBeneficiary.getTxt_fullName().setText("");
         registerBeneficiary.getTxt_id().setText("");

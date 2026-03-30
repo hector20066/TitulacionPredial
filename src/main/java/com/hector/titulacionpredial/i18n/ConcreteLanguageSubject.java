@@ -62,6 +62,7 @@ public class ConcreteLanguageSubject implements LanguageSubject {
      * {@inheritDoc}
      */
     @Override
+    /**     * register.     * @param observer the observer     */
     public void register(LanguageObserver observer) {
         if (!observers.contains(observer)) {
             observers.add(observer);
@@ -72,6 +73,7 @@ public class ConcreteLanguageSubject implements LanguageSubject {
      * {@inheritDoc}
      */
     @Override
+    /**     * remove.     * @param observer the observer     */
     public void remove(LanguageObserver observer) {
         observers.remove(observer);
     }
@@ -80,6 +82,7 @@ public class ConcreteLanguageSubject implements LanguageSubject {
      * {@inheritDoc}
      */
     @Override
+    /**     * notify observer.     */
     public void notifyObserver() {
         observers.forEach(LanguageObserver::updateLanguage);
     }

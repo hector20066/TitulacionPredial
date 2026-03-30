@@ -60,34 +60,42 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         this.address = builder.address;
     }
 
+    /**     * get property code.     * @return the get property code     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**     * set property code.     * @param propertyCode the property code     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
+    /**     * get cadastral ref.     * @return the get cadastral ref     */
     public String getCadastralRef() {
         return cadastralRef;
     }
 
+    /**     * set cadastral ref.     * @param cadastralRef the cadastral ref     */
     public void setCadastralRef(String cadastralRef) {
         this.cadastralRef = cadastralRef;
     }
 
+    /**     * get municipality.     * @return the get municipality     */
     public Municipalities getMunicipality() {
         return municipality;
     }
 
+    /**     * set municipality.     * @param municipality the municipality     */
     public void setMunicipality(Municipalities municipality) {
         this.municipality = municipality;
     }
 
+    /**     * get address.     * @return the get address     */
     public String getAddress() {
         return address;
     }
 
+    /**     * set address.     * @param address the address     */
     public void setAddress(String address) {
         this.address = address;
     }
@@ -110,21 +118,25 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
         private Municipalities municipality;
         private String address;
 
+    /**     * property code.     * @param propertyCode the property code     * @return the property code     */
         public T propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return (T) this;
         }
 
+    /**     * cadastral ref.     * @param cadastralRef the cadastral ref     * @return the cadastral ref     */
         public T cadastralRef(String cadastralRef) {
             this.cadastralRef = cadastralRef;
             return (T) this;
         }
 
+    /**     * municipality.     * @param municipality the municipality     * @return the municipality     */
         public T municipality(Municipalities municipality) {
             this.municipality = municipality;
             return (T) this;
         }
 
+    /**     * address.     * @param address the address     * @return the address     */
         public T address(String address) {
             this.address = address;
             return (T) this;
@@ -145,6 +157,7 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
          * @return new DTO configured
          */
         @Override
+    /**     * build.     * @return the build     */
         public DTOBeneficiaryCreate build() {
             return new DTOBeneficiaryCreate(this);
         }

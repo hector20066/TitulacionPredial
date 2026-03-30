@@ -27,7 +27,9 @@ public class GaugeChart extends JComponent {
 
     private final Animator animator;
     private int gaugeSize = 10;
+    /**     * color.     * @return the color     */
     private Color color1 = new Color(51, 71, 216);
+    /**     * color.     * @return the color     */
     private Color color2 = new Color(237, 63, 63);
     private int value;
     private int maximum = 100;
@@ -45,6 +47,7 @@ public class GaugeChart extends JComponent {
 
         TimingTarget target = new TimingTargetAdapter() {
             @Override
+    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 currentAnimate = (targetAnimate - lastAnimate) * fraction;
                 currentAnimate += lastAnimate;
@@ -53,6 +56,7 @@ public class GaugeChart extends JComponent {
             }
 
             @Override
+    /**     * end.     */
             public void end() {
                 lastAnimate = currentAnimate;
             }
@@ -64,15 +68,18 @@ public class GaugeChart extends JComponent {
         animator.setDeceleration(0.5f);
     }
 
+    /**     * get gauge size.     * @return the get gauge size     */
     public int getGaugeSize() {
         return gaugeSize;
     }
 
+    /**     * set gauge size.     * @param gaugeSize the gauge size     */
     public void setGaugeSize(int gaugeSize) {
         this.gaugeSize = gaugeSize;
         repaint();
     }
 
+    /**     * get color1.     * @return the get color1     */
     public Color getColor1() {
         return color1;
     }
@@ -87,6 +94,7 @@ public class GaugeChart extends JComponent {
         repaint();
     }
 
+    /**     * get color2.     * @return the get color2     */
     public Color getColor2() {
         return color2;
     }
@@ -101,6 +109,7 @@ public class GaugeChart extends JComponent {
         repaint();
     }
 
+    /**     * get value.     * @return the get value     */
     public int getValue() {
         return value;
     }
@@ -124,6 +133,7 @@ public class GaugeChart extends JComponent {
         repaint();
     }
 
+    /**     * get maximum.     * @return the get maximum     */
     public int getMaximum() {
         return maximum;
     }
@@ -142,6 +152,7 @@ public class GaugeChart extends JComponent {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint.     * @param graphics the graphics     */
     public void paint(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -234,6 +245,7 @@ public class GaugeChart extends JComponent {
         return n * 250f / 100f;
     }
 
+    /**     * get value fixed.     * @return the get value fixed     */
     private int getValueFixed() {
         return value > maximum ? maximum : value;
     }

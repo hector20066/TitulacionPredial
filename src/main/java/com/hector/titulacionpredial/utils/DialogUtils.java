@@ -101,12 +101,14 @@ public class DialogUtils {
 
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
+    /**     * do in background.     */
             protected Void doInBackground() throws Exception {
                 task.call();
                 return null;
             }
 
             @Override
+    /**     * done.     */
             protected void done() {
                 dialog.dispose();
 

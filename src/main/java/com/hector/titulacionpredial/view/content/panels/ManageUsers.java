@@ -33,6 +33,7 @@ public class ManageUsers extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -86,12 +87,14 @@ public class ManageUsers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**     * clear panel.     */
     public void clearPanel() {
         jpl_content.removeAll();
         jpl_content.revalidate();
         jpl_content.repaint();
     }
 
+    /**     * add accounts panel.     * @param account the account     * @param controller the controller     */
     public void addAccountsPanel(DTOUserDetails account, IManageAccounts controller) {
         PanelShadow panelAccount = new PanelShadow();
         panelAccount.setLayout(new BorderLayout());

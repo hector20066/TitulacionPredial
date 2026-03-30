@@ -60,34 +60,42 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
         this.municipalities = builder.municipalities;
     }
 
+    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
+    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**     * get cadastral reference.     * @return the get cadastral reference     */
     public String getCadastralReference() {
         return cadastralReference;
     }
 
+    /**     * set cadastral reference.     * @param cadastralReference the cadastral reference     */
     public void setCadastralReference(String cadastralReference) {
         this.cadastralReference = cadastralReference;
     }
 
+    /**     * get address.     * @return the get address     */
     public String getAddress() {
         return address;
     }
 
+    /**     * set address.     * @param address the address     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**     * get municipalities.     * @return the get municipalities     */
     public Municipalities getMunicipalities() {
         return municipalities;
     }
 
+    /**     * set municipalities.     * @param municipalities the municipalities     */
     public void setMunicipalities(Municipalities municipalities) {
         this.municipalities = municipalities;
     }
@@ -108,27 +116,32 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
         private String address;
         private Municipalities municipalities;
 
+    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+    /**     * cadastral reference.     * @param cadastralReference the cadastral reference     * @return the cadastral reference     */
         public Builder cadastralReference(String cadastralReference) {
             this.cadastralReference = cadastralReference;
             return this;
         }
 
+    /**     * address.     * @param address the address     * @return the address     */
         public Builder address(String address) {
             this.address = address;
             return this;
         }
 
+    /**     * municipalities.     * @param municipalities the municipalities     * @return the municipalities     */
         public Builder municipalities(Municipalities municipalities) {
             this.municipalities = municipalities;
             return this;
         }
 
         @Override
+    /**     * build.     * @return the build     */
         public DTOBeneficiarySimpleDetails build() {
             return new DTOBeneficiarySimpleDetails(this);
         }

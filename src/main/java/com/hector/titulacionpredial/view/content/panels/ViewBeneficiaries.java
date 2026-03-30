@@ -58,6 +58,7 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jpl_content = new javax.swing.JPanel();
@@ -250,78 +251,97 @@ public class ViewBeneficiaries extends javax.swing.JPanel {
         jtbl_beneficiaries.getTableHeader().repaint();
     }
 
+    /**     * set controller view details.     * @param action the action     */
     public void setControllerViewDetails(ActionListener action) {
         btn_seeProfile.addActionListener(action);
     }
 
+    /**     * set controller export to excel.     * @param action the action     */
     public void setControllerExportToExcel(ActionListener action) {
         btn_exportToExcel.addActionListener(action);
     }
 
+    /**     * set controller modify.     * @param action the action     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
+    /**     * set controller delete.     * @param action the action     */
     public void setControllerDelete(ActionListener action) {
         btn_delete.addActionListener(action);
     }
 
+    /**     * set controller search.     * @param action the action     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
+    /**     * set controller search cancel.     * @param action the action     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
+    /**     * set controller txt_search document.     * @param listen the listen     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
+    /**     * set controller txt_search mouse listener.     * @param listen the listen     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
+    /**     * set controller txt_search focus.     * @param listen the listen     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
+    /**     * get table model.     * @return the get table model     */
     public DefaultTableModel getTableModel() {
         return tableModel;
     }
 
+    /**     * get btn_delete.     * @return the get btn_delete     */
     public ButtonAction getBtn_delete() {
         return btn_delete;
     }
 
+    /**     * get btn_modify.     * @return the get btn_modify     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
+    /**     * get btn_search.     * @return the get btn_search     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
+    /**     * get btn_see profile.     * @return the get btn_see profile     */
     public ButtonAction getBtn_seeProfile() {
         return btn_seeProfile;
     }
 
+    /**     * get btn_search cancel.     * @return the get btn_search cancel     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
+    /**     * get jpl_content.     * @return the get jpl_content     */
     public JPanel getJpl_content() {
         return jpl_content;
     }
 
+    /**     * get jtbl_beneficiaries.     * @return the get jtbl_beneficiaries     */
     public JTable getJtbl_beneficiaries() {
         return jtbl_beneficiaries;
     }
 
+    /**     * get rounded panel1.     * @return the get rounded panel1     */
     public RoundedPanel getRoundedPanel1() {
         return roundedPanel1;
     }
 
+    /**     * get txt_search.     * @return the get txt_search     */
     public JTextField getTxt_search() {
         return txt_search;
     }

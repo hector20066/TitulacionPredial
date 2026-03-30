@@ -33,6 +33,7 @@ public class ModifyResolution extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         panelShadow1 = new com.hector.titulacionpredial.view.swing.panel.PanelShadow();
@@ -250,42 +251,52 @@ public class ModifyResolution extends javax.swing.JPanel {
         btn_modify.setText(texts.getModifyBtn());
     }
 
+    /**     * set controller modify.     * @param action the action     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
+    /**     * get btn_modify.     * @return the get btn_modify     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
+    /**     * get txt_act.     * @return the get txt_act     */
     public JTextField getTxt_act() {
         return txt_act;
     }
 
+    /**     * get txt_code.     * @return the get txt_code     */
     public JTextField getTxt_code() {
         return txt_code;
     }
 
+    /**     * get txt_fmi.     * @return the get txt_fmi     */
     public JTextField getTxt_fmi() {
         return txt_fmi;
     }
 
+    /**     * get txt_note.     * @return the get txt_note     */
     public JTextField getTxt_note() {
         return txt_note;
     }
 
+    /**     * get txt_num resolution.     * @return the get txt_num resolution     */
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
 
+    /**     * get txt_public writing.     * @return the get txt_public writing     */
     public JTextField getTxt_publicWriting() {
         return txt_publicWriting;
     }
 
+    /**     * get ftx_executory.     * @return the get ftx_executory     */
     public JFormattedTextField getFtx_executory() {
         return ftx_executory;
     }
 
+    /**     * get ftx_notification.     * @return the get ftx_notification     */
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }

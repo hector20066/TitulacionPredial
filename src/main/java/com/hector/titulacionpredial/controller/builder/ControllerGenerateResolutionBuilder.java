@@ -78,18 +78,22 @@ public class ControllerGenerateResolutionBuilder {
         return new ControllerGenerateResolution(this);
     }
 
+    /**     * get generate resolution.     * @return the get generate resolution     */
     public GenerateResolution getGenerateResolution() {
         return generateResolution;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

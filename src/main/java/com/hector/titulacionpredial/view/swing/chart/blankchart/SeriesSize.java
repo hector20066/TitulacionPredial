@@ -40,34 +40,42 @@ public class SeriesSize {
 
     }
 
+    /**     * get x.     * @return the get x     */
     public double getX() {
         return x;
     }
 
+    /**     * set x.     * @param x the x     */
     public void setX(double x) {
         this.x = x;
     }
 
+    /**     * get y.     * @return the get y     */
     public double getY() {
         return y;
     }
 
+    /**     * set y.     * @param y the y     */
     public void setY(double y) {
         this.y = y;
     }
 
+    /**     * get width.     * @return the get width     */
     public double getWidth() {
         return width;
     }
 
+    /**     * set width.     * @param width the width     */
     public void setWidth(double width) {
         this.width = width;
     }
 
+    /**     * get height.     * @return the get height     */
     public double getHeight() {
         return height;
     }
 
+    /**     * set height.     * @param height the height     */
     public void setHeight(double height) {
         this.height = height;
     }

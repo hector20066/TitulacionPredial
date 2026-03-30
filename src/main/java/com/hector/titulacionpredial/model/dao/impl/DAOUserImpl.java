@@ -29,10 +29,12 @@ public class DAOUserImpl implements DAOUser {
     private static DAOUserImpl instance;
     private static final LanguageManager lang = LanguageManager.getInstance();
 
+    /**     * dao user impl.     * @return the dao user impl     */
     private DAOUserImpl() {
 
     }
 
+    /**     * get instance.     * @return the get instance     */
     public static synchronized DAOUserImpl getInstance() {
         if (instance == null) {
             instance = new DAOUserImpl();
@@ -42,6 +44,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    /**     * add.     * @param dto the dto     */
     public void add(DTOUserCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/insert.sql");
 
@@ -59,6 +62,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    /**     * verify credentials.     * @param user the user     * @param plainPassword the plain password     * @return the verify credentials     */
     public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         String sql = SQLRepository.get("sql/user/verifyPassword.sql");
 
@@ -85,6 +89,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    /**     * modify password.     * @param dto the dto     * @return the modify password     */
     public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/modifyPassword.sql");
 
@@ -104,6 +109,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOUserDetails findByCode(int code) throws DAOException {
         String sql = SQLRepository.get("sql/user/findByCode.sql");
 
@@ -153,6 +159,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
+    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/user/delete.sql");
 

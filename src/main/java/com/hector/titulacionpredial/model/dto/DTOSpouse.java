@@ -51,10 +51,12 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
+    /**     * get beneficiary code.     * @return the get beneficiary code     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
+    /**     * set beneficiary code.     * @param beneficiaryCode the beneficiary code     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }
@@ -71,6 +73,7 @@ public class DTOSpouse extends DTOBasePerson {
 
         protected int beneficiaryCode;
 
+    /**     * beneficiary code.     * @param beneficiaryCode the beneficiary code     * @return the beneficiary code     */
         public T beneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
             return (T) this;
@@ -80,6 +83,7 @@ public class DTOSpouse extends DTOBasePerson {
 
     public static class Builder extends AbstractBuilder<Builder> {
 
+    /**     * build.     * @return the build     */
         public DTOSpouse build() {
             return new DTOSpouse(this);
         }

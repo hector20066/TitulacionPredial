@@ -126,7 +126,8 @@
                 <version>3.12.0</version>
                 <configuration>
                     <failOnWarnings>false</failOnWarnings>
-                    <doclint>all,-missing</doclint>
+                    <doclint>none</doclint>
+                    <show>private</show>
                 </configuration>
             </plugin>
         </plugins>

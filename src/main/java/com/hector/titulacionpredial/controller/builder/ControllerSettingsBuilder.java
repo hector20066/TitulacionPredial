@@ -64,14 +64,17 @@ public class ControllerSettingsBuilder {
         return new ControllerSettings(this);
     }
 
+    /**     * get settings.     * @return the get settings     */
     public Settings getSettings() {
         return settings;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

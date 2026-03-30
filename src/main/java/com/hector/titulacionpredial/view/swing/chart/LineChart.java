@@ -43,6 +43,7 @@ public class LineChart extends javax.swing.JPanel {
     private final Animator animator;
     private float animate;
     private String showLabel;
+    /**     * point.     * @return the point     */
     private Point labelLocation = new Point();
 
     /**
@@ -54,6 +55,7 @@ public class LineChart extends javax.swing.JPanel {
         setOpaque(false);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
+    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 animate = fraction;
                 repaint();
@@ -68,21 +70,25 @@ public class LineChart extends javax.swing.JPanel {
         
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChartRender() {
             @Override
+    /**     * get max legend.     * @return the get max legend     */
             public int getMaxLegend() {
                 return legends.size();
             }
 
             @Override
+    /**     * get label text.     * @param index the index     * @return the get label text     */
             public String getLabelText(int index) {
                 return model.get(index).getLabel();
             }
 
             @Override
+    /**     * render series.     * @param chart the chart     * @param g2 the g2     * @param size the size     * @param index the index     */
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
 
             }
 
             @Override
+    /**     * render series.     * @param chart the chart     * @param g2 the g2     * @param size the size     * @param index the index     * @param gra the gra     */
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
@@ -117,6 +123,7 @@ public class LineChart extends javax.swing.JPanel {
             }
 
             @Override
+    /**     * render graphics.     * @param g2 the g2     * @param gra the gra     */
             public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra) {
                 g2.setStroke(new BasicStroke(3f));
 
@@ -127,6 +134,7 @@ public class LineChart extends javax.swing.JPanel {
             }
             
             @Override
+    /**     * mouse moving.     * @param chart the chart     * @param evt the evt     * @param g2 the g2     * @param size the size     * @param index the index     * @return the mouse moving     */
             public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
@@ -155,6 +163,7 @@ public class LineChart extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         panelLegend = new javax.swing.JPanel();
@@ -189,10 +198,12 @@ public class LineChart extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**     * get blank plot chart.     * @return the get blank plot chart     */
     public BlankPlotChart getBlankPlotChart() {
         return blankPlotChart;
     }
 
+    /**     * get panel legend.     * @return the get panel legend     */
     public JPanel getPanelLegend() {
         return panelLegend;
     }

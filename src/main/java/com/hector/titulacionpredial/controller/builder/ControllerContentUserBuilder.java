@@ -182,54 +182,67 @@ public class ControllerContentUserBuilder {
         return new ControllerContentUser(this);
     }
 
+    /**     * get content.     * @return the get content     */
     public ContentUser getContent() {
         return content;
     }
 
+    /**     * get dashboard.     * @return the get dashboard     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
+    /**     * get register beneficiary.     * @return the get register beneficiary     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
+    /**     * get register property.     * @return the get register property     */
     public RegisterProperty getRegisterProperty() {
         return registerProperty;
     }
 
+    /**     * get view beneficiaries.     * @return the get view beneficiaries     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
+    /**     * get see properties.     * @return the get see properties     */
     public SeeProperties getSeeProperties() {
         return seeProperties;
     }
 
+    /**     * get see resolutions.     * @return the get see resolutions     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
+    /**     * get settings.     * @return the get settings     */
     public Settings getSettings() {
         return settings;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }
 
+    /**     * get about.     * @return the get about     */
     public About getAbout() {
         return about;
     }
 
+    /**     * get content login.     * @return the get content login     */
     public ContentLogin getContentLogin() {
         return contentLogin;
     }

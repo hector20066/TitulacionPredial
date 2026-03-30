@@ -34,18 +34,22 @@ public class ModelChart {
 
     }
 
+    /**     * get label.     * @return the get label     */
     public String getLabel() {
         return label;
     }
 
+    /**     * set label.     * @param label the label     */
     public void setLabel(String label) {
         this.label = label;
     }
 
+    /**     * get values.     * @return the get values     */
     public double[] getValues() {
         return values;
     }
 
+    /**     * set values.     * @param values the values     */
     public void setValues(double[] values) {
         this.values = values;
     }

@@ -9,12 +9,14 @@ import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
  */
 public class AdminMenu extends Menu {
 
+    /**     * admin menu.     * @return the admin menu     */
     public AdminMenu() {
         super();
         rebuildMenu();
     }
 
     @Override
+    /**     * add components.     */
     public void addComponents() {
         addTitle("PRINCIPAL");
         addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));

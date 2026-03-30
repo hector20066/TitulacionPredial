@@ -69,11 +69,13 @@ public class MenuItem extends JPanel {
 
         menu.addMouseListener(new MouseAdapter() {
             @Override
+    /**     * mouse entered.     * @param evt the evt     */
             public void mouseEntered(MouseEvent evt) {
                 setForeground(menu.getMainColor());
             }
 
             @Override
+    /**     * mouse exited.     * @param evt the evt     */
             public void mouseExited(MouseEvent evt) {
                 if (!menu.isSelected()) {
                     setForeground(new Color(170, 170, 170));
@@ -109,11 +111,13 @@ public class MenuItem extends JPanel {
             private int height;
 
             @Override
+    /**     * begin.     */
             public void begin() {
                 height = getPreferredSize().height - 35;
             }
 
             @Override
+    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 float f = open ? fraction : 1f - fraction;
                 int s = (int) (35 + f * height);
@@ -165,6 +169,7 @@ public class MenuItem extends JPanel {
         }
     }
 
+    /**     * get index.     * @return the get index     */
     public int getIndex() {
         return index;
     }
@@ -215,6 +220,7 @@ public class MenuItem extends JPanel {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint component.     * @param graphics the graphics     */
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 

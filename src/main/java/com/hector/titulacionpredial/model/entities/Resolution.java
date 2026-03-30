@@ -76,82 +76,102 @@ public class Resolution {
         this.beneficiary = builder.beneficiary;
     }
 
+    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
+    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**     * get resolution number.     * @return the get resolution number     */
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
+    /**     * set resolution number.     * @param resolutionNumber the resolution number     */
     public void setResolutionNumber(long resolutionNumber) {
         this.resolutionNumber = resolutionNumber;
     }
 
+    /**     * get notification.     * @return the get notification     */
     public LocalDate getNotification() {
         return notification;
     }
 
+    /**     * set notification.     * @param notification the notification     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
+    /**     * get executory.     * @return the get executory     */
     public LocalDate getExecutory() {
         return executory;
     }
 
+    /**     * set executory.     * @param executory the executory     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
+    /**     * get fmi.     * @return the get fmi     */
     public String getFmi() {
         return fmi;
     }
 
+    /**     * set fmi.     * @param fmi the fmi     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
+    /**     * get act.     * @return the get act     */
     public String getAct() {
         return act;
     }
 
+    /**     * set act.     * @param act the act     */
     public void setAct(String act) {
         this.act = act;
     }
 
+    /**     * get public writing.     * @return the get public writing     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    /**     * set public writing.     * @param publicWriting the public writing     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
+    /**     * get notary.     * @return the get notary     */
     public String getNotary() {
         return notary;
     }
 
+    /**     * set notary.     * @param notary the notary     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
 
+    /**     * get property.     * @return the get property     */
     public Property getProperty() {
         return property;
     }
 
+    /**     * set property.     * @param property the property     */
     public void setProperty(Property property) {
         this.property = property;
     }
 
+    /**     * get beneficiary.     * @return the get beneficiary     */
     public Beneficiary getBeneficiary() {
         return beneficiary;
     }
 
+    /**     * set beneficiary.     * @param beneficiary the beneficiary     */
     public void setBeneficiary(Beneficiary beneficiary) {
         this.beneficiary = beneficiary;
     }
@@ -162,6 +182,7 @@ public class Resolution {
      * @return formatted description of the main attributes
      */
     @Override
+    /**     * to string.     * @return the to string     */
     public String toString() {
         return "Code= " + code +
                 "\nResolution Number= " + resolutionNumber +
@@ -202,56 +223,67 @@ public class Resolution {
         private Property property;
         private Beneficiary beneficiary;
 
+    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
+    /**     * resolution number.     * @param resolutionNumber the resolution number     * @return the resolution number     */
         public Builder resolutionNumber(long resolutionNumber) {
             this.resolutionNumber = resolutionNumber;
             return this;
         }
 
+    /**     * notification.     * @param notification the notification     * @return the notification     */
         public Builder notification(LocalDate notification) {
             this.notification = notification;
             return this;
         }
 
+    /**     * executory.     * @param executory the executory     * @return the executory     */
         public Builder executory(LocalDate executory) {
             this.executory = executory;
             return this;
         }
 
+    /**     * fmi.     * @param fmi the fmi     * @return the fmi     */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
+    /**     * act.     * @param act the act     * @return the act     */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
+    /**     * public writing.     * @param publicWriting the public writing     * @return the public writing     */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
+    /**     * notary.     * @param notary the notary     * @return the notary     */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;
         }
 
+    /**     * property.     * @param property the property     * @return the property     */
         public Builder property(Property property) {
             this.property = property;
             return this;
         }
 
+    /**     * beneficiary.     * @param beneficiary the beneficiary     * @return the beneficiary     */
         public Builder beneficiary(Beneficiary beneficiary) {
             this.beneficiary = beneficiary;
             return this;
         }
 
+    /**     * build.     * @return the build     */
         public Resolution build() {
             return new Resolution(this);
         }

@@ -56,6 +56,7 @@ public class UserProfile extends javax.swing.JDialog {
         
         TimingTarget target = new TimingTargetAdapter() {
             @Override
+    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 if (show) {
                     setOpacity(fraction);
@@ -65,6 +66,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
 
             @Override
+    /**     * end.     */
             public void end() {
                 if (!show) {
                     setVisible(false);
@@ -78,6 +80,7 @@ public class UserProfile extends javax.swing.JDialog {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();

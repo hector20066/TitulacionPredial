@@ -132,6 +132,7 @@ public class ControllerContentAdmin implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTOMenuText dto = new DTOMenuText.Builder()
                 .mainTitle(lang.app("menu.main"))
@@ -153,6 +154,7 @@ public class ControllerContentAdmin implements LanguageObserver {
         //content.getMenu().setText(dto);
     }
 
+    /**     * logout.     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

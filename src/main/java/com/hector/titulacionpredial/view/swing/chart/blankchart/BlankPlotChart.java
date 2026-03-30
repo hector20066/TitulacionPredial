@@ -29,6 +29,7 @@ import java.util.List;
  */
 public class BlankPlotChart extends JComponent {
 
+    /**     * decimal format.     * @return the decimal format     */
     private final DecimalFormat format = new DecimalFormat("#,##0.##");
     private NiceScale niceScale;
     private double maxValues;
@@ -48,15 +49,18 @@ public class BlankPlotChart extends JComponent {
         init();
     }
 
+    /**     * get nice scale.     * @return the get nice scale     */
     public NiceScale getNiceScale() {
         return niceScale;
     }
 
 
+    /**     * set nice scale.     * @param niceScale the nice scale     */
     public void setNiceScale(NiceScale niceScale) {
         this.niceScale = niceScale;
     }
 
+    /**     * get max values.     * @return the get max values     */
     public double getMaxValues() {
         return maxValues;
     }
@@ -72,22 +76,27 @@ public class BlankPlotChart extends JComponent {
         repaint();
     }
 
+    /**     * get min values.     * @return the get min values     */
     public double getMinValues() {
         return minValues;
     }
 
+    /**     * set min values.     * @param minValues the min values     */
     public void setMinValues(double minValues) {
         this.minValues = minValues;
     }
 
+    /**     * get label count.     * @return the get label count     */
     public int getLabelCount() {
         return labelCount;
     }
 
+    /**     * set label count.     * @param labelCount the label count     */
     public void setLabelCount(int labelCount) {
         this.labelCount = labelCount;
     }
 
+    /**     * get values format.     * @return the get values format     */
     public String getValuesFormat() {
         return valuesFormat;
     }
@@ -102,10 +111,12 @@ public class BlankPlotChart extends JComponent {
         format.applyPattern(valuesFormat);
     }
 
+    /**     * get blank plot chat render.     * @return the get blank plot chat render     */
     public BlankPlotChartRender getBlankPlotChatRender() {
         return blankPlotChatRender;
     }
 
+    /**     * set blank plot chat render.     * @param blankPlotChatRender the blank plot chat render     */
     public void setBlankPlotChatRender(BlankPlotChartRender blankPlotChatRender) {
         this.blankPlotChatRender = blankPlotChatRender;
     }
@@ -118,6 +129,7 @@ public class BlankPlotChart extends JComponent {
 
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
+    /**     * mouse moved.     * @param me the me     */
             public void mouseMoved(MouseEvent me) {
                 mouseMove((Graphics2D) getGraphics(), me);
             }
@@ -141,6 +153,7 @@ public class BlankPlotChart extends JComponent {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 

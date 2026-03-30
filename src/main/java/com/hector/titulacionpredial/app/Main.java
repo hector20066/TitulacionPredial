@@ -1,10 +1,11 @@
 package com.hector.titulacionpredial.app;
 
+import java.awt.Color;
+
+import javax.swing.UIManager;
+
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.hector.titulacionpredial.controller.Coordinator;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * Application Start-up Class Land Titling

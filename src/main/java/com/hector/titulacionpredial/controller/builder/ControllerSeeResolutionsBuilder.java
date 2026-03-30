@@ -50,6 +50,7 @@ public class ControllerSeeResolutionsBuilder {
         return this;
     }
 
+    /**     * with controller login.     * @param controllerLogin the controller login     * @return the with controller login     */
     public ControllerSeeResolutionsBuilder withControllerLogin(ControllerLogin controllerLogin) {
         this.controllerLogin = controllerLogin;
         return this;
@@ -97,26 +98,32 @@ public class ControllerSeeResolutionsBuilder {
         return new ControllerSeeResolutions(this);
     }
 
+    /**     * get modify resolution.     * @return the get modify resolution     */
     public ModifyResolution getModifyResolution() {
         return modifyResolution;
     }
 
+    /**     * get see resolutions.     * @return the get see resolutions     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
+    /**     * get controller login.     * @return the get controller login     */
     public ControllerLogin getControllerLogin() {
         return controllerLogin;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

@@ -33,6 +33,7 @@ public class Head extends PanelShadow {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         winButton1 = new com.hector.titulacionpredial.view.swing.button.WinButton();
@@ -61,6 +62,7 @@ public class Head extends PanelShadow {
     public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
             @Override
+    /**     * mouse pressed.     * @param evt the evt     */
             public void mousePressed(MouseEvent evt) {
                 if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(evt)) {
                     xMouse = evt.getXOnScreen() - frame.getX();
@@ -71,6 +73,7 @@ public class Head extends PanelShadow {
 
         this.addMouseMotionListener(new MouseAdapter() {
             @Override
+    /**     * mouse dragged.     * @param evt the evt     */
             public void mouseDragged(MouseEvent evt) {
                 if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(evt)) {
                     frame.setLocation(evt.getXOnScreen() - xMouse, evt.getYOnScreen() - yMouse);
@@ -80,6 +83,7 @@ public class Head extends PanelShadow {
     }
     
 
+    /**     * get win button.     * @return the get win button     */
     public WinButton getWinButton() {
         return winButton1;
     }

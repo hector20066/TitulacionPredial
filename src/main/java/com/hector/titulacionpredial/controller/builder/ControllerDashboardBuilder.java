@@ -78,18 +78,22 @@ public class ControllerDashboardBuilder {
         return new ControllerDashboard(this);
     }
 
+    /**     * get dashboard.     * @return the get dashboard     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

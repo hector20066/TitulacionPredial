@@ -109,6 +109,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     @Override
+    /**     * update.     */
     public void update() {
         new Thread(() -> {
             try {
@@ -124,6 +125,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
                 .title(lang.app("view.beneficiaries.title"))
@@ -369,11 +371,13 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void executeSearchAsync(String param) {
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
             @Override
+    /**     * do in background.     * @return the do in background     */
             protected DTOBeneficiarySimpleDetails doInBackground() throws DAOException {
                 return resolveSearch(param);
             }
 
             @Override
+    /**     * done.     */
             protected void done() {
                 try {
                     handleResult(get(), param);
@@ -438,16 +442,19 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void documentListeners() {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
+    /**     * insert update.     * @param e the e     */
             public void insertUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
+    /**     * remove update.     * @param e the e     */
             public void removeUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
+    /**     * changed update.     * @param e the e     */
             public void changedUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
@@ -461,6 +468,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void listenerSearch() {
         viewBeneficiaries.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
+    /**     * focus lost.     * @param e the e     */
             public void focusLost(FocusEvent e) {
                 if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
                     viewBeneficiaries.getTxt_search().setText(searchPlaceholder);
@@ -470,6 +478,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
         viewBeneficiaries.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
+    /**     * mouse clicked.     * @param e the e     */
             public void mouseClicked(MouseEvent e) {
                 if (viewBeneficiaries.getTxt_search().getText().equals(searchPlaceholder)) {
                     viewBeneficiaries.getTxt_search().setText("");

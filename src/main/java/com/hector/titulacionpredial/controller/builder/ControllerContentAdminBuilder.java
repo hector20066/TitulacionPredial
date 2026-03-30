@@ -117,11 +117,13 @@ public class ControllerContentAdminBuilder {
         return this;
     }
 
+    /**     * with view register users.     * @param registerUsers the register users     * @return the with view register users     */
     public ControllerContentAdminBuilder withViewRegisterUsers(RegisterUsers registerUsers) {
         this.registerUsers = registerUsers;
         return this;
     }
 
+    /**     * wit view manage users.     * @param manageUsers the manage users     * @return the wit view manage users     */
     public ControllerContentAdminBuilder witViewManageUsers(ManageUsers manageUsers) {
         this.manageUsers = manageUsers;
         return this;
@@ -203,62 +205,77 @@ public class ControllerContentAdminBuilder {
         return new ControllerContentAdmin(this);
     }
 
+    /**     * get content.     * @return the get content     */
     public ContentAdmin getContent() {
         return content;
     }
 
+    /**     * get dashboard.     * @return the get dashboard     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
+    /**     * get register beneficiary.     * @return the get register beneficiary     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
+    /**     * get register property.     * @return the get register property     */
     public RegisterProperty getRegisterProperty() {
         return registerProperty;
     }
 
+    /**     * get view beneficiaries.     * @return the get view beneficiaries     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
+    /**     * get see properties.     * @return the get see properties     */
     public SeeProperties getSeeProperties() {
         return seeProperties;
     }
 
+    /**     * get see resolutions.     * @return the get see resolutions     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
+    /**     * get register users.     * @return the get register users     */
     public RegisterUsers getRegisterUsers() {
         return registerUsers;
     }
 
+    /**     * get manage users.     * @return the get manage users     */
     public ManageUsers getManageUsers() {
         return manageUsers;
     }
 
+    /**     * get settings.     * @return the get settings     */
     public Settings getSettings() {
         return settings;
     }
 
+    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
+    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
+    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }
 
+    /**     * get about.     * @return the get about     */
     public About getAbout() {
         return about;
     }
 
+    /**     * get content login.     * @return the get content login     */
     public ContentLogin getContentLogin() {
         return contentLogin;
     }

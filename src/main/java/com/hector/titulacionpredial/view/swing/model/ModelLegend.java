@@ -39,26 +39,32 @@ public class ModelLegend {
 
     }
 
+    /**     * get name.     * @return the get name     */
     public String getName() {
         return name;
     }
 
+    /**     * set name.     * @param name the name     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**     * get color.     * @return the get color     */
     public Color getColor() {
         return color;
     }
 
+    /**     * set color.     * @param color the color     */
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**     * get color light.     * @return the get color light     */
     public Color getColorLight() {
         return colorLight;
     }
 
+    /**     * set color light.     * @param colorLight the color light     */
     public void setColorLight(Color colorLight) {
         this.colorLight = colorLight;
     }

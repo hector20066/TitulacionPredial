@@ -103,10 +103,12 @@ public class ControllerContentUser implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
+    /**     * logout.     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

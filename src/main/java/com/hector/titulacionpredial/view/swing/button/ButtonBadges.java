@@ -27,6 +27,7 @@ public class ButtonBadges extends JButton {
     private float animatSize;
     private Point pressedPoint;
     private float alpha;
+    /**     * color.     * @return the color     */
     private Color effectColor = new Color(173, 173, 173);
     private int badges;
 
@@ -43,6 +44,7 @@ public class ButtonBadges extends JButton {
 
         addMouseListener(new MouseAdapter() {
             @Override
+    /**     * mouse pressed.     * @param evt the evt     */
             public void mousePressed(MouseEvent evt) {
                 targetSize = Math.max(getWidth(), getHeight()) * 2;
                 animatSize = 0;
@@ -82,19 +84,23 @@ public class ButtonBadges extends JButton {
         });
     }
 
+    /**     * get badges.     * @return the get badges     */
     public int getBadges() {
         return badges;
     }
 
+    /**     * set badges.     * @param badges the badges     */
     public void setBadges(int badges) {
         this.badges = badges;
         repaint();
     }
 
+    /**     * get effect color.     * @return the get effect color     */
     public Color getEffectColor() {
         return effectColor;
     }
 
+    /**     * set effect color.     * @param effectColor the effect color     */
     public void setEffectColor(Color effectColor) {
         this.effectColor = effectColor;
     }
@@ -103,6 +109,7 @@ public class ButtonBadges extends JButton {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         int width = getWidth();
         int height = getHeight();
@@ -137,6 +144,7 @@ public class ButtonBadges extends JButton {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint.     * @param g the g     */
     public void paint(Graphics g) {
         super.paint(g);
 

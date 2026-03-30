@@ -32,6 +32,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private final UsersFacade daoUsers;
 
+    /**     * controller register users.     * @param builder the builder     * @return the controller register users     */
     public ControllerRegisterUsers(ControllerRegisterUsersBuilder builder) {
         this.registerUsers = builder.getRegisterUsers();
         this.subject = builder.getSubject();
@@ -44,12 +45,14 @@ public class ControllerRegisterUsers implements LanguageObserver {
         connectEvents();
     }
 
+    /**     * connect events.     */
     private void connectEvents() {
         registerUsers.setControllerCreate(e -> createAccount());
         registerUsers.setControllerSeePassword(e -> seePassword());
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTORegisterUsersText dto = new DTORegisterUsersText.Builder()
                 .title(lang.app("register.users.title"))
@@ -66,6 +69,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
         registerUsers.updateLanguage(dto);
     }
 
+    /**     * create account.     */
     private void createAccount() {
         try {
             String name = registerUsers.getTxt_fullName().getText();
@@ -93,6 +97,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
         }
     }
 
+    /**     * is invalid data.     * @param fields the fields     * @return the is invalid data     */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
@@ -103,11 +108,13 @@ public class ControllerRegisterUsers implements LanguageObserver {
         return false;
     }
 
+    /**     * prepare ui.     */
     private void prepareUI() {
         registerUsers.getBtn_createAccount().setEnabled(false);
         registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.registering"));
     }
 
+    /**     * do in background.     * @param name the name     * @param id the id     * @param user the user     * @param password the password     * @param role the role     */
     private void doInBackground(String name, int id, String user, String password, Role role) {
         new Thread(() -> {
             try {
@@ -122,6 +129,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
         }).start();
     }
 
+    /**     * invoke later.     */
     private void invokeLater() {
         MessageUtils.informationMessage(lang.message("message.user.register"), registerUsers);
         resetUI();
@@ -129,11 +137,13 @@ public class ControllerRegisterUsers implements LanguageObserver {
         subject.notifyObservers();
     }
 
+    /**     * reset ui.     */
     private void resetUI() {
         registerUsers.getBtn_createAccount().setEnabled(true);
         registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.create"));
     }
 
+    /**     * see password.     */
     private void seePassword() {
         if (registerUsers.getRbn_seePasswd().isSelected()) {
             registerUsers.getJpld_password().setEchoChar((char) 0);

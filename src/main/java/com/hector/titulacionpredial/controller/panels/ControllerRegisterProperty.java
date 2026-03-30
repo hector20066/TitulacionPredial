@@ -107,6 +107,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTORegisterPropertyText dto = new DTORegisterPropertyText.Builder()
                 .title(lang.app("register.property.title"))
@@ -357,6 +358,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         }
     }
 
+    /**     * prepare ui search.     */
     private void prepareUISearch() {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setEnabled(false);
@@ -364,6 +366,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         this.propertyCode = 0;
     }
 
+    /**     * do in back ground search.     * @param beneficiariesCode the beneficiaries code     */
     private void doInBackGroundSearch(String beneficiariesCode) {
         new Thread(() -> {
             try {
@@ -396,6 +399,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         // NOTA: NO reiniciar propertyCode aquí, debe retener su valor para el registro
     }
 
+    /**     * import excel data.     */
     private void importExcelData() {
         JFileChooser fileChooser = new JFileChooser();
 
@@ -419,6 +423,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         }
     }
 
+    /**     * load in fields.     * @param data the data     */
     private void loadInFields(List<List<String>> data) {
         if (data.size() > 0) {
             List<String> fila = data.get(0);

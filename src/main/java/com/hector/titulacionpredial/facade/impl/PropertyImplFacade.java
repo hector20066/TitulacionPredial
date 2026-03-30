@@ -55,6 +55,7 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
+    /**     * find by code.     * @param cadastralId the cadastral id     * @return the find by code     */
     public DTOPropertyDetails findByCode(String cadastralId) throws DAOException {
         return daoProperty.findByCode(cadastralId);
     }
@@ -75,27 +76,32 @@ public class PropertyImplFacade implements PropertyFacade {
     }
 
     @Override
+    /**     * modify.     * @param cadastralReference the cadastral reference     * @param area the area     * @return the modify     */
     public boolean modify(String cadastralReference, double area) throws DAOException {
         DTOPropertyUpdate dto = new DTOPropertyUpdate(area, cadastralReference);
         return daoProperty.modify(dto);
     }
 
     @Override
+    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         daoProperty.delete(code);
     }
 
     @Override
+    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         return daoProperty.countRecords();
     }
 
     @Override
+    /**     * percent properties with resolutions.     * @return the percent properties with resolutions     */
     public int percentPropertiesWithResolutions() throws DAOException {
         return daoProperty.percentPropertiesWithResolutions();
     }
 
     @Override
+    /**     * count property with resolution.     * @return the count property with resolution     */
     public int countPropertyWithResolution() throws DAOException {
         return daoProperty.countPropertyWithResolution();
     }

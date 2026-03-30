@@ -29,6 +29,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     private final UsersFacade daoUsers;
 
+    /**     * controller manage users.     * @param builder the builder     * @return the controller manage users     */
     public ControllerManageUsers(ControllerManageUsersBuilder builder) {
         this.manageUsers = builder.getManageUsers();
         this.lang = builder.getLang();
@@ -41,6 +42,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     }
 
     @Override
+    /**     * update.     */
     public void update() {
         new Thread(() -> {
             try {
@@ -53,11 +55,13 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
     @Override
+    /**     * modify account.     * @param account the account     */
     public void modifyAccount(DTOUserDetails account) {
         int id = account.getId();
         String newPassword = MessageUtils.inputDialog(lang.message("message.user.enter.newPassword"), manageUsers);
@@ -74,6 +78,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     }
 
     @Override
+    /**     * delete account.     * @param id the id     * @param panel the panel     */
     public void deleteAccount(int id, JPanel panel) {
         new Thread(() -> {
             try {
@@ -85,11 +90,13 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }).start();
     }
 
+    /**     * action for success.     */
     private void actionForSuccess() {
         MessageUtils.informationMessage(lang.message("message.user.delete"), manageUsers);
         subject.notifyObservers();
     }
 
+    /**     * action for success.     * @param success the success     */
     private void actionForSuccess(boolean success) {
         if (success) {
             MessageUtils.informationMessage(lang.message("message.user.modify"), manageUsers);
@@ -99,6 +106,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }
     }
 
+    /**     * load data.     * @param listUsers the list users     */
     private void loadData(List<DTOUserDetails> listUsers) {
         manageUsers.clearPanel();
         listUsers.forEach(dto -> manageUsers.addAccountsPanel(dto, this));

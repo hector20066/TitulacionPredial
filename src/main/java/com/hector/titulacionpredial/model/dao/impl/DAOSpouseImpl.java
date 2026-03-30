@@ -55,6 +55,7 @@ public class DAOSpouseImpl implements DAOSpouse {
     }
 
     @Override
+    /**     * add.     * @param dto the dto     */
     public void add(DTOSpouse dto) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/insert.sql");
 
@@ -72,6 +73,7 @@ public class DAOSpouseImpl implements DAOSpouse {
     }
 
     @Override
+    /**     * find by code.     * @param id the id     * @return the find by code     */
     public DTOSpouse findByCode(int id) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/findByCode.sql");
 
@@ -94,6 +96,7 @@ public class DAOSpouseImpl implements DAOSpouse {
     }
 
     @Override
+    /**     * delete.     * @param id the id     */
     public void delete(int id) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/delete.sql");
 

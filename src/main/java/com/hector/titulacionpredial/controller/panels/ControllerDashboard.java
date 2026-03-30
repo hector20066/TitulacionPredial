@@ -67,6 +67,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     }
 
     @Override
+    /**     * update.     */
     public void update() {
         new Thread(() -> {
             try {
@@ -166,6 +167,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTODashboardText dto = new DTODashboardText.Builder()
                 .beneficiaries(lang.app("dashboard.beneficiaries"))

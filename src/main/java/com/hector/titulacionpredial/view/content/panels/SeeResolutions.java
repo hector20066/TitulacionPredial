@@ -59,6 +59,7 @@ public class SeeResolutions extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -207,54 +208,67 @@ public class SeeResolutions extends javax.swing.JPanel {
         jtbl_resolutions.getTableHeader().repaint();
     }
 
+    /**     * set controller modify.     * @param action the action     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
+    /**     * set controller search.     * @param action the action     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
+    /**     * set controller search cancel.     * @param action the action     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
+    /**     * set controller txt_search document.     * @param listen the listen     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
+    /**     * set controller txt_search mouse listener.     * @param listen the listen     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
+    /**     * set controller txt_search focus.     * @param listen the listen     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
+    /**     * get model.     * @return the get model     */
     public DefaultTableModel getModel() {
         return model;
     }
 
+    /**     * get btn_modify.     * @return the get btn_modify     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
+    /**     * get btn_search.     * @return the get btn_search     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
+    /**     * get btn_search cancel.     * @return the get btn_search cancel     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
+    /**     * get jtbl_resolutions.     * @return the get jtbl_resolutions     */
     public JTable getJtbl_resolutions() {
         return jtbl_resolutions;
     }
 
+    /**     * get rounded panel3.     * @return the get rounded panel3     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
+    /**     * get txt_search.     * @return the get txt_search     */
     public JTextField getTxt_search() {
         return txt_search;
     }

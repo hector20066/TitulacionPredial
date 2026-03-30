@@ -32,6 +32,7 @@ public enum Role {
         this.role = role;
     }
 
+    /**     * get role.     * @return the get role     */
     public String getRole() {
         return role;
     }

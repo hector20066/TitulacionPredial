@@ -85,34 +85,42 @@ public class DTOPropertyDetails extends DTOProperty {
         this.notary = builder.notary;
     }
 
+    /**     * get property code.     * @return the get property code     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
+    /**     * set property code.     * @param propertyCode the property code     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
 
+    /**     * get code beneficiaries.     * @return the get code beneficiaries     */
     public String getCodeBeneficiaries() {
         return codeBeneficiaries;
     }
 
+    /**     * set code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     */
     public void setCodeBeneficiaries(String codeBeneficiaries) {
         this.codeBeneficiaries = codeBeneficiaries;
     }
 
+    /**     * get beneficiaries ids.     * @return the get beneficiaries ids     */
     public String getBeneficiariesIds() {
         return beneficiariesIds;
     }
 
+    /**     * set beneficiaries ids.     * @param beneficiariesIds the beneficiaries ids     */
     public void setBeneficiariesIds(String beneficiariesIds) {
         this.beneficiariesIds = beneficiariesIds;
     }
 
+    /**     * get beneficiaries name.     * @return the get beneficiaries name     */
     public String getBeneficiariesName() {
         return beneficiariesName;
     }
 
+    /**     * set beneficiaries name.     * @param beneficiariesName the beneficiaries name     */
     public void setBeneficiariesName(String beneficiariesName) {
         this.beneficiariesName = beneficiariesName;
     }
@@ -121,62 +129,77 @@ public class DTOPropertyDetails extends DTOProperty {
         return points;
     }
 
+    /**     * set points.     * @param points the points     */
     public void setPoints(List<DTOPoint> points) {
         this.points = points;
     }
 
+    /**     * get num resolution.     * @return the get num resolution     */
     public long getNumResolution() {
         return numResolution;
     }
 
+    /**     * set num resolution.     * @param numResolution the num resolution     */
     public void setNumResolution(long numResolution) {
         this.numResolution = numResolution;
     }
 
+    /**     * get notification.     * @return the get notification     */
     public LocalDate getNotification() {
         return notification;
     }
 
+    /**     * set notification.     * @param notification the notification     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
+    /**     * get executory.     * @return the get executory     */
     public LocalDate getExecutory() {
         return executory;
     }
 
+    /**     * set executory.     * @param executory the executory     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
+    /**     * get fmi.     * @return the get fmi     */
     public String getFmi() {
         return fmi;
     }
 
+    /**     * set fmi.     * @param fmi the fmi     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
+    /**     * get act.     * @return the get act     */
     public String getAct() {
         return act;
     }
 
+    /**     * set act.     * @param act the act     */
     public void setAct(String act) {
         this.act = act;
     }
 
+    /**     * get public writing.     * @return the get public writing     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
+    /**     * set public writing.     * @param publicWriting the public writing     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
+    /**     * get notary.     * @return the get notary     */
     public String getNotary() {
         return notary;
     }
 
+    /**     * set notary.     * @param notary the notary     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
@@ -215,66 +238,79 @@ public class DTOPropertyDetails extends DTOProperty {
         private String publicWriting;
         private String notary;
 
+    /**     * property code.     * @param propertyCode the property code     * @return the property code     */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
+    /**     * beneficiaries ids.     * @param beneficiariesIds the beneficiaries ids     * @return the beneficiaries ids     */
         public Builder beneficiariesIds(String beneficiariesIds) {
             this.beneficiariesIds = beneficiariesIds;
             return this;
         }
 
+    /**     * code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     * @return the code beneficiaries     */
         public Builder codeBeneficiaries(String codeBeneficiaries) {
             this.codeBeneficiaries = codeBeneficiaries;
             return this;
         }
 
+    /**     * beneficiaries name.     * @param beneficiariesName the beneficiaries name     * @return the beneficiaries name     */
         public Builder beneficiariesName(String beneficiariesName) {
             this.beneficiariesName = beneficiariesName;
             return this;
         }
 
+    /**     * points.     * @param points the points     * @return the points     */
         public Builder points(List<DTOPoint> points) {
             this.points = points;
             return this;
         }
 
+    /**     * num resolution.     * @param numResolution the num resolution     * @return the num resolution     */
         public Builder numResolution(long numResolution) {
             this.numResolution = numResolution;
             return this;
         }
 
+    /**     * notification.     * @param notification the notification     * @return the notification     */
         public Builder notification(LocalDate notification) {
             this.notification = notification;
             return this;
         }
 
+    /**     * executory.     * @param executory the executory     * @return the executory     */
         public Builder executory(LocalDate executory) {
             this.executory = executory;
             return this;
         }
 
+    /**     * fmi.     * @param fmi the fmi     * @return the fmi     */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
+    /**     * act.     * @param act the act     * @return the act     */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
+    /**     * public writing.     * @param publicWriting the public writing     * @return the public writing     */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
+    /**     * notary.     * @param notary the notary     * @return the notary     */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;
         }
 
+    /**     * build.     * @return the build     */
         public DTOPropertyDetails build() {
             return new DTOPropertyDetails(this);
         }

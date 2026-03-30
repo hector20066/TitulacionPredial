@@ -20,6 +20,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
 
     private final int THUMB_SIZE = 5;
 
+    /**     * color.     * @return the color     */
     private final Color THUMB_COLOR = new Color(170, 170, 170);
 
     private final float ALPHA = 0.3f;
@@ -35,6 +36,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * create decrease button.     * @param orientation the orientation     * @return the create decrease button     */
     protected JButton createDecreaseButton(int orientation) {
         return new InvisibleScrollBarButton();
     }
@@ -43,6 +45,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * create increase button.     * @param orientation the orientation     * @return the create increase button     */
     protected JButton createIncreaseButton(int orientation) {
         return new InvisibleScrollBarButton();
     }
@@ -51,6 +54,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint track.     * @param g the g     * @param c the c     * @param trackBounds the track bounds     */
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
     }
 
@@ -58,6 +62,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * get maximum thumb size.     * @return the get maximum thumb size     */
     public Dimension getMaximumThumbSize() {
         return new Dimension(0, (int) (scrollbar.getHeight() * 0.4f));
     }
@@ -66,6 +71,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * get minimum thumb size.     * @return the get minimum thumb size     */
     protected Dimension getMinimumThumbSize() {
         return new Dimension(0, 75);
     }
@@ -74,6 +80,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
      * {@inheritDoc}
      */
     @Override
+    /**     * paint thumb.     * @param g the g     * @param c the c     * @param thumbBounds the thumb bounds     */
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
         if (scrollbar.getVisibleAmount() != scrollbar.getMaximum()) {
             int orientation = scrollbar.getOrientation();

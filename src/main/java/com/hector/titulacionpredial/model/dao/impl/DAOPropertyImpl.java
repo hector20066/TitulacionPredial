@@ -65,6 +65,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * add.     * @param dto the dto     * @return the add     */
     public int add(DTOPropertyCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/insert.sql");
 
@@ -97,6 +98,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * find by code.     * @param cadastralId the cadastral id     * @return the find by code     */
     public DTOPropertyDetails findByCode(String cadastralId) throws DAOException {
         String sql = SQLRepository.get("sql/property/findByCode.sql");
         Map<Integer, DTOPropertyDetails> properties = new LinkedHashMap<>();
@@ -315,6 +317,7 @@ public class DAOPropertyImpl implements DAOProperty {
                 .build();
     }
 
+    /**     * modify.     * @param dto the dto     * @return the modify     */
     public boolean modify(DTOPropertyUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/modify.sql");
 
@@ -330,6 +333,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/property/delete.sql");
 
@@ -346,6 +350,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/property/countRecords.sql");
 
@@ -364,6 +369,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * percent properties with resolutions.     * @return the percent properties with resolutions     */
     public int percentPropertiesWithResolutions() throws DAOException {
         String sql = SQLRepository.get("sql/property/percentPropertiesWithResolution.sql");
 
@@ -382,6 +388,7 @@ public class DAOPropertyImpl implements DAOProperty {
     }
 
     @Override
+    /**     * count property with resolution.     * @return the count property with resolution     */
     public int countPropertyWithResolution() throws DAOException {
         String sql = SQLRepository.get("sql/property/countPropertiesWithResolution.sql");
 

@@ -94,6 +94,7 @@ public class ControllerGenerateResolution implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTOGenerateResolutionText dto = new DTOGenerateResolutionText.Builder()
                 .resumeTitle(lang.app("generate.resolution.resume"))

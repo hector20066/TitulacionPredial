@@ -44,6 +44,7 @@ public class ControllerLogin implements LanguageObserver {
     private final ControllerContentReader controllerContentReader;
     private Role role;
 
+    /**     * controller login.     * @param builder the builder     * @return the controller login     */
     public ControllerLogin(ControllerLoginBuilder builder) {
         this.login = builder.getLogin();
         this.contentAdmin = builder.getContentAdmin();
@@ -59,14 +60,17 @@ public class ControllerLogin implements LanguageObserver {
         connectEvents();
     }
 
+    /**     * set role.     * @param role the role     */
     public void setRole(Role role) {
         this.role = role;
     }
 
+    /**     * get role.     * @return the get role     */
     public Role getRole() {
         return role;
     }
 
+    /**     * jpl_ content.     * @return the jpl_ content     */
     public JPanel jpl_Content() {
         if (getRole() == Role.ADMIN) {
             return ContentAdmin.getJpl_content();
@@ -75,6 +79,7 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
+    /**     * connect events.     */
     private void connectEvents() {
         login.setControllerLogin(e -> logIn());
         login.setControllerSeePassword(e -> seePassword());
@@ -87,6 +92,7 @@ public class ControllerLogin implements LanguageObserver {
 
         login.setTxt_userMouse(new MouseAdapter() {
             @Override
+    /**     * mouse pressed.     * @param e the e     */
             public void mousePressed(MouseEvent e) {
                 mousePressedUser();
             }
@@ -94,6 +100,7 @@ public class ControllerLogin implements LanguageObserver {
 
         login.setJpld_passwordMouse(new MouseAdapter() {
             @Override
+    /**     * mouse pressed.     * @param e the e     */
             public void mousePressed(MouseEvent e) {
                 mousePressedPassword();
             }
@@ -101,10 +108,12 @@ public class ControllerLogin implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
+    /**     * log in.     */
     private void logIn() {
         try {
             String user = login.getTxt_user().getText().trim();
@@ -131,19 +140,23 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
+    /**     * prepare ui.     */
     private void prepareUI() {
         login.getBtn_login().setEnabled(false);
         login.getBtn_login().setText(lang.app("controller.login.init"));
     }
 
+    /**     * execute login worker.     * @param user the user     * @param plainPasswd the plain passwd     */
     private void executeLoginWorker(String user, String plainPasswd) {
         SwingWorker<Role, Void> executor = new SwingWorker<>() {
             @Override
+    /**     * do in background.     * @return the do in background     */
             protected Role doInBackground() throws DAOException {
                 return LoginService.getInstance().verifyCredentials(user, plainPasswd);
             }
 
             @Override
+    /**     * done.     */
             public void done() {
                 try {
                     Role role = get();
@@ -167,6 +180,7 @@ public class ControllerLogin implements LanguageObserver {
         executor.execute();
     }
 
+    /**     * handled login result.     * @param role the role     */
     private void handledLoginResult(Role role) {
         switch (role) {
             case Role.ADMIN -> {
@@ -185,6 +199,7 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
+    /**     * start session admin.     */
     private void startSessionAdmin() {
         java.awt.EventQueue.invokeLater(() -> {
             contentAdmin.setVisible(true);
@@ -196,6 +211,7 @@ public class ControllerLogin implements LanguageObserver {
         login.dispose();
     }
 
+    /**     * start session user.     */
     private void startSessionUser() {
         String mode = (String) login.getCbo_access().getSelectedItem();
         Municipalities municipality = extractMunicipalityFromMode(mode);
@@ -239,11 +255,13 @@ public class ControllerLogin implements LanguageObserver {
         };
     }
 
+    /**     * reset log in.     */
     private void resetLogIn() {
         login.getBtn_login().setEnabled(true);
         login.getBtn_login().setText(lang.app("controller.content.login"));
     }
 
+    /**     * mouse pressed password.     */
     private void mousePressedPassword() {
         if (login.getTxt_user().getText().isBlank()) {
             login.getTxt_user().setText(lang.app("controller.login.enter.user"));
@@ -256,6 +274,7 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
+    /**     * mouse pressed user.     */
     private void mousePressedUser() {
         if (login.getTxt_user().getText().equals(lang.app("controller.login.enter.user"))) {
             login.getTxt_user().setText("");
@@ -268,6 +287,7 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
+    /**     * see password.     */
     private void seePassword() {
         if (login.getRbn_seePasswd().isSelected()) {
             login.getJpld_password().setEchoChar((char) 0);

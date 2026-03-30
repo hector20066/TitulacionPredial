@@ -27,6 +27,7 @@ public class ControllerContentReader implements LanguageObserver {
     private final Subject subject;
     private final LanguageManager lang;
 
+    /**     * controller content reader.     * @param builder the builder     * @return the controller content reader     */
     public ControllerContentReader(ControllerContentReaderBuilder builder) {
         this.contentReader = builder.getContent();
         this.dashboard = builder.getDashboard();
@@ -52,6 +53,7 @@ public class ControllerContentReader implements LanguageObserver {
         contentReader.setControllerLogout(e -> logout());
     }
 
+    /**     * selected menu.     * @param index the index     * @param indexSubMenu the index sub menu     */
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {
             case 0 -> {
@@ -71,10 +73,12 @@ public class ControllerContentReader implements LanguageObserver {
     }
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
+    /**     * hide buttons.     */
     public void hideButtons() {
         viewBeneficiaries.getBtn_delete().setVisible(false);
         viewBeneficiaries.getBtn_modify().setVisible(false);
@@ -83,6 +87,7 @@ public class ControllerContentReader implements LanguageObserver {
         seeResolutions.getBtn_modify().setVisible(false);
     }
 
+    /**     * prepare ui.     */
     public void prepareUI() {
         viewBeneficiaries.getBtn_delete().setVisible(false);
         viewBeneficiaries.getBtn_modify().setVisible(false);
@@ -91,6 +96,7 @@ public class ControllerContentReader implements LanguageObserver {
         seeResolutions.getBtn_modify().setVisible(false);
     }
 
+    /**     * logout.     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

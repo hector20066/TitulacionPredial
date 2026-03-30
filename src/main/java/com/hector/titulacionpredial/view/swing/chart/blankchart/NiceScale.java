@@ -104,18 +104,22 @@ public class NiceScale {
         calculate();
     }
 
+    /**     * get tick spacing.     * @return the get tick spacing     */
     public double getTickSpacing() {
         return tickSpacing;
     }
 
+    /**     * get nice min.     * @return the get nice min     */
     public double getNiceMin() {
         return niceMin;
     }
 
+    /**     * get nice max.     * @return the get nice max     */
     public double getNiceMax() {
         return niceMax;
     }
 
+    /**     * get max ticks.     * @return the get max ticks     */
     public double getMaxTicks() {
         return maxTicks;
     }
@@ -130,6 +134,7 @@ public class NiceScale {
         calculate();
     }
 
+    /**     * get min.     * @return the get min     */
     public double getMin() {
         return min;
     }
@@ -144,6 +149,7 @@ public class NiceScale {
         calculate();
     }
 
+    /**     * get max.     * @return the get max     */
     public double getMax() {
         return max;
     }

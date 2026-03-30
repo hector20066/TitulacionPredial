@@ -1,0 +1,400 @@
+File                                                                             Line   Visibility   Method Signature                        
+com/hector/titulacionpredial/controller/ControllerContentAdmin.java
+  Line 135  | public     | public void updateLanguage() {
+  Line 156  | private    | private void logout() {
+com/hector/titulacionpredial/controller/ControllerContentReader.java
+  Line 55   | private    | private void selectedMenu(int index, int indexSubMenu) {
+  Line 74   | public     | public void updateLanguage() {
+  Line 78   | public     | public void hideButtons() {
+  Line 86   | public     | public void prepareUI() {
+  Line 94   | private    | private void logout() {
+com/hector/titulacionpredial/controller/ControllerContentUser.java
+  Line 106  | public     | public void updateLanguage() {
+  Line 110  | private    | private void logout() {
+com/hector/titulacionpredial/controller/ControllerLogin.java
+  Line 62   | public     | public void setRole(Role role) {
+  Line 66   | public     | public Role getRole() {
+  Line 70   | public     | public JPanel jpl_Content() {
+  Line 78   | private    | private void connectEvents() {
+  Line 90   | public     | public void mousePressed(MouseEvent e) {
+  Line 97   | public     | public void mousePressed(MouseEvent e) {
+  Line 104  | public     | public void updateLanguage() {
+  Line 108  | private    | private void logIn() {
+  Line 134  | private    | private void prepareUI() {
+  Line 139  | private    | private void executeLoginWorker(String user, String plainPas...
+  Line 142  | protected  | protected Role doInBackground() throws DAOException {
+  Line 147  | public     | public void done() {
+  Line 170  | private    | private void handledLoginResult(Role role) {
+  Line 188  | private    | private void startSessionAdmin() {
+  Line 199  | private    | private void startSessionUser() {
+  Line 242  | private    | private void resetLogIn() {
+  Line 247  | private    | private void mousePressedPassword() {
+  Line 259  | private    | private void mousePressedUser() {
+  Line 271  | private    | private void seePassword() {
+com/hector/titulacionpredial/controller/builder/ControllerContentAdminBuilder.java
+  Line 120  | public     | public ControllerContentAdminBuilder withViewRegisterUsers(R...
+  Line 125  | public     | public ControllerContentAdminBuilder witViewManageUsers(Mana...
+  Line 206  | public     | public ContentAdmin getContent() {
+  Line 210  | public     | public Dashboard getDashboard() {
+  Line 214  | public     | public RegisterBeneficiary getRegisterBeneficiary() {
+  Line 218  | public     | public RegisterProperty getRegisterProperty() {
+  Line 222  | public     | public ViewBeneficiaries getViewBeneficiaries() {
+  Line 226  | public     | public SeeProperties getSeeProperties() {
+  Line 230  | public     | public SeeResolutions getSeeResolutions() {
+  Line 234  | public     | public RegisterUsers getRegisterUsers() {
+  Line 238  | public     | public ManageUsers getManageUsers() {
+  Line 242  | public     | public Settings getSettings() {
+  Line 246  | public     | public Subject getSubject() {
+  Line 250  | public     | public LanguageSubject getLanguageSubject() {
+  Line 254  | public     | public LanguageManager getLang() {
+  Line 258  | public     | public About getAbout() {
+  Line 262  | public     | public ContentLogin getContentLogin() {
+com/hector/titulacionpredial/controller/builder/ControllerContentUserBuilder.java
+  Line 185  | public     | public ContentUser getContent() {
+  Line 189  | public     | public Dashboard getDashboard() {
+  Line 193  | public     | public RegisterBeneficiary getRegisterBeneficiary() {
+  Line 197  | public     | public RegisterProperty getRegisterProperty() {
+  Line 201  | public     | public ViewBeneficiaries getViewBeneficiaries() {
+  Line 205  | public     | public SeeProperties getSeeProperties() {
+  Line 209  | public     | public SeeResolutions getSeeResolutions() {
+  Line 213  | public     | public Settings getSettings() {
+  Line 217  | public     | public Subject getSubject() {
+  Line 221  | public     | public LanguageSubject getLanguageSubject() {
+  Line 225  | public     | public LanguageManager getLang() {
+  Line 229  | public     | public About getAbout() {
+  Line 233  | public     | public ContentLogin getContentLogin() {
+com/hector/titulacionpredial/controller/builder/ControllerDashboardBuilder.java
+  Line 81   | public     | public Dashboard getDashboard() {
+  Line 85   | public     | public Subject getSubject() {
+  Line 89   | public     | public LanguageSubject getLanguageSubject() {
+  Line 93   | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerGenerateResolutionBuilder.java
+  Line 81   | public     | public GenerateResolution getGenerateResolution() {
+  Line 85   | public     | public Subject getSubject() {
+  Line 89   | public     | public LanguageSubject getLanguageSubject() {
+  Line 93   | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerLoginBuilder.java
+  Line 29   | public     | public ControllerLoginBuilder withViewLogin(ContentLogin log...
+  Line 34   | public     | public ControllerLoginBuilder withContentAdmin(ContentAdmin ...
+  Line 39   | public     | public ControllerLoginBuilder withContentUser(ContentUser co...
+  Line 44   | public     | public ControllerLoginBuilder withContentReader(ContentReade...
+  Line 49   | public     | public ControllerLoginBuilder withDashboard(Dashboard dashbo...
+  Line 54   | public     | public ControllerLoginBuilder withSubject(Subject subject) {
+  Line 59   | public     | public ControllerLoginBuilder withLanguageManager(LanguageMa...
+  Line 64   | public     | public ControllerLoginBuilder withControllerContentReader(Co...
+  Line 69   | public     | public ControllerLoginBuilder withLanguageSubject(LanguageSu...
+  Line 74   | public     | public ControllerLogin build() {
+  Line 78   | public     | public ContentLogin getLogin() {
+  Line 82   | public     | public ContentAdmin getContentAdmin() {
+  Line 86   | public     | public ContentUser getContentUser() {
+  Line 90   | public     | public ContentReader getContentReader() {
+  Line 94   | public     | public Dashboard getDashboard() {
+  Line 98   | public     | public Subject getSubject() {
+  Line 102  | public     | public LanguageManager getLang() {
+  Line 106  | public     | public ControllerContentReader getControllerContentReader() ...
+  Line 110  | public     | public LanguageSubject getLanguageSubject() {
+com/hector/titulacionpredial/controller/builder/ControllerManageUsersBuilder.java
+  Line 19   | public     | public ControllerManageUsersBuilder withViewManageUsers(Mana...
+  Line 24   | public     | public ControllerManageUsersBuilder withLanguageManager(Lang...
+  Line 29   | public     | public ControllerManageUsersBuilder withSubject(Subject subj...
+  Line 34   | public     | public ControllerManageUsersBuilder withLanguageSubject(Lang...
+  Line 39   | public     | public ControllerManageUsers build() {
+  Line 43   | public     | public ManageUsers getManageUsers() {
+  Line 47   | public     | public LanguageManager getLang() {
+  Line 51   | public     | public Subject getSubject() {
+  Line 55   | public     | public LanguageSubject getLanguageSubject() {
+com/hector/titulacionpredial/controller/builder/ControllerModifyResolutionBuilder.java
+  Line 53   | public     | public ControllerModifyResolutionBuilder withControllerLogin...
+  Line 101  | public     | public ModifyResolution getModifyResolution() {
+  Line 105  | public     | public ControllerLogin getControllerLogin() {
+  Line 109  | public     | public SeeResolutions getSeeResolutions() {
+  Line 113  | public     | public Subject getSubject() {
+  Line 117  | public     | public LanguageSubject getLanguageSubject() {
+  Line 121  | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerRegisterBeneficiaryBuilder.java
+  Line 53   | public     | public ControllerRegisterBeneficiaryBuilder withControllerLo...
+  Line 101  | public     | public RegisterBeneficiary getRegisterBeneficiary() {
+  Line 105  | public     | public ViewBeneficiaries getViewBeneficiaries() {
+  Line 109  | public     | public ControllerLogin getControllerLogin() {
+  Line 113  | public     | public Subject getSubject() {
+  Line 117  | public     | public LanguageSubject getLanguageSubject() {
+  Line 121  | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerRegisterPropertyBuilder.java
+  Line 81   | public     | public RegisterProperty getRegisterProperty() {
+  Line 85   | public     | public Subject getSubject() {
+  Line 89   | public     | public LanguageSubject getLanguageSubject() {
+  Line 93   | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerRegisterUsersBuilder.java
+  Line 20   | public     | public ControllerRegisterUsersBuilder withViewRegisterUsers(...
+  Line 25   | public     | public ControllerRegisterUsersBuilder withLanguageManager(La...
+  Line 30   | public     | public ControllerRegisterUsersBuilder withSubject(Subject su...
+  Line 35   | public     | public ControllerRegisterUsersBuilder withLanguageSubject(La...
+  Line 40   | public     | public ControllerRegisterUsers build() {
+  Line 44   | public     | public RegisterUsers getRegisterUsers() {
+  Line 48   | public     | public LanguageManager getLang() {
+  Line 52   | public     | public Subject getSubject() {
+  Line 56   | public     | public LanguageSubject getLanguageSubject() {
+com/hector/titulacionpredial/controller/builder/ControllerSeePropertiesBuilder.java
+  Line 53   | public     | public ControllerSeePropertiesBuilder withControllerLogin(Co...
+  Line 100  | public     | public GenerateResolution getGenerateResolution() {
+  Line 104  | public     | public SeeProperties getSeeProperties() {
+  Line 108  | public     | public ControllerLogin getControllerLogin() {
+  Line 112  | public     | public Subject getSubject() {
+  Line 116  | public     | public LanguageSubject getLanguageSubject() {
+  Line 120  | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerSeeResolutionsBuilder.java
+  Line 53   | public     | public ControllerSeeResolutionsBuilder withControllerLogin(C...
+  Line 100  | public     | public ModifyResolution getModifyResolution() {
+  Line 104  | public     | public SeeResolutions getSeeResolutions() {
+  Line 108  | public     | public ControllerLogin getControllerLogin() {
+  Line 112  | public     | public Subject getSubject() {
+  Line 116  | public     | public LanguageSubject getLanguageSubject() {
+  Line 120  | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerSettingsBuilder.java
+  Line 67   | public     | public Settings getSettings() {
+  Line 71   | public     | public LanguageSubject getLanguageSubject() {
+  Line 75   | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/builder/ControllerViewBeneficiariesBuilder.java
+  Line 53   | public     | public ControllerViewBeneficiariesBuilder withControllerLogi...
+  Line 100  | public     | public RegisterBeneficiary getRegisterBeneficiary() {
+  Line 104  | public     | public ViewBeneficiaries getViewBeneficiaries() {
+  Line 108  | public     | public ControllerLogin getControllerLogin() {
+  Line 112  | public     | public Subject getSubject() {
+  Line 116  | public     | public LanguageSubject getLanguageSubject() {
+  Line 120  | public     | public LanguageManager getLang() {
+com/hector/titulacionpredial/controller/panels/ControllerDashboard.java
+  Line 70   | public     | public void update() {
+  Line 169  | public     | public void updateLanguage() {
+com/hector/titulacionpredial/controller/panels/ControllerGenerateResolution.java
+  Line 97   | public     | public void updateLanguage() {
+com/hector/titulacionpredial/controller/panels/ControllerManageUsers.java
+  Line 44   | public     | public void update() {
+  Line 56   | public     | public void updateLanguage() {
+  Line 61   | public     | public void modifyAccount(DTOUserDetails account) {
+  Line 77   | public     | public void deleteAccount(int id, JPanel panel) {
+  Line 88   | private    | private void actionForSuccess() {
+  Line 93   | private    | private void actionForSuccess(boolean success) {
+  Line 102  | private    | private void loadData(List<DTOUserDetails> listUsers) {
+com/hector/titulacionpredial/controller/panels/ControllerModifyResolution.java
+  Line 96   | public     | public void updateLanguage() {
+com/hector/titulacionpredial/controller/panels/ControllerRegisterBeneficiary.java
+  Line 111  | public     | public void updateLanguage() {
+  Line 244  | private    | private void register() {
+  Line 386  | private    | private void addBeneficiaries() {
+  Line 472  | private    | private void cleanUIAddBeneficiaries() {
+com/hector/titulacionpredial/controller/panels/ControllerRegisterProperty.java
+  Line 110  | public     | public void updateLanguage() {
+  Line 360  | private    | private void prepareUISearch() {
+  Line 367  | private    | private void doInBackGroundSearch(String beneficiariesCode) ...
+  Line 399  | private    | private void importExcelData() {
+  Line 422  | private    | private void loadInFields(List<List<String>> data) {
+com/hector/titulacionpredial/controller/panels/ControllerRegisterUsers.java
+  Line 47   | private    | private void connectEvents() {
+  Line 53   | public     | public void updateLanguage() {
+  Line 69   | private    | private void createAccount() {
+  Line 96   | private    | private boolean isInvalidData(String... fields) {
+  Line 106  | private    | private void prepareUI() {
+  Line 111  | private    | private void doInBackground(String name, int id, String user...
+  Line 125  | private    | private void invokeLater() {
+  Line 132  | private    | private void resetUI() {
+  Line 137  | private    | private void seePassword() {
+com/hector/titulacionpredial/controller/panels/ControllerSeeProperties.java
+  Line 106  | public     | public void update() {
+  Line 121  | public     | public void updateLanguage() {
+  Line 359  | public     | public void insertUpdate(DocumentEvent e) {
+  Line 364  | public     | public void removeUpdate(DocumentEvent e) {
+  Line 369  | public     | public void changedUpdate(DocumentEvent e) {
+  Line 382  | public     | public void focusLost(FocusEvent e) {
+  Line 391  | public     | public void mouseClicked(MouseEvent e) {
+com/hector/titulacionpredial/controller/panels/ControllerSeeResolutions.java
+  Line 105  | public     | public void update() {
+  Line 120  | public     | public void updateLanguage() {
+  Line 261  | public     | public void insertUpdate(DocumentEvent e) {
+  Line 266  | public     | public void removeUpdate(DocumentEvent e) {
+  Line 271  | public     | public void changedUpdate(DocumentEvent e) {
+  Line 284  | public     | public void focusLost(FocusEvent e) {
+  Line 293  | public     | public void mouseClicked(MouseEvent e) {
+com/hector/titulacionpredial/controller/panels/ControllerSettings.java
+  Line 62   | public     | public void updateLanguage() {
+com/hector/titulacionpredial/controller/panels/ControllerViewBeneficiaries.java
+  Line 112  | public     | public void update() {
+  Line 127  | public     | public void updateLanguage() {
+  Line 372  | protected  | protected DTOBeneficiarySimpleDetails doInBackground() throw...
+  Line 377  | protected  | protected void done() {
+  Line 441  | public     | public void insertUpdate(DocumentEvent e) {
+  Line 446  | public     | public void removeUpdate(DocumentEvent e) {
+  Line 451  | public     | public void changedUpdate(DocumentEvent e) {
+  Line 464  | public     | public void focusLost(FocusEvent e) {
+  Line 473  | public     | public void mouseClicked(MouseEvent e) {
+  Line 46   | public     | public int add(String codeBeneficiary, long id, String fullN...
+  Line 64   | public     | public DTOBeneficiarySimpleDetails findByCode(int code) thro...
+  Line 69   | public     | public DTOBeneficiarySimpleDetails findById(long id) throws ...
+  Line 74   | public     | public DTOBeneficiarySimpleDetails findByName(String fullNam...
+  Line 79   | public     | public List<DTOBeneficiarySimpleDetails> findAllByMunicipali...
+  Line 84   | public     | public List<DTOBeneficiarySimpleDetails> findByAll() throws ...
+  Line 89   | public     | public DTOBeneficiaryDetails findAllData(int code) throws DA...
+  Line 94   | public     | public List<DTOBeneficiaryDetails> findAllForExport() throws...
+  Line 99   | public     | public DTOBeneficiariesCode findByBeneficiariesCode(String b...
+  Line 104  | public     | public boolean modify(long id, String codeBeneficiaries, Str...
+  Line 122  | public     | public void delete(int code) throws DAOException {
+  Line 127  | public     | public int countRecords() throws DAOException {
+  Line 132  | public     | public int getLastCode() throws DAOException {
+  Line 137  | public     | public List<DTOBeneficiariesByMonth> countBeneficiariesLastM...
+  Line 142  | public     | public int countBeneficiariesWithProperty() throws DAOExcept...
+  Line 147  | public     | public int percentBeneficiariesWithProperty() throws DAOExce...
+  Line 36   | public     | public void add(int numberPoint, Double northCoordinate, Dou...
+  Line 51   | public     | public DTOPoint findByCode(int propertyCode) throws DAOExcep...
+  Line 42   | public     | public int add(String cadastralId, String address, Departmen...
+  Line 58   | public     | public DTOPropertyDetails findByCode(String cadastralId) thr...
+  Line 63   | public     | public List<DTOPropertyDetails> findByAll() throws DAOExcept...
+  Line 68   | public     | public List<DTOPropertyDetails> findByAllForExport() throws ...
+  Line 73   | public     | public List<DTOPropertyDetails> findByMunicipality(Municipal...
+  Line 78   | public     | public boolean modify(String cadastralReference, double area...
+  Line 84   | public     | public void delete(int code) throws DAOException {
+  Line 89   | public     | public int countRecords() throws DAOException {
+  Line 94   | public     | public int percentPropertiesWithResolutions() throws DAOExce...
+  Line 99   | public     | public int countPropertyWithResolution() throws DAOException...
+  Line 42   | public     | public void add(long resolutionNumber, LocalDate notificatio...
+  Line 61   | public     | public DTOResolutionDetails findByCode(int numResolution) th...
+  Line 66   | public     | public List<DTOResolutionDetails> findByAll() throws DAOExce...
+  Line 71   | public     | public List<DTOResolutionDetails> findByMunicipality(Municip...
+  Line 76   | public     | public boolean modify(int code, LocalDate executory, String ...
+  Line 94   | public     | public int countRecords() throws DAOException {
+  Line 36   | public     | public void add(long id, String fullName, String expeditionL...
+  Line 49   | public     | public DTOSpouse findByCode(int id) throws DAOException {
+  Line 54   | public     | public void delete(int id) throws DAOException {
+  Line 28   | public     | public void add(String name, int id, String user, String pla...
+  Line 43   | public     | public DTOUserDetails findByCode(int code) throws DAOExcepti...
+  Line 48   | public     | public Role verifyCredentials(String user, String plainPassw...
+  Line 53   | public     | public boolean modifyPassword(int id, String plainPassword) ...
+  Line 63   | public     | public List<DTOUserDetails> findByAll() throws DAOException ...
+  Line 68   | public     | public void delete(int code) throws DAOException {
+  Line 65   | public     | public void register(LanguageObserver observer) {
+  Line 75   | public     | public void remove(LanguageObserver observer) {
+  Line 83   | public     | public void notifyObserver() {
+  Line 73   | public     | public int add(DTOBeneficiaryCreate dto) throws DAOException...
+  Line 107  | public     | public DTOBeneficiarySimpleDetails findByCode(int code) thro...
+  Line 121  | public     | public DTOBeneficiarySimpleDetails findById(long id) throws ...
+  Line 135  | public     | public DTOBeneficiarySimpleDetails findByName(String name) t...
+  Line 171  | public     | public List<DTOBeneficiarySimpleDetails> findAllByMunicipali...
+  Line 194  | public     | public List<DTOBeneficiarySimpleDetails> findByAll() throws ...
+  Line 200  | public     | public DTOBeneficiariesCode findByBeneficiariesCode(String b...
+  Line 268  | public     | public DTOBeneficiaryDetails findAllData(int code) throws DA...
+  Line 288  | public     | public List<DTOBeneficiaryDetails> findAllForExport() throws...
+  Line 356  | public     | public boolean modify(DTOBeneficiaryUpdate dto) throws DAOEx...
+  Line 381  | public     | public void delete(int code) throws DAOException {
+  Line 397  | public     | public int countRecords() throws DAOException {
+  Line 415  | public     | public int getLastCode() throws DAOException {
+  Line 433  | public     | public List<DTOBeneficiariesByMonth> countBeneficiariesLastM...
+  Line 456  | public     | public int countBeneficiariesWithProperty() throws DAOExcept...
+  Line 474  | public     | public int percentBeneficiariesWithProperty() throws DAOExce...
+  Line 58   | public     | public void add(DTOPoint dto) throws DAOException {
+  Line 76   | public     | public DTOPoint findByCode(int propertyCode) throws DAOExcep...
+  Line 68   | public     | public int add(DTOPropertyCreate dto) throws DAOException {
+  Line 100  | public     | public DTOPropertyDetails findByCode(String cadastralId) thr...
+  Line 123  | public     | public List<DTOPropertyDetails> findByAll() throws DAOExcept...
+  Line 129  | public     | public List<DTOPropertyDetails> findByAllForExport() throws ...
+  Line 135  | public     | public List<DTOPropertyDetails> findByMunicipality(Municipal...
+  Line 318  | public     | public boolean modify(DTOPropertyUpdate dto) throws DAOExcep...
+  Line 333  | public     | public void delete(int code) throws DAOException {
+  Line 349  | public     | public int countRecords() throws DAOException {
+  Line 367  | public     | public int percentPropertiesWithResolutions() throws DAOExce...
+  Line 385  | public     | public int countPropertyWithResolution() throws DAOException...
+  Line 83   | public     | public void add(DTOResolutionCreate dto) throws DAOException...
+  Line 104  | public     | public DTOResolutionDetails findByCode(int numResolution) th...
+  Line 126  | public     | public List<DTOResolutionDetails> findByAll() throws DAOExce...
+  Line 147  | public     | public List<DTOResolutionDetails> findByMunicipality(Municip...
+  Line 192  | public     | public boolean modify(DTOResolutionUpdate dto) throws DAOExc...
+  Line 218  | public     | public int countRecords() throws DAOException {
+  Line 58   | public     | public void add(DTOSpouse dto) throws DAOException {
+  Line 75   | public     | public DTOSpouse findByCode(int id) throws DAOException {
+  Line 97   | public     | public void delete(int id) throws DAOException {
+  Line 36   | public     | public static synchronized DAOUserImpl getInstance() {
+  Line 45   | public     | public void add(DTOUserCreate dto) throws DAOException {
+  Line 62   | public     | public Role verifyCredentials(String user, String plainPassw...
+  Line 88   | public     | public boolean modifyPassword(DTOUserModifyPasswd dto) throw...
+  Line 107  | public     | public DTOUserDetails findByCode(int code) throws DAOExcepti...
+  Line 132  | public     | public List<DTOUserDetails> findByAll() throws DAOException ...
+  Line 156  | public     | public void delete(int code) throws DAOException {
+  Line 67   | public     | public String getFullName() {
+  Line 71   | public     | public void setFullName(String fullName) {
+  Line 75   | public     | public long getId() {
+  Line 79   | public     | public void setId(long id) {
+  Line 83   | public     | public long getPhone() {
+  Line 87   | public     | public void setPhone(long phone) {
+  Line 91   | public     | public String getExpeditionLocation() {
+  Line 95   | public     | public void setExpeditionLocation(String expeditionLocation)...
+  Line 112  | protected  | protected T self() {
+  Line 116  | public     | public T fullName(String fullName) {
+  Line 121  | public     | public T id(long id) {
+  Line 126  | public     | public T phone(long phone) {
+  Line 132  | public     | public T expeditionLocation(String expeditionLocation) {
+  Line 137  | public     | public DTOBasePerson build() {
+  Line 69   | public     | public String getCodeBeneficiaries() {
+  Line 73   | public     | public void setCodeBeneficiaries(String codeBeneficiaries) {
+  Line 77   | public     | public MaritalStatus getMaritalStatus() {
+  Line 81   | public     | public void setMaritalStatus(MaritalStatus maritalStatus) {
+  Line 85   | public     | public String getAffectation() {
+  Line 89   | public     | public void setAffectation(String affectation) {
+  Line 116  | protected  | protected T self() {
+  Line 85   | public     | public int getNumberPoint() {
+  Line 89   | public     | public void setNumberPoint(int numberPoint) {
+  Line 93   | public     | public Double getNorthCoordinate() {
+  Line 97   | public     | public void setNorthCoordinate(Double northCoordinate) {
+  Line 101  | public     | public Double getEastCoordinate() {
+  Line 105  | public     | public void setEastCoordinate(Double eastCoordinate) {
+  Line 109  | public     | public Double getDistance() {
+  Line 113  | public     | public void setDistance(Double distance) {
+  Line 117  | public     | public String getHillside() {
+  Line 121  | public     | public void setHillside(String hillside) {
+  Line 125  | public     | public int getPropertyCode() {
+  Line 129  | public     | public void setPropertyCode(int propertyCode) {
+  Line 150  | public     | public Builder numberPoint(int numberPoint) {
+  Line 155  | public     | public Builder northCoordinate(Double northCoordinate) {
+  Line 160  | public     | public Builder eastCoordinate(Double eastCoordinate) {
+  Line 165  | public     | public Builder distance(Double distance) {
+  Line 170  | public     | public Builder hillside(String hillside) {
+  Line 175  | public     | public Builder propertyCode(int propertyCode) {
+  Line 180  | public     | public DTOPoint build() {
+  Line 94   | public     | public String getCadastralId() {
+  Line 98   | public     | public void setCadastralId(String cadastralId) {
+  Line 102  | public     | public Double getArea() {
+  Line 106  | public     | public void setArea(Double area) {
+  Line 110  | public     | public String getCadastralRef() {
+  Line 114  | public     | public void setCadastralRef(String cadastralRef) {
+  Line 118  | public     | public Department getDepartment() {
+  Line 122  | public     | public void setDepartment(Department department) {
+  Line 126  | public     | public Municipalities getMunicipality() {
+  Line 130  | public     | public void setMunicipality(Municipalities municipality) {
+  Line 134  | public     | public String getNeighborhood() {
+  Line 138  | public     | public void setNeighborhood(String neighborhood) {
+  Line 142  | public     | public String getAddress() {
+  Line 146  | public     | public void setAddress(String address) {
+  Line 150  | public     | public String getCrossing() {
+  Line 154  | public     | public void setCrossing(String crossing) {
+  Line 158  | public     | public String getPublication() {
+  Line 162  | public     | public void setPublication(String publication) {
+  Line 177  | protected  | protected T self() {
+  Line 181  | public     | public T cadastralRef(String cadastralRef) {
+  Line 186  | public     | public T area(Double area) {
+  Line 191  | public     | public T department(Department department) {
+  Line 196  | public     | public T municipality(Municipalities municipality) {
+  Line 201  | public     | public T neighborhood(String neighborhood) {
+  Line 206  | public     | public T address(String address) {
+  Line 211  | public     | public T crossing(String crossing) {
+  Line 216  | public     | public T publication(String publication) {
+  Line 221  | public     | public DTOProperty build() {
+  Line 88   | public     | public long getResolutionNumber() {
+  Line 92   | public     | public void setResolutionNumber(long resolutionNumber) {
+  Line 96   | public     | public LocalDate getExecutory() {
+  Line 100  | public     | public void setExecutory(LocalDate executory) {
+  Line 104  | public     | public String getAct() {
+  Line 108  | public     | public void setAct(String act) {
+  Line 112  | public     | public String getPublicWriting() {
+  Line 116  | public     | public void setPublicWriting(String publicWriting) {
+  Line 120  | public     | public LocalDate getNotification() {
+  Line 124  | public     | public void setNotification(LocalDate notification) {
+  Line 128  | public     | public String getFmi() {
+  Line 132  | public     | public void setFmi(String fmi) {
+  Line 136  | public     | public String getNotary() {
+  Line 140  | public     | public void setNotary(String notary) {

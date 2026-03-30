@@ -33,6 +33,7 @@ public class SpouseImplFacade implements SpouseFacade {
     }
 
     @Override
+    /**     * add.     * @param id the id     * @param fullName the full name     * @param expeditionLocation the expedition location     * @param phone the phone     * @param beneficiaryCode the beneficiary code     */
     public void add(long id, String fullName, String expeditionLocation, long phone, int beneficiaryCode) throws DAOException {
         DTOSpouse dto = new DTOSpouse.Builder()
                 .id(id)
@@ -46,11 +47,13 @@ public class SpouseImplFacade implements SpouseFacade {
     }
 
     @Override
+    /**     * find by code.     * @param id the id     * @return the find by code     */
     public DTOSpouse findByCode(int id) throws DAOException {
         return daoSpouse.findByCode(id);
     }
 
     @Override
+    /**     * delete.     * @param id the id     */
     public void delete(int id) throws DAOException {
         daoSpouse.delete(id);
     }

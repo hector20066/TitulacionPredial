@@ -20,11 +20,13 @@ public class UsersImplFacade implements UsersFacade {
 
     private final DAOUser daoUser;
 
+    /**     * users impl facade.     * @return the users impl facade     */
     public UsersImplFacade() {
         this.daoUser = DAOUserImpl.getInstance();
     }
 
     @Override
+    /**     * add.     * @param name the name     * @param id the id     * @param user the user     * @param plainPassword the plain password     * @param role the role     */
     public void add(String name, int id, String user, String plainPassword, Role role) throws DAOException {
         String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);
 
@@ -40,16 +42,19 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
+    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOUserDetails findByCode(int code) throws DAOException {
         return daoUser.findByCode(code);
     }
 
     @Override
+    /**     * verify credentials.     * @param user the user     * @param plainPassword the plain password     * @return the verify credentials     */
     public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }
 
     @Override
+    /**     * modify password.     * @param id the id     * @param plainPassword the plain password     * @return the modify password     */
     public boolean modifyPassword(int id, String plainPassword) throws DAOException {
         DTOUserModifyPasswd dto = new DTOUserModifyPasswd();
         dto.setId(id);
@@ -65,6 +70,7 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
+    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         daoUser.delete(code);
     }

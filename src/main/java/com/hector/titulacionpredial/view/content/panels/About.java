@@ -27,6 +27,7 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -150,6 +151,7 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
+    /**     * update language.     */
     public void updateLanguage() {
         DTOAboutText dto = new DTOAboutText.Builder()
                 .title(languageManager.app("about.title"))

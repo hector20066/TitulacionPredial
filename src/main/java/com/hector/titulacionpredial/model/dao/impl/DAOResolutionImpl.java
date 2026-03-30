@@ -80,6 +80,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
+    /**     * add.     * @param dto the dto     */
     public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
 
@@ -101,6 +102,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
+    /**     * find by code.     * @param numResolution the num resolution     * @return the find by code     */
     public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/findByCode.sql");
 
@@ -189,6 +191,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
+    /**     * modify.     * @param dto the dto     * @return the modify     */
     public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
 
@@ -215,6 +218,7 @@ public class DAOResolutionImpl implements DAOResolution {
     }
 
     @Override
+    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         String sql = SQLRepository.get("sql/resolution/countRecords.sql");
 

@@ -53,34 +53,42 @@ public class Person {
         this.phone = builder.phone;
     }
 
+    /**     * get id.     * @return the get id     */
     public long getId() {
         return id;
     }
 
+    /**     * set id.     * @param id the id     */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**     * get full name.     * @return the get full name     */
     public String getFullName() {
         return fullName;
     }
 
+    /**     * set full name.     * @param fullName the full name     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**     * get expedition location.     * @return the get expedition location     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
+    /**     * set expedition location.     * @param expeditionLocation the expedition location     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
 
+    /**     * get phone.     * @return the get phone     */
     public long getPhone() {
         return phone;
     }
 
+    /**     * set phone.     * @param phone the phone     */
     public void setPhone(long phone) {
         this.phone = phone;
     }
@@ -91,6 +99,7 @@ public class Person {
      * @return formatted description of the main attributes
      */
     @Override
+    /**     * to string.     * @return the to string     */
     public String toString() {
         return "Id= " + id +
                 "\nName= " + fullName +
@@ -123,6 +132,7 @@ public class Person {
          * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
+    /**     * self.     * @return the self     */
         protected T self() {
             return (T) this;
         }
