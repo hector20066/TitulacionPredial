@@ -398,10 +398,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(jlb_beneficiaryInfo))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jlb_residenceData))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlb_beneficiaryInfo)
+                                            .addComponent(jlb_residenceData)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btn_addBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -590,6 +589,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public ButtonAction getBtn_register() {
         return btn_register;
     }
+    
+    public ButtonAction getBtn_addBeneficiaries() {
+        return btn_addBeneficiaries;
+    }
 
     /**     * get cbx_affectation.     * @return the get cbx_affectation     */
     public JCheckBox getCbx_affectation() {
@@ -691,7 +694,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
      */
     public void loadDataModify(DTOBeneficiaryDetails dto) {
         isLoading = true;
-        txt_followingCode.setText(String.valueOf(dto.getCode()));
+        txt_followingCode.setText(dto.getCodeBeneficiaries());
 
         txt_fullName.setText(dto.getFullName());
         txt_id.setText(String.valueOf(dto.getId()));
@@ -737,7 +740,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_department.setSelectedIndex(0);
         cbo_maritalStatus.setSelectedIndex(0);
         cbo_municipality.setSelectedIndex(0);
-        //cbx_affectation.setSelected(false);
+        this.modifyCode = 0;
 
         resetUI();
     }

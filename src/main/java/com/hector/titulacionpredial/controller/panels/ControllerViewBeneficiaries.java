@@ -270,6 +270,8 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                     registerBeneficiary.loadDataModify(dto);
                     registerBeneficiary.setModify(true);
                     registerBeneficiary.setNowStatus(dto.getMaritalStatus());
+                    registerBeneficiary.setModifyCode(code);
+                    registerBeneficiary.getBtn_addBeneficiaries().setVisible(false);
                 });
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
@@ -380,13 +382,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void executeSearchAsync(String param) {
         new SwingWorker<DTOBeneficiarySimpleDetails, Void>() {
             @Override
-    /**     * do in background.     * @return the do in background     */
             protected DTOBeneficiarySimpleDetails doInBackground() throws DAOException {
                 return resolveSearch(param);
             }
 
             @Override
-    /**     * done.     */
             protected void done() {
                 try {
                     handleResult(get(), param);

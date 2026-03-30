@@ -119,6 +119,7 @@ public class ControllerContentAdmin implements LanguageObserver {
                         NavigatorUtils.showForms(ContentAdmin.getJpl_content(), registerBeneficiary);
                         registerBeneficiary.clearFields();
                         registerBeneficiary.setModify(false);
+                        registerBeneficiary.getBtn_addBeneficiaries().setVisible(true);
                     }
                     case 2 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), registerProperty);
                 }
