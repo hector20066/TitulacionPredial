@@ -40,7 +40,7 @@ public class ContentAdmin extends javax.swing.JFrame {
         jpl_content = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jpl_body.setBackground(new java.awt.Color(255, 255, 255));
 
