@@ -19,13 +19,13 @@ import java.util.Properties;
  * file located in the user's directory.
  * </p>
  *
- * <h4>File location</h4>
+ * <h2>File location</h2>
  *
  * <pre>
  * ${user.home}/.titulacionpredial/application.properties
  * </pre>
  *
- * <h4>Characteristics</h4>
+ * <h2>Characteristics</h2>
  *
  * <ul>
  *     <li>Automatically creates the configuration directory if it does not exist.</li>
@@ -33,7 +33,7 @@ import java.util.Properties;
  *     <li>It allows reading and writing of properties.</li>
  * </ul>
  *
- * <h4>Initialization</h4>
+ * <h3>Initialization</h3>
  *
  * <p>
  * The configuration is automatically initialized in the static block when

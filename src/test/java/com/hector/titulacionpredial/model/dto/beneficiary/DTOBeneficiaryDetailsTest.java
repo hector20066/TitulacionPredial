@@ -25,7 +25,6 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(0L, dto.getIdSpouse());
             assertNull(dto.getFullNameSpouse());
             assertNull(dto.getExpeditionLocationSpouse());
-            assertNull(dto.getAddressSpouse());
             assertEquals(0L, dto.getPhoneSpouse());
             assertEquals(0, dto.getSpouseBeneficiaryCode());
         }
@@ -75,14 +74,6 @@ class DTOBeneficiaryDetailsTest {
         }
 
         @Test
-        @DisplayName("setAddressSpouse y getAddressSpouse deben funcionar")
-        void setAndGetAddressSpouseShouldWork() {
-            DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails();
-            dto.setAddressSpouse("Calle 100 #50-20");
-            assertEquals("Calle 100 #50-20", dto.getAddressSpouse());
-        }
-
-        @Test
         @DisplayName("setPhoneSpouse y getPhoneSpouse deben funcionar")
         void setAndGetPhoneSpouseShouldWork() {
             DTOBeneficiaryDetails dto = new DTOBeneficiaryDetails();
@@ -111,7 +102,6 @@ class DTOBeneficiaryDetailsTest {
                     .idSpouse(555L)
                     .fullNameSpouse("Carmen Rodríguez")
                     .expeditionLocationSpouse("Cali")
-                    .addressSpouse("Av 5 #10-20")
                     .phoneSpouse(3201234567L)
                     .spouseBeneficiaryCode(10)
                     .build();
@@ -120,7 +110,6 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(555L, dto.getIdSpouse());
             assertEquals("Carmen Rodríguez", dto.getFullNameSpouse());
             assertEquals("Cali", dto.getExpeditionLocationSpouse());
-            assertEquals("Av 5 #10-20", dto.getAddressSpouse());
             assertEquals(3201234567L, dto.getPhoneSpouse());
             assertEquals(10, dto.getSpouseBeneficiaryCode());
         }
@@ -178,7 +167,6 @@ class DTOBeneficiaryDetailsTest {
                     .idSpouse(777L)
                     .fullNameSpouse("Spouse Name")
                     .expeditionLocationSpouse("Bogotá")
-                    .addressSpouse("Calle 50")
                     .phoneSpouse(3005555555L)
                     .spouseBeneficiaryCode(99)
                     // De DTOBeneficiaryCreate
@@ -205,7 +193,6 @@ class DTOBeneficiaryDetailsTest {
             assertEquals(777L, dto.getIdSpouse());
             assertEquals("Spouse Name", dto.getFullNameSpouse());
             assertEquals("Bogotá", dto.getExpeditionLocationSpouse());
-            assertEquals("Calle 50", dto.getAddressSpouse());
             assertEquals(3005555555L, dto.getPhoneSpouse());
             assertEquals(99, dto.getSpouseBeneficiaryCode());
             assertEquals(12345L, dto.getId());

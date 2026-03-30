@@ -13,7 +13,7 @@ import java.awt.*;
  * Is in charge of:
  * </p>
  * <ul>
- *     <li>Configure the global Look & Feel using {@link FlatIntelliJLaf}.</li>
+ *     <li>Configure the global Look &amp; Feel using {@link FlatIntelliJLaf}.</li>
  *     <li>Customize visual properties of {@link UIManager}.</li>
  *     <li>Initialize the main flow by delegating control to {@link Coordinator}.</li>
  * </ul>

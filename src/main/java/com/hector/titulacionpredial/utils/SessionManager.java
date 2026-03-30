@@ -11,7 +11,7 @@ import com.hector.titulacionpredial.model.enums.Role;
  * including the current user role and selected municipality for data filtering.
  * </p>
  *
- * <h4>Characteristics</h4>
+ * <h2>Characteristics</h2>
  *
  * <ul>
  *     <li>Uses the Singleton pattern to ensure a single instance throughout the application.</li>
@@ -20,14 +20,14 @@ import com.hector.titulacionpredial.model.enums.Role;
  *     <li>Provides thread-safe access to session data.</li>
  * </ul>
  *
- * <h4>Session Data</h4>
+ * <h3>Session Data</h3>
  *
  * <pre>
  * - Role: ADMIN, EMPLOYEE, NONE
  * - Municipality: MONTERIA, SAHAGUN, or null (for unrestricted access)
  * </pre>
  *
- * <h4>Lifecycle</h4>
+ * <h2>Lifecycle</h2>
  *
  * <pre>
  * 1. User logs in → setRole() and setMunicipality() are called

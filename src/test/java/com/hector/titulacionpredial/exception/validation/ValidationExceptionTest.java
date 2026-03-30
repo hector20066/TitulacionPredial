@@ -63,7 +63,7 @@ class ValidationExceptionTest {
         void fieldNameConstructorShouldGenerateMessage() {
             EmptyFieldException ex = new EmptyFieldException("Nombre, Cédula");
             assertTrue(ex.getMessage().contains("Nombre, Cédula"));
-            assertTrue(ex.getMessage().contains("no pueden estar"));
+            assertTrue(ex.getMessage().contains("no puede estar"));
         }
 
         @Test

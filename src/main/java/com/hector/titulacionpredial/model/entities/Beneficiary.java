@@ -14,7 +14,7 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
  *     <li>Internal beneficiary code.</li>
  *     <li>Geographic location (department and municipality).</li>
  *     <li>Associated cadastral reference.</li>
- *     <liMarital status.</li>
+ *     <li>Marital status.</li>
  *     <li>Additional legal and administrative information.</li>
  * </ul>
  *

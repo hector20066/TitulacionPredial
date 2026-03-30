@@ -159,47 +159,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     }
 
     /**
-     * Validate the required fields in the registration form.
-     *
-     * <p>
-     * Verify that they are not empty, that the surname has two parts,
-     * that the ID and cadastral reference are numeric, and that the ID
-     * does not exceed 10 characters.
-     * </p>
-     *
-     * @param fullName           full name
-     * @param id                 national identity card
-     * @param expeditionLocation place of expedition
-     * @throws InvalidInputException if any validation fails
-     */
-    private void validations(String fullName, String id, String expeditionLocation, String phone,
-                             String codeBeneficiaries) throws InvalidInputException {
-        if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
-            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
-        }
-
-        if (!codeBeneficiaries.contains("F")) {
-            throw new InvalidInputException(lang.message("invalid.input.beneficiary.code"));
-        }
-
-        if (phone.length() > 10) {
-            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
-        }
-
-        if (id.length() > 10) {
-            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
-        }
-
-        if (!NumericalValidationUtils.isNumeric(phone)) {
-            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
-        }
-
-        if (!NumericalValidationUtils.isNumeric(id)) {
-            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id"));
-        }
-    }
-
-    /**
      * Validate and prepare the data for the beneficiary modification.
      *
      * @throws InvalidInputException if the data is invalid
@@ -282,20 +241,18 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
-    /**
-     * Check if any of the provided fields are empty.
-     *
-     * @param fields fields to validate
-     * @return {@code true} if at least one field is blank
-     */
-    private boolean isInvalidData(String... fields) {
-        for (String field : fields) {
-            if (field.isBlank()) {
-                return true;
-            }
-        }
+    private void register() {
+        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
+        Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
+        Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
+        String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
+        String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
+        String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
+        String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
 
-        return false;
+        prepareUI(false);
+        doInBackGroundRegister(cadastralReference, address, department, municipality,
+                crossing, neighborhood, publication);
     }
 
     /**
@@ -360,7 +317,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
 
                 SwingUtilities.invokeLater(this::runInvokeLater);
             } catch (DAOException e) {
-                e.printStackTrace();
                 SwingUtilities.invokeLater(() -> {
                     MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
                     resetButton(false);
@@ -390,20 +346,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
 
         daoSpouse.add(dtoSpouse.getId(), dtoSpouse.getFullName(), dtoSpouse.getExpeditionLocation(),
                 dtoSpouse.getPhone(), beneficiaryCode);
-    }
-
-    private void register() {
-        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
-        Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
-        Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
-        String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
-        String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
-        String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
-        String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
-
-        prepareUI(false);
-        doInBackGroundRegister(cadastralReference, address, department, municipality,
-                crossing, neighborhood, publication);
     }
 
     /**
@@ -468,6 +410,63 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
+    }
+
+    /**
+     * Validate the required fields in the registration form.
+     *
+     * <p>
+     * Verify that they are not empty, that the surname has two parts,
+     * that the ID and cadastral reference are numeric, and that the ID
+     * does not exceed 10 characters.
+     * </p>
+     *
+     * @param fullName           full name
+     * @param id                 national identity card
+     * @param expeditionLocation place of expedition
+     * @throws InvalidInputException if any validation fails
+     */
+    private void validations(String fullName, String id, String expeditionLocation, String phone,
+                             String codeBeneficiaries) throws InvalidInputException {
+        if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
+            throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
+        }
+
+        if (!codeBeneficiaries.contains("F")) {
+            throw new InvalidInputException(lang.message("invalid.input.beneficiary.code"));
+        }
+
+        if (phone.length() > 10) {
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
+        }
+
+        if (id.length() > 10) {
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
+        }
+
+        if (!NumericalValidationUtils.isNumeric(phone)) {
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
+        }
+
+        if (!NumericalValidationUtils.isNumeric(id)) {
+            throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id"));
+        }
+    }
+
+    /**
+     * Check if any of the provided fields are empty.
+     *
+     * @param fields fields to validate
+     * @return {@code true} if at least one field is blank
+     */
+    private boolean isInvalidData(String... fields) {
+        for (String field : fields) {
+            if (field.isBlank()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void cleanUIAddBeneficiaries() {

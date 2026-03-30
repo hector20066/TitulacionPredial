@@ -27,10 +27,10 @@ import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("BeneficiaryImplFacade Tests")
@@ -112,12 +112,12 @@ class BeneficiaryImplFacadeTest {
     @DisplayName("findAllByMunicipality debe retornar lista del DAO")
     void findAllByMunicipalityShouldReturnList() throws DAOException {
         List<DTOBeneficiarySimpleDetails> expected = List.of(new DTOBeneficiarySimpleDetails());
-        when(daoBeneficiary.findAllByMunicipality("Barranquilla")).thenReturn(expected);
+        when(daoBeneficiary.findAllByMunicipality("BARRANQUILLA")).thenReturn(expected);
 
-        List<DTOBeneficiarySimpleDetails> result = facade.findAllByMunicipality("Barranquilla");
+        List<DTOBeneficiarySimpleDetails> result = facade.findAllByMunicipality(Municipalities.BARRANQUILLA);
 
         assertSame(expected, result);
-        verify(daoBeneficiary).findAllByMunicipality("Barranquilla");
+        verify(daoBeneficiary).findAllByMunicipality("BARRANQUILLA");
     }
 
     @Test
@@ -147,26 +147,14 @@ class BeneficiaryImplFacadeTest {
     @Test
     @DisplayName("findAllForExport debe delegar al DAO")
     void findAllForExportShouldDelegate() throws DAOException {
-        List<DTOBeneficiaryCreate> expected = List.of();
+        List<DTOBeneficiaryDetails> expected = List.of();
         when(daoBeneficiary.findAllForExport()).thenReturn(expected);
 
-        List<DTOBeneficiaryCreate> result = facade.findAllForExport();
+        List<DTOBeneficiaryDetails> result = facade.findAllForExport();
 
         assertSame(expected, result);
         verify(daoBeneficiary).findAllForExport();
     }
-
-    /*@Test
-    @DisplayName("findAllWithoutProperty debe delegar al DAO")
-    void findAllWithoutPropertyShouldDelegate() throws DAOException {
-        List<DTOBeneficiarySimpleDetails> expected = List.of();
-        when(daoBeneficiary.findAllWithoutProperty()).thenReturn(expected);
-
-        List<DTOBeneficiarySimpleDetails> result = facade.findAllWithoutProperty();
-
-        assertSame(expected, result);
-        verify(daoBeneficiary).findAllWithoutProperty();
-    }*/
 
     @Test
     @DisplayName("modify debe crear DTO y delegar al DAO")
@@ -189,17 +177,6 @@ class BeneficiaryImplFacadeTest {
                 3001234568L, "Medellín", 2);
 
         assertFalse(result);
-    }
-
-    @Test
-    @DisplayName("modifyProperty debe crear DTO y delegar al DAO")
-    void modifyPropertyShouldDelegate() throws DAOException {
-        when(daoBeneficiary.modifyProperty(any(DTOBeneficiaryPropertyUpdate.class))).thenReturn(true);
-
-        boolean result = facade.modifyProperty("REF-001", 10);
-
-        assertTrue(result);
-        verify(daoBeneficiary).modifyProperty(any(DTOBeneficiaryPropertyUpdate.class));
     }
 
     @Test
