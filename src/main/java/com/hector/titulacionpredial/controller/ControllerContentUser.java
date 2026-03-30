@@ -15,6 +15,8 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOReadingMenuText;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOUserMenuText;
 
 /**
  * Controller for user content navigation and interaction.
@@ -130,7 +132,24 @@ public class ControllerContentUser implements LanguageObserver {
      */
     @Override
     public void updateLanguage() {
+        DTOUserMenuText dto = new DTOUserMenuText.Builder()
+                .mainTitle(lang.app("user.menu.main.title"))
+                .dashboard(lang.app("user.menu.main.item1"))
+                .info(lang.app("user.menu.info.title"))
+                .registerBeneficiaries(lang.app("user.menu.info.register"))
+                .registerBeneficiaries(lang.app("user.menu.info.register.item1"))
+                .registerProperties(lang.app("user.menu.info.register.item2"))
+                .see(lang.app("user.menu.info.see"))
+                .seeBeneficiaries(lang.app("user.menu.info.see.item1"))
+                .seeProperties(lang.app("user.menu.info.see.item2"))
+                .seeResolutions(lang.app("user.menu.info.see.item3"))
+                .configuration(lang.app("user.menu.configuration.title"))
+                .settings(lang.app("user.menu.settings"))
+                .aboutApp(lang.app("user.menu.about.title"))
+                .about(lang.app("user.menu.about"))
+                .build();
 
+        contentUser.getMenu().setText(dto);
     }
 
     /**

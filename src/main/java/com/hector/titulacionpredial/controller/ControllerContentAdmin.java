@@ -18,7 +18,7 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAdminMenuText;
 
 /**
  * Main controller of application content.
@@ -150,24 +150,28 @@ public class ControllerContentAdmin implements LanguageObserver {
      */
     @Override
     public void updateLanguage() {
-        DTOMenuText dto = new DTOMenuText.Builder()
-                .mainTitle(lang.app("menu.main"))
-                .dashboard(lang.app("menu.main.dashboard"))
-                .info(lang.app("menu.info"))
-                .registerInfo(lang.app("menu.info.register"))
-                .registerBeneficiaries(lang.app("menu.info.register.beneficiary"))
-                .registerProperties(lang.app("menu.info.register.property"))
-                .see(lang.app("menu.info.see"))
-                .seeBeneficiaries(lang.app("menu.info.see.beneficiaries"))
-                .seeProperties(lang.app("menu.info.see.properties"))
-                .seeResolutions(lang.app("menu.info.see.resolution"))
-                .configuration(lang.app("menu.configuration.title"))
-                .settings(lang.app("menu.configuration.settings"))
-                .aboutApp(lang.app("menu.about"))
-                .about(lang.app("menu.about.desc"))
+        DTOAdminMenuText dto = new DTOAdminMenuText.Builder()
+                .mainTitle(lang.app("admin.menu.main.title"))
+                .dashboard(lang.app("admin.menu.main.item1"))
+                .info(lang.app("admin.menu.info.title"))
+                .registerInfo(lang.app("admin.menu.info.register"))
+                .registerBeneficiaries(lang.app("admin.menu.info.register.item1"))
+                .registerProperties(lang.app("admin.menu.info.register.item2"))
+                .see(lang.app("admin.menu.info.see"))
+                .seeBeneficiaries(lang.app("admin.menu.info.see.item1"))
+                .seeProperties(lang.app("admin.menu.info.see.item2"))
+                .seeResolutions(lang.app("admin.menu.info.see.item3"))
+                .manageUsers(lang.app("admin.menu.usermanage.title"))
+                .users(lang.app("admin.menu.usermanage.subtitle"))
+                .registerUser(lang.app("admin.menu.usermanage.item1"))
+                .seeUsers(lang.app("admin.menu.usermanage.item2"))
+                .configuration(lang.app("admin.menu.configuration.title"))
+                .settings(lang.app("admin.menu.settings"))
+                .aboutApp(lang.app("admin.menu.about.title"))
+                .about(lang.app("admin.menu.about"))
                 .build();
 
-        //content.getMenu().setText(dto);
+        content.getMenu().setText(dto);
     }
 
     /**

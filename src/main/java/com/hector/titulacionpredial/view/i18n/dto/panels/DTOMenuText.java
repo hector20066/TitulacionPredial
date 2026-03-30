@@ -15,9 +15,6 @@ public class DTOMenuText {
     private final String mainTitle;
     private final String dashboard;
     private final String info;
-    private final String registerInfo;
-    private final String registerBeneficiaries;
-    private final String registerProperties;
     private final String see;
     private final String seeBeneficiaries;
     private final String seeProperties;
@@ -32,13 +29,10 @@ public class DTOMenuText {
      *
      * @param builder builder with the configured texts
      */
-    public DTOMenuText(Builder builder) {
+    public DTOMenuText(Builder<?> builder) {
         this.mainTitle = builder.mainTitle;
         this.dashboard = builder.dashboard;
         this.info = builder.info;
-        this.registerInfo = builder.registerInfo;
-        this.registerBeneficiaries = builder.registerBeneficiaries;
-        this.registerProperties = builder.registerProperties;
         this.see = builder.see;
         this.seeBeneficiaries = builder.seeBeneficiaries;
         this.seeProperties = builder.seeProperties;
@@ -62,21 +56,6 @@ public class DTOMenuText {
     /**     * get info.     * @return the get info     */
     public String getInfo() {
         return info;
-    }
-
-    /**     * get register info.     * @return the get register info     */
-    public String getRegisterInfo() {
-        return registerInfo;
-    }
-
-    /**     * get register beneficiaries.     * @return the get register beneficiaries     */
-    public String getRegisterBeneficiaries() {
-        return registerBeneficiaries;
-    }
-
-    /**     * get register properties.     * @return the get register properties     */
-    public String getRegisterProperties() {
-        return registerProperties;
     }
 
     /**     * get see.     * @return the get see     */
@@ -122,14 +101,11 @@ public class DTOMenuText {
     /**
      * Builder for building instances of {@link DTOMenuText}.
      */
-    public static class Builder {
+    public static class Builder<T extends Builder<T>> {
 
         private String mainTitle;
         private String dashboard;
         private String info;
-        private String registerInfo;
-        private String registerBeneficiaries;
-        private String registerProperties;
         private String see;
         private String seeBeneficiaries;
         private String seeProperties;
@@ -139,88 +115,74 @@ public class DTOMenuText {
         private String aboutApp;
         private String about;
 
+        protected T self() {
+            return (T) this;
+        }
+
     /**     * main title.     * @param mainTitle the main title     * @return the main title     */
-        public Builder mainTitle(String mainTitle) {
+        public T mainTitle(String mainTitle) {
             this.mainTitle = mainTitle;
-            return this;
+            return self();
         }
 
     /**     * dashboard.     * @param dashboard the dashboard     * @return the dashboard     */
-        public Builder dashboard(String dashboard) {
+        public T dashboard(String dashboard) {
             this.dashboard = dashboard;
-            return this;
+            return self();
         }
 
     /**     * info.     * @param info the info     * @return the info     */
-        public Builder info(String info) {
+        public T info(String info) {
             this.info = info;
-            return this;
-        }
-
-    /**     * register info.     * @param registerInfo the register info     * @return the register info     */
-        public Builder registerInfo(String registerInfo) {
-            this.registerInfo = registerInfo;
-            return this;
-        }
-
-    /**     * register beneficiaries.     * @param registerBeneficiaries the register beneficiaries     * @return the register beneficiaries     */
-        public Builder registerBeneficiaries(String registerBeneficiaries) {
-            this.registerBeneficiaries = registerBeneficiaries;
-            return this;
-        }
-
-    /**     * register properties.     * @param registerProperties the register properties     * @return the register properties     */
-        public Builder registerProperties(String registerProperties) {
-            this.registerProperties = registerProperties;
-            return this;
+            return self();
         }
 
     /**     * see.     * @param see the see     * @return the see     */
-        public Builder see(String see) {
+        public T see(String see) {
             this.see = see;
-            return this;
+            return self();
         }
 
     /**     * see beneficiaries.     * @param seeBeneficiaries the see beneficiaries     * @return the see beneficiaries     */
-        public Builder seeBeneficiaries(String seeBeneficiaries) {
+        public T seeBeneficiaries(String seeBeneficiaries) {
             this.seeBeneficiaries = seeBeneficiaries;
-            return this;
+            return self();
         }
 
     /**     * see properties.     * @param seeProperties the see properties     * @return the see properties     */
-        public Builder seeProperties(String seeProperties) {
+        public T seeProperties(String seeProperties) {
             this.seeProperties = seeProperties;
-            return this;
+            return self();
         }
 
     /**     * see resolutions.     * @param seeResolutions the see resolutions     * @return the see resolutions     */
-        public Builder seeResolutions(String seeResolutions) {
+        public T seeResolutions(String seeResolutions) {
             this.seeResolutions = seeResolutions;
-            return this;
+            return self();
         }
 
     /**     * configuration.     * @param configuration the configuration     * @return the configuration     */
-        public Builder configuration(String configuration) {
+        public T configuration(String configuration) {
             this.configuration = configuration;
-            return this;
+            return self();
         }
 
     /**     * settings.     * @param settings the settings     * @return the settings     */
-        public Builder settings(String settings) {
+        public T settings(String settings) {
             this.settings = settings;
-            return this;
+            return self();
         }
 
     /**     * about app.     * @param aboutApp the about app     * @return the about app     */
-        public Builder aboutApp(String aboutApp) {
+        public T aboutApp(String aboutApp) {
             this.aboutApp = aboutApp;
-            return this;
+            return self();
         }
 
     /**     * about.     * @param about the about     * @return the about     */
-        public Builder about(String about) {
+        public T about(String about) {
             this.about = about;
-            return this;
+            return self();
         }
 
     /**     * build.     * @return the build     */

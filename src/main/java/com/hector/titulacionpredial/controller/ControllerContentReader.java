@@ -13,6 +13,7 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOReadingMenuText;
 
 /**
  * Controller for reader content navigation and interaction.
@@ -114,7 +115,21 @@ public class ControllerContentReader implements LanguageObserver {
      */
     @Override
     public void updateLanguage() {
+        DTOReadingMenuText dto = new DTOReadingMenuText.Builder()
+                .mainTitle(lang.app("read.menu.main.title"))
+                .dashboard(lang.app("read.menu.main.item1"))
+                .info(lang.app("read.menu.info.title"))
+                .see(lang.app("read.menu.info.see"))
+                .seeBeneficiaries(lang.app("read.menu.info.see.item1"))
+                .seeProperties(lang.app("read.menu.info.see.item2"))
+                .seeResolutions(lang.app("read.menu.info.see.item3"))
+                .configuration(lang.app("read.menu.configuration.title"))
+                .settings(lang.app("read.menu.settings"))
+                .aboutApp(lang.app("read.menu.about.title"))
+                .about(lang.app("read.menu.about"))
+                .build();
 
+        contentReader.getMenu().setText(dto);
     }
 
     /**

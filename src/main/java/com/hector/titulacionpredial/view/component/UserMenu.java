@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.component;
 
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOUserMenuText;
 import com.hector.titulacionpredial.view.swing.menu.Menu;
 import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
 
@@ -8,6 +9,21 @@ import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
  * @since 1.0
  */
 public class UserMenu extends Menu {
+
+    private String main = "PRINCIPAL";
+    private String dashboard = "Dashboard";
+    private String info = "INFORMACIÓN";
+    private String registerInfo = "Registrar Información";
+    private String registerBeneficiaries = "Beneficiario";
+    private String registerProperties = "Predios";
+    private String seeRegisters = "Ver Registros";
+    private String seeBeneficiaries = "Beneficiario";
+    private String seeProperties = "Predios";
+    private String seeResolutions = "Resoluciones";
+    private String config = "CONFIGURACIÓN";
+    private String settings = "Ajustes";
+    private String aboutApp = "SOBRE LA APP";
+    private String about = "Acerca De";
 
     /**     * user menu.     * @return the user menu     */
     public UserMenu() {
@@ -20,19 +36,33 @@ public class UserMenu extends Menu {
      */
     @Override
     public void addComponents() {
-        addTitle("PRINCIPAL");
-        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));
-        addTitle("INFORMACIÓN");
-        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", "Registrar Informacion", "Beneficiarios", "Predios"));
-        addMenuItem(new ModelMenuItem("image/book-open-text.svg", "Ver Registros", "Beneficiarios", "Predios", "Resolucion"));
-        addTitle("CONFIGURACION");
-        addMenuItem(new ModelMenuItem("image/settings-2.svg", "Ajustes"));
-        addTitle("SOBRE LA APP");
-        addMenuItem(new ModelMenuItem("image/info.svg", "Acerca De"));
+        addTitle(this.main);
+        addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", this.dashboard));
+        addTitle(this.info);
+        addMenuItem(new ModelMenuItem("image/bookmark-plus.svg", this.registerInfo, this.registerBeneficiaries, this.registerProperties));
+        addMenuItem(new ModelMenuItem("image/book-open-text.svg", this.seeRegisters, this.seeBeneficiaries, this.seeProperties, this.seeResolutions));
+        addTitle(this.config);
+        addMenuItem(new ModelMenuItem("image/settings-2.svg", this.settings));
+        addTitle(this.aboutApp);
+        addMenuItem(new ModelMenuItem("image/info.svg", this.about));
     }
 
-    public void setText(/* DTO */) {
-        // String title = dto.getTitle();
+    public void setText(DTOUserMenuText texts) {
+        this.main = texts.getMainTitle();
+        this.dashboard = texts.getDashboard();
+        this.info = texts.getInfo();
+        this.registerInfo = texts.getRegisterInfo();
+        this.registerBeneficiaries = texts.getRegisterBeneficiaries();
+        this.registerProperties = texts.getRegisterProperties();
+        this.seeRegisters = texts.getSee();
+        this.seeBeneficiaries = texts.getSeeBeneficiaries();
+        this.seeProperties = texts.getSeeProperties();
+        this.seeResolutions = texts.getSeeResolutions();
+        this.config = texts.getConfiguration();
+        this.settings = texts.getSettings();
+        this.aboutApp = texts.getAboutApp();
+        this.about = texts.getAbout();
+
         rebuildMenu();
     }
 
