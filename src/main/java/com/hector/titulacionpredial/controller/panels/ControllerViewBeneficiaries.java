@@ -138,6 +138,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
                 .title(lang.app("view.beneficiaries.title"))
                 .code(lang.app("view.beneficiaries.code"))
+                .codeIdentification(lang.app("view.beneficiaries.code.identification"))
                 .id(lang.app("view.beneficiaries.id"))
                 .name(lang.app("view.beneficiaries.name"))
                 .phone(lang.app("view.beneficiaries.phone"))

@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content;
 
 import com.hector.titulacionpredial.view.component.UserMenu;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -118,7 +119,10 @@ public class ContentUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public void updateLanguage(DTOContentLogoutBtnText texts) {
+        btn_logout.setText(texts.getLogout());
+    }
+
     /**     * set controller menu.     * @param evt the evt     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);

@@ -25,6 +25,7 @@ public class DTORegisterPropertyText {
     private final String pointsInfo;
     private final String beneficiaryCode;
     private final String searchBeneficiary;
+    private final String importExcelData;
 
     /**
      * Build an instance from the {@link Builder}.
@@ -45,6 +46,7 @@ public class DTORegisterPropertyText {
         this.pointsInfo = builder.pointsInfo;
         this.beneficiaryCode = builder.beneficiaryCode;
         this.searchBeneficiary = builder.searchBeneficiary;
+        this.importExcelData = builder.importExcelData;
     }
 
     /**     * get title.     * @return the get title     */
@@ -112,6 +114,10 @@ public class DTORegisterPropertyText {
         return searchBeneficiary;
     }
 
+    public String getImportExcelData() {
+        return importExcelData;
+    }
+
     /**
      * Builder for building instances of {@link DTORegisterPropertyText}.
      */
@@ -130,6 +136,7 @@ public class DTORegisterPropertyText {
         private String pointsInfo;
         private String beneficiaryCode;
         private String searchBeneficiary;
+        private String importExcelData;
 
     /**     * title.     * @param title the title     * @return the title     */
         public Builder title(String title) {
@@ -207,6 +214,11 @@ public class DTORegisterPropertyText {
     /**     * search beneficiary.     * @param searchBeneficiary the search beneficiary     * @return the search beneficiary     */
         public Builder searchBeneficiary(String searchBeneficiary) {
             this.searchBeneficiary = searchBeneficiary;
+            return this;
+        }
+
+        public Builder importExcelData(String importExcelData) {
+            this.importExcelData = importExcelData;
             return this;
         }
 

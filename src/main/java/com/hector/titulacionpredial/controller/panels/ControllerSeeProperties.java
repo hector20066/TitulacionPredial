@@ -133,6 +133,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         DTOSeePropertiesText dto = new DTOSeePropertiesText.Builder()
                 .properties(lang.app("see.properties.title"))
                 .code(lang.app("see.properties.code"))
+                .codeBeneficiaries(lang.app("see.properties.code.beneficiaries"))
                 .name(lang.app("see.properties.name"))
                 .id(lang.app("see.properties.id"))
                 .numResolution(lang.app("see.properties.num.resolution"))

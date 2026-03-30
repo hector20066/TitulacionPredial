@@ -16,6 +16,7 @@ public class DTORegisterBeneficiaryText {
     private final String modifyBtn;
     private final String addTitle;
     private final String addBtn;
+    private final String addBeneficiaryBtn;
     private final String beneficiaryInfo;
     private final String fullName;
     private final String phone;
@@ -44,6 +45,7 @@ public class DTORegisterBeneficiaryText {
         this.modifyBtn = builder.modifyBtn;
         this.addTitle = builder.addTitle;
         this.addBtn = builder.addBtn;
+        this.addBeneficiaryBtn = builder.addBeneficiaryBtn;
         this.beneficiaryInfo = builder.beneficiaryInfo;
         this.fullName = builder.fullName;
         this.phone = builder.phone;
@@ -168,6 +170,10 @@ public class DTORegisterBeneficiaryText {
         return code;
     }
 
+    public String getAddBeneficiaryBtn() {
+        return addBeneficiaryBtn;
+    }
+
     /**
      * Builder for building instances of {@link DTORegisterBeneficiaryText}.
      */
@@ -177,6 +183,7 @@ public class DTORegisterBeneficiaryText {
         private String modifyBtn;
         private String addTitle;
         private String addBtn;
+        private String addBeneficiaryBtn;
         private String beneficiaryInfo;
         private String fullName;
         private String phone;
@@ -216,6 +223,11 @@ public class DTORegisterBeneficiaryText {
     /**     * add btn.     * @param addBtn the add btn     * @return the add btn     */
         public Builder addBtn(String addBtn) {
             this.addBtn = addBtn;
+            return this;
+        }
+
+        public Builder addBeneficiaryBtn(String addBeneficiaryBtn) {
+            this.addBeneficiaryBtn = addBeneficiaryBtn;
             return this;
         }
 

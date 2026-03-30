@@ -19,6 +19,7 @@ import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOAdminMenuText;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 
 /**
  * Main controller of application content.
@@ -171,7 +172,12 @@ public class ControllerContentAdmin implements LanguageObserver {
                 .about(lang.app("admin.menu.about"))
                 .build();
 
+        DTOContentLogoutBtnText dtoLogout = new DTOContentLogoutBtnText.Builder()
+                .logout(lang.app("content.logout"))
+                .build();
+
         content.getMenu().setText(dto);
+        content.updateLanguage(dtoLogout);
     }
 
     /**

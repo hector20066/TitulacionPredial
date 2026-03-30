@@ -118,6 +118,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                 .modifyBtn(lang.app("register.beneficiary.modify.btn"))
                 .addTitle(lang.app("register.beneficiary.add.title"))
                 .addBtn(lang.app("register.beneficiary.add.btn"))
+                .addBeneficiaryBtn(lang.app("register.beneficiary.btn.add"))
                 .beneficiaryInfo(lang.app("register.beneficiary.info"))
                 .fullName(lang.app("register.beneficiary.name"))
                 .phone(lang.app("register.beneficiary.phone"))

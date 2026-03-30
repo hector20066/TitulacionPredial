@@ -1,8 +1,8 @@
 package com.hector.titulacionpredial.view.content;
 
 import com.hector.titulacionpredial.view.component.AdminMenu;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
-import com.hector.titulacionpredial.view.swing.menu.Menu;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -128,7 +128,11 @@ public class ContentAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**     * set controller logout.     * @param action the action     */
+    public void updateLanguage(DTOContentLogoutBtnText texts) {
+        btn_logout.setText(texts.getLogout());
+    }
+
+        /**     * set controller logout.     * @param action the action     */
     public void setControllerLogout(ActionListener action) {
         btn_logout.addActionListener(action);
     }

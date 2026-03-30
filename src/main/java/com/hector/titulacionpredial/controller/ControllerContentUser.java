@@ -15,6 +15,7 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOReadingMenuText;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOUserMenuText;
 
@@ -136,6 +137,7 @@ public class ControllerContentUser implements LanguageObserver {
                 .mainTitle(lang.app("user.menu.main.title"))
                 .dashboard(lang.app("user.menu.main.item1"))
                 .info(lang.app("user.menu.info.title"))
+                .registerInfo(lang.app("user.menu.info.register"))
                 .registerBeneficiaries(lang.app("user.menu.info.register"))
                 .registerBeneficiaries(lang.app("user.menu.info.register.item1"))
                 .registerProperties(lang.app("user.menu.info.register.item2"))
@@ -149,7 +151,12 @@ public class ControllerContentUser implements LanguageObserver {
                 .about(lang.app("user.menu.about"))
                 .build();
 
+        DTOContentLogoutBtnText dtoLogout = new DTOContentLogoutBtnText.Builder()
+                .logout(lang.app("content.logout"))
+                .build();
+
         contentUser.getMenu().setText(dto);
+        contentUser.updateLanguage(dtoLogout);
     }
 
     /**

@@ -13,6 +13,7 @@ import com.hector.titulacionpredial.view.content.panels.SeeProperties;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOReadingMenuText;
 
 /**
@@ -129,7 +130,12 @@ public class ControllerContentReader implements LanguageObserver {
                 .about(lang.app("read.menu.about"))
                 .build();
 
+        DTOContentLogoutBtnText dtoLogout = new DTOContentLogoutBtnText.Builder()
+                .logout(lang.app("content.logout"))
+                .build();
+
         contentReader.getMenu().setText(dto);
+        contentReader.updateLanguage(dtoLogout);
     }
 
     /**

@@ -555,8 +555,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_expeditionLocation.setText(texts.getExpeditionLocation());
         jlb_publication.setText(texts.getPublication());
         jlb_code.setText(texts.getCode());
-        //cbx_affectation.setText(texts.getAffected());
         btn_register.setText(texts.getAddBtn());
+        btn_addBeneficiaries.setText(texts.getAddBeneficiaryBtn());
         setBtnModifyText(texts.getModifyBtn());
         setJlbTitleModify(texts.getModifyTitle());
     }

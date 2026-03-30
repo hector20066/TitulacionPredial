@@ -125,6 +125,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 .pointsInfo(lang.app("register.property.points.info"))
                 .beneficiaryCode(lang.app("register.property.beneficiary.code"))
                 .searchBeneficiary(lang.app("register.property.search.beneficiary"))
+                .importExcelData(lang.app("register.property.import.excel.data"))
                 .build();
 
         registerProperty.updateLanguage(dto);
