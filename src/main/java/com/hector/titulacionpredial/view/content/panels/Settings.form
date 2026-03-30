@@ -77,7 +77,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="815" max="32767" attributes="0"/>
+                      <EmptySpace pref="852" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -90,7 +90,7 @@
                       <Component id="rbn_spanish" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="rbn_english" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="429" max="32767" attributes="0"/>
+                      <EmptySpace pref="431" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

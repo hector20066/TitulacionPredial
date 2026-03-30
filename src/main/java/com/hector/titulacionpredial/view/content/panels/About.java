@@ -27,7 +27,6 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -108,7 +107,7 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
                                     .addComponent(jlb_creator2)
                                     .addComponent(jlb_creator1))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jlb_moreInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
+                    .addComponent(jlb_moreInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jlb_link, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -131,7 +130,7 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
                 .addComponent(jlb_creator1)
                 .addGap(18, 18, 18)
                 .addComponent(jlb_creator2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(jlb_moreInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlb_link)

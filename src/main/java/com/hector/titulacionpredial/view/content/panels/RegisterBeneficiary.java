@@ -141,7 +141,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -179,7 +178,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_expeditionLocation = new javax.swing.JLabel();
         txt_expeditionLocation = new javax.swing.JTextField();
         jlb_publication = new javax.swing.JLabel();
-        cbx_affectation = new javax.swing.JCheckBox();
         cbo_publication = new javax.swing.JComboBox<>();
         btn_addBeneficiaries = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         btn_register = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
@@ -206,7 +204,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_fullName.setBackground(new java.awt.Color(255, 255, 255));
         txt_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_fullName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
@@ -214,7 +211,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
@@ -222,7 +218,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
         txt_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_maritalStatus.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_maritalStatus.setForeground(new java.awt.Color(33, 37, 41));
@@ -248,7 +243,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_neighborhood.setBackground(new java.awt.Color(255, 255, 255));
         txt_neighborhood.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_neighborhood.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         cbo_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
@@ -262,7 +256,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_address.setBackground(new java.awt.Color(255, 255, 255));
         txt_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_address.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
@@ -276,7 +269,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_cadastralReference.setBackground(new java.awt.Color(255, 255, 255));
         txt_cadastralReference.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_cadastralReference.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_crossing.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_crossing.setForeground(new java.awt.Color(33, 37, 41));
@@ -303,15 +295,10 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_publication.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_publication.setForeground(new java.awt.Color(33, 37, 41));
         jlb_publication.setText("Publicacion:");
-
-        cbx_affectation.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        cbx_affectation.setForeground(new java.awt.Color(33, 37, 41));
-        cbx_affectation.setText("Afectado");
 
         cbo_publication.setBackground(new java.awt.Color(255, 255, 255));
         cbo_publication.setForeground(new java.awt.Color(0, 0, 0));
@@ -410,12 +397,9 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                             .addGap(6, 6, 6)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(cbx_affectation))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(385, 385, 385)
                                 .addComponent(btn_addBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 35, Short.MAX_VALUE)))
+                        .addGap(0, 37, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -470,8 +454,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cbx_affectation)
-                .addGap(18, 18, 18)
                 .addComponent(jlb_affectation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,7 +492,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(16, 16, 16)
                             .addComponent(jscp_info, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,7 +511,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                 .addComponent(jscp_info, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -567,7 +549,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_expeditionLocation.setText(texts.getExpeditionLocation());
         jlb_publication.setText(texts.getPublication());
         jlb_code.setText(texts.getCode());
-        cbx_affectation.setText(texts.getAffected());
+        //cbx_affectation.setText(texts.getAffected());
         btn_register.setText(texts.getAddBtn());
         setBtnModifyText(texts.getModifyBtn());
         setJlbTitleModify(texts.getModifyTitle());
@@ -595,7 +577,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     /**     * set controller cbx_affectation.     * @param action the action     */
     public void setControllerCbx_affectation(ActionListener action) {
-        cbx_affectation.addActionListener(action);
+        //cbx_affectation.addActionListener(action);
     }
 
     /**     * get btn_register.     * @return the get btn_register     */
@@ -605,7 +587,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
 
     /**     * get cbx_affectation.     * @return the get cbx_affectation     */
     public JCheckBox getCbx_affectation() {
-        return cbx_affectation;
+        //return cbx_affectation;
+        return new JCheckBox();
     }
 
     public JComboBox<Department> getCbo_department() {
@@ -748,7 +731,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         cbo_department.setSelectedIndex(0);
         cbo_maritalStatus.setSelectedIndex(0);
         cbo_municipality.setSelectedIndex(0);
-        cbx_affectation.setSelected(false);
+        //cbx_affectation.setSelected(false);
 
         resetUI();
     }
@@ -760,7 +743,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     private javax.swing.JComboBox<MaritalStatus> cbo_maritalStatus;
     private javax.swing.JComboBox<Municipalities> cbo_municipality;
     private javax.swing.JComboBox<String> cbo_publication;
-    private javax.swing.JCheckBox cbx_affectation;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;

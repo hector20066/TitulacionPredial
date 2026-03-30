@@ -25,7 +25,6 @@ public class Settings extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         btg_languages = new javax.swing.ButtonGroup();
@@ -69,7 +68,7 @@ public class Settings extends javax.swing.JPanel {
                         .addGroup(jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbn_english)
                             .addComponent(rbn_spanish))))
-                .addContainerGap(815, Short.MAX_VALUE))
+                .addContainerGap(852, Short.MAX_VALUE))
         );
         jpl_contentLayout.setVerticalGroup(
             jpl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +79,7 @@ public class Settings extends javax.swing.JPanel {
                 .addComponent(rbn_spanish)
                 .addGap(18, 18, 18)
                 .addComponent(rbn_english)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

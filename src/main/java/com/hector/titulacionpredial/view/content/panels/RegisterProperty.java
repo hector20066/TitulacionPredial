@@ -34,7 +34,6 @@ public class RegisterProperty extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
@@ -124,7 +123,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_northCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east1.setForeground(new java.awt.Color(33, 37, 41));
@@ -132,7 +130,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance1.setForeground(new java.awt.Color(33, 37, 41));
@@ -140,15 +137,13 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance1.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside1.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside1.setText("Colindero:");
+        jlb_hillside1.setText("Lindero");
 
         txt_hillside1.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point1Layout = new javax.swing.GroupLayout(jpl_point1);
         jpl_point1.setLayout(jpl_point1Layout);
@@ -211,7 +206,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(btn_goPoint2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -234,7 +229,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_northCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance2.setForeground(new java.awt.Color(33, 37, 41));
@@ -242,15 +236,13 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance2.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside2.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside2.setText("Colindero:");
+        jlb_hillside2.setText("Lindero:");
 
         txt_hillside2.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east2.setForeground(new java.awt.Color(33, 37, 41));
@@ -258,7 +250,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point2Layout = new javax.swing.GroupLayout(jpl_point2);
         jpl_point2.setLayout(jpl_point2Layout);
@@ -324,7 +315,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_goPoint3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_returnPoint1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,7 +340,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_northCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance3.setForeground(new java.awt.Color(33, 37, 41));
@@ -357,15 +347,13 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance3.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside3.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside3.setText("Colindero:");
+        jlb_hillside3.setText("Lindero:");
 
         txt_hillside3.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east3.setForeground(new java.awt.Color(33, 37, 41));
@@ -373,7 +361,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point3Layout = new javax.swing.GroupLayout(jpl_point3);
         jpl_point3.setLayout(jpl_point3Layout);
@@ -439,7 +426,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_goPoint4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_returnPoint2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -462,7 +449,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_northCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance4.setForeground(new java.awt.Color(33, 37, 41));
@@ -470,15 +456,13 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_distance4.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside4.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside4.setText("Colindero:");
+        jlb_hillside4.setText("Lindero:");
 
         txt_hillside4.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east4.setForeground(new java.awt.Color(33, 37, 41));
@@ -486,7 +470,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_eastCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jpl_point4Layout = new javax.swing.GroupLayout(jpl_point4);
         jpl_point4.setLayout(jpl_point4Layout);
@@ -548,7 +531,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btn_returnPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -571,7 +554,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_cadastralId.setBackground(new java.awt.Color(255, 255, 255));
         txt_cadastralId.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_cadastralId.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_area.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_area.setForeground(new java.awt.Color(33, 37, 41));
@@ -579,7 +561,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_area.setBackground(new java.awt.Color(255, 255, 255));
         txt_area.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_area.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_pointInfo.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_pointInfo.setForeground(new java.awt.Color(33, 37, 41));
@@ -591,7 +572,6 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         txt_beneficiaryCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_beneficiaryCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_beneficiaryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         btn_searchBeneficiaries.setBackground(new java.awt.Color(149, 213, 178));
         btn_searchBeneficiaries.setForeground(new java.awt.Color(33, 37, 41));
@@ -607,7 +587,6 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_importExcelData.setForeground(new java.awt.Color(0, 0, 0));
         btn_importExcelData.setText("Importar Datos de Excel");
         btn_importExcelData.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        btn_importExcelData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -616,7 +595,7 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(37, Short.MAX_VALUE)
+                        .addContainerGap(47, Short.MAX_VALUE)
                         .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -653,8 +632,8 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlb_propertyInfo)
                                     .addComponent(jlb_pointInfo))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)))
+                .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -691,9 +670,9 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addComponent(jlb_pointInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

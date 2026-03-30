@@ -91,7 +91,6 @@ public class SpouseData extends javax.swing.JDialog {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -127,7 +126,6 @@ public class SpouseData extends javax.swing.JDialog {
 
         txt_name.setBackground(new java.awt.Color(255, 255, 255));
         txt_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_lastName.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_lastName.setForeground(new java.awt.Color(33, 37, 41));
@@ -135,7 +133,6 @@ public class SpouseData extends javax.swing.JDialog {
 
         txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
         txt_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_lastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
@@ -143,7 +140,6 @@ public class SpouseData extends javax.swing.JDialog {
 
         txt_id.setBackground(new java.awt.Color(255, 255, 255));
         txt_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_expeditionLocation.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_expeditionLocation.setForeground(new java.awt.Color(33, 37, 41));
@@ -151,7 +147,6 @@ public class SpouseData extends javax.swing.JDialog {
 
         txt_expeditionLocation.setBackground(new java.awt.Color(255, 255, 255));
         txt_expeditionLocation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_expeditionLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_phone.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_phone.setForeground(new java.awt.Color(33, 37, 41));
@@ -159,7 +154,6 @@ public class SpouseData extends javax.swing.JDialog {
 
         txt_phone.setBackground(new java.awt.Color(255, 255, 255));
         txt_phone.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_phone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         btn_save.setBackground(new java.awt.Color(64, 145, 108));
         btn_save.setText("Guardar");
@@ -191,22 +185,22 @@ public class SpouseData extends javax.swing.JDialog {
                             .addComponent(jlb_id)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_name, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                    .addComponent(txt_lastName)
-                                    .addComponent(txt_id)
-                                    .addComponent(txt_expeditionLocation)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                                    .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_name, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_phone))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,9 +227,9 @@ public class SpouseData extends javax.swing.JDialog {
                 .addComponent(jlb_phone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(51, 51, 51)
                 .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

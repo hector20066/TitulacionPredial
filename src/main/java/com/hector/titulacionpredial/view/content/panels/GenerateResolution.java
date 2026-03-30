@@ -34,7 +34,6 @@ public class GenerateResolution extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -138,7 +137,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_nameBeneficiary.setEditable(false);
         txt_nameBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
         txt_nameBeneficiary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_nameBeneficiary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
@@ -147,7 +145,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_idBeneficiary.setEditable(false);
         txt_idBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
         txt_idBeneficiary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_idBeneficiary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_address.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_address.setForeground(new java.awt.Color(33, 37, 41));
@@ -156,7 +153,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_addressBeneficiary.setEditable(false);
         txt_addressBeneficiary.setBackground(new java.awt.Color(255, 255, 255));
         txt_addressBeneficiary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_addressBeneficiary.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_cadastralRef.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_cadastralRef.setForeground(new java.awt.Color(33, 37, 41));
@@ -165,7 +161,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_cadastralReference.setEditable(false);
         txt_cadastralReference.setBackground(new java.awt.Color(255, 255, 255));
         txt_cadastralReference.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_cadastralReference.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_municipality.setForeground(new java.awt.Color(33, 37, 41));
@@ -174,7 +169,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_municipality.setEditable(false);
         txt_municipality.setBackground(new java.awt.Color(255, 255, 255));
         txt_municipality.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_municipality.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_propertyInfo.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_propertyInfo.setForeground(new java.awt.Color(33, 37, 41));
@@ -191,7 +185,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_northCoordinate1.setEditable(false);
         txt_northCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east1.setForeground(new java.awt.Color(33, 37, 41));
@@ -200,7 +193,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_eastCoordinate1.setEditable(false);
         txt_eastCoordinate1.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance1.setForeground(new java.awt.Color(33, 37, 41));
@@ -209,7 +201,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_distance1.setEditable(false);
         txt_distance1.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside1.setForeground(new java.awt.Color(33, 37, 41));
@@ -218,7 +209,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside1.setEditable(false);
         txt_hillside1.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_point2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jlb_point2.setForeground(new java.awt.Color(33, 37, 41));
@@ -231,7 +221,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_northCoordinate2.setEditable(false);
         txt_northCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east2.setForeground(new java.awt.Color(33, 37, 41));
@@ -240,7 +229,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_eastCoordinate2.setEditable(false);
         txt_eastCoordinate2.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance2.setForeground(new java.awt.Color(33, 37, 41));
@@ -249,7 +237,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_distance2.setEditable(false);
         txt_distance2.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside2.setForeground(new java.awt.Color(33, 37, 41));
@@ -258,7 +245,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside2.setEditable(false);
         txt_hillside2.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_point3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jlb_point3.setForeground(new java.awt.Color(33, 37, 41));
@@ -271,7 +257,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_northCoordinate3.setEditable(false);
         txt_northCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east3.setForeground(new java.awt.Color(33, 37, 41));
@@ -280,7 +265,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_eastCoordinate3.setEditable(false);
         txt_eastCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance3.setForeground(new java.awt.Color(33, 37, 41));
@@ -289,7 +273,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_distance3.setEditable(false);
         txt_distance3.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside3.setForeground(new java.awt.Color(33, 37, 41));
@@ -298,7 +281,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside3.setEditable(false);
         txt_hillside3.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_point4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jlb_point4.setForeground(new java.awt.Color(33, 37, 41));
@@ -311,7 +293,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_northCoordinate4.setEditable(false);
         txt_northCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_northCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_northCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_east4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east4.setForeground(new java.awt.Color(33, 37, 41));
@@ -320,7 +301,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_eastCoordinate4.setEditable(false);
         txt_eastCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_eastCoordinate4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_distance4.setForeground(new java.awt.Color(33, 37, 41));
@@ -329,7 +309,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_distance4.setEditable(false);
         txt_distance4.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_distance4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside4.setForeground(new java.awt.Color(33, 37, 41));
@@ -338,7 +317,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_hillside4.setEditable(false);
         txt_hillside4.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_hillside4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_propertyCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_propertyCode.setForeground(new java.awt.Color(33, 37, 41));
@@ -347,7 +325,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_propertyCode.setEditable(false);
         txt_propertyCode.setBackground(new java.awt.Color(255, 255, 255));
         txt_propertyCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_propertyCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         jlb_area.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jlb_area.setForeground(new java.awt.Color(33, 37, 41));
@@ -356,7 +333,6 @@ public class GenerateResolution extends javax.swing.JPanel {
         txt_area.setEditable(false);
         txt_area.setBackground(new java.awt.Color(255, 255, 255));
         txt_area.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_area.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -584,7 +560,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                         .addComponent(jlb_hillside4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         scroll2.setViewportView(jPanel3);
@@ -599,7 +575,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         txt_numResolution.setBackground(new java.awt.Color(255, 255, 255));
         txt_numResolution.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_numResolution.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_notification.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_notification.setForeground(new java.awt.Color(33, 37, 41));
@@ -615,7 +590,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         txt_fmi.setBackground(new java.awt.Color(255, 255, 255));
         txt_fmi.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_fmi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_act.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_act.setForeground(new java.awt.Color(33, 37, 41));
@@ -623,7 +597,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         txt_act.setBackground(new java.awt.Color(255, 255, 255));
         txt_act.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_act.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_publicWriting.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_publicWriting.setForeground(new java.awt.Color(33, 37, 41));
@@ -631,7 +604,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         txt_publicWriting.setBackground(new java.awt.Color(255, 255, 255));
         txt_publicWriting.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_publicWriting.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_notary.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_notary.setForeground(new java.awt.Color(33, 37, 41));
@@ -639,7 +611,6 @@ public class GenerateResolution extends javax.swing.JPanel {
 
         txt_note.setBackground(new java.awt.Color(255, 255, 255));
         txt_note.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_note.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         ftx_notification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
 
@@ -679,15 +650,15 @@ public class GenerateResolution extends javax.swing.JPanel {
                                 .addComponent(ftx_executory, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlb_publicWriting)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_act, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_publicWriting, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jlb_notary)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                                .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_publicWriting, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_act, javax.swing.GroupLayout.PREFERRED_SIZE, 953, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -722,7 +693,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_notary)
                     .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         scroll1.setViewportView(jPanel2);
@@ -746,7 +717,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(scroll1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE))
+                        .addComponent(scroll1, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jlb_title)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -765,7 +736,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addComponent(scroll1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_generate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

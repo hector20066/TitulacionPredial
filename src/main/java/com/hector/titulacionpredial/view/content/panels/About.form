@@ -68,7 +68,7 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jlb_moreInfo" alignment="1" pref="1057" max="32767" attributes="0"/>
+                      <Component id="jlb_moreInfo" alignment="1" pref="1076" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jlb_link" max="32767" attributes="0"/>
@@ -95,7 +95,7 @@
                   <Component id="jlb_creator1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jlb_creator2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                  <EmptySpace pref="88" max="32767" attributes="0"/>
                   <Component id="jlb_moreInfo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jlb_link" min="-2" max="-2" attributes="0"/>

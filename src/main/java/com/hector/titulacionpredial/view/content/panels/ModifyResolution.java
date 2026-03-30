@@ -33,7 +33,6 @@ public class ModifyResolution extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         panelShadow1 = new com.hector.titulacionpredial.view.swing.panel.PanelShadow();
@@ -69,7 +68,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_code.setBackground(new java.awt.Color(242, 246, 253));
         txt_code.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_code.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
         txt_code.setEnabled(false);
 
         jlb_numResolution.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
@@ -78,7 +76,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_numResolution.setBackground(new java.awt.Color(242, 246, 253));
         txt_numResolution.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_numResolution.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_fmi.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_fmi.setForeground(new java.awt.Color(33, 37, 41));
@@ -86,7 +83,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_fmi.setBackground(new java.awt.Color(242, 246, 253));
         txt_fmi.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_fmi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_act.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_act.setForeground(new java.awt.Color(33, 37, 41));
@@ -94,7 +90,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_act.setBackground(new java.awt.Color(242, 246, 253));
         txt_act.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_act.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_publicWriting.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_publicWriting.setForeground(new java.awt.Color(33, 37, 41));
@@ -102,7 +97,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_publicWriting.setBackground(new java.awt.Color(242, 246, 253));
         txt_publicWriting.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_publicWriting.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         jlb_notary.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_notary.setForeground(new java.awt.Color(33, 37, 41));
@@ -110,7 +104,6 @@ public class ModifyResolution extends javax.swing.JPanel {
 
         txt_note.setBackground(new java.awt.Color(242, 246, 253));
         txt_note.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        txt_note.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
 
         btn_modify.setBackground(new java.awt.Color(64, 145, 108));
         btn_modify.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,7 +203,7 @@ public class ModifyResolution extends javax.swing.JPanel {
                 .addComponent(jlb_notary)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -222,14 +215,14 @@ public class ModifyResolution extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
