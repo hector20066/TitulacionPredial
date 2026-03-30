@@ -17,6 +17,7 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.view.content.panels.ManageUsers;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOManageUsersText;
 
 /**
  * @author Ing. Hector Acevedo
@@ -55,7 +56,16 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     @Override
     public void updateLanguage() {
+        DTOManageUsersText dto = new DTOManageUsersText.Builder()
+                .title(lang.app("manage.users.title"))
+                .subtitle(lang.app("manage.users.panel.title"))
+                .name(lang.app("manage.users.panel.name"))
+                .user(lang.app("manage.users.panel.user"))
+                .modify(lang.app("manage.users.panel.btn.modify"))
+                .delete(lang.app("manage.users.panel.btn.delete"))
+                .build();
 
+        manageUsers.updateLanguage(dto);
     }
 
     @Override

@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -19,6 +21,7 @@ import javax.swing.JPanel;
 import com.hector.titulacionpredial.controller.IManageAccounts;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOManageUsersText;
 import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
 
 /**
@@ -26,6 +29,14 @@ import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
  * @author juanpablobohorquezguerra
  */
 public class ManageUsers extends javax.swing.JPanel {
+
+    private List<DTOUserDetails> currentUsers = new ArrayList<>();
+
+    private String subtitleText = "Usuario";
+    private String nameText = "Nombre:";
+    private String userText = "Usuario: ";
+    private String modifyText = "Modificar";
+    private String deleteText =  "Eliminar";
 
     /**
      * Creates new form ManageUsers
@@ -92,6 +103,30 @@ public class ManageUsers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void updateLanguage(DTOManageUsersText texts) {
+        jlb_title.setText(texts.getTitle());
+        this.subtitleText = texts.getSubtitle();
+        this.nameText = texts.getName();
+        this.userText = texts.getUser();
+        this.modifyText = texts.getModify();
+        this.deleteText = texts.getDelete();
+
+        rebuildPanels();
+    }
+
+    public void loadUsers(List<DTOUserDetails> users) {
+        this.currentUsers = users;
+        rebuildPanels();
+    }
+
+    private void rebuildPanels() {
+        clearPanel();
+
+        for (DTOUserDetails dto : currentUsers) {
+            //addAccountsPanel(dto); -> Agregar parámetro de de tipo IManageAccounts
+        }
+    }
+
     /**
      * Clear the content panel by removing all components.
      */
@@ -112,7 +147,7 @@ public class ManageUsers extends javax.swing.JPanel {
         panelAccount.setLayout(new BorderLayout());
         panelAccount.setBackground(new Color(227, 242, 253));
 
-        JLabel lblTitle = new JLabel("Usuario");
+        JLabel lblTitle = new JLabel(this.subtitleText);
         lblTitle.setFont(new Font("SansSerif", Font.BOLD, 15));
         lblTitle.setForeground(new Color(25, 46, 82));
         lblTitle.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
@@ -131,23 +166,23 @@ public class ManageUsers extends javax.swing.JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        JLabel jlb_name = new JLabel("Nombre:" + " " + account.getName());
+        JLabel jlb_name = new JLabel(this.nameText + " " + account.getName());
         content.add(jlb_name, gbc);
 
         gbc.gridy++;
-        JLabel jlb_user = new JLabel("Usuario:" + " " + account.getUser());
+        JLabel jlb_user = new JLabel(this.userText + " " + account.getUser());
         content.add(jlb_user, gbc);
 
         JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         actionPanel.setBackground(new Color(227, 242, 253));
         actionPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-        JButton btn_modify = new JButton("Modificar");
+        JButton btn_modify = new JButton(this.modifyText);
         btn_modify.setFocusable(false);
         btn_modify.setBackground(new Color(242, 229, 213));
         btn_modify.addActionListener(e -> controller.modifyAccount(account));
 
-        JButton btn_remove = new JButton("Eliminar");
+        JButton btn_remove = new JButton(this.deleteText);
         btn_remove.setFocusable(false);
         btn_remove.setBackground(new Color(242, 233, 240));
 

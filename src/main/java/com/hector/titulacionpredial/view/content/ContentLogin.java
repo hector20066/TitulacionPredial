@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content;
 
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
@@ -175,6 +176,15 @@ public class ContentLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void updateLanguage(DTOContentLoginText texts) {
+        jlb_title.setText(texts.getTitle());
+        jlb_user.setText(texts.getUser());
+        txt_user.setText(texts.getUserText());
+        jlb_password.setText(texts.getPassword());
+        jlb_access.setText(texts.getAccess());
+        btn_login.setText(texts.getLogin());
+    }
 
     /**     * set controller login.     * @param action the action     */
     public void setControllerLogin(ActionListener action) {

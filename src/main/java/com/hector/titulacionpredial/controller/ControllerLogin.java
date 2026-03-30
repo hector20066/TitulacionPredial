@@ -26,6 +26,7 @@ import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
 
 /**
  * Controller for user authentication and login management.
@@ -155,7 +156,16 @@ public class ControllerLogin implements LanguageObserver {
      */
     @Override
     public void updateLanguage() {
+        DTOContentLoginText dto = new DTOContentLoginText.Builder()
+                .title(lang.app("content.login.title"))
+                .user(lang.app("content.login.user"))
+                .userText(lang.app("content.login.user.text"))
+                .password(lang.app("content.login.password"))
+                .access(lang.app("content.login.access.text"))
+                .login(lang.app("content.login.btn.login"))
+                .build();
 
+        login.updateLanguage(dto);
     }
 
     /**
