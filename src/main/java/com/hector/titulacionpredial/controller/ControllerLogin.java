@@ -301,7 +301,6 @@ public class ControllerLogin implements LanguageObserver {
         java.awt.EventQueue.invokeLater(() -> {
             contentAdmin.setVisible(true);
             contentAdmin.setLocationRelativeTo(null);
-            contentAdmin.setResizable(false);
             NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
         });
 
@@ -329,7 +328,6 @@ public class ControllerLogin implements LanguageObserver {
             java.awt.EventQueue.invokeLater(() -> {
                 contentReader.setVisible(true);
                 contentReader.setLocationRelativeTo(null);
-                contentReader.setResizable(false);
                 controllerContentReader.hideButtons();
                 NavigatorUtils.showForms(ContentReader.getJpl_content(), dashboard);
             });
@@ -337,7 +335,6 @@ public class ControllerLogin implements LanguageObserver {
             java.awt.EventQueue.invokeLater(() -> {
                 contentUser.setVisible(true);
                 contentUser.setLocationRelativeTo(null);
-                contentUser.setResizable(false);
                 NavigatorUtils.showForms(ContentUser.getJpl_content(), dashboard);
             });
         }

@@ -70,10 +70,10 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_northCoordinate3 = new javax.swing.JTextField();
         jlb_distance3 = new javax.swing.JLabel();
         txt_distance3 = new javax.swing.JTextField();
-        jlb_hillside3 = new javax.swing.JLabel();
-        txt_hillside3 = new javax.swing.JTextField();
         jlb_east3 = new javax.swing.JLabel();
         txt_eastCoordinate3 = new javax.swing.JTextField();
+        jlb_hillside3 = new javax.swing.JLabel();
+        txt_hillside3 = new javax.swing.JTextField();
         jpl_point4 = new javax.swing.JPanel();
         jlb_point4 = new javax.swing.JLabel();
         btn_returnPoint3 = new com.hector.titulacionpredial.view.swing.button.ButtonBadges();
@@ -81,10 +81,10 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_northCoordinate4 = new javax.swing.JTextField();
         jlb_distance4 = new javax.swing.JLabel();
         txt_distance4 = new javax.swing.JTextField();
-        jlb_hillside4 = new javax.swing.JLabel();
-        txt_hillside4 = new javax.swing.JTextField();
         jlb_east4 = new javax.swing.JLabel();
         txt_eastCoordinate4 = new javax.swing.JTextField();
+        jlb_hillside4 = new javax.swing.JLabel();
+        txt_hillside4 = new javax.swing.JTextField();
         btn_register = new com.hector.titulacionpredial.view.swing.button.ButtonAction();
         jlb_propertyInfo = new javax.swing.JLabel();
         jlb_cadastralId = new javax.swing.JLabel();
@@ -161,28 +161,32 @@ public class RegisterProperty extends javax.swing.JPanel {
                         .addGap(41, 41, 41)
                         .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpl_point1Layout.createSequentialGroup()
-                                .addComponent(jlb_distance1)
-                                .addGap(222, 222, 222)
-                                .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlb_hillside1)
-                                    .addGroup(jpl_point1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(txt_hillside1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jpl_point1Layout.createSequentialGroup()
                                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlb_north1)
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_northCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_distance1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(jpl_point1Layout.createSequentialGroup()
+                                                .addComponent(txt_distance1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(txt_northCoordinate1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))))
                                 .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
                                         .addGap(62, 62, 62)
-                                        .addComponent(txt_eastCoordinate1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_eastCoordinate1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
                                     .addGroup(jpl_point1Layout.createSequentialGroup()
                                         .addGap(45, 45, 45)
-                                        .addComponent(jlb_east1)))))))
+                                        .addComponent(jlb_east1)))
+                                .addGap(23, 23, 23))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point1Layout.createSequentialGroup()
+                                .addComponent(jlb_distance1)
+                                .addGap(286, 286, 286)
+                                .addGroup(jpl_point1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpl_point1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txt_hillside1))
+                                    .addComponent(jlb_hillside1))
+                                .addGap(44, 44, 44)))))
                 .addContainerGap())
         );
         jpl_point1Layout.setVerticalGroup(
@@ -239,7 +243,7 @@ public class RegisterProperty extends javax.swing.JPanel {
 
         jlb_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_hillside2.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside2.setText("Lindero:");
+        jlb_hillside2.setText("Lindero");
 
         txt_hillside2.setBackground(new java.awt.Color(255, 255, 255));
         txt_hillside2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
@@ -256,50 +260,52 @@ public class RegisterProperty extends javax.swing.JPanel {
         jpl_point2Layout.setHorizontalGroup(
             jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_point2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpl_point2Layout.createSequentialGroup()
-                        .addComponent(jlb_point2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point2Layout.createSequentialGroup()
-                        .addComponent(btn_returnPoint1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_goPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jpl_point2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpl_point2Layout.createSequentialGroup()
-                        .addComponent(jlb_distance2)
-                        .addGap(222, 222, 222)
+                        .addContainerGap()
                         .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_hillside2)
                             .addGroup(jpl_point2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jlb_point2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point2Layout.createSequentialGroup()
+                                .addComponent(btn_returnPoint1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 894, Short.MAX_VALUE)
+                                .addComponent(btn_goPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpl_point2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_north2)
                             .addGroup(jpl_point2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_northCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_distance2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpl_point2Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(txt_eastCoordinate2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpl_point2Layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jlb_east2)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                                    .addComponent(jlb_north2)
+                                    .addGroup(jpl_point2Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_distance2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_northCoordinate2, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))))
+                                .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpl_point2Layout.createSequentialGroup()
+                                        .addGap(62, 62, 62)
+                                        .addComponent(txt_eastCoordinate2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))
+                                    .addGroup(jpl_point2Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jlb_east2))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point2Layout.createSequentialGroup()
+                                .addComponent(jlb_distance2)
+                                .addGap(286, 286, 286)
+                                .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpl_point2Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txt_hillside2))
+                                    .addComponent(jlb_hillside2))
+                                .addGap(21, 21, 21)))))
+                .addContainerGap())
         );
         jpl_point2Layout.setVerticalGroup(
             jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_point2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlb_point2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_north2)
                     .addComponent(jlb_east2))
@@ -315,7 +321,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jpl_point2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_goPoint3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_returnPoint1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -348,13 +354,6 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_distance3.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
-        jlb_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jlb_hillside3.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside3.setText("Lindero:");
-
-        txt_hillside3.setBackground(new java.awt.Color(255, 255, 255));
-        txt_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-
         jlb_east3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east3.setForeground(new java.awt.Color(33, 37, 41));
         jlb_east3.setText("Coordenada Este:");
@@ -362,55 +361,64 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_eastCoordinate3.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
+        jlb_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_hillside3.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_hillside3.setText("Lindero");
+
+        txt_hillside3.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hillside3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+
         javax.swing.GroupLayout jpl_point3Layout = new javax.swing.GroupLayout(jpl_point3);
         jpl_point3.setLayout(jpl_point3Layout);
         jpl_point3Layout.setHorizontalGroup(
             jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_point3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpl_point3Layout.createSequentialGroup()
-                        .addComponent(jlb_point3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jpl_point3Layout.createSequentialGroup()
-                        .addComponent(btn_returnPoint2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_goPoint4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jpl_point3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpl_point3Layout.createSequentialGroup()
-                        .addComponent(jlb_distance3)
-                        .addGap(222, 222, 222)
+                        .addContainerGap()
                         .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_hillside3)
                             .addGroup(jpl_point3Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txt_hillside3, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jlb_point3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jpl_point3Layout.createSequentialGroup()
+                                .addComponent(btn_returnPoint2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 894, Short.MAX_VALUE)
+                                .addComponent(btn_goPoint4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpl_point3Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_north3)
                             .addGroup(jpl_point3Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_northCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_distance3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpl_point3Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(txt_eastCoordinate3, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpl_point3Layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jlb_east3)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                                    .addComponent(jlb_north3)
+                                    .addGroup(jpl_point3Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_distance3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_northCoordinate3, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))))
+                                .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpl_point3Layout.createSequentialGroup()
+                                        .addGap(62, 62, 62)
+                                        .addComponent(txt_eastCoordinate3, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
+                                    .addGroup(jpl_point3Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jlb_east3))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point3Layout.createSequentialGroup()
+                                .addComponent(jlb_distance3)
+                                .addGap(286, 286, 286)
+                                .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpl_point3Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txt_hillside3))
+                                    .addComponent(jlb_hillside3))
+                                .addGap(21, 21, 21)))))
+                .addContainerGap())
         );
         jpl_point3Layout.setVerticalGroup(
             jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlb_point3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_north3)
                     .addComponent(jlb_east3))
@@ -426,7 +434,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_distance3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_hillside3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jpl_point3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_goPoint4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_returnPoint2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -457,13 +465,6 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_distance4.setBackground(new java.awt.Color(255, 255, 255));
         txt_distance4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
-        jlb_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jlb_hillside4.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_hillside4.setText("Lindero:");
-
-        txt_hillside4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-
         jlb_east4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_east4.setForeground(new java.awt.Color(33, 37, 41));
         jlb_east4.setText("Coordenada Este:");
@@ -471,69 +472,80 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_eastCoordinate4.setBackground(new java.awt.Color(255, 255, 255));
         txt_eastCoordinate4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
+        jlb_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jlb_hillside4.setForeground(new java.awt.Color(33, 37, 41));
+        jlb_hillside4.setText("Lindero");
+
+        txt_hillside4.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hillside4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+
         javax.swing.GroupLayout jpl_point4Layout = new javax.swing.GroupLayout(jpl_point4);
         jpl_point4.setLayout(jpl_point4Layout);
         jpl_point4Layout.setHorizontalGroup(
             jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_point4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlb_point4)
-                            .addComponent(btn_returnPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpl_point4Layout.createSequentialGroup()
-                                .addComponent(jlb_distance4)
-                                .addGap(222, 222, 222)
-                                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlb_hillside4)
-                                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jpl_point4Layout.createSequentialGroup()
-                                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlb_north4)
-                                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(txt_eastCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpl_point4Layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jlb_east4)))))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(jlb_point4)
+                    .addComponent(btn_returnPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(926, Short.MAX_VALUE))
+            .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpl_point4Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpl_point4Layout.createSequentialGroup()
+                            .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlb_north4)
+                                .addGroup(jpl_point4Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))))
+                            .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpl_point4Layout.createSequentialGroup()
+                                    .addGap(62, 62, 62)
+                                    .addComponent(txt_eastCoordinate4, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
+                                .addGroup(jpl_point4Layout.createSequentialGroup()
+                                    .addGap(45, 45, 45)
+                                    .addComponent(jlb_east4))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpl_point4Layout.createSequentialGroup()
+                            .addComponent(jlb_distance4)
+                            .addGap(286, 286, 286)
+                            .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpl_point4Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(txt_hillside4))
+                                .addComponent(jlb_hillside4))
+                            .addGap(21, 21, 21)))
+                    .addGap(21, 21, 21)))
         );
         jpl_point4Layout.setVerticalGroup(
             jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpl_point4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlb_point4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlb_north4)
-                    .addComponent(jlb_east4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_eastCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlb_distance4)
-                    .addComponent(jlb_hillside4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                 .addComponent(btn_returnPoint3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpl_point4Layout.createSequentialGroup()
+                    .addGap(62, 62, 62)
+                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlb_north4)
+                        .addComponent(jlb_east4))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_northCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_eastCoordinate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlb_distance4)
+                        .addComponent(jlb_hillside4))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jpl_point4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_distance4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_hillside4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(62, Short.MAX_VALUE)))
         );
 
         jpl_contentPoints.add(jpl_point4, "card5");
@@ -595,8 +607,8 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(47, Short.MAX_VALUE)
-                        .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(jpl_contentPoints, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -605,25 +617,27 @@ public class RegisterProperty extends javax.swing.JPanel {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jlb_cadastralId)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_cadastralId, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_cadastralId)
                                         .addGap(113, 113, 113)
                                         .addComponent(jlb_area)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_area))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jlb_beneficiaryCode)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_beneficiaryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txt_beneficiaryCode))
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txt_address)
+                                                .addGap(149, 149, 149)))
                                         .addGap(46, 46, 46)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btn_searchBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btn_importExcelData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(btn_importExcelData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(163, 163, 163))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jlb_title))
@@ -632,8 +646,8 @@ public class RegisterProperty extends javax.swing.JPanel {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlb_propertyInfo)
                                     .addComponent(jlb_pointInfo))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGap(102, 102, 102)))
+                .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -669,10 +683,10 @@ public class RegisterProperty extends javax.swing.JPanel {
                         .addGap(3, 3, 3)))
                 .addComponent(jlb_pointInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jpl_contentPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

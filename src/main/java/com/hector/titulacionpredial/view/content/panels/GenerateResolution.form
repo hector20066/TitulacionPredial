@@ -60,13 +60,13 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jlb_title" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="scroll1" min="-2" pref="479" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Component id="scroll1" pref="479" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_generate" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,7 +96,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="scroll2" min="-2" pref="1000" max="-2" attributes="0"/>
+                                      <Component id="scroll2" max="32767" attributes="0"/>
                                       <Component id="jlb_enterInfo" min="-2" max="-2" attributes="0"/>
                                       <Component id="jlb_resume" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -107,52 +107,59 @@
                                       <Component id="jlb_act" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jlb_fmi" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_fmi" min="-2" pref="283" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_fmi" max="32767" attributes="0"/>
+                                          <EmptySpace min="643" pref="643" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jlb_numResolution" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_numResolution" min="-2" pref="151" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_numResolution" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                           <Component id="jlb_notification" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="ftx_notification" min="-2" pref="232" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="ftx_notification" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Component id="jlb_executory" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="ftx_executory" min="-2" pref="191" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="ftx_executory" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jlb_publicWriting" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jlb_notary" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_note" min="-2" pref="381" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_note" pref="381" max="32767" attributes="0"/>
+                                          <EmptySpace min="522" pref="522" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_publicWriting" min="-2" pref="800" max="-2" attributes="0"/>
-                                              <Component id="txt_act" min="-2" pref="953" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txt_publicWriting" pref="800" max="32767" attributes="0"/>
+                                                  <EmptySpace min="153" pref="153" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="txt_act" pref="953" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jlb_resume" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scroll2" min="-2" pref="391" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="scroll2" pref="391" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jlb_enterInfo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlb_numResolution" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_numResolution" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,18 +175,18 @@
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jlb_act" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="txt_act" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="jlb_publicWriting" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="txt_publicWriting" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlb_notary" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_note" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -228,50 +235,39 @@
                                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jlb_point1" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jlb_point3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
                                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                               <Component id="jlb_north1" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_east1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_distance1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_hillside1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="jlb_north3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_east3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_hillside3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_distance3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Group type="102" attributes="0">
                                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
                                                                       <Component id="txt_northCoordinate1" max="32767" attributes="0"/>
                                                                       <Component id="txt_eastCoordinate1" max="32767" attributes="0"/>
                                                                       <Component id="txt_distance1" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_hillside1" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                          <Component id="jlb_point3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="jlb_north3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_east3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_hillside3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_distance3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                          <Component id="txt_northCoordinate3" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_eastCoordinate3" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_distance3" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_hillside3" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
-                                                                      </Group>
+                                                                      <Component id="txt_northCoordinate3" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_eastCoordinate3" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_distance3" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_hillside3" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
                                                           </Group>
                                                       </Group>
                                                   </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jlb_point2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jlb_point4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
                                                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                               <Component id="jlb_north2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -279,33 +275,25 @@
                                                               <Component id="jlb_hillside2" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_distance2" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Group type="102" alignment="0" attributes="0">
-                                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
                                                                       <Component id="txt_northCoordinate2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_eastCoordinate2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_distance2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_hillside2" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                          <Component id="jlb_point4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="jlb_north4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_east4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_hillside4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jlb_distance4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                          <Component id="txt_northCoordinate4" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_eastCoordinate4" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_distance4" alignment="0" max="32767" attributes="0"/>
-                                                                          <Component id="txt_hillside4" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
-                                                                      </Group>
+                                                              <Component id="jlb_north4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_east4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_hillside4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_distance4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Component id="txt_northCoordinate4" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_eastCoordinate4" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_distance4" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txt_hillside4" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
                                                           </Group>
@@ -314,32 +302,33 @@
                                                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
                                                           <Component id="jlb_id" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_idBeneficiary" min="-2" pref="328" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_idBeneficiary" max="32767" attributes="0"/>
                                                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                                           <Component id="jlb_address" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_addressBeneficiary" min="-2" pref="327" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_addressBeneficiary" max="32767" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" attributes="0">
                                                           <Component id="jlb_names" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_nameBeneficiary" min="-2" pref="639" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_nameBeneficiary" max="32767" attributes="0"/>
+                                                          <EmptySpace min="154" pref="154" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jlb_municipality" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txt_municipality" min="-2" pref="375" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_municipality" max="32767" attributes="0"/>
                                                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                                           <Component id="jlb_cadastralRef" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                                           <Component id="txt_cadastralReference" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                                  <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>

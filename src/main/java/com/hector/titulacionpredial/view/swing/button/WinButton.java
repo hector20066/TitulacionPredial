@@ -72,13 +72,13 @@ public class WinButton extends javax.swing.JPanel {
         btn_exit.addActionListener((evt) -> System.exit(0));
         btn_minimize.addActionListener((evt) -> frame.setState(JFrame.ICONIFIED));
 
-        /*btn_maximize.addActionListener((evt) -> {
+        btn_maximize.addActionListener((evt) -> {
             if (frame.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
                 frame.setExtendedState(JFrame.NORMAL);
             } else {
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
-        });*/
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
