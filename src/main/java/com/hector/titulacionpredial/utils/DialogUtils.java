@@ -1,11 +1,26 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Window;
 import java.io.File;
 import java.util.concurrent.Callable;
+
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for common operations with dialogs: loading dialogs,
@@ -100,15 +115,22 @@ public class DialogUtils {
         JDialog dialog = createLoadDialog(parent, loadingMessage);
 
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            /**
+             * Execute background task in a worker thread.
+             *
+             * @return null after task completion
+             * @throws Exception if task execution fails
+             */
             @Override
-    /**     * do in background.     */
             protected Void doInBackground() throws Exception {
                 task.call();
                 return null;
             }
 
+            /**
+             * Handle worker thread completion and post tasks in EDT.
+             */
             @Override
-    /**     * done.     */
             protected void done() {
                 dialog.dispose();
 

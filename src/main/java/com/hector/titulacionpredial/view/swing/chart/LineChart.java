@@ -1,22 +1,32 @@
 package com.hector.titulacionpredial.view.swing.chart;
 
-import com.hector.titulacionpredial.view.swing.chart.blankchart.BlankPlotChart;
-import com.hector.titulacionpredial.view.swing.chart.blankchart.BlankPlotChartRender;
-import com.hector.titulacionpredial.view.swing.chart.blankchart.SeriesSize;
-import com.hector.titulacionpredial.view.swing.model.ModelChart;
-import com.hector.titulacionpredial.view.swing.model.ModelLegend;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTarget;
-import org.jdesktop.animation.timing.TimingTargetAdapter;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JPanel;
+
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import com.hector.titulacionpredial.view.swing.chart.blankchart.BlankPlotChart;
+import com.hector.titulacionpredial.view.swing.chart.blankchart.BlankPlotChartRender;
+import com.hector.titulacionpredial.view.swing.chart.blankchart.SeriesSize;
+import com.hector.titulacionpredial.view.swing.model.ModelChart;
+import com.hector.titulacionpredial.view.swing.model.ModelLegend;
 
 /**
  * Line graphic component with support for multiple series.
@@ -70,25 +80,21 @@ public class LineChart extends javax.swing.JPanel {
         
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChartRender() {
             @Override
-    /**     * get max legend.     * @return the get max legend     */
             public int getMaxLegend() {
                 return legends.size();
             }
 
             @Override
-    /**     * get label text.     * @param index the index     * @return the get label text     */
             public String getLabelText(int index) {
                 return model.get(index).getLabel();
             }
 
             @Override
-    /**     * render series.     * @param chart the chart     * @param g2 the g2     * @param size the size     * @param index the index     */
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
 
             }
 
             @Override
-    /**     * render series.     * @param chart the chart     * @param g2 the g2     * @param size the size     * @param index the index     * @param gra the gra     */
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
@@ -123,7 +129,6 @@ public class LineChart extends javax.swing.JPanel {
             }
 
             @Override
-    /**     * render graphics.     * @param g2 the g2     * @param gra the gra     */
             public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra) {
                 g2.setStroke(new BasicStroke(3f));
 
@@ -134,7 +139,6 @@ public class LineChart extends javax.swing.JPanel {
             }
             
             @Override
-    /**     * mouse moving.     * @param chart the chart     * @param evt the evt     * @param g2 the g2     * @param size the size     * @param index the index     * @return the mouse moving     */
             public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;

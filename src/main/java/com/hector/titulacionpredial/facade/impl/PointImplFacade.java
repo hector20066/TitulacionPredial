@@ -48,7 +48,6 @@ public class PointImplFacade implements PointFacade {
     }
 
     @Override
-    /**     * find by code.     * @param propertyCode the property code     * @return the find by code     */
     public DTOPoint findByCode(int propertyCode) throws DAOException {
         return daoPoint.findByCode(propertyCode);
     }

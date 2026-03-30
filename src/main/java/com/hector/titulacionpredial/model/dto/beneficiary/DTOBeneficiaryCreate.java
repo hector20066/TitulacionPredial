@@ -157,7 +157,6 @@ public class DTOBeneficiaryCreate extends DTOBeneficiary {
          * @return new DTO configured
          */
         @Override
-    /**     * build.     * @return the build     */
         public DTOBeneficiaryCreate build() {
             return new DTOBeneficiaryCreate(this);
         }

@@ -8,7 +8,16 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
-import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.content.panels.About;
+import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.content.panels.ManageUsers;
+import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
+import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
+import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
+import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.content.panels.Settings;
+import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOMenuText;
 
 /**
@@ -131,8 +140,15 @@ public class ControllerContentAdmin implements LanguageObserver {
         }
     }
 
+    /**
+     * Update the interface language based on current language selection.
+     *
+     * <p>
+     * Populates the menu text with localized strings from the language
+     * manager for all menu items.
+     * </p>
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
         DTOMenuText dto = new DTOMenuText.Builder()
                 .mainTitle(lang.app("menu.main"))
@@ -154,7 +170,14 @@ public class ControllerContentAdmin implements LanguageObserver {
         //content.getMenu().setText(dto);
     }
 
-    /**     * logout.     */
+    /**
+     * Perform logout operation and return to login screen.
+     *
+     * <p>
+     * Closes the current admin content window and displays the login
+     * view, disposing of all resources associated with this session.
+     * </p>
+     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

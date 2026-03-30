@@ -82,7 +82,6 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
         }
 
         @Override
-    /**     * build.     * @return the build     */
         public DTOBeneficiaryUpdate build() {
             return new DTOBeneficiaryUpdate(this);
         }

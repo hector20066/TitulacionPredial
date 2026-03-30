@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterUsersBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -9,16 +11,12 @@ import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
-import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
-
-import javax.swing.*;
 
 /**
  * @author Ing. Hector Acevedo
@@ -52,7 +50,9 @@ public class ControllerRegisterUsers implements LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTORegisterUsersText dto = new DTORegisterUsersText.Builder()
                 .title(lang.app("register.users.title"))
@@ -108,13 +108,23 @@ public class ControllerRegisterUsers implements LanguageObserver {
         return false;
     }
 
-    /**     * prepare ui.     */
+    /**
+     * Prepare the UI for registration.
+     */
     private void prepareUI() {
         registerUsers.getBtn_createAccount().setEnabled(false);
         registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.registering"));
     }
 
-    /**     * do in background.     * @param name the name     * @param id the id     * @param user the user     * @param password the password     * @param role the role     */
+    /**
+     * Execute user registration in background thread.
+     *
+     * @param name     user's full name
+     * @param id       user's ID number
+     * @param user     username for login
+     * @param password user's password
+     * @param role     user's role in system
+     */
     private void doInBackground(String name, int id, String user, String password, Role role) {
         new Thread(() -> {
             try {

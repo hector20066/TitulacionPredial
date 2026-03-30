@@ -123,8 +123,12 @@ public class Point {
      *
      * @return formatted description of the main attributes
      */
+    /**
+     * Textual representation of the point.
+     *
+     * @return formatted description of point attributes
+     */
     @Override
-    /**     * to string.     * @return the to string     */
     public String toString() {
         return "Code=" + code +
                 "\nNumber Point= " + numberPoint +

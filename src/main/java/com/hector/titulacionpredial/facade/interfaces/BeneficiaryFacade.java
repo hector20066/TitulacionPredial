@@ -1,16 +1,18 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
-import com.hector.titulacionpredial.model.dto.beneficiary.*;
-import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
-
-import java.util.List;
 
 /**
  * Facade that defines the high-level operations for beneficiary
@@ -32,12 +34,15 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
     /**
      * Register a new beneficiary in the system.
      *
+     * @param codeBeneficiary    unique beneficiary code
      * @param id                 ID number
      * @param fullName           full name
      * @param maritalStatus      marital status
      * @param affectation        type of impairment
      * @param phone              phone number
      * @param expeditionLocation place of issue of the document
+     * @param propertyCode       associated property code
+     * @return the code of the newly inserted beneficiary
      * @throws DAOException if an error occurs during the operation
      */
     int add(String codeBeneficiary, long id, String fullName, MaritalStatus maritalStatus, String affectation, long phone,
@@ -97,16 +102,27 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      */
     List<DTOBeneficiaryDetails> findAllForExport() throws DAOException;
 
+    /**
+     * Find a beneficiary by their unique beneficiary code string.
+     *
+     * @param beneficiariesCode the beneficiary code string
+     * @return DTO with beneficiary code information
+     * @throws DAOException if an error occurs or it is not found
+     */
     DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException;
 
     /**
-     * Modify the details of an existing beneficiary.
+     * Modify an existing beneficiary record.
      *
-     * @param maritalStatus updated marital status
-     * @param affectation   updated impact
-     * @param phone         updated phone number
-     * @param code          beneficiary code to be modified
-     * @return {@code true} if the modification was successful
+     * @param id                 ID number
+     * @param codeBeneficiaries  beneficiary code
+     * @param fullName           full name
+     * @param maritalStatus      marital status
+     * @param affectation        type of impairment
+     * @param phone              phone number
+     * @param expeditionLocation place of issue of the document
+     * @param code               beneficiary code to be modified
+     * @return true if the modification was successful, false otherwise
      * @throws DAOException if an error occurs during the operation
      */
     boolean modify(long id, String codeBeneficiaries, String fullName, MaritalStatus maritalStatus, String affectation,

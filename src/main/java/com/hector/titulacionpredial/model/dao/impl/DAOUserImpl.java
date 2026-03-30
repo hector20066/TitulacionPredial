@@ -29,12 +29,24 @@ public class DAOUserImpl implements DAOUser {
     private static DAOUserImpl instance;
     private static final LanguageManager lang = LanguageManager.getInstance();
 
-    /**     * dao user impl.     * @return the dao user impl     */
+    /**
+     * Private constructor to avoid external instantiation and preserve
+     * the Singleton pattern of the DAO implementation.
+     */
     private DAOUserImpl() {
 
     }
 
-    /**     * get instance.     * @return the get instance     */
+    /**
+     * Gets the unique instance of {@link DAOUserImpl}.
+     *
+     * <p>
+     * If the instance does not exist, it creates it. Access is synchronized
+     * to ensure thread-safety in multi-threaded environments.
+     * </p>
+     *
+     * @return single instance of the DAO user implementation
+     */
     public static synchronized DAOUserImpl getInstance() {
         if (instance == null) {
             instance = new DAOUserImpl();
@@ -44,7 +56,6 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    /**     * add.     * @param dto the dto     */
     public void add(DTOUserCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/insert.sql");
 
@@ -62,7 +73,6 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    /**     * verify credentials.     * @param user the user     * @param plainPassword the plain password     * @return the verify credentials     */
     public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         String sql = SQLRepository.get("sql/user/verifyPassword.sql");
 
@@ -89,7 +99,6 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    /**     * modify password.     * @param dto the dto     * @return the modify password     */
     public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/modifyPassword.sql");
 
@@ -109,7 +118,6 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOUserDetails findByCode(int code) throws DAOException {
         String sql = SQLRepository.get("sql/user/findByCode.sql");
 
@@ -159,7 +167,6 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/user/delete.sql");
 

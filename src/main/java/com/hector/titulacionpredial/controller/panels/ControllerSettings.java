@@ -1,5 +1,9 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.util.Enumeration;
+
+import javax.swing.AbstractButton;
+
 import com.hector.titulacionpredial.controller.builder.ControllerSettingsBuilder;
 import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.LanguageManager;
@@ -7,9 +11,6 @@ import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
-
-import javax.swing.*;
-import java.util.Enumeration;
 
 /**
  * Application settings panel controller.
@@ -59,7 +60,9 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTOSettingsText dto = new DTOSettingsText(lang.app("settings.language.title"),
                 lang.app("settings.language"));

@@ -14,7 +14,6 @@ import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
@@ -29,7 +28,24 @@ import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
 /**
+ * Controller for user authentication and login management.
+ *
+ * <p>
+ * Handles user credential verification, session creation, and role-based
+ * navigation to the appropriate content view. It supports multiple user roles
+ * (ADMIN, EMPLOYEE, NONE) and manages municipality-specific access for
+ * employee users.
+ * </p>
+ *
+ * <p>
+ * The controller manages the login UI interactions, including password
+ * visibility toggling and form validation. It implements {@link LanguageObserver}
+ * to support dynamic language changes during the login process.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see ControllerLoginBuilder
+ * @see LanguageObserver
  * @since 1.0
  */
 public class ControllerLogin implements LanguageObserver {
@@ -44,7 +60,12 @@ public class ControllerLogin implements LanguageObserver {
     private final ControllerContentReader controllerContentReader;
     private Role role;
 
-    /**     * controller login.     * @param builder the builder     * @return the controller login     */
+    /**
+     * Create the controller from a builder that contains all
+     * the necessary views and dependencies.
+     *
+     * @param builder constructor with configured views and dependencies
+     */
     public ControllerLogin(ControllerLoginBuilder builder) {
         this.login = builder.getLogin();
         this.contentAdmin = builder.getContentAdmin();
@@ -60,17 +81,34 @@ public class ControllerLogin implements LanguageObserver {
         connectEvents();
     }
 
-    /**     * set role.     * @param role the role     */
+    /**
+     * Set the user role for the current session.
+     *
+     * @param role the {@link Role} to assign
+     */
     public void setRole(Role role) {
         this.role = role;
     }
 
-    /**     * get role.     * @return the get role     */
+    /**
+     * Retrieve the current user role.
+     *
+     * @return the current {@link Role}
+     */
     public Role getRole() {
         return role;
     }
 
-    /**     * jpl_ content.     * @return the jpl_ content     */
+    /**
+     * Get the content panel corresponding to the current user role.
+     *
+     * <p>
+     * Returns the appropriate panel for the logged-in user role,
+     * either admin or user content.
+     * </p>
+     *
+     * @return the {@link JPanel} for the current role's content
+     */
     public JPanel jpl_Content() {
         if (getRole() == Role.ADMIN) {
             return ContentAdmin.getJpl_content();
@@ -79,7 +117,14 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
-    /**     * connect events.     */
+    /**
+     * Connect login UI events to their corresponding event handlers.
+     *
+     * <p>
+     * Registers listeners for login button, password visibility toggle,
+     * and keyboard shortcuts (Enter key on password field).
+     * </p>
+     */
     private void connectEvents() {
         login.setControllerLogin(e -> logIn());
         login.setControllerSeePassword(e -> seePassword());
@@ -92,7 +137,6 @@ public class ControllerLogin implements LanguageObserver {
 
         login.setTxt_userMouse(new MouseAdapter() {
             @Override
-    /**     * mouse pressed.     * @param e the e     */
             public void mousePressed(MouseEvent e) {
                 mousePressedUser();
             }
@@ -100,20 +144,30 @@ public class ControllerLogin implements LanguageObserver {
 
         login.setJpld_passwordMouse(new MouseAdapter() {
             @Override
-    /**     * mouse pressed.     * @param e the e     */
             public void mousePressed(MouseEvent e) {
                 mousePressedPassword();
             }
         });
     }
 
+    /**
+     * Update the interface language based on current language selection.
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
-    /**     * log in.     */
+    /**
+     * Perform user login validation and authentication.
+     *
+     * <p>
+     * Validates that username and password fields are not empty, verifies
+     * that password length is at least 8 characters, and then executes
+     * an asynchronous login worker to verify credentials. Exceptions are
+     * caught internally and displayed to the user.
+     * </p>
+     */
     private void logIn() {
         try {
             String user = login.getTxt_user().getText().trim();
@@ -140,23 +194,39 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
-    /**     * prepare ui.     */
+    /**
+     * Prepare the login UI for authentication process.
+     *
+     * <p>
+     * Disables the login button and updates its text to indicate
+     * that authentication is in progress.
+     * </p>
+     */
     private void prepareUI() {
         login.getBtn_login().setEnabled(false);
         login.getBtn_login().setText(lang.app("controller.login.init"));
     }
 
-    /**     * execute login worker.     * @param user the user     * @param plainPasswd the plain passwd     */
+    /**
+     * Execute asynchronous login worker to verify user credentials.
+     *
+     * <p>
+     * Uses {@link SwingWorker} to perform credential verification in a
+     * background thread, preventing UI freezing during database operations.
+     * Handles database connection errors and interruptions.
+     * </p>
+     *
+     * @param user         the username to verify
+     * @param plainPasswd  the plaintext password to verify
+     */
     private void executeLoginWorker(String user, String plainPasswd) {
         SwingWorker<Role, Void> executor = new SwingWorker<>() {
             @Override
-    /**     * do in background.     * @return the do in background     */
             protected Role doInBackground() throws DAOException {
                 return LoginService.getInstance().verifyCredentials(user, plainPasswd);
             }
 
             @Override
-    /**     * done.     */
             public void done() {
                 try {
                     Role role = get();
@@ -180,7 +250,17 @@ public class ControllerLogin implements LanguageObserver {
         executor.execute();
     }
 
-    /**     * handled login result.     * @param role the role     */
+    /**
+     * Handle the result of user authentication.
+     *
+     * <p>
+     * Based on the returned role, initializes the appropriate session
+     * (admin or employee) or displays an error message if credentials
+     * are invalid.
+     * </p>
+     *
+     * @param role the {@link Role} returned from authentication
+     */
     private void handledLoginResult(Role role) {
         switch (role) {
             case Role.ADMIN -> {
@@ -199,7 +279,14 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
-    /**     * start session admin.     */
+    /**
+     * Initialize an admin user session.
+     *
+     * <p>
+     * Displays the admin content view, sets the window properties, and
+     * closes the login window.
+     * </p>
+     */
     private void startSessionAdmin() {
         java.awt.EventQueue.invokeLater(() -> {
             contentAdmin.setVisible(true);
@@ -211,7 +298,15 @@ public class ControllerLogin implements LanguageObserver {
         login.dispose();
     }
 
-    /**     * start session user.     */
+    /**
+     * Initialize an employee user session.
+     *
+     * <p>
+     * Displays either the reader or user content view based on the
+     * selected access mode, sets municipality context if specified,
+     * and closes the login window.
+     * </p>
+     */
     private void startSessionUser() {
         String mode = (String) login.getCbo_access().getSelectedItem();
         Municipalities municipality = extractMunicipalityFromMode(mode);
@@ -255,13 +350,28 @@ public class ControllerLogin implements LanguageObserver {
         };
     }
 
-    /**     * reset log in.     */
+    /**
+     * Reset the login UI to its initial state.
+     *
+     * <p>
+     * Re-enables the login button and restores its original text,
+     * allowing the user to attempt login again.
+     * </p>
+     */
     private void resetLogIn() {
         login.getBtn_login().setEnabled(true);
         login.getBtn_login().setText(lang.app("controller.content.login"));
     }
 
-    /**     * mouse pressed password.     */
+    /**
+     * Handle password field focus and display logic.
+     *
+     * <p>
+     * When the password field receives focus, displays the placeholder
+     * text in the username field if it's empty, and clears any placeholder
+     * from the password field.
+     * </p>
+     */
     private void mousePressedPassword() {
         if (login.getTxt_user().getText().isBlank()) {
             login.getTxt_user().setText(lang.app("controller.login.enter.user"));
@@ -274,7 +384,14 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
-    /**     * mouse pressed user.     */
+    /**
+     * Handle username field focus and display logic.
+     *
+     * <p>
+     * When the username field receives focus, clears any placeholder text
+     * and displays the placeholder in the password field if it's empty.
+     * </p>
+     */
     private void mousePressedUser() {
         if (login.getTxt_user().getText().equals(lang.app("controller.login.enter.user"))) {
             login.getTxt_user().setText("");
@@ -287,7 +404,14 @@ public class ControllerLogin implements LanguageObserver {
         }
     }
 
-    /**     * see password.     */
+    /**
+     * Toggle password visibility in the password field.
+     *
+     * <p>
+     * If the "show password" radio button is selected, displays the password
+     * in plain text. Otherwise, masks the password with bullet characters.
+     * </p>
+     */
     private void seePassword() {
         if (login.getRbn_seePasswd().isSelected()) {
             login.getJpld_password().setEchoChar((char) 0);

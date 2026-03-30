@@ -102,7 +102,14 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update.     */
+    /**
+     * Retrieve and update the resolutions list from the database.
+     *
+     * <p>
+     * Executes database queries to fetch resolution data and updates the
+     * UI with the retrieved information.
+     * </p>
+     */
     public void update() {
         new Thread(() -> {
             try {
@@ -118,7 +125,9 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTOSeeResolutionsText dto = new DTOSeeResolutionsText.Builder()
                 .title(lang.app("see.resolutions.title"))
@@ -146,6 +155,8 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
      * Format the notification and enforcement dates to the
      * legible Spanish format before passing them to the form.
      * </p>
+     *
+     * @throws Exception if no row is selected or data extraction fails
      */
     private void modify() {
         try {

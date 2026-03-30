@@ -1,11 +1,13 @@
 package com.hector.titulacionpredial.view.component;
 
-import com.hector.titulacionpredial.view.swing.button.WinButton;
-import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
-
-import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+import com.hector.titulacionpredial.view.swing.button.WinButton;
+import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
 
 /**
  * Custom title bar for the main window.
@@ -61,8 +63,12 @@ public class Head extends PanelShadow {
      */
     public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
+            /**
+             * Handle mouse pressed event for window dragging.
+             *
+             * @param evt the mouse event
+             */
             @Override
-    /**     * mouse pressed.     * @param evt the evt     */
             public void mousePressed(MouseEvent evt) {
                 if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(evt)) {
                     xMouse = evt.getXOnScreen() - frame.getX();
@@ -72,8 +78,12 @@ public class Head extends PanelShadow {
         });
 
         this.addMouseMotionListener(new MouseAdapter() {
+            /**
+             * Handle mouse dragged event for window movement.
+             *
+             * @param evt the mouse event
+             */
             @Override
-    /**     * mouse dragged.     * @param evt the evt     */
             public void mouseDragged(MouseEvent evt) {
                 if (frame.getExtendedState() != JFrame.MAXIMIZED_BOTH && SwingUtilities.isLeftMouseButton(evt)) {
                     frame.setLocation(evt.getXOnScreen() - xMouse, evt.getYOnScreen() - yMouse);

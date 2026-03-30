@@ -118,7 +118,6 @@ public class Beneficiary extends Person {
      * @return formatted description of the beneficiary
      */
     @Override
-    /**     * to string.     * @return the to string     */
     public String toString() {
         return super.toString() +
                 "\nCode= " + code +
@@ -145,39 +144,68 @@ public class Beneficiary extends Person {
         private String affectation;
         private Spouse spouse;
 
-    /**     * code.     * @param code the code     * @return the code     */
-        public Builder code(int code) {
+    /**
+     * Set the beneficiary code.
+     *
+     * @param code the unique beneficiary identifier
+     * @return this builder instance for chaining
+     */
+    public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-    /**     * code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     * @return the code beneficiaries     */
-        public Builder codeBeneficiaries(String codeBeneficiaries) {
+    /**
+     * Set the beneficiary code identifier string.
+     *
+     * @param codeBeneficiaries the beneficiary code string
+     * @return this builder instance for chaining
+     */
+    public Builder codeBeneficiaries(String codeBeneficiaries) {
             this.codeBeneficiaries = codeBeneficiaries;
             return this;
         }
 
-    /**     * marital status.     * @param maritalStatus the marital status     * @return the marital status     */
-        public Builder maritalStatus(MaritalStatus maritalStatus) {
+    /**
+     * Set the marital status.
+     *
+     * @param maritalStatus the marital status enumeration
+     * @return this builder instance for chaining
+     */
+    public Builder maritalStatus(MaritalStatus maritalStatus) {
             this.maritalStatus = maritalStatus;
             return this;
         }
 
-    /**     * affectation.     * @param affectation the affectation     * @return the affectation     */
-        public Builder affectation(String affectation) {
+    /**
+     * Set the affectation information.
+     *
+     * @param affectation the affectation description
+     * @return this builder instance for chaining
+     */
+    public Builder affectation(String affectation) {
             this.affectation = affectation;
             return this;
         }
 
-    /**     * spouse.     * @param spouse the spouse     * @return the spouse     */
-        public Builder spouse(Spouse spouse) {
+    /**
+     * Set the spouse information.
+     *
+     * @param spouse the spouse entity
+     * @return this builder instance for chaining
+     */
+    public Builder spouse(Spouse spouse) {
             this.spouse = spouse;
             return this;
         }
 
-        @Override
-    /**     * build.     * @return the build     */
-        public Beneficiary build() {
+    /**
+     * Build and return the final {@link Beneficiary} instance.
+     *
+     * @return constructed beneficiary object
+     */
+    @Override
+    public Beneficiary build() {
             return new Beneficiary(this);
         }
 

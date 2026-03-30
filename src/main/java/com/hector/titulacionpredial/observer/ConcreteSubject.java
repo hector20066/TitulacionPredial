@@ -59,7 +59,6 @@ public class ConcreteSubject implements Subject {
      * {@inheritDoc}
      */
     @Override
-    /**     * register.     * @param observer the observer     */
     public void register(Observer observer) {
         observers.add(observer);
     }
@@ -68,7 +67,6 @@ public class ConcreteSubject implements Subject {
      * {@inheritDoc}
      */
     @Override
-    /**     * remove.     * @param observer the observer     */
     public void remove(Observer observer) {
         observers.remove(observer);
     }
@@ -77,7 +75,6 @@ public class ConcreteSubject implements Subject {
      * {@inheritDoc}
      */
     @Override
-    /**     * notify observers.     */
     public void notifyObservers() {
         observers.forEach(Observer::update);
     }

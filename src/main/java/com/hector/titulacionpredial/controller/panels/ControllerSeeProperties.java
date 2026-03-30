@@ -103,7 +103,14 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update.     */
+    /**
+     * Retrieve and update the properties list from the database.
+     *
+     * <p>
+     * Executes database queries to fetch property data and updates the
+     * UI with the retrieved information.
+     * </p>
+     */
     public void update() {
         new Thread(() -> {
             try {
@@ -119,7 +126,9 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTOSeePropertiesText dto = new DTOSeePropertiesText.Builder()
                 .properties(lang.app("see.properties.title"))
@@ -155,6 +164,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      * beneficiary name, ID number, address, municipality,
      * coordinates of the four geographic points and area.
      * </p>
+     *
+     * @throws Exception if no row is selected or data extraction fails
      */
     private void generateResolution() {
         try {

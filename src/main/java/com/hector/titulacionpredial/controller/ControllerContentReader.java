@@ -7,11 +7,31 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
-import com.hector.titulacionpredial.view.content.ContentUser;
-import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.content.panels.About;
+import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.content.panels.Settings;
+import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
+ * Controller for reader content navigation and interaction.
+ *
+ * <p>
+ * Manages the user interface for read-only access, handling navigation
+ * between different panels via the side menu. Implements the
+ * {@link LanguageObserver} to support dynamic language changes.
+ * </p>
+ *
+ * <p>
+ * This controller provides restricted functionality compared to the
+ * admin controller, hiding modification and deletion buttons where
+ * appropriate for read-only access.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see ControllerContentReaderBuilder
+ * @see LanguageObserver
  * @since 1.0
  */
 public class ControllerContentReader implements LanguageObserver {
@@ -27,7 +47,12 @@ public class ControllerContentReader implements LanguageObserver {
     private final Subject subject;
     private final LanguageManager lang;
 
-    /**     * controller content reader.     * @param builder the builder     * @return the controller content reader     */
+    /**
+     * Create the controller from a builder that contains all
+     * the necessary views and dependencies.
+     *
+     * @param builder constructor with configured views
+     */
     public ControllerContentReader(ControllerContentReaderBuilder builder) {
         this.contentReader = builder.getContent();
         this.dashboard = builder.getDashboard();
@@ -53,7 +78,19 @@ public class ControllerContentReader implements LanguageObserver {
         contentReader.setControllerLogout(e -> logout());
     }
 
-    /**     * selected menu.     * @param index the index     * @param indexSubMenu the index sub menu     */
+    /**
+     * Manage the selection from the side menu and navigate to the
+     * corresponding panel.
+     *
+     * <p>
+     * Based on the selected menu and submenu index, it displays the
+     * appropriate panel and notifies observers when data needs to be
+     * updated.
+     * </p>
+     *
+     * @param index        main menu index
+     * @param indexSubMenu index of the selected submenu
+     */
     private void selectedMenu(int index, int indexSubMenu) {
         switch (index) {
             case 0 -> {
@@ -72,13 +109,22 @@ public class ControllerContentReader implements LanguageObserver {
         }
     }
 
+    /**
+     * Update the interface language based on current language selection.
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
-    /**     * hide buttons.     */
+    /**
+     * Hide specific action buttons for read-only mode.
+     *
+     * <p>
+     * Hides delete and modify buttons in the beneficiary, property,
+     * and resolution views to enforce read-only access restrictions.
+     * </p>
+     */
     public void hideButtons() {
         viewBeneficiaries.getBtn_delete().setVisible(false);
         viewBeneficiaries.getBtn_modify().setVisible(false);
@@ -87,7 +133,14 @@ public class ControllerContentReader implements LanguageObserver {
         seeResolutions.getBtn_modify().setVisible(false);
     }
 
-    /**     * prepare ui.     */
+    /**
+     * Prepare the user interface for read-only access.
+     *
+     * <p>
+     * Configures the visibility of UI elements, hiding buttons that
+     * require modification permissions.
+     * </p>
+     */
     public void prepareUI() {
         viewBeneficiaries.getBtn_delete().setVisible(false);
         viewBeneficiaries.getBtn_modify().setVisible(false);
@@ -96,7 +149,14 @@ public class ControllerContentReader implements LanguageObserver {
         seeResolutions.getBtn_modify().setVisible(false);
     }
 
-    /**     * logout.     */
+    /**
+     * Perform logout operation and return to login screen.
+     *
+     * <p>
+     * Closes the current reader content window and displays the login
+     * view, disposing of all resources associated with this session.
+     * </p>
+     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

@@ -1,8 +1,9 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
-import javax.swing.*;
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class to display messages and dialogs to the
@@ -82,7 +83,13 @@ public class MessageUtils {
         return JOptionPane.YES_OPTION;
     }
 
-    /**     * input dialog.     * @param message the message     * @param container the container     * @return the input dialog     */
+    /**
+     * Show an input dialog to request user input.
+     *
+     * @param message   the message to display
+     * @param container the parent component
+     * @return the user's input or null if cancelled
+     */
     public static String inputDialog(String message, JComponent container) {
         return JOptionPane.showInputDialog(container, message, lang.message("message.utils.changePassword"), JOptionPane.PLAIN_MESSAGE);
     }

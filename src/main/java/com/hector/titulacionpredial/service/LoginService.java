@@ -28,7 +28,14 @@ public class LoginService {
         return instance;
     }
 
-    /**     * verify credentials.     * @param user the user     * @param plainPassword the plain password     * @return the verify credentials     */
+    /**
+     * Verify user credentials and return their role.
+     *
+     * @param user          the username to authenticate
+     * @param plainPassword the plaintext password to verify
+     * @return the user's role if authentication succeeds
+     * @throws DAOException if an error occurs during verification
+     */
     public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }

@@ -1,5 +1,11 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -28,15 +34,10 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
-import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controller of the beneficiary registration and modification panel.
@@ -108,7 +109,9 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTORegisterBeneficiaryText dto = new DTORegisterBeneficiaryText.Builder()
                 .modifyTitle(lang.app("register.beneficiary.modify.title"))

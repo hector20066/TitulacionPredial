@@ -79,8 +79,12 @@ public class User {
         this.role = role;
     }
 
+    /**
+     * Textual representation of the user.
+     *
+     * @return formatted description of user attributes
+     */
     @Override
-    /**     * to string.     * @return the to string     */
     public String toString() {
         return "fullName='" + fullName + '\'' +
                 ", id=" + id +

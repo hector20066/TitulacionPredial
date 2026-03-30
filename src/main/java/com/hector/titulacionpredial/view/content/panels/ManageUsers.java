@@ -1,11 +1,5 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.controller.IManageAccounts;
-import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
-
-import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +8,18 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import com.hector.titulacionpredial.controller.IManageAccounts;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
 
 /**
  *
@@ -87,14 +92,21 @@ public class ManageUsers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**     * clear panel.     */
+    /**
+     * Clear the content panel by removing all components.
+     */
     public void clearPanel() {
         jpl_content.removeAll();
         jpl_content.revalidate();
         jpl_content.repaint();
     }
 
-    /**     * add accounts panel.     * @param account the account     * @param controller the controller     */
+    /**
+     * Add a user account panel to the content.
+     *
+     * @param account      the user account DTO
+     * @param controller   the manage accounts controller
+     */
     public void addAccountsPanel(DTOUserDetails account, IManageAccounts controller) {
         PanelShadow panelAccount = new PanelShadow();
         panelAccount.setLayout(new BorderLayout());

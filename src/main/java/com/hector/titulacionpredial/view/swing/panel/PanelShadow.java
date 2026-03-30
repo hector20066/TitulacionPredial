@@ -1,11 +1,13 @@
 package com.hector.titulacionpredial.view.swing.panel;
 
-import com.hector.titulacionpredial.view.swing.shadow.ShadowBorder;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import com.hector.titulacionpredial.view.swing.shadow.ShadowBorder;
 
 /**
  * Panel with interior and exterior shadow effect.
@@ -88,7 +90,6 @@ public class PanelShadow extends JPanel {
      * {@inheritDoc}
      */
     @Override
-    /**     * set bounds.     * @param i the i     * @param i1 the i1     * @param i2 the i2     * @param i3 the i3     */
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
         createShadowImage();

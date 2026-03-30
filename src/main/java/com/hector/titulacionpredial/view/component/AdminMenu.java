@@ -15,8 +15,10 @@ public class AdminMenu extends Menu {
         rebuildMenu();
     }
 
+    /**
+     * Initialize and add menu components to the panel.
+     */
     @Override
-    /**     * add components.     */
     public void addComponents() {
         addTitle("PRINCIPAL");
         addMenuItem(new ModelMenuItem("image/layout-dashboard.svg", "Dashboard"));

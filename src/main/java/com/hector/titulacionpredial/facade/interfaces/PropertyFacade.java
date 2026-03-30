@@ -30,13 +30,13 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
     /**
      * Register a new property in the system.
      *
-     * @param cadastralId cadastral certificate of the property
-     * @param address
-     * @param department
-     * @param municipality
-     * @param crossing
-     * @param neighborhood
-     * @param publication
+     * @param cadastralId      cadastral certificate of the property
+     * @param address          property address
+     * @param department       department/region of the property
+     * @param municipality     municipality where the property is located
+     * @param crossing         property crossing/intersection details
+     * @param neighborhood     neighborhood name
+     * @param publication      publication reference or number
      * @return code of the newly inserted property
      * @throws DAOException if an error occurs during the operation
      */
@@ -69,6 +69,14 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      */
     List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Update a property's cadastral reference and area.
+     *
+     * @param cadastralReference the property's cadastral reference
+     * @param area               the property area value
+     * @return true if the modification was successful, false otherwise
+     * @throws DAOException if an error occurs during the operation
+     */
     boolean modify(String cadastralReference, double area) throws DAOException;
 
     /**

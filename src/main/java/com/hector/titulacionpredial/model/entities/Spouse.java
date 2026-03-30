@@ -42,8 +42,12 @@ public class Spouse extends Person {
      *
      * @return formatted description of spouse
      */
+    /**
+     * Textual representation of the spouse.
+     *
+     * @return formatted description of spouse
+     */
     @Override
-    /**     * to string.     * @return the to string     */
     public String toString() {
         return super.toString();
     }
@@ -60,8 +64,12 @@ public class Spouse extends Person {
      */
     public static class Builder extends Person.Builder<Builder> {
 
+        /**
+         * Build the spouse instance.
+         *
+         * @return new Spouse instance
+         */
         @Override
-    /**     * build.     * @return the build     */
         public Spouse build() {
             return new Spouse(this);
         }

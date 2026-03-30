@@ -182,7 +182,6 @@ public class Resolution {
      * @return formatted description of the main attributes
      */
     @Override
-    /**     * to string.     * @return the to string     */
     public String toString() {
         return "Code= " + code +
                 "\nResolution Number= " + resolutionNumber +

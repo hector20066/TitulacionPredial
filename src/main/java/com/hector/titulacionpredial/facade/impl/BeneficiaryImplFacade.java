@@ -10,7 +10,6 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMont
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryPropertyUpdate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
@@ -61,19 +60,16 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOBeneficiarySimpleDetails findByCode(int code) throws DAOException {
         return daoBeneficiary.findByCode(code);
     }
 
     @Override
-    /**     * find by id.     * @param id the id     * @return the find by id     */
     public DTOBeneficiarySimpleDetails findById(long id) throws DAOException {
         return daoBeneficiary.findById(id);
     }
 
     @Override
-    /**     * find by name.     * @param fullName the full name     * @return the find by name     */
     public DTOBeneficiarySimpleDetails findByName(String fullName) throws DAOException {
         return daoBeneficiary.findByName(fullName);
     }
@@ -89,7 +85,6 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    /**     * find all data.     * @param code the code     * @return the find all data     */
     public DTOBeneficiaryDetails findAllData(int code) throws DAOException {
         return daoBeneficiary.findAllData(code);
     }
@@ -100,7 +95,6 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    /**     * find by beneficiaries code.     * @param beneficiariesCode the beneficiaries code     * @return the find by beneficiaries code     */
     public DTOBeneficiariesCode findByBeneficiariesCode(String beneficiariesCode) throws DAOException {
         return daoBeneficiary.findByBeneficiariesCode(beneficiariesCode);
     }
@@ -124,19 +118,16 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         daoBeneficiary.delete(code);
     }
 
     @Override
-    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         return daoBeneficiary.countRecords();
     }
 
     @Override
-    /**     * get last code.     * @return the get last code     */
     public int getLastCode() throws DAOException {
         return daoBeneficiary.getLastCode();
     }
@@ -147,13 +138,11 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
-    /**     * count beneficiaries with property.     * @return the count beneficiaries with property     */
     public int countBeneficiariesWithProperty() throws DAOException {
         return daoBeneficiary.countBeneficiariesWithProperty();
     }
 
     @Override
-    /**     * percent beneficiaries with property.     * @return the percent beneficiaries with property     */
     public int percentBeneficiariesWithProperty() throws DAOException {
         return daoBeneficiary.percentBeneficiariesWithProperty();
     }

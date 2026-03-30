@@ -1,8 +1,12 @@
 package com.hector.titulacionpredial.view.swing.chart;
 
-import com.hector.titulacionpredial.view.swing.model.CardModel;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
-import java.awt.*;
+import com.hector.titulacionpredial.view.swing.model.CardModel;
 
 /**
  * Visual card with gradient background for the dashboard.
@@ -118,8 +122,12 @@ public class Card extends javax.swing.JPanel {
     /**
      * {@inheritDoc}
      */
+    /**
+     * Paint the component with gradient background and decorative ovals.
+     *
+     * @param grphcs the graphics context
+     */
     @Override
-    /**     * paint component.     * @param grphcs the grphcs     */
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

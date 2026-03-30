@@ -106,8 +106,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.setControllerImportExcelData(e -> importExcelData());
     }
 
+    /**
+     * Update the interface language based on current language selection.
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
         DTORegisterPropertyText dto = new DTORegisterPropertyText.Builder()
                 .title(lang.app("register.property.title"))
@@ -338,6 +340,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Disable the buttons during loading and restore
      * them when closing the dialog.
      * </p>
+     *
+     * @throws InvalidInputException if beneficiary code is empty or invalid
      */
     private void searchBeneficiaries() {
         try {
@@ -358,7 +362,14 @@ public class ControllerRegisterProperty implements LanguageObserver {
         }
     }
 
-    /**     * prepare ui search.     */
+    /**
+     * Prepare the UI for the beneficiary search operation.
+     *
+     * <p>
+     * Disables the register and search buttons and updates the search
+     * button text to show progress.
+     * </p>
+     */
     private void prepareUISearch() {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setEnabled(false);
@@ -366,7 +377,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
         this.propertyCode = 0;
     }
 
-    /**     * do in back ground search.     * @param beneficiariesCode the beneficiaries code     */
+    /**
+     * Search for beneficiary in background thread.
+     *
+     * @param beneficiariesCode the beneficiary code to search
+     */
     private void doInBackGroundSearch(String beneficiariesCode) {
         new Thread(() -> {
             try {
@@ -423,7 +438,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
         }
     }
 
-    /**     * load in fields.     * @param data the data     */
+    /**
+     * Load Excel data into form fields.
+     *
+     * @param data list of string rows from Excel file
+     */
     private void loadInFields(List<List<String>> data) {
         if (data.size() > 0) {
             List<String> fila = data.get(0);

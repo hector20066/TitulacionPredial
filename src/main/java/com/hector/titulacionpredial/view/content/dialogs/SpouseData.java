@@ -1,12 +1,13 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-import com.hector.titulacionpredial.model.dto.DTOSpouseController;
+import java.awt.Color;
+
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-import java.awt.*;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.model.dto.DTOSpouseController;
 
 /**
  * Modal dialog for registering spouse's data of a beneficiary.
@@ -49,8 +50,12 @@ public class SpouseData extends javax.swing.JDialog {
         getContentPane().setBackground(Color.WHITE);
         
         TimingTarget target = new TimingTargetAdapter() {
+            /**
+             * Timing event handler for animation progress.
+             *
+             * @param fraction the animation progress fraction (0.0 to 1.0)
+             */
             @Override
-    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 if (show) {
                     setOpacity(fraction);
@@ -59,8 +64,10 @@ public class SpouseData extends javax.swing.JDialog {
                 }
             }
 
+            /**
+             * Animation end handler.
+             */
             @Override
-    /**     * end.     */
             public void end() {
                 if (!show) {
                     setVisible(false);

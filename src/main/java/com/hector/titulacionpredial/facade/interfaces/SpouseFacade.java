@@ -34,12 +34,12 @@ public interface SpouseFacade extends IRemovable {
     void add(long id, String fullName, String expeditionLocation, long phone, int beneficiaryCode) throws DAOException;
 
     /**
-     * Search for a spouse by the beneficiary code.
+     * Search for a spouse by the associated beneficiary code.
      *
-     * @param id associated beneficiary code
+     * @param beneficiaryCode the beneficiary code associated with the spouse
      * @return DTO with spouse's details
      * @throws DAOException if an error occurs or it is not found
      */
-    DTOSpouse findByCode(int id) throws DAOException;
+    DTOSpouse findByCode(int beneficiaryCode) throws DAOException;
 
 }

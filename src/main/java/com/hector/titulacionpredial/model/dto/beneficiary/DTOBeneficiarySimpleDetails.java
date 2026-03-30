@@ -141,7 +141,6 @@ public class DTOBeneficiarySimpleDetails extends DTOBeneficiary {
         }
 
         @Override
-    /**     * build.     * @return the build     */
         public DTOBeneficiarySimpleDetails build() {
             return new DTOBeneficiarySimpleDetails(this);
         }

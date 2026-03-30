@@ -57,7 +57,6 @@ public class DTOPropertyCreate extends DTOProperty {
     public static class Builder extends DTOProperty.Builder<Builder> {
 
         @Override
-    /**     * build.     * @return the build     */
         public DTOPropertyCreate build() {
             return new DTOPropertyCreate(this);
         }

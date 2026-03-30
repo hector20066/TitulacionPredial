@@ -1,12 +1,13 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import java.awt.Color;
+
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-import java.awt.*;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 
 /**
  * Modal dialog to view the detailed profile of a beneficiary.
@@ -55,8 +56,12 @@ public class UserProfile extends javax.swing.JDialog {
         connectEvents();
         
         TimingTarget target = new TimingTargetAdapter() {
+            /**
+             * Timing event handler for animation progress.
+             *
+             * @param fraction the animation progress fraction (0.0 to 1.0)
+             */
             @Override
-    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 if (show) {
                     setOpacity(fraction);
@@ -65,8 +70,10 @@ public class UserProfile extends javax.swing.JDialog {
                 }
             }
 
+            /**
+             * Animation end handler.
+             */
             @Override
-    /**     * end.     */
             public void end() {
                 if (!show) {
                     setVisible(false);

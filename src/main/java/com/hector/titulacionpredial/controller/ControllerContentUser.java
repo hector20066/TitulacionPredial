@@ -7,10 +7,33 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentUser;
-import com.hector.titulacionpredial.view.content.panels.*;
+import com.hector.titulacionpredial.view.content.panels.About;
+import com.hector.titulacionpredial.view.content.panels.Dashboard;
+import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
+import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
+import com.hector.titulacionpredial.view.content.panels.SeeProperties;
+import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
+import com.hector.titulacionpredial.view.content.panels.Settings;
+import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
+ * Controller for user content navigation and interaction.
+ *
+ * <p>
+ * Manages the user interface for standard employee access, handling navigation
+ * between different panels via the side menu. Implements the
+ * {@link LanguageObserver} to support dynamic language changes.
+ * </p>
+ *
+ * <p>
+ * This controller provides standard functionality for employee users,
+ * allowing registration and viewing of beneficiaries and properties
+ * with limited administrative capabilities.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see ControllerContentUserBuilder
+ * @see LanguageObserver
  * @since 1.0
  */
 public class ControllerContentUser implements LanguageObserver {
@@ -102,13 +125,22 @@ public class ControllerContentUser implements LanguageObserver {
         }
     }
 
+    /**
+     * Update the interface language based on current language selection.
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
 
     }
 
-    /**     * logout.     */
+    /**
+     * Perform logout operation and return to login screen.
+     *
+     * <p>
+     * Closes the current user content window and displays the login
+     * view, disposing of all resources associated with this session.
+     * </p>
+     */
     private void logout() {
         this.contentLogin.setVisible(true);
         this.contentLogin.setResizable(false);

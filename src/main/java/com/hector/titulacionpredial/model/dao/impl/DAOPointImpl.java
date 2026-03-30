@@ -55,7 +55,6 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    /**     * add.     * @param dto the dto     */
     public void add(DTOPoint dto) throws DAOException {
         String sql = SQLRepository.get("sql/point/insert.sql");
 
@@ -74,7 +73,6 @@ public class DAOPointImpl implements DAOPoint {
     }
 
     @Override
-    /**     * find by code.     * @param propertyCode the property code     * @return the find by code     */
     public DTOPoint findByCode(int propertyCode) throws DAOException {
         String sql = SQLRepository.get("sql/point/findByCode.sql");
 

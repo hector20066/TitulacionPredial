@@ -58,7 +58,6 @@ public class ResolutionImplFacade implements ResolutionFacade {
     }
 
     @Override
-    /**     * find by code.     * @param numResolution the num resolution     * @return the find by code     */
     public DTOResolutionDetails findByCode(int numResolution) throws DAOException {
         return daoResolution.findByCode(numResolution);
     }
@@ -91,8 +90,13 @@ public class ResolutionImplFacade implements ResolutionFacade {
         return daoResolution.modify(dto);
     }
 
+    /**
+     * Count the total number of resolution records in the system.
+     *
+     * @return the count of all resolution records
+     * @throws DAOException if an error occurs in the query
+     */
     @Override
-    /**     * count records.     * @return the count records     */
     public int countRecords() throws DAOException {
         return daoResolution.countRecords();
     }

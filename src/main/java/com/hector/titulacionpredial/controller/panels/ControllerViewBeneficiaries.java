@@ -21,7 +21,6 @@ import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -109,7 +108,14 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update.     */
+    /**
+     * Retrieve and update the beneficiaries list from the database.
+     *
+     * <p>
+     * Executes database queries to fetch beneficiary data and updates
+     * the UI with the retrieved information.
+     * </p>
+     */
     public void update() {
         new Thread(() -> {
             try {
@@ -125,7 +131,9 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
                 .title(lang.app("view.beneficiaries.title"))

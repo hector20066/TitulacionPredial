@@ -8,28 +8,47 @@ public class DTOPropertyUpdate {
     private Double area;
     private String cadastralRef;
 
-    /**     * dto property update.     * @return the dto property update     */
+    /**
+     * Create a new empty property update DTO.
+     */
     public DTOPropertyUpdate() {
 
     }
 
-    /**     * dto property update.     * @param area the area     * @param cadastralRef the cadastral ref     * @return the dto property update     */
+    /**
+     * Create a property update DTO with area and cadastral reference.
+     *
+     * @param area         the property area
+     * @param cadastralRef the cadastral reference
+     */
     public DTOPropertyUpdate(Double area, String cadastralRef) {
         this.area = area;
         this.cadastralRef = cadastralRef;
     }
 
-    /**     * get area.     * @return the get area     */
+    /**
+     * Get the property area.
+     *
+     * @return the area
+     */
     public Double getArea() {
         return area;
     }
 
-    /**     * set area.     * @param area the area     */
+    /**
+     * Set the property area.
+     *
+     * @param area the area to set
+     */
     public void setArea(Double area) {
         this.area = area;
     }
 
-    /**     * get cadastral ref.     * @return the get cadastral ref     */
+    /**
+     * Get the cadastral reference.
+     *
+     * @return the cadastral reference
+     */
     public String getCadastralRef() {
         return cadastralRef;
     }

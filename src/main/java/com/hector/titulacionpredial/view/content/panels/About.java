@@ -150,8 +150,10 @@ public class About extends javax.swing.JPanel implements LanguageObserver {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the interface language based on current language selection.
+     */
     @Override
-    /**     * update language.     */
     public void updateLanguage() {
         DTOAboutText dto = new DTOAboutText.Builder()
                 .title(languageManager.app("about.title"))

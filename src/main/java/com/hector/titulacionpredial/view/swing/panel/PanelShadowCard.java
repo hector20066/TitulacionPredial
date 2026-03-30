@@ -1,11 +1,15 @@
 package com.hector.titulacionpredial.view.swing.panel;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
 import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowRendererChart;
 import com.hector.titulacionpredial.view.swing.shadow.chart.ShadowType;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Panel with card-like shadow effect.
@@ -138,7 +142,6 @@ public class PanelShadowCard extends JPanel {
      * {@inheritDoc}
      */
     @Override
-    /**     * set bounds.     * @param i the i     * @param i1 the i1     * @param i2 the i2     * @param i3 the i3     */
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
         createShadow();

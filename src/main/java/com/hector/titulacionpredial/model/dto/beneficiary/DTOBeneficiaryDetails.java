@@ -311,7 +311,6 @@ public class DTOBeneficiaryDetails extends DTOBeneficiaryCreate {
         }
 
         @Override
-    /**     * build.     * @return the build     */
         public DTOBeneficiaryDetails build() {
             return new DTOBeneficiaryDetails(this);
         }

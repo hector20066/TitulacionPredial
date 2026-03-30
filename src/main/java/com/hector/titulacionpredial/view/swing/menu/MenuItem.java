@@ -1,18 +1,26 @@
 package com.hector.titulacionpredial.view.swing.menu;
 
-import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
-import net.miginfocom.swing.MigLayout;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTargetAdapter;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JPanel;
+
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import com.hector.titulacionpredial.view.swing.model.ModelMenuItem;
+
+import net.miginfocom.swing.MigLayout;
 
 /**
  * Menu group with expandable submenus.
@@ -69,13 +77,11 @@ public class MenuItem extends JPanel {
 
         menu.addMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse entered.     * @param evt the evt     */
             public void mouseEntered(MouseEvent evt) {
                 setForeground(menu.getMainColor());
             }
 
             @Override
-    /**     * mouse exited.     * @param evt the evt     */
             public void mouseExited(MouseEvent evt) {
                 if (!menu.isSelected()) {
                     setForeground(new Color(170, 170, 170));
@@ -111,7 +117,6 @@ public class MenuItem extends JPanel {
             private int height;
 
             @Override
-    /**     * begin.     */
             public void begin() {
                 height = getPreferredSize().height - 35;
             }

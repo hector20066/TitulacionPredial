@@ -1,5 +1,11 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerModifyResolutionBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -16,15 +22,9 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
-import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
-
-import javax.swing.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 /**
  * Resolution modification panel controller.
@@ -93,7 +93,9 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     @Override
-    /**     * update language.     */
+    /**
+     * Update the interface language based on current language selection.
+     */
     public void updateLanguage() {
         DTOModifyResolutionText dto = new DTOModifyResolutionText.Builder()
                 .title(lang.app("modify.resolution.title"))

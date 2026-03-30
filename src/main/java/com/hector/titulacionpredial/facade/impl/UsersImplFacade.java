@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.facade.impl;
 
+import java.util.List;
+
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOUserImpl;
@@ -10,23 +12,35 @@ import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
 
-import java.util.List;
-
 /**
+ * Implementation of the {@link UsersFacade} facade for
+ * user account management.
+ *
+ * <p>
+ * Build the necessary DATA from the received parameters and
+ * delegate the operations to the DAO {@link DAOUserImpl}.
+ * Handles password encryption using {@link BCryptEncryption}.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see UsersFacade
+ * @see DAOUserImpl
+ * @see BCryptEncryption
  * @since 1.0
  */
 public class UsersImplFacade implements UsersFacade {
 
     private final DAOUser daoUser;
 
-    /**     * users impl facade.     * @return the users impl facade     */
+    /**
+     * Create a new instance by obtaining the user DAO
+     * through its Singleton.
+     */
     public UsersImplFacade() {
         this.daoUser = DAOUserImpl.getInstance();
     }
 
     @Override
-    /**     * add.     * @param name the name     * @param id the id     * @param user the user     * @param plainPassword the plain password     * @param role the role     */
     public void add(String name, int id, String user, String plainPassword, Role role) throws DAOException {
         String hashedPassword = BCryptEncryption.encryptPassword(plainPassword);
 
@@ -42,19 +56,16 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    /**     * find by code.     * @param code the code     * @return the find by code     */
     public DTOUserDetails findByCode(int code) throws DAOException {
         return daoUser.findByCode(code);
     }
 
     @Override
-    /**     * verify credentials.     * @param user the user     * @param plainPassword the plain password     * @return the verify credentials     */
     public Role verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }
 
     @Override
-    /**     * modify password.     * @param id the id     * @param plainPassword the plain password     * @return the modify password     */
     public boolean modifyPassword(int id, String plainPassword) throws DAOException {
         DTOUserModifyPasswd dto = new DTOUserModifyPasswd();
         dto.setId(id);
@@ -70,7 +81,6 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    /**     * delete.     * @param code the code     */
     public void delete(int code) throws DAOException {
         daoUser.delete(code);
     }
