@@ -3,9 +3,8 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import java.util.List;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
@@ -63,6 +62,10 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
      * @throws DAOException if an error occurs in the query
      */
     List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
+
+    DTOPropertySimpleDetails findSimpleDetails(String cadastralReference) throws DAOException;
+
+    boolean modifyBasicInformation(DTOPropertyModifyBasic dto) throws DAOException;
 
     /**
      * Calculate the percentage of properties that have an

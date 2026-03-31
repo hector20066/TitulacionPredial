@@ -26,7 +26,8 @@ import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
 
 /**
  *
- * @author juanpablobohorquezguerra
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class ManageUsers extends javax.swing.JPanel {
 

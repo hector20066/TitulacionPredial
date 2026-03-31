@@ -178,10 +178,18 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         int modifyCode = registerBeneficiary.getModifyCode();
         long phoneLong = phone.isEmpty() ? 0 : Long.parseLong(phone);
 
+        Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
+        Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
+        String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
+        String address = registerBeneficiary.getTxt_address().getText().trim();
+        String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
+        String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
+        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
+
         validations(fullName, id, expeditionLocation, phone, codeBeneficiaries);
         prepareUI(true);
         doInBackgroundModify(fullName, id, expeditionLocation, codeBeneficiaries, phoneLong, maritalStatus, affectation,
-                modifyCode);
+                modifyCode, department, municipality, neighborhood, address, crossing, publication, cadastralReference);
     }
 
     /**
@@ -198,7 +206,9 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      * @param affectation   affectation
      */
     private void doInBackgroundModify(String fullName, String id, String expeditionLocation, String codeBeneficiaries,
-                                      long phone, MaritalStatus maritalStatus, String affectation, int modifyCode) {
+                                      long phone, MaritalStatus maritalStatus, String affectation, int modifyCode,
+                                      Department department, Municipalities municipalities, String neighborhood,
+                                      String address, String crossing, String publication, String cadastralReference) {
         new Thread(() -> {
             try {
                 boolean success = daoBeneficiary.modify(Integer.parseInt(id), codeBeneficiaries, fullName, maritalStatus,
@@ -213,7 +223,10 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                     }
                 }
 
-                SwingUtilities.invokeLater(() -> runInvokeLaterModify(success));
+                boolean successModifyProperty = daoProperty.modifyBasicInformation(department, municipalities, neighborhood,
+                        address, crossing, publication, cadastralReference);
+
+                SwingUtilities.invokeLater(() -> runInvokeLaterModify(success, successModifyProperty));
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> {
                     MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
@@ -234,8 +247,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      *
      * @param success {@code true} if the modification was successful
      */
-    private void runInvokeLaterModify(boolean success) {
-        if (success) {
+    private void runInvokeLaterModify(boolean success, boolean successModifyProperty) {
+        if (success && successModifyProperty) {
             MessageUtils.informationMessage(lang.message("message.beneficiary.modify"), registerBeneficiary);
             subject.notifyObservers();
             NavigatorUtils.showForms(controllerLogin.jpl_Content(), viewBeneficiaries);
@@ -245,7 +258,9 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
-    /**     * register.     */
+    /**
+     *  register.
+     */
     private void register() {
         String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
         Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
@@ -388,7 +403,9 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
-    /**     * add beneficiaries.     */
+    /**
+     *  add beneficiaries.
+     */
     private void addBeneficiaries() {
         try {
             String fullName = registerBeneficiary.getTxt_fullName().getText().trim();

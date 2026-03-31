@@ -18,9 +18,9 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
+import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
@@ -70,7 +70,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            st.setString(1, dto.getCadastralId());
+            st.setString(1, dto.getCadastralRef());
             st.setString(2, String.valueOf(dto.getDepartment()));
             st.setString(3, String.valueOf(dto.getMunicipality()));
             st.setString(4, dto.getNeighborhood());
@@ -259,7 +259,7 @@ public class DAOPropertyImpl implements DAOProperty {
         DTOPropertyDetails property = new DTOPropertyDetails();
 
         property.setPropertyCode(rs.getInt("code"));
-        property.setCadastralId(rs.getString("cadastral_reference"));
+        property.setCadastralRef(rs.getString("cadastral_reference"));
         property.setArea(rs.getDouble("area"));
         property.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
         property.setAddress(rs.getString("address"));
@@ -315,7 +315,54 @@ public class DAOPropertyImpl implements DAOProperty {
                 .build();
     }
 
-    /**     * modify.     * @param dto the dto     * @return the modify     */
+    @Override
+    public DTOPropertySimpleDetails findSimpleDetails(String cadastralReference) throws DAOException {
+        String sql = SQLRepository.get("sql/property/findByCadastralRef.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setString(1, cadastralReference);
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    return null;
+                }
+
+                return new DTOPropertySimpleDetails.Builder()
+                        .department(Department.valueOf(rs.getString("department")))
+                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                        .neighborhood(rs.getString("neighborhood"))
+                        .address(rs.getString("address"))
+                        .crossing(rs.getString("crossing"))
+                        .publication(rs.getString("publication"))
+                        .build();
+            }
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException(lang.message("persistence.property.not"), e);
+        }
+    }
+
+    @Override
+    public boolean modifyBasicInformation(DTOPropertyModifyBasic dto) throws DAOException {
+        String sql = SQLRepository.get("sql/property/modifyBasicInformation.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setString(1, String.valueOf(dto.getDepartment()));
+            st.setString(2, String.valueOf(dto.getMunicipality()));
+            st.setString(3, dto.getNeighborhood());
+            st.setString(4, dto.getAddress());
+            st.setString(5, dto.getCrossing());
+            st.setString(6, dto.getPublication());
+            st.setString(7, dto.getCadastralRef());
+
+            return st.executeUpdate() != 0;
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException(lang.message("persistence.property.not"), e);
+        }
+    }
+
+    @Override
     public boolean modify(DTOPropertyUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/modify.sql");
 
@@ -326,7 +373,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
             return st.executeUpdate() != 0;
         } catch (SQLException e) {
-            throw new PropertyPersistenceException(lang.message("persistence.property.not"));
+            throw new PropertyPersistenceException(lang.message("persistence.property.not"), e);
         }
     }
 

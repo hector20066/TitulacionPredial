@@ -34,11 +34,6 @@ public class DTOProperty {
     protected String cadastralRef;
 
     /**
-     * Area of the property.
-     */
-    protected Double area;
-
-    /**
      * Department.
      */
     protected Department department;
@@ -82,33 +77,12 @@ public class DTOProperty {
      */
     public DTOProperty(Builder<?> builder) {
         this.cadastralRef = builder.cadastralRef;
-        this.area = builder.area;
         this.department = builder.department;
         this.municipality = builder.municipality;
         this.neighborhood = builder.neighborhood;
         this.address = builder.address;
         this.crossing = builder.crossing;
         this.publication = builder.publication;
-    }
-
-    /**     * get cadastral id.     * @return the get cadastral id     */
-    public String getCadastralId() {
-        return cadastralRef;
-    }
-
-    /**     * set cadastral id.     * @param cadastralId the cadastral id     */
-    public void setCadastralId(String cadastralId) {
-        this.cadastralRef = cadastralId;
-    }
-
-    /**     * get area.     * @return the get area     */
-    public Double getArea() {
-        return area;
-    }
-
-    /**     * set area.     * @param area the area     */
-    public void setArea(Double area) {
-        this.area = area;
     }
 
     /**     * get cadastral ref.     * @return the get cadastral ref     */
@@ -184,7 +158,6 @@ public class DTOProperty {
     public static class Builder<T extends Builder<T>> {
 
         private String cadastralRef;
-        private Double area;
         private Department department;
         private Municipalities municipality;
         private String neighborhood;
@@ -200,12 +173,6 @@ public class DTOProperty {
     /**     * cadastral ref.     * @param cadastralRef the cadastral ref     * @return the cadastral ref     */
         public T cadastralRef(String cadastralRef) {
             this.cadastralRef = cadastralRef;
-            return self();
-        }
-
-    /**     * area.     * @param area the area     * @return the area     */
-        public T area(Double area) {
-            this.area = area;
             return self();
         }
 

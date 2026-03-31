@@ -6,9 +6,7 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOPropertyImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
+import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
@@ -72,6 +70,27 @@ public class PropertyImplFacade implements PropertyFacade {
     @Override
     public List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException {
         return daoProperty.findByMunicipality(municipality);
+    }
+
+    @Override
+    public DTOPropertySimpleDetails findSimpleDetails(String cadastralRef) throws DAOException {
+        return daoProperty.findSimpleDetails(cadastralRef);
+    }
+
+    @Override
+    public boolean modifyBasicInformation(Department department, Municipalities municipality, String neighborhood, String address,
+                                          String crossing, String publication, String cadastralReference) throws DAOException {
+        DTOPropertyModifyBasic dto = new DTOPropertyModifyBasic.Builder()
+                .department(department)
+                .municipality(municipality)
+                .neighborhood(neighborhood)
+                .address(address)
+                .crossing(crossing)
+                .publication(publication)
+                .cadastralRef(cadastralReference)
+                .build();
+
+        return daoProperty.modifyBasicInformation(dto);
     }
 
     @Override

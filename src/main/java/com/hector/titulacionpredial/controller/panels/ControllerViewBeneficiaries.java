@@ -16,13 +16,17 @@ import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
+import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
+import com.hector.titulacionpredial.facade.impl.PropertyImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.BeneficiaryFacade;
+import com.hector.titulacionpredial.facade.interfaces.PropertyFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
@@ -68,6 +72,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private final LanguageManager lang;
 
     private final BeneficiaryFacade daoBeneficiary;
+    private final PropertyFacade daoProperty;
     private String searchPlaceholder;
 
     /**
@@ -87,6 +92,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         builder.getLanguageSubject().register(this);
 
         this.daoBeneficiary = new BeneficiaryImplFacade();
+        this.daoProperty = new PropertyImplFacade();
         this.searchPlaceholder = lang.app("controller.view.beneficiaries.search");
 
         connectEvents();
@@ -107,7 +113,6 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         listenerSearch();
     }
 
-    @Override
     /**
      * Retrieve and update the beneficiaries list from the database.
      *
@@ -116,6 +121,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      * the UI with the retrieved information.
      * </p>
      */
+    @Override
     public void update() {
         new Thread(() -> {
             try {
@@ -130,10 +136,10 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         }).start();
     }
 
-    @Override
     /**
      * Update the interface language based on current language selection.
      */
+    @Override
     public void updateLanguage() {
         DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
                 .title(lang.app("view.beneficiaries.title"))
@@ -259,17 +265,23 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void doInBackgroundModify(int code) {
         new Thread(() -> {
             try {
-                DTOBeneficiaryDetails dto = daoBeneficiary.findAllData(code);
+                DTOBeneficiaryDetails dtoBeneficiary = daoBeneficiary.findAllData(code);
 
-                if (dto == null) {
+                if (dtoBeneficiary == null) {
                     throw new BeneficiaryNotFoundException(String.valueOf(code));
+                }
+
+                DTOPropertySimpleDetails dtoProperty = daoProperty.findSimpleDetails(dtoBeneficiary.getCadastralRef());
+
+                if (dtoProperty == null) {
+                    throw new PropertyNotFoundException(String.valueOf(dtoBeneficiary.getCadastralRef()));
                 }
 
                 SwingUtilities.invokeLater(() -> {
                     NavigatorUtils.showForms(controllerLogin.jpl_Content(), registerBeneficiary);
-                    registerBeneficiary.loadDataModify(dto);
+                    registerBeneficiary.loadDataModify(dtoBeneficiary, dtoProperty);
                     registerBeneficiary.setModify(true);
-                    registerBeneficiary.setNowStatus(dto.getMaritalStatus());
+                    registerBeneficiary.setNowStatus(dtoBeneficiary.getMaritalStatus());
                     registerBeneficiary.setModifyCode(code);
                     registerBeneficiary.getBtn_addBeneficiaries().setVisible(false);
                 });

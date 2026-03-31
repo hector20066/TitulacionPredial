@@ -42,6 +42,7 @@ import com.hector.titulacionpredial.model.dto.DTOProperty;
  */
 public class DTOPropertyDetails extends DTOProperty {
 
+    private double area;
     private int propertyCode;
     private String codeBeneficiaries;
     private String beneficiariesIds;
@@ -83,6 +84,15 @@ public class DTOPropertyDetails extends DTOProperty {
         this.act = builder.act;
         this.publicWriting = builder.publicWriting;
         this.notary = builder.notary;
+        this.area = builder.area;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
     }
 
     /**     * get property code.     * @return the get property code     */
@@ -225,6 +235,7 @@ public class DTOPropertyDetails extends DTOProperty {
      */
     public static class Builder extends DTOProperty.Builder<Builder> {
 
+        private double area;
         private int propertyCode;
         private String codeBeneficiaries;
         private String beneficiariesIds;
@@ -237,6 +248,11 @@ public class DTOPropertyDetails extends DTOProperty {
         private String act;
         private String publicWriting;
         private String notary;
+
+        public Builder area(double area) {
+            this.area = area;
+            return this;
+        }
 
     /**     * property code.     * @param propertyCode the property code     * @return the property code     */
         public Builder propertyCode(int propertyCode) {

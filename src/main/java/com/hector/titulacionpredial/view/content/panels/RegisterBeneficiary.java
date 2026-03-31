@@ -2,6 +2,7 @@ package com.hector.titulacionpredial.view.content.panels;
 
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -690,18 +691,26 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     /**
      * Load the beneficiary data for modification.
      *
-     * @param dto detailed beneficiary data
+     * @param dtoBeneficiary detailed beneficiary data
      */
-    public void loadDataModify(DTOBeneficiaryDetails dto) {
+    public void loadDataModify(DTOBeneficiaryDetails dtoBeneficiary, DTOPropertySimpleDetails dtoProperty) {
         isLoading = true;
-        txt_followingCode.setText(dto.getCodeBeneficiaries());
+        txt_followingCode.setText(dtoBeneficiary.getCodeBeneficiaries());
 
-        txt_fullName.setText(dto.getFullName());
-        txt_id.setText(String.valueOf(dto.getId()));
-        txt_phone.setText(String.valueOf(dto.getPhone()));
-        cbo_maritalStatus.setSelectedItem(dto.getMaritalStatus());
-        txt_expeditionLocation.setText(dto.getExpeditionLocation());
-        txa_affectation.setText(dto.getAffectation());
+        txt_fullName.setText(dtoBeneficiary.getFullName());
+        txt_id.setText(String.valueOf(dtoBeneficiary.getId()));
+        txt_phone.setText(String.valueOf(dtoBeneficiary.getPhone()));
+        cbo_maritalStatus.setSelectedItem(dtoBeneficiary.getMaritalStatus());
+        txt_expeditionLocation.setText(dtoBeneficiary.getExpeditionLocation());
+        txa_affectation.setText(dtoBeneficiary.getAffectation());
+        txt_cadastralReference.setText(dtoBeneficiary.getCadastralRef());
+
+        cbo_department.setSelectedItem(dtoProperty.getDepartment());
+        cbo_municipality.setSelectedItem(dtoProperty.getMunicipality());
+        txt_neighborhood.setText(dtoProperty.getNeighborhood());
+        txt_address.setText(dtoProperty.getAddress());
+        txa_crossing.setText(dtoProperty.getCrossing());
+        cbo_publication.setSelectedItem(dtoProperty.getPublication());
         
         jlb_title.setText(getJlbTitleModify());
         btn_register.setText(getBtnModifyText());

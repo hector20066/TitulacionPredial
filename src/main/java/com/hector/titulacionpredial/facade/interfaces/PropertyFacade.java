@@ -8,6 +8,8 @@ import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyModifyBasic;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
@@ -68,6 +70,11 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      * @throws DAOException if an error occurs in the query
      */
     List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
+
+    DTOPropertySimpleDetails findSimpleDetails(String cadastralRef) throws DAOException;
+
+    boolean modifyBasicInformation(Department department, Municipalities municipality, String neighborhood, String address,
+                                   String crossing, String publication, String cadastralReference) throws DAOException;
 
     /**
      * Update a property's cadastral reference and area.

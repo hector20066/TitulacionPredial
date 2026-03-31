@@ -398,7 +398,7 @@ public class SeeProperties extends JPanel {
         String act = dto.getAct();
         String publicWriting = dto.getPublicWriting();
         String notary = dto.getNotary();
-        String cadastralReference = dto.getCadastralId();
+        String cadastralReference = dto.getCadastralRef();
         double area = dto.getArea();
 
         double northCoordinate1 = 0;
