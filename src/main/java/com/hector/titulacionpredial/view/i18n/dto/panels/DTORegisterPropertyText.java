@@ -26,6 +26,7 @@ public class DTORegisterPropertyText {
     private final String beneficiaryCode;
     private final String searchBeneficiary;
     private final String importExcelData;
+    private final String address;
 
     /**
      * Build an instance from the {@link Builder}.
@@ -47,6 +48,7 @@ public class DTORegisterPropertyText {
         this.beneficiaryCode = builder.beneficiaryCode;
         this.searchBeneficiary = builder.searchBeneficiary;
         this.importExcelData = builder.importExcelData;
+        this.address = builder.address;
     }
 
     /**     * get title.     * @return the get title     */
@@ -118,6 +120,10 @@ public class DTORegisterPropertyText {
         return importExcelData;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     /**
      * Builder for building instances of {@link DTORegisterPropertyText}.
      */
@@ -137,6 +143,7 @@ public class DTORegisterPropertyText {
         private String beneficiaryCode;
         private String searchBeneficiary;
         private String importExcelData;
+        private String address;
 
     /**     * title.     * @param title the title     * @return the title     */
         public Builder title(String title) {
@@ -219,6 +226,11 @@ public class DTORegisterPropertyText {
 
         public Builder importExcelData(String importExcelData) {
             this.importExcelData = importExcelData;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
             return this;
         }
 

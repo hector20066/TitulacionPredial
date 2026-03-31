@@ -122,6 +122,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 .propertyInfo(lang.app("register.property.info"))
                 .cadastralId(lang.app("register.property.cadastralId"))
                 .area(lang.app("register.property.area"))
+                .address(lang.app("register.beneficiary.address"))
                 .pointsInfo(lang.app("register.property.points.info"))
                 .beneficiaryCode(lang.app("register.property.beneficiary.code"))
                 .searchBeneficiary(lang.app("register.property.search.beneficiary"))
