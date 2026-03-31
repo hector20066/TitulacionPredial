@@ -126,7 +126,11 @@ public class ControllerContentAdmin implements LanguageObserver {
             }
             case 2 -> {
                 switch (indexSubMenu) {
-                    case 1 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), viewBeneficiaries);
+                    case 1 -> {
+                        NavigatorUtils.showForms(ContentAdmin.getJpl_content(), viewBeneficiaries);
+                        viewBeneficiaries.getBtn_modify().setEnabled(true);
+                        viewBeneficiaries.getBtn_modify().setText("Modificar");
+                    }
                     case 2 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), seeProperties);
                     case 3 -> NavigatorUtils.showForms(ContentAdmin.getJpl_content(), seeResolutions);
                 }

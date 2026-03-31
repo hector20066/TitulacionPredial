@@ -250,10 +250,17 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
             }
 
             int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+
+            prepareUIModify();
             doInBackgroundModify(code);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), viewBeneficiaries);
         }
+    }
+
+    private void prepareUIModify() {
+        viewBeneficiaries.getBtn_modify().setEnabled(false);
+        viewBeneficiaries.getBtn_modify().setText("Cargando Información...");
     }
 
     /**
