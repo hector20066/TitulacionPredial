@@ -112,7 +112,7 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
 
     private void loadData(List<DTOUserDetails> listUsers) {
         manageUsers.clearPanel();
-        listUsers.forEach(dto -> manageUsers.addAccountsPanel(dto, this));
+        manageUsers.loadUsers(listUsers, this);
     }
 
 }

@@ -31,6 +31,7 @@ import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
 public class ManageUsers extends javax.swing.JPanel {
 
     private List<DTOUserDetails> currentUsers = new ArrayList<>();
+    private IManageAccounts controllerAccounts;
 
     private String subtitleText = "Usuario";
     private String nameText = "Nombre:";
@@ -114,8 +115,9 @@ public class ManageUsers extends javax.swing.JPanel {
         rebuildPanels();
     }
 
-    public void loadUsers(List<DTOUserDetails> users) {
+    public void loadUsers(List<DTOUserDetails> users, IManageAccounts controllerAccounts) {
         this.currentUsers = users;
+        this.controllerAccounts = controllerAccounts;
         rebuildPanels();
     }
 
@@ -123,7 +125,7 @@ public class ManageUsers extends javax.swing.JPanel {
         clearPanel();
 
         for (DTOUserDetails dto : currentUsers) {
-            //addAccountsPanel(dto); -> Agregar parámetro de de tipo IManageAccounts
+            addAccountsPanel(dto, controllerAccounts);
         }
     }
 
