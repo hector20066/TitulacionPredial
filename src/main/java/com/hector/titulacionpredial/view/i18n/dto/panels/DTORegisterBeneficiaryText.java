@@ -15,7 +15,7 @@ public class DTORegisterBeneficiaryText {
     private final String modifyTitle;
     private final String modifyBtn;
     private final String addTitle;
-    private final String addBtn;
+    private final String registerBtn;
     private final String addBeneficiaryBtn;
     private final String beneficiaryInfo;
     private final String fullName;
@@ -44,7 +44,7 @@ public class DTORegisterBeneficiaryText {
         this.modifyTitle = builder.modifyTitle;
         this.modifyBtn = builder.modifyBtn;
         this.addTitle = builder.addTitle;
-        this.addBtn = builder.addBtn;
+        this.registerBtn = builder.registerBtn;
         this.addBeneficiaryBtn = builder.addBeneficiaryBtn;
         this.beneficiaryInfo = builder.beneficiaryInfo;
         this.fullName = builder.fullName;
@@ -65,24 +65,20 @@ public class DTORegisterBeneficiaryText {
         this.code = builder.code;
     }
 
-    /**     * get modify title.     * @return the get modify title     */
     public String getModifyTitle() {
         return modifyTitle;
     }
 
-    /**     * get modify btn.     * @return the get modify btn     */
     public String getModifyBtn() {
         return modifyBtn;
     }
 
-    /**     * get add title.     * @return the get add title     */
     public String getAddTitle() {
         return addTitle;
     }
 
-    /**     * get add btn.     * @return the get add btn     */
-    public String getAddBtn() {
-        return addBtn;
+    public String getRegisterBtn() {
+        return registerBtn;
     }
 
     /**     * get beneficiary info.     * @return the get beneficiary info     */
@@ -182,7 +178,7 @@ public class DTORegisterBeneficiaryText {
         private String modifyTitle;
         private String modifyBtn;
         private String addTitle;
-        private String addBtn;
+        private String registerBtn;
         private String addBeneficiaryBtn;
         private String beneficiaryInfo;
         private String fullName;
@@ -220,9 +216,8 @@ public class DTORegisterBeneficiaryText {
             return this;
         }
 
-    /**     * add btn.     * @param addBtn the add btn     * @return the add btn     */
-        public Builder addBtn(String addBtn) {
-            this.addBtn = addBtn;
+        public Builder registerBtn(String registerBtn) {
+            this.registerBtn = registerBtn;
             return this;
         }
 

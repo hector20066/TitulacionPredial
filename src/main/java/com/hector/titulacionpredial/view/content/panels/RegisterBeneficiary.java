@@ -90,52 +90,42 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         });
     }
 
-    /**     * set modify.     * @param modify the modify     */
     public void setModify(boolean modify) {
         this.modify = modify;
     }
 
-    /**     * is modify.     * @return the is modify     */
     public boolean isModify() {
         return modify;
     }
 
-    /**     * set now status.     * @param nowStatus the now status     */
     public void setNowStatus(MaritalStatus nowStatus) {
         this.nowStatus = nowStatus;
     }
 
-    /**     * get now status.     * @return the get now status     */
     public MaritalStatus getNowStatus() {
         return nowStatus;
     }
 
-    /**     * get jlb title modify.     * @return the get jlb title modify     */
     public String getJlbTitleModify() {
         return jlbTitleModify;
     }
 
-    /**     * set jlb title modify.     * @param jlbTitleModify the jlb title modify     */
     public void setJlbTitleModify(String jlbTitleModify) {
         this.jlbTitleModify = jlbTitleModify;
     }
 
-    /**     * get btn modify text.     * @return the get btn modify text     */
     public String getBtnModifyText() {
         return btnModifyText;
     }
 
-    /**     * set btn modify text.     * @param btnModifyText the btn modify text     */
     public void setBtnModifyText(String btnModifyText) {
         this.btnModifyText = btnModifyText;
     }
-    
-    /**     * set modify code.     * @param modifyCode the modify code     */
+
     public void setModifyCode(int modifyCode) {
         this.modifyCode = modifyCode;
     }
-    
-    /**     * get modify code.     * @return the get modify code     */
+
     public int getModifyCode() {
         return modifyCode;
     }
@@ -554,38 +544,48 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_expeditionLocation.setText(texts.getExpeditionLocation());
         jlb_publication.setText(texts.getPublication());
         jlb_code.setText(texts.getCode());
-        btn_register.setText(texts.getAddBtn());
+        btn_register.setText(texts.getRegisterBtn());
         btn_addBeneficiaries.setText(texts.getAddBeneficiaryBtn());
         setBtnModifyText(texts.getModifyBtn());
         setJlbTitleModify(texts.getModifyTitle());
     }
 
-    /**     * set controller register.     * @param action the action     */
+    /**
+     *  set controller register.
+     *  @param action the action
+     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
     
-    /**     * set controller add beneficiaries.     * @param action the action     */
+    /**
+     *  set controller add beneficiaries.
+     *  @param action the action
+     */
     public void setControllerAddBeneficiaries(ActionListener action) {
         btn_addBeneficiaries.addActionListener(action);
     }
 
-    /**     * set controller cbo_department.     * @param action the action     */
+    /**
+     *  set controller cbo_department.
+     *  @param action the action
+     */
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
 
-    /**     * set controller cbo_marital status.     * @param action the action     */
+    /**
+     *  set controller cbo_marital status.
+     *  @param action the action
+     */
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
 
-    /**     * set controller cbx_affectation.     * @param action the action     */
-    public void setControllerCbx_affectation(ActionListener action) {
-        //cbx_affectation.addActionListener(action);
-    }
-
-    /**     * get btn_register.     * @return the get btn_register     */
+    /**
+     * get btn_register.
+     * @return the get btn_register
+     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
@@ -726,7 +726,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
     public void clearFields() {
         txt_followingCode.setText("");
         jlb_title.setText(LanguageManager.getInstance().app("register.beneficiary.add.title"));
-        btn_register.setText(LanguageManager.getInstance().app("register.beneficiary.add.btn"));
+        btn_register.setText(LanguageManager.getInstance().app("register.beneficiary.register.btn"));
         txt_fullName.setText("");
         txt_id.setText("");
         txt_phone.setText("");

@@ -105,19 +105,18 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         registerBeneficiary.setControllerAddBeneficiaries(e -> addBeneficiaries());
         registerBeneficiary.setControllerCbo_department(e -> selectDepartment());
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
-        registerBeneficiary.setControllerCbx_affectation(e -> affectationSelected());
     }
 
-    @Override
     /**
      * Update the interface language based on current language selection.
      */
+    @Override
     public void updateLanguage() {
         DTORegisterBeneficiaryText dto = new DTORegisterBeneficiaryText.Builder()
                 .modifyTitle(lang.app("register.beneficiary.modify.title"))
                 .modifyBtn(lang.app("register.beneficiary.modify.btn"))
                 .addTitle(lang.app("register.beneficiary.add.title"))
-                .addBtn(lang.app("register.beneficiary.add.btn"))
+                .registerBtn(lang.app("register.beneficiary.register.btn"))
                 .addBeneficiaryBtn(lang.app("register.beneficiary.btn.add"))
                 .beneficiaryInfo(lang.app("register.beneficiary.info"))
                 .fullName(lang.app("register.beneficiary.name"))
