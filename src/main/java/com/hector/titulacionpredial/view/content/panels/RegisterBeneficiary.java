@@ -1,5 +1,16 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import java.awt.Component;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
@@ -8,10 +19,6 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 /**
  * Form for registering and modifying beneficiaries.
@@ -551,53 +558,31 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         setJlbTitleModify(texts.getModifyTitle());
     }
 
-    /**
-     *  set controller register.
-     *  @param action the action
-     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
-    
-    /**
-     *  set controller add beneficiaries.
-     *  @param action the action
-     */
+
     public void setControllerAddBeneficiaries(ActionListener action) {
         btn_addBeneficiaries.addActionListener(action);
     }
 
-    /**
-     *  set controller cbo_department.
-     *  @param action the action
-     */
     public void setControllerCbo_department(ActionListener action) {
         cbo_department.addActionListener(action);
     }
 
-    /**
-     *  set controller cbo_marital status.
-     *  @param action the action
-     */
     public void setControllerCbo_maritalStatus(ActionListener action) {
         cbo_maritalStatus.addActionListener(action);
     }
 
-    /**
-     * get btn_register.
-     * @return the get btn_register
-     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
-    
+
     public ButtonAction getBtn_addBeneficiaries() {
         return btn_addBeneficiaries;
     }
 
-    /**     * get cbx_affectation.     * @return the get cbx_affectation     */
     public JCheckBox getCbx_affectation() {
-        //return cbx_affectation;
         return new JCheckBox();
     }
 
@@ -613,57 +598,46 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return cbo_municipality;
     }
 
-    /**     * get jscp_info.     * @return the get jscp_info     */
     public JScrollPane getJscp_info() {
         return jscp_info;
     }
 
-    /**     * get txa_affectation.     * @return the get txa_affectation     */
     public JTextArea getTxa_affectation() {
         return txa_affectation;
     }
 
-    /**     * get txa_crossing.     * @return the get txa_crossing     */
     public JTextArea getTxa_crossing() {
         return txa_crossing;
     }
 
-    /**     * get txt_address.     * @return the get txt_address     */
     public JTextField getTxt_address() {
         return txt_address;
     }
 
-    /**     * get txt_cadastral reference.     * @return the get txt_cadastral reference     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
-    /**     * get txt_expedition location.     * @return the get txt_expedition location     */
     public JTextField getTxt_expeditionLocation() {
         return txt_expeditionLocation;
     }
 
-    /**     * get txt_following code.     * @return the get txt_following code     */
     public JTextField getTxt_followingCode() {
         return txt_followingCode;
     }
 
-    /**     * get txt_neighborhood.     * @return the get txt_neighborhood     */
     public JTextField getTxt_neighborhood() {
         return txt_neighborhood;
     }
 
-    /**     * get txt_id.     * @return the get txt_id     */
     public JTextField getTxt_id() {
         return txt_id;
     }
 
-    /**     * get txt_full name.     * @return the get txt_full name     */
     public JTextField getTxt_fullName() {
         return txt_fullName;
     }
 
-    /**     * get txt_phone.     * @return the get txt_phone     */
     public JTextField getTxt_phone() {
         return txt_phone;
     }
@@ -672,18 +646,17 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         return cbo_publication;
     }
 
-    /**
-     * Load the tracking code in the corresponding field.
-     *
-     @param code tracking code to display
-     */
     public void loadFollowingCode(int code) {
         txt_followingCode.setText(String.valueOf(code));
     }
 
     public boolean isLoading = false;
 
-    /**     * is loading.     * @return the is loading     */
+    /**
+     * Check if the panel is currently loading data.
+     *
+     * @return {@code true} if loading, {@code false} otherwise
+     */
     public boolean isLoading() {
         return isLoading;
     }

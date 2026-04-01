@@ -1,11 +1,17 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
-import java.awt.event.ActionListener;
 
 /**
  *
@@ -190,7 +196,11 @@ public class RegisterUsers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**     * update language.     * @param texts the texts     */
+    /**
+     * Update the view to display content in the specified language.
+     *
+     * @param texts the DTO containing localized labels and messages
+     */
     public void updateLanguage(DTORegisterUsersText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_desc.setText(texts.getDesc());
@@ -203,17 +213,24 @@ public class RegisterUsers extends javax.swing.JPanel {
         btn_createAccount.setText(texts.getCreateBtn());
     }
 
-    /**     * set controller create.     * @param action the action     */
+    /**
+     * Set the create account button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerCreate(ActionListener action) {
         btn_createAccount.addActionListener(action);
     }
     
-    /**     * set controller see password.     * @param action the action     */
+    /**
+     * Set the see password toggle button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerSeePassword(ActionListener action) {
         rbn_seePasswd.addActionListener(action);
     }
 
-    /**     * get btn_create account.     * @return the get btn_create account     */
     public ButtonAction getBtn_createAccount() {
         return btn_createAccount;
     }
@@ -222,32 +239,29 @@ public class RegisterUsers extends javax.swing.JPanel {
         return cbo_role;
     }
 
-    /**     * get jpld_password.     * @return the get jpld_password     */
     public JPasswordField getJpld_password() {
         return jpld_password;
     }
 
-    /**     * get txt_full name.     * @return the get txt_full name     */
     public JTextField getTxt_fullName() {
         return txt_fullName;
     }
 
-    /**     * get txt_id.     * @return the get txt_id     */
     public JTextField getTxt_id() {
         return txt_id;
     }
 
-    /**     * get txt_user.     * @return the get txt_user     */
     public JTextField getTxt_user() {
         return txt_user;
     }
 
-    /**     * get rbn_see passwd.     * @return the get rbn_see passwd     */
     public JRadioButton getRbn_seePasswd() {
         return rbn_seePasswd;
     }
 
-    /**     * clear fields.     */
+    /**
+     * Clear all text fields and reset the role combo box.
+     */
     public void clearFields() {
         txt_id.setText("");
         txt_user.setText("");

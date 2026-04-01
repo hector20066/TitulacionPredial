@@ -1,9 +1,13 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
-
-import javax.swing.*;
 import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
 
 /**
  * Application settings panel that allows the user to select the
@@ -117,37 +121,22 @@ public class Settings extends javax.swing.JPanel {
         jlb_title.setText(texts.title());
     }
 
-    /**     * set controller spanish language.     * @param action the action     */
-    public void setControllerSpanishLanguage(ActionListener action) {
-        rbn_spanish.addActionListener(action);
-    }
-
-    /**     * set controller english language.     * @param action the action     */
-    public void setControllerEnglishLanguage(ActionListener action) {
-        rbn_english.addActionListener(action);
-    }
-
-    /**     * get rbn_spanish.     * @return the get rbn_spanish     */
     public JRadioButton getRbn_spanish() {
         return rbn_spanish;
     }
 
-    /**     * get rbn_english.     * @return the get rbn_english     */
     public JRadioButton getRbn_english() {
         return rbn_english;
     }
 
-    /**     * get jlb_title.     * @return the get jlb_title     */
     public JLabel getJlb_title() {
         return jlb_title;
     }
 
-    /**     * get btg_languages.     * @return the get btg_languages     */
     public ButtonGroup getBtg_languages() {
         return btg_languages;
     }
 
-    /**     * get jpl_content.     * @return the get jpl_content     */
     public JPanel getJpl_content() {
         return jpl_content;
     }

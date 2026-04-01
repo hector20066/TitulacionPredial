@@ -18,6 +18,13 @@ import com.hector.titulacionpredial.exception.dao.PersistenceException;
 public class ResolutionPersistenceException extends PersistenceException {
 
     /**
+     * Create an exception with a generic message.
+     */
+    public ResolutionPersistenceException() {
+        super();
+    }
+
+    /**
      * Create an exception with a descriptive message.
      *
      * @param message description of the persistence error

@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.model.dto;
 
-import org.apache.commons.math3.analysis.function.Abs;
-
 /**
  * Data Transfer Object (DTO) that represents a spouse's information
  * for system input or output operations.
@@ -51,12 +49,10 @@ public class DTOSpouse extends DTOBasePerson {
         this.beneficiaryCode = builder.beneficiaryCode;
     }
 
-    /**     * get beneficiary code.     * @return the get beneficiary code     */
     public int getBeneficiaryCode() {
         return beneficiaryCode;
     }
 
-    /**     * set beneficiary code.     * @param beneficiaryCode the beneficiary code     */
     public void setBeneficiaryCode(int beneficiaryCode) {
         this.beneficiaryCode = beneficiaryCode;
     }
@@ -73,7 +69,12 @@ public class DTOSpouse extends DTOBasePerson {
 
         protected int beneficiaryCode;
 
-    /**     * beneficiary code.     * @param beneficiaryCode the beneficiary code     * @return the beneficiary code     */
+        /**
+         * Set the beneficiary code for this spouse.
+         *
+         * @param beneficiaryCode the beneficiary code
+         * @return current builder instance
+         */
         public T beneficiaryCode(int beneficiaryCode) {
             this.beneficiaryCode = beneficiaryCode;
             return (T) this;
@@ -83,7 +84,11 @@ public class DTOSpouse extends DTOBasePerson {
 
     public static class Builder extends AbstractBuilder<Builder> {
 
-    /**     * build.     * @return the build     */
+        /**
+         * Build and return a new {@link DTOSpouse} instance.
+         *
+         * @return configured DTOSpouse instance
+         */
         public DTOSpouse build() {
             return new DTOSpouse(this);
         }

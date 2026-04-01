@@ -22,11 +22,6 @@ public class LabelColor extends JLabel {
     /**
      * {@inheritDoc}
      */
-    /**
-     * Paint the component with custom rounded background color.
-     *
-     * @param graphics the graphics context
-     */
     @Override
     protected void paintComponent(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;

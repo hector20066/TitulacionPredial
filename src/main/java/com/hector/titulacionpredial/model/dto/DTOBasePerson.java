@@ -64,42 +64,34 @@ public class DTOBasePerson {
         this.expeditionLocation = builder.expeditionLocation;
     }
 
-    /**     * get full name.     * @return the get full name     */
     public String getFullName() {
         return fullName;
     }
 
-    /**     * set full name.     * @param fullName the full name     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**     * get id.     * @return the get id     */
     public long getId() {
         return id;
     }
 
-    /**     * set id.     * @param id the id     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**     * get phone.     * @return the get phone     */
     public long getPhone() {
         return phone;
     }
 
-    /**     * set phone.     * @param phone the phone     */
     public void setPhone(long phone) {
         this.phone = phone;
     }
 
-    /**     * get expedition location.     * @return the get expedition location     */
     public String getExpeditionLocation() {
         return expeditionLocation;
     }
 
-    /**     * set expedition location.     * @param expeditionLocation the expedition location     */
     public void setExpeditionLocation(String expeditionLocation) {
         this.expeditionLocation = expeditionLocation;
     }
@@ -117,37 +109,60 @@ public class DTOBasePerson {
          * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
-    /**     * self.     * @return the self     */
         protected T self() {
             return (T) this;
         }
 
-    /**     * full name.     * @param fullName the full name     * @return the full name     */
+        /**
+         * full name.
+         *
+         * @param fullName the full name
+         * @return the full name
+         */
         public T fullName(String fullName) {
             this.fullName = fullName;
             return self();
         }
 
-    /**     * id.     * @param id the id     * @return the id     */
+        /**
+         * id.
+         *
+         * @param id the id
+         * @return the id
+         */
         public T id(long id) {
             this.id = id;
             return self();
         }
 
-    /**     * phone.     * @param phone the phone     * @return the phone     */
+        /**
+         * phone
+         *
+         * @param phone the phone
+         * @return the phone
+         */
         public T phone(long phone) {
             this.phone = phone;
             return self();
 
         }
 
-    /**     * expedition location.     * @param expeditionLocation the expedition location     * @return the expedition location     */
+        /**
+         * expedition location.
+         *
+         * @param expeditionLocation the expedition location
+         * @return the expedition location
+         */
         public T expeditionLocation(String expeditionLocation) {
             this.expeditionLocation = expeditionLocation;
             return self();
         }
 
-    /**     * build.     * @return the build     */
+        /**
+         * build.
+         *
+         * @return the build
+         */
         public DTOBasePerson build() {
             return new DTOBasePerson(this);
         }

@@ -19,7 +19,9 @@ import com.hector.titulacionpredial.model.enums.Role;
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
-public interface DAOUser extends DAOBase<DTOUserCreate, DTOUserDetails>, IListable<DTOUserDetails>, IRemovable {
+public interface DAOUser extends DAOBase<DTOUserCreate, DTOUserDetails>,
+        IListable<DTOUserDetails>,
+        IRemovable {
 
     /**
      * Verify user credentials and return their role.
@@ -30,6 +32,7 @@ public interface DAOUser extends DAOBase<DTOUserCreate, DTOUserDetails>, IListab
      * @throws DAOException if authentication fails or an error occurs
      */
     Role verifyCredentials(String user, String plainPassword) throws DAOException;
+
     /**
      * Update a user's password.
      *

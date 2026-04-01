@@ -60,9 +60,6 @@ public class ControllerSettings implements LanguageObserver {
     }
 
     @Override
-    /**
-     * Update the interface language based on current language selection.
-     */
     public void updateLanguage() {
         DTOSettingsText dto = new DTOSettingsText(lang.app("settings.language.title"),
                 lang.app("settings.language"));

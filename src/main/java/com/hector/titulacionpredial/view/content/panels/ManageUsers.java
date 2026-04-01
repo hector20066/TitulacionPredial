@@ -105,6 +105,11 @@ public class ManageUsers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the view to display content in the specified language.
+     *
+     * @param texts DTO containing translated text for all interface elements
+     */
     public void updateLanguage(DTOManageUsersText texts) {
         jlb_title.setText(texts.getTitle());
         this.subtitleText = texts.getSubtitle();
@@ -116,6 +121,12 @@ public class ManageUsers extends javax.swing.JPanel {
         rebuildPanels();
     }
 
+    /**
+     * Load and display all user accounts.
+     *
+     * @param users list of user details to display
+     * @param controllerAccounts the account management controller
+     */
     public void loadUsers(List<DTOUserDetails> users, IManageAccounts controllerAccounts) {
         this.currentUsers = users;
         this.controllerAccounts = controllerAccounts;

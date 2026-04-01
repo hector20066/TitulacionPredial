@@ -66,32 +66,26 @@ public class DTOBeneficiary extends DTOBasePerson {
         this.affectation = builder.affectation;
     }
 
-    /**     * get code beneficiaries.     * @return the get code beneficiaries     */
     public String getCodeBeneficiaries() {
         return codeBeneficiaries;
     }
 
-    /**     * set code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     */
     public void setCodeBeneficiaries(String codeBeneficiaries) {
         this.codeBeneficiaries = codeBeneficiaries;
     }
 
-    /**     * get marital status.     * @return the get marital status     */
     public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
-    /**     * set marital status.     * @param maritalStatus the marital status     */
     public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
-    /**     * get affectation.     * @return the get affectation     */
     public String getAffectation() {
         return affectation;
     }
 
-    /**     * set affectation.     * @param affectation the affectation     */
     public void setAffectation(String affectation) {
         this.affectation = affectation;
     }
@@ -119,7 +113,6 @@ public class DTOBeneficiary extends DTOBasePerson {
          * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
-    /**     * self.     * @return the self     */
         protected T self() {
             return (T) this;
         }

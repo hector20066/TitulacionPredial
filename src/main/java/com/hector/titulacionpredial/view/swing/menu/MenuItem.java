@@ -122,7 +122,6 @@ public class MenuItem extends JPanel {
             }
 
             @Override
-    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 float f = open ? fraction : 1f - fraction;
                 int s = (int) (35 + f * height);
@@ -174,7 +173,6 @@ public class MenuItem extends JPanel {
         }
     }
 
-    /**     * get index.     * @return the get index     */
     public int getIndex() {
         return index;
     }
@@ -225,7 +223,6 @@ public class MenuItem extends JPanel {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint component.     * @param graphics the graphics     */
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 

@@ -21,7 +21,25 @@ import com.hector.titulacionpredial.model.security.BCryptEncryption;
 import com.hector.titulacionpredial.utils.SQLRepository;
 
 /**
+ * Implementation of the Data Access Object (DAO) pattern for user management.
+ *
+ * <p>
+ * This class provides database operations for user entities including registration,
+ * credential verification, password modification, and user retrieval. It implements
+ * the Singleton pattern to ensure a single instance manages all user database
+ * interactions throughout the application lifecycle.
+ * </p>
+ *
+ * <p>
+ * The class uses {@link DataBasePool} for connection management and
+ * {@link SQLRepository} to load and execute SQL queries. Password encryption
+ * and verification are handled through {@link BCryptEncryption}.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see DAOUser
+ * @see DataBasePool
+ * @see SQLRepository
  * @since 1.0
  */
 public class DAOUserImpl implements DAOUser {
@@ -42,7 +60,7 @@ public class DAOUserImpl implements DAOUser {
      *
      * <p>
      * If the instance does not exist, it creates it. Access is synchronized
-     * to ensure thread-safety in multi-threaded environments.
+     * to ensure thread-safety in multithreaded environments.
      * </p>
      *
      * @return single instance of the DAO user implementation

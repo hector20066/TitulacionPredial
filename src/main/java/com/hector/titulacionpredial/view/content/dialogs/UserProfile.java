@@ -26,7 +26,7 @@ public class UserProfile extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
 
-    private LanguageManager lang =  LanguageManager.getInstance();
+    private final LanguageManager lang =  LanguageManager.getInstance();
 
     /**
      * Creates a new dialog to display a beneficiary's profile.

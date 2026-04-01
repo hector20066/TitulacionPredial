@@ -9,14 +9,15 @@ import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 /**
- * Builder for building instances of {@link ControllerModifyResolution}.
+ * Builder for configuring and constructing the {@link ControllerModifyResolution} controller.
  *
  * <p>
- * Centralize the injection of dependencies necessary for
- * controller configuration using the Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerModifyResolution
  * @since 1.0
  */
 public class ControllerModifyResolutionBuilder {
@@ -99,32 +100,26 @@ public class ControllerModifyResolutionBuilder {
         return new ControllerModifyResolution(this);
     }
 
-    /**     * get modify resolution.     * @return the get modify resolution     */
     public ModifyResolution getModifyResolution() {
         return modifyResolution;
     }
 
-    /**     * get controller login.     * @return the get controller login     */
     public ControllerLogin getControllerLogin() {
         return controllerLogin;
     }
 
-    /**     * get see resolutions.     * @return the get see resolutions     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

@@ -90,12 +90,6 @@ public class ResolutionImplFacade implements ResolutionFacade {
         return daoResolution.modify(dto);
     }
 
-    /**
-     * Count the total number of resolution records in the system.
-     *
-     * @return the count of all resolution records
-     * @throws DAOException if an error occurs in the query
-     */
     @Override
     public int countRecords() throws DAOException {
         return daoResolution.countRecords();

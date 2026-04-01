@@ -9,14 +9,15 @@ import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 
 /**
- * Builder for building instances of {@link ControllerSeeResolutions}.
+ * Builder for configuring and constructing the {@link ControllerSeeResolutions} controller.
  *
  * <p>
- * Centralize the injection of dependencies necessary for controller
- * configuration using a Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerSeeResolutions
  * @since 1.0
  */
 public class ControllerSeeResolutionsBuilder {
@@ -50,7 +51,11 @@ public class ControllerSeeResolutionsBuilder {
         return this;
     }
 
-    /**     * with controller login.     * @param controllerLogin the controller login     * @return the with controller login     */
+    /**
+     * with controller login.
+     * @param controllerLogin the controller login
+     * @return the with controller login
+     */
     public ControllerSeeResolutionsBuilder withControllerLogin(ControllerLogin controllerLogin) {
         this.controllerLogin = controllerLogin;
         return this;
@@ -98,32 +103,26 @@ public class ControllerSeeResolutionsBuilder {
         return new ControllerSeeResolutions(this);
     }
 
-    /**     * get modify resolution.     * @return the get modify resolution     */
     public ModifyResolution getModifyResolution() {
         return modifyResolution;
     }
 
-    /**     * get see resolutions.     * @return the get see resolutions     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
-    /**     * get controller login.     * @return the get controller login     */
     public ControllerLogin getControllerLogin() {
         return controllerLogin;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

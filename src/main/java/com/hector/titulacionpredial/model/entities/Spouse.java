@@ -42,11 +42,6 @@ public class Spouse extends Person {
      *
      * @return formatted description of spouse
      */
-    /**
-     * Textual representation of the spouse.
-     *
-     * @return formatted description of spouse
-     */
     @Override
     public String toString() {
         return super.toString();

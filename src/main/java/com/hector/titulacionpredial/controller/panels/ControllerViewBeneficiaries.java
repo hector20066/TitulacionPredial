@@ -113,14 +113,6 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         listenerSearch();
     }
 
-    /**
-     * Retrieve and update the beneficiaries list from the database.
-     *
-     * <p>
-     * Executes database queries to fetch beneficiary data and updates
-     * the UI with the retrieved information.
-     * </p>
-     */
     @Override
     public void update() {
         new Thread(() -> {
@@ -136,9 +128,6 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         }).start();
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTOViewBeneficiariesText dto = new DTOViewBeneficiariesText.Builder()
@@ -294,8 +283,14 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 });
             } catch (DAOException e) {
                 SwingUtilities.invokeLater(() -> MessageUtils.errorMessage(e.getMessage(), viewBeneficiaries));
+                resetUIModify();
             }
         }).start();
+    }
+
+    private void resetUIModify() {
+        viewBeneficiaries.getBtn_modify().setEnabled(false);
+        viewBeneficiaries.getBtn_modify().setText("Modificar");
     }
 
     /**
@@ -470,19 +465,16 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void documentListeners() {
         viewBeneficiaries.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
-    /**     * insert update.     * @param e the e     */
             public void insertUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
-    /**     * remove update.     * @param e the e     */
             public void removeUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
 
             @Override
-    /**     * changed update.     * @param e the e     */
             public void changedUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(viewBeneficiaries.getTxt_search(), viewBeneficiaries.getJtbl_beneficiaries(), searchPlaceholder);
             }
@@ -496,7 +488,6 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
     private void listenerSearch() {
         viewBeneficiaries.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
-    /**     * focus lost.     * @param e the e     */
             public void focusLost(FocusEvent e) {
                 if (viewBeneficiaries.getTxt_search().getText().isBlank()) {
                     viewBeneficiaries.getTxt_search().setText(searchPlaceholder);
@@ -506,7 +497,6 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
 
         viewBeneficiaries.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse clicked.     * @param e the e     */
             public void mouseClicked(MouseEvent e) {
                 if (viewBeneficiaries.getTxt_search().getText().equals(searchPlaceholder)) {
                     viewBeneficiaries.getTxt_search().setText("");

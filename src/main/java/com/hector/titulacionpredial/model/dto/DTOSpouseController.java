@@ -40,20 +40,10 @@ public class DTOSpouseController extends DTOSpouse {
         this.idBeneficiary = builder.idBeneficiary;
     }
 
-    /**
-     * Get the beneficiary identifier associated with this spouse.
-     *
-     * @return beneficiary code
-     */
     public int getIdBeneficiary() {
         return idBeneficiary;
     }
 
-    /**
-     * Set the beneficiary identifier for this spouse.
-     *
-     * @param idBeneficiary beneficiary code to set
-     */
     public void setIdBeneficiary(int idBeneficiary) {
         this.idBeneficiary = idBeneficiary;
     }

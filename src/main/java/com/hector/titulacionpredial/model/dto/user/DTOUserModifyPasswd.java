@@ -3,6 +3,14 @@ package com.hector.titulacionpredial.model.dto.user;
 import com.hector.titulacionpredial.model.dto.DTOUser;
 
 /**
+ * Data Transfer Object (DTO) for modifying user passwords.
+ *
+ * <p>
+ * Used to transport password modification requests from the presentation
+ * layer to the persistence layer, allowing users to change their passwords
+ * while maintaining security by avoiding direct entity exposure.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -28,20 +36,10 @@ public class DTOUserModifyPasswd extends DTOUser {
         this.password = password;
     }
 
-    /**
-     * Get the password.
-     *
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * Set the password.
-     *
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }

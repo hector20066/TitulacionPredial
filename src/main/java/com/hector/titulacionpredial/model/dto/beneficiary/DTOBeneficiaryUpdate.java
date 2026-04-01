@@ -52,12 +52,10 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
         this.code = builder.code;
     }
 
-    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
-    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
@@ -75,7 +73,12 @@ public class DTOBeneficiaryUpdate extends DTOBeneficiary {
 
         private int code;
 
-    /**     * code.     * @param code the code     * @return the code     */
+        /**
+         * Set the beneficiary code.
+         *
+         * @param code the beneficiary code
+         * @return current builder instance
+         */
         public Builder code(int code) {
             this.code = code;
             return this;

@@ -9,6 +9,7 @@ package com.hector.titulacionpredial.view.i18n.dto.panels;
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class DTOMenuText {
 
@@ -108,61 +109,132 @@ public class DTOMenuText {
             return (T) this;
         }
 
+        /**
+         * Set the main title text.
+         *
+         * @param mainTitle the title to set
+         * @return builder instance for chaining
+         */
         public T mainTitle(String mainTitle) {
             this.mainTitle = mainTitle;
             return self();
         }
 
+        /**
+         * Set the dashboard label text.
+         *
+         * @param dashboard the label to set
+         * @return builder instance for chaining
+         */
         public T dashboard(String dashboard) {
             this.dashboard = dashboard;
             return self();
         }
 
+        /**
+         * Set the info label text.
+         *
+         * @param info the label to set
+         * @return builder instance for chaining
+         */
         public T info(String info) {
             this.info = info;
             return self();
         }
 
+        /**
+         * Set the 'see' command text.
+         *
+         * @param see the text to set
+         * @return builder instance for chaining
+         */
         public T see(String see) {
             this.see = see;
             return self();
         }
 
+        /**
+         * Set the 'see beneficiaries' menu text.
+         *
+         * @param seeBeneficiaries the text to set
+         * @return builder instance for chaining
+         */
         public T seeBeneficiaries(String seeBeneficiaries) {
             this.seeBeneficiaries = seeBeneficiaries;
             return self();
         }
 
+        /**
+         * Set the 'see properties' menu text.
+         *
+         * @param seeProperties the text to set
+         * @return builder instance for chaining
+         */
         public T seeProperties(String seeProperties) {
             this.seeProperties = seeProperties;
             return self();
         }
 
+        /**
+         * Set the 'see resolutions' menu text.
+         *
+         * @param seeResolutions the text to set
+         * @return builder instance for chaining
+         */
         public T seeResolutions(String seeResolutions) {
             this.seeResolutions = seeResolutions;
             return self();
         }
 
+        /**
+         * Set the configuration text.
+         *
+         * @param configuration the text to set
+         * @return builder instance for chaining
+         */
         public T configuration(String configuration) {
             this.configuration = configuration;
             return self();
         }
 
+        /**
+         * Set the settings text.
+         *
+         * @param settings the text to set
+         * @return builder instance for chaining
+         */
         public T settings(String settings) {
             this.settings = settings;
             return self();
         }
 
+        /**
+         * Set the about application text.
+         *
+         * @param aboutApp the text to set
+         * @return builder instance for chaining
+         */
         public T aboutApp(String aboutApp) {
             this.aboutApp = aboutApp;
             return self();
         }
 
+        /**
+         * Set the about text.
+         *
+         * @param about the text to set
+         * @return builder instance for chaining
+         */
         public T about(String about) {
             this.about = about;
             return self();
         }
 
+        /**
+         * Build and return a new instance of {@link DTOMenuText}.
+         *
+         * @return configured DTOMenuText instance
+         */
         public DTOMenuText build() {
             return new DTOMenuText(this);
         }

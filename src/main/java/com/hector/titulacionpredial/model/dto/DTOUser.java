@@ -1,6 +1,13 @@
 package com.hector.titulacionpredial.model.dto;
 
 /**
+ * Data Transfer Object (DTO) that represents basic user information.
+ *
+ * <p>
+ * This is a base DTO used to transport user identifiers between
+ * system layers without exposing the domain User entity.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -8,22 +15,26 @@ public class DTOUser {
 
     protected int id;
 
-    /**     * dto user.     * @return the dto user     */
+    /**
+     * Empty constructor required for serialization or mapping frameworks.
+     */
     public DTOUser() {
 
     }
 
-    /**     * dto user.     * @param id the id     * @return the dto user     */
+    /**
+     * Constructor to initialize a user with the specified ID.
+     *
+     * @param id the user identifier
+     */
     public DTOUser(int id) {
         this.id = id;
     }
 
-    /**     * get id.     * @return the get id     */
     public int getId() {
         return id;
     }
 
-    /**     * set id.     * @param id the id     */
     public void setId(int id) {
         this.id = id;
     }

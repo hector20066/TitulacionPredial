@@ -1,12 +1,21 @@
 package com.hector.titulacionpredial.view.swing.button;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+
+import javax.swing.JButton;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Button with superimposed numerical badge.
@@ -27,7 +36,6 @@ public class ButtonBadges extends JButton {
     private float animatSize;
     private Point pressedPoint;
     private float alpha;
-    /**     * color.     * @return the color     */
     private Color effectColor = new Color(173, 173, 173);
     private int badges;
 
@@ -44,7 +52,6 @@ public class ButtonBadges extends JButton {
 
         addMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse pressed.     * @param evt the evt     */
             public void mousePressed(MouseEvent evt) {
                 targetSize = Math.max(getWidth(), getHeight()) * 2;
                 animatSize = 0;
@@ -84,23 +91,19 @@ public class ButtonBadges extends JButton {
         });
     }
 
-    /**     * get badges.     * @return the get badges     */
     public int getBadges() {
         return badges;
     }
 
-    /**     * set badges.     * @param badges the badges     */
     public void setBadges(int badges) {
         this.badges = badges;
         repaint();
     }
 
-    /**     * get effect color.     * @return the get effect color     */
     public Color getEffectColor() {
         return effectColor;
     }
 
-    /**     * set effect color.     * @param effectColor the effect color     */
     public void setEffectColor(Color effectColor) {
         this.effectColor = effectColor;
     }
@@ -109,7 +112,6 @@ public class ButtonBadges extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         int width = getWidth();
         int height = getHeight();
@@ -144,7 +146,6 @@ public class ButtonBadges extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint.     * @param g the g     */
     public void paint(Graphics g) {
         super.paint(g);
 
@@ -179,8 +180,7 @@ public class ButtonBadges extends JButton {
      */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;
-        if (value > 1f) return 1f;
-        return value;
+        return Math.min(value, 1f);
     }
 
 }

@@ -9,6 +9,7 @@ package com.hector.titulacionpredial.view.i18n.dto.panels;
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class DTOModifyResolutionText {
 
@@ -41,52 +42,42 @@ public class DTOModifyResolutionText {
         this.notification = builder.notification;
     }
 
-    /**     * get title.     * @return the get title     */
     public String getTitle() {
         return title;
     }
 
-    /**     * get code.     * @return the get code     */
     public String getCode() {
         return code;
     }
 
-    /**     * get num resolution.     * @return the get num resolution     */
     public String getNumResolution() {
         return numResolution;
     }
 
-    /**     * get fmi.     * @return the get fmi     */
     public String getFmi() {
         return fmi;
     }
 
-    /**     * get act.     * @return the get act     */
     public String getAct() {
         return act;
     }
 
-    /**     * get public writing.     * @return the get public writing     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
-    /**     * get notary.     * @return the get notary     */
     public String getNotary() {
         return notary;
     }
 
-    /**     * get modify btn.     * @return the get modify btn     */
     public String getModifyBtn() {
         return modifyBtn;
     }
 
-    /**     * get executory.     * @return the get executory     */
     public String getExecutory() {
         return executory;
     }
 
-    /**     * get notification.     * @return the get notification     */
     public String getNotification() {
         return notification;
     }
@@ -107,67 +98,56 @@ public class DTOModifyResolutionText {
         private String executory;
         private String notification;
 
-    /**     * title.     * @param title the title     * @return the title     */
         public Builder title(String title) {
             this.title = title;
             return this;
         }
 
-    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(String code) {
             this.code = code;
             return this;
         }
 
-    /**     * num resolution.     * @param numResolution the num resolution     * @return the num resolution     */
         public Builder numResolution(String numResolution) {
             this.numResolution = numResolution;
             return this;
         }
 
-    /**     * fmi.     * @param fmi the fmi     * @return the fmi     */
         public Builder fmi(String fmi) {
             this.fmi = fmi;
             return this;
         }
 
-    /**     * act.     * @param act the act     * @return the act     */
         public Builder act(String act) {
             this.act = act;
             return this;
         }
 
-    /**     * public writing.     * @param publicWriting the public writing     * @return the public writing     */
         public Builder publicWriting(String publicWriting) {
             this.publicWriting = publicWriting;
             return this;
         }
 
-    /**     * notary.     * @param notary the notary     * @return the notary     */
         public Builder notary(String notary) {
             this.notary = notary;
             return this;
         }
 
-    /**     * modify btn.     * @param modifyBtn the modify btn     * @return the modify btn     */
         public Builder modifyBtn(String modifyBtn) {
             this.modifyBtn = modifyBtn;
             return this;
         }
 
-    /**     * executory.     * @param executory the executory     * @return the executory     */
         public Builder executory(String executory) {
             this.executory = executory;
             return this;
         }
 
-    /**     * notification.     * @param notification the notification     * @return the notification     */
         public Builder notification(String notification) {
             this.notification = notification;
             return this;
         }
 
-    /**     * build.     * @return the build     */
         public DTOModifyResolutionText build() {
             return new DTOModifyResolutionText(this);
         }

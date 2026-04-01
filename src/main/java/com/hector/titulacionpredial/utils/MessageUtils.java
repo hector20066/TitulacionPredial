@@ -29,7 +29,8 @@ public class MessageUtils {
      * @param container parent component of the dialogue
      */
     public static void informationMessage(String message, JComponent container) {
-        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.information"), JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(container, message, lang.message("message.utils.information"),
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -71,7 +72,8 @@ public class MessageUtils {
      *         {@link JOptionPane#NO_OPTION} otherwise
      */
     public static int confirmDialog(String message, JComponent container) {
-        return JOptionPane.showConfirmDialog(container, message, lang.message("message.utils.confirmation"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        return JOptionPane.showConfirmDialog(container, message, lang.message("message.utils.confirmation"),
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 
     /**
@@ -91,7 +93,8 @@ public class MessageUtils {
      * @return the user's input or null if cancelled
      */
     public static String inputDialog(String message, JComponent container) {
-        return JOptionPane.showInputDialog(container, message, lang.message("message.utils.changePassword"), JOptionPane.PLAIN_MESSAGE);
+        return JOptionPane.showInputDialog(container, message, lang.message("message.utils.changePassword"),
+                JOptionPane.PLAIN_MESSAGE);
     }
 
 }

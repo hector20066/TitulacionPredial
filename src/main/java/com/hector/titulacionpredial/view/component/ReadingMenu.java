@@ -22,7 +22,9 @@ public class ReadingMenu extends Menu {
     private String aboutApp = "SOBRE LA APP";
     private String about = "Acerca De";
 
-    /**     * reading menu.     * @return the reading menu     */
+    /**
+     * Creates a reading menu and initializes its structure.
+     */
     public ReadingMenu() {
         super();
         rebuildMenu();
@@ -43,6 +45,11 @@ public class ReadingMenu extends Menu {
         addMenuItem(new ModelMenuItem("image/info.svg", this.about));
     }
 
+    /**
+     * Update the menu texts with the provided translations.
+     *
+     * @param texts the DTO containing localized menu labels
+     */
     public void setText(DTOReadingMenuText texts) {
         this.main = texts.getMainTitle();
         this.dashboard = texts.getDashboard();

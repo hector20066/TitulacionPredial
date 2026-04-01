@@ -111,9 +111,6 @@ public class ControllerContentReader implements LanguageObserver {
         }
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTOReadingMenuText dto = new DTOReadingMenuText.Builder()

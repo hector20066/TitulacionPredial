@@ -1,7 +1,16 @@
 package com.hector.titulacionpredial.view.i18n.dto.panels;
 
 /**
+ * Data Transfer Object encapsulating the internationalized texts
+ * for the login content panel.
+ *
+ * <p>
+ * Provides all the localized string resources needed to display
+ * the login interface, including labels, field names, and buttons.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class DTOContentLoginText {
 
@@ -12,6 +21,11 @@ public class DTOContentLoginText {
     private final String access;
     private final String login;
 
+    /**
+     * Construct an instance from the builder.
+     *
+     * @param builder builder with configured texts
+     */
     public DTOContentLoginText(Builder builder) {
         this.title = builder.title;
         this.user = builder.user;

@@ -106,9 +106,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.setControllerImportExcelData(e -> importExcelData());
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTORegisterPropertyText dto = new DTORegisterPropertyText.Builder()
@@ -297,7 +294,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         resetButton();
         registerProperty.clearFields();
         showCardFirst();
-        this.propertyCode = 0;  // Reiniciar solo después de registro exitoso
+        this.propertyCode = 0;
     }
 
     /**
@@ -342,8 +339,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Disable the buttons during loading and restore
      * them when closing the dialog.
      * </p>
-     *
-     * @throws InvalidInputException if beneficiary code is empty or invalid
      */
     private void searchBeneficiaries() {
         try {
@@ -413,10 +408,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_register().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setEnabled(true);
         registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.search.beneficiary"));
-        // NOTA: NO reiniciar propertyCode aquí, debe retener su valor para el registro
     }
 
-    /**     * import excel data.     */
+    /**
+     * import excel data.
+     */
     private void importExcelData() {
         JFileChooser fileChooser = new JFileChooser();
 
@@ -446,10 +442,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * @param data list of string rows from Excel file
      */
     private void loadInFields(List<List<String>> data) {
-        if (data.size() > 0) {
-            List<String> fila = data.get(0);
+        if (!data.isEmpty()) {
+            List<String> fila = data.getFirst();
 
-            registerProperty.getTxt_eastCoordinate1().setText(fila.size() > 0 ? fila.get(0) : "");
+            registerProperty.getTxt_eastCoordinate1().setText(!fila.isEmpty() ? fila.get(0) : "");
             registerProperty.getTxt_northCoordinate1().setText(fila.size() > 1 ? fila.get(1) : "");
             registerProperty.getTxt_distance1().setText(fila.size() > 2 ? fila.get(2) : "");
             registerProperty.getTxt_hillside1().setText(fila.size() > 3 ? fila.get(3) : "");

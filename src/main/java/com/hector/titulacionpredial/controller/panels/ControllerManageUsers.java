@@ -20,8 +20,20 @@ import com.hector.titulacionpredial.view.content.panels.ManageUsers;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOManageUsersText;
 
 /**
+ * Controller for managing user accounts.
+ *
+ * <p>
+ * Implements the Observer pattern to react to data changes and
+ * language changes. Provides functionality for loading, modifying,
+ * and deleting user accounts. All operations are performed in
+ * background threads to avoid blocking the UI.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @since 1.0
+ * @see IManageAccounts
+ * @see Observer
+ * @see LanguageObserver
  */
 public class ControllerManageUsers implements Observer, LanguageObserver, IManageAccounts {
 
@@ -84,6 +96,17 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }).start();
     }
 
+    /**
+     * Deletes a user account from the database.
+     *
+     * <p>
+     * Performs the deletion in a background thread and notifies
+     * the user of success or failure.
+     * </p>
+     *
+     * @param id the unique identifier of the user to delete
+     * @param panel the parent component for displaying messages
+     */
     @Override
     public void deleteAccount(int id, JPanel panel) {
         new Thread(() -> {

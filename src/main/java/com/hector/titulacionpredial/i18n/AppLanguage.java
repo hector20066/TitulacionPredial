@@ -9,7 +9,8 @@ package com.hector.titulacionpredial.i18n;
  * will have, which will be used to select the language.
  * </p>
  *
- * @author hectoracevedo
+ * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public enum AppLanguage {
 

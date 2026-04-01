@@ -93,7 +93,11 @@ public class Head extends PanelShadow {
     }
     
 
-    /**     * get win button.     * @return the get win button     */
+    /**
+     * Get the window control button.
+     *
+     * @return the window button
+     */
     public WinButton getWinButton() {
         return winButton1;
     }

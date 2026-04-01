@@ -9,14 +9,15 @@ import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
- * Builder for building instances of {@link ControllerRegisterBeneficiary}.
+ * Builder for configuring and constructing the {@link ControllerRegisterBeneficiary} controller.
  *
  * <p>
- * Centralize the injection of dependencies necessary for
- * controller configuration using a Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerRegisterBeneficiary
  * @since 1.0
  */
 public class ControllerRegisterBeneficiaryBuilder {
@@ -50,7 +51,12 @@ public class ControllerRegisterBeneficiaryBuilder {
         return this;
     }
 
-    /**     * with controller login.     * @param controllerLogin the controller login     * @return the with controller login     */
+    /**
+     * with controller login.
+     *
+     * @param controllerLogin the controller login
+     * @return the with controller login
+     */
     public ControllerRegisterBeneficiaryBuilder withControllerLogin(ControllerLogin controllerLogin) {
         this.controllerLogin = controllerLogin;
         return this;
@@ -99,32 +105,26 @@ public class ControllerRegisterBeneficiaryBuilder {
         return new ControllerRegisterBeneficiary(this);
     }
 
-    /**     * get register beneficiary.     * @return the get register beneficiary     */
     public RegisterBeneficiary getRegisterBeneficiary() {
         return registerBeneficiary;
     }
 
-    /**     * get view beneficiaries.     * @return the get view beneficiaries     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
-    /**     * get controller login.     * @return the get controller login     */
     public ControllerLogin getControllerLogin() {
         return controllerLogin;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

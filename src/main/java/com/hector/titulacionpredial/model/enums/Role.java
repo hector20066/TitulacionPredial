@@ -32,7 +32,11 @@ public enum Role {
         this.role = role;
     }
 
-    /**     * get role.     * @return the get role     */
+    /**
+     * Obtains the textual representation of the role.
+     *
+     * @return the readable role value
+     */
     public String getRole() {
         return role;
     }

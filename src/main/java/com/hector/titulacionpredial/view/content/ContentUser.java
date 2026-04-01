@@ -1,14 +1,16 @@
 package com.hector.titulacionpredial.view.content;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
 import com.hector.titulacionpredial.view.component.UserMenu;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
-import javax.swing.*;
-import java.awt.event.ActionListener;
 
 /**
  *
- * @author hlacevedo
+ * @author Ing. Hector Acevedo
  */
 public class ContentUser extends javax.swing.JFrame {
    
@@ -119,26 +121,37 @@ public class ContentUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the view to display content in the specified language.
+     *
+     * @param texts the DTO containing localized logout button text
+     */
     public void updateLanguage(DTOContentLogoutBtnText texts) {
         btn_logout.setText(texts.getLogout());
     }
 
-    /**     * set controller menu.     * @param evt the evt     */
+    /**
+     * Set the menu item selection event handler.
+     *
+     * @param evt the menu event handler
+     */
     public void setControllerMenu(EventMenuSelected evt) {
         menu.addEvent(evt);
     }
 
-    /**     * set controller logout.     * @param action the action     */
+    /**
+     * Set the logout button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerLogout(ActionListener action) {
         btn_logout.addActionListener(action);
     }
 
-    /**     * get menu.     * @return the get menu     */
     public UserMenu getMenu() {
         return menu;
     }
-    
-    /**     * get jpl_content.     * @return the get jpl_content     */
+
     public static JPanel getJpl_content() {
         return jpl_content;
     }

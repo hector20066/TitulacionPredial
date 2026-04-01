@@ -14,13 +14,11 @@ import com.hector.titulacionpredial.view.content.panels.Settings;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 
 /**
- * Builder for constructing the {@link ControllerContentReader} with
- * all its views and dependencies.
+ * Builder for configuring and constructing the {@link ControllerContentReader} controller.
  *
  * <p>
- * It allows you to smoothly configure each panel of the
- * application for reader-level access before creating the main
- * content controller using the {@link #build()} method.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
@@ -172,101 +170,46 @@ public class ControllerContentReaderBuilder {
         return new ControllerContentReader(this);
     }
 
-    /**
-     * Get the main content view.
-     *
-     * @return the configured main content view
-     */
     public ContentReader getContent() {
         return content;
     }
 
-    /**
-     * Get the dashboard panel view.
-     *
-     * @return the configured dashboard view
-     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
-    /**
-     * Get the beneficiary view panel.
-     *
-     * @return the configured beneficiary view
-     */
     public ViewBeneficiaries getViewBeneficiaries() {
         return viewBeneficiaries;
     }
 
-    /**
-     * Get the property search panel view.
-     *
-     * @return the configured property search view
-     */
     public SeeProperties getSeeProperties() {
         return seeProperties;
     }
 
-    /**
-     * Get the resolutions query panel view.
-     *
-     * @return the configured resolutions query view
-     */
     public SeeResolutions getSeeResolutions() {
         return seeResolutions;
     }
 
-    /**
-     * Get the configuration panel view.
-     *
-     * @return the configured settings view
-     */
     public Settings getSettings() {
         return settings;
     }
 
-    /**
-     * Get the observer pattern subject for data notifications.
-     *
-     * @return the configured subject
-     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**
-     * Get the observer pattern subject for language changes.
-     *
-     * @return the configured language subject
-     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**
-     * Get the language manager instance.
-     *
-     * @return the configured language manager
-     */
     public LanguageManager getLang() {
         return lang;
     }
 
-    /**
-     * Get the About panel view.
-     *
-     * @return the configured About view
-     */
     public About getAbout() {
         return about;
     }
 
-    /**
-     * Get the login content view.
-     *
-     * @return the configured login view
-     */
     public ContentLogin getContentLogin() {
         return contentLogin;
     }

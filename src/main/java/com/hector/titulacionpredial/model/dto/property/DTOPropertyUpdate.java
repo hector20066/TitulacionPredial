@@ -1,7 +1,17 @@
 package com.hector.titulacionpredial.model.dto.property;
 
 /**
+ * Data Transfer Object (DTO) that contains the information to update
+ * a property in the system.
+ *
+ * <p>
+ * Used to transport property update data from the presentation layer to
+ * the persistence layer, avoiding direct exposure of the {@code Property}
+ * entity.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @since 1.0
  */
 public class DTOPropertyUpdate {
 
@@ -26,34 +36,18 @@ public class DTOPropertyUpdate {
         this.cadastralRef = cadastralRef;
     }
 
-    /**
-     * Get the property area.
-     *
-     * @return the area
-     */
     public Double getArea() {
         return area;
     }
 
-    /**
-     * Set the property area.
-     *
-     * @param area the area to set
-     */
     public void setArea(Double area) {
         this.area = area;
     }
 
-    /**
-     * Get the cadastral reference.
-     *
-     * @return the cadastral reference
-     */
     public String getCadastralRef() {
         return cadastralRef;
     }
 
-    /**     * set cadastral ref.     * @param cadastralRef the cadastral ref     */
     public void setCadastralRef(String cadastralRef) {
         this.cadastralRef = cadastralRef;
     }

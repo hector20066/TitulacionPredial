@@ -73,12 +73,10 @@ public class LegendItem extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**     * get lb color.     * @return the get lb color     */
     public LabelColor getLbColor() {
         return labelColor1;
     }
 
-    /**     * get lb name.     * @return the get lb name     */
     public JLabel getLbName() {
         return lbName;
     }

@@ -54,22 +54,18 @@ public class DTOResolutionDetails extends DTOResolution {
         this.beneficiaryName = builder.beneficiaryName;
     }
 
-    /**     * get code.     * @return the get code     */
     public int getCode() {
         return code;
     }
 
-    /**     * set code.     * @param code the code     */
     public void setCode(int code) {
         this.code = code;
     }
 
-    /**     * get beneficiary name.     * @return the get beneficiary name     */
     public String getBeneficiaryName() {
         return beneficiaryName;
     }
 
-    /**     * set beneficiary name.     * @param beneficiaryName the beneficiary name     */
     public void setBeneficiaryName(String beneficiaryName) {
         this.beneficiaryName = beneficiaryName;
     }
@@ -88,20 +84,17 @@ public class DTOResolutionDetails extends DTOResolution {
         private int code;
         private String beneficiaryName;
 
-    /**     * code.     * @param code the code     * @return the code     */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
-    /**     * beneficiary name.     * @param beneficiaryName the beneficiary name     * @return the beneficiary name     */
         public Builder beneficiaryName(String beneficiaryName) {
             this.beneficiaryName = beneficiaryName;
             return this;
         }
 
         @Override
-    /**     * build.     * @return the build     */
         public DTOResolutionDetails build() {
             return new DTOResolutionDetails(this);
         }

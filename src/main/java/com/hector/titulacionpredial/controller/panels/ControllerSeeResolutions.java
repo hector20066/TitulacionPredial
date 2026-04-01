@@ -102,14 +102,6 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     @Override
-    /**
-     * Retrieve and update the resolutions list from the database.
-     *
-     * <p>
-     * Executes database queries to fetch resolution data and updates the
-     * UI with the retrieved information.
-     * </p>
-     */
     public void update() {
         new Thread(() -> {
             try {
@@ -125,9 +117,6 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     }
 
     @Override
-    /**
-     * Update the interface language based on current language selection.
-     */
     public void updateLanguage() {
         DTOSeeResolutionsText dto = new DTOSeeResolutionsText.Builder()
                 .title(lang.app("see.resolutions.title"))
@@ -155,8 +144,6 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
      * Format the notification and enforcement dates to the
      * legible Spanish format before passing them to the form.
      * </p>
-     *
-     * @throws Exception if no row is selected or data extraction fails
      */
     private void modify() {
         try {
@@ -271,19 +258,16 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     private void documentListeners() {
         seeResolutions.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
-    /**     * insert update.     * @param e the e     */
             public void insertUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
 
             @Override
-    /**     * remove update.     * @param e the e     */
             public void removeUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
 
             @Override
-    /**     * changed update.     * @param e the e     */
             public void changedUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeResolutions.getTxt_search(), seeResolutions.getJtbl_resolutions(), searchPlaceholder);
             }
@@ -297,7 +281,6 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
     private void listenerSearch() {
         seeResolutions.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
-    /**     * focus lost.     * @param e the e     */
             public void focusLost(FocusEvent e) {
                 if (seeResolutions.getTxt_search().getText().isBlank()) {
                     seeResolutions.getTxt_search().setText(searchPlaceholder);
@@ -307,7 +290,6 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
 
         seeResolutions.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse clicked.     * @param e the e     */
             public void mouseClicked(MouseEvent e) {
                 if (seeResolutions.getTxt_search().getText().equals(searchPlaceholder)) {
                     seeResolutions.getTxt_search().setText("");

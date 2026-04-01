@@ -103,14 +103,6 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     }
 
     @Override
-    /**
-     * Retrieve and update the properties list from the database.
-     *
-     * <p>
-     * Executes database queries to fetch property data and updates the
-     * UI with the retrieved information.
-     * </p>
-     */
     public void update() {
         new Thread(() -> {
             try {
@@ -125,10 +117,10 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         }).start();
     }
 
-    @Override
     /**
      * Update the interface language based on current language selection.
      */
+    @Override
     public void updateLanguage() {
         DTOSeePropertiesText dto = new DTOSeePropertiesText.Builder()
                 .properties(lang.app("see.properties.title"))
@@ -165,8 +157,6 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
      * beneficiary name, ID number, address, municipality,
      * coordinates of the four geographic points and area.
      * </p>
-     *
-     * @throws Exception if no row is selected or data extraction fails
      */
     private void generateResolution() {
         try {
@@ -370,19 +360,16 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     private void documentListeners() {
         seeProperties.setControllerTxt_searchDocument(new DocumentListener() {
             @Override
-    /**     * insert update.     * @param e the e     */
             public void insertUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
 
             @Override
-    /**     * remove update.     * @param e the e     */
             public void removeUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
 
             @Override
-    /**     * changed update.     * @param e the e     */
             public void changedUpdate(DocumentEvent e) {
                 FilterUtils.filterTable(seeProperties.getTxt_search(), seeProperties.getJtbl_properties(), searchPlaceholder);
             }
@@ -396,7 +383,6 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
     private void listenerSearch() {
         seeProperties.setControllerTxt_searchFocus(new FocusAdapter() {
             @Override
-    /**     * focus lost.     * @param e the e     */
             public void focusLost(FocusEvent e) {
                 if (seeProperties.getTxt_search().getText().isBlank()) {
                     seeProperties.getTxt_search().setText(searchPlaceholder);
@@ -406,7 +392,6 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
         seeProperties.setControllerTxt_searchMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse clicked.     * @param e the e     */
             public void mouseClicked(MouseEvent e) {
                 if (seeProperties.getTxt_search().getText().equals(searchPlaceholder)) {
                     seeProperties.getTxt_search().setText("");

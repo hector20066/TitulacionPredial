@@ -21,6 +21,11 @@ public interface Observer {
     /**
      * Method invoked when the {@link Subject} notifies its registered
      * observers of a state change.
+     *
+     * <p>
+     * This is the callback method that implementing classes must override
+     * to react to state changes in the observed subject.
+     * </p>
      */
     void update();
 

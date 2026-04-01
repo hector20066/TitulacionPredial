@@ -1,13 +1,21 @@
 package com.hector.titulacionpredial.view.swing.button;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JButton;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Custom action button with ripple effect.
@@ -27,7 +35,6 @@ public class ButtonAction extends JButton {
     private float animatSize;
     private Point pressedPoint;
     private float alpha;
-    /**     * color.     * @return the color     */
     private Color effectColor = new Color(173, 173, 173);
 
     /**
@@ -45,7 +52,6 @@ public class ButtonAction extends JButton {
 
         addMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse pressed.     * @param evt the evt     */
             public void mousePressed(MouseEvent evt) {
                 targetSize = Math.max(getWidth(), getHeight()) * 2;
                 animatSize = 0;
@@ -85,12 +91,10 @@ public class ButtonAction extends JButton {
         });
     }
 
-    /**     * get effect color.     * @return the get effect color     */
     public Color getEffectColor() {
         return effectColor;
     }
 
-    /**     * set effect color.     * @param effectColor the effect color     */
     public void setEffectColor(Color effectColor) {
         this.effectColor = effectColor;
     }
@@ -99,7 +103,6 @@ public class ButtonAction extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         int width = getWidth();
         int height = getHeight();
@@ -132,7 +135,6 @@ public class ButtonAction extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint.     * @param g the g     */
     public void paint(Graphics g) {
         if (isSelected()) {
             int width = getWidth();
@@ -156,8 +158,7 @@ public class ButtonAction extends JButton {
      */
     private float clampAlpha(float value) {
         if (value < 0f) return 0f;
-        if (value > 1f) return 1f;
-        return value;
+        return Math.min(value, 1f);
     }
 
 }

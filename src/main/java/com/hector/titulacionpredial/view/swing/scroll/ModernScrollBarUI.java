@@ -29,10 +29,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 public class ModernScrollBarUI extends BasicScrollBarUI {
 
     private final int THUMB_SIZE = 5;
-
-    /**     * color.     * @return the color     */
     private final Color THUMB_COLOR = new Color(170, 170, 170);
-
     private final float ALPHA = 0.3f;
 
     /**

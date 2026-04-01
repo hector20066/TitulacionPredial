@@ -1,19 +1,22 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
-import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
-
-import javax.swing.*;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.time.LocalDate;
+
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSeeResolutionsText;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+import com.hector.titulacionpredial.view.swing.panel.RoundedPanel;
 
 /**
  * Panel for displaying recorded resolutions in table format.
@@ -207,67 +210,84 @@ public class SeeResolutions extends javax.swing.JPanel {
         jtbl_resolutions.getTableHeader().repaint();
     }
 
-    /**     * set controller modify.     * @param action the action     */
+    /**
+     * Set the modify button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerModify(ActionListener action) {
         btn_modify.addActionListener(action);
     }
 
-    /**     * set controller search.     * @param action the action     */
+    /**
+     * Set the search button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerSearch(ActionListener action) {
         btn_search.addActionListener(action);
     }
 
-    /**     * set controller search cancel.     * @param action the action     */
+    /**
+     * Set the search cancel button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerSearchCancel(ActionListener action) {
         btn_searchCancel.addActionListener(action);
     }
 
-    /**     * set controller txt_search document.     * @param listen the listen     */
+    /**
+     * Set the document listener for the search text field.
+     *
+     * @param listen the document listener
+     */
     public void setControllerTxt_searchDocument(DocumentListener listen) {
         txt_search.getDocument().addDocumentListener(listen);
     }
 
-    /**     * set controller txt_search mouse listener.     * @param listen the listen     */
+    /**
+     * Set the mouse listener for the search text field.
+     *
+     * @param listen the mouse listener
+     */
     public void setControllerTxt_searchMouseListener(MouseListener listen) {
         txt_search.addMouseListener(listen);
     }
 
-    /**     * set controller txt_search focus.     * @param listen the listen     */
+    /**
+     * Set the focus listener for the search text field.
+     *
+     * @param listen the focus listener
+     */
     public void setControllerTxt_searchFocus(FocusListener listen) {
         txt_search.addFocusListener(listen);
     }
 
-    /**     * get model.     * @return the get model     */
     public DefaultTableModel getModel() {
         return model;
     }
 
-    /**     * get btn_modify.     * @return the get btn_modify     */
     public ButtonAction getBtn_modify() {
         return btn_modify;
     }
 
-    /**     * get btn_search.     * @return the get btn_search     */
     public ButtonAction getBtn_search() {
         return btn_search;
     }
 
-    /**     * get btn_search cancel.     * @return the get btn_search cancel     */
     public ButtonAction getBtn_searchCancel() {
         return btn_searchCancel;
     }
 
-    /**     * get jtbl_resolutions.     * @return the get jtbl_resolutions     */
     public JTable getJtbl_resolutions() {
         return jtbl_resolutions;
     }
 
-    /**     * get rounded panel3.     * @return the get rounded panel3     */
     public RoundedPanel getRoundedPanel3() {
         return roundedPanel3;
     }
 
-    /**     * get txt_search.     * @return the get txt_search     */
     public JTextField getTxt_search() {
         return txt_search;
     }

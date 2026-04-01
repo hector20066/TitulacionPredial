@@ -1,12 +1,14 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import java.awt.event.ActionListener;
+import java.util.function.BiConsumer;
+
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.util.function.BiConsumer;
 
 /**
  * Form for generating title resolutions.
@@ -795,162 +797,130 @@ public class GenerateResolution extends javax.swing.JPanel {
         btn_generate.setText(texts.getGenerateBtn());
     }
 
-    /**     * set controller generate.     * @param action the action     */
     public void setControllerGenerate(ActionListener action) {
         btn_generate.addActionListener(action);
     }
 
-    /**     * get btn_generate.     * @return the get btn_generate     */
     public ButtonAction getBtn_generate() {
         return btn_generate;
     }
 
-    /**     * get txt_act.     * @return the get txt_act     */
     public JTextField getTxt_act() {
         return txt_act;
     }
 
-    /**     * get ftx_executory.     * @return the get ftx_executory     */
     public JFormattedTextField getFtx_executory() {
         return ftx_executory;
     }
 
-    /**     * get ftx_notification.     * @return the get ftx_notification     */
     public JFormattedTextField getFtx_notification() {
         return ftx_notification;
     }
 
-    /**     * get txt_property code.     * @return the get txt_property code     */
     public JTextField getTxt_propertyCode() {
         return txt_propertyCode;
     }
 
-    /**     * get txt_area.     * @return the get txt_area     */
     public JTextField getTxt_area() {
         return txt_area;
     }
 
-    /**     * get txt_address beneficiary.     * @return the get txt_address beneficiary     */
     public JTextField getTxt_addressBeneficiary() {
         return txt_addressBeneficiary;
     }
 
-    /**     * get txt_cadastral reference.     * @return the get txt_cadastral reference     */
     public JTextField getTxt_cadastralReference() {
         return txt_cadastralReference;
     }
 
-    /**     * get txt_distance1.     * @return the get txt_distance1     */
     public JTextField getTxt_distance1() {
         return txt_distance1;
     }
 
-    /**     * get txt_distance2.     * @return the get txt_distance2     */
     public JTextField getTxt_distance2() {
         return txt_distance2;
     }
 
-    /**     * get txt_distance3.     * @return the get txt_distance3     */
     public JTextField getTxt_distance3() {
         return txt_distance3;
     }
 
-    /**     * get txt_distance4.     * @return the get txt_distance4     */
     public JTextField getTxt_distance4() {
         return txt_distance4;
     }
 
-    /**     * get txt_east coordinate1.     * @return the get txt_east coordinate1     */
     public JTextField getTxt_eastCoordinate1() {
         return txt_eastCoordinate1;
     }
 
-    /**     * get txt_east coordinate2.     * @return the get txt_east coordinate2     */
     public JTextField getTxt_eastCoordinate2() {
         return txt_eastCoordinate2;
     }
 
-    /**     * get txt_east coordinate3.     * @return the get txt_east coordinate3     */
     public JTextField getTxt_eastCoordinate3() {
         return txt_eastCoordinate3;
     }
 
-    /**     * get txt_east coordinate4.     * @return the get txt_east coordinate4     */
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
     }
 
-    /**     * get txt_fmi.     * @return the get txt_fmi     */
     public JTextField getTxt_fmi() {
         return txt_fmi;
     }
 
-    /**     * get txt_hillside1.     * @return the get txt_hillside1     */
     public JTextField getTxt_hillside1() {
         return txt_hillside1;
     }
 
-    /**     * get txt_hillside2.     * @return the get txt_hillside2     */
     public JTextField getTxt_hillside2() {
         return txt_hillside2;
     }
 
-    /**     * get txt_hillside3.     * @return the get txt_hillside3     */
     public JTextField getTxt_hillside3() {
         return txt_hillside3;
     }
 
-    /**     * get txt_hillside4.     * @return the get txt_hillside4     */
     public JTextField getTxt_hillside4() {
         return txt_hillside4;
     }
 
-    /**     * get txt_id beneficiary.     * @return the get txt_id beneficiary     */
     public JTextField getTxt_idBeneficiary() {
         return txt_idBeneficiary;
     }
 
-    /**     * get txt_name beneficiary.     * @return the get txt_name beneficiary     */
     public JTextField getTxt_nameBeneficiary() {
         return txt_nameBeneficiary;
     }
 
-    /**     * get txt_municipality.     * @return the get txt_municipality     */
     public JTextField getTxt_municipality() {
         return txt_municipality;
     }
 
-    /**     * get txt_north coordinate1.     * @return the get txt_north coordinate1     */
     public JTextField getTxt_northCoordinate1() {
         return txt_northCoordinate1;
     }
 
-    /**     * get txt_north coordinate2.     * @return the get txt_north coordinate2     */
     public JTextField getTxt_northCoordinate2() {
         return txt_northCoordinate2;
     }
 
-    /**     * get txt_north coordinate3.     * @return the get txt_north coordinate3     */
     public JTextField getTxt_northCoordinate3() {
         return txt_northCoordinate3;
     }
 
-    /**     * get txt_north coordinate4.     * @return the get txt_north coordinate4     */
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }
 
-    /**     * get txt_note.     * @return the get txt_note     */
     public JTextField getTxt_note() {
         return txt_note;
     }
 
-    /**     * get txt_num resolution.     * @return the get txt_num resolution     */
     public JTextField getTxt_numResolution() {
         return txt_numResolution;
     }
 
-    /**     * get txt_public writing.     * @return the get txt_public writing     */
     public JTextField getTxt_publicWriting() {
         return txt_publicWriting;
     }
@@ -967,7 +937,9 @@ public class GenerateResolution extends javax.swing.JPanel {
      @param dtoBeneficiary  Beneficiary data
      @param beneficiariesId Beneficiary ID numbers
      */
-    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4, String codeBeneficiaries, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
+    public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4,
+                         String codeBeneficiaries, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
+
         BiConsumer<String, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
             txt_idBeneficiary.setText(beneficiariesId);

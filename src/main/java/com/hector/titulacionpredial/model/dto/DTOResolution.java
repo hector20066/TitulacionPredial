@@ -85,72 +85,58 @@ public class DTOResolution {
         this.notary = builder.notary;
     }
 
-    /**     * get resolution number.     * @return the get resolution number     */
     public long getResolutionNumber() {
         return resolutionNumber;
     }
 
-    /**     * set resolution number.     * @param resolutionNumber the resolution number     */
     public void setResolutionNumber(long resolutionNumber) {
         this.resolutionNumber = resolutionNumber;
     }
 
-    /**     * get executory.     * @return the get executory     */
     public LocalDate getExecutory() {
         return executory;
     }
 
-    /**     * set executory.     * @param executory the executory     */
     public void setExecutory(LocalDate executory) {
         this.executory = executory;
     }
 
-    /**     * get act.     * @return the get act     */
     public String getAct() {
         return act;
     }
 
-    /**     * set act.     * @param act the act     */
     public void setAct(String act) {
         this.act = act;
     }
 
-    /**     * get public writing.     * @return the get public writing     */
     public String getPublicWriting() {
         return publicWriting;
     }
 
-    /**     * set public writing.     * @param publicWriting the public writing     */
     public void setPublicWriting(String publicWriting) {
         this.publicWriting = publicWriting;
     }
 
-    /**     * get notification.     * @return the get notification     */
     public LocalDate getNotification() {
         return notification;
     }
 
-    /**     * set notification.     * @param notification the notification     */
     public void setNotification(LocalDate notification) {
         this.notification = notification;
     }
 
-    /**     * get fmi.     * @return the get fmi     */
     public String getFmi() {
         return fmi;
     }
 
-    /**     * set fmi.     * @param fmi the fmi     */
     public void setFmi(String fmi) {
         this.fmi = fmi;
     }
 
-    /**     * get notary.     * @return the get notary     */
     public String getNotary() {
         return notary;
     }
 
-    /**     * set notary.     * @param notary the notary     */
     public void setNotary(String notary) {
         this.notary = notary;
     }
@@ -182,7 +168,6 @@ public class DTOResolution {
          * @return typed instance of the builder
          */
         @SuppressWarnings("unchecked")
-    /**     * self.     * @return the self     */
         protected T self() {
             return (T) this;
         }

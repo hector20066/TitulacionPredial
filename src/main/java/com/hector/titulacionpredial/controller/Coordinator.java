@@ -65,7 +65,6 @@ public class Coordinator {
     private About about;
 
     private ControllerSettings controllerSettings;
-    private ControllerLogin controllerLogin;
 
     /**
      * Responsible for starting the app, loading dependencies,
@@ -159,7 +158,7 @@ public class Coordinator {
                 .withLanguageSubject(languageSubject)
                 .build();
 
-        controllerLogin = new ControllerLoginBuilder()
+        ControllerLogin controllerLogin = new ControllerLoginBuilder()
                 .withViewLogin(login)
                 .withContentAdmin(contentAdmin)
                 .withContentUser(contentUser)

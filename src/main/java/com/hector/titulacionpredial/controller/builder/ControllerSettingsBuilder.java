@@ -6,14 +6,15 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.view.content.panels.Settings;
 
 /**
- * Builder for building instances of {@link ControllerSettings}.
+ * Builder for configuring and constructing the {@link ControllerSettings} controller.
  *
  * <p>
- * Centralize the injection of dependencies necessary for controller
- * configuration using a Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerSettings
  * @since 1.0
  */
 public class ControllerSettingsBuilder {
@@ -64,17 +65,14 @@ public class ControllerSettingsBuilder {
         return new ControllerSettings(this);
     }
 
-    /**     * get settings.     * @return the get settings     */
     public Settings getSettings() {
         return settings;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

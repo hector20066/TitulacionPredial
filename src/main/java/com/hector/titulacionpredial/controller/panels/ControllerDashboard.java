@@ -68,15 +68,6 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     }
 
     @Override
-    /**
-     * Retrieve and update dashboard statistics from the database.
-     *
-     * <p>
-     * Executes database queries in a background thread to fetch statistics
-     * including beneficiary counts, property counts, and resolution metrics.
-     * Updates the UI with the retrieved data using SwingUtilities.invokeLater.
-     * </p>
-     */
     public void update() {
         new Thread(() -> {
             try {
@@ -176,9 +167,6 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     }
 
     @Override
-    /**
-     * Update the interface language based on current language selection.
-     */
     public void updateLanguage() {
         DTODashboardText dto = new DTODashboardText.Builder()
                 .beneficiaries(lang.app("dashboard.beneficiaries"))

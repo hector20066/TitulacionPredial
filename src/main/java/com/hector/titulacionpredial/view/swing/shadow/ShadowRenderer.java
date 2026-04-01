@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  * Shadow renderer using Gaussian blur on the alpha channel of an image.
  *
  * <p>
- * Generates shadow images configurable in size, opacity, and color.
+ * Generates shadow images configurable, opacity, and color.
  * Used by {@link ShadowBorder} to create shadow effects on panels.
  * </p>
  *
@@ -41,17 +41,14 @@ public class ShadowRenderer {
         this.color = color;
     }
 
-    /**     * get color.     * @return the get color     */
     public Color getColor() {
         return color;
     }
 
-    /**     * get opacity.     * @return the get opacity     */
     public float getOpacity() {
         return opacity;
     }
 
-    /**     * get size.     * @return the get size     */
     public int getSize() {
         return size;
     }

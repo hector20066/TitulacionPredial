@@ -7,14 +7,15 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 /**
- * Builder for building instances of {@link ControllerGenerateResolution}.
+ * Builder for configuring and constructing the {@link ControllerGenerateResolution} controller.
  *
  * <p>
- * Centralize the injection of dependencies necessary for
- * controller configuration using a Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerGenerateResolution
  * @since 1.0
  */
 public class ControllerGenerateResolutionBuilder {
@@ -78,22 +79,18 @@ public class ControllerGenerateResolutionBuilder {
         return new ControllerGenerateResolution(this);
     }
 
-    /**     * get generate resolution.     * @return the get generate resolution     */
     public GenerateResolution getGenerateResolution() {
         return generateResolution;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

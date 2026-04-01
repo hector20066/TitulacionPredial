@@ -53,7 +53,6 @@ public class LineChart extends javax.swing.JPanel {
     private final Animator animator;
     private float animate;
     private String showLabel;
-    /**     * point.     * @return the point     */
     private Point labelLocation = new Point();
 
     /**
@@ -65,7 +64,6 @@ public class LineChart extends javax.swing.JPanel {
         setOpaque(false);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
-    /**     * timing event.     * @param fraction the fraction     */
             public void timingEvent(float fraction) {
                 animate = fraction;
                 repaint();
@@ -202,12 +200,10 @@ public class LineChart extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**     * get blank plot chart.     * @return the get blank plot chart     */
     public BlankPlotChart getBlankPlotChart() {
         return blankPlotChart;
     }
 
-    /**     * get panel legend.     * @return the get panel legend     */
     public JPanel getPanelLegend() {
         return panelLegend;
     }

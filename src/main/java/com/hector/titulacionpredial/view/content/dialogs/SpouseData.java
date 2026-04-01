@@ -50,11 +50,6 @@ public class SpouseData extends javax.swing.JDialog {
         getContentPane().setBackground(Color.WHITE);
         
         TimingTarget target = new TimingTargetAdapter() {
-            /**
-             * Timing event handler for animation progress.
-             *
-             * @param fraction the animation progress fraction (0.0 to 1.0)
-             */
             @Override
             public void timingEvent(float fraction) {
                 if (show) {
@@ -64,9 +59,6 @@ public class SpouseData extends javax.swing.JDialog {
                 }
             }
 
-            /**
-             * Animation end handler.
-             */
             @Override
             public void end() {
                 if (!show) {
@@ -80,12 +72,20 @@ public class SpouseData extends javax.swing.JDialog {
         animator.setAcceleration(0.5f);
     }
 
-    /**     * set id beneficiary.     * @param idBeneficiary the id beneficiary     */
+    /**
+     * Set the beneficiary ID associated with this spouse data.
+     *
+     * @param idBeneficiary the beneficiary ID
+     */
     public void setIdBeneficiary(int idBeneficiary) {
         this.idBeneficiary = idBeneficiary;
     }
 
-    /**     * get id beneficiary.     * @return the get id beneficiary     */
+    /**
+     * Get the beneficiary ID associated with this spouse data.
+     *
+     * @return the beneficiary ID
+     */
     public int getIdBeneficiary() {
         return idBeneficiary;
     }

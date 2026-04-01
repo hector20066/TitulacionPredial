@@ -146,14 +146,6 @@ public class ControllerContentAdmin implements LanguageObserver {
         }
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     *
-     * <p>
-     * Populates the menu text with localized strings from the language
-     * manager for all menu items.
-     * </p>
-     */
     @Override
     public void updateLanguage() {
         DTOAdminMenuText dto = new DTOAdminMenuText.Builder()

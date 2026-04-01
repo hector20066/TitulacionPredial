@@ -107,9 +107,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         registerBeneficiary.setControllerCbo_maritalStatus(e -> showSpouseDialog());
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTORegisterBeneficiaryText dto = new DTORegisterBeneficiaryText.Builder()
@@ -305,7 +302,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private void doInBackGroundRegister(String cadastralId, String address, Department department,
                                         Municipalities municipalities, String crossing, String neighborhood,
                                         String publication) {
-
         new Thread(() -> {
             try {
                 if (daoBeneficiary.findById(listBeneficiaries.getFirst().getId()) != null
@@ -561,14 +557,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                 listSpouses.add(dialog.getSpouse());
             }
         }
-    }
-
-    /**
-     * Enables or disables the affected field according
-     * to the checkbox status.
-     */
-    private void affectationSelected() {
-        registerBeneficiary.getTxa_affectation().setEditable(registerBeneficiary.getCbx_affectation().isSelected());
     }
 
 }

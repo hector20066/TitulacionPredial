@@ -1,11 +1,17 @@
 package com.hector.titulacionpredial.view.content;
 
-import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
-import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 /**
  *
@@ -177,6 +183,11 @@ public class ContentLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the view to display content in the specified language.
+     *
+     * @param texts the DTO containing localized labels and messages
+     */
     public void updateLanguage(DTOContentLoginText texts) {
         jlb_title.setText(texts.getTitle());
         jlb_user.setText(texts.getUser());
@@ -186,37 +197,60 @@ public class ContentLogin extends javax.swing.JFrame {
         btn_login.setText(texts.getLogin());
     }
 
-    /**     * set controller login.     * @param action the action     */
+    /**
+     * Set the login button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerLogin(ActionListener action) {
         btn_login.addActionListener(action);
     }
 
-    /**     * set controller see password.     * @param action the action     */
+    /**
+     * Set the see password toggle button click handler.
+     *
+     * @param action the action listener
+     */
     public void setControllerSeePassword(ActionListener action) {
         rbn_seePasswd.addActionListener(action);
     }
 
-    /**     * set txt_user mouse.     * @param listen the listen     */
+    /**
+     * Set the mouse listener for the user text field.
+     *
+     * @param listen the mouse listener
+     */
     public void setTxt_userMouse(MouseListener listen) {
         txt_user.addMouseListener(listen);
     }
 
-    /**     * set txt_user action.     * @param action the action     */
+    /**
+     * Set the action listener for the user text field.
+     *
+     * @param action the action listener
+     */
     public void setTxt_userAction(ActionListener action) {
         txt_user.addActionListener(action);
     }
 
-    /**     * set jpld_password mouse.     * @param listen the listen     */
+    /**
+     * Set the mouse listener for the password field.
+     *
+     * @param listen the mouse listener
+     */
     public void setJpld_passwordMouse(MouseListener listen) {
         jpld_password.addMouseListener(listen);
     }
 
-    /**     * set jpld_password action.     * @param action the action     */
+    /**
+     * Set the action listener for the password field.
+     *
+     * @param action the action listener
+     */
     public void setJpld_passwordAction(ActionListener action) {
         jpld_password.addActionListener(action);
     }
 
-    /**     * get btn_login.     * @return the get btn_login     */
     public ButtonAction getBtn_login() {
         return btn_login;
     }
@@ -225,17 +259,14 @@ public class ContentLogin extends javax.swing.JFrame {
         return cbo_access;
     }
 
-    /**     * get txt_user.     * @return the get txt_user     */
     public JTextField getTxt_user() {
         return txt_user;
     }
 
-    /**     * get jpld_password.     * @return the get jpld_password     */
     public JPasswordField getJpld_password() {
         return jpld_password;
     }
 
-    /**     * get rbn_see passwd.     * @return the get rbn_see passwd     */
     public JRadioButton getRbn_seePasswd() {
         return rbn_seePasswd;
     }

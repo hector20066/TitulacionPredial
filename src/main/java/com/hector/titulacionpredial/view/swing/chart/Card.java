@@ -36,22 +36,18 @@ public class Card extends javax.swing.JPanel {
         color2 = Color.WHITE;
     }
 
-    /**     * set color1.     * @param color1 the color1     */
     public void setColor1(Color color1){
         this.color1 = color1;
     }
 
-    /**     * set color2.     * @param color2 the color2     */
     public void setColor2(Color color2){
         this.color2 = color2;
     }
 
-    /**     * get color1.     * @return the get color1     */
     public Color getColor1(){
         return color1;
     }
 
-    /**     * get color2.     * @return the get color2     */
     public Color getColor2(){
         return color2;
     }
@@ -121,11 +117,6 @@ public class Card extends javax.swing.JPanel {
     
     /**
      * {@inheritDoc}
-     */
-    /**
-     * Paint the component with gradient background and decorative ovals.
-     *
-     * @param grphcs the graphics context
      */
     @Override
     protected void paintComponent(Graphics grphcs) {

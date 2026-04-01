@@ -3,6 +3,14 @@ package com.hector.titulacionpredial.model.dto.user;
 import com.hector.titulacionpredial.model.dto.DTOUser;
 
 /**
+ * Data Transfer Object (DTO) that represents detailed user information.
+ *
+ * <p>
+ * Used to transport user details from the persistence layer to the
+ * presentation layer for display purposes, avoiding direct exposure
+ * of the domain User entity.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -31,38 +39,18 @@ public class DTOUserDetails extends DTOUser {
         this.user = user;
     }
 
-    /**
-     * Get the user name.
-     *
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Set the user name.
-     *
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Get the username.
-     *
-     * @return the username
-     */
     public String getUser() {
         return user;
     }
 
-    /**
-     * Set the username.
-     *
-     * @param user the username to set
-     */
     public void setUser(String user) {
         this.user = user;
     }

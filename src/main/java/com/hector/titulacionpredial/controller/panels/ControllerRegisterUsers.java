@@ -19,6 +19,14 @@ import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 
 /**
+ * Controller for managing user registration functionality.
+ *
+ * <p>
+ * Handles the creation of new user accounts with validation of input fields,
+ * password strength requirements, and persistence through the user facade.
+ * Integrates with the UI layer and supports language changes through observer pattern.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
@@ -30,7 +38,11 @@ public class ControllerRegisterUsers implements LanguageObserver {
 
     private final UsersFacade daoUsers;
 
-    /**     * controller register users.     * @param builder the builder     * @return the controller register users     */
+    /**
+     * controller register users
+     *
+     * @param builder the builder
+     */
     public ControllerRegisterUsers(ControllerRegisterUsersBuilder builder) {
         this.registerUsers = builder.getRegisterUsers();
         this.subject = builder.getSubject();
@@ -43,16 +55,15 @@ public class ControllerRegisterUsers implements LanguageObserver {
         connectEvents();
     }
 
-    /**     * connect events.     */
+    /**
+     * connect events.
+     */
     private void connectEvents() {
         registerUsers.setControllerCreate(e -> createAccount());
         registerUsers.setControllerSeePassword(e -> seePassword());
     }
 
     @Override
-    /**
-     * Update the interface language based on current language selection.
-     */
     public void updateLanguage() {
         DTORegisterUsersText dto = new DTORegisterUsersText.Builder()
                 .title(lang.app("register.users.title"))
@@ -69,7 +80,16 @@ public class ControllerRegisterUsers implements LanguageObserver {
         registerUsers.updateLanguage(dto);
     }
 
-    /**     * create account.     */
+    /**
+     * Creates a new user account after validating all input fields.
+     *
+     * <p>
+     * Retrieves registration data from the view, validates completeness and format
+     * (including ID format and password strength), and executes the account creation
+     * in a background thread to prevent UI blocking. Shows appropriate messages
+     * on validation errors.
+     * </p>
+     */
     private void createAccount() {
         try {
             String name = registerUsers.getTxt_fullName().getText();
@@ -97,7 +117,12 @@ public class ControllerRegisterUsers implements LanguageObserver {
         }
     }
 
-    /**     * is invalid data.     * @param fields the fields     * @return the is invalid data     */
+    /**
+     * is invalid data.
+     *
+     * @param fields the fields
+     * @return the is invalid data
+     */
     private boolean isInvalidData(String... fields) {
         for (String field : fields) {
             if (field.isBlank()) {
@@ -139,7 +164,9 @@ public class ControllerRegisterUsers implements LanguageObserver {
         }).start();
     }
 
-    /**     * invoke later.     */
+    /**
+     * invoke later.
+     */
     private void invokeLater() {
         MessageUtils.informationMessage(lang.message("message.user.register"), registerUsers);
         resetUI();
@@ -147,13 +174,17 @@ public class ControllerRegisterUsers implements LanguageObserver {
         subject.notifyObservers();
     }
 
-    /**     * reset ui.     */
+    /**
+     * reset ui.
+     */
     private void resetUI() {
         registerUsers.getBtn_createAccount().setEnabled(true);
         registerUsers.getBtn_createAccount().setText(lang.app("controller.register.users.create"));
     }
 
-    /**     * see password.     */
+    /**
+     * see password.
+     */
     private void seePassword() {
         if (registerUsers.getRbn_seePasswd().isSelected()) {
             registerUsers.getJpld_password().setEchoChar((char) 0);

@@ -738,216 +738,174 @@ public class RegisterProperty extends javax.swing.JPanel {
         btn_register.setText(texts.getRegisterBtn());
     }
 
-    /**     * set controller register.     * @param action the action     */
     public void setControllerRegister(ActionListener action) {
         btn_register.addActionListener(action);
     }
 
-    /**     * set controller search beneficiaries.     * @param action the action     */
     public void setControllerSearchBeneficiaries(ActionListener action) {
         btn_searchBeneficiaries.addActionListener(action);
     }
-    /**     * set controller import excel data.     * @param action the action     */
+
     public void setControllerImportExcelData(ActionListener action) {
         btn_importExcelData.addActionListener(action);
     }
 
-    /**     * set controller go point2.     * @param action the action     */
     public void setControllerGoPoint2(ActionListener action) {
         btn_goPoint2.addActionListener(action);
     }
 
-    /**     * set controller go point3.     * @param action the action     */
     public void setControllerGoPoint3(ActionListener action) {
         btn_goPoint3.addActionListener(action);
     }
 
-    /**     * set controller go point4.     * @param action the action     */
     public void setControllerGoPoint4(ActionListener action) {
         btn_goPoint4.addActionListener(action);
     }
 
-    /**     * set controller return point1.     * @param action the action     */
     public void setControllerReturnPoint1(ActionListener action) {
         btn_returnPoint1.addActionListener(action);
     }
 
-    /**     * set controller return point2.     * @param action the action     */
     public void setControllerReturnPoint2(ActionListener action) {
         btn_returnPoint2.addActionListener(action);
     }
 
-    /**     * set controller return point3.     * @param action the action     */
     public void setControllerReturnPoint3(ActionListener action) {
         btn_returnPoint3.addActionListener(action);
     }
 
-    /**     * get btn_go point2.     * @return the get btn_go point2     */
     public ButtonBadges getBtn_goPoint2() {
         return btn_goPoint2;
     }
 
-    /**     * get btn_go point3.     * @return the get btn_go point3     */
     public ButtonBadges getBtn_goPoint3() {
         return btn_goPoint3;
     }
 
-    /**     * get btn_go point4.     * @return the get btn_go point4     */
     public ButtonBadges getBtn_goPoint4() {
         return btn_goPoint4;
     }
 
-    /**     * get btn_register.     * @return the get btn_register     */
     public ButtonAction getBtn_register() {
         return btn_register;
     }
 
-    /**     * get btn_return point1.     * @return the get btn_return point1     */
     public ButtonBadges getBtn_returnPoint1() {
         return btn_returnPoint1;
     }
 
-    /**     * get btn_return point2.     * @return the get btn_return point2     */
     public ButtonBadges getBtn_returnPoint2() {
         return btn_returnPoint2;
     }
 
-    /**     * get btn_return point3.     * @return the get btn_return point3     */
     public ButtonBadges getBtn_returnPoint3() {
         return btn_returnPoint3;
     }
 
-    /**     * get btn_search beneficiary.     * @return the get btn_search beneficiary     */
     public ButtonAction getBtn_searchBeneficiary() {
         return btn_searchBeneficiaries;
     }
 
-    /**     * get btn_import excel data.     * @return the get btn_import excel data     */
     public ButtonAction getBtn_importExcelData() {
         return btn_importExcelData;
     }
 
-    /**     * get jpl_content points.     * @return the get jpl_content points     */
     public JPanel getJpl_contentPoints() {
         return jpl_contentPoints;
     }
 
-    /**     * get jpl_point1.     * @return the get jpl_point1     */
     public JPanel getJpl_point1() {
         return jpl_point1;
     }
 
-    /**     * get jpl_point2.     * @return the get jpl_point2     */
     public JPanel getJpl_point2() {
         return jpl_point2;
     }
 
-    /**     * get jpl_point3.     * @return the get jpl_point3     */
     public JPanel getJpl_point3() {
         return jpl_point3;
     }
 
-    /**     * get jpl_point4.     * @return the get jpl_point4     */
     public JPanel getJpl_point4() {
         return jpl_point4;
     }
 
-    /**     * get txt_area.     * @return the get txt_area     */
     public JTextField getTxt_area() {
         return txt_area;
     }
 
-    /**     * get txt_beneficiary code.     * @return the get txt_beneficiary code     */
     public JTextField getTxt_beneficiaryCode() {
         return txt_beneficiaryCode;
     }
 
-    /**     * get txt_cadastral id.     * @return the get txt_cadastral id     */
     public JTextField getTxt_cadastralId() {
         return txt_cadastralId;
     }
 
-    /**     * get txt_address.     * @return the get txt_address     */
     public JTextField getTxt_address() {
         return txt_address;
     }
-    
-    /**     * get txt_distance1.     * @return the get txt_distance1     */
+
     public JTextField getTxt_distance1() {
         return txt_distance1;
     }
 
-    /**     * get txt_distance2.     * @return the get txt_distance2     */
     public JTextField getTxt_distance2() {
         return txt_distance2;
     }
 
-    /**     * get txt_distance3.     * @return the get txt_distance3     */
     public JTextField getTxt_distance3() {
         return txt_distance3;
     }
 
-    /**     * get txt_distance4.     * @return the get txt_distance4     */
     public JTextField getTxt_distance4() {
         return txt_distance4;
     }
 
-    /**     * get txt_east coordinate1.     * @return the get txt_east coordinate1     */
     public JTextField getTxt_eastCoordinate1() {
         return txt_eastCoordinate1;
     }
 
-    /**     * get txt_east coordinate2.     * @return the get txt_east coordinate2     */
     public JTextField getTxt_eastCoordinate2() {
         return txt_eastCoordinate2;
     }
 
-    /**     * get txt_east coordinate3.     * @return the get txt_east coordinate3     */
     public JTextField getTxt_eastCoordinate3() {
         return txt_eastCoordinate3;
     }
 
-    /**     * get txt_east coordinate4.     * @return the get txt_east coordinate4     */
     public JTextField getTxt_eastCoordinate4() {
         return txt_eastCoordinate4;
     }
 
-    /**     * get txt_hillside1.     * @return the get txt_hillside1     */
     public JTextField getTxt_hillside1() {
         return txt_hillside1;
     }
 
-    /**     * get txt_hillside2.     * @return the get txt_hillside2     */
     public JTextField getTxt_hillside2() {
         return txt_hillside2;
     }
 
-    /**     * get txt_hillside3.     * @return the get txt_hillside3     */
     public JTextField getTxt_hillside3() {
         return txt_hillside3;
     }
 
-    /**     * get txt_hillside4.     * @return the get txt_hillside4     */
     public JTextField getTxt_hillside4() {
         return txt_hillside4;
     }
 
-    /**     * get txt_north coordinate1.     * @return the get txt_north coordinate1     */
     public JTextField getTxt_northCoordinate1() {
         return txt_northCoordinate1;
     }
 
-    /**     * get txt_north coordinate2.     * @return the get txt_north coordinate2     */
     public JTextField getTxt_northCoordinate2() {
         return txt_northCoordinate2;
     }
 
-    /**     * get txt_north coordinate3.     * @return the get txt_north coordinate3     */
     public JTextField getTxt_northCoordinate3() {
         return txt_northCoordinate3;
     }
 
-    /**     * get txt_north coordinate4.     * @return the get txt_north coordinate4     */
     public JTextField getTxt_northCoordinate4() {
         return txt_northCoordinate4;
     }

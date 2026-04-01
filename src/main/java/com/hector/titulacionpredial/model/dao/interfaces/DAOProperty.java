@@ -3,8 +3,11 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import java.util.List;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
-import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyModifyBasic;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
@@ -63,8 +66,33 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
      */
     List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Retrieve simplified details of a property by its cadastral reference.
+     *
+     * <p>
+     * This method returns a lightweight version of property information
+     * containing only the most essential details.
+     * </p>
+     *
+     * @param cadastralReference the cadastral reference identifier of the property
+     * @return DTO with simplified property information
+     * @throws DAOException if an error occurs or the record is not found
+     */
     DTOPropertySimpleDetails findSimpleDetails(String cadastralReference) throws DAOException;
 
+    /**
+     * Modify the basic information of an existing property.
+     *
+     * <p>
+     * Updates essential property attributes such as name, municipality,
+     * address, and other fundamental data. This method does not modify
+     * the cadastral reference or other protected fields.
+     * </p>
+     *
+     * @param dto data transfer object containing the updated basic information
+     * @return {@code true} if the modification was successful, {@code false} otherwise
+     * @throws DAOException if an error occurs during the update operation
+     */
     boolean modifyBasicInformation(DTOPropertyModifyBasic dto) throws DAOException;
 
     /**

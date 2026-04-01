@@ -42,42 +42,34 @@ public class CardModel {
 
     }
 
-    /**     * get icon.     * @return the get icon     */
     public Icon getIcon() {
         return icon;
     }
 
-    /**     * set icon.     * @param icon the icon     */
     public void setIcon(Icon icon) {
         this.icon = icon;
     }
 
-    /**     * get title.     * @return the get title     */
     public String getTitle() {
         return title;
     }
 
-    /**     * set title.     * @param title the title     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**     * get values.     * @return the get values     */
     public String getValues() {
         return values;
     }
 
-    /**     * set values.     * @param values the values     */
     public void setValues(String values) {
         this.values = values;
     }
 
-    /**     * get description.     * @return the get description     */
     public String getDescription() {
         return description;
     }
 
-    /**     * set description.     * @param description the description     */
     public void setDescription(String description) {
         this.description = description;
     }

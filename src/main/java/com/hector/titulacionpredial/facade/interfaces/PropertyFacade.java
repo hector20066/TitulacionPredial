@@ -8,7 +8,6 @@ import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyModifyBasic;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -71,8 +70,28 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      */
     List<DTOPropertyDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Retrieve simplified property details using the cadastral reference.
+     *
+     * @param cadastralRef the cadastral reference of the property
+     * @return DTO with simplified property information
+     * @throws DAOException if an error occurs or the property is not found
+     */
     DTOPropertySimpleDetails findSimpleDetails(String cadastralRef) throws DAOException;
 
+    /**
+     * Modify the basic information of an existing property.
+     *
+     * @param department       the new department/region
+     * @param municipality     the new municipality
+     * @param neighborhood     the new neighborhood name
+     * @param address          the new property address
+     * @param crossing         the new property crossing/intersection details
+     * @param publication      the new publication reference
+     * @param cadastralReference the cadastral reference of the property to modify
+     * @return true if the modification was successful, false otherwise
+     * @throws DAOException if an error occurs during the operation
+     */
     boolean modifyBasicInformation(Department department, Municipalities municipality, String neighborhood, String address,
                                    String crossing, String publication, String cadastralReference) throws DAOException;
 

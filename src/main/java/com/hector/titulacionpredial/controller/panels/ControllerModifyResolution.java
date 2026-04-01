@@ -93,9 +93,6 @@ public class ControllerModifyResolution implements LanguageObserver {
     }
 
     @Override
-    /**
-     * Update the interface language based on current language selection.
-     */
     public void updateLanguage() {
         DTOModifyResolutionText dto = new DTOModifyResolutionText.Builder()
                 .title(lang.app("modify.resolution.title"))

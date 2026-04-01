@@ -82,20 +82,10 @@ public class ControllerLogin implements LanguageObserver {
         connectEvents();
     }
 
-    /**
-     * Set the user role for the current session.
-     *
-     * @param role the {@link Role} to assign
-     */
     public void setRole(Role role) {
         this.role = role;
     }
 
-    /**
-     * Retrieve the current user role.
-     *
-     * @return the current {@link Role}
-     */
     public Role getRole() {
         return role;
     }

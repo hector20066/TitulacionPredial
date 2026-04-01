@@ -24,6 +24,7 @@ public class NumericalValidationUtils {
         if (value == null || value.isEmpty()) {
             return false;
         }
+
         return value.matches("\\d+");
     }
 

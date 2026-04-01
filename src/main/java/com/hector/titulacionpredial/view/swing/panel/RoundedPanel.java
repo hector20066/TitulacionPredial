@@ -1,8 +1,12 @@
 package com.hector.titulacionpredial.view.swing.panel;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JPanel;
 
 /**
  * Panel with rounded corners and optional border.
@@ -69,10 +73,11 @@ public class RoundedPanel extends JPanel {
     }
 
     /**
-     * {@inheritDoc}
+     * Paint the component with rounded corners and optional border.
+     *
+     * @param g the graphics context
      */
     @Override
-    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 

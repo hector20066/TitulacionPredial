@@ -46,56 +46,26 @@ public class DTOBeneficiariesCode {
         this.code = code;
     }
 
-    /**
-     * Get the cadastral reference of the property.
-     *
-     * @return cadastral reference
-     */
     public String getCadastral_reference() {
         return cadastral_reference;
     }
 
-    /**
-     * Set the cadastral reference of the property.
-     *
-     * @param cadastral_reference cadastral reference to set
-     */
     public void setCadastral_reference(String cadastral_reference) {
         this.cadastral_reference = cadastral_reference;
     }
 
-    /**
-     * Get the address of the beneficiary.
-     *
-     * @return beneficiary address
-     */
     public String getAddress() {
         return address;
     }
 
-    /**
-     * Set the address of the beneficiary.
-     *
-     * @param address address to set
-     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /**
-     * Get the unique beneficiary code.
-     *
-     * @return beneficiary code
-     */
     public int getCode() {
         return code;
     }
 
-    /**
-     * Set the unique beneficiary code.
-     *
-     * @param code beneficiary code to set
-     */
     public void setCode(int code) {
         this.code = code;
     }

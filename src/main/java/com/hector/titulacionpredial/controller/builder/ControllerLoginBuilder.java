@@ -12,7 +12,16 @@ import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 
 /**
+ * Builder for configuring and constructing the {@link ControllerLogin} controller.
+ *
+ * <p>
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
+ * </p>
+ *
  * @author Ing. Hector Acevedo
+ * @see ControllerLogin
+ * @since 1.0
  */
 public class ControllerLoginBuilder {
 
@@ -26,106 +35,146 @@ public class ControllerLoginBuilder {
     private ControllerContentReader controllerContentReader;
     private LanguageSubject languageSubject;
 
-    /**     * with view login.     * @param login the login     * @return the with view login     */
+    /**
+     * with view login.
+     *
+     * @param login the login
+     * @return the with view login
+     */
     public ControllerLoginBuilder withViewLogin(ContentLogin login) {
         this.login = login;
         return this;
     }
 
-    /**     * with content admin.     * @param contentAdmin the content admin     * @return the with content admin     */
+    /**
+     *  with content admin
+     *
+     *  @param contentAdmin the content admin
+     *  @return the with content admin
+     */
     public ControllerLoginBuilder withContentAdmin(ContentAdmin contentAdmin) {
         this.contentAdmin = contentAdmin;
         return this;
     }
 
-    /**     * with content user.     * @param contentUser the content user     * @return the with content user     */
+    /**
+     * with content user.
+     *
+     * @param contentUser the content user
+     * @return the with content user
+     */
     public ControllerLoginBuilder withContentUser(ContentUser contentUser) {
         this.contentUser = contentUser;
         return this;
     }
 
-    /**     * with content reader.     * @param contentReader the content reader     * @return the with content reader     */
+    /**
+     * with content reader.
+     *
+     * @param contentReader the content reader
+     * @return the with content reader
+     */
     public ControllerLoginBuilder withContentReader(ContentReader contentReader) {
         this.contentReader = contentReader;
         return this;
     }
 
-    /**     * with dashboard.     * @param dashboard the dashboard     * @return the with dashboard     */
+    /**
+     * with dashboard.
+     *
+     * @param dashboard the dashboard
+     * @return the with dashboard
+     */
     public ControllerLoginBuilder withDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
         return this;
     }
 
-    /**     * with subject.     * @param subject the subject     * @return the with subject     */
+    /**
+     * with subject.
+     *
+     * @param subject the subject
+     * @return the with subject
+     */
     public ControllerLoginBuilder withSubject(Subject subject) {
         this.subject = subject;
         return this;
     }
 
-    /**     * with language manager.     * @param languageManager the language manager     * @return the with language manager     */
+    /**
+     * with language manager.
+     *
+     * @param languageManager the language manager
+     * @return the with language manager
+     */
     public ControllerLoginBuilder withLanguageManager(LanguageManager languageManager) {
         this.lang = languageManager;
         return this;
     }
 
-    /**     * with controller content reader.     * @param controllerContentReader the controller content reader     * @return the with controller content reader     */
+    /**
+     * with controller content reader.
+     *
+     * @param controllerContentReader the controller content reader
+     * @return the with controller content reader
+     */
     public ControllerLoginBuilder withControllerContentReader(ControllerContentReader controllerContentReader) {
         this.controllerContentReader = controllerContentReader;
         return this;
     }
 
-    /**     * with language subject.     * @param languageSubject the language subject     * @return the with language subject     */
+    /**
+     * with language subject
+     *
+     * @param languageSubject the language subject
+     * @return the with language subject
+     */
     public ControllerLoginBuilder withLanguageSubject(LanguageSubject languageSubject) {
         this.languageSubject = languageSubject;
         return this;
     }
 
-    /**     * build.     * @return the build     */
+    /**
+     * build.
+     *
+     * @return the build
+     */
     public ControllerLogin build() {
         return new ControllerLogin(this);
     }
 
-    /**     * get login.     * @return the get login     */
     public ContentLogin getLogin() {
         return login;
     }
 
-    /**     * get content admin.     * @return the get content admin     */
     public ContentAdmin getContentAdmin() {
         return contentAdmin;
     }
 
-    /**     * get content user.     * @return the get content user     */
     public ContentUser getContentUser() {
         return contentUser;
     }
 
-    /**     * get content reader.     * @return the get content reader     */
     public ContentReader getContentReader() {
         return contentReader;
     }
 
-    /**     * get dashboard.     * @return the get dashboard     */
     public Dashboard getDashboard() {
         return dashboard;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }
 
-    /**     * get controller content reader.     * @return the get controller content reader     */
     public ControllerContentReader getControllerContentReader() {
         return controllerContentReader;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }

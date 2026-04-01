@@ -14,12 +14,18 @@ public class LoginService {
     private static LoginService instance;
     private final UsersFacade daoUser;
 
-    /**     * login service.     * @return the login service     */
+    /**
+     * Private constructor to prevent instantiation (Singleton pattern).
+     */
     private LoginService() {
         this.daoUser = new UsersImplFacade();
     }
 
-    /**     * get instance.     * @return the get instance     */
+    /**
+     * Returns the unique instance of {@link LoginService}.
+     *
+     * @return the singleton instance
+     */
     public static LoginService getInstance() {
         if (instance == null) {
             instance = new LoginService();

@@ -47,22 +47,18 @@ public class DTOBeneficiaryPropertyUpdate {
         this.propertyCode = propertyCode;
     }
 
-    /**     * get code beneficiaries.     * @return the get code beneficiaries     */
     public String getCodeBeneficiaries() {
         return codeBeneficiaries;
     }
 
-    /**     * set code beneficiaries.     * @param codeBeneficiaries the code beneficiaries     */
     public void setCodeBeneficiaries(String codeBeneficiaries) {
         this.codeBeneficiaries = codeBeneficiaries;
     }
 
-    /**     * get property code.     * @return the get property code     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
-    /**     * set property code.     * @param propertyCode the property code     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }

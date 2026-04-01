@@ -82,62 +82,50 @@ public class DTOPoint {
         this.propertyCode = builder.propertyCode;
     }
 
-    /**     * get number point.     * @return the get number point     */
     public int getNumberPoint() {
         return numberPoint;
     }
 
-    /**     * set number point.     * @param numberPoint the number point     */
     public void setNumberPoint(int numberPoint) {
         this.numberPoint = numberPoint;
     }
 
-    /**     * get north coordinate.     * @return the get north coordinate     */
     public Double getNorthCoordinate() {
         return northCoordinate;
     }
 
-    /**     * set north coordinate.     * @param northCoordinate the north coordinate     */
     public void setNorthCoordinate(Double northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
-    /**     * get east coordinate.     * @return the get east coordinate     */
     public Double getEastCoordinate() {
         return eastCoordinate;
     }
 
-    /**     * set east coordinate.     * @param eastCoordinate the east coordinate     */
     public void setEastCoordinate(Double eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
-    /**     * get distance.     * @return the get distance     */
     public Double getDistance() {
         return distance;
     }
 
-    /**     * set distance.     * @param distance the distance     */
     public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    /**     * get hillside.     * @return the get hillside     */
     public String getHillside() {
         return hillside;
     }
 
-    /**     * set hillside.     * @param hillside the hillside     */
     public void setHillside(String hillside) {
         this.hillside = hillside;
     }
 
-    /**     * get property code.     * @return the get property code     */
     public int getPropertyCode() {
         return propertyCode;
     }
 
-    /**     * set property code.     * @param propertyCode the property code     */
     public void setPropertyCode(int propertyCode) {
         this.propertyCode = propertyCode;
     }
@@ -159,43 +147,77 @@ public class DTOPoint {
         private String hillside;
         private int propertyCode;
 
-    /**     * number point.     * @param numberPoint the number point     * @return the number point     */
+        /**
+         * number point.
+         *
+         * @param numberPoint the number point
+         * @return the number point
+         */
         public Builder numberPoint(int numberPoint) {
             this.numberPoint = numberPoint;
             return this;
         }
 
-    /**     * north coordinate.     * @param northCoordinate the north coordinate     * @return the north coordinate     */
+        /**
+         * north coordinate.
+         *
+         * @param northCoordinate the north coordinate
+         * @return the north coordinate
+         */
         public Builder northCoordinate(Double northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
-    /**     * east coordinate.     * @param eastCoordinate the east coordinate     * @return the east coordinate     */
+        /**
+         * east coordinate.
+         *
+         * @param eastCoordinate the east coordinate
+         * @return the east coordinate
+         */
         public Builder eastCoordinate(Double eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }
 
-    /**     * distance.     * @param distance the distance     * @return the distance     */
+        /**
+         * distance.
+         *
+         * @param distance the distance
+         * @return the distance
+         */
         public Builder distance(Double distance) {
             this.distance = distance;
             return this;
         }
 
-    /**     * hillside.     * @param hillside the hillside     * @return the hillside     */
+        /**
+         * hillside.
+         *
+         * @param hillside the hillside
+         * @return the hillside
+         */
         public Builder hillside(String hillside) {
             this.hillside = hillside;
             return this;
         }
 
-    /**     * property code.     * @param propertyCode the property code     * @return the property code     */
+        /**
+         * property code
+         *
+         * @param propertyCode the property code
+         * @return the property code
+         */
         public Builder propertyCode(int propertyCode) {
             this.propertyCode = propertyCode;
             return this;
         }
 
-    /**     * build.     * @return the build     */
+        /**
+         * build.
+         *
+         * @return the build
+         */
         public DTOPoint build() {
             return new DTOPoint(this);
         }

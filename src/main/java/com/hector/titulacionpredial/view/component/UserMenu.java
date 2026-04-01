@@ -25,7 +25,9 @@ public class UserMenu extends Menu {
     private String aboutApp = "SOBRE LA APP";
     private String about = "Acerca De";
 
-    /**     * user menu.     * @return the user menu     */
+    /**
+     * Creates a user menu and initializes its structure.
+     */
     public UserMenu() {
         super();
         rebuildMenu();
@@ -47,6 +49,11 @@ public class UserMenu extends Menu {
         addMenuItem(new ModelMenuItem("image/info.svg", this.about));
     }
 
+    /**
+     * Update the menu texts with the provided translations.
+     *
+     * @param texts the DTO containing localized menu labels
+     */
     public void setText(DTOUserMenuText texts) {
         this.main = texts.getMainTitle();
         this.dashboard = texts.getDashboard();

@@ -7,14 +7,15 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 
 /**
- * Builder for building instance of {@link ControllerRegisterProperty}.
+ * Builder for configuring and constructing the {@link ControllerRegisterProperty} controller.
  *
  * <p>
- * Centralizes the injection of dependencies necessary for controller
- * configuration using a Builder design pattern.
+ * It assembles all the necessary dependencies (views, facades, language manager, etc.)
+ * and provides a fluid interface for building the controller instance.
  * </p>
  *
  * @author Ing. Hector Acevedo
+ * @see ControllerRegisterProperty
  * @since 1.0
  */
 public class ControllerRegisterPropertyBuilder {
@@ -78,22 +79,18 @@ public class ControllerRegisterPropertyBuilder {
         return new ControllerRegisterProperty(this);
     }
 
-    /**     * get register property.     * @return the get register property     */
     public RegisterProperty getRegisterProperty() {
         return registerProperty;
     }
 
-    /**     * get subject.     * @return the get subject     */
     public Subject getSubject() {
         return subject;
     }
 
-    /**     * get language subject.     * @return the get language subject     */
     public LanguageSubject getLanguageSubject() {
         return languageSubject;
     }
 
-    /**     * get lang.     * @return the get lang     */
     public LanguageManager getLang() {
         return lang;
     }

@@ -119,7 +119,10 @@ public class ControllerContentUser implements LanguageObserver {
             }
             case 2 -> {
                 switch (indexSubMenu) {
-                    case 1 -> NavigatorUtils.showForms(ContentUser.getJpl_content(), viewBeneficiaries);
+                    case 1 -> {
+                        NavigatorUtils.showForms(ContentUser.getJpl_content(), viewBeneficiaries);
+                        viewBeneficiaries.getBtn_modify().setText("Modificar");
+                    }
                     case 2 -> NavigatorUtils.showForms(ContentUser.getJpl_content(), seeProperties);
                     case 3 -> NavigatorUtils.showForms(ContentUser.getJpl_content(), seeResolutions);
                 }
@@ -129,9 +132,6 @@ public class ControllerContentUser implements LanguageObserver {
         }
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTOUserMenuText dto = new DTOUserMenuText.Builder()

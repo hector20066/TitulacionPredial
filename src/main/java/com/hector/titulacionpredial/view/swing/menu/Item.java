@@ -61,7 +61,6 @@ public class Item extends JButton {
 
         addMouseListener(new MouseAdapter() {
             @Override
-    /**     * mouse entered.     * @param evt the evt     */
             public void mouseEntered(MouseEvent evt) {
                 setForeground(mainColor);
                 setCustomIcon(icon);
@@ -73,7 +72,6 @@ public class Item extends JButton {
             }
 
             @Override
-    /**     * mouse exited.     * @param evt the evt     */
             public void mouseExited(MouseEvent evt) {
                 if (!isSelected()) {
                     setForeground(new Color(50, 50, 50));
@@ -90,7 +88,6 @@ public class Item extends JButton {
         if (!mainMenu) {
             animator = new Animator(350, new TimingTargetAdapter() {
                 @Override
-    /**     * timing event.     * @param fraction the fraction     */
                 public void timingEvent(float fraction) {
                     alpha = mouseEnter ? fraction : 1f - fraction;
                     repaint();
@@ -122,7 +119,6 @@ public class Item extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * paint component.     * @param g the g     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -170,7 +166,6 @@ public class Item extends JButton {
      * {@inheritDoc}
      */
     @Override
-    /**     * set selected.     * @param b the b     */
     public void setSelected(boolean b) {
         super.setSelected(b);
 
@@ -184,17 +179,14 @@ public class Item extends JButton {
         setCustomIcon(icon);
     }
 
-    /**     * get main color.     * @return the get main color     */
     public Color getMainColor() {
         return mainColor;
     }
 
-    /**     * get index.     * @return the get index     */
     public int getIndex() {
         return index;
     }
 
-    /**     * is main menu.     * @return the is main menu     */
     public boolean isMainMenu() {
         return mainMenu;
     }
