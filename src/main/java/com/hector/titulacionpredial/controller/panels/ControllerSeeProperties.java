@@ -166,6 +166,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 throw new Exception(lang.message("exception.property.select.row"));
             }
 
+            int propertyCode = (int) seeProperties.getJtbl_properties().getValueAt(selectedRow, 0);
             String codeBeneficiaries = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
             String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
             String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 3).toString();
@@ -202,8 +203,8 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
 
             DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, address, municipalities, cadastralReference);
 
-            generateResolution.loadData(area, point1, point2, point3, point4, codeBeneficiaries, dtoBeneficiary, beneficiaryId);
             generateResolution.clearFields();
+            generateResolution.loadData(area, point1, point2, point3, point4, codeBeneficiaries, dtoBeneficiary, beneficiaryId, propertyCode);
             NavigatorUtils.showForms(controllerLogin.jpl_Content(), generateResolution);
         } catch (Exception e) {
             MessageUtils.errorMessage(e.getMessage(), seeProperties);

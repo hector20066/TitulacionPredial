@@ -274,22 +274,17 @@
                                                               <Component id="jlb_east2" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_hillside2" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="jlb_distance2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                              <Component id="jlb_north4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_east4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_hillside4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jlb_distance4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Group type="102" attributes="0">
+                                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                                       <Component id="txt_northCoordinate2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_eastCoordinate2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_distance2" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_hillside2" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <Component id="jlb_north4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="jlb_east4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="jlb_hillside4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="jlb_distance4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" attributes="0">
                                                                       <Component id="txt_northCoordinate4" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_eastCoordinate4" alignment="0" max="32767" attributes="0"/>
                                                                       <Component id="txt_distance4" alignment="0" max="32767" attributes="0"/>
@@ -348,7 +343,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jlb_propertyCode" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_propertyCode" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <Component id="txt_codeBeneficiaries" min="-2" pref="230" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -408,7 +403,7 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jlb_propertyCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txt_propertyCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txt_codeBeneficiaries" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                           <Component id="jlb_point2" min="-2" max="-2" attributes="0"/>
@@ -1016,7 +1011,7 @@
                             <Property name="text" type="java.lang.String" value="Codigo de la propiedad:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txt_propertyCode">
+                        <Component class="javax.swing.JTextField" name="txt_codeBeneficiaries">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

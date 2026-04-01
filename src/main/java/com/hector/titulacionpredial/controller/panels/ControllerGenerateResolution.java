@@ -145,7 +145,7 @@ public class ControllerGenerateResolution implements LanguageObserver {
             Date notification = (Date) generateResolution.getFtx_notification().getValue();
             String fmi = generateResolution.getTxt_fmi().getText().trim();
             String notary = generateResolution.getTxt_note().getText().trim();
-            String propertyCode = generateResolution.getTxt_propertyCode().getText().trim();
+            int propertyCode = generateResolution.getPropertyCode();
             String beneficiaryName = generateResolution.getTxt_nameBeneficiary().getText().trim();
             String address = generateResolution.getTxt_addressBeneficiary().getText().trim();
             String cadastralId = generateResolution.getTxt_cadastralReference().getText().trim().replace(".", "");
@@ -154,13 +154,13 @@ public class ControllerGenerateResolution implements LanguageObserver {
 
             String path = DialogUtils.selectRoute(generateResolution);
 
-            validations(executory, notification, path, resolutionNumber, notary, propertyCode);
+            validations(executory, notification, path, resolutionNumber, notary, String.valueOf(propertyCode));
 
             LocalDate executoryLocalDate = executory.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate notificationLocalDate = notification.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
             doInBackground(Integer.parseInt(resolutionNumber), executoryLocalDate, act, publicWriting, notificationLocalDate,
-                    fmi, notary, Integer.parseInt(propertyCode), beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
+                    fmi, notary, propertyCode, beneficiaryName, idBeneficiaries, address, cadastralId, area, path);
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), generateResolution);
         }

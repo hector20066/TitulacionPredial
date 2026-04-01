@@ -25,6 +25,8 @@ import com.hector.titulacionpredial.view.swing.button.ButtonAction;
  */
 public class GenerateResolution extends javax.swing.JPanel {
 
+    private int propertyCode;
+    
     /**
      * Create the resolution generation form.
      */
@@ -33,6 +35,14 @@ public class GenerateResolution extends javax.swing.JPanel {
         
         scroll1.getVerticalScrollBar().setUnitIncrement(15);
         scroll2.getVerticalScrollBar().setUnitIncrement(15);
+    }
+    
+    public void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
+    }
+    
+    public int getPropertyCode() {
+        return propertyCode;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -93,7 +103,7 @@ public class GenerateResolution extends javax.swing.JPanel {
         jlb_hillside4 = new javax.swing.JLabel();
         txt_hillside4 = new javax.swing.JTextField();
         jlb_propertyCode = new javax.swing.JLabel();
-        txt_propertyCode = new javax.swing.JTextField();
+        txt_codeBeneficiaries = new javax.swing.JTextField();
         jlb_area = new javax.swing.JLabel();
         txt_area = new javax.swing.JTextField();
         jlb_enterInfo = new javax.swing.JLabel();
@@ -324,9 +334,9 @@ public class GenerateResolution extends javax.swing.JPanel {
         jlb_propertyCode.setForeground(new java.awt.Color(33, 37, 41));
         jlb_propertyCode.setText("Codigo de la propiedad:");
 
-        txt_propertyCode.setEditable(false);
-        txt_propertyCode.setBackground(new java.awt.Color(255, 255, 255));
-        txt_propertyCode.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_codeBeneficiaries.setEditable(false);
+        txt_codeBeneficiaries.setBackground(new java.awt.Color(255, 255, 255));
+        txt_codeBeneficiaries.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         jlb_area.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jlb_area.setForeground(new java.awt.Color(33, 37, 41));
@@ -386,13 +396,6 @@ public class GenerateResolution extends javax.swing.JPanel {
                                             .addComponent(jlb_east2)
                                             .addComponent(jlb_hillside2)
                                             .addComponent(jlb_distance2)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txt_northCoordinate2)
-                                                    .addComponent(txt_eastCoordinate2)
-                                                    .addComponent(txt_distance2)
-                                                    .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addComponent(jlb_north4)
                                             .addComponent(jlb_east4)
                                             .addComponent(jlb_hillside4)
@@ -400,6 +403,10 @@ public class GenerateResolution extends javax.swing.JPanel {
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txt_northCoordinate2)
+                                                    .addComponent(txt_eastCoordinate2)
+                                                    .addComponent(txt_distance2)
+                                                    .addComponent(txt_hillside2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txt_northCoordinate4)
                                                     .addComponent(txt_eastCoordinate4)
                                                     .addComponent(txt_distance4)
@@ -442,7 +449,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jlb_propertyCode)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_codeBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109))
         );
         jPanel3Layout.setVerticalGroup(
@@ -495,7 +502,7 @@ public class GenerateResolution extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlb_propertyCode)
-                            .addComponent(txt_propertyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_codeBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addComponent(jlb_point2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -817,8 +824,8 @@ public class GenerateResolution extends javax.swing.JPanel {
         return ftx_notification;
     }
 
-    public JTextField getTxt_propertyCode() {
-        return txt_propertyCode;
+    public JTextField getTxt_codeBeneficiaries() {
+        return txt_codeBeneficiaries;
     }
 
     public JTextField getTxt_area() {
@@ -936,9 +943,10 @@ public class GenerateResolution extends javax.swing.JPanel {
      @param codeBeneficiaries     Property code
      @param dtoBeneficiary  Beneficiary data
      @param beneficiariesId Beneficiary ID numbers
+     @param propertyCode    Property Code
      */
     public void loadData(double area, String[] point1, String[] point2, String[] point3, String[] point4,
-                         String codeBeneficiaries, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId) {
+                         String codeBeneficiaries, DTOBeneficiarySimpleDetails dtoBeneficiary, String beneficiariesId, int propertyCode) {
 
         BiConsumer<String, DTOBeneficiarySimpleDetails> consumer = (codeProperty, beneficiary) -> {
             txt_nameBeneficiary.setText(beneficiary.getFullName());
@@ -947,7 +955,7 @@ public class GenerateResolution extends javax.swing.JPanel {
             txt_municipality.setText(beneficiary.getMunicipalities().getValue());
             txt_cadastralReference.setText(String.valueOf(beneficiary.getCadastralReference()));
 
-            txt_propertyCode.setText(codeProperty);
+            txt_codeBeneficiaries.setText(codeProperty);
 
             txt_northCoordinate1.setText(point1[0]);
             txt_eastCoordinate1.setText(point1[1]);
@@ -970,6 +978,7 @@ public class GenerateResolution extends javax.swing.JPanel {
             txt_hillside4.setText(point4[3]);
             
             txt_area.setText(String.valueOf(area));
+            setPropertyCode(propertyCode);
         };
 
         consumer.accept(codeBeneficiaries, dtoBeneficiary);
@@ -1040,6 +1049,7 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_addressBeneficiary;
     private javax.swing.JTextField txt_area;
     private javax.swing.JTextField txt_cadastralReference;
+    private javax.swing.JTextField txt_codeBeneficiaries;
     private javax.swing.JTextField txt_distance1;
     private javax.swing.JTextField txt_distance2;
     private javax.swing.JTextField txt_distance3;
@@ -1062,7 +1072,6 @@ public class GenerateResolution extends javax.swing.JPanel {
     private javax.swing.JTextField txt_northCoordinate4;
     private javax.swing.JTextField txt_note;
     private javax.swing.JTextField txt_numResolution;
-    private javax.swing.JTextField txt_propertyCode;
     private javax.swing.JTextField txt_publicWriting;
     // End of variables declaration//GEN-END:variables
 }

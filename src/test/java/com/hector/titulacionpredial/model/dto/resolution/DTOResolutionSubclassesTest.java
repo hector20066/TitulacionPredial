@@ -22,7 +22,7 @@ class DTOResolutionSubclassesTest {
         @DisplayName("Constructor vacío debe crear DTO con valores por defecto")
         void defaultConstructorShouldWork() {
             DTOResolutionCreate dto = new DTOResolutionCreate();
-            assertEquals(0, dto.getPropertyCode());
+            assertEquals(0, dto.getCodeBeneficiaries());
             assertNull(dto.getBeneficiaryName());
         }
 
@@ -42,7 +42,7 @@ class DTOResolutionSubclassesTest {
                     .build();
 
             assertEquals(100L, dto.getResolutionNumber());
-            assertEquals(10, dto.getPropertyCode());
+            assertEquals(10, dto.getCodeBeneficiaries());
             assertEquals("Juan Pérez", dto.getBeneficiaryName());
             assertEquals("FMI-001", dto.getFmi());
             assertEquals(LocalDate.of(2025, 1, 1), dto.getNotification());
@@ -57,7 +57,7 @@ class DTOResolutionSubclassesTest {
         void setPropertyCodeShouldWork() {
             DTOResolutionCreate dto = new DTOResolutionCreate();
             dto.setPropertyCode(25);
-            assertEquals(25, dto.getPropertyCode());
+            assertEquals(25, dto.getCodeBeneficiaries());
         }
 
         @Test
