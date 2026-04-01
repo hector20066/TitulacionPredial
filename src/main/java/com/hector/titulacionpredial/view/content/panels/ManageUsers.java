@@ -51,7 +51,6 @@ public class ManageUsers extends javax.swing.JPanel {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -121,7 +120,7 @@ public class ManageUsers extends javax.swing.JPanel {
         rebuildPanels();
     }
 
-    /**
+    /**controllerAccounts
      * Load and display all user accounts.
      *
      * @param users list of user details to display
@@ -201,7 +200,8 @@ public class ManageUsers extends javax.swing.JPanel {
         btn_remove.setBackground(new Color(242, 233, 240));
 
         btn_remove.addActionListener(e -> {
-            int confirm = MessageUtils.confirmDialog("\u00bf¿Seguro que deseas eliminar la cuenta de" + " " + account.getName() + " " + "?", this);
+            int confirm = MessageUtils.confirmDialog("\u00bf¿Seguro que deseas eliminar la cuenta de" + " "
+                    + account.getName() + " " + "?", this);
 
             if (confirm == MessageUtils.yesOption()) {
                 controller.deleteAccount(account.getId(), panelAccount);

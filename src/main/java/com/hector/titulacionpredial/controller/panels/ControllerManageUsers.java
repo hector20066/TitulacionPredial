@@ -84,9 +84,15 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     public void modifyAccount(DTOUserDetails account) {
         int id = account.getId();
         String newPassword = MessageUtils.inputDialog(lang.message("message.user.enter.newPassword"), manageUsers);
+
+        if (newPassword == null || newPassword.trim().isEmpty()) {
+            return;
+        }
+
         new Thread(() -> {
             try {
                 boolean success = daoUsers.modifyPassword(id, newPassword);
+
                 SwingUtilities.invokeLater(() -> {
                     actionForSuccess(success);
                 });
@@ -134,7 +140,6 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
     }
 
     private void loadData(List<DTOUserDetails> listUsers) {
-        manageUsers.clearPanel();
         manageUsers.loadUsers(listUsers, this);
     }
 

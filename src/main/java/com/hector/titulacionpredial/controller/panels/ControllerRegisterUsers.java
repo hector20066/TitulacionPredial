@@ -96,7 +96,7 @@ public class ControllerRegisterUsers implements LanguageObserver {
             String id = registerUsers.getTxt_id().getText();
             String user = registerUsers.getTxt_user().getText();
             String password = new String(registerUsers.getJpld_password().getPassword());
-            Role role = (Role) registerUsers.getCbo_role().getSelectedItem();
+            Role role = Role.valueOf((String) registerUsers.getCbo_role().getSelectedItem());
 
             if (isInvalidData(name, id, user, password)) {
                 throw new EmptyFieldException(lang.message("empty.user.general"));

@@ -216,20 +216,15 @@
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jlb_beneficiaryInfo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jlb_residenceData" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="btn_addBeneficiaries" min="-2" pref="260" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="jlb_beneficiaryInfo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jlb_residenceData" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btn_addBeneficiaries" min="-2" pref="260" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -681,6 +676,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="AGREGAR BENEFICIARIO"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="15" style="1"/>
             </Property>

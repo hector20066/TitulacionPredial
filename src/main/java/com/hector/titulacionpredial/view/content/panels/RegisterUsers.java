@@ -94,7 +94,7 @@ public class RegisterUsers extends javax.swing.JPanel {
         jlb_rol.setText("Rol del Usuario:");
 
         cbo_role.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        cbo_role.setModel(new javax.swing.DefaultComboBoxModel<>(Role.values()));
+        cbo_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "EMPLOYEE" }));
 
         btn_createAccount.setBackground(new java.awt.Color(64, 145, 108));
         btn_createAccount.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,7 +235,7 @@ public class RegisterUsers extends javax.swing.JPanel {
         return btn_createAccount;
     }
 
-    public JComboBox<Role> getCbo_role() {
+    public JComboBox<String> getCbo_role() {
         return cbo_role;
     }
 
@@ -272,7 +272,7 @@ public class RegisterUsers extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_createAccount;
-    private javax.swing.JComboBox<Role> cbo_role;
+    private javax.swing.JComboBox<String> cbo_role;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlb_desc;
     private javax.swing.JLabel jlb_desc2;

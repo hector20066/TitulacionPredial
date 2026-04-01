@@ -393,16 +393,13 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE))))
                                 .addGap(10, 10, 10))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlb_beneficiaryInfo)
-                                            .addComponent(jlb_residenceData)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_addBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(jlb_beneficiaryInfo)
+                                    .addComponent(jlb_residenceData)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_addBeneficiaries, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(37, 37, 37)))
                 .addContainerGap())
         );
@@ -469,6 +466,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         btn_register.setBackground(new java.awt.Color(64, 145, 108));
         btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("AGREGAR BENEFICIARIO");
+        btn_register.setEnabled(false);
         btn_register.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 

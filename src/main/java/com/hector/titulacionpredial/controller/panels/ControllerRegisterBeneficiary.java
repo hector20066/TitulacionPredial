@@ -259,17 +259,25 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      *  register.
      */
     private void register() {
-        String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
-        Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
-        Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
-        String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
-        String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
-        String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
-        String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
+        try {
+            if (listBeneficiaries.isEmpty()) {
+                throw new EmptyFieldException("No hay beneficiarios para registrar.");
+            }
 
-        prepareUI(false);
-        doInBackGroundRegister(cadastralReference, address, department, municipality,
-                crossing, neighborhood, publication);
+            String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
+            Department department = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
+            Municipalities municipality = (Municipalities) registerBeneficiary.getCbo_municipality().getSelectedItem();
+            String neighborhood = registerBeneficiary.getTxt_neighborhood().getText().trim();
+            String address = registerBeneficiary.getTxt_address().getText().trim().toUpperCase();
+            String publication = (String) registerBeneficiary.getCbo_publication().getSelectedItem();
+            String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
+
+            prepareUI(false);
+            doInBackGroundRegister(cadastralReference, address, department, municipality,
+                    crossing, neighborhood, publication);
+        } catch (InvalidInputException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -426,6 +434,10 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
 
             listBeneficiaries.add(dto);
             cleanUIAddBeneficiaries();
+
+            if (!listBeneficiaries.isEmpty()) {
+                registerBeneficiary.getBtn_register().setEnabled(true);
+            }
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
@@ -488,7 +500,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         return false;
     }
 
-    /**     * clean ui add beneficiaries.     */
     private void cleanUIAddBeneficiaries() {
         registerBeneficiary.getTxt_fullName().setText("");
         registerBeneficiary.getTxt_id().setText("");
