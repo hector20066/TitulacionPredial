@@ -11,6 +11,29 @@ import org.junit.jupiter.api.Test;
 
 import com.hector.titulacionpredial.model.dto.DTOResolution;
 
+/**
+ * Unit tests for {@link DTOResolution} subclasses.
+ *
+ * <p>
+ * This test class validates the behavior of resolution-related Data Transfer Objects,
+ * including {@link DTOResolutionCreate}, {@link DTOResolutionDetails}, and
+ * {@link DTOResolutionUpdate}. It ensures that each subclass properly extends
+ * {@link DTOResolution} and provides the specific functionality required for
+ * creating, viewing, and updating resolution information.
+ * </p>
+ *
+ * <p>
+ * Test coverage organized by nested test classes:
+ * <ul>
+ *     <li><strong>DTOResolutionCreate Tests:</strong> Creating new resolutions with property and beneficiary information</li>
+ *     <li><strong>DTOResolutionDetails Tests:</strong> Detailed resolution information display</li>
+ *     <li><strong>DTOResolutionUpdate Tests:</strong> Updating existing resolution data</li>
+ * </ul>
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
+ */
 @DisplayName("DTOResolution Subclasses Tests")
 class DTOResolutionSubclassesTest {
 
@@ -22,7 +45,7 @@ class DTOResolutionSubclassesTest {
         @DisplayName("Constructor vacío debe crear DTO con valores por defecto")
         void defaultConstructorShouldWork() {
             DTOResolutionCreate dto = new DTOResolutionCreate();
-            assertEquals(0, dto.getCodeBeneficiaries());
+            assertEquals(0, dto.getPropertyCode());
             assertNull(dto.getBeneficiaryName());
         }
 
@@ -42,7 +65,7 @@ class DTOResolutionSubclassesTest {
                     .build();
 
             assertEquals(100L, dto.getResolutionNumber());
-            assertEquals(10, dto.getCodeBeneficiaries());
+            assertEquals(10, dto.getPropertyCode());
             assertEquals("Juan Pérez", dto.getBeneficiaryName());
             assertEquals("FMI-001", dto.getFmi());
             assertEquals(LocalDate.of(2025, 1, 1), dto.getNotification());
@@ -57,7 +80,7 @@ class DTOResolutionSubclassesTest {
         void setPropertyCodeShouldWork() {
             DTOResolutionCreate dto = new DTOResolutionCreate();
             dto.setPropertyCode(25);
-            assertEquals(25, dto.getCodeBeneficiaries());
+            assertEquals(25, dto.getPropertyCode());
         }
 
         @Test

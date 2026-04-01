@@ -14,6 +14,30 @@ import org.junit.jupiter.api.Test;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.DTOProperty;
 
+/**
+ * Unit tests for {@link DTOPropertyCreate} and {@link DTOPropertyDetails} classes.
+ *
+ * <p>
+ * This test class validates the behavior of the property-related Data Transfer Objects,
+ * focusing on their inheritance from {@link DTOProperty}, builder pattern implementation,
+ * and the extended functionality they provide for creating and displaying detailed
+ * property information.
+ * </p>
+ *
+ * <p>
+ * Test coverage includes:
+ * <ul>
+ *     <li>Inheritance verification from DTOProperty</li>
+ *     <li>Builder pattern construction with all fields</li>
+ *     <li>Getter and setter functionality</li>
+ *     <li>List initialization for geometric points</li>
+ *     <li>Association with beneficiaries and resolutions</li>
+ * </ul>
+ * </p>
+ *
+ * @author Ing. Hector Acevedo
+ * @since 1.0
+ */
 @DisplayName("DTOPropertyCreate & DTOPropertyDetails Tests")
 class DTOPropertySubclassesTest {
 
@@ -64,7 +88,7 @@ class DTOPropertySubclassesTest {
                 .build();
 
         assertEquals(1, dto.getPropertyCode());
-        assertEquals("CAD-100", dto.getCadastralId());
+        assertEquals("CAD-100", dto.getCadastralRef());
         assertEquals(500.0, dto.getArea());
         assertEquals("1000332, 2134", dto.getBeneficiariesIds());
         assertEquals("hector, juan", dto.getBeneficiariesName());
