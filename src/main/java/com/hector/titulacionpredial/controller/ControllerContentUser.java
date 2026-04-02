@@ -178,4 +178,12 @@ public class ControllerContentUser implements LanguageObserver {
         contentUser.dispose();
     }
 
+    public void showButtons() {
+        viewBeneficiaries.getBtn_delete().setVisible(true);
+        viewBeneficiaries.getBtn_modify().setVisible(true);
+        seeProperties.getBtn_delete().setVisible(true);
+        seeProperties.getBtn_generate().setVisible(true);
+        seeResolutions.getBtn_modify().setVisible(true);
+    }
+
 }

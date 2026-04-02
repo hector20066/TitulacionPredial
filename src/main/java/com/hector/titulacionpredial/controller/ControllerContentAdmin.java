@@ -178,7 +178,7 @@ public class ControllerContentAdmin implements LanguageObserver {
     }
 
     /**
-     * Perform logout operation and return to login screen.
+     * Perform logout operation and return to log in screen.
      *
      * <p>
      * Closes the current admin content window and displays the login
@@ -191,7 +191,6 @@ public class ControllerContentAdmin implements LanguageObserver {
         this.contentLogin.setLocationRelativeTo(null);
         this.contentLogin.getBtn_login().setEnabled(true);
         this.contentLogin.getBtn_login().setText(lang.app("controller.content.login"));
-        this.content.setVisible(false);
         this.content.dispose();
     }
 

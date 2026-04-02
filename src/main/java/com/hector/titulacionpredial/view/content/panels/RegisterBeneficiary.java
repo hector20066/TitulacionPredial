@@ -686,6 +686,8 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_title.setText(getJlbTitleModify());
         btn_register.setText(getBtnModifyText());
 
+        btn_register.setEnabled(true);
+
         isLoading = false;
     }
 

@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller.builder;
 
 import com.hector.titulacionpredial.controller.ControllerContentReader;
+import com.hector.titulacionpredial.controller.ControllerContentUser;
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
@@ -33,6 +34,7 @@ public class ControllerLoginBuilder {
     private Subject subject;
     private LanguageManager lang;
     private ControllerContentReader controllerContentReader;
+    private ControllerContentUser controllerContentUser;
     private LanguageSubject languageSubject;
 
     /**
@@ -123,6 +125,11 @@ public class ControllerLoginBuilder {
         return this;
     }
 
+    public ControllerLoginBuilder withControllerContentUser(ControllerContentUser controllerContentUser) {
+        this.controllerContentUser = controllerContentUser;
+        return this;
+    }
+
     /**
      * with language subject
      *
@@ -173,6 +180,10 @@ public class ControllerLoginBuilder {
 
     public ControllerContentReader getControllerContentReader() {
         return controllerContentReader;
+    }
+
+    public ControllerContentUser getControllerContentUser() {
+        return controllerContentUser;
     }
 
     public LanguageSubject getLanguageSubject() {

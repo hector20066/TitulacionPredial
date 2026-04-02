@@ -250,6 +250,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             subject.notifyObservers();
             NavigatorUtils.showForms(controllerLogin.jpl_Content(), viewBeneficiaries);
             registerBeneficiary.clearFields();
+            viewBeneficiaries.getBtn_modify().setEnabled(true);
+            viewBeneficiaries.getBtn_modify().setText("Modificar");
         } else {
             MessageUtils.errorMessage(lang.message("message.beneficiary.error.modify"), registerBeneficiary);
         }
@@ -273,8 +275,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             String crossing = registerBeneficiary.getTxa_crossing().getText().trim();
 
             prepareUI(false);
-            doInBackGroundRegister(cadastralReference, address, department, municipality,
-                    crossing, neighborhood, publication);
+            doInBackgroundRegister(cadastralReference, address, department, municipality, crossing, neighborhood,
+                    publication);
         } catch (InvalidInputException e) {
             throw new RuntimeException(e);
         }
@@ -307,7 +309,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      *
      *
      */
-    private void doInBackGroundRegister(String cadastralId, String address, Department department,
+    private void doInBackgroundRegister(String cadastralId, String address, Department department,
                                         Municipalities municipalities, String crossing, String neighborhood,
                                         String publication) {
         new Thread(() -> {
@@ -327,7 +329,8 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
 
                 for (DTOBeneficiary dto : listBeneficiaries) {
                     int codeBeneficiary = daoBeneficiary.add(dto.getCodeBeneficiaries(), dto.getId(), dto.getFullName(),
-                            dto.getMaritalStatus(), dto.getAffectation(), dto.getPhone(), dto.getExpeditionLocation(), propertyCode);
+                            dto.getMaritalStatus(), dto.getAffectation(), dto.getPhone(), dto.getExpeditionLocation(),
+                            propertyCode);
 
                     if (dto.getMaritalStatus() == MaritalStatus.MARRIED || dto.getMaritalStatus() == MaritalStatus.FREE_UNION) {
                         spouse: for (DTOSpouseController dtoSpouse : listSpouses) {

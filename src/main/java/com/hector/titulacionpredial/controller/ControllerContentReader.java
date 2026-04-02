@@ -152,22 +152,6 @@ public class ControllerContentReader implements LanguageObserver {
     }
 
     /**
-     * Prepare the user interface for read-only access.
-     *
-     * <p>
-     * Configures the visibility of UI elements, hiding buttons that
-     * require modification permissions.
-     * </p>
-     */
-    public void prepareUI() {
-        viewBeneficiaries.getBtn_delete().setVisible(false);
-        viewBeneficiaries.getBtn_modify().setVisible(false);
-        seeProperties.getBtn_delete().setVisible(false);
-        seeProperties.getBtn_generate().setVisible(false);
-        seeResolutions.getBtn_modify().setVisible(false);
-    }
-
-    /**
      * Perform logout operation and return to login screen.
      *
      * <p>
@@ -181,8 +165,7 @@ public class ControllerContentReader implements LanguageObserver {
         this.contentLogin.setLocationRelativeTo(null);
         this.contentLogin.getBtn_login().setEnabled(true);
         this.contentLogin.getBtn_login().setText(lang.app("controller.content.login"));
-        contentReader.setVisible(false);
-        contentReader.dispose();
+        this.contentReader.dispose();
     }
 
 }

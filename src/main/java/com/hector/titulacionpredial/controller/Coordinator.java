@@ -158,6 +158,22 @@ public class Coordinator {
                 .withLanguageSubject(languageSubject)
                 .build();
 
+        ControllerContentUser controllerContentUser = new ControllerContentUserBuilder()
+                .withViewContent(contentUser)
+                .withViewDashboard(dashboard)
+                .withViewRegisterBeneficiary(registerBeneficiary)
+                .withViewRegisterProperty(registerProperty)
+                .withViewBeneficiaries(viewBeneficiaries)
+                .withViewSeeProperties(seeProperties)
+                .withViewSeeResolutions(seeResolutions)
+                .withViewSettings(settings)
+                .withSubject(subject)
+                .withViewAbout(about)
+                .withViewLogin(login)
+                .withLanguageManager(lang)
+                .withLanguageSubject(languageSubject)
+                .build();
+
         ControllerLogin controllerLogin = new ControllerLoginBuilder()
                 .withViewLogin(login)
                 .withContentAdmin(contentAdmin)
@@ -167,6 +183,7 @@ public class Coordinator {
                 .withSubject(subject)
                 .withLanguageManager(lang)
                 .withControllerContentReader(controllerContentReader)
+                .withControllerContentUser(controllerContentUser)
                 .withLanguageSubject(languageSubject)
                 .build();
 
@@ -180,22 +197,6 @@ public class Coordinator {
                 .withViewSeeResolutions(seeResolutions)
                 .withViewRegisterUsers(registerUsers)
                 .witViewManageUsers(manageUsers)
-                .withViewSettings(settings)
-                .withSubject(subject)
-                .withViewAbout(about)
-                .withViewLogin(login)
-                .withLanguageManager(lang)
-                .withLanguageSubject(languageSubject)
-                .build();
-
-        new ControllerContentUserBuilder()
-                .withViewContent(contentUser)
-                .withViewDashboard(dashboard)
-                .withViewRegisterBeneficiary(registerBeneficiary)
-                .withViewRegisterProperty(registerProperty)
-                .withViewBeneficiaries(viewBeneficiaries)
-                .withViewSeeProperties(seeProperties)
-                .withViewSeeResolutions(seeResolutions)
                 .withViewSettings(settings)
                 .withSubject(subject)
                 .withViewAbout(about)

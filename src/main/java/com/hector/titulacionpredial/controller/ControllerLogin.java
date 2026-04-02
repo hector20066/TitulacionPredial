@@ -59,6 +59,7 @@ public class ControllerLogin implements LanguageObserver {
     private final Subject subject;
     private final LanguageManager lang;
     private final ControllerContentReader controllerContentReader;
+    private final ControllerContentUser controllerContentUser;
     private Role role;
 
     /**
@@ -76,6 +77,7 @@ public class ControllerLogin implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
         this.controllerContentReader = builder.getControllerContentReader();
+        this.controllerContentUser = builder.getControllerContentUser();
 
         builder.getLanguageSubject().register(this);
 
@@ -291,6 +293,7 @@ public class ControllerLogin implements LanguageObserver {
         java.awt.EventQueue.invokeLater(() -> {
             contentAdmin.setVisible(true);
             contentAdmin.setLocationRelativeTo(null);
+            controllerContentUser.showButtons();
             NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
         });
 
@@ -325,6 +328,7 @@ public class ControllerLogin implements LanguageObserver {
             java.awt.EventQueue.invokeLater(() -> {
                 contentUser.setVisible(true);
                 contentUser.setLocationRelativeTo(null);
+                controllerContentUser.showButtons();
                 NavigatorUtils.showForms(ContentUser.getJpl_content(), dashboard);
             });
         }
