@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.service;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.enums.Role;
 
 /**
@@ -42,7 +43,7 @@ public class LoginService {
      * @return the user's role if authentication succeeds
      * @throws DAOException if an error occurs during verification
      */
-    public Role verifyCredentials(String user, String plainPassword) throws DAOException {
+    public DTOUserDetailsLogin verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }
 

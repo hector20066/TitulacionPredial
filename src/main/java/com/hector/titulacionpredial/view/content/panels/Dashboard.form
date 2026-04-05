@@ -91,21 +91,20 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="jlb_subtitle1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="panelShadowCard3" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jlb_subtitle2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jlb_subtitle3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jlb_subtitle2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlb_subtitle3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlb_welcome" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlb_subtitle1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -122,7 +121,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="jlb_welcome" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jlb_subtitle1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Component id="panelShadowCard4" min="-2" max="-2" attributes="0"/>
@@ -156,7 +157,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlb_totalBenenficiariesText" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlb_totalBeneficiariesText" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlb_withoutPropertyText" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlb_withPropertyText" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -189,7 +190,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jlb_totalBenenficiariesText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlb_totalBeneficiariesText" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jlb_totalBeneficiaries" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -245,7 +246,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jlb_totalBenenficiariesText">
+                    <Component class="javax.swing.JLabel" name="jlb_totalBeneficiariesText">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="sansserif" size="14" style="1"/>
@@ -619,7 +620,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="31" max="32767" attributes="0"/>
+                              <EmptySpace pref="25" max="32767" attributes="0"/>
                               <Component id="lineChart1" min="-2" pref="350" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
@@ -640,6 +641,17 @@
                       <Color blue="15" green="1c" red="8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Beneficiarios Registrados durante los ultimos meses"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlb_welcome">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="6c" green="91" red="40" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Bienvenido "/>
                   </Properties>
                 </Component>
               </SubComponents>

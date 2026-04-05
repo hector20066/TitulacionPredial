@@ -8,6 +8,7 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOUser;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
@@ -91,7 +92,7 @@ public class DAOUserImpl implements DAOUser {
     }
 
     @Override
-    public Role verifyCredentials(String user, String plainPassword) throws DAOException {
+    public DTOUserDetailsLogin verifyCredentials(String user, String plainPassword) throws DAOException {
         String sql = SQLRepository.get("sql/user/verifyPassword.sql");
 
         try (Connection connection = DataBasePool.getConnection();
@@ -99,17 +100,22 @@ public class DAOUserImpl implements DAOUser {
             st.setString(1, user);
 
             try (ResultSet rs = st.executeQuery()) {
+                DTOUserDetailsLogin dto = new DTOUserDetailsLogin();
+
                 if (!rs.next()) {
-                    return Role.NONE;
+                    dto.setRole(Role.NONE);
                 }
 
                 String hashedPassword = rs.getString("password");
 
                 if (BCryptEncryption.verifyPassword(plainPassword, hashedPassword)) {
-                    return Role.valueOf(rs.getString("role"));
+                    dto.setRole(Role.valueOf(rs.getString("role")));
+                    dto.setUser(rs.getString("name"));
                 } else {
-                    return Role.NONE;
+                    dto.setRole(Role.NONE);
                 }
+
+                return dto;
             }
         } catch (SQLException e) {
             throw new UserPersistenceException(lang.message("persistence.user.error"), e);

@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.view.swing.chart.Card;
 import com.hector.titulacionpredial.view.swing.chart.GaugeChart;
 import com.hector.titulacionpredial.view.swing.chart.LineChart;
 import com.hector.titulacionpredial.view.swing.model.CardModel;
+import javax.swing.JLabel;
 
 /**
  * Main Dashboard Panel
@@ -138,6 +139,7 @@ public class Dashboard extends javax.swing.JPanel {
         panelShadowCard3 = new com.hector.titulacionpredial.view.swing.panel.PanelShadowCard();
         lineChart1 = new com.hector.titulacionpredial.view.swing.chart.LineChart();
         jlb_subtitle3 = new javax.swing.JLabel();
+        jlb_welcome = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -375,7 +377,7 @@ public class Dashboard extends javax.swing.JPanel {
         panelShadowCard3Layout.setVerticalGroup(
             panelShadowCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadowCard3Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(lineChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -383,6 +385,10 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_subtitle3.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jlb_subtitle3.setForeground(new java.awt.Color(8, 28, 21));
         jlb_subtitle3.setText("Beneficiarios Registrados durante los ultimos meses");
+
+        jlb_welcome.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jlb_welcome.setForeground(new java.awt.Color(64, 145, 108));
+        jlb_welcome.setText("Bienvenido ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -392,17 +398,17 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jlb_subtitle1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelShadowCard3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlb_subtitle2)
-                                    .addComponent(jlb_subtitle3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jlb_subtitle2)
+                            .addComponent(jlb_subtitle3)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlb_welcome)
+                            .addComponent(jlb_subtitle1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(51, 51, 51))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -414,7 +420,9 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(17, 17, 17)
+                .addComponent(jlb_welcome)
+                .addGap(43, 43, 43)
                 .addComponent(jlb_subtitle1)
                 .addGap(18, 18, 18)
                 .addComponent(panelShadowCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,6 +497,10 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_subtitle3.setText(texts.getRegistersMonth());
     }
 
+    public JLabel getJlb_welcome() {
+        return jlb_welcome;
+    }
+    
     public Card getCard1() {
         return card1;
     }
@@ -531,6 +543,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jlb_totalBeneficiariesText;
     private javax.swing.JLabel jlb_totalProperties;
     private javax.swing.JLabel jlb_totalPropertiesText;
+    private javax.swing.JLabel jlb_welcome;
     private javax.swing.JLabel jlb_withProperty;
     private javax.swing.JLabel jlb_withPropertyText;
     private javax.swing.JLabel jlb_withResolution;

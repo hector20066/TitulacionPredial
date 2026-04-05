@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
@@ -220,17 +221,17 @@ public class ControllerLogin implements LanguageObserver {
      * @param plainPasswd  the plaintext password to verify
      */
     private void executeLoginWorker(String user, String plainPasswd) {
-        SwingWorker<Role, Void> executor = new SwingWorker<>() {
+        SwingWorker<DTOUserDetailsLogin, Void> executor = new SwingWorker<>() {
             @Override
-            protected Role doInBackground() throws DAOException {
+            protected DTOUserDetailsLogin doInBackground() throws DAOException {
                 return LoginService.getInstance().verifyCredentials(user, plainPasswd);
             }
 
             @Override
             public void done() {
                 try {
-                    Role role = get();
-                    handledLoginResult(role);
+                    DTOUserDetailsLogin dto = get();
+                    handledLoginResult(dto);
                 } catch (ExecutionException e) {
                     Throwable cause = e.getCause();
 
@@ -259,17 +260,17 @@ public class ControllerLogin implements LanguageObserver {
      * are invalid.
      * </p>
      *
-     * @param role the {@link Role} returned from authentication
+     * @param dto the {@link DTOUserDetailsLogin} returned from authentication
      */
-    private void handledLoginResult(Role role) {
-        switch (role) {
+    private void handledLoginResult(DTOUserDetailsLogin dto) {
+        switch (dto.getRole()) {
             case Role.ADMIN -> {
-                startSessionAdmin();
+                startSessionAdmin(dto.getUser());
                 subject.notifyObservers();
                 setRole(Role.ADMIN);
             }
             case Role.EMPLOYEE -> {
-                startSessionUser();
+                startSessionUser(dto.getUser());
                 setRole(Role.EMPLOYEE);
             }
             case Role.NONE -> {
@@ -287,12 +288,13 @@ public class ControllerLogin implements LanguageObserver {
      * closes the login window.
      * </p>
      */
-    private void startSessionAdmin() {
+    private void startSessionAdmin(String user) {
         java.awt.EventQueue.invokeLater(() -> {
             contentAdmin.setVisible(true);
             contentAdmin.setLocationRelativeTo(null);
             controllerContentUser.showButtons();
             NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
+            dashboard.getJlb_welcome().setText("Bienvenido " + user);
         });
 
         login.dispose();
@@ -307,7 +309,7 @@ public class ControllerLogin implements LanguageObserver {
      * and closes the login window.
      * </p>
      */
-    private void startSessionUser() {
+    private void startSessionUser(String user) {
         String mode = (String) login.getCbo_access().getSelectedItem();
         Municipalities municipality = extractMunicipalityFromMode(mode);
 
@@ -331,6 +333,7 @@ public class ControllerLogin implements LanguageObserver {
             });
         }
 
+        dashboard.getJlb_welcome().setText("Bienvenido " + user);
         subject.notifyObservers();
         login.dispose();
     }

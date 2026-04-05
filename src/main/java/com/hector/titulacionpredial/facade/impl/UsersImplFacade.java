@@ -6,6 +6,7 @@ import com.hector.titulacionpredial.model.dao.impl.DAOUserImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOUser;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
@@ -61,7 +62,7 @@ public class UsersImplFacade implements UsersFacade {
     }
 
     @Override
-    public Role verifyCredentials(String user, String plainPassword) throws DAOException {
+    public DTOUserDetailsLogin verifyCredentials(String user, String plainPassword) throws DAOException {
         return daoUser.verifyCredentials(user, plainPassword);
     }
 

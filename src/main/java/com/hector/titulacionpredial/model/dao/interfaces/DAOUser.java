@@ -3,6 +3,7 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.user.DTOUserCreate;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 
@@ -31,7 +32,7 @@ public interface DAOUser extends DAOBase<DTOUserCreate, DTOUserDetails>,
      * @return the {@link Role} associated with the verified user
      * @throws DAOException if authentication fails or an error occurs
      */
-    Role verifyCredentials(String user, String plainPassword) throws DAOException;
+    DTOUserDetailsLogin verifyCredentials(String user, String plainPassword) throws DAOException;
 
     /**
      * Update a user's password.

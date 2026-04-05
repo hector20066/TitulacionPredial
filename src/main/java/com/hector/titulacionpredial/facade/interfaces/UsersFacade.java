@@ -1,8 +1,10 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dao.interfaces.IRemovable;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
 import com.hector.titulacionpredial.model.enums.Role;
 
 /**
@@ -29,35 +31,37 @@ public interface UsersFacade extends IListable<DTOUserDetails>, IRemovable {
      * @param user          username for login
      * @param plainPassword plaintext password (will be encrypted)
      * @param role          user's role in the system
-     * @throws com.hector.titulacionpredial.exception.dao.DAOException if an error occurs during the operation
+     * @throws DAOException if an error occurs during the operation
      */
-    void add(String name, int id, String user, String plainPassword, Role role) throws com.hector.titulacionpredial.exception.dao.DAOException;
+    void add(String name, int id, String user, String plainPassword, Role role) throws DAOException;
 
     /**
      * Search for a user account by their unique code.
      *
      * @param code the user's unique identifier
      * @return DTO with user account information
-     * @throws com.hector.titulacionpredial.exception.dao.DAOException if an error occurs or the user is not found
+     * @throws DAOException if an error occurs or the user is not found
      */
-    DTOUserDetails findByCode(int code) throws com.hector.titulacionpredial.exception.dao.DAOException;
+    DTOUserDetails findByCode(int code) throws DAOException;
+
     /**
      * Verify user credentials and return their role.
      *
      * @param user          the username to authenticate
      * @param plainPassword the plaintext password to verify
      * @return the {@link Role} associated with the verified user
-     * @throws com.hector.titulacionpredial.exception.dao.DAOException if authentication fails or an error occurs
+     * @throws DAOException if authentication fails or an error occurs
      */
-    Role verifyCredentials(String user, String plainPassword) throws com.hector.titulacionpredial.exception.dao.DAOException;
+    DTOUserDetailsLogin verifyCredentials(String user, String plainPassword) throws DAOException;
+
     /**
      * Update a user's password.
      *
      * @param id            the unique identifier of the user
      * @param plainPassword the new plaintext password (will be encrypted)
      * @return true if the password was successfully updated, false otherwise
-     * @throws com.hector.titulacionpredial.exception.dao.DAOException if an error occurs during the operation
+     * @throws DAOException if an error occurs during the operation
      */
-    boolean modifyPassword(int id, String plainPassword) throws com.hector.titulacionpredial.exception.dao.DAOException;
+    boolean modifyPassword(int id, String plainPassword) throws DAOException;
 
 }
