@@ -1,31 +1,21 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
+import com.hector.titulacionpredial.model.dto.beneficiary.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
+
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementation of the DAO for beneficiary management in the PostgreSQL database.

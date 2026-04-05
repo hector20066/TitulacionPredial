@@ -1,13 +1,8 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.event.ActionListener;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOSettingsText;
+
+import javax.swing.*;
 
 /**
  * Application settings panel that allows the user to select the

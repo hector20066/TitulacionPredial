@@ -1,11 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
-import javax.swing.SwingUtilities;
-
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerModifyResolutionBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -25,6 +19,11 @@ import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
+
+import javax.swing.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Resolution modification panel controller.

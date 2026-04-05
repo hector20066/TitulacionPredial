@@ -25,7 +25,7 @@ public class NetworkUtils {
      * </p>
      *
      * @return {@code true} if internet connection is available,
-     *         {@code false} otherwise
+     * {@code false} otherwise
      */
     public static boolean hasInternetConnection() {
         try (Socket socket = new Socket()) {

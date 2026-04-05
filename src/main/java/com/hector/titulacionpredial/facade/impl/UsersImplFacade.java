@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import java.util.List;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOUserImpl;
@@ -11,6 +9,8 @@ import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
 import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
+
+import java.util.List;
 
 /**
  * Implementation of the {@link UsersFacade} facade for

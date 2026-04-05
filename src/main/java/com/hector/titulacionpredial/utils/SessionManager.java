@@ -65,16 +65,8 @@ public class SessionManager {
         if (instance == null) {
             instance = new SessionManager();
         }
-        return instance;
-    }
 
-    /**
-     * Set the current user role.
-     *
-     * @param role the user's role (ADMIN, EMPLOYEE, NONE)
-     */
-    public void setRole(Role role) {
-        this.currentRole = role;
+        return instance;
     }
 
     /**
@@ -87,12 +79,12 @@ public class SessionManager {
     }
 
     /**
-     * Set the current municipality for data filtering.
+     * Set the current user role.
      *
-     * @param municipality the selected municipality (MONTERIA, SAHAGUN, or null)
+     * @param role the user's role (ADMIN, EMPLOYEE, NONE)
      */
-    public void setMunicipality(Municipalities municipality) {
-        this.currentMunicipality = municipality;
+    public void setRole(Role role) {
+        this.currentRole = role;
     }
 
     /**
@@ -106,6 +98,15 @@ public class SessionManager {
      */
     public Municipalities getMunicipality() {
         return currentMunicipality;
+    }
+
+    /**
+     * Set the current municipality for data filtering.
+     *
+     * @param municipality the selected municipality (MONTERIA, SAHAGUN, or null)
+     */
+    public void setMunicipality(Municipalities municipality) {
+        this.currentMunicipality = municipality;
     }
 
     /**

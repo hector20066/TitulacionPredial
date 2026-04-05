@@ -1,8 +1,6 @@
 package com.hector.titulacionpredial.controller;
 
 import com.hector.titulacionpredial.controller.builder.*;
-import com.hector.titulacionpredial.controller.panels.ControllerManageUsers;
-import com.hector.titulacionpredial.controller.panels.ControllerRegisterUsers;
 import com.hector.titulacionpredial.controller.panels.ControllerSettings;
 import com.hector.titulacionpredial.i18n.AppLanguage;
 import com.hector.titulacionpredial.i18n.ConcreteLanguageSubject;

@@ -1,16 +1,5 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.Component;
-import java.awt.event.ActionListener;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
@@ -19,6 +8,10 @@ import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Form for registering and modifying beneficiaries.

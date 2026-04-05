@@ -1,26 +1,11 @@
 package com.hector.titulacionpredial.utils;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dialog;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Window;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.util.concurrent.Callable;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
-
-import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for common operations with dialogs: loading dialogs,

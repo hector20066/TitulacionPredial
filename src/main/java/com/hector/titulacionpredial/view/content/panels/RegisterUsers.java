@@ -1,17 +1,10 @@
 package com.hector.titulacionpredial.view.content.panels;
 
-import java.awt.event.ActionListener;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
-import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  *

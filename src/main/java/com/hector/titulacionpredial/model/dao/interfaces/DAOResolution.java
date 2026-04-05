@@ -1,12 +1,12 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
-import java.util.List;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+
+import java.util.List;
 
 /**
  * DAO interface for managing resolutions in the database.

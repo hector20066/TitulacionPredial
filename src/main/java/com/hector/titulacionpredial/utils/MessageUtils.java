@@ -1,9 +1,8 @@
 package com.hector.titulacionpredial.utils;
 
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
-
 import com.hector.titulacionpredial.i18n.LanguageManager;
+
+import javax.swing.*;
 
 /**
  * Utility class to display messages and dialogs to the
@@ -69,7 +68,7 @@ public class MessageUtils {
      * @param message   question text
      * @param container parent component of the dialogue
      * @return {@link JOptionPane#YES_OPTION} if the user accepts,
-     *         {@link JOptionPane#NO_OPTION} otherwise
+     * {@link JOptionPane#NO_OPTION} otherwise
      */
     public static int confirmDialog(String message, JComponent container) {
         return JOptionPane.showConfirmDialog(container, message, lang.message("message.utils.confirmation"),

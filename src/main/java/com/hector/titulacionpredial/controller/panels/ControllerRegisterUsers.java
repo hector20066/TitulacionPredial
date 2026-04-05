@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import javax.swing.SwingUtilities;
-
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterUsersBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -17,6 +15,8 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NumericalValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
+
+import javax.swing.*;
 
 /**
  * Controller for managing user registration functionality.

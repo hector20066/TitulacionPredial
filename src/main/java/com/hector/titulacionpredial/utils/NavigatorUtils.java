@@ -25,7 +25,7 @@ public class NavigatorUtils {
      * in the main content panel.
      *
      * @param componentParent swing componentParent
-     * @param component Swing component to be displayed
+     * @param component       Swing component to be displayed
      */
     public static void showForms(JComponent componentParent, JComponent component) {
         componentParent.removeAll();

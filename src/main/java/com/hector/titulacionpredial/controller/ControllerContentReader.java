@@ -7,12 +7,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
-import com.hector.titulacionpredial.view.content.panels.About;
-import com.hector.titulacionpredial.view.content.panels.Dashboard;
-import com.hector.titulacionpredial.view.content.panels.SeeProperties;
-import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
-import com.hector.titulacionpredial.view.content.panels.Settings;
-import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
+import com.hector.titulacionpredial.view.content.panels.*;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOReadingMenuText;
 

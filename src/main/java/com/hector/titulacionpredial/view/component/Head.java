@@ -1,13 +1,11 @@
 package com.hector.titulacionpredial.view.component;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 import com.hector.titulacionpredial.view.swing.button.WinButton;
 import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
+
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Custom title bar for the main window.
@@ -17,7 +15,7 @@ import com.hector.titulacionpredial.view.swing.panel.PanelShadow;
  * (minimize, maximize, close) and support for dragging to move the window.
  * </p>
  *
- * @author Eng. Hector Acevedo
+ * @author Ing. Hector Acevedo
  * @since 1.0
  * @see PanelShadow
  * @see WinButton

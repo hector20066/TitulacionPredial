@@ -18,7 +18,7 @@ public class NumericalValidationUtils {
      *
      * @param value string to validate
      * @return {@code true} if the string is composed only
-     *         of digits, {@code false} otherwise
+     * of digits, {@code false} otherwise
      */
     public static boolean isNumeric(String value) {
         if (value == null || value.isEmpty()) {

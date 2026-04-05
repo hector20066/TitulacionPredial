@@ -1,16 +1,5 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -18,11 +7,16 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
 import com.hector.titulacionpredial.model.dto.property.*;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of the DAO for property management in the MySQL database.

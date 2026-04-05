@@ -1,8 +1,5 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.model.dao.impl.DAOResolutionImpl;
@@ -11,6 +8,9 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionCreate;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Implementation of the {@link ResolutionFacade} facade

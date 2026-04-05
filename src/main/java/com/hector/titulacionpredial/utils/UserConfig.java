@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,8 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
-
-import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Persistent user configuration manager.
@@ -64,9 +64,7 @@ public class UserConfig {
      * Properties object that keeps the configurations in memory.
      */
     private static final Properties properties = new Properties();
-
     private static final LanguageManager lang = LanguageManager.getInstance();
-
     private static final Path CONFIG_DIR = Paths.get(System.getProperty("user.home"), ".titulacionpredial");
     private static final Path CONFIG_FILE = CONFIG_DIR.resolve("application.properties");
 

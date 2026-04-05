@@ -1,13 +1,5 @@
 package com.hector.titulacionpredial.controller.panels;
 
-import java.awt.Color;
-import java.time.Month;
-import java.time.format.TextStyle;
-import java.util.List;
-import java.util.Locale;
-
-import javax.swing.SwingUtilities;
-
 import com.hector.titulacionpredial.controller.builder.ControllerDashboardBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
@@ -25,6 +17,13 @@ import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
 import com.hector.titulacionpredial.view.swing.model.ModelChart;
+
+import javax.swing.*;
+import java.awt.*;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Dashboard panel controller.

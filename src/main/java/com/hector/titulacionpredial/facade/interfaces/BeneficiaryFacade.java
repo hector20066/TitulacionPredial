@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
-import java.util.List;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.BeneficiaryImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
@@ -13,6 +11,8 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+
+import java.util.List;
 
 /**
  * Facade that defines the high-level operations for beneficiary

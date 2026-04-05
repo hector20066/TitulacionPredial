@@ -115,7 +115,7 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_beneficiaries = new javax.swing.JLabel();
         jlb_withPropertyText = new javax.swing.JLabel();
         jlb_withoutPropertyText = new javax.swing.JLabel();
-        jlb_totalBenenficiariesText = new javax.swing.JLabel();
+        jlb_totalBeneficiariesText = new javax.swing.JLabel();
         jlb_totalBeneficiaries = new javax.swing.JLabel();
         jlb_withoutProperty = new javax.swing.JLabel();
         jlb_withProperty = new javax.swing.JLabel();
@@ -165,10 +165,10 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_withoutPropertyText.setText("Sin predio");
         jlb_withoutPropertyText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
-        jlb_totalBenenficiariesText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jlb_totalBenenficiariesText.setForeground(new java.awt.Color(133, 133, 133));
-        jlb_totalBenenficiariesText.setText("Total");
-        jlb_totalBenenficiariesText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        jlb_totalBeneficiariesText.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jlb_totalBeneficiariesText.setForeground(new java.awt.Color(133, 133, 133));
+        jlb_totalBeneficiariesText.setText("Total");
+        jlb_totalBeneficiariesText.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         jlb_totalBeneficiaries.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jlb_totalBeneficiaries.setForeground(new java.awt.Color(80, 116, 253));
@@ -203,7 +203,7 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlb_totalBenenficiariesText)
+                    .addComponent(jlb_totalBeneficiariesText)
                     .addComponent(jlb_withoutPropertyText)
                     .addComponent(jlb_withPropertyText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -230,7 +230,7 @@ public class Dashboard extends javax.swing.JPanel {
                             .addComponent(jlb_withoutProperty))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelShadowCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlb_totalBenenficiariesText)
+                            .addComponent(jlb_totalBeneficiariesText)
                             .addComponent(jlb_totalBeneficiaries)))
                     .addComponent(gaugeChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -484,7 +484,7 @@ public class Dashboard extends javax.swing.JPanel {
         jlb_withoutPropertyText.setText(texts.getWithoutProperty());
         jlb_withResolutionText.setText(texts.getWithResolution());
         jlb_withoutResolutionText.setText(texts.getWithoutResolution());
-        jlb_totalBenenficiariesText.setText(texts.getTotal());
+        jlb_totalBeneficiariesText.setText(texts.getTotal());
         jlb_totalPropertiesText.setText(texts.getTotal());
         jlb_subtitle3.setText(texts.getRegistersMonth());
     }
@@ -528,7 +528,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jlb_subtitle3;
     private javax.swing.JLabel jlb_title;
     private javax.swing.JLabel jlb_totalBeneficiaries;
-    private javax.swing.JLabel jlb_totalBenenficiariesText;
+    private javax.swing.JLabel jlb_totalBeneficiariesText;
     private javax.swing.JLabel jlb_totalProperties;
     private javax.swing.JLabel jlb_totalPropertiesText;
     private javax.swing.JLabel jlb_withProperty;

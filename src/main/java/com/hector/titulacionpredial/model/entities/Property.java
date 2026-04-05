@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.model.entities;
 
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.Municipalities;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.hector.titulacionpredial.model.enums.Department;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Domain entity that represents a property within the Land Titling

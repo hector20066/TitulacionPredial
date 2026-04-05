@@ -1,22 +1,12 @@
 package com.hector.titulacionpredial.utils;
 
-import java.io.File;
+import com.hector.titulacionpredial.i18n.LanguageManager;
+import org.apache.poi.ss.usermodel.*;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
-import com.google.protobuf.Message;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-
-import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for importing data from Excel files into the system.
@@ -49,8 +39,9 @@ public class ImportExcel {
      */
     public List<List<String>> readExcel(String route) {
         List<List<String>> data = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(new File(route));
-            Workbook workbook = WorkbookFactory.create(fis)) {
+
+        try (FileInputStream fis = new FileInputStream(route);
+             Workbook workbook = WorkbookFactory.create(fis)) {
 
             Sheet sheet = workbook.getSheetAt(0);
             DataFormatter formatter = new DataFormatter();
@@ -71,9 +62,8 @@ public class ImportExcel {
 
                 data.add(dataRow);
             }
-
         } catch (IOException e) {
-            MessageUtils.errorMessage(lang.message("message.import.error") + "\n" + e.getMessage(),null);
+            MessageUtils.errorMessage(lang.message("message.import.error") + "\n" + e.getMessage(), null);
         }
 
         return data;
