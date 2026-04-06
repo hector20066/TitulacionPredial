@@ -45,8 +45,8 @@ import java.util.List;
  */
 public class DAOUserImpl implements DAOUser {
 
-    private static DAOUserImpl instance;
     private static final LanguageManager lang = LanguageManager.getInstance();
+    private static DAOUserImpl instance;
 
     /**
      * Private constructor to avoid external instantiation and preserve
@@ -96,7 +96,7 @@ public class DAOUserImpl implements DAOUser {
         String sql = SQLRepository.get("sql/user/verifyPassword.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, user);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -127,7 +127,7 @@ public class DAOUserImpl implements DAOUser {
         String sql = SQLRepository.get("sql/user/modifyPassword.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, dto.getPassword());
             st.setInt(2, dto.getId());
 
@@ -146,7 +146,7 @@ public class DAOUserImpl implements DAOUser {
         String sql = SQLRepository.get("sql/user/findByCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setLong(1, code);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -195,7 +195,7 @@ public class DAOUserImpl implements DAOUser {
         String sql = SQLRepository.get("sql/user/delete.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, code);
 
             if (st.executeUpdate() == 0) {

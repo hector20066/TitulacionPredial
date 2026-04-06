@@ -189,7 +189,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         String sql = SQLRepository.get("sql/beneficiary/findByBeneficiariesCode.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, beneficiariesCode);
 
             try (ResultSet rs = st.executeQuery()) {

@@ -127,7 +127,7 @@ public class ContentUser extends javax.swing.JFrame {
      * @param texts the DTO containing localized logout button text
      */
     public void updateLanguage(DTOContentLogoutBtnText texts) {
-        btn_logout.setText(texts.getLogout());
+        btn_logout.setText(texts.logout());
     }
 
     /**

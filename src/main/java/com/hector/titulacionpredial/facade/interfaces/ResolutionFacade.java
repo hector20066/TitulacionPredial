@@ -1,14 +1,14 @@
 package com.hector.titulacionpredial.facade.interfaces;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.ResolutionImplFacade;
 import com.hector.titulacionpredial.model.dao.interfaces.ICountable;
 import com.hector.titulacionpredial.model.dao.interfaces.IListable;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Facade that defines the high-level operations for managing

@@ -61,7 +61,7 @@ public class DTOAdminMenuText extends DTOMenuText {
 
     public static class Builder extends DTOMenuText.Builder<Builder> {
 
-        private  String registerInfo;
+        private String registerInfo;
         private String registerBeneficiaries;
         private String registerProperties;
         private String manageUsers;

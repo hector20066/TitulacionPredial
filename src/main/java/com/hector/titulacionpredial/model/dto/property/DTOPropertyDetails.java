@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.model.dto.property;
 
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.DTOProperty;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.DTOProperty;
 
 /**
  * Data Transfer Object (DTO) that represents the complete details

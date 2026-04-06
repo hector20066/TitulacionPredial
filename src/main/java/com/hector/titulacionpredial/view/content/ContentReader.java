@@ -127,7 +127,7 @@ public class ContentReader extends javax.swing.JFrame {
      * @param texts the DTO containing localized logout button text
      */
     public void updateLanguage(DTOContentLogoutBtnText texts) {
-        btn_logout.setText(texts.getLogout());
+        btn_logout.setText(texts.logout());
     }
 
     /**
@@ -155,7 +155,6 @@ public class ContentReader extends javax.swing.JFrame {
     public ReadingMenu getMenu() {
         return menu;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.hector.titulacionpredial.view.swing.button.ButtonAction btn_logout;

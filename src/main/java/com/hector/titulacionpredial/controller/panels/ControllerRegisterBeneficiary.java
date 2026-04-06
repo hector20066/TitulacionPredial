@@ -206,7 +206,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                                       String address, String crossing, String publication, String cadastralReference) {
         new Thread(() -> {
             try {
-                boolean success = daoBeneficiary.modify(Integer.parseInt(id), codeBeneficiaries, fullName, maritalStatus,
+                boolean success = daoBeneficiary.modify(Long.parseLong(id), codeBeneficiaries, fullName, maritalStatus,
                         affectation, phone, expeditionLocation, modifyCode);
 
                 if (registerBeneficiary.getNowStatus() == MaritalStatus.MARRIED

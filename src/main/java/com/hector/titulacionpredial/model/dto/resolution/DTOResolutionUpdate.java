@@ -73,23 +73,23 @@ public class DTOResolutionUpdate extends DTOResolution {
 
         private int code;
 
-    /**
-     * Set the resolution code.
-     *
-     * @param code the resolution code
-     * @return current builder instance
-     */
+        /**
+         * Set the resolution code.
+         *
+         * @param code the resolution code
+         * @return current builder instance
+         */
         public Builder code(int code) {
             this.code = code;
             return this;
         }
 
         @Override
-    /**
-     * Build and return a new {@link DTOResolutionUpdate} instance.
-     *
-     * @return configured DTOResolutionUpdate instance
-     */
+        /**
+         * Build and return a new {@link DTOResolutionUpdate} instance.
+         *
+         * @return configured DTOResolutionUpdate instance
+         */
         public DTOResolutionUpdate build() {
             return new DTOResolutionUpdate(this);
         }

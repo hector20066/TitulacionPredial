@@ -31,18 +31,18 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
     /**
      * Register a new property in the system.
      *
-     * @param cadastralId      cadastral certificate of the property
-     * @param address          property address
-     * @param department       department/region of the property
-     * @param municipality     municipality where the property is located
-     * @param crossing         property crossing/intersection details
-     * @param neighborhood     neighborhood name
-     * @param publication      publication reference or number
+     * @param cadastralId  cadastral certificate of the property
+     * @param address      property address
+     * @param department   department/region of the property
+     * @param municipality municipality where the property is located
+     * @param crossing     property crossing/intersection details
+     * @param neighborhood neighborhood name
+     * @param publication  publication reference or number
      * @return code of the newly inserted property
      * @throws DAOException if an error occurs during the operation
      */
     int add(String cadastralId, String address, Department department, Municipalities municipality,
-                   String crossing, String neighborhood, String publication) throws DAOException;
+            String crossing, String neighborhood, String publication) throws DAOException;
 
     /**
      * Search for a property using its cadastral certificate.
@@ -82,12 +82,12 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
     /**
      * Modify the basic information of an existing property.
      *
-     * @param department       the new department/region
-     * @param municipality     the new municipality
-     * @param neighborhood     the new neighborhood name
-     * @param address          the new property address
-     * @param crossing         the new property crossing/intersection details
-     * @param publication      the new publication reference
+     * @param department         the new department/region
+     * @param municipality       the new municipality
+     * @param neighborhood       the new neighborhood name
+     * @param address            the new property address
+     * @param crossing           the new property crossing/intersection details
+     * @param publication        the new publication reference
      * @param cadastralReference the cadastral reference of the property to modify
      * @return true if the modification was successful, false otherwise
      * @throws DAOException if an error occurs during the operation

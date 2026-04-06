@@ -21,7 +21,6 @@ public class UserNotFoundException extends DataNotFoundException {
     private static final LanguageManager lang = LanguageManager.getInstance();
 
 
-
     /**
      * Create an exception with a generic message.
      */

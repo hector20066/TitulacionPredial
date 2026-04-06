@@ -21,7 +21,7 @@ public class DTORegisterUsersText {
      *
      * @param builder the builder
      */
-    public DTORegisterUsersText (Builder builder) {
+    public DTORegisterUsersText(Builder builder) {
         this.title = builder.title;
         this.desc = builder.desc;
         this.fullName = builder.fullName;

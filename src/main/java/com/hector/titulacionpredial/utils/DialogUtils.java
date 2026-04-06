@@ -142,7 +142,7 @@ public class DialogUtils {
      *
      * @param parent parent component for the selector
      * @return Absolute path of the selected directory, or
-     *         {@code null} if canceled
+     * {@code null} if canceled
      */
     public static String selectRoute(JComponent parent) {
         JFileChooser fileChooser = new JFileChooser();

@@ -37,8 +37,8 @@ public class DTOBeneficiariesCode {
      * Constructor to initialize the beneficiary code information.
      *
      * @param cadastral_reference cadastral reference of the property
-     * @param address address of the beneficiary
-     * @param code unique beneficiary code
+     * @param address             address of the beneficiary
+     * @param code                unique beneficiary code
      */
     public DTOBeneficiariesCode(String cadastral_reference, String address, int code) {
         this.cadastral_reference = cadastral_reference;
@@ -69,5 +69,5 @@ public class DTOBeneficiariesCode {
     public void setCode(int code) {
         this.code = code;
     }
-    
+
 }

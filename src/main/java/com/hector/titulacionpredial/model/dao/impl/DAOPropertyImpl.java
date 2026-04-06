@@ -314,7 +314,7 @@ public class DAOPropertyImpl implements DAOProperty {
         String sql = SQLRepository.get("sql/property/findByCadastralRef.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, cadastralReference);
 
             try (ResultSet rs = st.executeQuery()) {
@@ -341,7 +341,7 @@ public class DAOPropertyImpl implements DAOProperty {
         String sql = SQLRepository.get("sql/property/modifyBasicInformation.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, String.valueOf(dto.getDepartment()));
             st.setString(2, String.valueOf(dto.getMunicipality()));
             st.setString(3, dto.getNeighborhood());
@@ -361,7 +361,7 @@ public class DAOPropertyImpl implements DAOProperty {
         String sql = SQLRepository.get("sql/property/modify.sql");
 
         try (Connection connection = DataBasePool.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql)) {
+             PreparedStatement st = connection.prepareStatement(sql)) {
             st.setDouble(1, dto.getArea());
             st.setString(2, dto.getCadastralRef());
 

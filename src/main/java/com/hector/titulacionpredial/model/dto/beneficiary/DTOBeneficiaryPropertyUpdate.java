@@ -40,7 +40,7 @@ public class DTOBeneficiaryPropertyUpdate {
      * Constructor used to initialize variables.
      *
      * @param codeBeneficiaries beneficiaries code
-     * @param propertyCode    property code
+     * @param propertyCode      property code
      */
     public DTOBeneficiaryPropertyUpdate(String codeBeneficiaries, int propertyCode) {
         this.codeBeneficiaries = codeBeneficiaries;

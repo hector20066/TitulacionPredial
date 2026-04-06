@@ -47,7 +47,7 @@ public class BCryptEncryption {
      * and {@code false} otherwise.
      * </p>
      *
-     * @param plainPassword password in plain text
+     * @param plainPassword   password in plain text
      * @param encryptPassword encrypted password
      * @return {@code true} if the password matches the hash, otherwise {@code false}
      */

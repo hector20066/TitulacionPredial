@@ -4,7 +4,6 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.UsersImplFacade;
 import com.hector.titulacionpredial.facade.interfaces.UsersFacade;
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetailsLogin;
-import com.hector.titulacionpredial.model.enums.Role;
 
 /**
  * @author Ing. Hector Acevedo
