@@ -33,7 +33,7 @@ public class GenerateExcelBeneficiary {
      * @throws IOException If an error occurs while writing the file
      */
     public static void export(List<DTOBeneficiaryDetails> beneficiaries, String path) throws IOException {
-        File archivoXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
+        File fileXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
         Workbook book = new HSSFWorkbook();
 
         CellStyle headerStyle = book.createCellStyle();
@@ -48,7 +48,7 @@ public class GenerateExcelBeneficiary {
         Sheet sheet = book.createSheet("Reporte Beneficiarios");
         sheet.setDisplayGridlines(true);
 
-        String[] titles = {"Codigo", "Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
+        String[] titles = {"Código", "Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
                 "Ref. Catastral", "Estado Civil", "Afectación", "Teléfono", "Cruce",
                 "Publicación", "Barrio", "Lugar Expedición"};
 
@@ -86,7 +86,7 @@ public class GenerateExcelBeneficiary {
             sheet.autoSizeColumn(c);
         }
 
-        try (FileOutputStream file = new FileOutputStream(archivoXLS)) {
+        try (FileOutputStream file = new FileOutputStream(fileXLS)) {
             book.write(file);
         }
 

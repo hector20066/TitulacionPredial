@@ -29,11 +29,11 @@ public class FilterUtils {
      */
     public static void filterTable(JTextField textField, JTable table, String text) {
         if (!textField.getText().equals(text)) {
-            String texto = textField.getText();
+            String searchText = textField.getText();
             TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
             table.setRowSorter(sorter);
 
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + Pattern.quote(texto)));
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + Pattern.quote(searchText)));
         }
     }
 

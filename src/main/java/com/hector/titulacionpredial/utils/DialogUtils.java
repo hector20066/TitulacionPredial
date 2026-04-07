@@ -35,8 +35,8 @@ public class DialogUtils {
      */
     public static JDialog createLoadDialog(JComponent parent, String message) {
         Window parentWindow = SwingUtilities.getWindowAncestor(parent);
-
-        JDialog dialog = new JDialog(parentWindow, lang.message("dialog.utils.processing"), Dialog.ModalityType.APPLICATION_MODAL);
+        JDialog dialog = new JDialog(parentWindow, lang.message("dialog.utils.processing"),
+                Dialog.ModalityType.APPLICATION_MODAL);
         dialog.setSize(350, 120);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setResizable(false);
@@ -100,21 +100,12 @@ public class DialogUtils {
         JDialog dialog = createLoadDialog(parent, loadingMessage);
 
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
-            /**
-             * Execute background task in a worker thread.
-             *
-             * @return null after task completion
-             * @throws Exception if task execution fails
-             */
             @Override
             protected Void doInBackground() throws Exception {
                 task.call();
                 return null;
             }
 
-            /**
-             * Handle worker thread completion and post tasks in EDT.
-             */
             @Override
             protected void done() {
                 dialog.dispose();

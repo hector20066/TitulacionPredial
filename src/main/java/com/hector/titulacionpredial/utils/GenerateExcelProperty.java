@@ -44,7 +44,7 @@ public class GenerateExcelProperty {
      * @throws IOException If an error occurs while writing the file
      */
     public static void export(List<DTOPropertyDetails> properties, String path) throws IOException {
-        File archivoXLS = new File(path + File.separator + "Reporte.xls");
+        File fileXLS = new File(path + File.separator + "Reporte.xls");
         Workbook book = new HSSFWorkbook();
 
         CellStyle headerStyle = book.createCellStyle();
@@ -169,7 +169,7 @@ public class GenerateExcelProperty {
             sheet.autoSizeColumn(c);
         }
 
-        try (FileOutputStream file = new FileOutputStream(archivoXLS)) {
+        try (FileOutputStream file = new FileOutputStream(fileXLS)) {
             book.write(file);
         }
 

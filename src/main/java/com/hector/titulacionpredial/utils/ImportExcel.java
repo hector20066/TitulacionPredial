@@ -54,7 +54,7 @@ public class ImportExcel {
 
             boolean firstRow = true;
 
-            for (Row fila : sheet) {
+            for (Row row : sheet) {
                 if (firstRow) {
                     firstRow = false;
                     continue;
@@ -62,7 +62,7 @@ public class ImportExcel {
 
                 List<String> dataRow = new ArrayList<>();
 
-                for (Cell cell : fila) {
+                for (Cell cell : row) {
                     if (cell != null) {
                         dataRow.add(formatter.formatCellValue(cell));
                     } else {
