@@ -1,5 +1,13 @@
 package com.hector.titulacionpredial.controller;
 
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.JPanel;
+import javax.swing.SwingWorker;
+
 import com.hector.titulacionpredial.controller.builder.ControllerLoginBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -11,22 +19,13 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.utils.SessionManager;
-import com.hector.titulacionpredial.utils.ValidationUtils;
+import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Controller for user authentication and login management.
@@ -143,9 +142,6 @@ public class ControllerLogin implements LanguageObserver {
         });
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTOContentLoginText dto = new DTOContentLoginText.Builder()
@@ -153,8 +149,8 @@ public class ControllerLogin implements LanguageObserver {
                 .user(lang.app("content.login.user"))
                 .userText(lang.app("content.login.user.text"))
                 .password(lang.app("content.login.password"))
-                .access(lang.app("content.login.access.text"))
                 .login(lang.app("content.login.btn.login"))
+                .access(lang.app("content.login.access.text"))
                 .build();
 
         login.updateLanguage(dto);
@@ -175,11 +171,11 @@ public class ControllerLogin implements LanguageObserver {
             String user = login.getTxt_user().getText().trim();
             String passwd = new String(login.getJpld_password().getPassword());
 
-            /*if(!NetworkUtils.hasInternetConnection()) {
+            if(!NetworkUtils.hasInternetConnection()) {
                 MessageUtils.errorMessage(lang.message("message.login.error.connection1") + "\n" +
                         lang.message("message.login.error.connection2"), null);
                 return;
-            }*/
+            }
 
             if (ValidationUtils.isEmptyFields(user, passwd)) {
                 throw new EmptyFieldException(lang.message("empty.user.password"));

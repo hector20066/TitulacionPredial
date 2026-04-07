@@ -37,13 +37,6 @@ class DTOPropertyTest {
     }
 
     @Test
-    @DisplayName("Constructor con parámetros debe asignar valores correctamente")
-    void paramConstructorShouldWork() {
-        /*DTOProperty dto = new DTOProperty("CAD-001", 250.5);
-        assertEquals("CAD-001", dto.getCadastralRef());*/
-    }
-
-    @Test
     @DisplayName("setCadastralRef y getCadastralRef deben funcionar")
     void setAndGetCadastralRefShouldWork() {
         DTOProperty dto = new DTOProperty();

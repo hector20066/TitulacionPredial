@@ -1,5 +1,16 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -7,16 +18,14 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyModifyBasic;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Implementation of the DAO for property management in the MySQL database.
@@ -255,7 +264,7 @@ public class DAOPropertyImpl implements DAOProperty {
         property.setPropertyCode(rs.getInt("code"));
         property.setCadastralRef(rs.getString("cadastral_reference"));
         property.setArea(rs.getDouble("area"));
-        property.setMunicipality(Municipalities.valueOf(rs.getString("municipality")));
+        property.setMunicipality(safeMunicipalitiesValueOf(rs.getString("municipality")));
         property.setAddress(rs.getString("address"));
 
         long numResolution = rs.getLong("num_resolution");
@@ -324,7 +333,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
                 return new DTOPropertySimpleDetails.Builder()
                         .department(Department.valueOf(rs.getString("department")))
-                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                        .municipality(safeMunicipalitiesValueOf(rs.getString("municipality")))
                         .neighborhood(rs.getString("neighborhood"))
                         .address(rs.getString("address"))
                         .crossing(rs.getString("crossing"))
@@ -438,6 +447,21 @@ public class DAOPropertyImpl implements DAOProperty {
             return rs.getInt("properties_with_resolution");
         } catch (SQLException e) {
             throw new PropertyPersistenceException(lang.message("persistence.property.info.all"), e);
+        }
+    }
+
+    /**
+     * Safely convert a String to a Municipalities enum.
+     * If the value is invalid, returns MONTERIA as default.
+     *
+     * @param value the string value to convert
+     * @return the corresponding Municipalities enum or MONTERIA if invalid
+     */
+    private Municipalities safeMunicipalitiesValueOf(String value) {
+        try {
+            return Municipalities.valueOf(value);
+        } catch (IllegalArgumentException e) {
+            return Municipalities.MONTERIA;
         }
     }
 

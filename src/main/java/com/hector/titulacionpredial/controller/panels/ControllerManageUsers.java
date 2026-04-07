@@ -102,17 +102,6 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }).start();
     }
 
-    /**
-     * Deletes a user account from the database.
-     *
-     * <p>
-     * Performs the deletion in a background thread and notifies
-     * the user of success or failure.
-     * </p>
-     *
-     * @param id the unique identifier of the user to delete
-     * @param panel the parent component for displaying messages
-     */
     @Override
     public void deleteAccount(int id, JPanel panel) {
         new Thread(() -> {
@@ -125,11 +114,29 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }).start();
     }
 
+    /**
+     * Display success notification and trigger data refresh.
+     *
+     * <p>
+     * Shows an information message to the user and notifies
+     * observers to update the user list display.
+     * </p>
+     */
     private void actionForSuccess() {
         MessageUtils.informationMessage(lang.message("message.user.delete"), manageUsers);
         subject.notifyObservers();
     }
 
+    /**
+     * Handle password modification success or failure.
+     *
+     * <p>
+     * If successful, displays a success message and refreshes the user list.
+     * If unsuccessful, displays an error message to the user.
+     * </p>
+     *
+     * @param success whether the password modification was successful
+     */
     private void actionForSuccess(boolean success) {
         if (success) {
             MessageUtils.informationMessage(lang.message("message.user.modify"), manageUsers);
@@ -139,6 +146,16 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         }
     }
 
+    /**
+     * Load user list into the panel display.
+     *
+     * <p>
+     * Takes the list of users and delegates to the view panel
+     * to render them in the table with the appropriate event handlers.
+     * </p>
+     *
+     * @param listUsers the list of users to display
+     */
     private void loadData(List<DTOUserDetails> listUsers) {
         manageUsers.loadUsers(listUsers, this);
     }

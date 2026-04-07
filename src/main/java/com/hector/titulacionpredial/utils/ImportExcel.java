@@ -1,12 +1,18 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-import org.apache.poi.ss.usermodel.*;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for importing data from Excel files into the system.
@@ -57,7 +63,11 @@ public class ImportExcel {
                 List<String> dataRow = new ArrayList<>();
 
                 for (Cell cell : fila) {
-                    dataRow.add(formatter.formatCellValue(cell));
+                    if (cell != null) {
+                        dataRow.add(formatter.formatCellValue(cell));
+                    } else {
+                        dataRow.add("");
+                    }
                 }
 
                 data.add(dataRow);

@@ -1,5 +1,13 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
@@ -11,10 +19,6 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Concrete implementation of {@link DAOResolution} that manages
@@ -90,7 +94,12 @@ public class DAOResolutionImpl implements DAOResolution {
             st.setString(7, dto.getNotary());
             st.setString(8, dto.getBeneficiaryName());
             st.setInt(9, dto.getPropertyCode());
-            st.executeUpdate();
+            
+            int affectedRows = st.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), null);
+            }
         } catch (SQLException e) {
             throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), e);
         }
@@ -175,8 +184,13 @@ public class DAOResolutionImpl implements DAOResolution {
     private void executeQuery(DTOResolutionDetails dto, ResultSet rs) throws SQLException {
         dto.setCode(rs.getInt("code"));
         dto.setResolutionNumber(rs.getLong("num_resolution"));
-        dto.setNotification(rs.getDate("notification").toLocalDate());
-        dto.setExecutory(rs.getDate("executory").toLocalDate());
+        
+        Date notificationDate = rs.getDate("notification");
+        dto.setNotification(notificationDate != null ? notificationDate.toLocalDate() : null);
+        
+        Date executoryDate = rs.getDate("executory");
+        dto.setExecutory(executoryDate != null ? executoryDate.toLocalDate() : null);
+        
         dto.setFmi(rs.getString("fmi"));
         dto.setAct(rs.getString("act"));
         dto.setPublicWriting(rs.getString("public_writing"));

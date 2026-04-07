@@ -1,12 +1,5 @@
 package com.hector.titulacionpredial.utils;
 
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.config.Configure;
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.config.Configure;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 /**
  * Utility class for generating Word documents of resolutions
@@ -85,6 +85,7 @@ public class GenerateResolutionUtils {
                     data.put("MDISO", String.valueOf(point.getDistance()));
                     data.put("MLINDO", point.getHillside());
                 }
+                default -> throw new IllegalArgumentException("Invalid point number: " + point.getNumberPoint() + ". Valid range: 1-4");
             }
         }
 
@@ -95,7 +96,10 @@ public class GenerateResolutionUtils {
         InputStream templateStream = GenerateResolution.class.getClassLoader().
                 getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
 
-        assert templateStream != null;
+        if (templateStream == null) {
+            throw new IOException("Template not found: resolution/MINUTA - RES FISCALES.docx");
+        }
+
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
         template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-" + cadastralId + ".docx");
         template.close();

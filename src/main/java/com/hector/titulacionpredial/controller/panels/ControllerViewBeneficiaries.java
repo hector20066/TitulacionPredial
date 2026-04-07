@@ -1,5 +1,18 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerViewBeneficiariesBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -18,22 +31,17 @@ import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
-import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.utils.DialogUtils;
+import com.hector.titulacionpredial.utils.FilterUtils;
+import com.hector.titulacionpredial.utils.GenerateExcelBeneficiary;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.SessionManager;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.dialogs.UserProfile;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOViewBeneficiariesText;
-
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Beneficiary display panel controller.
@@ -240,6 +248,14 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         }
     }
 
+    /**
+     * Prepare the modify button for background data loading.
+     *
+     * <p>
+     * Disables the modify button and updates its text to indicate
+     * that the beneficiary data is being loaded before modification.
+     * </p>
+     */
     private void prepareUIModify() {
         viewBeneficiaries.getBtn_modify().setEnabled(false);
         viewBeneficiaries.getBtn_modify().setText("Cargando Información...");
@@ -281,6 +297,14 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         }).start();
     }
 
+    /**
+     * Reset the modify button to its initial state.
+     *
+     * <p>
+     * Re-enables the modify button and restores its original text,
+     * allowing the user to attempt modification again.
+     * </p>
+     */
     private void resetUIModify() {
         viewBeneficiaries.getBtn_modify().setEnabled(false);
         viewBeneficiaries.getBtn_modify().setText("Modificar");

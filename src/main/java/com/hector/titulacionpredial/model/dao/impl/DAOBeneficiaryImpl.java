@@ -1,21 +1,31 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.*;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Implementation of the DAO for beneficiary management in the PostgreSQL database.
@@ -248,7 +258,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setFullName(rs.getString("full_name"));
         dto.setPhone(rs.getLong("phone"));
         dto.setCadastralReference(rs.getString("cadastral_reference"));
-        dto.setMunicipalities(Municipalities.valueOf(rs.getString("municipality")));
+        dto.setMunicipalities(safeMunicipalitiesValueOf(rs.getString("municipality")));
         dto.setAddress(rs.getString("address"));
     }
 
@@ -287,9 +297,9 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                         .codeBeneficiaries(rs.getString("code_beneficiaries"))
                         .id(rs.getLong("id"))
                         .fullName(rs.getString("full_name"))
-                        .department(Department.valueOf(rs.getString("department")))
-                        .municipality(Municipalities.valueOf(rs.getString("municipality")))
-                        .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
+                        .department(safeDepartmentValueOf(rs.getString("department")))
+                        .municipality(safeMunicipalitiesValueOf(rs.getString("municipality")))
+                        .maritalStatus(safeMaritalStatusValueOf(rs.getString("marital_status")))
                         .address(rs.getString("address"))
                         .cadastralRef(rs.getString("cadastral_reference"))
                         .affectation(rs.getString("affectation"))
@@ -322,12 +332,12 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
                 .codeBeneficiaries(rs.getString("code_beneficiaries"))
                 .id(rs.getLong("id"))
                 .fullName(rs.getString("full_name"))
-                .maritalStatus(MaritalStatus.valueOf(rs.getString("marital_status")))
+                .maritalStatus(safeMaritalStatusValueOf(rs.getString("marital_status")))
                 .affectation(rs.getString("affectation"))
                 .phone(rs.getLong("phone"))
                 .expeditionLocation(rs.getString("expedition_location"))
-                .department(Department.valueOf(rs.getString("department")))
-                .municipality(Municipalities.valueOf(rs.getString("municipality")))
+                .department(safeDepartmentValueOf(rs.getString("department")))
+                .municipality(safeMunicipalitiesValueOf(rs.getString("municipality")))
                 .address(rs.getString("address"))
                 .cadastralRef(rs.getString("cadastral_reference"))
                 .crossing(rs.getString("crossing"))
@@ -473,6 +483,51 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
             return rs.getInt("percent");
         } catch (SQLException e) {
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
+        }
+    }
+
+    /**
+     * Safely convert a String to a Municipalities enum.
+     * If the value is invalid, returns MONTERIA as default.
+     *
+     * @param value the string value to convert
+     * @return the corresponding Municipalities enum or MONTERIA if invalid
+     */
+    private Municipalities safeMunicipalitiesValueOf(String value) {
+        try {
+            return Municipalities.valueOf(value);
+        } catch (IllegalArgumentException e) {
+            return Municipalities.MONTERIA;
+        }
+    }
+
+    /**
+     * Safely convert a String to a Department enum.
+     * If the value is invalid, returns CORDOBA as default.
+     *
+     * @param value the string value to convert
+     * @return the corresponding Department enum or CORDOBA if invalid
+     */
+    private Department safeDepartmentValueOf(String value) {
+        try {
+            return Department.valueOf(value);
+        } catch (IllegalArgumentException e) {
+            return Department.CORDOBA;
+        }
+    }
+
+    /**
+     * Safely convert a String to a MaritalStatus enum.
+     * If the value is invalid, returns SINGLE as default.
+     *
+     * @param value the string value to convert
+     * @return the corresponding MaritalStatus enum or SINGLE if invalid
+     */
+    private MaritalStatus safeMaritalStatusValueOf(String value) {
+        try {
+            return MaritalStatus.valueOf(value);
+        } catch (IllegalArgumentException e) {
+            return MaritalStatus.SINGLE;
         }
     }
 

@@ -1,5 +1,11 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -32,10 +38,6 @@ import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controller of the beneficiary registration and modification panel.
@@ -489,6 +491,14 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         }
     }
 
+    /**
+     * Clear all input fields in the beneficiary registration form.
+     *
+     * <p>
+     * Resets text fields, combo boxes, and text areas to their
+     * default empty state for a new registration entry.
+     * </p>
+     */
     private void cleanUIAddBeneficiaries() {
         registerBeneficiary.getTxt_fullName().setText("");
         registerBeneficiary.getTxt_id().setText("");
