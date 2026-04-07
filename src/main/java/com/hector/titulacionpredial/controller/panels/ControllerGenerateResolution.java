@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.controller.panels;
 
 import com.hector.titulacionpredial.controller.builder.ControllerGenerateResolutionBuilder;
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
 import com.hector.titulacionpredial.exception.validation.InvalidInputException;
@@ -25,10 +26,9 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionTe
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
 
 /**
  * Resolution generation panel controller.
@@ -240,18 +240,17 @@ public class ControllerGenerateResolution implements LanguageObserver {
                 throw new PersistenceException(lang.message("persistence.resolution.exist"));
             }
 
-            List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = new ArrayList<>();
             String[] beneficiaries = idBeneficiaries.split(" - ");
 
-            for (String idBeneficiary : beneficiaries) {
-                DTOBeneficiarySimpleDetails dto = daoBeneficiary.findById(Long.parseLong(idBeneficiary.replace(" -", "")));
-
-                if (dto == null) {
-                    continue;
-                }
-
-                listDTOBeneficiaries.add(dto);
-            }
+            List<DTOBeneficiarySimpleDetails> listDTOBeneficiaries = Arrays.stream(beneficiaries)
+                    .map(id -> {
+                        try {
+                            return daoBeneficiary.findById(Long.parseLong(id.replace(" -", "")));
+                        } catch (DAOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .filter(Objects::nonNull).collect(Collectors.toList());
 
             daoResolution.add(numResolution, notification, executory, fmi, act, publicWriting, notary, propertyCode, beneficiaryName);
             generateDocument(path, listDTOBeneficiaries, address, cadastralId, fmi, area, String.valueOf(notification));

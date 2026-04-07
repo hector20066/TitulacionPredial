@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Utility class for generating Word documents of resolutions
@@ -122,13 +123,11 @@ public class GenerateResolutionUtils {
         int numDistinctMaritalStatuses = verifyMaritalStatus(beneficiariesList);
 
         if (numDistinctMaritalStatuses > 1) {
-            for (DTOBeneficiarySimpleDetails beneficiary : beneficiariesList) {
-                sb.append(beneficiary.getFullName())
-                        .append(identifyingText)
-                        .append(beneficiary.getId())
-                        .append(" estado civil ")
-                        .append(beneficiary.getMaritalStatus().getValue()).append(", ");
-            }
+            String names = beneficiariesList.stream()
+                    .map(b -> b.getFullName() + identifyingText + b.getId())
+                    .collect(Collectors.joining(", "));
+
+            sb.append(names);
         } else {
             for (DTOBeneficiarySimpleDetails beneficiary : beneficiariesList) {
                 sb.append(beneficiary.getFullName()).append(identifyingText).append(beneficiary.getId()).append(", ");

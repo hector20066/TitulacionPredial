@@ -31,7 +31,7 @@ public class ValidationUtils {
     }
 
     public static boolean isEmptyFields(String... fields) {
-        return Arrays.stream(fields).anyMatch(String::isBlank);
+        return Arrays.stream(fields).anyMatch(field -> field == null || field.isBlank());
     }
 
 }

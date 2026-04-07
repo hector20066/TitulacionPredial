@@ -85,7 +85,7 @@ public class LanguageManager {
      *
      * @return single instance of the specific subject
      */
-    public static LanguageManager getInstance() {
+    public static synchronized LanguageManager getInstance() {
         if (instance == null) {
             instance = new LanguageManager();
         }

@@ -47,7 +47,7 @@ public class ConcreteSubject implements Subject {
      *
      * @return instancia única del sujeto concreto
      */
-    public static ConcreteSubject getInstance() {
+    public static synchronized ConcreteSubject getInstance() {
         if (instance == null) {
             instance = new ConcreteSubject();
         }

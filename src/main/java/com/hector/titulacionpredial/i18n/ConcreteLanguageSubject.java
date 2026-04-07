@@ -50,7 +50,7 @@ public class ConcreteLanguageSubject implements LanguageSubject {
      *
      * @return single instance of the specific subject
      */
-    public static ConcreteLanguageSubject getInstance() {
+    public static synchronized ConcreteLanguageSubject getInstance() {
         if (instance == null) {
             instance = new ConcreteLanguageSubject();
         }

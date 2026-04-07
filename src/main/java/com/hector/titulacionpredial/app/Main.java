@@ -40,7 +40,7 @@ public class Main {
      * @throws RuntimeException if an error occurs during the initialization
      *                          of the graphical environment or the coordinator.
      */
-    static void main(String[] args) {
+    public static void main(String[] args) {
         try {
             FlatIntelliJLaf.setup();
 

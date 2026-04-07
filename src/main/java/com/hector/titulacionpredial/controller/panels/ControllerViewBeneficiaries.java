@@ -32,6 +32,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -301,7 +302,11 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
                 throw new InvalidInputException(lang.message("invalid.input.beneficiary.delete"));
             }
 
-            int code = (int) viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0);
+            int code = Optional.ofNullable(viewBeneficiaries.getJtbl_beneficiaries().getValueAt(selectedRow, 0))
+                    .filter(Integer.class::isInstance)
+                    .map(Integer.class::cast)
+                    .orElseThrow(() -> new InvalidInputException("Invalid code"));
+
             int option = MessageUtils.confirmDialog(lang.message("message.beneficiary.confirmation.delete"), viewBeneficiaries);
 
             if (option != MessageUtils.yesOption()) {

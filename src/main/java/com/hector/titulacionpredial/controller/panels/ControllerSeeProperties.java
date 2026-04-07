@@ -27,6 +27,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Property display panel controller.
@@ -160,7 +161,10 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                 throw new Exception(lang.message("exception.property.select.row"));
             }
 
-            int propertyCode = (int) seeProperties.getJtbl_properties().getValueAt(selectedRow, 0);
+            int propertyCode = Optional.ofNullable(seeProperties.getJtbl_properties().getValueAt(selectedRow, 0))
+                    .filter(Integer.class::isInstance)
+                    .map(Integer.class::cast)
+                    .orElseThrow(() -> new InvalidInputException("Invalid code"));
             String codeBeneficiaries = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
             String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
             String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 3).toString();

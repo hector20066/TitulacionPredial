@@ -331,12 +331,16 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                             propertyCode);
 
                     if (dto.getMaritalStatus() == MaritalStatus.MARRIED || dto.getMaritalStatus() == MaritalStatus.FREE_UNION) {
-                        spouse: for (DTOSpouseController dtoSpouse : listSpouses) {
-                            if (dtoSpouse.getIdBeneficiary() == dto.getId()) {
-                                registerSpouse(dtoSpouse, codeBeneficiary);
-                                break spouse;
-                            }
-                        }
+                        listSpouses.stream()
+                                .filter(spouse -> spouse.getIdBeneficiary() == dto.getId())
+                                .findFirst()
+                                .ifPresent(spouse -> {
+                                    try {
+                                        registerSpouse(spouse, codeBeneficiary);
+                                    } catch (DAOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                });
                     }
                 }
 
