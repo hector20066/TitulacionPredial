@@ -32,6 +32,8 @@ public class Dashboard extends javax.swing.JPanel {
     private String resolutions = "Resoluciones";
     private String resolutionsDesc = "Resoluciones hechas";
 
+    private String username;
+
     /**
      * Create the dashboard panel and initialize the graphical components.
      */
@@ -39,6 +41,14 @@ public class Dashboard extends javax.swing.JPanel {
         initComponents();
         
         scroll.getVerticalScrollBar().setUnitIncrement(15);
+    }
+
+    public synchronized String getUsername() {
+        return username;
+    }
+
+    public synchronized void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -478,6 +488,7 @@ public class Dashboard extends javax.swing.JPanel {
      * @param texts DTO with the translated dashboard texts
      */
     public void updateLanguage(DTODashboardText texts) {
+        jlb_welcome.setText(texts.getWelcome());
         jlb_subtitle1.setText(texts.getTotalRegisters());
         beneficiaries = texts.getBeneficiaries();
         beneficiariesDesc = texts.getBeneficiariesDesc();

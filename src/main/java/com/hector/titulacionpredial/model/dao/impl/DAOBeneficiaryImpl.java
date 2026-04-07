@@ -260,6 +260,7 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         dto.setCadastralReference(rs.getString("cadastral_reference"));
         dto.setMunicipalities(safeMunicipalitiesValueOf(rs.getString("municipality")));
         dto.setAddress(rs.getString("address"));
+        dto.setMaritalStatus(safeMaritalStatusValueOf(rs.getString("marital_status")));
     }
 
     @Override

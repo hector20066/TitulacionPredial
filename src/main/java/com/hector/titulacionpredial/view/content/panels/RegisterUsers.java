@@ -87,7 +87,7 @@ public class RegisterUsers extends javax.swing.JPanel {
         jlb_rol.setText("Rol del Usuario:");
 
         cbo_role.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        cbo_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "EMPLOYEE" }));
+        cbo_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EMPLOYEE" }));
 
         btn_createAccount.setBackground(new java.awt.Color(64, 145, 108));
         btn_createAccount.setForeground(new java.awt.Color(255, 255, 255));

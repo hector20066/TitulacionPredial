@@ -12,6 +12,7 @@ package com.hector.titulacionpredial.view.i18n.dto.panels;
  */
 public class DTODashboardText {
 
+    private final String welcome;
     private final String beneficiaries;
     private final String beneficiariesDesc;
     private final String properties;
@@ -33,6 +34,7 @@ public class DTODashboardText {
      * @param builder builder with the configured texts
      */
     public DTODashboardText(Builder builder) {
+        this.welcome = builder.welcome;
         this.beneficiaries = builder.beneficiaries;
         this.beneficiariesDesc = builder.beneficiariesDesc;
         this.properties = builder.properties;
@@ -47,6 +49,10 @@ public class DTODashboardText {
         this.totalRegisters = builder.totalRegisters;
         this.percentWorks = builder.percentWorks;
         this.registersMonth = builder.registersMonth;
+    }
+
+    public String getWelcome() {
+        return welcome;
     }
 
     public String getBeneficiaries() {
@@ -110,6 +116,7 @@ public class DTODashboardText {
      */
     public static class Builder {
 
+        private String welcome;
         private String beneficiaries;
         private String beneficiariesDesc;
         private String properties;
@@ -124,6 +131,11 @@ public class DTODashboardText {
         private String totalRegisters;
         private String percentWorks;
         private String registersMonth;
+
+        public Builder welcome(String welcome) {
+            this.welcome = welcome;
+            return this;
+        }
 
         public Builder beneficiaries(String beneficiaries) {
             this.beneficiaries = beneficiaries;

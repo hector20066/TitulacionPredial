@@ -113,7 +113,7 @@ public class ControllerContentUser implements LanguageObserver {
                 switch (indexSubMenu) {
                     case 1 -> {
                         NavigatorUtils.showForms(ContentUser.getJpl_content(), viewBeneficiaries);
-                        viewBeneficiaries.getBtn_modify().setText("Modificar");
+                        viewBeneficiaries.getBtn_modify().setText(lang.app("view.beneficiaries.modify"));
                     }
                     case 2 -> NavigatorUtils.showForms(ContentUser.getJpl_content(), seeProperties);
                     case 3 -> NavigatorUtils.showForms(ContentUser.getJpl_content(), seeResolutions);

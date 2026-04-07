@@ -168,6 +168,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
     @Override
     public void updateLanguage() {
         DTODashboardText dto = new DTODashboardText.Builder()
+                .welcome(lang.app("controller.dashboard.welcome"))
                 .beneficiaries(lang.app("dashboard.beneficiaries"))
                 .beneficiariesDesc(lang.app("dashboard.beneficiaries.desc"))
                 .properties(lang.app("dashboard.properties"))
@@ -185,6 +186,7 @@ public class ControllerDashboard implements Observer, LanguageObserver {
                 .build();
 
         dashboard.updateLanguage(dto);
+        dashboard.getJlb_welcome().setText(lang.app("controller.dashboard.welcome") + " " + dashboard.getUsername());
     }
 
 }

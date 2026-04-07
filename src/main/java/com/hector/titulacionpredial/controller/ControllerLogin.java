@@ -291,7 +291,8 @@ public class ControllerLogin implements LanguageObserver {
             contentAdmin.setLocationRelativeTo(null);
             controllerContentUser.showButtons();
             NavigatorUtils.showForms(ContentAdmin.getJpl_content(), dashboard);
-            dashboard.getJlb_welcome().setText("Bienvenido " + user);
+            dashboard.setUsername(user);
+            dashboard.getJlb_welcome().setText(lang.app("controller.dashboard.welcome") + " " + dashboard.getUsername());
         });
 
         login.dispose();
@@ -330,7 +331,8 @@ public class ControllerLogin implements LanguageObserver {
             });
         }
 
-        dashboard.getJlb_welcome().setText("Bienvenido " + user);
+        dashboard.setUsername(user);
+        dashboard.getJlb_welcome().setText(lang.app("controller.dashboard.welcome") + " " + dashboard.getUsername());
         subject.notifyObservers();
         login.dispose();
     }
