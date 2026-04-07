@@ -119,4 +119,9 @@ public class PropertyImplFacade implements PropertyFacade {
         return daoProperty.countPropertyWithResolution();
     }
 
+    @Override
+    public int countRecordsByMunicipality(Municipalities municipality) throws DAOException {
+        return daoProperty.countRecordsByMunicipality(municipality);
+    }
+
 }

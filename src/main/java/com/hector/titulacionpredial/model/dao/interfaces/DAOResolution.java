@@ -38,4 +38,13 @@ public interface DAOResolution extends DAOBase<DTOResolutionCreate, DTOResolutio
      */
     List<DTOResolutionDetails> findByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Count the total number of resolution records for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of resolution records in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
+
 }

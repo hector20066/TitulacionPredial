@@ -11,8 +11,10 @@ import com.hector.titulacionpredial.facade.interfaces.ResolutionFacade;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.SessionManager;
 import com.hector.titulacionpredial.utils.UserConfig;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTODashboardText;
@@ -71,9 +73,20 @@ public class ControllerDashboard implements Observer, LanguageObserver {
         new Thread(() -> {
             try {
                 List<DTOBeneficiariesByMonth> beneficiariesByMonths = daoBeneficiary.countBeneficiariesLastMonths(12);
-                int totalBeneficiaries = daoBeneficiary.countRecords();
-                int totalProperties = daoProperty.countRecords();
-                int totalResolutions = daoResolution.countRecords();
+
+                Municipalities selectedMunicipality = SessionManager.getInstance().getMunicipality();
+
+                int totalBeneficiaries = (selectedMunicipality != null) 
+                    ? daoBeneficiary.countRecordsByMunicipality(selectedMunicipality)
+                    : daoBeneficiary.countRecords();
+                    
+                int totalProperties = (selectedMunicipality != null)
+                    ? daoProperty.countRecordsByMunicipality(selectedMunicipality)
+                    : daoProperty.countRecords();
+                    
+                int totalResolutions = (selectedMunicipality != null)
+                    ? daoResolution.countRecordsByMunicipality(selectedMunicipality)
+                    : daoResolution.countRecords();
 
                 int percentBeneficiaries = daoBeneficiary.percentBeneficiariesWithProperty();
                 int percentProperties = daoProperty.percentPropertiesWithResolutions();

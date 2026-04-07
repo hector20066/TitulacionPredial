@@ -121,4 +121,13 @@ public interface PropertyFacade extends IListable<DTOPropertyDetails>, IRemovabl
      */
     int countPropertyWithResolution() throws DAOException;
 
+    /**
+     * Count the total number of property records for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of property records in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
+
 }

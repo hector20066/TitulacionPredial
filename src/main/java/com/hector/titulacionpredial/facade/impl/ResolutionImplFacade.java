@@ -95,4 +95,9 @@ public class ResolutionImplFacade implements ResolutionFacade {
         return daoResolution.countRecords();
     }
 
+    @Override
+    public int countRecordsByMunicipality(Municipalities municipality) throws DAOException {
+        return daoResolution.countRecordsByMunicipality(municipality);
+    }
+
 }

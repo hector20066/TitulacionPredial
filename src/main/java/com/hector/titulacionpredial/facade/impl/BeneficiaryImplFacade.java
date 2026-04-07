@@ -128,6 +128,11 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
     }
 
     @Override
+    public int countRecordsByMunicipality(Municipalities municipality) throws DAOException {
+        return daoBeneficiary.countRecordsByMunicipality(municipality);
+    }
+
+    @Override
     public List<DTOBeneficiariesByMonth> countBeneficiariesLastMonths(int months) throws DAOException {
         return daoBeneficiary.countBeneficiariesLastMonths(months);
     }

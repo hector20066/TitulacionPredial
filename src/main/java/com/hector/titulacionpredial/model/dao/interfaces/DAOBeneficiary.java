@@ -2,6 +2,7 @@ package com.hector.titulacionpredial.model.dao.interfaces;
 
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.beneficiary.*;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 
 import java.util.List;
 
@@ -135,5 +136,14 @@ public interface DAOBeneficiary extends IListable<DTOBeneficiarySimpleDetails>,
      * @throws DAOException if an error occurs in the query
      */
     int percentBeneficiariesWithProperty() throws DAOException;
+
+    /**
+     * Count the total number of beneficiary records for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of beneficiary records in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
 
 }

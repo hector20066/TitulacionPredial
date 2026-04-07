@@ -242,4 +242,25 @@ public class DAOResolutionImpl implements DAOResolution {
         }
     }
 
+    @Override
+    public int countRecordsByMunicipality(Municipalities municipality) throws DAOException {
+        String sql = SQLRepository.get("sql/resolution/countRecordsByMunicipality.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+            st.setString(1, municipality.getValue());
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    throw new ResolutionNotFoundException(lang.message("not.found.count"));
+                }
+
+                return rs.getInt("total_records");
+            }
+        } catch (SQLException e) {
+            throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.all"), e);
+        }
+    }
+
 }

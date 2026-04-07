@@ -78,4 +78,13 @@ public interface ResolutionFacade extends IListable<DTOResolutionDetails>, ICoun
     boolean modify(int code, LocalDate executory, String act, String publicWriting, long numResolution,
                    LocalDate notification, String fmi, String notary) throws DAOException;
 
+    /**
+     * Count the total number of resolution records for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of resolution records in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
+
 }
