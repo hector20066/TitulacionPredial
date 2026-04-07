@@ -208,7 +208,7 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
                 throw new InvalidInputException(lang.message("invalid.input.resolution.number"));
             }
 
-            if (!NumericalValidationUtils.isNumeric(numResolutionText)) {
+            if (!ValidationUtils.isNumeric(numResolutionText)) {
                 throw new InvalidNumberInputException(lang.message("invalid.number.property.search"));
             }
 

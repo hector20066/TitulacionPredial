@@ -414,7 +414,7 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
      * @throws DAOException if an error occurs in the query
      */
     private DTOBeneficiarySimpleDetails resolveSearch(String param) throws DAOException {
-        if (NumericalValidationUtils.isNumeric(param)) {
+        if (ValidationUtils.isNumeric(param)) {
             long value = Long.parseLong(param);
 
             return (value > 100000) ? daoBeneficiary.findById(value) : daoBeneficiary.findByCode((int) value);

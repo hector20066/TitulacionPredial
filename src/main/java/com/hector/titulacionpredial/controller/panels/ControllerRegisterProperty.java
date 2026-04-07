@@ -18,6 +18,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.ImportExcel;
 import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 
@@ -84,6 +85,14 @@ public class ControllerRegisterProperty implements LanguageObserver {
         this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
+    }
+
+    public synchronized int getPropertyCode() {
+        return propertyCode;
+    }
+
+    public synchronized void setPropertyCode(int propertyCode) {
+        this.propertyCode = propertyCode;
     }
 
     /**
@@ -187,7 +196,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
             String distance = fields[i][2].getText().trim();
             String hillside = fields[i][3].getText().trim();
 
-            if (invalidPoints(north, east, distance, hillside)) {
+            if (ValidationUtils.isEmptyFields(north, east, distance, hillside)) {
                 throw new EmptyFieldException(lang.message("empty.property.point") + " " + (i + 1));
             }
 
@@ -200,22 +209,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
         }
 
         return points;
-    }
-
-    /**
-     * Check if any of the provided fields are empty.
-     *
-     * @param info arguments to be validated
-     * @return {@code true} if at least one field is blank
-     */
-    private boolean invalidPoints(String... info) {
-        for (String data : info) {
-            if (data.isBlank()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -256,7 +249,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             Double.parseDouble(p.east()),
                             Double.parseDouble(p.distance()),
                             p.hillside(),
-                            this.propertyCode);
+                            getPropertyCode());
                 }
 
                 SwingUtilities.invokeLater(() -> runInvokeLater(success));
@@ -290,7 +283,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         resetButton();
         registerProperty.clearFields();
         showCardFirst();
-        this.propertyCode = 0;
+        setPropertyCode(0);
     }
 
     /**
@@ -367,7 +360,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         registerProperty.getBtn_register().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setEnabled(false);
         registerProperty.getBtn_searchBeneficiary().setText(lang.app("controller.register.property.searching"));
-        this.propertyCode = 0;
+        setPropertyCode(0);
     }
 
     /**
@@ -383,7 +376,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 SwingUtilities.invokeLater(() -> {
                     registerProperty.getTxt_cadastralId().setText(dto.getCadastral_reference());
                     registerProperty.getTxt_address().setText(dto.getAddress());
-                    this.propertyCode = dto.getCode();
+                    setPropertyCode(dto.getCode());
 
                     resetUILoadBeneficiaries();
                 });

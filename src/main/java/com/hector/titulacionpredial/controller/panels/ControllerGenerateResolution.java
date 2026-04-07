@@ -18,7 +18,7 @@ import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.DialogUtils;
 import com.hector.titulacionpredial.utils.GenerateResolutionUtils;
 import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOGenerateResolutionText;
 
@@ -188,11 +188,11 @@ public class ControllerGenerateResolution implements LanguageObserver {
             throw new InvalidInputException(lang.message("invalid.input.resolution.select.route"));
         }
 
-        if (resolutionNumber.isBlank() || notary.isBlank() || propertyCode.isBlank()) {
+        if (ValidationUtils.isEmptyFields(resolutionNumber, notary, propertyCode)) {
             throw new EmptyFieldException(lang.message("empty.resolution.number.notary"));
         }
 
-        if (!NumericalValidationUtils.isNumeric(resolutionNumber)) {
+        if (!ValidationUtils.isNumeric(resolutionNumber)) {
             throw new InvalidNumberInputException(lang.message("invalid.number.property.number"));
         }
     }
@@ -245,6 +245,11 @@ public class ControllerGenerateResolution implements LanguageObserver {
 
             for (String idBeneficiary : beneficiaries) {
                 DTOBeneficiarySimpleDetails dto = daoBeneficiary.findById(Long.parseLong(idBeneficiary.replace(" -", "")));
+
+                if (dto == null) {
+                    continue;
+                }
+
                 listDTOBeneficiaries.add(dto);
             }
 

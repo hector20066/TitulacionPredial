@@ -93,6 +93,8 @@ public class GenerateResolutionUtils {
 
         InputStream templateStream = GenerateResolution.class.getClassLoader().
                 getResourceAsStream("resolution/MINUTA - RES FISCALES.docx");
+
+        assert templateStream != null;
         XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
         template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-" + cadastralId + ".docx");
         template.close();
@@ -132,8 +134,10 @@ public class GenerateResolutionUtils {
                 sb.append(beneficiary.getFullName()).append(identifyingText).append(beneficiary.getId()).append(", ");
             }
 
-            if (numDistinctMaritalStatuses == 1) {
-                sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue());
+            if (!beneficiariesList.isEmpty() && numDistinctMaritalStatuses == 1) {
+                beneficiariesList.stream()
+                        .findFirst()
+                        .ifPresent(b -> sb.append(" estado civil ").append(b.getMaritalStatus().getValue()));
             } else {
                 sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue()).append("s");
             }

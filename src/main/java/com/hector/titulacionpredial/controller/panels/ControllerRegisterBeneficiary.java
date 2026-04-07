@@ -27,7 +27,7 @@ import com.hector.titulacionpredial.observer.Observer;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
@@ -460,7 +460,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      */
     private void validations(String fullName, String id, String expeditionLocation, String phone,
                              String codeBeneficiaries) throws InvalidInputException {
-        if (isInvalidData(fullName, id, expeditionLocation, codeBeneficiaries)) {
+        if (ValidationUtils.isEmptyFields(fullName, id, expeditionLocation, codeBeneficiaries)) {
             throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
         }
 
@@ -476,29 +476,13 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
         }
 
-        if (!NumericalValidationUtils.isNumeric(phone)) {
+        if (!ValidationUtils.isNumeric(phone)) {
             throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.phone"));
         }
 
-        if (!NumericalValidationUtils.isNumeric(id)) {
+        if (!ValidationUtils.isNumeric(id)) {
             throw new InvalidNumberInputException(lang.message("invalid.number.beneficiary.id"));
         }
-    }
-
-    /**
-     * Check if any of the provided fields are empty.
-     *
-     * @param fields fields to validate
-     * @return {@code true} if at least one field is blank
-     */
-    private boolean isInvalidData(String... fields) {
-        for (String field : fields) {
-            if (field.isBlank()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void cleanUIAddBeneficiaries() {
@@ -515,17 +499,21 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      * selected by the user.
      */
     private void selectDepartment() {
-        Department departmentSelected = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
+        try {
+            Department departmentSelected = (Department) registerBeneficiary.getCbo_department().getSelectedItem();
 
-        if (departmentSelected == null) {
-            return;
-        }
+            JComboBox<Municipalities> cboMunicipality = registerBeneficiary.getCbo_municipality();
+            cboMunicipality.removeAllItems();
 
-        JComboBox<Municipalities> cboMunicipality = registerBeneficiary.getCbo_municipality();
-        cboMunicipality.removeAllItems();
+            if (departmentSelected == null) {
+                throw new EmptyFieldException("Departamento");
+            }
 
-        for (Municipalities municipality : departmentSelected.getMunicipalities()) {
-            cboMunicipality.addItem(municipality);
+            for (Municipalities municipality : departmentSelected.getMunicipalities()) {
+                cboMunicipality.addItem(municipality);
+            }
+        } catch (InvalidInputException e) {
+            MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
     }
 
@@ -540,34 +528,38 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
      * </p>
      */
     private void showSpouseDialog() {
-        if (registerBeneficiary.isLoading()) return;
-        MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
+        try {
+            if (registerBeneficiary.isLoading()) return;
+            MaritalStatus selected = (MaritalStatus) registerBeneficiary.getCbo_maritalStatus().getSelectedItem();
 
-        String affectationMarriedOrFreeUnion = lang.app("register.beneficiary.affectation.desc");
+            String affectationMarriedOrFreeUnion = lang.app("register.beneficiary.affectation.desc");
 
-        if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
-            String idBeneficiary = registerBeneficiary.getTxt_id().getText().trim();
-            registerBeneficiary.getTxa_affectation().setText(affectationMarriedOrFreeUnion);
+            if (selected == MaritalStatus.MARRIED || selected == MaritalStatus.FREE_UNION) {
+                String idBeneficiary = registerBeneficiary.getTxt_id().getText().trim();
+                registerBeneficiary.getTxa_affectation().setText(affectationMarriedOrFreeUnion);
 
-            if (idBeneficiary.isBlank()) {
-                MessageUtils.warningMessage(lang.message("message.beneficiary.enter.id"), registerBeneficiary);
+                if (idBeneficiary.isBlank()) {
+                    throw new EmptyFieldException("Cedula");
+                }
+
+                if (!ValidationUtils.isNumeric(idBeneficiary)) {
+                    throw new InvalidNumberInputException("Cedula");
+                }
+
+                java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
+
+                SpouseData dialog = new SpouseData(parentFrame, true);
+                dialog.setLocationRelativeTo(registerBeneficiary);
+                dialog.updateLanguage();
+                dialog.setIdBeneficiary(Integer.parseInt(idBeneficiary));
+                dialog.setVisible(true);
+
+                if (dialog.isConfirmed()) {
+                    listSpouses.add(dialog.getSpouse());
+                }
             }
-
-            if (!NumericalValidationUtils.isNumeric(idBeneficiary)) {
-                MessageUtils.warningMessage(lang.message("message.beneficiary.invalid.id"), registerBeneficiary);
-            }
-
-            java.awt.Frame parentFrame = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(registerBeneficiary);
-
-            SpouseData dialog = new SpouseData(parentFrame, true);
-            dialog.setLocationRelativeTo(registerBeneficiary);
-            dialog.updateLanguage();
-            dialog.setIdBeneficiary(Integer.parseInt(idBeneficiary));
-            dialog.setVisible(true);
-
-            if (dialog.isConfirmed()) {
-                listSpouses.add(dialog.getSpouse());
-            }
+        } catch (InvalidInputException e) {
+            MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
         }
     }
 

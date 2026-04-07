@@ -15,7 +15,7 @@ import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.ModifyResolution;
 import com.hector.titulacionpredial.view.content.panels.SeeResolutions;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText;
@@ -23,6 +23,7 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -130,11 +131,11 @@ public class ControllerModifyResolution implements LanguageObserver {
             String act = modifyResolution.getTxt_act().getText().trim();
             String publicWriting = modifyResolution.getTxt_publicWriting().getText().trim();
 
-            if (isInvalidData(numResolution, notary, fmi)) {
+            if (ValidationUtils.isEmptyFields(numResolution, notary, fmi)) {
                 throw new EmptyFieldException(lang.message("empty.resolution.number.notary.fmi"));
             }
 
-            if (!NumericalValidationUtils.isNumeric(numResolution)) {
+            if (!ValidationUtils.isNumeric(numResolution)) {
                 throw new InvalidNumberInputException(lang.message("invalid.number.property.number"));
             }
 
@@ -151,22 +152,6 @@ public class ControllerModifyResolution implements LanguageObserver {
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), modifyResolution);
         }
-    }
-
-    /**
-     * Check if any of the provided fields are empty.
-     *
-     * @param fields fields to validate
-     * @return {@code true} if at least one field is blank
-     */
-    private boolean isInvalidData(String... fields) {
-        for (String field : fields) {
-            if (field.isBlank()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**

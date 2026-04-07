@@ -12,7 +12,7 @@ import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NumericalValidationUtils;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterUsers;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 
@@ -98,11 +98,11 @@ public class ControllerRegisterUsers implements LanguageObserver {
             String password = new String(registerUsers.getJpld_password().getPassword());
             Role role = Role.valueOf((String) registerUsers.getCbo_role().getSelectedItem());
 
-            if (isInvalidData(name, id, user, password)) {
+            if (ValidationUtils.isEmptyFields(name, id, user, password)) {
                 throw new EmptyFieldException(lang.message("empty.user.general"));
             }
 
-            if (!NumericalValidationUtils.isNumeric(id)) {
+            if (!ValidationUtils.isNumeric(id)) {
                 throw new InvalidNumberInputException(lang.message("empty.user.id"));
             }
 
@@ -115,22 +115,6 @@ public class ControllerRegisterUsers implements LanguageObserver {
         } catch (InvalidInputException e) {
             MessageUtils.warningMessage(e.getMessage(), registerUsers);
         }
-    }
-
-    /**
-     * is invalid data.
-     *
-     * @param fields the fields
-     * @return the is invalid data
-     */
-    private boolean isInvalidData(String... fields) {
-        for (String field : fields) {
-            if (field.isBlank()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**

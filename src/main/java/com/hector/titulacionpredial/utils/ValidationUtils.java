@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import java.util.Arrays;
+
 /**
  * Utility class for numeric validations.
  *
@@ -11,7 +13,7 @@ package com.hector.titulacionpredial.utils;
  * @author Ing. Hector Acevedo
  * @since 1.0
  */
-public class NumericalValidationUtils {
+public class ValidationUtils {
 
     /**
      * Check if the provided string contains only digits.
@@ -26,6 +28,10 @@ public class NumericalValidationUtils {
         }
 
         return value.matches("\\d+");
+    }
+
+    public static boolean isEmptyFields(String... fields) {
+        return Arrays.stream(fields).anyMatch(String::isBlank);
     }
 
 }

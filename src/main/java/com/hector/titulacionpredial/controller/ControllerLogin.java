@@ -14,6 +14,7 @@ import com.hector.titulacionpredial.service.LoginService;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.NavigatorUtils;
 import com.hector.titulacionpredial.utils.SessionManager;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
@@ -180,7 +181,7 @@ public class ControllerLogin implements LanguageObserver {
                 return;
             }*/
 
-            if (user.isBlank() || passwd.isBlank()) {
+            if (ValidationUtils.isEmptyFields(user, passwd)) {
                 throw new EmptyFieldException(lang.message("empty.user.password"));
             }
 
