@@ -170,4 +170,13 @@ public interface BeneficiaryFacade extends IListable<DTOBeneficiarySimpleDetails
      */
     int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Count beneficiaries with a property for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of beneficiaries with property in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countBeneficiariesWithPropertyByMunicipality(Municipalities municipality) throws DAOException;
+
 }

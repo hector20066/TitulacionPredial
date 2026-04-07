@@ -117,4 +117,13 @@ public interface DAOProperty extends IListable<DTOPropertyDetails>,
      */
     int countRecordsByMunicipality(Municipalities municipality) throws DAOException;
 
+    /**
+     * Count properties with a resolution for a specific municipality.
+     *
+     * @param municipality the municipality to filter by
+     * @return number of properties with resolution in the specified municipality
+     * @throws DAOException if an error occurs in the query
+     */
+    int countPropertyWithResolutionByMunicipality(Municipalities municipality) throws DAOException;
+
 }

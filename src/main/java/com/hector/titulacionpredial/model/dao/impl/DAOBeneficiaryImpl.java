@@ -553,4 +553,25 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
         }
     }
 
+    @Override
+    public int countBeneficiariesWithPropertyByMunicipality(Municipalities municipality) throws DAOException {
+        String sql = SQLRepository.get("sql/beneficiary/countBeneficiariesWithPropertyByMunicipality.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+            st.setString(1, municipality.getValue());
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    return 0;
+                }
+
+                return rs.getInt("total_records");
+            }
+        } catch (SQLException e) {
+            throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.info.access"), e);
+        }
+    }
+
 }

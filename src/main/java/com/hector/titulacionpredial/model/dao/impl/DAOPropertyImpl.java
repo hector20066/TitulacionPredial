@@ -486,4 +486,25 @@ public class DAOPropertyImpl implements DAOProperty {
         }
     }
 
+    @Override
+    public int countPropertyWithResolutionByMunicipality(Municipalities municipality) throws DAOException {
+        String sql = SQLRepository.get("sql/property/countPropertyWithResolutionByMunicipality.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+             PreparedStatement st = connection.prepareStatement(sql)) {
+
+            st.setString(1, municipality.getValue());
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (!rs.next()) {
+                    return 0;
+                }
+
+                return rs.getInt("total_records");
+            }
+        } catch (SQLException e) {
+            throw new PropertyPersistenceException(lang.message("persistence.property.info.all"), e);
+        }
+    }
+
 }

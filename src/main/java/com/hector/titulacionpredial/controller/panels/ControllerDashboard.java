@@ -91,8 +91,13 @@ public class ControllerDashboard implements Observer, LanguageObserver {
                 int percentBeneficiaries = daoBeneficiary.percentBeneficiariesWithProperty();
                 int percentProperties = daoProperty.percentPropertiesWithResolutions();
 
-                int beneficiariesWithProperty = daoBeneficiary.countBeneficiariesWithProperty();
-                int propertiesWithResolution = daoProperty.countPropertyWithResolution();
+                int beneficiariesWithProperty = (selectedMunicipality != null)
+                    ? daoBeneficiary.countBeneficiariesWithPropertyByMunicipality(selectedMunicipality)
+                    : daoBeneficiary.countBeneficiariesWithProperty();
+                    
+                int propertiesWithResolution = (selectedMunicipality != null)
+                    ? daoProperty.countPropertyWithResolutionByMunicipality(selectedMunicipality)
+                    : daoProperty.countPropertyWithResolution();
 
                 int beneficiariesWithoutProperty = totalBeneficiaries - beneficiariesWithProperty;
                 int propertiesWithoutResolution = totalProperties - propertiesWithResolution;

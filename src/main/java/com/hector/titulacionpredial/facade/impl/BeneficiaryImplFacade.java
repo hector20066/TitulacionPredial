@@ -147,4 +147,9 @@ public class BeneficiaryImplFacade implements BeneficiaryFacade {
         return daoBeneficiary.percentBeneficiariesWithProperty();
     }
 
+    @Override
+    public int countBeneficiariesWithPropertyByMunicipality(Municipalities municipality) throws DAOException {
+        return daoBeneficiary.countBeneficiariesWithPropertyByMunicipality(municipality);
+    }
+
 }
