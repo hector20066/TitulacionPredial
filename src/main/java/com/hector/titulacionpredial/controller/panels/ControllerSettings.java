@@ -40,9 +40,8 @@ public class ControllerSettings implements LanguageObserver {
         this.lang = builder.getLang();
         this.languageSubject = builder.getLanguageSubject();
 
-        builder.getLanguageSubject().register(this);
-
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     /**

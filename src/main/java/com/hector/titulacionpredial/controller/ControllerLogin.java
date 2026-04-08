@@ -19,7 +19,11 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
-import com.hector.titulacionpredial.utils.*;
+import com.hector.titulacionpredial.utils.MessageUtils;
+import com.hector.titulacionpredial.utils.NavigatorUtils;
+import com.hector.titulacionpredial.utils.NetworkUtils;
+import com.hector.titulacionpredial.utils.SessionManager;
+import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
@@ -78,9 +82,8 @@ public class ControllerLogin implements LanguageObserver {
         this.controllerContentReader = builder.getControllerContentReader();
         this.controllerContentUser = builder.getControllerContentUser();
 
-        builder.getLanguageSubject().register(this);
-
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     public void setRole(Role role) {
@@ -231,12 +234,13 @@ public class ControllerLogin implements LanguageObserver {
                     handledLoginResult(dto);
                 } catch (ExecutionException e) {
                     Throwable cause = e.getCause();
+                    String errorMessage = cause != null ? cause.getMessage() : e.getMessage();
 
-                    if(cause instanceof java.sql.SQLNonTransientConnectionException
-                            || cause instanceof com.mysql.cj.jdbc.exceptions.CommunicationsException) {
+                    if (errorMessage != null && !errorMessage.isEmpty()) {
+                        MessageUtils.errorMessage(lang.message("message.error.connect.db") + " - " + errorMessage, null);
+                    } else {
                         MessageUtils.errorMessage(lang.message("message.error.connect.db"), null);
                     }
-
                     resetLogIn();
                 } catch (InterruptedException e) {
                     MessageUtils.errorMessage(lang.message("message.abort.login"), null);

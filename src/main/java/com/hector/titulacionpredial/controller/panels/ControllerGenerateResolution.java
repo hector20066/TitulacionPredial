@@ -77,12 +77,11 @@ public class ControllerGenerateResolution implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        builder.getLanguageSubject().register(this);
-
         this.daoResolution = new ResolutionImplFacade();
         this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     /**
@@ -247,7 +246,8 @@ public class ControllerGenerateResolution implements LanguageObserver {
                         try {
                             return daoBeneficiary.findById(Long.parseLong(id.replace(" -", "")));
                         } catch (DAOException e) {
-                            throw new RuntimeException(e);
+                            MessageUtils.errorMessage(e.getMessage(), generateResolution);
+                            return null;
                         }
                     })
                     .filter(Objects::nonNull).collect(Collectors.toList());

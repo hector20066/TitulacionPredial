@@ -1,7 +1,5 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
+
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Persistent user configuration manager.
@@ -72,7 +72,7 @@ public class UserConfig {
         try {
             init();
         } catch (IOException e) {
-            throw new RuntimeException(lang.message("user.config.init.error"));
+            // Configuración no disponible, continuar sin ella
         }
     }
 
@@ -141,7 +141,7 @@ public class UserConfig {
         try (OutputStream outputStream = Files.newOutputStream(CONFIG_FILE)) {
             properties.store(outputStream, lang.message("user.config.update"));
         } catch (IOException e) {
-            throw new RuntimeException(lang.message("user.config.save.error"));
+            // Error guardando configuración, continuar
         }
     }
 

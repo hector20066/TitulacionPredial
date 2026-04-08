@@ -48,10 +48,10 @@ public class ControllerManageUsers implements Observer, LanguageObserver, IManag
         this.lang = builder.getLang();
         this.subject = builder.getSubject();
 
+        this.daoUsers = new UsersImplFacade();
+
         builder.getSubject().register(this);
         builder.getLanguageSubject().register(this);
-
-        this.daoUsers = new UsersImplFacade();
     }
 
     @Override

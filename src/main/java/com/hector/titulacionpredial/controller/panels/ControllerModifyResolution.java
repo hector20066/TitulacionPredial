@@ -77,11 +77,10 @@ public class ControllerModifyResolution implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        builder.getLanguageSubject().register(this);
-
         this.daoResolution = new ResolutionImplFacade();
 
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     /**

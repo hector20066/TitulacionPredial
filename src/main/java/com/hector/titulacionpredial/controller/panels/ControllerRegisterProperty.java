@@ -78,13 +78,12 @@ public class ControllerRegisterProperty implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        builder.getLanguageSubject().register(this);
-
         this.daoProperty = new PropertyImplFacade();
         this.daoPoint = new PointImplFacade();
         this.daoBeneficiary = new BeneficiaryImplFacade();
 
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     public synchronized int getPropertyCode() {

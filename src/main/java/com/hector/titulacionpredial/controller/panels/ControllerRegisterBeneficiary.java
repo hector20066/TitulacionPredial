@@ -84,8 +84,6 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        builder.getLanguageSubject().register(this);
-
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.daoSpouse = new SpouseImplFacade();
@@ -94,6 +92,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         this.listSpouses = new ArrayList<>();
 
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     /**
@@ -278,7 +277,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             doInBackgroundRegister(cadastralReference, address, department, municipality, crossing, neighborhood,
                     publication);
         } catch (InvalidInputException e) {
-            throw new RuntimeException(e);
+            MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
     }
 
@@ -340,7 +339,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
                                     try {
                                         registerSpouse(spouse, codeBeneficiary);
                                     } catch (DAOException e) {
-                                        throw new RuntimeException(e);
+                                        MessageUtils.errorMessage(e.getMessage(), registerBeneficiary);
                                     }
                                 });
                     }

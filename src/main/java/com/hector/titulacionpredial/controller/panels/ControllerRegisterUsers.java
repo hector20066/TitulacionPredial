@@ -48,11 +48,10 @@ public class ControllerRegisterUsers implements LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        builder.getLanguageSubject().register(this);
-
         this.daoUsers = new UsersImplFacade();
 
         connectEvents();
+        builder.getLanguageSubject().register(this);
     }
 
     /**

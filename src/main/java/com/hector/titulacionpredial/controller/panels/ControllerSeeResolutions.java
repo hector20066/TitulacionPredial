@@ -75,13 +75,12 @@ public class ControllerSeeResolutions implements Observer, LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        this.subject.register(this);
-        builder.getLanguageSubject().register(this);
-
         this.daoResolution = new ResolutionImplFacade();
         this.searchPlaceholder = lang.app("controller.see.resolution.search");
 
         connectEvents();
+        this.subject.register(this);
+        builder.getLanguageSubject().register(this);
     }
 
     /**

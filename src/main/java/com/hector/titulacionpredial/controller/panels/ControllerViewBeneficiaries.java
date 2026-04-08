@@ -89,14 +89,13 @@ public class ControllerViewBeneficiaries implements Observer, LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        this.subject.register(this);
-        builder.getLanguageSubject().register(this);
-
         this.daoBeneficiary = new BeneficiaryImplFacade();
         this.daoProperty = new PropertyImplFacade();
         this.searchPlaceholder = lang.app("controller.view.beneficiaries.search");
 
         connectEvents();
+        this.subject.register(this);
+        builder.getLanguageSubject().register(this);
     }
 
     /**

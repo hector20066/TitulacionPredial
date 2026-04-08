@@ -1,9 +1,9 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.i18n.LanguageManager;
-
 import java.io.InputStream;
 import java.util.Properties;
+
+import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for loading and accessing application configuration
@@ -31,12 +31,12 @@ public class AppConfig {
     static {
         try (InputStream file = AppConfig.class.getClassLoader().getResourceAsStream("config/application.properties")) {
             if (file == null) {
-                throw new RuntimeException(lang.message("app.config.not.found.file"));
+                throw new IllegalStateException("Archivo de configuración no encontrado");
             }
 
             properties.load(file);
         } catch (Exception e) {
-            throw new RuntimeException(lang.message("app.config.no.charge.app"));
+            throw new ExceptionInInitializerError("Error al cargar configuración de la aplicación: " + e.getMessage());
         }
     }
 

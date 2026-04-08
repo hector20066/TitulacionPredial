@@ -74,13 +74,12 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         this.subject = builder.getSubject();
         this.lang = builder.getLang();
 
-        this.subject.register(this);
-        builder.getLanguageSubject().register(this);
-
         this.daoProperty = new PropertyImplFacade();
         this.searchPlaceholder = lang.app("controller.see.property.search");
 
         connectEvents();
+        this.subject.register(this);
+        builder.getLanguageSubject().register(this);
     }
 
     /**
@@ -165,6 +164,7 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
                     .filter(Integer.class::isInstance)
                     .map(Integer.class::cast)
                     .orElseThrow(() -> new InvalidInputException("Invalid code"));
+
             String codeBeneficiaries = seeProperties.getJtbl_properties().getValueAt(selectedRow, 1).toString();
             String beneficiaryName = seeProperties.getJtbl_properties().getValueAt(selectedRow, 2).toString();
             String beneficiaryId = seeProperties.getJtbl_properties().getValueAt(selectedRow, 3).toString();
