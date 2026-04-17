@@ -5,7 +5,19 @@ import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import java.io.File;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Form for registering properties with their geographic coordinates.
@@ -31,6 +43,8 @@ public class RegisterProperty extends javax.swing.JPanel {
         jpl_contentPoints.add(jpl_point2, "point2");
         jpl_contentPoints.add(jpl_point3, "point3");
         jpl_contentPoints.add(jpl_point4, "point4");
+        
+        setupBulkImportPanel();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -915,6 +929,7 @@ public class RegisterProperty extends javax.swing.JPanel {
      */
     public void clearFields() {
         txt_cadastralId.setText("");
+        txt_address.setText("");
         txt_area.setText("");
         txt_beneficiaryCode.setText("");
         txt_northCoordinate1.setText("");
@@ -933,6 +948,160 @@ public class RegisterProperty extends javax.swing.JPanel {
         txt_eastCoordinate4.setText("");
         txt_distance4.setText("");
         txt_hillside4.setText("");
+    }
+
+    // Métodos para importación en lote con Drag & Drop
+    
+    private JTable jTable_bulkImport;
+    private JPanel jpl_dragDrop;
+    private Callable onFileDropped;
+    
+    /**
+     * Setup the bulk import panel with drag & drop support.
+     */
+    private void setupBulkImportPanel() {
+        // El panel será agregado dinámicamente cuando sea necesario
+        initBulkImportTable();
+    }
+
+    /**
+     * Initialize the table for bulk import data.
+     */
+    private void initBulkImportTable() {
+        jTable_bulkImport = new JTable();
+        jTable_bulkImport.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable_bulkImport.setFont(new java.awt.Font("SansSerif", 0, 12));
+        jTable_bulkImport.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+    }
+
+    /**
+     * Get the bulk import table.
+     *
+     * @return JTable for displaying imported data
+     */
+    public JTable getTable_bulkImport() {
+        return jTable_bulkImport;
+    }
+
+    /**
+     * Load data into the bulk import table from Excel data.
+     * Ignores columns 1, 2, 3, 8, 13, 18 from Excel.
+     *
+     * @param data list of rows from Excel file
+     */
+    public void loadBulkImportTable(List<List<String>> data) {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Define columns (original structure)
+        String[] columns = {
+                "Beneficiary Code", "East 1", "North 1", "Distance 1", "Hillside 1",
+                "East 2", "North 2", "Distance 2", "Hillside 2",
+                "East 3", "North 3", "Distance 3", "Hillside 3",
+                "East 4", "North 4", "Distance 4", "Hillside 4",
+                "Area"
+        };
+
+        for (String col : columns) {
+            model.addColumn(col);
+        }
+
+        // Add rows from data
+        int[] indexes = {0, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23};
+        for (List<String> row : data) {
+            if (!row.isEmpty()) {
+                List<String> filteredRow = new ArrayList<>();
+                for (int i : indexes) {
+                    filteredRow.add(i < row.size() ? row.get(i) : "");
+                }
+                if (!filteredRow.isEmpty()) {
+                    model.addRow(filteredRow.toArray());
+                }
+            }
+        }
+
+        jTable_bulkImport.setModel(model);
+    }
+
+    /**
+     * Get the drag & drop panel.
+     *
+     * @return JPanel configured for drag & drop
+     */
+    public JPanel getPanel_dragDrop() {
+        if (jpl_dragDrop == null) {
+            jpl_dragDrop = new JPanel();
+            jpl_dragDrop.setBackground(Color.WHITE);
+            jpl_dragDrop.setLayout(new BorderLayout());
+            jpl_dragDrop.setBorder(new javax.swing.border.LineBorder(new Color(140, 183, 155), 2, true));
+
+            JLabel dropLabel = new JLabel("ARRASTRE EL ARCHIVO EXCEL AQUÍ", SwingConstants.CENTER);
+            dropLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+            dropLabel.setForeground(new Color(8, 28, 21));
+            jpl_dragDrop.add(dropLabel, BorderLayout.CENTER);
+
+            // Setup drag & drop
+            new DropTarget(jpl_dragDrop, new DropTargetListener() {
+                @Override
+                public void dragOver(DropTargetDragEvent dtde) {
+                    jpl_dragDrop.setBackground(new Color(230, 240, 235));
+                }
+
+                @Override
+                public void dragExit(DropTargetEvent dte) {
+                    jpl_dragDrop.setBackground(Color.WHITE);
+                }
+
+                @Override
+                public void drop(DropTargetDropEvent evt) {
+                    evt.acceptDrop(java.awt.dnd.DnDConstants.ACTION_COPY);
+                    try {
+                        Transferable transferable = evt.getTransferable();
+                        @SuppressWarnings("unchecked")
+                        List<File> files = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
+
+                        if (!files.isEmpty()) {
+                            File selectedFile = files.get(0);
+                            String filename = selectedFile.getName().toLowerCase();
+
+                            if (filename.endsWith(".xlsx") || filename.endsWith(".xls")) {
+                                if (onFileDropped != null) {
+                                    onFileDropped.call(selectedFile);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    jpl_dragDrop.setBackground(Color.WHITE);
+                }
+
+                @Override
+                public void dragEnter(DropTargetDragEvent dtde) {
+                }
+
+                @Override
+                public void dropActionChanged(DropTargetDragEvent dtde) {
+                }
+            });
+        }
+        return jpl_dragDrop;
+    }
+
+    /**
+     * Set callback when file is dropped.
+     *
+     * @param callback Callable that receives the dropped file
+     */
+    public void setOnFileDropped(Callable callback) {
+        this.onFileDropped = callback;
+    }
+
+    /**
+     * Functional interface for file drop callback.
+     */
+    @FunctionalInterface
+    public interface Callable {
+        void call(File file) throws Exception;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

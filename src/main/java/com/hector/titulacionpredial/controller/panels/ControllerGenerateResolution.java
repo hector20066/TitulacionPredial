@@ -302,32 +302,32 @@ public class ControllerGenerateResolution implements LanguageObserver {
         List<DTOPoint> points = new ArrayList<>();
         points.add(new DTOPoint.Builder()
                 .numberPoint(1)
-                .northCoordinate(Double.parseDouble(northCoordinate1))
-                .eastCoordinate(Double.parseDouble(eastCoordinate1))
+                .northCoordinate(northCoordinate1)
+                .eastCoordinate(eastCoordinate1)
                 .distance(Double.parseDouble(distance1))
                 .hillside(hillside1)
                 .build());
 
         points.add(new DTOPoint.Builder()
                 .numberPoint(2)
-                .northCoordinate(Double.parseDouble(northCoordinate2))
-                .eastCoordinate(Double.parseDouble(eastCoordinate2))
+                .northCoordinate(northCoordinate2)
+                .eastCoordinate(eastCoordinate2)
                 .distance(Double.parseDouble(distance2))
                 .hillside(hillside2)
                 .build());
 
         points.add(new DTOPoint.Builder()
                 .numberPoint(3)
-                .northCoordinate(Double.parseDouble(northCoordinate3))
-                .eastCoordinate(Double.parseDouble(eastCoordinate3))
+                .northCoordinate(northCoordinate3)
+                .eastCoordinate(eastCoordinate3)
                 .distance(Double.parseDouble(distance3))
                 .hillside(hillside3)
                 .build());
 
         points.add(new DTOPoint.Builder()
                 .numberPoint(4)
-                .northCoordinate(Double.parseDouble(northCoordinate4))
-                .eastCoordinate(Double.parseDouble(eastCoordinate4))
+                .northCoordinate(northCoordinate4)
+                .eastCoordinate(eastCoordinate4)
                 .distance(Double.parseDouble(distance4))
                 .hillside(hillside4)
                 .build());

@@ -31,8 +31,8 @@ public class Point {
 
     private int code;
     private int numberPoint;
-    private Double northCoordinate;
-    private Double eastCoordinate;
+    private String northCoordinate;
+    private String eastCoordinate;
     private Double distance;
     private String hillside;
 
@@ -74,19 +74,19 @@ public class Point {
         this.numberPoint = numberPoint;
     }
 
-    public Double getNorthCoordinate() {
+    public String getNorthCoordinate() {
         return northCoordinate;
     }
 
-    public void setNorthCoordinate(Double northCoordinate) {
+    public void setNorthCoordinate(String northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
-    public Double getEastCoordinate() {
+    public String getEastCoordinate() {
         return eastCoordinate;
     }
 
-    public void setEastCoordinate(Double eastCoordinate) {
+    public void setEastCoordinate(String eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
@@ -138,8 +138,8 @@ public class Point {
 
         private int code;
         private int numberPoint;
-        private Double northCoordinate;
-        private Double eastCoordinate;
+        private String northCoordinate;
+        private String eastCoordinate;
         private Double distance;
         private String hillside;
 
@@ -153,12 +153,12 @@ public class Point {
             return this;
         }
 
-        public Builder northCoordinate(Double northCoordinate) {
+        public Builder northCoordinate(String northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
 
-        public Builder eastCoordinate(Double eastCoordinate) {
+        public Builder eastCoordinate(String eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }

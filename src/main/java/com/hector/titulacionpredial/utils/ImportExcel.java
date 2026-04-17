@@ -49,7 +49,7 @@ public class ImportExcel {
         try (FileInputStream fis = new FileInputStream(route);
              Workbook workbook = WorkbookFactory.create(fis)) {
 
-            Sheet sheet = workbook.getSheetAt(0);
+            Sheet sheet = workbook.getSheetAt(5);
             DataFormatter formatter = new DataFormatter();
 
             boolean firstRow = true;
@@ -61,8 +61,11 @@ public class ImportExcel {
                 }
 
                 List<String> dataRow = new ArrayList<>();
+                int lastColumn = 24;
 
-                for (Cell cell : row) {
+                for (int i = 0; i < lastColumn; i++) {
+                    Cell cell = row.getCell(i);
+
                     if (cell != null) {
                         dataRow.add(formatter.formatCellValue(cell));
                     } else {

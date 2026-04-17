@@ -21,6 +21,7 @@ import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
+import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -244,8 +245,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
                 for (PointData p : points) {
                     daoPoint.add(p.pointNumber(),
-                            Double.parseDouble(p.north()),
-                            Double.parseDouble(p.east()),
+                            p.north(),
+                            p.east(),
                             Double.parseDouble(p.distance()),
                             p.hillside(),
                             getPropertyCode());
@@ -399,59 +400,268 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * import excel data.
+     * Import excel data - opens bulk import dialog with drag & drop support.
      */
     private void importExcelData() {
-        JFileChooser fileChooser = new JFileChooser();
+        // Show dialog with drag & drop panel
+        JDialog dialog = new JDialog((java.awt.Frame) SwingUtilities.getWindowAncestor(registerProperty),
+                "Importar Datos en Lote", true);
+        dialog.setSize(1000, 600);
+        dialog.setLocationRelativeTo(registerProperty);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-        int option = fileChooser.showOpenDialog(registerProperty);
+        JPanel mainPanel = new JPanel(new java.awt.BorderLayout());
+        mainPanel.setBorder(new javax.swing.border.EmptyBorder(10, 10, 10, 10));
 
-        if (option == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
+        // Drag & drop panel
+        JPanel dropPanel = registerProperty.getPanel_dragDrop();
+        mainPanel.add(dropPanel, java.awt.BorderLayout.NORTH);
 
-            String name = file.getName().toLowerCase();
-            if (!name.endsWith(".xlsx") && !name.endsWith(".xls")) {
-                JOptionPane.showMessageDialog(registerProperty,
-                        lang.message("message.property.import"),
-                        lang.message("message.property.import.invalid.file"), JOptionPane.WARNING_MESSAGE);
-                return;
+        // Table with scroll
+        JScrollPane tableScroll = new JScrollPane(registerProperty.getTable_bulkImport());
+        mainPanel.add(tableScroll, java.awt.BorderLayout.CENTER);
+
+        // Button panel
+        JPanel buttonPanel = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        ButtonAction btnSave = new ButtonAction();
+        btnSave.setText("Guardar");
+        btnSave.setBackground(new java.awt.Color(64, 145, 108));
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.addActionListener(e -> saveBulkData());
+
+        ButtonAction btnCancel = new ButtonAction();
+        btnCancel.setText("Cancelar");
+        btnCancel.setBackground(new java.awt.Color(200, 200, 200));
+        btnCancel.addActionListener(e -> dialog.dispose());
+
+        buttonPanel.add(btnSave);
+        buttonPanel.add(btnCancel);
+        mainPanel.add(buttonPanel, java.awt.BorderLayout.SOUTH);
+
+        dialog.add(mainPanel);
+
+        // Setup drag & drop callback
+        registerProperty.setOnFileDropped(file -> onExcelFileDropped(file));
+
+        dialog.setVisible(true);
+    }
+
+    /**
+     * Handle Excel file dropped via drag & drop.
+     */
+    private void onExcelFileDropped(File file) {
+        new Thread(() -> {
+            try {
+                ImportExcel reader = new ImportExcel();
+                List<List<String>> data = reader.readExcel(file.getAbsolutePath());
+
+                SwingUtilities.invokeLater(() -> {
+                    registerProperty.loadBulkImportTable(data);
+                    applyValidationStyling();
+                });
+            } catch (Exception e) {
+                SwingUtilities.invokeLater(() ->
+                        MessageUtils.errorMessage(e.getMessage(), registerProperty)
+                );
             }
+        }).start();
+    }
 
-            ImportExcel reader = new ImportExcel();
-            List<List<String>> data = reader.readExcel(file.getAbsolutePath());
+    /**
+     * Apply styling to table cells.
+     * Note: Beneficiary code column was filtered out, so basic styling is applied.
+     */
+    private void applyValidationStyling() {
+        javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    return c;
+                }
 
-            loadInFields(data);
+                String beneficiaryCode = "";
+                try {
+                    Object codeValue = table.getValueAt(row, 0);
+                    beneficiaryCode = codeValue != null ? codeValue.toString().trim() : "";
+                } catch (Exception ignored) {
+                }
+
+                if (!beneficiaryCode.isEmpty() && !beneficiaryCodeExists(beneficiaryCode)) {
+                    c.setBackground(new java.awt.Color(255, 230, 230));
+                    c.setForeground(java.awt.Color.BLACK);
+                } else {
+                    c.setBackground(java.awt.Color.WHITE);
+                    c.setForeground(java.awt.Color.BLACK);
+                }
+                return c;
+            }
+        };
+
+        for (int i = 0; i < registerProperty.getTable_bulkImport().getColumnCount(); i++) {
+            registerProperty.getTable_bulkImport().getColumnModel().getColumn(i).setCellRenderer(renderer);
         }
     }
 
     /**
-     * Load Excel data into form fields.
-     *
-     * @param data list of string rows from Excel file
+     * Check if a beneficiary code exists in the database.
+     */
+    private boolean beneficiaryCodeExists(String code) {
+        try {
+            daoBeneficiary.findByBeneficiariesCode(code);
+            return true;
+        } catch (DAOException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Save all valid beneficiary codes from the bulk import table.
+     */
+    private void saveBulkData() {
+        new Thread(() -> {
+            try {
+                javax.swing.table.DefaultTableModel model = 
+                        (javax.swing.table.DefaultTableModel) registerProperty.getTable_bulkImport().getModel();
+
+                int rowCount = model.getRowCount();
+                int validRecords = 0;
+                int invalidRecords = 0;
+                int omittedRecords = 0;
+                List<String> errors = new ArrayList<>();
+
+                for (int i = 0; i < rowCount; i++) {
+                    String beneficiaryCode = model.getValueAt(i, 0).toString().trim();
+
+                    if (!beneficiaryCode.isEmpty() && beneficiaryCodeExists(beneficiaryCode)) {
+                        try {
+                            DTOBeneficiariesCode benefInfo = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
+                            
+                            // Check if beneficiary already has a property associated
+                            if (benefInfo.getCadastral_reference() != null && !benefInfo.getCadastral_reference().trim().isEmpty()) {
+                                omittedRecords++;
+                                continue; // Skip this record
+                            }
+                            
+                            List<PointData> points = new ArrayList<>();
+                            
+                            String north1 = model.getValueAt(i, 2).toString().trim();
+                            String east1 = model.getValueAt(i, 1).toString().trim();
+                            String dist1 = model.getValueAt(i, 3).toString().trim();
+                            String hill1 = model.getValueAt(i, 4).toString().trim();
+                            if (!north1.isEmpty() && !east1.isEmpty()) {
+                                points.add(new PointData(1, north1, east1, dist1, hill1));
+                            }
+                            
+                            String north2 = model.getValueAt(i, 6).toString().trim();
+                            String east2 = model.getValueAt(i, 5).toString().trim();
+                            String dist2 = model.getValueAt(i, 7).toString().trim();
+                            String hill2 = model.getValueAt(i, 8).toString().trim();
+                            if (!north2.isEmpty() && !east2.isEmpty()) {
+                                points.add(new PointData(2, north2, east2, dist2, hill2));
+                            }
+                            
+                            String north3 = model.getValueAt(i, 10).toString().trim();
+                            String east3 = model.getValueAt(i, 9).toString().trim();
+                            String dist3 = model.getValueAt(i, 11).toString().trim();
+                            String hill3 = model.getValueAt(i, 12).toString().trim();
+                            if (!north3.isEmpty() && !east3.isEmpty()) {
+                                points.add(new PointData(3, north3, east3, dist3, hill3));
+                            }
+                            
+                            String north4 = model.getValueAt(i, 14).toString().trim();
+                            String east4 = model.getValueAt(i, 13).toString().trim();
+                            String dist4 = model.getValueAt(i, 15).toString().trim();
+                            String hill4 = model.getValueAt(i, 16).toString().trim();
+                            if (!north4.isEmpty() && !east4.isEmpty()) {
+                                points.add(new PointData(4, north4, east4, dist4, hill4));
+                            }
+                            
+                            String areaStr = model.getValueAt(i, 17).toString().trim();
+                            if (!areaStr.isEmpty() && !points.isEmpty()) {
+                                double area = Double.parseDouble(areaStr.replace(",", "."));
+                                
+                                for (PointData p : points) {
+                                    daoPoint.add(p.pointNumber(),
+                                            p.north(),
+                                            p.east(),
+                                            Double.parseDouble(p.distance().replace(",", ".")),
+                                            p.hillside(),
+                                            benefInfo.getCode());
+                                }
+                                validRecords++;
+                            }
+                        } catch (Exception e) {
+                            invalidRecords++;
+                            errors.add(beneficiaryCode + ": " + e.getMessage());
+                        }
+                    } else if (!beneficiaryCode.isEmpty()) {
+                        invalidRecords++;
+                    }
+                }
+
+                final int valid = validRecords;
+                final int invalid = invalidRecords;
+                final int omitted = omittedRecords;
+                final List<String> errorList = errors;
+
+                SwingUtilities.invokeLater(() -> {
+                    String message = String.format(
+                            "Registros procesados:\nVálidos guardados: %d\nInválidos (F no existe): %d\nOmitidos (F ya tiene predio): %d",
+                            valid, invalid, omitted
+                    );
+                    if (!errorList.isEmpty()) {
+                        message += "\n\nErrores:\n" + String.join("\n", errorList.stream().limit(5).toList());
+                    }
+                    MessageUtils.informationMessage(message, registerProperty);
+                    subject.notifyObservers();
+                });
+            } catch (Exception e) {
+                SwingUtilities.invokeLater(() ->
+                        MessageUtils.errorMessage("Error al guardar: " + e.getMessage(), registerProperty)
+                );
+            }
+        }).start();
+    }
+
+    /**
+     * Load Excel data into form fields (legacy single record method).
      */
     private void loadInFields(List<List<String>> data) {
         if (!data.isEmpty()) {
-            List<String> fila = data.getFirst();
 
-            registerProperty.getTxt_eastCoordinate1().setText(!fila.isEmpty() ? fila.get(0) : "");
-            registerProperty.getTxt_northCoordinate1().setText(fila.size() > 1 ? fila.get(1) : "");
-            registerProperty.getTxt_distance1().setText(fila.size() > 2 ? fila.get(2) : "");
-            registerProperty.getTxt_hillside1().setText(fila.size() > 3 ? fila.get(3) : "");
-            registerProperty.getTxt_eastCoordinate2().setText(fila.size() > 4 ? fila.get(4) : "");
-            registerProperty.getTxt_northCoordinate2().setText(fila.size() > 5 ? fila.get(5) : "");
-            registerProperty.getTxt_distance2().setText(fila.size() > 6 ? fila.get(6) : "");
-            registerProperty.getTxt_hillside2().setText(fila.size() > 7 ? fila.get(7) : "");
-            registerProperty.getTxt_eastCoordinate3().setText(fila.size() > 8 ? fila.get(8) : "");
-            registerProperty.getTxt_northCoordinate3().setText(fila.size() > 9 ? fila.get(9) : "");
-            registerProperty.getTxt_distance3().setText(fila.size() > 10 ? fila.get(10) : "");
-            registerProperty.getTxt_hillside3().setText(fila.size() > 11 ? fila.get(11) : "");
-            registerProperty.getTxt_eastCoordinate4().setText(fila.size() > 12 ? fila.get(12) : "");
-            registerProperty.getTxt_northCoordinate4().setText(fila.size() > 13 ? fila.get(13) : "");
-            registerProperty.getTxt_distance4().setText(fila.size() > 14 ? fila.get(14) : "");
-            registerProperty.getTxt_hillside4().setText(fila.size() > 15 ? fila.get(15) : "");
-            registerProperty.getTxt_area().setText(fila.size() > 16 ? fila.get(16) : "");
+            List<String> fila = filterColumns(data.getFirst());
 
+            registerProperty.getTxt_beneficiaryCode().setText(fila.get(0));
+            registerProperty.getTxt_eastCoordinate1().setText(fila.get(1));
+            registerProperty.getTxt_northCoordinate1().setText(fila.get(2));
+            registerProperty.getTxt_distance1().setText(fila.get(3));
+            registerProperty.getTxt_hillside1().setText(fila.get(4));
+            registerProperty.getTxt_eastCoordinate2().setText(fila.get(5));
+            registerProperty.getTxt_northCoordinate2().setText(fila.get(6));
+            registerProperty.getTxt_distance2().setText(fila.get(7));
+            registerProperty.getTxt_hillside2().setText(fila.get(8));
+            registerProperty.getTxt_eastCoordinate3().setText(fila.get(9));
+            registerProperty.getTxt_northCoordinate3().setText(fila.get(10));
+            registerProperty.getTxt_distance3().setText(fila.get(11));
+            registerProperty.getTxt_hillside3().setText(fila.get(12));
+            registerProperty.getTxt_eastCoordinate4().setText(fila.get(13));
+            registerProperty.getTxt_northCoordinate4().setText(fila.get(14));
+            registerProperty.getTxt_distance4().setText(fila.get(15));
+            registerProperty.getTxt_hillside4().setText(fila.get(16));
+            registerProperty.getTxt_area().setText(fila.get(17));
         }
+    }
+
+    private List<String> filterColumns(List<String> fila) {
+        int[] indexes = {0, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23};
+        List<String> result = new ArrayList<>();
+
+        for (int i : indexes) {
+            result.add(i < fila.size() ? fila.get(i) : "");
+        }
+        return result;
     }
 
     /**

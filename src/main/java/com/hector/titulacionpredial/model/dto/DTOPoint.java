@@ -38,12 +38,12 @@ public class DTOPoint {
     /**
      * North coordinate.
      */
-    protected Double northCoordinate;
+    protected String northCoordinate;
 
     /**
      * East coordinate.
      */
-    protected Double eastCoordinate;
+    protected String eastCoordinate;
 
     /**
      * Distance from the next point.
@@ -90,19 +90,19 @@ public class DTOPoint {
         this.numberPoint = numberPoint;
     }
 
-    public Double getNorthCoordinate() {
+    public String getNorthCoordinate() {
         return northCoordinate;
     }
 
-    public void setNorthCoordinate(Double northCoordinate) {
+    public void setNorthCoordinate(String northCoordinate) {
         this.northCoordinate = northCoordinate;
     }
 
-    public Double getEastCoordinate() {
+    public String getEastCoordinate() {
         return eastCoordinate;
     }
 
-    public void setEastCoordinate(Double eastCoordinate) {
+    public void setEastCoordinate(String eastCoordinate) {
         this.eastCoordinate = eastCoordinate;
     }
 
@@ -141,8 +141,8 @@ public class DTOPoint {
     public static class Builder {
 
         private int numberPoint;
-        private Double northCoordinate;
-        private Double eastCoordinate;
+        private String northCoordinate;
+        private String eastCoordinate;
         private Double distance;
         private String hillside;
         private int propertyCode;
@@ -164,7 +164,7 @@ public class DTOPoint {
          * @param northCoordinate the north coordinate
          * @return the north coordinate
          */
-        public Builder northCoordinate(Double northCoordinate) {
+        public Builder northCoordinate(String northCoordinate) {
             this.northCoordinate = northCoordinate;
             return this;
         }
@@ -175,7 +175,7 @@ public class DTOPoint {
          * @param eastCoordinate the east coordinate
          * @return the east coordinate
          */
-        public Builder eastCoordinate(Double eastCoordinate) {
+        public Builder eastCoordinate(String eastCoordinate) {
             this.eastCoordinate = eastCoordinate;
             return this;
         }

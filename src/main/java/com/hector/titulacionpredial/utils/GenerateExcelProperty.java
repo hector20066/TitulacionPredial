@@ -93,14 +93,14 @@ public class GenerateExcelProperty {
             String cadastralReference = dto.getCadastralRef();
             double area = dto.getArea();
 
-            double northCoordinate1 = 0, eastCoordinate1 = 0, distance1 = 0;
-            String hillside1 = "";
-            double northCoordinate2 = 0, eastCoordinate2 = 0, distance2 = 0;
-            String hillside2 = "";
-            double northCoordinate3 = 0, eastCoordinate3 = 0, distance3 = 0;
-            String hillside3 = "";
-            double northCoordinate4 = 0, eastCoordinate4 = 0, distance4 = 0;
-            String hillside4 = "";
+            String northCoordinate1 = "", eastCoordinate1 = "", hillside1 = "";
+            double distance1 = 0;
+            String northCoordinate2 = "", eastCoordinate2 = "", hillside2 = "";
+            double distance2 = 0;
+            String northCoordinate3 = "", eastCoordinate3 = "", hillside3 = "";
+            double distance3 = 0;
+            String northCoordinate4 = "", eastCoordinate4 = "", hillside4 = "";
+            double distance4 = 0;
 
             for (DTOPoint point : dto.getPoints()) {
                 switch (point.getNumberPoint()) {

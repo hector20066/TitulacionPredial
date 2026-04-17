@@ -61,8 +61,8 @@ public class DAOPointImpl implements DAOPoint {
         try (Connection connection = DataBasePool.getConnection();
              PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, dto.getNumberPoint());
-            st.setDouble(2, dto.getNorthCoordinate());
-            st.setDouble(3, dto.getEastCoordinate());
+            st.setString(2, dto.getNorthCoordinate());
+            st.setString(3, dto.getEastCoordinate());
             st.setDouble(4, dto.getDistance());
             st.setString(5, dto.getHillside());
             st.setInt(6, dto.getPropertyCode());
@@ -104,8 +104,8 @@ public class DAOPointImpl implements DAOPoint {
      */
     private void executeQuery(DTOPoint dto, ResultSet rs) throws SQLException {
         dto.setNumberPoint(rs.getInt("number"));
-        dto.setNorthCoordinate(rs.getDouble("north_coordinate"));
-        dto.setEastCoordinate(rs.getDouble("east_coordinate"));
+        dto.setNorthCoordinate(rs.getString("north_coordinate"));
+        dto.setEastCoordinate(rs.getString("east_coordinate"));
         dto.setDistance(rs.getDouble("distance"));
         dto.setHillside(rs.getString("hillside"));
     }

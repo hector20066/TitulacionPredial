@@ -310,8 +310,8 @@ public class DAOPropertyImpl implements DAOProperty {
     private DTOPoint createDTOPoints(ResultSet rs, int numberPoint, int propertyCode) throws SQLException {
         return new DTOPoint.Builder()
                 .numberPoint(numberPoint)
-                .northCoordinate(rs.getDouble("north_coordinate"))
-                .eastCoordinate(rs.getDouble("east_coordinate"))
+                .northCoordinate(rs.getString("north_coordinate"))
+                .eastCoordinate(rs.getString("east_coordinate"))
                 .distance(rs.getDouble("distance"))
                 .hillside(rs.getString("hillside"))
                 .propertyCode(propertyCode)

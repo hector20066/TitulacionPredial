@@ -384,23 +384,23 @@ public class SeeProperties extends JPanel {
         String cadastralReference = dto.getCadastralRef();
         double area = dto.getArea();
 
-        double northCoordinate1 = 0;
-        double eastCoordinate1 = 0;
+        String northCoordinate1 = "";
+        String eastCoordinate1 = "";
         double distance1 = 0;
         String hillside1 = "";
 
-        double northCoordinate2 = 0;
-        double eastCoordinate2 = 0;
+        String northCoordinate2 = "";
+        String eastCoordinate2 = "";
         double distance2 = 0;
         String hillside2 = "";
 
-        double northCoordinate3 = 0;
-        double eastCoordinate3 = 0;
+        String northCoordinate3 = "";
+        String eastCoordinate3 = "";
         double distance3 = 0;
         String hillside3 = "";
 
-        double northCoordinate4 = 0;
-        double eastCoordinate4 = 0;
+        String northCoordinate4 = "";
+        String eastCoordinate4 = "";
         double distance4 = 0;
         String hillside4 = "";
 

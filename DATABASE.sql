@@ -62,8 +62,8 @@ CREATE TABLE spouse (
 CREATE TABLE point (
     code INT AUTO_INCREMENT PRIMARY KEY,
     number INT NOT NULL,
-    north_coordinate DOUBLE NOT NULL,
-    east_coordinate DOUBLE NOT NULL,
+    north_coordinate VARCHAR(200) NOT NULL,
+    east_coordinate VARCHAR(200) NOT NULL,
     distance DOUBLE NOT NULL,
     hillside VARCHAR(90) NOT NULL,
     property_code INT NOT NULL,

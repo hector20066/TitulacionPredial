@@ -30,7 +30,7 @@ public interface PointFacade {
      * @param propertyCode    associated property code
      * @throws DAOException if an error occurs during the operation
      */
-    void add(int numberPoint, Double northCoordinate, Double eastCoordinate, Double distance, String hillside,
+    void add(int numberPoint, String northCoordinate, String eastCoordinate, Double distance, String hillside,
              int propertyCode) throws DAOException;
 
     /**

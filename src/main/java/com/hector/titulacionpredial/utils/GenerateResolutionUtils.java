@@ -62,26 +62,26 @@ public class GenerateResolutionUtils {
         for (DTOPoint point : points) {
             switch (point.getNumberPoint()) {
                 case 1 -> {
-                    data.put("MCORN1", String.valueOf(point.getNorthCoordinate()));
-                    data.put("MCORE1", String.valueOf(point.getEastCoordinate()));
+                    data.put("MCORN1", point.getNorthCoordinate());
+                    data.put("MCORE1", point.getEastCoordinate());
                     data.put("MDISN", String.valueOf(point.getDistance()));
                     data.put("MCOLN", point.getHillside());
                 }
                 case 2 -> {
-                    data.put("MCORN2", String.valueOf(point.getNorthCoordinate()));
-                    data.put("MCORE2", String.valueOf(point.getEastCoordinate()));
+                    data.put("MCORN2", point.getNorthCoordinate());
+                    data.put("MCORE2", point.getEastCoordinate());
                     data.put("MDISE", String.valueOf(point.getDistance()));
                     data.put("MCOLE", point.getHillside());
                 }
                 case 3 -> {
-                    data.put("MCORN3", String.valueOf(point.getNorthCoordinate()));
-                    data.put("MCORE3", String.valueOf(point.getEastCoordinate()));
+                    data.put("MCORN3", point.getNorthCoordinate());
+                    data.put("MCORE3", point.getEastCoordinate());
                     data.put("MDISS", String.valueOf(point.getDistance()));
                     data.put("MCOLS", point.getHillside());
                 }
                 case 4 -> {
-                    data.put("MCORN4", String.valueOf(point.getNorthCoordinate()));
-                    data.put("MCORE4", String.valueOf(point.getEastCoordinate()));
+                    data.put("MCORN4", point.getNorthCoordinate());
+                    data.put("MCORE4", point.getEastCoordinate());
                     data.put("MDISO", String.valueOf(point.getDistance()));
                     data.put("MLINDO", point.getHillside());
                 }
