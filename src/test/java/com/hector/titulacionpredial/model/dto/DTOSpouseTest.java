@@ -15,7 +15,7 @@ class DTOSpouseTest {
         assertEquals(0, dto.getId());
         assertNull(dto.getFullName());
         assertNull(dto.getExpeditionLocation());
-        assertEquals(0, dto.getBeneficiaryCode());
+        assertEquals(0, dto.getBeneficiariesCode());
     }
 
     @Test
@@ -35,7 +35,7 @@ class DTOSpouseTest {
         assertEquals("Bogotá", dto.getExpeditionLocation());
         //assertEquals("Calle 50", dto.getAddress());
         assertEquals(3001112222L, dto.getPhone());
-        assertEquals(10, dto.getBeneficiaryCode());
+        assertEquals(10, dto.getBeneficiariesCode());
     }
 
     @Test
@@ -45,12 +45,12 @@ class DTOSpouseTest {
         dto.setId(999L);
         dto.setFullName("Test Name");
         dto.setExpeditionLocation("Cali");
-        dto.setBeneficiaryCode(5);
+        dto.setBeneficiariesCode(5);
 
         assertEquals(999L, dto.getId());
         assertEquals("Test Name", dto.getFullName());
         assertEquals("Cali", dto.getExpeditionLocation());
-        assertEquals(5, dto.getBeneficiaryCode());
+        assertEquals(5, dto.getBeneficiariesCode());
     }
 
     @Test

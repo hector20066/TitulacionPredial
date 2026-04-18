@@ -29,7 +29,7 @@ package com.hector.titulacionpredial.model.dto;
  */
 public class DTOSpouse extends DTOBasePerson {
 
-    private int beneficiaryCode;
+    private int beneficiariesCode;
 
     /**
      * Empty constructor required for serialization or
@@ -46,15 +46,15 @@ public class DTOSpouse extends DTOBasePerson {
      */
     public DTOSpouse(AbstractBuilder<?> builder) {
         super(builder);
-        this.beneficiaryCode = builder.beneficiaryCode;
+        this.beneficiariesCode = builder.beneficiaryCode;
     }
 
-    public int getBeneficiaryCode() {
-        return beneficiaryCode;
+    public int getBeneficiariesCode() {
+        return beneficiariesCode;
     }
 
-    public void setBeneficiaryCode(int beneficiaryCode) {
-        this.beneficiaryCode = beneficiaryCode;
+    public void setBeneficiariesCode(int beneficiariesCode) {
+        this.beneficiariesCode = beneficiariesCode;
     }
 
     /**

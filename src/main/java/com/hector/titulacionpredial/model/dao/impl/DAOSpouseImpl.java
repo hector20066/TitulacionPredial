@@ -64,7 +64,7 @@ public class DAOSpouseImpl implements DAOSpouse {
             st.setString(2, dto.getFullName());
             st.setString(3, dto.getExpeditionLocation());
             st.setLong(4, dto.getPhone());
-            st.setInt(5, dto.getBeneficiaryCode());
+            st.setInt(5, dto.getBeneficiariesCode());
             st.executeUpdate();
         } catch (SQLException e) {
             throw new SpousePersistenceException(lang.message("persistence.spouse.register"), e);
@@ -123,7 +123,7 @@ public class DAOSpouseImpl implements DAOSpouse {
         dto.setFullName(rs.getString("full_name"));
         dto.setExpeditionLocation(rs.getString("expedition_location"));
         dto.setPhone(rs.getLong("phone"));
-        dto.setBeneficiaryCode(rs.getInt("beneficiary_code"));
+        dto.setBeneficiariesCode(rs.getInt("beneficiary_code"));
     }
 
 }

@@ -96,9 +96,7 @@ public class SpouseData extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jlb_title = new javax.swing.JLabel();
         jlb_name = new javax.swing.JLabel();
-        txt_name = new javax.swing.JTextField();
-        jlb_lastName = new javax.swing.JLabel();
-        txt_lastName = new javax.swing.JTextField();
+        txt_fullName = new javax.swing.JTextField();
         jlb_id = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
         jlb_expeditionLocation = new javax.swing.JLabel();
@@ -122,17 +120,10 @@ public class SpouseData extends javax.swing.JDialog {
         jlb_name.setBackground(new java.awt.Color(33, 37, 41));
         jlb_name.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_name.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_name.setText("Nombre:");
+        jlb_name.setText("Nombre Completo:");
 
-        txt_name.setBackground(new java.awt.Color(255, 255, 255));
-        txt_name.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-
-        jlb_lastName.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
-        jlb_lastName.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_lastName.setText("Apellido:");
-
-        txt_lastName.setBackground(new java.awt.Color(255, 255, 255));
-        txt_lastName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        txt_fullName.setBackground(new java.awt.Color(255, 255, 255));
+        txt_fullName.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
         jlb_id.setFont(new java.awt.Font("SansSerif", 3, 15)); // NOI18N
         jlb_id.setForeground(new java.awt.Color(33, 37, 41));
@@ -181,15 +172,13 @@ public class SpouseData extends javax.swing.JDialog {
                             .addComponent(jlb_phone)
                             .addComponent(jlb_expeditionLocation)
                             .addComponent(jlb_name)
-                            .addComponent(jlb_lastName)
                             .addComponent(jlb_id)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txt_expeditionLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                                     .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_fullName, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_phone))))
                         .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -210,12 +199,8 @@ public class SpouseData extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlb_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlb_lastName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txt_fullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jlb_id)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +216,7 @@ public class SpouseData extends javax.swing.JDialog {
                 .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,7 +242,6 @@ public class SpouseData extends javax.swing.JDialog {
     public void updateLanguage() {
         jlb_title.setText(lang.app("spouse.data.title"));
         jlb_name.setText(lang.app("spouse.data.name"));
-        jlb_lastName.setText(lang.app("spouse.data.lastname"));
         jlb_id.setText(lang.app("spouse.data.id"));
         jlb_expeditionLocation.setText(lang.app("spouse.data.expeditionLocation"));
         jlb_phone.setText(lang.app("spouse.data.phone"));
@@ -326,11 +310,11 @@ public class SpouseData extends javax.swing.JDialog {
         }
 
         return new DTOSpouseController.Builder()
-                .fullName(txt_name.getText().trim() + " " + txt_lastName.getText().trim())
+                .fullName(txt_fullName.getText().trim())
                 .id(Long.parseLong(txt_id.getText().trim()))
                 .expeditionLocation(txt_expeditionLocation.getText().trim())
                 .phone(Long.parseLong(txt_phone.getText().trim()))
-                .beneficiaryCode(getIdBeneficiary())
+                .idBeneficiary(getIdBeneficiary())
                 .build();
     }
 
@@ -340,14 +324,12 @@ public class SpouseData extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlb_expeditionLocation;
     private javax.swing.JLabel jlb_id;
-    private javax.swing.JLabel jlb_lastName;
     private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel jlb_phone;
     private javax.swing.JLabel jlb_title;
     private javax.swing.JTextField txt_expeditionLocation;
+    private javax.swing.JTextField txt_fullName;
     private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_lastName;
-    private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_phone;
     // End of variables declaration//GEN-END:variables
 }
