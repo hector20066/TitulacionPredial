@@ -1,6 +1,7 @@
 package com.hector.titulacionpredial.view.content.dialogs;
 
 import java.awt.Color;
+import java.util.Optional;
 
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -56,11 +57,6 @@ public class UserProfile extends javax.swing.JDialog {
         connectEvents();
         
         TimingTarget target = new TimingTargetAdapter() {
-            /**
-             * Timing event handler for animation progress.
-             *
-             * @param fraction the animation progress fraction (0.0 to 1.0)
-             */
             @Override
             public void timingEvent(float fraction) {
                 if (show) {
@@ -70,9 +66,6 @@ public class UserProfile extends javax.swing.JDialog {
                 }
             }
 
-            /**
-             * Animation end handler.
-             */
             @Override
             public void end() {
                 if (!show) {
@@ -87,7 +80,6 @@ public class UserProfile extends javax.swing.JDialog {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    /**     * init components.     */
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -117,8 +109,6 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_spouseId = new javax.swing.JLabel();
         jlb_spouseExpeditionText = new javax.swing.JLabel();
         jlb_spouseExpeditionSite = new javax.swing.JLabel();
-        jlb_spouseAddressText = new javax.swing.JLabel();
-        jlb_spouseAddress = new javax.swing.JLabel();
         jlb_spousePhoneText = new javax.swing.JLabel();
         jlb_phoneSpouse = new javax.swing.JLabel();
         jlb_publicationText = new javax.swing.JLabel();
@@ -228,14 +218,6 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_spouseExpeditionSite.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spouseExpeditionSite.setText("No aplica");
 
-        jlb_spouseAddressText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jlb_spouseAddressText.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_spouseAddressText.setText("Direccion:");
-
-        jlb_spouseAddress.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jlb_spouseAddress.setForeground(new java.awt.Color(33, 37, 41));
-        jlb_spouseAddress.setText("No aplica");
-
         jlb_spousePhoneText.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jlb_spousePhoneText.setForeground(new java.awt.Color(33, 37, 41));
         jlb_spousePhoneText.setText("Telefono:");
@@ -284,7 +266,29 @@ public class UserProfile extends javax.swing.JDialog {
                                     .addComponent(jlb_phoneText)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jlb_phone))))))
+                                        .addComponent(jlb_phone))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlb_spousePhoneText, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jlb_spouseExpeditionText)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jlb_spouseExpeditionSite))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jlb_spouseNameText)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jlb_spouseName)
+                                                .addGap(157, 157, 157)
+                                                .addComponent(jlb_spouseIdText)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jlb_spouseId)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlb_phoneSpouse)
+                                .addGap(220, 220, 220))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,13 +296,7 @@ public class UserProfile extends javax.swing.JDialog {
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlb_crossingText)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlb_affectationText)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlb_cadastralRefText)
@@ -310,33 +308,15 @@ public class UserProfile extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jlb_publication))
-                                    .addComponent(jlb_publicationText)))))
+                                    .addComponent(jlb_publicationText)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jlb_spouseData))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlb_spouseExpeditionText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlb_spouseExpeditionSite)
-                                .addGap(154, 154, 154)
-                                .addComponent(jlb_spouseAddressText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlb_spouseAddress))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlb_spouseNameText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlb_spouseName)
-                                .addGap(157, 157, 157)
-                                .addComponent(jlb_spouseIdText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlb_spouseId))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlb_spousePhoneText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlb_phoneSpouse)))))
+                        .addComponent(jlb_spouseData)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -370,13 +350,9 @@ public class UserProfile extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_spouseExpeditionText)
                     .addComponent(jlb_spouseExpeditionSite)
-                    .addComponent(jlb_spouseAddressText)
-                    .addComponent(jlb_spouseAddress))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_spousePhoneText)
                     .addComponent(jlb_phoneSpouse))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -495,7 +471,6 @@ public class UserProfile extends javax.swing.JDialog {
         jlb_spouseNameText.setText(lang.app("user.profile.spouse.name"));
         jlb_spouseIdText.setText(lang.app("user.profile.spouse.id"));
         jlb_spouseExpeditionText.setText(lang.app("user.profile.spouse.expeditionLocation"));
-        jlb_spouseAddressText.setText(lang.app("user.profile.spouse.address"));
         jlb_spousePhoneText.setText(lang.app("user.profile.spouse.phone"));
         btn_exit.setText(lang.app("user.profile.exit.btn"));
     }
@@ -587,8 +562,6 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel jlb_phoneText;
     private javax.swing.JLabel jlb_publication;
     private javax.swing.JLabel jlb_publicationText;
-    private javax.swing.JLabel jlb_spouseAddress;
-    private javax.swing.JLabel jlb_spouseAddressText;
     private javax.swing.JLabel jlb_spouseData;
     private javax.swing.JLabel jlb_spouseExpeditionSite;
     private javax.swing.JLabel jlb_spouseExpeditionText;
