@@ -169,6 +169,17 @@ public class ControllerContentUser implements LanguageObserver {
         contentUser.dispose();
     }
 
+    /**
+     * Make action buttons visible for user interactions.
+     *
+     * <p>
+     * Displays delete, modify, and generate buttons in the views
+     * that are available to the current user role.
+     * </p>
+     *
+     * @author Ing. Hector Acevedo
+     * @since 1.0
+     */
     public void showButtons() {
         viewBeneficiaries.getBtn_delete().setVisible(true);
         viewBeneficiaries.getBtn_modify().setVisible(true);

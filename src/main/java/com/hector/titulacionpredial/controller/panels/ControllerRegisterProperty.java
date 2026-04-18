@@ -403,7 +403,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Import excel data - opens bulk import dialog with drag & drop support.
      */
     private void importExcelData() {
-        // Show dialog with drag & drop panel
         JDialog dialog = new JDialog((java.awt.Frame) SwingUtilities.getWindowAncestor(registerProperty),
                 "Importar Datos en Lote", true);
         dialog.setSize(1000, 600);
@@ -413,15 +412,12 @@ public class ControllerRegisterProperty implements LanguageObserver {
         JPanel mainPanel = new JPanel(new java.awt.BorderLayout());
         mainPanel.setBorder(new javax.swing.border.EmptyBorder(10, 10, 10, 10));
 
-        // Drag & drop panel
         JPanel dropPanel = registerProperty.getPanel_dragDrop();
         mainPanel.add(dropPanel, java.awt.BorderLayout.NORTH);
 
-        // Table with scroll
         JScrollPane tableScroll = new JScrollPane(registerProperty.getTable_bulkImport());
         mainPanel.add(tableScroll, java.awt.BorderLayout.CENTER);
 
-        // Button panel
         JPanel buttonPanel = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
         ButtonAction btnSave = new ButtonAction();
         btnSave.setText("Guardar");
@@ -440,9 +436,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
         dialog.add(mainPanel);
 
-        // Setup drag & drop callback
-        registerProperty.setOnFileDropped(file -> onExcelFileDropped(file));
-
+        registerProperty.setOnFileDropped(this::onExcelFileDropped);
         dialog.setVisible(true);
     }
 
@@ -477,11 +471,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
             public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
                 if (isSelected) {
                     return c;
                 }
 
                 String beneficiaryCode = "";
+
                 try {
                     Object codeValue = table.getValueAt(row, 0);
                     beneficiaryCode = codeValue != null ? codeValue.toString().trim() : "";
@@ -537,11 +533,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
                     if (!beneficiaryCode.isEmpty() && beneficiaryCodeExists(beneficiaryCode)) {
                         try {
                             DTOBeneficiariesCode benefInfo = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
-                            
-                            // Check if beneficiary already has a property associated
+
                             if (benefInfo.getCadastral_reference() != null && !benefInfo.getCadastral_reference().trim().isEmpty()) {
                                 omittedRecords++;
-                                continue; // Skip this record
+                                continue;
                             }
                             
                             List<PointData> points = new ArrayList<>();
@@ -550,6 +545,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             String east1 = model.getValueAt(i, 1).toString().trim();
                             String dist1 = model.getValueAt(i, 3).toString().trim();
                             String hill1 = model.getValueAt(i, 4).toString().trim();
+
                             if (!north1.isEmpty() && !east1.isEmpty()) {
                                 points.add(new PointData(1, north1, east1, dist1, hill1));
                             }
@@ -558,6 +554,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             String east2 = model.getValueAt(i, 5).toString().trim();
                             String dist2 = model.getValueAt(i, 7).toString().trim();
                             String hill2 = model.getValueAt(i, 8).toString().trim();
+
                             if (!north2.isEmpty() && !east2.isEmpty()) {
                                 points.add(new PointData(2, north2, east2, dist2, hill2));
                             }
@@ -566,6 +563,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             String east3 = model.getValueAt(i, 9).toString().trim();
                             String dist3 = model.getValueAt(i, 11).toString().trim();
                             String hill3 = model.getValueAt(i, 12).toString().trim();
+
                             if (!north3.isEmpty() && !east3.isEmpty()) {
                                 points.add(new PointData(3, north3, east3, dist3, hill3));
                             }
@@ -574,11 +572,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             String east4 = model.getValueAt(i, 13).toString().trim();
                             String dist4 = model.getValueAt(i, 15).toString().trim();
                             String hill4 = model.getValueAt(i, 16).toString().trim();
+
                             if (!north4.isEmpty() && !east4.isEmpty()) {
                                 points.add(new PointData(4, north4, east4, dist4, hill4));
                             }
                             
                             String areaStr = model.getValueAt(i, 17).toString().trim();
+
                             if (!areaStr.isEmpty() && !points.isEmpty()) {
                                 double area = Double.parseDouble(areaStr.replace(",", "."));
                                 
@@ -590,6 +590,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                                             p.hillside(),
                                             benefInfo.getCode());
                                 }
+
                                 validRecords++;
                             }
                         } catch (Exception e) {
@@ -611,9 +612,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             "Registros procesados:\nVálidos guardados: %d\nInválidos (F no existe): %d\nOmitidos (F ya tiene predio): %d",
                             valid, invalid, omitted
                     );
+
                     if (!errorList.isEmpty()) {
                         message += "\n\nErrores:\n" + String.join("\n", errorList.stream().limit(5).toList());
                     }
+
                     MessageUtils.informationMessage(message, registerProperty);
                     subject.notifyObservers();
                 });
@@ -630,7 +633,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
      */
     private void loadInFields(List<List<String>> data) {
         if (!data.isEmpty()) {
-
             List<String> fila = filterColumns(data.getFirst());
 
             registerProperty.getTxt_beneficiaryCode().setText(fila.get(0));
@@ -661,6 +663,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
         for (int i : indexes) {
             result.add(i < fila.size() ? fila.get(i) : "");
         }
+
         return result;
     }
 

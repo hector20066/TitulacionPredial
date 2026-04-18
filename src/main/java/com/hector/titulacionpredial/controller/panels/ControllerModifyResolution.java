@@ -23,7 +23,6 @@ import com.hector.titulacionpredial.view.i18n.dto.panels.DTOModifyResolutionText
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Arrays;
 import java.util.Date;
 
 /**

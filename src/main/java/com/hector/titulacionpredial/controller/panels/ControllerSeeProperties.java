@@ -111,9 +111,6 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
         }).start();
     }
 
-    /**
-     * Update the interface language based on current language selection.
-     */
     @Override
     public void updateLanguage() {
         DTOSeePropertiesText dto = new DTOSeePropertiesText.Builder()

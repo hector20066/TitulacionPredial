@@ -1,13 +1,5 @@
 package com.hector.titulacionpredial.controller;
 
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.concurrent.ExecutionException;
-
-import javax.swing.JPanel;
-import javax.swing.SwingWorker;
-
 import com.hector.titulacionpredial.controller.builder.ControllerLoginBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.validation.EmptyFieldException;
@@ -19,17 +11,19 @@ import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.service.LoginService;
-import com.hector.titulacionpredial.utils.MessageUtils;
-import com.hector.titulacionpredial.utils.NavigatorUtils;
-import com.hector.titulacionpredial.utils.NetworkUtils;
-import com.hector.titulacionpredial.utils.SessionManager;
-import com.hector.titulacionpredial.utils.ValidationUtils;
+import com.hector.titulacionpredial.utils.*;
 import com.hector.titulacionpredial.view.content.ContentAdmin;
 import com.hector.titulacionpredial.view.content.ContentLogin;
 import com.hector.titulacionpredial.view.content.ContentReader;
 import com.hector.titulacionpredial.view.content.ContentUser;
 import com.hector.titulacionpredial.view.content.panels.Dashboard;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Controller for user authentication and login management.
