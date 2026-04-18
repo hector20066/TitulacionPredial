@@ -1,11 +1,10 @@
 package com.hector.titulacionpredial.model.dto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 @DisplayName("DTOPoint Tests")
 class DTOPointTest {
@@ -31,16 +30,16 @@ class DTOPointTest {
         void builderShouldCreateWithAllFields() {
             DTOPoint dto = new DTOPoint.Builder()
                     .numberPoint(1)
-                    .northCoordinate(10.5)
-                    .eastCoordinate(20.3)
+                    .northCoordinate("10.5")
+                    .eastCoordinate("20.3")
                     .distance(15.7)
                     .hillside("Norte")
                     .propertyCode(100)
                     .build();
 
             assertEquals(1, dto.getNumberPoint());
-            assertEquals(10.5, dto.getNorthCoordinate());
-            assertEquals(20.3, dto.getEastCoordinate());
+            assertEquals("10.5", dto.getNorthCoordinate());
+            assertEquals("20.3", dto.getEastCoordinate());
             assertEquals(15.7, dto.getDistance());
             assertEquals("Norte", dto.getHillside());
             assertEquals(100, dto.getPropertyCode());
@@ -56,15 +55,15 @@ class DTOPointTest {
         void allGettersAndSettersShouldWork() {
             DTOPoint dto = new DTOPoint();
             dto.setNumberPoint(3);
-            dto.setNorthCoordinate(45.0);
-            dto.setEastCoordinate(75.0);
+            dto.setNorthCoordinate("45.0");
+            dto.setEastCoordinate("75.0");
             dto.setDistance(100.5);
             dto.setHillside("Sur");
             dto.setPropertyCode(50);
 
             assertEquals(3, dto.getNumberPoint());
-            assertEquals(45.0, dto.getNorthCoordinate());
-            assertEquals(75.0, dto.getEastCoordinate());
+            assertEquals("45.0", dto.getNorthCoordinate());
+            assertEquals("75.0", dto.getEastCoordinate());
             assertEquals(100.5, dto.getDistance());
             assertEquals("Sur", dto.getHillside());
             assertEquals(50, dto.getPropertyCode());

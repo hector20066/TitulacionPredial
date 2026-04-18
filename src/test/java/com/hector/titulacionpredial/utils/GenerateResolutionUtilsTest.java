@@ -250,8 +250,8 @@ class GenerateResolutionUtilsTest {
                                      double distance, String hillside) {
         return new DTOPoint.Builder()
                 .numberPoint(pointNumber)
-                .northCoordinate(northCoord)
-                .eastCoordinate(eastCoord)
+                .northCoordinate(String.valueOf(northCoord))
+                .eastCoordinate(String.valueOf(eastCoord))
                 .distance(distance)
                 .hillside(hillside)
                 .build();

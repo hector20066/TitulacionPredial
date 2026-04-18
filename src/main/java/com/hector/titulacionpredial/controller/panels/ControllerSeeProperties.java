@@ -172,33 +172,32 @@ public class ControllerSeeProperties implements Observer, LanguageObserver {
             Municipalities municipalities = Municipalities.valueOf(seeProperties.getJtbl_properties().getValueAt(selectedRow, 13).toString());
             String cadastralReference = seeProperties.getJtbl_properties().getValueAt(selectedRow, 11).toString();
 
-            double eastCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 14);
-            double northCoordinate1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 15);
-            double distance1 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 16);
+            String eastCoordinate1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 14).toString();
+            String northCoordinate1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 15).toString();
+            String distance1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 16).toString();
             String hillside1 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 17).toString();
 
-            double eastCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 18);
-            double northCoordinate2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 19);
-            double distance2 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 20);
+            String eastCoordinate2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 18).toString();
+            String northCoordinate2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 19).toString();
+            String distance2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 20).toString();
             String hillside2 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 21).toString();
 
-            double eastCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 22);
-            double northCoordinate3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 23);
-            double distance3 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 24);
+            String eastCoordinate3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 22).toString();
+            String northCoordinate3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 23).toString();
+            String distance3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 24).toString();
             String hillside3 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 25).toString();
 
-            double eastCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 26);
-            double northCoordinate4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 27);
-            double distance4 = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 28);
+            String eastCoordinate4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 26).toString();
+            String northCoordinate4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 27).toString();
+            String distance4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 28).toString();
             String hillside4 = seeProperties.getJtbl_properties().getValueAt(selectedRow, 29).toString();
 
-            String[] point1 = {String.valueOf(northCoordinate1), String.valueOf(eastCoordinate1), String.valueOf(distance1), hillside1};
-            String[] point2 = {String.valueOf(northCoordinate2), String.valueOf(eastCoordinate2), String.valueOf(distance2), hillside2};
-            String[] point3 = {String.valueOf(northCoordinate3), String.valueOf(eastCoordinate3), String.valueOf(distance3), hillside3};
-            String[] point4 = {String.valueOf(northCoordinate4), String.valueOf(eastCoordinate4), String.valueOf(distance4), hillside4};
+            String[] point1 = {northCoordinate1, eastCoordinate1, distance1, hillside1};
+            String[] point2 = {northCoordinate2, eastCoordinate2, distance2, hillside2};
+            String[] point3 = {northCoordinate3, eastCoordinate3, distance3, hillside3};
+            String[] point4 = {northCoordinate4, eastCoordinate4, distance4, hillside4};
 
             double area = (double) seeProperties.getJtbl_properties().getValueAt(selectedRow, 30);
-
             DTOBeneficiarySimpleDetails dtoBeneficiary = createDTOBeneficiaries(beneficiaryName, address, municipalities, cadastralReference);
 
             generateResolution.clearFields();

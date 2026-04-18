@@ -1,10 +1,11 @@
 package com.hector.titulacionpredial.model.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Point Entity Tests")
 class PointTest {
@@ -32,16 +33,16 @@ class PointTest {
             Point point = new Point.Builder()
                     .code(1)
                     .numberPoint(2)
-                    .northCoordinate(10.5)
-                    .eastCoordinate(20.3)
+                    .northCoordinate("10.5")
+                    .eastCoordinate("20.3")
                     .distance(15.7)
                     .hillside("Norte")
                     .build();
 
             assertEquals(1, point.getCode());
             assertEquals(2, point.getNumberPoint());
-            assertEquals(10.5, point.getNorthCoordinate());
-            assertEquals(20.3, point.getEastCoordinate());
+            assertEquals("10.5", point.getNorthCoordinate());
+            assertEquals("20.3", point.getEastCoordinate());
             assertEquals(15.7, point.getDistance());
             assertEquals("Norte", point.getHillside());
         }
@@ -71,16 +72,16 @@ class PointTest {
         @DisplayName("setNorthCoordinate y getNorthCoordinate deben funcionar correctamente")
         void setAndGetNorthCoordinateShouldWork() {
             Point p = new Point();
-            p.setNorthCoordinate(45.123);
-            assertEquals(45.123, p.getNorthCoordinate());
+            p.setNorthCoordinate("45.123");
+            assertEquals("45.123", p.getNorthCoordinate());
         }
 
         @Test
         @DisplayName("setEastCoordinate y getEastCoordinate deben funcionar correctamente")
         void setAndGetEastCoordinateShouldWork() {
             Point p = new Point();
-            p.setEastCoordinate(75.456);
-            assertEquals(75.456, p.getEastCoordinate());
+            p.setEastCoordinate("75.456");
+            assertEquals("75.456", p.getEastCoordinate());
         }
 
         @Test
@@ -110,8 +111,8 @@ class PointTest {
             Point point = new Point.Builder()
                     .code(1)
                     .numberPoint(2)
-                    .northCoordinate(10.5)
-                    .eastCoordinate(20.3)
+                    .northCoordinate("10.5")
+                    .eastCoordinate("20.3")
                     .distance(15.7)
                     .hillside("Norte")
                     .build();

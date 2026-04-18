@@ -1,21 +1,25 @@
 package com.hector.titulacionpredial.facade.impl;
 
-import com.hector.titulacionpredial.exception.dao.DAOException;
-import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.hector.titulacionpredial.exception.dao.DAOException;
+import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("PointImplFacade Tests")
@@ -39,7 +43,7 @@ class PointImplFacadeTest {
     void addShouldCreateDTOAndDelegate() throws DAOException {
         doNothing().when(daoPoint).add(any(DTOPoint.class));
 
-        facade.add(1, 10.5, 20.3, 15.0, "Norte", 5);
+        facade.add(1, "10.5", "20.3", 15.0, "Norte", 5);
 
         verify(daoPoint).add(any(DTOPoint.class));
     }
@@ -50,7 +54,7 @@ class PointImplFacadeTest {
         doThrow(new DAOException("Error")).when(daoPoint).add(any(DTOPoint.class));
 
         assertThrows(DAOException.class, () ->
-                facade.add(1, 10.0, 20.0, 5.0, "Sur", 1));
+                facade.add(1, "10.0", "20.0", 5.0, "Sur", 1));
     }
 
     @Test
