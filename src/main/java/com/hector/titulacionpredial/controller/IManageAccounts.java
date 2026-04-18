@@ -1,8 +1,8 @@
 package com.hector.titulacionpredial.controller;
 
-import javax.swing.JPanel;
-
 import com.hector.titulacionpredial.model.dto.user.DTOUserDetails;
+
+import javax.swing.*;
 
 /**
  * Interface for user account management operations.

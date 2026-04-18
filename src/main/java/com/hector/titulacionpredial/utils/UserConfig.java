@@ -1,5 +1,7 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,8 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
-
-import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Persistent user configuration manager.

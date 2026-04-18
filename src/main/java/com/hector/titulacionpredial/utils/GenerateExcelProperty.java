@@ -1,24 +1,16 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.enums.Municipalities;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
-import com.hector.titulacionpredial.model.enums.Municipalities;
 
 /**
  * Utility class for exporting properties to an Excel file
@@ -128,7 +120,8 @@ public class GenerateExcelProperty {
                         distance4 = point.getDistance();
                         hillside4 = point.getHillside();
                     }
-                    default -> throw new IllegalArgumentException("Invalid point number: " + point.getNumberPoint() + ". Valid range: 1-4");
+                    default ->
+                            throw new IllegalArgumentException("Invalid point number: " + point.getNumberPoint() + ". Valid range: 1-4");
                 }
             }
 

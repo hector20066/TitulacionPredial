@@ -1,9 +1,9 @@
 package com.hector.titulacionpredial.utils;
 
+import com.hector.titulacionpredial.i18n.LanguageManager;
+
 import java.io.InputStream;
 import java.util.Properties;
-
-import com.hector.titulacionpredial.i18n.LanguageManager;
 
 /**
  * Utility class for loading and accessing application configuration
