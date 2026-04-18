@@ -260,7 +260,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private void register() {
         try {
             if (listBeneficiaries.isEmpty()) {
-                throw new EmptyFieldException("No hay beneficiarios para registrar.");
+                MessageUtils.informationMessage("No hay beneficiarios para registrar.", registerBeneficiary);
             }
 
             String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
@@ -274,7 +274,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             prepareUI(false);
             doInBackgroundRegister(cadastralReference, address, department, municipality, crossing, neighborhood,
                     publication);
-        } catch (InvalidInputException e) {
+        } catch (Exception e) {
             MessageUtils.warningMessage(e.getMessage(), registerBeneficiary);
         }
     }

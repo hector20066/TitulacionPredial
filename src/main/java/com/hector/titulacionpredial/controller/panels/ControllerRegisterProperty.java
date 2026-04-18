@@ -26,8 +26,14 @@ import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Property registration panel controller.
@@ -514,6 +520,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
     /**
      * Save all valid beneficiary codes from the bulk import table.
+     * 
+     * Simple and direct logic:
+     * 1. Get or create property in property table
+     * 2. Save all points provided - but only if they don't already exist
+     * 3. Save area if provided - but only if not already set
      */
     private void saveBulkData() {
         new Thread(() -> {
@@ -524,7 +535,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 int rowCount = model.getRowCount();
                 int validRecords = 0;
                 int invalidRecords = 0;
-                int omittedRecords = 0;
                 List<String> errors = new ArrayList<>();
 
                 for (int i = 0; i < rowCount; i++) {
@@ -532,67 +542,99 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
                     if (!beneficiaryCode.isEmpty() && beneficiaryCodeExists(beneficiaryCode)) {
                         try {
-                            DTOBeneficiariesCode benefInfo = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
+                            DTOBeneficiariesCode beneficiaryInfo = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
+                            String cadastralRef = beneficiaryInfo.getCadastral_reference();
+                            String address = beneficiaryInfo.getAddress();
 
-                            if (benefInfo.getCadastral_reference() != null && !benefInfo.getCadastral_reference().trim().isEmpty()) {
-                                omittedRecords++;
+                            List<PointData> points = extractPointsFromRow(model, i);
+                            String areaStr = model.getValueAt(i, 17).toString().trim();
+                            double area = !areaStr.isEmpty() ? Double.parseDouble(areaStr.replace(",", ".")) : 0;
+
+                            if (cadastralRef == null || cadastralRef.trim().isEmpty()) {
+                                invalidRecords++;
+                                errors.add(beneficiaryCode + ": Sin referencia catastral");
                                 continue;
                             }
-                            
-                            List<PointData> points = new ArrayList<>();
-                            
-                            String north1 = model.getValueAt(i, 2).toString().trim();
-                            String east1 = model.getValueAt(i, 1).toString().trim();
-                            String dist1 = model.getValueAt(i, 3).toString().trim();
-                            String hill1 = model.getValueAt(i, 4).toString().trim();
 
-                            if (!north1.isEmpty() && !east1.isEmpty()) {
-                                points.add(new PointData(1, north1, east1, dist1, hill1));
+                            var existingProperty = daoProperty.findByCode(cadastralRef);
+                            int propertyCode;
+
+                            if (existingProperty == null) {
+                                propertyCode = daoProperty.add(
+                                    cadastralRef,
+                                    address != null ? address : "",
+                                    com.hector.titulacionpredial.model.enums.Department.CAUCA,
+                                    com.hector.titulacionpredial.model.enums.Municipalities.SUCRE,
+                                    "",
+                                    "",
+                                    ""
+                                );
+                            } else {
+                                propertyCode = (int) existingProperty.getPropertyCode();
                             }
-                            
-                            String north2 = model.getValueAt(i, 6).toString().trim();
-                            String east2 = model.getValueAt(i, 5).toString().trim();
-                            String dist2 = model.getValueAt(i, 7).toString().trim();
-                            String hill2 = model.getValueAt(i, 8).toString().trim();
 
-                            if (!north2.isEmpty() && !east2.isEmpty()) {
-                                points.add(new PointData(2, north2, east2, dist2, hill2));
+                            Set<Integer> existingPointNumbers = new HashSet<>();
+                            try {
+                                String pointSql = "SELECT number FROM point WHERE property_code = ?";
+                                try (Connection conn = com.hector.titulacionpredial.database.DataBasePool.getConnection();
+                                     PreparedStatement st = conn.prepareStatement(pointSql)) {
+                                    st.setInt(1, propertyCode);
+                                    try (ResultSet rs = st.executeQuery()) {
+                                        while (rs.next()) {
+                                            int pointNumber = rs.getInt("number");
+                                            existingPointNumbers.add(pointNumber);
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
                             }
-                            
-                            String north3 = model.getValueAt(i, 10).toString().trim();
-                            String east3 = model.getValueAt(i, 9).toString().trim();
-                            String dist3 = model.getValueAt(i, 11).toString().trim();
-                            String hill3 = model.getValueAt(i, 12).toString().trim();
 
-                            if (!north3.isEmpty() && !east3.isEmpty()) {
-                                points.add(new PointData(3, north3, east3, dist3, hill3));
-                            }
-                            
-                            String north4 = model.getValueAt(i, 14).toString().trim();
-                            String east4 = model.getValueAt(i, 13).toString().trim();
-                            String dist4 = model.getValueAt(i, 15).toString().trim();
-                            String hill4 = model.getValueAt(i, 16).toString().trim();
-
-                            if (!north4.isEmpty() && !east4.isEmpty()) {
-                                points.add(new PointData(4, north4, east4, dist4, hill4));
-                            }
-                            
-                            String areaStr = model.getValueAt(i, 17).toString().trim();
-
-                            if (!areaStr.isEmpty() && !points.isEmpty()) {
-                                double area = Double.parseDouble(areaStr.replace(",", "."));
-                                
+                            if (!points.isEmpty()) {
                                 for (PointData p : points) {
-                                    daoPoint.add(p.pointNumber(),
+                                    if (existingPointNumbers.contains(p.pointNumber())) {
+                                        continue;
+                                    }
+                                    
+                                    try {
+                                        daoPoint.add(
+                                            p.pointNumber(),
                                             p.north(),
                                             p.east(),
-                                            Double.parseDouble(p.distance().replace(",", ".")),
-                                            p.hillside(),
-                                            benefInfo.getCode());
-                                }
+                                            Double.parseDouble(p.distance().isEmpty() ? "0" : p.distance().replace(",", ".")),
+                                            p.hillside().isEmpty() ? "" : p.hillside(),
+                                            propertyCode
+                                        );
+                                        existingPointNumbers.add(p.pointNumber());
+                                    } catch (Exception pointEx) {
+                                        String msg = pointEx.getMessage() != null ? pointEx.getMessage().toLowerCase() : "";
 
-                                validRecords++;
+                                        boolean isDuplicate = msg.contains("duplicate") || msg.contains("already") || 
+                                                            msg.contains("unique") || msg.contains("constraint") ||
+                                                            msg.contains("key") || msg.contains("violate") ||
+                                                            msg.contains("existe") || msg.contains("repetida");
+                                        
+                                        if (!isDuplicate) {
+                                            errors.add(beneficiaryCode + " Punto " + p.pointNumber() + ": " + pointEx.getMessage());
+                                        }
+                                        if (isDuplicate) {
+                                            existingPointNumbers.add(p.pointNumber());
+                                        }
+                                    }
+                                }
                             }
+
+                            if (area > 0) {
+                                if (existingProperty == null || existingProperty.getArea() <= 0) {
+                                    try {
+                                        daoProperty.modify(cadastralRef, area);
+                                    } catch (Exception areaEx) {
+                                        errors.add(beneficiaryCode + " Área: " + areaEx.getMessage());
+                                    }
+                                }
+                            }
+
+                            validRecords++;
+
                         } catch (Exception e) {
                             invalidRecords++;
                             errors.add(beneficiaryCode + ": " + e.getMessage());
@@ -604,13 +646,12 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
                 final int valid = validRecords;
                 final int invalid = invalidRecords;
-                final int omitted = omittedRecords;
                 final List<String> errorList = errors;
 
                 SwingUtilities.invokeLater(() -> {
                     String message = String.format(
-                            "Registros procesados:\nVálidos guardados: %d\nInválidos (F no existe): %d\nOmitidos (F ya tiene predio): %d",
-                            valid, invalid, omitted
+                            "Registros procesados:\nVálidos guardados: %d\nInválidos: %d",
+                            valid, invalid
                     );
 
                     if (!errorList.isEmpty()) {
@@ -629,42 +670,72 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Load Excel data into form fields (legacy single record method).
+     * Extract points data from a specific row in the bulk import table.
+     * Extracts all 4 points from the row, handling both coordinates and metadata.
+     * 
+     * @param model the table model
+     * @param rowIndex the row index
+     * @return list of PointData objects extracted from the row
      */
-    private void loadInFields(List<List<String>> data) {
-        if (!data.isEmpty()) {
-            List<String> fila = filterColumns(data.getFirst());
+    private List<PointData> extractPointsFromRow(javax.swing.table.DefaultTableModel model, int rowIndex) {
+        List<PointData> points = new ArrayList<>();
+        
+        try {
+            String north1 = getTableValue(model, rowIndex, 2);
+            String east1 = getTableValue(model, rowIndex, 1);
+            String dist1 = getTableValue(model, rowIndex, 3);
+            String hill1 = getTableValue(model, rowIndex, 4);
 
-            registerProperty.getTxt_beneficiaryCode().setText(fila.get(0));
-            registerProperty.getTxt_eastCoordinate1().setText(fila.get(1));
-            registerProperty.getTxt_northCoordinate1().setText(fila.get(2));
-            registerProperty.getTxt_distance1().setText(fila.get(3));
-            registerProperty.getTxt_hillside1().setText(fila.get(4));
-            registerProperty.getTxt_eastCoordinate2().setText(fila.get(5));
-            registerProperty.getTxt_northCoordinate2().setText(fila.get(6));
-            registerProperty.getTxt_distance2().setText(fila.get(7));
-            registerProperty.getTxt_hillside2().setText(fila.get(8));
-            registerProperty.getTxt_eastCoordinate3().setText(fila.get(9));
-            registerProperty.getTxt_northCoordinate3().setText(fila.get(10));
-            registerProperty.getTxt_distance3().setText(fila.get(11));
-            registerProperty.getTxt_hillside3().setText(fila.get(12));
-            registerProperty.getTxt_eastCoordinate4().setText(fila.get(13));
-            registerProperty.getTxt_northCoordinate4().setText(fila.get(14));
-            registerProperty.getTxt_distance4().setText(fila.get(15));
-            registerProperty.getTxt_hillside4().setText(fila.get(16));
-            registerProperty.getTxt_area().setText(fila.get(17));
+            if (!north1.isEmpty() && !east1.isEmpty()) {
+                points.add(new PointData(1, north1, east1, dist1, hill1));
+            }
+
+            String north2 = getTableValue(model, rowIndex, 6);
+            String east2 = getTableValue(model, rowIndex, 5);
+            String dist2 = getTableValue(model, rowIndex, 7);
+            String hill2 = getTableValue(model, rowIndex, 8);
+
+            if (!north2.isEmpty() && !east2.isEmpty()) {
+                points.add(new PointData(2, north2, east2, dist2, hill2));
+            }
+
+            String north3 = getTableValue(model, rowIndex, 10);
+            String east3 = getTableValue(model, rowIndex, 9);
+            String dist3 = getTableValue(model, rowIndex, 11);
+            String hill3 = getTableValue(model, rowIndex, 12);
+
+            if (!north3.isEmpty() && !east3.isEmpty()) {
+                points.add(new PointData(3, north3, east3, dist3, hill3));
+            }
+
+            String north4 = getTableValue(model, rowIndex, 14);
+            String east4 = getTableValue(model, rowIndex, 13);
+            String dist4 = getTableValue(model, rowIndex, 15);
+            String hill4 = getTableValue(model, rowIndex, 16);
+
+            if (!north4.isEmpty() && !east4.isEmpty()) {
+                points.add(new PointData(4, north4, east4, dist4, hill4));
+            }
+        } catch (Exception e) {
+            System.err.println("Error extracting points from row " + rowIndex + ": " + e.getMessage());
         }
+        
+        return points;
     }
+    
+    /**
+     * Safely get a value from the table model.
+     */
+    private String getTableValue(javax.swing.table.DefaultTableModel model, int row, int col) {
+        try {
+            Object value = model.getValueAt(row, col);
+            if (value != null) {
+                return value.toString().trim();
+            }
+        } catch (Exception e) {
 
-    private List<String> filterColumns(List<String> fila) {
-        int[] indexes = {0, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23};
-        List<String> result = new ArrayList<>();
-
-        for (int i : indexes) {
-            result.add(i < fila.size() ? fila.get(i) : "");
         }
-
-        return result;
+        return "";
     }
 
     /**

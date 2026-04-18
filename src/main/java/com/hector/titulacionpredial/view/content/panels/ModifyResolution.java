@@ -119,9 +119,11 @@ public class ModifyResolution extends javax.swing.JPanel {
         jlb_notification.setForeground(new java.awt.Color(33, 37, 41));
         jlb_notification.setText("Notificacion:");
 
+        ftx_notification.setBackground(new java.awt.Color(242, 246, 253));
         ftx_notification.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
         ftx_notification.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
+        ftx_executory.setBackground(new java.awt.Color(242, 246, 253));
         ftx_executory.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.LONG))));
         ftx_executory.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
@@ -208,7 +210,7 @@ public class ModifyResolution extends javax.swing.JPanel {
                 .addComponent(jlb_notary)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(btn_modify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
