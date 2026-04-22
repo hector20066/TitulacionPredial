@@ -1,5 +1,10 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.persistence.PointPersistenceException;
@@ -7,11 +12,6 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Implementation of the DAO for the management of geographic points
@@ -57,18 +57,39 @@ public class DAOPointImpl implements DAOPoint {
     @Override
     public void add(DTOPoint dto) throws DAOException {
         String sql = SQLRepository.get("sql/point/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, dto.getNumberPoint());
-            st.setString(2, dto.getNorthCoordinate());
-            st.setString(3, dto.getEastCoordinate());
-            st.setDouble(4, dto.getDistance());
-            st.setString(5, dto.getHillside());
-            st.setInt(6, dto.getPropertyCode());
-            st.executeUpdate();
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setInt(1, dto.getNumberPoint());
+                st.setString(2, dto.getNorthCoordinate());
+                st.setString(3, dto.getEastCoordinate());
+                st.setDouble(4, dto.getDistance());
+                st.setString(5, dto.getHillside());
+                st.setInt(6, dto.getPropertyCode());
+                st.executeUpdate();
+                connection.commit();
+            }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new PointPersistenceException(lang.message("persistence.point.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 

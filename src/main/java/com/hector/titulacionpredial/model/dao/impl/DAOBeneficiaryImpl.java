@@ -1,21 +1,31 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.BeneficiaryNotFoundException;
 import com.hector.titulacionpredial.exception.dao.persistence.BeneficiaryPersistenceException;
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOBeneficiary;
-import com.hector.titulacionpredial.model.dto.beneficiary.*;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesByMonth;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryUpdate;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.MaritalStatus;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Implementation of the DAO for beneficiary management in the PostgreSQL database.
@@ -60,34 +70,57 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public int add(DTOBeneficiaryCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            st.setString(1, dto.getCodeBeneficiaries());
-            st.setLong(2, dto.getId());
-            st.setString(3, dto.getFullName());
-            st.setString(4, String.valueOf(dto.getMaritalStatus()));
-            st.setString(5, dto.getAffectation());
-            st.setLong(6, dto.getPhone());
-            st.setString(7, dto.getExpeditionLocation());
-            st.setInt(8, dto.getPropertyCode());
-            st.setDate(9, Date.valueOf(LocalDate.now()));
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            int affectedRows = st.executeUpdate();
+            try (PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                st.setString(1, dto.getCodeBeneficiaries());
+                st.setLong(2, dto.getId());
+                st.setString(3, dto.getFullName());
+                st.setString(4, String.valueOf(dto.getMaritalStatus()));
+                st.setString(5, dto.getAffectation());
+                st.setLong(6, dto.getPhone());
+                st.setString(7, dto.getExpeditionLocation());
+                st.setInt(8, dto.getPropertyCode());
+                st.setDate(9, Date.valueOf(LocalDate.now()));
 
-            if (affectedRows == 0) {
-                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.register"));
-            }
+                int affectedRows = st.executeUpdate();
 
-            try (ResultSet generatedKeys = st.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
-                } else {
-                    throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"));
+                if (affectedRows == 0) {
+                    throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.register"));
+                }
+
+                try (ResultSet generatedKeys = st.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int generatedId = generatedKeys.getInt(1);
+                        connection.commit();
+                        return generatedId;
+                    } else {
+                        connection.rollback();
+                        throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"));
+                    }
                 }
             }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -344,41 +377,86 @@ public class DAOBeneficiaryImpl implements DAOBeneficiary {
     @Override
     public boolean modify(DTOBeneficiaryUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/modify.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setString(1, dto.getCodeBeneficiaries());
-            st.setLong(2, dto.getId());
-            st.setString(3, dto.getFullName());
-            st.setString(4, String.valueOf(dto.getMaritalStatus()));
-            st.setString(5, dto.getAffectation());
-            st.setLong(6, dto.getPhone());
-            st.setString(7, dto.getExpeditionLocation());
-            st.setInt(8, dto.getCode());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setString(1, dto.getCodeBeneficiaries());
+                st.setLong(2, dto.getId());
+                st.setString(3, dto.getFullName());
+                st.setString(4, String.valueOf(dto.getMaritalStatus()));
+                st.setString(5, dto.getAffectation());
+                st.setLong(6, dto.getPhone());
+                st.setString(7, dto.getExpeditionLocation());
+                st.setInt(8, dto.getCode());
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new BeneficiaryNotFoundException(lang.message("not.found.beneficiary.modify"));
+                }
+
+                connection.commit();
+                return true;
             }
-
-            return true;
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.modify"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
     @Override
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/beneficiary/delete.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, code);
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new BeneficiaryNotFoundException(String.valueOf(code));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setInt(1, code);
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new BeneficiaryNotFoundException(String.valueOf(code));
+                }
+
+                connection.commit();
             }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new BeneficiaryPersistenceException(lang.message("persistence.beneficiary.delete"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 

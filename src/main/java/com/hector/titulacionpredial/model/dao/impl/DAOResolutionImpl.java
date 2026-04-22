@@ -1,5 +1,13 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.ResolutionNotFoundException;
@@ -11,10 +19,6 @@ import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionDetails;
 import com.hector.titulacionpredial.model.dto.resolution.DTOResolutionUpdate;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Concrete implementation of {@link DAOResolution} that manages
@@ -78,26 +82,49 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public void add(DTOResolutionCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setLong(1, dto.getResolutionNumber());
-            st.setDate(2, Date.valueOf(dto.getNotification()));
-            st.setDate(3, Date.valueOf(dto.getExecutory()));
-            st.setString(4, dto.getFmi());
-            st.setString(5, dto.getAct());
-            st.setString(6, dto.getPublicWriting());
-            st.setString(7, dto.getNotary());
-            st.setString(8, dto.getBeneficiaryName());
-            st.setInt(9, dto.getPropertyCode());
-            
-            int affectedRows = st.executeUpdate();
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (affectedRows == 0) {
-                throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), null);
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setLong(1, dto.getResolutionNumber());
+                st.setDate(2, Date.valueOf(dto.getNotification()));
+                st.setDate(3, Date.valueOf(dto.getExecutory()));
+                st.setString(4, dto.getFmi());
+                st.setString(5, dto.getAct());
+                st.setString(6, dto.getPublicWriting());
+                st.setString(7, dto.getNotary());
+                st.setString(8, dto.getBeneficiaryName());
+                st.setInt(9, dto.getPropertyCode());
+
+                int affectedRows = st.executeUpdate();
+
+                if (affectedRows == 0) {
+                    connection.rollback();
+                    throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), null);
+                }
+
+                connection.commit();
             }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new ResolutionPersistenceException(lang.message("persistence.resolution.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -197,26 +224,48 @@ public class DAOResolutionImpl implements DAOResolution {
     @Override
     public boolean modify(DTOResolutionUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/resolution/modify.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setDate(1, Date.valueOf(dto.getExecutory()));
-            st.setString(2, dto.getAct());
-            st.setString(3, dto.getPublicWriting());
-            st.setDate(4, Date.valueOf(dto.getNotification()));
-            st.setLong(5, dto.getResolutionNumber());
-            st.setString(6, dto.getFmi());
-            st.setString(7, dto.getNotary());
-            st.setInt(8, dto.getCode());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new ResolutionNotFoundException(String.valueOf(dto.getResolutionNumber()));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setDate(1, Date.valueOf(dto.getExecutory()));
+                st.setString(2, dto.getAct());
+                st.setString(3, dto.getPublicWriting());
+                st.setDate(4, Date.valueOf(dto.getNotification()));
+                st.setLong(5, dto.getResolutionNumber());
+                st.setString(6, dto.getFmi());
+                st.setString(7, dto.getNotary());
+                st.setInt(8, dto.getCode());
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new ResolutionNotFoundException(String.valueOf(dto.getResolutionNumber()));
+                }
+
+                connection.commit();
+                return true;
             }
-
-            return true;
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new ResolutionPersistenceException(lang.message("persistence.resolution.info.number") + " "
                     + dto.getResolutionNumber(), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 

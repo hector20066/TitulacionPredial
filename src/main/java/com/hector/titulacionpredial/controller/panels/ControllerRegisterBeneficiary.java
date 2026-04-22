@@ -261,6 +261,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
         try {
             if (listBeneficiaries.isEmpty()) {
                 MessageUtils.informationMessage("No hay beneficiarios para registrar.", registerBeneficiary);
+                return;
             }
 
             String cadastralReference = registerBeneficiary.getTxt_cadastralReference().getText().trim();
@@ -467,16 +468,16 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
             throw new EmptyFieldException(lang.message("empty.beneficiary.general"));
         }
 
-        if (!codeBeneficiaries.contains("F")) {
+        if (!codeBeneficiaries.matches("^F[A-Z]?\\d{4}$")) {
             throw new InvalidInputException(lang.message("invalid.input.beneficiary.code"));
         }
 
-        if (phone.length() > 10) {
+        if (phone.length() < 7 || phone.length() > 11) {
             throw new MaxLengthExceededException(lang.message("max.length.beneficiary.phone"), "10");
         }
 
-        if (id.length() > 10) {
-            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "10");
+        if (id.length() < 5 || id.length() > 11) {
+            throw new MaxLengthExceededException(lang.message("max.length.beneficiary.id"), "11");
         }
 
         if (!ValidationUtils.isNumeric(phone)) {

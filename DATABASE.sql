@@ -24,7 +24,7 @@ CREATE TABLE property (
 -- =========================
 CREATE TABLE beneficiary (
      code INT AUTO_INCREMENT PRIMARY KEY,
-     code_beneficiaries VARCHAR(10) NOT NULL,
+     code_beneficiaries VARCHAR(10) NOT NULL UNIQUE,
      id BIGINT NOT NULL UNIQUE,
      full_name VARCHAR(150) NOT NULL,
      marital_status VARCHAR(15) NOT NULL,
@@ -106,6 +106,7 @@ CREATE TABLE users(
     role VARCHAR(15) NOT NULL
 );
 
+CREATE INDEX idx_beneficiary_code ON beneficiary(code_beneficiaries);
 CREATE INDEX idx_beneficiary_full_name ON beneficiary(full_name);
 CREATE INDEX idx_beneficiary_id ON beneficiary(id);
 CREATE INDEX idx_property_cadastral_id ON property(cadastral_reference);

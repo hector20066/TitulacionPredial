@@ -1,5 +1,10 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.SpouseNotFoundException;
@@ -8,11 +13,6 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOSpouse;
 import com.hector.titulacionpredial.model.dto.DTOSpouse;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Implementation of the DAO for spouse management in the MySQL database.
@@ -57,17 +57,38 @@ public class DAOSpouseImpl implements DAOSpouse {
     @Override
     public void add(DTOSpouse dto) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setLong(1, dto.getId());
-            st.setString(2, dto.getFullName());
-            st.setString(3, dto.getExpeditionLocation());
-            st.setLong(4, dto.getPhone());
-            st.setInt(5, dto.getBeneficiariesCode());
-            st.executeUpdate();
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setLong(1, dto.getId());
+                st.setString(2, dto.getFullName());
+                st.setString(3, dto.getExpeditionLocation());
+                st.setLong(4, dto.getPhone());
+                st.setInt(5, dto.getBeneficiariesCode());
+                st.executeUpdate();
+                connection.commit();
+            }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new SpousePersistenceException(lang.message("persistence.spouse.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -96,16 +117,39 @@ public class DAOSpouseImpl implements DAOSpouse {
     @Override
     public void delete(int id) throws DAOException {
         String sql = SQLRepository.get("sql/spouse/delete.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setLong(1, id);
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new SpouseNotFoundException(String.valueOf(id));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setInt(1, id);
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new SpouseNotFoundException(String.valueOf(id));
+                }
+
+                connection.commit();
             }
         } catch (SQLException e) {
-            throw new SpousePersistenceException(lang.message("persistence.spouse.info"), e);
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
+            throw new SpousePersistenceException(lang.message("persistence.spouse.delete"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 

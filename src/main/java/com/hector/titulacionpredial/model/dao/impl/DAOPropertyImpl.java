@@ -1,5 +1,16 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.PropertyNotFoundException;
@@ -7,16 +18,14 @@ import com.hector.titulacionpredial.exception.dao.persistence.PropertyPersistenc
 import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOProperty;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.property.*;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyCreate;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyModifyBasic;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertySimpleDetails;
+import com.hector.titulacionpredial.model.dto.property.DTOPropertyUpdate;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Implementation of the DAO for property management in the MySQL database.
@@ -61,32 +70,56 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public int add(DTOPropertyCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            st.setString(1, dto.getCadastralRef());
-            st.setString(2, String.valueOf(dto.getDepartment()));
-            st.setString(3, String.valueOf(dto.getMunicipality()));
-            st.setString(4, dto.getNeighborhood());
-            st.setString(5, dto.getAddress());
-            st.setString(6, dto.getCrossing());
-            st.setString(7, dto.getPublication());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            int affectedRows = st.executeUpdate();
+            try (PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                st.setString(1, dto.getCadastralRef());
+                st.setString(2, String.valueOf(dto.getDepartment()));
+                st.setString(3, String.valueOf(dto.getMunicipality()));
+                st.setString(4, dto.getNeighborhood());
+                st.setString(5, dto.getAddress());
+                st.setString(6, dto.getCrossing());
+                st.setString(7, dto.getPublication());
 
-            if (affectedRows == 0) {
-                throw new PropertyNotFoundException(lang.message("not.found.property.rows"));
-            }
+                int affectedRows = st.executeUpdate();
 
-            try (ResultSet generatedKeys = st.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
-                } else {
-                    throw new PropertyNotFoundException(lang.message("not.found.property.id"));
+                if (affectedRows == 0) {
+                    connection.rollback();
+                    throw new PropertyNotFoundException(lang.message("not.found.property.rows"));
+                }
+
+                try (ResultSet generatedKeys = st.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int generatedId = generatedKeys.getInt(1);
+                        connection.commit();
+                        return generatedId;
+                    } else {
+                        connection.rollback();
+                        throw new PropertyNotFoundException(lang.message("not.found.property.id"));
+                    }
                 }
             }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new PropertyPersistenceException(lang.message("persistence.property.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -339,35 +372,79 @@ public class DAOPropertyImpl implements DAOProperty {
     @Override
     public boolean modifyBasicInformation(DTOPropertyModifyBasic dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/modifyBasicInformation.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setString(1, String.valueOf(dto.getDepartment()));
-            st.setString(2, String.valueOf(dto.getMunicipality()));
-            st.setString(3, dto.getNeighborhood());
-            st.setString(4, dto.getAddress());
-            st.setString(5, dto.getCrossing());
-            st.setString(6, dto.getPublication());
-            st.setString(7, dto.getCadastralRef());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            return st.executeUpdate() != 0;
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setString(1, String.valueOf(dto.getDepartment()));
+                st.setString(2, String.valueOf(dto.getMunicipality()));
+                st.setString(3, dto.getNeighborhood());
+                st.setString(4, dto.getAddress());
+                st.setString(5, dto.getCrossing());
+                st.setString(6, dto.getPublication());
+                st.setString(7, dto.getCadastralRef());
+
+                boolean result = st.executeUpdate() != 0;
+                connection.commit();
+                return result;
+            }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new PropertyPersistenceException(lang.message("persistence.property.not"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
     @Override
     public boolean modify(DTOPropertyUpdate dto) throws DAOException {
         String sql = SQLRepository.get("sql/property/modify.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setDouble(1, dto.getArea());
-            st.setString(2, dto.getCadastralRef());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            return st.executeUpdate() != 0;
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setDouble(1, dto.getArea());
+                st.setString(2, dto.getCadastralRef());
+
+                boolean result = st.executeUpdate() != 0;
+                connection.commit();
+                return result;
+            }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new PropertyPersistenceException(lang.message("persistence.property.not"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 

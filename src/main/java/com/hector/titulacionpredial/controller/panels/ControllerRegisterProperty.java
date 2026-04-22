@@ -343,7 +343,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 throw new EmptyFieldException(lang.message("empty.beneficiaries.code"));
             }
 
-            if (!beneficiariesCode.contains("F")) {
+            if (!beneficiariesCode.matches("^F[A-Z]?\\d{4}$")) {
                 throw new InvalidInputException(lang.message("empty.beneficiaries.code"));
             }
 

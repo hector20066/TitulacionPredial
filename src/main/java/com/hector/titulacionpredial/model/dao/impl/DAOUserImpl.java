@@ -1,5 +1,12 @@
 package com.hector.titulacionpredial.model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.notfound.UserNotFoundException;
@@ -13,13 +20,6 @@ import com.hector.titulacionpredial.model.dto.user.DTOUserModifyPasswd;
 import com.hector.titulacionpredial.model.enums.Role;
 import com.hector.titulacionpredial.model.security.BCryptEncryption;
 import com.hector.titulacionpredial.utils.SQLRepository;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Implementation of the Data Access Object (DAO) pattern for user management.
@@ -77,17 +77,38 @@ public class DAOUserImpl implements DAOUser {
     @Override
     public void add(DTOUserCreate dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/insert.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setString(1, dto.getName());
-            st.setInt(2, dto.getId());
-            st.setString(3, dto.getUser());
-            st.setString(4, dto.getPassword());
-            st.setString(5, String.valueOf(dto.getRole()));
-            st.executeUpdate();
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setString(1, dto.getName());
+                st.setInt(2, dto.getId());
+                st.setString(3, dto.getUser());
+                st.setString(4, dto.getPassword());
+                st.setString(5, String.valueOf(dto.getRole()));
+                st.executeUpdate();
+                connection.commit();
+            }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new UserPersistenceException(lang.message("persistence.user.register"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -126,19 +147,41 @@ public class DAOUserImpl implements DAOUser {
     @Override
     public boolean modifyPassword(DTOUserModifyPasswd dto) throws DAOException {
         String sql = SQLRepository.get("sql/user/modifyPassword.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setString(1, dto.getPassword());
-            st.setInt(2, dto.getId());
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new UserNotFoundException(String.valueOf(dto.getId()));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setString(1, dto.getPassword());
+                st.setInt(2, dto.getId());
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new UserNotFoundException(String.valueOf(dto.getId()));
+                }
+
+                connection.commit();
+                return true;
             }
-
-            return true;
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new UserPersistenceException(lang.message("persistence.user.error"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
@@ -194,16 +237,39 @@ public class DAOUserImpl implements DAOUser {
     @Override
     public void delete(int code) throws DAOException {
         String sql = SQLRepository.get("sql/user/delete.sql");
+        Connection connection = null;
 
-        try (Connection connection = DataBasePool.getConnection();
-             PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, code);
+        try {
+            connection = DataBasePool.getConnection();
+            connection.setAutoCommit(false);
 
-            if (st.executeUpdate() == 0) {
-                throw new UserNotFoundException(String.valueOf(code));
+            try (PreparedStatement st = connection.prepareStatement(sql)) {
+                st.setInt(1, code);
+
+                if (st.executeUpdate() == 0) {
+                    connection.rollback();
+                    throw new UserNotFoundException(String.valueOf(code));
+                }
+
+                connection.commit();
             }
         } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    lang.message("error.rollback");
+                }
+            }
             throw new UserPersistenceException(lang.message("persistence.user.error"), e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException closeEx) {
+                    lang.message("error.close.connection");
+                }
+            }
         }
     }
 
