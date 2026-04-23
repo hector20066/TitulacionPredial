@@ -92,7 +92,7 @@ CREATE TABLE resolution (
     CONSTRAINT fk_resolution_property
         FOREIGN KEY (property_code)
             REFERENCES property(code)
-            ON DELETE RESTRICT
+            ON DELETE CASCADE
 );
 
 -- =========================
