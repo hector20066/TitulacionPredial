@@ -1,6 +1,9 @@
 package com.hector.titulacionpredial.model.dao.interfaces;
 
+import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
+
+import java.util.Set;
 
 /**
  * DAO interface for managing geographic points (coordinates)
@@ -17,5 +20,7 @@ import com.hector.titulacionpredial.model.dto.DTOPoint;
  * @since 1.0
  */
 public interface DAOPoint extends DAOBase<DTOPoint, DTOPoint> {
+
+    Set<Integer> existingPointNumber(int propertyCode) throws DAOException;
 
 }

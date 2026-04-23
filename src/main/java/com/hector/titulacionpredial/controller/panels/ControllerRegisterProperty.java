@@ -1,5 +1,17 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.awt.CardLayout;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.exception.dao.PersistenceException;
@@ -15,6 +27,8 @@ import com.hector.titulacionpredial.i18n.LanguageManager;
 import com.hector.titulacionpredial.i18n.LanguageObserver;
 import com.hector.titulacionpredial.i18n.LanguageSubject;
 import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
+import com.hector.titulacionpredial.model.enums.Department;
+import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Subject;
 import com.hector.titulacionpredial.utils.ImportExcel;
 import com.hector.titulacionpredial.utils.MessageUtils;
@@ -22,18 +36,6 @@ import com.hector.titulacionpredial.utils.ValidationUtils;
 import com.hector.titulacionpredial.view.content.panels.RegisterProperty;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Property registration panel controller.
@@ -426,13 +428,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
         JPanel buttonPanel = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
         ButtonAction btnSave = new ButtonAction();
-        btnSave.setText("Guardar");
+        btnSave.setText(lang.message("controller.button.save"));
         btnSave.setBackground(new java.awt.Color(64, 145, 108));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.addActionListener(e -> saveBulkData());
 
         ButtonAction btnCancel = new ButtonAction();
-        btnCancel.setText("Cancelar");
+        btnCancel.setText(lang.message("controller.button.cancel"));
         btnCancel.setBackground(new java.awt.Color(200, 200, 200));
         btnCancel.addActionListener(e -> dialog.dispose());
 
@@ -511,8 +513,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
      */
     private boolean beneficiaryCodeExists(String code) {
         try {
-            daoBeneficiary.findByBeneficiariesCode(code);
-            return true;
+            return daoBeneficiary.findByBeneficiariesCode(code) != null;
         } catch (DAOException e) {
             return false;
         }
@@ -520,11 +521,13 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
     /**
      * Save all valid beneficiary codes from the bulk import table.
-     * 
+     *
+     * <p>
      * Simple and direct logic:
      * 1. Get or create property in property table
      * 2. Save all points provided - but only if they don't already exist
      * 3. Save area if provided - but only if not already set
+     * </p>
      */
     private void saveBulkData() {
         new Thread(() -> {
@@ -563,31 +566,17 @@ public class ControllerRegisterProperty implements LanguageObserver {
                                 propertyCode = daoProperty.add(
                                     cadastralRef,
                                     address != null ? address : "",
-                                    com.hector.titulacionpredial.model.enums.Department.CAUCA,
-                                    com.hector.titulacionpredial.model.enums.Municipalities.SUCRE,
+                                    Department.CORDOBA,
+                                    Municipalities.MONTERIA,
                                     "",
                                     "",
                                     ""
                                 );
                             } else {
-                                propertyCode = (int) existingProperty.getPropertyCode();
+                                propertyCode = existingProperty.getPropertyCode();
                             }
 
-                            Set<Integer> existingPointNumbers = new HashSet<>();
-                            try {
-                                String pointSql = "SELECT number FROM point WHERE property_code = ?";
-                                try (Connection conn = com.hector.titulacionpredial.database.DataBasePool.getConnection();
-                                     PreparedStatement st = conn.prepareStatement(pointSql)) {
-                                    st.setInt(1, propertyCode);
-                                    try (ResultSet rs = st.executeQuery()) {
-                                        while (rs.next()) {
-                                            int pointNumber = rs.getInt("number");
-                                            existingPointNumbers.add(pointNumber);
-                                        }
-                                    }
-                                }
-                            } catch (Exception e) {
-                            }
+                            Set<Integer> existingPointNumbers = daoPoint.existingPointNumber(propertyCode);
 
                             if (!points.isEmpty()) {
                                 for (PointData p : points) {
@@ -604,15 +593,11 @@ public class ControllerRegisterProperty implements LanguageObserver {
                                             p.hillside().isEmpty() ? "" : p.hillside(),
                                             propertyCode
                                         );
+
                                         existingPointNumbers.add(p.pointNumber());
                                     } catch (Exception pointEx) {
-                                        String msg = pointEx.getMessage() != null ? pointEx.getMessage().toLowerCase() : "";
+                                        boolean isDuplicate = isIsDuplicate(pointEx);
 
-                                        boolean isDuplicate = msg.contains("duplicate") || msg.contains("already") || 
-                                                            msg.contains("unique") || msg.contains("constraint") ||
-                                                            msg.contains("key") || msg.contains("violate") ||
-                                                            msg.contains("existe") || msg.contains("repetida");
-                                        
                                         if (!isDuplicate) {
                                             errors.add(beneficiaryCode + " Punto " + p.pointNumber() + ": " + pointEx.getMessage());
                                         }
@@ -634,7 +619,6 @@ public class ControllerRegisterProperty implements LanguageObserver {
                             }
 
                             validRecords++;
-
                         } catch (Exception e) {
                             invalidRecords++;
                             errors.add(beneficiaryCode + ": " + e.getMessage());
@@ -655,7 +639,9 @@ public class ControllerRegisterProperty implements LanguageObserver {
                     );
 
                     if (!errorList.isEmpty()) {
-                        message += "\n\nErrores:\n" + String.join("\n", errorList.stream().limit(5).toList());
+                        message += "\n\nErrores:\n" + String.join("\n", errorList.stream()
+                                .limit(5)
+                                .toList());
                     }
 
                     MessageUtils.informationMessage(message, registerProperty);
@@ -667,6 +653,15 @@ public class ControllerRegisterProperty implements LanguageObserver {
                 );
             }
         }).start();
+    }
+
+    private static boolean isIsDuplicate(Exception pointEx) {
+        String msg = pointEx.getMessage() != null ? pointEx.getMessage().toLowerCase() : "";
+
+        return msg.contains("duplicate") || msg.contains("already") ||
+                            msg.contains("unique") || msg.contains("constraint") ||
+                            msg.contains("key") || msg.contains("violate") ||
+                            msg.contains("existe") || msg.contains("repetida");
     }
 
     /**
@@ -732,7 +727,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
             if (value != null) {
                 return value.toString().trim();
             }
-        } catch (Exception e) {
+        } catch (Exception _) {
 
         }
         return "";

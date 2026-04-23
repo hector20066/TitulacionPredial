@@ -4,6 +4,8 @@ import com.hector.titulacionpredial.exception.dao.DAOException;
 import com.hector.titulacionpredial.facade.impl.PointImplFacade;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
+import java.util.Set;
+
 /**
  * Facade that defines the high-level operations for the management
  * of geographic points (coordinates) in the system.
@@ -41,5 +43,7 @@ public interface PointFacade {
      * @throws DAOException if an error occurs or it is not found
      */
     DTOPoint findByCode(int propertyCode) throws DAOException;
+
+    Set<Integer> existingPointNumber(int propertyCode) throws DAOException;
 
 }

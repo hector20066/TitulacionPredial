@@ -1,5 +1,11 @@
 package com.hector.titulacionpredial.controller.panels;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import javax.swing.SwingUtilities;
+
 import com.hector.titulacionpredial.controller.ControllerLogin;
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterBeneficiaryBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -32,10 +38,6 @@ import com.hector.titulacionpredial.view.content.dialogs.SpouseData;
 import com.hector.titulacionpredial.view.content.panels.RegisterBeneficiary;
 import com.hector.titulacionpredial.view.content.panels.ViewBeneficiaries;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterBeneficiaryText;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controller of the beneficiary registration and modification panel.
@@ -260,7 +262,7 @@ public class ControllerRegisterBeneficiary implements LanguageObserver {
     private void register() {
         try {
             if (listBeneficiaries.isEmpty()) {
-                MessageUtils.informationMessage("No hay beneficiarios para registrar.", registerBeneficiary);
+                MessageUtils.informationMessage(lang.message("controller.register.beneficiary.empty"), registerBeneficiary);
                 return;
             }
 

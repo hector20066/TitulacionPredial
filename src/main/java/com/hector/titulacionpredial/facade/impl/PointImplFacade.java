@@ -6,6 +6,8 @@ import com.hector.titulacionpredial.model.dao.impl.DAOPointImpl;
 import com.hector.titulacionpredial.model.dao.interfaces.DAOPoint;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 
+import java.util.Set;
+
 /**
  * Implementation of the {@link PointFacade} facade for the
  * management of geographic points.
@@ -50,6 +52,10 @@ public class PointImplFacade implements PointFacade {
     @Override
     public DTOPoint findByCode(int propertyCode) throws DAOException {
         return daoPoint.findByCode(propertyCode);
+    }
+
+    public Set<Integer> existingPointNumber(int propertyCode) throws DAOException {
+        return daoPoint.existingPointNumber(propertyCode);
     }
 
 }

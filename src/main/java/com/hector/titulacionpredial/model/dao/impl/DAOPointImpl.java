@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.hector.titulacionpredial.database.DataBasePool;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -129,6 +131,28 @@ public class DAOPointImpl implements DAOPoint {
         dto.setEastCoordinate(rs.getString("east_coordinate"));
         dto.setDistance(rs.getDouble("distance"));
         dto.setHillside(rs.getString("hillside"));
+    }
+
+    @Override
+    public Set<Integer> existingPointNumber(int propertyCode) throws DAOException {
+        Set<Integer> existingPoint = new HashSet<>();
+        String sql = SQLRepository.get("sql/point/existingPointNumber.sql");
+
+        try (Connection connection = DataBasePool.getConnection();
+            PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, propertyCode);
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    int pointNumber = rs.getInt("number");
+                    existingPoint.add(pointNumber);
+                }
+
+                return existingPoint;
+            }
+        } catch (SQLException e) {
+            throw new PointPersistenceException(lang.message("persistence.point.info.property.code") + " " + propertyCode, e);
+        }
     }
 
 }
