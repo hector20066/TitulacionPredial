@@ -32,7 +32,7 @@ public class DataBasePool {
 
     static {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(AppConfig.get("db.url"));
+        config.setJdbcUrl(AppConfig.get("db.url.ssl"));
         config.setUsername(AppConfig.get("db.username"));
         config.setPassword(AppConfig.get("db.password"));
         config.setDriverClassName(AppConfig.get("db.driver"));
