@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 import com.hector.titulacionpredial.controller.builder.ControllerRegisterPropertyBuilder;
 import com.hector.titulacionpredial.exception.dao.DAOException;
@@ -30,6 +31,7 @@ import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiariesCode;
 import com.hector.titulacionpredial.model.enums.Department;
 import com.hector.titulacionpredial.model.enums.Municipalities;
 import com.hector.titulacionpredial.observer.Subject;
+import com.hector.titulacionpredial.utils.DialogUtils;
 import com.hector.titulacionpredial.utils.ImportExcel;
 import com.hector.titulacionpredial.utils.MessageUtils;
 import com.hector.titulacionpredial.utils.ValidationUtils;
@@ -75,6 +77,8 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private final BeneficiaryFacade daoBeneficiary;
 
     private int propertyCode;
+    private JDialog currentImportDialog;
+    private ResultadoImportacion ultimoResultado;
 
     /**
      * Create the controller, register it as an observer, and
@@ -413,6 +417,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
     private void importExcelData() {
         JDialog dialog = new JDialog((java.awt.Frame) SwingUtilities.getWindowAncestor(registerProperty),
                 "Importar Datos en Lote", true);
+        this.currentImportDialog = dialog;
         dialog.setSize(1000, 600);
         dialog.setLocationRelativeTo(registerProperty);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -431,7 +436,10 @@ public class ControllerRegisterProperty implements LanguageObserver {
         btnSave.setText(lang.message("controller.button.save"));
         btnSave.setBackground(new java.awt.Color(64, 145, 108));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.addActionListener(e -> saveBulkData());
+        btnSave.addActionListener(e -> {
+            btnSave.setEnabled(false);
+            saveBulkData();
+        });
 
         ButtonAction btnCancel = new ButtonAction();
         btnCancel.setText(lang.message("controller.button.cancel"));
@@ -459,7 +467,7 @@ public class ControllerRegisterProperty implements LanguageObserver {
 
                 SwingUtilities.invokeLater(() -> {
                     registerProperty.loadBulkImportTable(data);
-                    applyValidationStyling();
+                    // No apply validation styling - will validate during save instead
                 });
             } catch (Exception e) {
                 SwingUtilities.invokeLater(() ->
@@ -470,47 +478,19 @@ public class ControllerRegisterProperty implements LanguageObserver {
     }
 
     /**
-     * Apply styling to table cells.
-     * Note: Beneficiary code column was filtered out, so basic styling is applied.
+     * Apply styling to table cells based on validation results.
+     * @deprecated This method is very slow with many rows. Validation now happens during save.
      */
+    @Deprecated
     private void applyValidationStyling() {
-        javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer() {
-            @Override
-            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
-                java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-                if (isSelected) {
-                    return c;
-                }
-
-                String beneficiaryCode = "";
-
-                try {
-                    Object codeValue = table.getValueAt(row, 0);
-                    beneficiaryCode = codeValue != null ? codeValue.toString().trim() : "";
-                } catch (Exception ignored) {
-                }
-
-                if (!beneficiaryCode.isEmpty() && !beneficiaryCodeExists(beneficiaryCode)) {
-                    c.setBackground(new java.awt.Color(255, 230, 230));
-                    c.setForeground(java.awt.Color.BLACK);
-                } else {
-                    c.setBackground(java.awt.Color.WHITE);
-                    c.setForeground(java.awt.Color.BLACK);
-                }
-                return c;
-            }
-        };
-
-        for (int i = 0; i < registerProperty.getTable_bulkImport().getColumnCount(); i++) {
-            registerProperty.getTable_bulkImport().getColumnModel().getColumn(i).setCellRenderer(renderer);
-        }
+        // Removed - validation now happens during save instead for better performance
     }
 
     /**
      * Check if a beneficiary code exists in the database.
+     * @deprecated Use beneficiary caching instead. This method makes unnecessary DB calls.
      */
+    @Deprecated
     private boolean beneficiaryCodeExists(String code) {
         try {
             return daoBeneficiary.findByBeneficiariesCode(code) != null;
@@ -523,136 +503,207 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * Save all valid beneficiary codes from the bulk import table.
      *
      * <p>
-     * Simple and direct logic:
-     * 1. Get or create property in property table
-     * 2. Save all points provided - but only if they don't already exist
-     * 3. Save area if provided - but only if not already set
+     * Shows a loading dialog while processing. Upon completion, displays detailed
+     * results and closes the import dialog on confirmation.
      * </p>
      */
     private void saveBulkData() {
-        new Thread(() -> {
+        JDialog loadingDialog = DialogUtils.createLoadDialog(registerProperty,
+                lang.message("dialog.saving.bulk.data"));
+
+        SwingWorker<ResultadoImportacion, Void> worker = new SwingWorker<>() {
+            @Override
+            protected ResultadoImportacion doInBackground() throws Exception {
+                return processBulkData();
+            }
+
+            @Override
+            protected void done() {
+                loadingDialog.dispose();
+
+                try {
+                    ResultadoImportacion resultado = get();
+                    ultimoResultado = resultado;
+
+                    // Mostrar mensaje detallado
+                    StringBuilder mensaje = new StringBuilder();
+                    mensaje.append("Registros procesados:\n");
+                    mensaje.append("\u2713 Válidos guardados: ").append(resultado.validRecords).append("\n");
+                    mensaje.append("\u2717 Inválidos: ").append(resultado.invalidRecords);
+
+                    if (!resultado.codigosSinBeneficiarios.isEmpty()) {
+                        mensaje.append("\n\nCódigos sin beneficiarios:\n");
+                        resultado.codigosSinBeneficiarios.stream()
+                                .limit(10)
+                                .forEach(codigo -> mensaje.append("  - No existe beneficiario con código ").append(codigo).append(" para dichos predios\n"));
+
+                        if (resultado.codigosSinBeneficiarios.size() > 10) {
+                            mensaje.append("  ... y ").append(resultado.codigosSinBeneficiarios.size() - 10).append(" más");
+                        }
+                    }
+
+                    if (!resultado.otrosErrores.isEmpty()) {
+                        mensaje.append("\n\nOtros errores:\n");
+                        resultado.otrosErrores.stream()
+                                .limit(5)
+                                .forEach(error -> mensaje.append("  - ").append(error).append("\n"));
+                    }
+
+                    // Mostrar diálogo con opción de cerrar
+                    MessageUtils.informationMessage(mensaje.toString(), registerProperty);
+
+                    // Cerrar el diálogo de importación
+                    if (currentImportDialog != null) {
+                        currentImportDialog.dispose();
+                    }
+
+                    // Notificar observadores y limpiar
+                    subject.notifyObservers();
+                    registerProperty.clearFields();
+
+                } catch (Exception e) {
+                    String msg = (e.getCause() != null) ? e.getCause().getMessage() : e.getMessage();
+                    MessageUtils.errorMessage(lang.message("dialog.utils.error1") + "\n" +
+                            lang.message("dialog.utils.error2") + " " + msg, registerProperty);
+                }
+            }
+        };
+
+        worker.execute();
+        loadingDialog.setVisible(true);
+    }
+
+    /**
+     * Process bulk data import in background.
+     */
+    private ResultadoImportacion processBulkData() throws Exception {
+        javax.swing.table.DefaultTableModel model =
+                (javax.swing.table.DefaultTableModel) registerProperty.getTable_bulkImport().getModel();
+
+        int rowCount = model.getRowCount();
+        int validRecords = 0;
+        int invalidRecords = 0;
+        List<String> codigosSinBeneficiarios = new ArrayList<>();
+        List<String> otrosErrores = new ArrayList<>();
+
+        // Pre-load all beneficiary codes into a map to avoid repeated DB queries
+        java.util.Map<String, DTOBeneficiariesCode> beneficiaryCache = new java.util.HashMap<>();
+
+        for (int i = 0; i < rowCount; i++) {
+            String beneficiaryCode = model.getValueAt(i, 0).toString().trim();
+
+            if (!beneficiaryCode.isEmpty() && !beneficiaryCache.containsKey(beneficiaryCode)) {
+                try {
+                    DTOBeneficiariesCode dto = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
+                    if (dto != null) {
+                        beneficiaryCache.put(beneficiaryCode, dto);
+                    }
+                } catch (DAOException ignored) {
+                    // Will be handled as invalid in the main loop
+                }
+            }
+        }
+
+        // Process each row
+        for (int i = 0; i < rowCount; i++) {
+            String beneficiaryCode = model.getValueAt(i, 0).toString().trim();
+
+            // Check if code is empty
+            if (beneficiaryCode.isEmpty()) {
+                invalidRecords++;
+                continue;
+            }
+
+            // Check if beneficiary exists in cache
+            if (!beneficiaryCache.containsKey(beneficiaryCode)) {
+                invalidRecords++;
+                codigosSinBeneficiarios.add(beneficiaryCode);
+                continue;
+            }
+
+            // Process valid beneficiary
             try {
-                javax.swing.table.DefaultTableModel model = 
-                        (javax.swing.table.DefaultTableModel) registerProperty.getTable_bulkImport().getModel();
+                    DTOBeneficiariesCode beneficiaryInfo = beneficiaryCache.get(beneficiaryCode);
+                    String cadastralRef = beneficiaryInfo.getCadastral_reference();
+                    String address = beneficiaryInfo.getAddress();
 
-                int rowCount = model.getRowCount();
-                int validRecords = 0;
-                int invalidRecords = 0;
-                List<String> errors = new ArrayList<>();
+                    List<PointData> points = extractPointsFromRow(model, i);
+                    String areaStr = model.getValueAt(i, 17).toString().trim();
+                    double area = !areaStr.isEmpty() ? Double.parseDouble(areaStr.replace(",", ".")) : 0;
 
-                for (int i = 0; i < rowCount; i++) {
-                    String beneficiaryCode = model.getValueAt(i, 0).toString().trim();
+                    if (cadastralRef == null || cadastralRef.trim().isEmpty()) {
+                        invalidRecords++;
+                        otrosErrores.add(beneficiaryCode + ": Sin referencia catastral");
+                        continue;
+                    }
 
-                    if (!beneficiaryCode.isEmpty() && beneficiaryCodeExists(beneficiaryCode)) {
-                        try {
-                            DTOBeneficiariesCode beneficiaryInfo = daoBeneficiary.findByBeneficiariesCode(beneficiaryCode);
-                            String cadastralRef = beneficiaryInfo.getCadastral_reference();
-                            String address = beneficiaryInfo.getAddress();
+                    var existingProperty = daoProperty.findByCode(cadastralRef);
+                    int propertyCode;
 
-                            List<PointData> points = extractPointsFromRow(model, i);
-                            String areaStr = model.getValueAt(i, 17).toString().trim();
-                            double area = !areaStr.isEmpty() ? Double.parseDouble(areaStr.replace(",", ".")) : 0;
+                    if (existingProperty == null) {
+                        propertyCode = daoProperty.add(
+                                cadastralRef,
+                                address != null ? address : "",
+                                Department.CORDOBA,
+                                Municipalities.MONTERIA,
+                                "",
+                                "",
+                                ""
+                        );
+                    } else {
+                        propertyCode = existingProperty.getPropertyCode();
+                    }
 
-                            if (cadastralRef == null || cadastralRef.trim().isEmpty()) {
-                                invalidRecords++;
-                                errors.add(beneficiaryCode + ": Sin referencia catastral");
+                    Set<Integer> existingPointNumbers = daoPoint.existingPointNumber(propertyCode);
+
+                    if (!points.isEmpty()) {
+                        for (PointData p : points) {
+                            if (existingPointNumbers.contains(p.pointNumber())) {
                                 continue;
                             }
 
-                            var existingProperty = daoProperty.findByCode(cadastralRef);
-                            int propertyCode;
-
-                            if (existingProperty == null) {
-                                propertyCode = daoProperty.add(
-                                    cadastralRef,
-                                    address != null ? address : "",
-                                    Department.CORDOBA,
-                                    Municipalities.MONTERIA,
-                                    "",
-                                    "",
-                                    ""
+                            try {
+                                daoPoint.add(
+                                        p.pointNumber(),
+                                        p.north(),
+                                        p.east(),
+                                        Double.parseDouble(p.distance().isEmpty() ? "0" : p.distance().replace(",", ".")),
+                                        p.hillside().isEmpty() ? "" : p.hillside(),
+                                        propertyCode
                                 );
-                            } else {
-                                propertyCode = existingProperty.getPropertyCode();
-                            }
 
-                            Set<Integer> existingPointNumbers = daoPoint.existingPointNumber(propertyCode);
+                                existingPointNumbers.add(p.pointNumber());
+                            } catch (Exception pointEx) {
+                                boolean isDuplicate = isIsDuplicate(pointEx);
 
-                            if (!points.isEmpty()) {
-                                for (PointData p : points) {
-                                    if (existingPointNumbers.contains(p.pointNumber())) {
-                                        continue;
-                                    }
-                                    
-                                    try {
-                                        daoPoint.add(
-                                            p.pointNumber(),
-                                            p.north(),
-                                            p.east(),
-                                            Double.parseDouble(p.distance().isEmpty() ? "0" : p.distance().replace(",", ".")),
-                                            p.hillside().isEmpty() ? "" : p.hillside(),
-                                            propertyCode
-                                        );
-
-                                        existingPointNumbers.add(p.pointNumber());
-                                    } catch (Exception pointEx) {
-                                        boolean isDuplicate = isIsDuplicate(pointEx);
-
-                                        if (!isDuplicate) {
-                                            errors.add(beneficiaryCode + " Punto " + p.pointNumber() + ": " + pointEx.getMessage());
-                                        }
-                                        if (isDuplicate) {
-                                            existingPointNumbers.add(p.pointNumber());
-                                        }
-                                    }
+                                if (!isDuplicate) {
+                                    otrosErrores.add(beneficiaryCode + " Punto " + p.pointNumber() + ": " + pointEx.getMessage());
+                                }
+                                if (isDuplicate) {
+                                    existingPointNumbers.add(p.pointNumber());
                                 }
                             }
-
-                            if (area > 0) {
-                                if (existingProperty == null || existingProperty.getArea() <= 0) {
-                                    try {
-                                        daoProperty.modify(cadastralRef, area);
-                                    } catch (Exception areaEx) {
-                                        errors.add(beneficiaryCode + " Área: " + areaEx.getMessage());
-                                    }
-                                }
-                            }
-
-                            validRecords++;
-                        } catch (Exception e) {
-                            invalidRecords++;
-                            errors.add(beneficiaryCode + ": " + e.getMessage());
                         }
-                    } else if (!beneficiaryCode.isEmpty()) {
-                        invalidRecords++;
                     }
+
+                    if (area > 0) {
+                        if (existingProperty == null || existingProperty.getArea() <= 0) {
+                            try {
+                                daoProperty.modify(cadastralRef, area);
+                            } catch (Exception areaEx) {
+                                otrosErrores.add(beneficiaryCode + " Área: " + areaEx.getMessage());
+                            }
+                        }
+                    }
+
+                    validRecords++;
+                } catch (Exception e) {
+                    invalidRecords++;
+                    otrosErrores.add(beneficiaryCode + ": " + e.getMessage());
                 }
+        }
 
-                final int valid = validRecords;
-                final int invalid = invalidRecords;
-                final List<String> errorList = errors;
-
-                SwingUtilities.invokeLater(() -> {
-                    String message = String.format(
-                            "Registros procesados:\nVálidos guardados: %d\nInválidos: %d",
-                            valid, invalid
-                    );
-
-                    if (!errorList.isEmpty()) {
-                        message += "\n\nErrores:\n" + String.join("\n", errorList.stream()
-                                .limit(5)
-                                .toList());
-                    }
-
-                    MessageUtils.informationMessage(message, registerProperty);
-                    subject.notifyObservers();
-                });
-            } catch (Exception e) {
-                SwingUtilities.invokeLater(() ->
-                        MessageUtils.errorMessage("Error al guardar: " + e.getMessage(), registerProperty)
-                );
-            }
-        }).start();
+        return new ResultadoImportacion(validRecords, invalidRecords, codigosSinBeneficiarios, otrosErrores);
     }
 
     private static boolean isIsDuplicate(Exception pointEx) {
@@ -744,6 +795,23 @@ public class ControllerRegisterProperty implements LanguageObserver {
      * @param hillside    neighboring boundary
      */
     private record PointData(int pointNumber, String north, String east, String distance, String hillside) {
+
+    }
+
+    /**
+     * Record that encapsulates the results of a bulk import operation.
+     *
+     * @param validRecords               number of successfully saved records
+     * @param invalidRecords             number of records that failed
+     * @param codigosSinBeneficiarios    beneficiary codes not found in database
+     * @param otrosErrores               other errors that occurred during import
+     */
+    private record ResultadoImportacion(
+            int validRecords,
+            int invalidRecords,
+            List<String> codigosSinBeneficiarios,
+            List<String> otrosErrores
+    ) {
 
     }
 
