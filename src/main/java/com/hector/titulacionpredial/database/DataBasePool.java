@@ -1,11 +1,11 @@
 package com.hector.titulacionpredial.database;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import com.hector.titulacionpredial.utils.AppConfig;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 /**
  * Pool of connections to the MySQL database based
@@ -32,9 +32,9 @@ public class DataBasePool {
 
     static {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(AppConfig.get("db.dev.url"));
-        config.setUsername(AppConfig.get("db.dev.username"));
-        config.setPassword(AppConfig.get("db.dev.password"));
+        config.setJdbcUrl(AppConfig.get("db.url"));
+        config.setUsername(AppConfig.get("db.username"));
+        config.setPassword(AppConfig.get("db.password"));
         config.setDriverClassName(AppConfig.get("db.driver"));
 
         config.setMaximumPoolSize(10);

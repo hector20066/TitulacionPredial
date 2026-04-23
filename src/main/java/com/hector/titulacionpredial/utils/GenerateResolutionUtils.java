@@ -1,12 +1,5 @@
 package com.hector.titulacionpredial.utils;
 
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.config.Configure;
-import com.hector.titulacionpredial.model.dto.DTOPoint;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
-import com.hector.titulacionpredial.model.enums.MaritalStatus;
-import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.config.Configure;
+import com.hector.titulacionpredial.model.dto.DTOPoint;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiarySimpleDetails;
+import com.hector.titulacionpredial.model.enums.MaritalStatus;
+import com.hector.titulacionpredial.view.content.panels.GenerateResolution;
 
 /**
  * Utility class for generating Word documents of resolutions
@@ -134,16 +134,17 @@ public class GenerateResolutionUtils {
 
             sb.append(names);
         } else {
-            for (DTOBeneficiarySimpleDetails beneficiary : beneficiariesList) {
-                sb.append(beneficiary.getFullName()).append(identifyingText).append(beneficiary.getId()).append(", ");
-            }
+            // Use stream to join beneficiary names properly with commas
+            String names = beneficiariesList.stream()
+                    .map(b -> b.getFullName() + identifyingText + b.getId())
+                    .collect(Collectors.joining(", "));
+            
+            sb.append(names);
 
             if (!beneficiariesList.isEmpty() && numDistinctMaritalStatuses == 1) {
                 beneficiariesList.stream()
                         .findFirst()
                         .ifPresent(b -> sb.append(" estado civil ").append(b.getMaritalStatus().getValue()));
-            } else {
-                sb.append(" estado civil ").append(beneficiariesList.getFirst().getMaritalStatus().getValue()).append("s");
             }
         }
     }
