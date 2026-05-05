@@ -89,7 +89,7 @@ public class DAOPropertyImpl implements DAOProperty {
 
                 if (affectedRows == 0) {
                     connection.rollback();
-                    throw new PropertyNotFoundException(lang.message("not.found.property.rows"));
+                    throw new PropertyPersistenceException(lang.message("not.found.property.rows"));
                 }
 
                 try (ResultSet generatedKeys = st.getGeneratedKeys()) {

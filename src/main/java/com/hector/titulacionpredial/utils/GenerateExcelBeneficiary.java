@@ -1,14 +1,22 @@
 package com.hector.titulacionpredial.utils;
 
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
-import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryCreate;
+import com.hector.titulacionpredial.model.dto.beneficiary.DTOBeneficiaryDetails;
 
 /**
  * Utility class for exporting beneficiaries to an Excel file
@@ -34,63 +42,62 @@ public class GenerateExcelBeneficiary {
      */
     public static void export(List<DTOBeneficiaryDetails> beneficiaries, String path) throws IOException {
         File fileXLS = new File(path + File.separator + "ReporteBeneficiarios.xls");
-        Workbook book = new HSSFWorkbook();
 
-        CellStyle headerStyle = book.createCellStyle();
-        headerStyle.setFillForegroundColor(IndexedColors.DARK_GREEN.getIndex());
-        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        try (Workbook book = new HSSFWorkbook();
+             FileOutputStream file = new FileOutputStream(fileXLS)) {
 
-        Font headerFont = book.createFont();
-        headerFont.setBold(true);
-        headerFont.setColor(IndexedColors.WHITE.getIndex());
+            CellStyle headerStyle = book.createCellStyle();
+            headerStyle.setFillForegroundColor(IndexedColors.DARK_GREEN.getIndex());
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-        headerStyle.setFont(headerFont);
-        Sheet sheet = book.createSheet("Reporte Beneficiarios");
-        sheet.setDisplayGridlines(true);
+            Font headerFont = book.createFont();
+            headerFont.setBold(true);
+            headerFont.setColor(IndexedColors.WHITE.getIndex());
 
-        String[] titles = {"Código", "Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
-                "Ref. Catastral", "Estado Civil", "Afectación", "Teléfono", "Cruce",
-                "Publicación", "Barrio", "Lugar Expedición"};
+            headerStyle.setFont(headerFont);
+            Sheet sheet = book.createSheet("Reporte Beneficiarios");
+            sheet.setDisplayGridlines(true);
 
-        Row header = sheet.createRow(0);
+            String[] titles = {"Código", "Cédula", "Nombre", "Departamento", "Municipio", "Dirección",
+                    "Ref. Catastral", "Estado Civil", "Afectación", "Teléfono", "Cruce",
+                    "Publicación", "Barrio", "Lugar Expedición"};
 
-        for (int c = 0; c < titles.length; c++) {
-            Cell cell = header.createCell(c);
-            cell.setCellValue(titles[c]);
-            cell.setCellStyle(headerStyle);
-        }
+            Row header = sheet.createRow(0);
 
-        int rowIndex = 1;
+            for (int c = 0; c < titles.length; c++) {
+                Cell cell = header.createCell(c);
+                cell.setCellValue(titles[c]);
+                cell.setCellStyle(headerStyle);
+            }
 
-        for (DTOBeneficiaryDetails dto : beneficiaries) {
-            Row row = sheet.createRow(rowIndex++);
+            int rowIndex = 1;
 
-            int col = 0;
-            row.createCell(col++).setCellValue(dto.getCodeBeneficiaries());
-            row.createCell(col++).setCellValue(dto.getId());
-            row.createCell(col++).setCellValue(dto.getFullName() != null ? dto.getFullName() : "");
-            row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().getValue() : "");
-            row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().getValue() : "");
-            row.createCell(col++).setCellValue(dto.getAddress() != null ? dto.getAddress() : "");
-            row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");
-            row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().getValue() : "");
-            row.createCell(col++).setCellValue(dto.getAffectation() != null ? dto.getAffectation() : "");
-            row.createCell(col++).setCellValue(dto.getPhone());
-            row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
-            row.createCell(col++).setCellValue(dto.getPublication() != null ? dto.getPublication() : "");
-            row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");
-            row.createCell(col).setCellValue(dto.getExpeditionLocation() != null ? dto.getExpeditionLocation() : "");
-        }
+            for (DTOBeneficiaryDetails dto : beneficiaries) {
+                Row row = sheet.createRow(rowIndex++);
 
-        for (int c = 0; c < titles.length; c++) {
-            sheet.autoSizeColumn(c);
-        }
+                int col = 0;
+                row.createCell(col++).setCellValue(dto.getCodeBeneficiaries());
+                row.createCell(col++).setCellValue(dto.getId());
+                row.createCell(col++).setCellValue(dto.getFullName() != null ? dto.getFullName() : "");
+                row.createCell(col++).setCellValue(dto.getDepartment() != null ? dto.getDepartment().getValue() : "");
+                row.createCell(col++).setCellValue(dto.getMunicipality() != null ? dto.getMunicipality().getValue() : "");
+                row.createCell(col++).setCellValue(dto.getAddress() != null ? dto.getAddress() : "");
+                row.createCell(col++).setCellValue(dto.getCadastralRef() != null ? dto.getCadastralRef() : "");
+                row.createCell(col++).setCellValue(dto.getMaritalStatus() != null ? dto.getMaritalStatus().getValue() : "");
+                row.createCell(col++).setCellValue(dto.getAffectation() != null ? dto.getAffectation() : "");
+                row.createCell(col++).setCellValue(dto.getPhone());
+                row.createCell(col++).setCellValue(dto.getCrossing() != null ? dto.getCrossing() : "");
+                row.createCell(col++).setCellValue(dto.getPublication() != null ? dto.getPublication() : "");
+                row.createCell(col++).setCellValue(dto.getNeighborhood() != null ? dto.getNeighborhood() : "");
+                row.createCell(col).setCellValue(dto.getExpeditionLocation() != null ? dto.getExpeditionLocation() : "");
+            }
 
-        try (FileOutputStream file = new FileOutputStream(fileXLS)) {
+            for (int c = 0; c < titles.length; c++) {
+                sheet.autoSizeColumn(c);
+            }
+
             book.write(file);
         }
-
-        book.close();
     }
 
 }

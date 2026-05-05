@@ -101,9 +101,15 @@ public class GenerateResolutionUtils {
             throw new IOException("Template not found: resolution/MINUTA - RES FISCALES.docx");
         }
 
-        XWPFTemplate template = XWPFTemplate.compile(templateStream, config).render(data);
-        template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-" + cadastralId + ".docx");
-        template.close();
+        XWPFTemplate template = null;
+        try {
+            template = XWPFTemplate.compile(templateStream, config).render(data);
+            template.writeToFile(path + File.separator + "MINUTA - RES FISCALES-" + cadastralId + ".docx");
+        } finally {
+            if (template != null) {
+                template.close();
+            }
+        }
     }
 
     /**

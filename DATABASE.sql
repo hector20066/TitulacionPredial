@@ -79,7 +79,7 @@ CREATE TABLE point (
 -- =========================
 CREATE TABLE resolution (
     code INT AUTO_INCREMENT PRIMARY KEY,
-    num_resolution BIGINT NOT NULL,
+    num_resolution BIGINT NOT NULL UNIQUE,
     notification DATE,
     executory DATE,
     fmi VARCHAR(20),
