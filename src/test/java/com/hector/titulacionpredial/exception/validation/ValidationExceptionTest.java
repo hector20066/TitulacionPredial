@@ -27,7 +27,7 @@ class ValidationExceptionTest {
         @DisplayName("Constructor vacío debe tener mensaje por defecto")
         void defaultConstructorShouldWork() {
             InvalidInputException ex = new InvalidInputException();
-            assertEquals("Campo invalido", ex.getMessage());
+            assertEquals("Campo inválido", ex.getMessage());
         }
 
         @Test
