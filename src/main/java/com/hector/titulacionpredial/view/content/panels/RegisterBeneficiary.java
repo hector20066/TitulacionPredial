@@ -274,7 +274,6 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         jlb_affectation.setForeground(new java.awt.Color(33, 37, 41));
         jlb_affectation.setText("Afectacion:");
 
-        txa_affectation.setEditable(false);
         txa_affectation.setColumns(20);
         txa_affectation.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         txa_affectation.setRows(4);
@@ -692,7 +691,7 @@ public class RegisterBeneficiary extends javax.swing.JPanel {
         txt_id.setEditable(true);
         txt_cadastralReference.setEditable(true);
         txt_expeditionLocation.setEditable(true);
-        txa_affectation.setEditable(false);
+        txa_affectation.setEditable(true);
     }
     
     /**
