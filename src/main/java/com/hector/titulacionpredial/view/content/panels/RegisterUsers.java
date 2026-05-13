@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterUsersText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
@@ -17,11 +18,9 @@ public class RegisterUsers extends javax.swing.JPanel {
      */
     public RegisterUsers() {
         initComponents();
-        
-        Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
-        Icon iconOff = new ImageIcon(getClass().getResource("/image/eye-off.png"));
-        rbn_seePasswd.setIcon(normalIcon);
-        rbn_seePasswd.setSelectedIcon(iconOff);
+
+        rbn_seePasswd.setIcon(new FlatSVGIcon(getClass().getResource("/image/eye.svg")));
+        rbn_seePasswd.setSelectedIcon(new FlatSVGIcon(getClass().getResource("/image/eye-off.svg")));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,7 +94,7 @@ public class RegisterUsers extends javax.swing.JPanel {
         btn_createAccount.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_createAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        rbn_seePasswd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/eye.png"))); // NOI18N
+        rbn_seePasswd.setIcon(new FlatSVGIcon(getClass().getResource("/image/eye.svg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

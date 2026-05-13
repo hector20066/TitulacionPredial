@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.model.dto.DTOPoint;
 import com.hector.titulacionpredial.model.dto.property.DTOPropertyDetails;
 import com.hector.titulacionpredial.model.enums.Municipalities;
@@ -101,12 +102,12 @@ public class SeeProperties extends JPanel {
         txt_search.setBorder(null);
 
         btn_search.setBackground(new java.awt.Color(255, 255, 255));
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btn_search.setIcon(new FlatSVGIcon(getClass().getResource("/image/search.svg"))); // NOI18N
         btn_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn_searchCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btn_searchCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/x.png"))); // NOI18N
+        btn_searchCancel.setIcon(new FlatSVGIcon(getClass().getResource("/image/x.svg"))); // NOI18N
         btn_searchCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_searchCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 

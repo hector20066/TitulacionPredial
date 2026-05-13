@@ -3,13 +3,12 @@ package com.hector.titulacionpredial.view.content;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLoginText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 
@@ -25,10 +24,8 @@ public class ContentLogin extends javax.swing.JFrame {
     public ContentLogin() {
         initComponents();
 
-        Icon normalIcon = new ImageIcon(getClass().getResource("/image/eye.png"));
-        Icon iconOff = new ImageIcon(getClass().getResource("/image/eye-off.png"));
-        rbn_seePasswd.setIcon(normalIcon);
-        rbn_seePasswd.setSelectedIcon(iconOff);
+        rbn_seePasswd.setIcon(new FlatSVGIcon(getClass().getResource("/image/eye.svg")));
+        rbn_seePasswd.setSelectedIcon(new FlatSVGIcon(getClass().getResource("/image/eye-off.svg")));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -97,7 +94,7 @@ public class ContentLogin extends javax.swing.JFrame {
         btn_login.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btn_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        rbn_seePasswd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/eye.png"))); // NOI18N
+        rbn_seePasswd.setIcon(new FlatSVGIcon(getClass().getResource("/image/eye.svg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

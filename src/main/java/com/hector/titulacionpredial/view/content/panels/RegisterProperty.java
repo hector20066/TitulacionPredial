@@ -1,5 +1,6 @@
 package com.hector.titulacionpredial.view.content.panels;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTORegisterPropertyText;
 import com.hector.titulacionpredial.view.swing.button.ButtonAction;
 import com.hector.titulacionpredial.view.swing.button.ButtonBadges;
@@ -129,7 +130,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_point1.setForeground(new java.awt.Color(33, 37, 41));
         jlb_point1.setText("Punto 1");
 
-        btn_goPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
+        btn_goPoint2.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-right.svg"))); // NOI18N
 
         jlb_north1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_north1.setForeground(new java.awt.Color(33, 37, 41));
@@ -237,9 +238,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_point2.setForeground(new java.awt.Color(33, 37, 41));
         jlb_point2.setText("Punto 2");
 
-        btn_goPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
+        btn_goPoint3.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-right.svg"))); // NOI18N
 
-        btn_returnPoint1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
+        btn_returnPoint1.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-left.svg"))); // NOI18N
 
         jlb_north2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_north2.setForeground(new java.awt.Color(33, 37, 41));
@@ -350,9 +351,9 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_point3.setForeground(new java.awt.Color(33, 37, 41));
         jlb_point3.setText("Punto 3");
 
-        btn_returnPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
+        btn_returnPoint2.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-left.svg"))); // NOI18N
 
-        btn_goPoint4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-right.png"))); // NOI18N
+        btn_goPoint4.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-right.svg"))); // NOI18N
 
         jlb_north3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_north3.setForeground(new java.awt.Color(33, 37, 41));
@@ -463,7 +464,7 @@ public class RegisterProperty extends javax.swing.JPanel {
         jlb_point4.setForeground(new java.awt.Color(33, 37, 41));
         jlb_point4.setText("Punto 4");
 
-        btn_returnPoint3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circle-chevron-left.png"))); // NOI18N
+        btn_returnPoint3.setIcon(new FlatSVGIcon(getClass().getResource("/image/circle-chevron-left.svg"))); // NOI18N
 
         jlb_north4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jlb_north4.setForeground(new java.awt.Color(33, 37, 41));
@@ -714,6 +715,7 @@ public class RegisterProperty extends javax.swing.JPanel {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
     /**
      * Updates the panel text according to the selected language.
      *
@@ -1060,7 +1062,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                         List<File> files = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
 
                         if (!files.isEmpty()) {
-                            File selectedFile = files.get(0);
+                            File selectedFile = files.getFirst();
                             String filename = selectedFile.getName().toLowerCase();
 
                             if (filename.endsWith(".xlsx") || filename.endsWith(".xls")) {
@@ -1072,6 +1074,7 @@ public class RegisterProperty extends javax.swing.JPanel {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                     jpl_dragDrop.setBackground(Color.WHITE);
                 }
 
