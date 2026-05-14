@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.hector.titulacionpredial.view.component.UserMenu;
 import com.hector.titulacionpredial.view.i18n.dto.panels.DTOContentLogoutBtnText;
 import com.hector.titulacionpredial.view.swing.menu.EventMenuSelected;
@@ -41,7 +42,7 @@ public class ContentUser extends javax.swing.JFrame {
 
         btn_logout.setBackground(new java.awt.Color(255, 255, 255));
         btn_logout.setForeground(new java.awt.Color(33, 37, 41));
-        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/log-out.png"))); // NOI18N
+        btn_logout.setIcon(new FlatSVGIcon(getClass().getResource("/image/log-out.svg"))); // NOI18N
         btn_logout.setText("  Cerrar Sesion");
         btn_logout.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
 
